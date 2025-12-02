@@ -1,3 +1,20 @@
+## 2.0.3
+
+### New Features
+- **Inferred Discriminators**: Automatically detect discriminator properties from single-value enums in `oneOf`/`anyOf` variants (Azure-style implicit polymorphism)
+- **Primitive Union Serialization**: Added `MappingHook` support for primitive unions (string/int/bool/enum) to serialize as raw values instead of wrapped objects
+
+### Bug Fixes
+- **Duplicate Word Prevention**: Fixed naming to avoid duplicate words in generated enum names (e.g., `RoleRole` → `Role`)
+- **jsonKey Preservation**: Fixed inline object properties using generated type name instead of original JSON key
+- **MappableField Annotations**: Added proper `@MappableField(key: ...)` annotations in discriminated union variants for renamed properties
+
+### dart_mappable Improvements
+- Primitive union types now correctly deserialize from raw JSON values (e.g., `"gpt-4o"` instead of `{"value": "gpt-4o"}`)
+- Primitive union types now correctly serialize to raw JSON values
+- Added `toJsonValue()` extension for extracting raw values from union variants
+- Added `tryDeserialize()` for automatic variant detection during deserialization
+
 ## 2.0.2
 - Packages updated
 - Documentation improvements
