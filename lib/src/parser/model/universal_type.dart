@@ -50,7 +50,8 @@ final class UniversalType {
   final String? jsonKey;
 
   /// Holding object default value
-  final String? defaultValue;
+  /// Can be String, int, double, bool, or List/Map for arrays/objects
+  final Object? defaultValue;
 
   /// Whether or not this field is required
   final bool isRequired;
@@ -87,7 +88,7 @@ final class UniversalType {
     String? description,
     String? format,
     String? jsonKey,
-    String? defaultValue,
+    Object? defaultValue,
     bool? isRequired,
     String? enumType,
     List<UniversalCollections>? wrappingCollections,

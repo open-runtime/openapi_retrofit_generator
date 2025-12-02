@@ -466,7 +466,7 @@ class OpenApiParser {
             final isRequired = requiredParameters.contains(propName);
             final typeWithImport = _findType(
               propValue,
-              name: null,
+              name: propName, // Pass property name for meaningful enum naming
               isRequired: isRequired,
             );
             final currentType = typeWithImport.type;
@@ -487,6 +487,8 @@ class OpenApiParser {
                   isRequired: currentType.isRequired,
                   nullable: currentType.nullable,
                   wrappingCollections: currentType.wrappingCollections,
+                  enumType: currentType
+                      .enumType, // Preserve enum type for default value handling
                   deprecated: currentType.deprecated,
                 ),
               ),
@@ -1062,6 +1064,37 @@ class OpenApiParser {
         if (_getUndiscriminatedUnionValues(value)
             case final List<dynamic> unionValues) {
           final description = value[_descriptionConst]?.toString();
+
+          // Check if all variants are string types - if so, just typedef to String
+          final nonNullVariants = filterNullTypes(unionValues);
+          final allStrings =
+              nonNullVariants.isNotEmpty &&
+              nonNullVariants.every((item) {
+                final type = item[_typeConst]?.toString();
+                return type == 'string';
+              });
+
+          if (allStrings) {
+            // anyOf: [string, string+enum] -> typedef to String
+            final typedefClass = UniversalComponentClass(
+              name: schemaName,
+              imports: const {},
+              parameters: {
+                UniversalType(
+                  type: 'String',
+                  name: '',
+                  isRequired: false,
+                  nullable: true,
+                ),
+              },
+              typeDef: true,
+              description: description,
+            );
+            dataClasses.add(typedefClass);
+            _typeRegistry.registerTypedef(schemaName);
+            return;
+          }
+
           final union = _createUnionComponentClass(
             unionValues,
             schemaName,
@@ -1542,9 +1575,11 @@ class OpenApiParser {
 
       final isEnumArray =
           itemDetails.enumType != null || _isEnumType(itemDetails.type);
-      final arrayDefaultValue = isEnumArray
-          ? map[_defaultConst]?.toString()
-          : protectDefaultValue(map[_defaultConst], isArray: true);
+
+      // Validate and store default value for arrays
+      // Skip invalid defaults: string values for array types (spec bugs)
+      final rawArrayDefault = map[_defaultConst];
+      final arrayDefaultValue = _validateArrayDefault(rawArrayDefault, name);
 
       return (
         type: UniversalType(
@@ -1617,6 +1652,11 @@ class OpenApiParser {
       final isEnumMap =
           valueDetails.enumType != null || _isEnumType(valueDetails.type);
 
+      // Validate and store default value for maps
+      // Skip invalid defaults: string values for map types (spec bugs)
+      final rawMapDefault = map[_defaultConst];
+      final mapDefaultValue = _validateMapDefault(rawMapDefault, name);
+
       return (
         type: UniversalType(
           type: valueDetails.type,
@@ -1625,9 +1665,7 @@ class OpenApiParser {
           description: description,
           format: valueDetails.format,
           jsonKey: name,
-          defaultValue: isEnumMap
-              ? map[_defaultConst]?.toString()
-              : protectDefaultValue(map[_defaultConst], isArray: true),
+          defaultValue: mapDefaultValue,
           // Default for the map
           isRequired: isRequired,
           // isRequired for the map property
@@ -1672,9 +1710,17 @@ class OpenApiParser {
         name: newName,
         items: items,
         type: map[_typeConst].toString(),
-        defaultValue: protectDefaultValue(map[_defaultConst], isEnum: true),
+        // Store raw default value - the template will format it properly
+        defaultValue: map[_defaultConst]?.toString(),
         description: description,
       );
+
+      // Debug: print enum creation
+      if (newName == 'response_format' || newName == 'ResponseFormat') {
+        stdout.writeln(
+          'DEBUG: Creating/reusing enum: newName=$newName, enumClass.name=${enumClass.name}, items=$items',
+        );
+      }
 
       _enumClasses.add(enumClass);
 
@@ -1702,7 +1748,8 @@ class OpenApiParser {
             'Warning: Default value for date/date-time field "${variableName.toCamel}" is not supported and will be ignored.',
           );
         } else {
-          enumDefaultValue = protectDefaultValue(map[_defaultConst]);
+          // Store raw enum default value - the template will handle transformation
+          enumDefaultValue = map[_defaultConst]?.toString();
         }
       }
 
@@ -1803,7 +1850,9 @@ class OpenApiParser {
             'Warning: Default value for date/date-time field "${newName.toCamel}" is not supported and will be ignored.',
           );
         } else {
-          defaultValue = protectDefaultValue(map[_defaultConst]);
+          // Store raw default value - the template will format it properly
+          // based on the actual type when generating Dart code
+          defaultValue = map[_defaultConst];
         }
       }
 
@@ -2083,16 +2132,125 @@ class OpenApiParser {
                 );
               }
             } else {
-              // For anyOf or oneOf without a discriminator,
-              // we only handle the case when all variants are refs or inline object schemas.
-              final areAllRefsOrObjects = _getAreAllRefsOrInlineObjects(
-                otherItems,
-              );
-
+              // For anyOf or oneOf without a discriminator
               final isUnion =
                   map.containsKey(_oneOfConst) || map.containsKey(_anyOfConst);
 
-              if (areAllRefsOrObjects && isUnion) {
+              // Separate string variants from object/ref variants
+              // Also check if $ref points to a string enum schema
+              final stringVariants = otherItems.where((item) {
+                final type = item[_typeConst]?.toString();
+                // Inline string type (not a ref)
+                if (type == 'string' && !item.containsKey(_refConst)) {
+                  return true;
+                }
+                // Check if $ref points to a string enum schema
+                if (item.containsKey(_refConst)) {
+                  final refName = _formatRef(item);
+                  return _isStringEnumRef(refName);
+                }
+                return false;
+              }).toList();
+
+              final objectVariants = otherItems.where((item) {
+                final type = item[_typeConst]?.toString();
+                final hasProps = item[_propertiesConst] is Map<String, dynamic>;
+                // If it's a $ref, only include if it's NOT a string enum ref
+                if (item.containsKey(_refConst)) {
+                  final refName = _formatRef(item);
+                  return !_isStringEnumRef(refName);
+                }
+                // Inline object
+                return hasProps || type == _objectConst;
+              }).toList();
+
+              final areAllRefsOrObjects = _getAreAllRefsOrInlineObjects(
+                objectVariants.cast<Map<String, dynamic>>(),
+              );
+
+              // Handle mixed union: string enum(s) + object(s)
+              // Pattern: anyOf: [{ type: string, enum: [...] }, { $ref: ... }]
+              if (isUnion &&
+                  stringVariants.isNotEmpty &&
+                  objectVariants.isNotEmpty &&
+                  areAllRefsOrObjects) {
+                final baseClassName =
+                    '${additionalName ?? ''} ${name ?? ''} Union'.toPascal;
+                final (newName, description) = protectName(
+                  baseClassName,
+                  uniqueIfNull: true,
+                  description: map[_descriptionConst]?.toString(),
+                );
+
+                final unionName = newName!.toPascal;
+
+                // Get imports and props for object variants
+                final (imports, variantRefToProps) = _getImportsAndProps(
+                  objectVariants.cast<Map<String, dynamic>>(),
+                  unionName,
+                );
+
+                // Add a string value variant for the string enum values
+                // Collect all enum values from string variants (both inline and refs)
+                final stringEnumValues = <String>[];
+                for (final sv in stringVariants) {
+                  // Check inline enum
+                  final enumList = sv[_enumConst];
+                  if (enumList is List) {
+                    stringEnumValues.addAll(enumList.map((e) => e.toString()));
+                  }
+                  // Check ref to string enum schema
+                  if (sv.containsKey(_refConst)) {
+                    final refName = _formatRef(sv);
+                    stringEnumValues.addAll(_getRefEnumValues(refName));
+                  }
+                }
+
+                // Create a "variantString" variant that holds the string
+                // Using "variant" prefix so the template recognizes it as inline
+                variantRefToProps['variantString'] = {
+                  UniversalType(
+                    type: 'String',
+                    name: 'value',
+                    isRequired: true,
+                    description: stringEnumValues.isNotEmpty
+                        ? 'One of: ${stringEnumValues.join(", ")}'
+                        : 'String value',
+                  ),
+                };
+
+                // Create a union component class marker
+                _objectClasses.add(
+                  UniversalComponentClass(
+                    name: unionName,
+                    imports: imports,
+                    parameters: const {},
+                    description: description,
+                    undiscriminatedUnionVariants: variantRefToProps,
+                  ),
+                );
+                // Register in type registry
+                _typeRegistry.registerClass(unionName);
+                if (_contextStack.current case final context?) {
+                  _anchorRegistry.registerInlineSchema(unionName, context);
+                }
+
+                ofType = UniversalType(
+                  type: unionName,
+                  isRequired: isRequired,
+                  nullable:
+                      map[_nullableConst].toString().toBool() ??
+                      (root && !isRequired),
+                  // Store the default value as a string to be used by the template
+                  // The template should create StringValue variant for string defaults
+                  defaultValue: map[_defaultConst],
+                );
+                ofImport = unionName;
+              }
+              // Handle pure object union (all refs/objects, no string variants)
+              else if (areAllRefsOrObjects &&
+                  isUnion &&
+                  objectVariants.isNotEmpty) {
                 final baseClassName =
                     '${additionalName ?? ''} ${name ?? ''} Union'.toPascal;
                 final (newName, description) = protectName(
@@ -2103,16 +2261,15 @@ class OpenApiParser {
 
                 final unionName = newName!.toPascal;
                 final (imports, variantRefToProps) = _getImportsAndProps(
-                  otherItems,
+                  objectVariants.cast<Map<String, dynamic>>(),
                   unionName,
                 );
 
-                // Create a union component class marker without discriminator; generators will treat it as a union
+                // Create a union component class marker without discriminator
                 _objectClasses.add(
                   UniversalComponentClass(
                     name: unionName,
                     imports: imports,
-                    // Parameters here are unused by union factories
                     parameters: const {},
                     description: description,
                     undiscriminatedUnionVariants: variantRefToProps,
@@ -2120,7 +2277,6 @@ class OpenApiParser {
                 );
                 // Register in type registry
                 _typeRegistry.registerClass(unionName);
-                // Register inline schema in the anchor registry
                 if (_contextStack.current case final context?) {
                   _anchorRegistry.registerInlineSchema(unionName, context);
                 }
@@ -2133,6 +2289,18 @@ class OpenApiParser {
                       (root && !isRequired),
                 );
                 ofImport = unionName;
+              }
+              // Handle pure string union (all strings, some with enums)
+              else if (stringVariants.isNotEmpty && objectVariants.isEmpty) {
+                // Pattern: anyOf: [{ type: string }, { type: string, enum: [...] }]
+                // This represents "any string or one of these specific values" → use String type
+                ofType = UniversalType(
+                  type: 'String',
+                  isRequired: isRequired,
+                  nullable:
+                      map[_nullableConst].toString().toBool() ??
+                      (root && !isRequired),
+                );
               } else {
                 // Fallback if we cannot synthesize a proper union
                 ofType = UniversalType(
@@ -2181,7 +2349,11 @@ class OpenApiParser {
             description:
                 ofType.description ?? map[_descriptionConst]?.toString(),
           );
-          final enumType = map.containsKey(_defaultConst) && ofImport != null
+          // Only set enumType if the type is actually an enum
+          final enumType =
+              map.containsKey(_defaultConst) &&
+                  ofImport != null &&
+                  _isEnumType(ofType.type)
               ? ofType.type
               : null;
 
@@ -2197,14 +2369,8 @@ class OpenApiParser {
       final finalType = ofType?.type ?? _objectConst;
       final finalImport = ofImport;
       final finalFormat = ofType?.format;
-      final isArray = (ofType?.wrappingCollections.length ?? 0) > 0;
-      final finalDefaultValue = (isArray && ofType?.enumType != null)
-          ? (map[_defaultConst]?.toString() ?? ofType?.defaultValue)
-          : protectDefaultValue(
-              map[_defaultConst]?.toString() ?? ofType?.defaultValue,
-              isEnum: ofType?.enumType != null && !isArray,
-              isArray: isArray,
-            );
+      // Store raw default value - the template will format it properly
+      final finalDefaultValue = map[_defaultConst] ?? ofType?.defaultValue;
       final finalEnumType = ofType?.enumType;
       final finalWrappingCollections = ofType?.wrappingCollections ?? [];
       // Nullability determined by ofType processing (which includes makeNullable)
@@ -2289,7 +2455,11 @@ class OpenApiParser {
         description: map[_descriptionConst]?.toString(),
       );
 
-      final enumType = defaultValue != null && import != null ? type : null;
+      // Only set enumType if the referenced type is actually an enum
+      final enumType =
+          defaultValue != null && import != null && _isEnumType(type)
+          ? type
+          : null;
 
       // For $ref types, check the referenced schema for nullable property
       var referencedNullable = false;
@@ -2338,17 +2508,15 @@ class OpenApiParser {
 
       final refFormat = map[_formatConst]?.toString();
 
-      String? refDefaultValue;
+      // Store raw default value - the template will format it properly
+      Object? refDefaultValue;
       if (defaultValue != null) {
         if (refFormat == 'date' || refFormat == 'date-time') {
           stdout.writeln(
             'Warning: Default value for date/date-time field "${newName?.toCamel ?? name ?? 'unknown'}" is not supported and will be ignored.',
           );
         } else {
-          refDefaultValue = protectDefaultValue(
-            defaultValue,
-            isEnum: enumType != null,
-          );
+          refDefaultValue = defaultValue;
         }
       }
 
@@ -2586,13 +2754,105 @@ class OpenApiParser {
     return ofList;
   }
 
+  /// Check if a $ref points to a string or string enum schema
+  bool _isStringEnumRef(String refName) {
+    // Check OpenAPI 3.0 format
+    if (_definitionFileContent.containsKey(_componentsConst)) {
+      final components =
+          _definitionFileContent[_componentsConst] as Map<String, dynamic>;
+      if (components.containsKey(_schemasConst)) {
+        final schemas = components[_schemasConst] as Map<String, dynamic>;
+        if (schemas.containsKey(refName)) {
+          final schema = schemas[refName] as Map<String, dynamic>;
+          // Check if it's a string type with optional enum
+          if (schema[_typeConst]?.toString() == 'string') {
+            return true;
+          }
+        }
+      }
+    }
+
+    // Check OpenAPI 2.0 format
+    if (_definitionFileContent.containsKey(_definitionsConst)) {
+      final definitions =
+          _definitionFileContent[_definitionsConst] as Map<String, dynamic>;
+      if (definitions.containsKey(refName)) {
+        final schema = definitions[refName] as Map<String, dynamic>;
+        if (schema[_typeConst]?.toString() == 'string') {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  /// Get enum values from a string enum ref
+  List<String> _getRefEnumValues(String refName) {
+    if (_definitionFileContent.containsKey(_componentsConst)) {
+      final components =
+          _definitionFileContent[_componentsConst] as Map<String, dynamic>;
+      if (components.containsKey(_schemasConst)) {
+        final schemas = components[_schemasConst] as Map<String, dynamic>;
+        if (schemas.containsKey(refName)) {
+          final schema = schemas[refName] as Map<String, dynamic>;
+          final enumList = schema[_enumConst];
+          if (enumList is List) {
+            return enumList.map((e) => e.toString()).toList();
+          }
+        }
+      }
+    }
+    return [];
+  }
+
   UniversalComponentClass? _createUnionComponentClass(
     List<dynamic> values,
     String schemaName,
     String? unionDescription,
   ) {
     final unionVariants = filterNullTypes(values);
-    if (!_getAreAllRefsOrInlineObjects(unionVariants)) {
+
+    // Separate string variants from object/ref variants
+    // Also check if $ref points to a string enum schema
+    final stringVariants = unionVariants.where((item) {
+      final type = item[_typeConst]?.toString();
+      // Inline string type (not a ref)
+      if (type == 'string' && !item.containsKey(_refConst)) {
+        return true;
+      }
+      // Check if $ref points to a string enum schema
+      if (item.containsKey(_refConst)) {
+        final refName = _formatRef(item);
+        return _isStringEnumRef(refName);
+      }
+      return false;
+    }).toList();
+
+    final objectVariants = unionVariants.where((item) {
+      final type = item[_typeConst]?.toString();
+      final hasProps = item[_propertiesConst] is Map<String, dynamic>;
+      // If it's a $ref, only include if it's NOT a string enum ref
+      if (item.containsKey(_refConst)) {
+        final refName = _formatRef(item);
+        return !_isStringEnumRef(refName);
+      }
+      // Inline object
+      return hasProps || type == _objectConst;
+    }).toList();
+
+    // If all variants are strings, don't create a union - caller should use String type
+    if (stringVariants.isNotEmpty && objectVariants.isEmpty) {
+      return null;
+    }
+
+    // If no object variants, can't create a union
+    if (objectVariants.isEmpty) {
+      return null;
+    }
+
+    // Check if object variants are valid (all refs or inline objects)
+    if (!_getAreAllRefsOrInlineObjects(objectVariants)) {
       return null;
     }
 
@@ -2604,9 +2864,39 @@ class OpenApiParser {
     );
     final unionName = newName!.toPascal;
     final (foundImports, variantRefToProps) = _getImportsAndProps(
-      unionVariants,
+      objectVariants,
       unionName,
     );
+
+    // If we have mixed string + object variants, add a variantString variant
+    if (stringVariants.isNotEmpty) {
+      // Collect all enum values from string variants (both inline and refs)
+      final stringEnumValues = <String>[];
+      for (final sv in stringVariants) {
+        // Check inline enum
+        final enumList = sv[_enumConst];
+        if (enumList is List) {
+          stringEnumValues.addAll(enumList.map((e) => e.toString()));
+        }
+        // Check ref to string enum schema
+        if (sv.containsKey(_refConst)) {
+          final refName = _formatRef(sv);
+          stringEnumValues.addAll(_getRefEnumValues(refName));
+        }
+      }
+
+      // Create a "variantString" variant that holds the string
+      variantRefToProps['variantString'] = {
+        UniversalType(
+          type: 'String',
+          name: 'value',
+          isRequired: true,
+          description: stringEnumValues.isNotEmpty
+              ? 'One of: ${stringEnumValues.join(", ")}'
+              : 'String value',
+        ),
+      };
+    }
 
     return UniversalComponentClass(
       name: unionName,
@@ -2629,6 +2919,44 @@ class OpenApiParser {
   /// Check if a type name refers to an enum class
   bool _isEnumType(String typeName) {
     return _typeRegistry.isEnum(typeName);
+  }
+
+  /// Validate default value for array types
+  /// Returns null if the default is invalid (e.g., a string for an array type)
+  dynamic _validateArrayDefault(dynamic rawDefault, String? fieldName) {
+    if (rawDefault == null) return null;
+
+    final defaultStr = rawDefault.toString();
+
+    // Valid array defaults must be arrays (start with '[') or objects (start with '{')
+    if (!defaultStr.startsWith('[') && !defaultStr.startsWith('{')) {
+      stdout.writeln(
+        'Warning: [Parser] Invalid default "$defaultStr" for array type '
+        'in "${fieldName ?? 'unknown'}" - ignoring (expected array or object)',
+      );
+      return null;
+    }
+
+    return rawDefault;
+  }
+
+  /// Validate default value for map types
+  /// Returns null if the default is invalid (e.g., a string for a map type)
+  dynamic _validateMapDefault(dynamic rawDefault, String? fieldName) {
+    if (rawDefault == null) return null;
+
+    final defaultStr = rawDefault.toString();
+
+    // Valid map defaults must be objects (start with '{') or arrays (for certain patterns)
+    if (!defaultStr.startsWith('{') && !defaultStr.startsWith('[')) {
+      stdout.writeln(
+        'Warning: [Parser] Invalid default "$defaultStr" for map type '
+        'in "${fieldName ?? 'unknown'}" - ignoring (expected object or array)',
+      );
+      return null;
+    }
+
+    return rawDefault;
   }
 }
 

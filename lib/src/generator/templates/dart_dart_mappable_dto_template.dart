@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:collection/collection.dart';
 import 'package:openapi_retrofit_generator/src/generator/model/json_serializer.dart';
 import 'package:openapi_retrofit_generator/src/generator/templates/dart_import_dto_template.dart';
@@ -111,7 +113,17 @@ String _fieldsToString(List<UniversalType> parameters) {
   );
   return sortedByRequired
       .mapIndexed((i, e) {
-        return '${_jsonKey(e)}${indentation(2)}final ${e.toSuitableType()} ${e.name};';
+        var type = e.toSuitableType();
+        // In Dart, optional fields without valid defaults must be nullable
+        // Check if the default value is actually valid (not empty after processing)
+        final hasValidDefault =
+            e.defaultValue != null && _defaultValue(e).isNotEmpty;
+        // If a field is optional (!isRequired), has no valid default, and is non-nullable,
+        // we need to make it nullable to avoid compile errors
+        if (!e.isRequired && !hasValidDefault && !type.endsWith('?')) {
+          type = '$type?';
+        }
+        return '${_jsonKey(e)}${indentation(2)}final $type ${e.name};';
       })
       .join('\n');
 }
@@ -155,7 +167,11 @@ String getDefaultValue(UniversalType t) {
   if (t.defaultValue == null) {
     return '';
   }
-  return ' = ${_defaultValue(t)}';
+  final value = _defaultValue(t);
+  if (value.isEmpty) {
+    return '';
+  }
+  return ' = $value';
 }
 
 /// return required if isRequired
@@ -169,11 +185,41 @@ String _defaultValue(UniversalType t) {
   }
 
   final defaultValueStr = t.defaultValue.toString();
+  final cleanType = t.type.replaceAll('?', '');
 
-  // Check if this is an enum type - either explicitly marked or detected by type name
-  final isEnumType = t.enumType != null || isLikelyEnumType(t.type);
+  // Skip invalid default values: string defaults for array types
+  // This handles spec bugs like `default: "eval"` for `type: array`
+  if (t.wrappingCollections.isNotEmpty &&
+      !defaultValueStr.startsWith('[') &&
+      !defaultValueStr.startsWith('{')) {
+    stdout.writeln(
+      'Warning: [Template] Skipping invalid default "$defaultValueStr" for array type "${t.name ?? 'unknown'}" (type: ${t.type})',
+    );
+    return '';
+  }
 
-  if (isEnumType) {
+  // Check if this is a union type (sealed class with variants)
+  // Union types have a VariantString variant for string defaults
+  // They should NOT be treated as enums
+  final isUnionType = cleanType.endsWith('Union');
+  // Only use VariantString for actual string defaults, not arrays
+  final isArrayDefault = defaultValueStr.startsWith('[');
+  if (isUnionType && !isArrayDefault && t.wrappingCollections.isEmpty) {
+    // For union types with string defaults, create the VariantString variant
+    // e.g., const ToolChoiceUnionVariantString(value: 'auto')
+    final quotedValue = "'${defaultValueStr.replaceAll("'", r"\'")}'";
+    return 'const ${cleanType}VariantString(value: $quotedValue)';
+  }
+
+  // Check if this is an enum type - ONLY use explicit enumType
+  // Don't use isLikelyEnumType as fallback since it causes false positives
+  // for custom classes like VoiceIdsShared which are anyOf string types
+  final isEnumType = t.enumType != null;
+
+  // For auto-generated inline enums (Enum0, Enum1, etc.), also treat as enum
+  final isGeneratedEnum = RegExp(r'^Enum\d+$').hasMatch(cleanType);
+
+  if (isEnumType || isGeneratedEnum) {
     if (defaultValueStr.startsWith('[') && defaultValueStr.endsWith(']')) {
       // Extract the element type from wrapping collections or from the type itself
       final elementType = t.enumType ?? t.type;
@@ -389,9 +435,9 @@ String _generateVariantWrappers(
     final wrapperClassName = '$className${variantName.toPascal}';
 
     // Filter out properties with null or empty names
-    final validProps = properties.where(
-      (p) => p.name != null && p.name!.isNotEmpty,
-    ).toList();
+    final validProps = properties
+        .where((p) => p.name != null && p.name!.isNotEmpty)
+        .toList();
 
     // Generate direct properties without @override since sealed base class has no properties
     final directProperties = validProps
@@ -611,9 +657,9 @@ String _generateDiscriminatedWrapperClasses(
         discriminator.refProperties[variantName] ?? <UniversalType>[];
 
     // Filter out properties with null or empty names
-    final filteredProperties = variantProperties.where(
-      (p) => p.name != null && p.name!.isNotEmpty,
-    ).toList();
+    final filteredProperties = variantProperties
+        .where((p) => p.name != null && p.name!.isNotEmpty)
+        .toList();
 
     // Generate direct properties instead of delegating getters
     final directProperties = filteredProperties

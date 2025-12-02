@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:collection/collection.dart';
 import 'package:openapi_retrofit_generator/src/parser/model/normalized_identifier.dart';
 import 'package:openapi_retrofit_generator/src/parser/openapi_parser_core.dart';
@@ -324,9 +326,9 @@ String _generateDiscriminatedWrapperClasses(
             discriminator.refProperties[variantName] ?? <UniversalType>{};
 
         // Filter out properties with null or empty names
-        final validProps = properties.where(
-          (p) => p.name != null && p.name!.isNotEmpty,
-        ).toList();
+        final validProps = properties
+            .where((p) => p.name != null && p.name!.isNotEmpty)
+            .toList();
 
         // Generate direct properties and collect imports
         final directProperties = validProps
@@ -406,9 +408,9 @@ String _generateUndiscriminatedWrapperClasses(
         final wrapperClassName = '$className${variantName.toPascal}';
 
         // Filter out properties with null or empty names
-        final validProps = properties.where(
-          (p) => p.name != null && p.name!.isNotEmpty,
-        ).toList();
+        final validProps = properties
+            .where((p) => p.name != null && p.name!.isNotEmpty)
+            .toList();
 
         // Generate direct properties and collect imports
         final directProperties = validProps
@@ -587,6 +589,17 @@ String _defaultValue(UniversalType t) {
   }
 
   final defaultValueStr = t.defaultValue.toString();
+
+  // Skip invalid default values: string defaults for array/map types
+  // This handles spec bugs like `default: "eval"` for `type: array`
+  if (t.wrappingCollections.isNotEmpty &&
+      !defaultValueStr.startsWith('[') &&
+      !defaultValueStr.startsWith('{')) {
+    stdout.writeln(
+      'Warning: [Template] Skipping invalid default "$defaultValueStr" for collection type "${t.name ?? 'unknown'}" (type: ${t.type})',
+    );
+    return '';
+  }
 
   // Check if this is an enum type - either explicitly marked or detected by type name
   final isEnumType = t.enumType != null || isLikelyEnumType(t.type);

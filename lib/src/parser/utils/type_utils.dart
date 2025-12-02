@@ -176,6 +176,12 @@ String? protectDefaultValue(
     return null;
   }
 
+  // Handle boolean default values - don't quote them
+  if (type?.toLowerCase() == 'bool') {
+    if (nameStr.toLowerCase() == 'true') return 'true';
+    if (nameStr.toLowerCase() == 'false') return 'false';
+  }
+
   // Handle string default values - quote them properly
   // Check for both 'string' (OpenAPI) and 'String' (Dart) types
   if (type?.toLowerCase() == 'string') {
@@ -183,19 +189,27 @@ String? protectDefaultValue(
     return '$quote${nameStr.replaceAll(quote, dart ? r"\'" : r'\"')}$quote';
   }
 
-  // Also check if the value looks like it should be a string but isn't quoted
-  // (e.g., contains special characters like <|>)
-  if (type == 'dynamic' || type == null) {
-    // If value contains special chars that would break Dart syntax, quote it
-    if (nameStr.contains('<') ||
-        nameStr.contains('>') ||
-        nameStr.contains('|')) {
-      final quote = dart ? "'" : '"';
-      return '$quote${nameStr.replaceAll(quote, dart ? r"\'" : r'\"')}$quote';
-    }
+  // Handle numeric types - don't quote them
+  if (type == 'int' || type == 'double' || type == 'num') {
+    return nameStr;
   }
 
-  return nameStr;
+  // For dynamic, null, Object, or unknown types, analyze the value to determine how to handle it
+  // Boolean literals should not be quoted
+  if (nameStr == 'true' || nameStr == 'false') {
+    return nameStr;
+  }
+
+  // Numeric values should not be quoted
+  if (RegExp(r'^-?\d+(\.\d+)?$').hasMatch(nameStr)) {
+    return nameStr;
+  }
+
+  // For all other cases (dynamic, Object, or unknown types), treat as strings
+  // and quote them to be valid Dart code.
+  // Examples: 'auto', 'always', 'alloy', 'dall-e-2', 'list', etc.
+  final quote = dart ? "'" : '"';
+  return '$quote${nameStr.replaceAll(quote, dart ? r"\'" : r'\"')}$quote';
 }
 
 /// Protect enum items names from incorrect symbols, keywords, etc.

@@ -86,6 +86,9 @@ const reservedFieldNames = {
   'noSuchMethod',
   'json',
   'self',
+  'list', // 'list' as an unquoted identifier would be invalid Dart
+  'map', // Same for 'map'
+  // 'set' is already in _dartKeywords
 };
 
 /// Reserved class names - class names that conflict with generated code or libraries
