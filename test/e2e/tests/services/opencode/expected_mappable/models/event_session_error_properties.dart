@@ -4,7 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'event_session_error_properties_error_error_union.dart';
+import 'event_session_error_properties_error_union.dart';
 
 part 'event_session_error_properties.mapper.dart';
 
@@ -14,7 +14,7 @@ class EventSessionErrorProperties with EventSessionErrorPropertiesMappable {
 
   @MappableField(key: 'sessionID')
   final String? sessionId;
-  final EventSessionErrorPropertiesErrorErrorUnion? error;
+  final EventSessionErrorPropertiesErrorUnion? error;
 
   static EventSessionErrorProperties fromJson(Map<String, dynamic> json) =>
       EventSessionErrorPropertiesMapper.fromJson(json);

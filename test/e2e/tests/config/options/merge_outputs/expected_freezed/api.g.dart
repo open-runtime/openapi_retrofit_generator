@@ -6,6 +6,80 @@ part of 'api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(
+  Map<String, dynamic> json,
+) => PaymentRequestCreditCard(
+  paymentType: PaymentRequestPaymentTypePaymentType.fromJson(
+    json['paymentType'] as String,
+  ),
+  cardNumber: json['cardNumber'] as String,
+  expiryMonth: (json['expiryMonth'] as num).toInt(),
+  expiryYear: (json['expiryYear'] as num).toInt(),
+  cvv: json['cvv'] as String,
+  cardholderName: json['cardholderName'] as String?,
+  amount: (json['amount'] as num).toDouble(),
+);
+
+Map<String, dynamic> _$PaymentRequestCreditCardToJson(
+  PaymentRequestCreditCard instance,
+) => <String, dynamic>{
+  'paymentType': instance.paymentType,
+  'cardNumber': instance.cardNumber,
+  'expiryMonth': instance.expiryMonth,
+  'expiryYear': instance.expiryYear,
+  'cvv': instance.cvv,
+  'cardholderName': instance.cardholderName,
+  'amount': instance.amount,
+};
+
+PaymentRequestBankTransfer _$PaymentRequestBankTransferFromJson(
+  Map<String, dynamic> json,
+) => PaymentRequestBankTransfer(
+  paymentType: PaymentRequestPaymentTypePaymentType2.fromJson(
+    json['paymentType'] as String,
+  ),
+  accountNumber: json['accountNumber'] as String,
+  routingNumber: json['routingNumber'] as String,
+  accountHolder: json['accountHolder'] as String?,
+  amount: (json['amount'] as num).toDouble(),
+  reference: json['reference'] as String?,
+);
+
+Map<String, dynamic> _$PaymentRequestBankTransferToJson(
+  PaymentRequestBankTransfer instance,
+) => <String, dynamic>{
+  'paymentType': instance.paymentType,
+  'accountNumber': instance.accountNumber,
+  'routingNumber': instance.routingNumber,
+  'accountHolder': instance.accountHolder,
+  'amount': instance.amount,
+  'reference': instance.reference,
+};
+
+PaymentRequestCrypto _$PaymentRequestCryptoFromJson(
+  Map<String, dynamic> json,
+) => PaymentRequestCrypto(
+  paymentType: PaymentRequestPaymentTypePaymentType3.fromJson(
+    json['paymentType'] as String,
+  ),
+  walletAddress: json['walletAddress'] as String,
+  cryptocurrency: PaymentRequestCryptocurrencyCryptocurrency.fromJson(
+    json['cryptocurrency'] as String,
+  ),
+  amount: (json['amount'] as num).toDouble(),
+  transactionHash: json['transactionHash'] as String?,
+);
+
+Map<String, dynamic> _$PaymentRequestCryptoToJson(
+  PaymentRequestCrypto instance,
+) => <String, dynamic>{
+  'paymentType': instance.paymentType,
+  'walletAddress': instance.walletAddress,
+  'cryptocurrency': instance.cryptocurrency,
+  'amount': instance.amount,
+  'transactionHash': instance.transactionHash,
+};
+
 SearchResultUnionUserSearchResult _$SearchResultUnionUserSearchResultFromJson(
   Map<String, dynamic> json,
 ) => SearchResultUnionUserSearchResult(
@@ -58,84 +132,17 @@ Map<String, dynamic> _$SearchResultUnionCommentSearchResultToJson(
   'score': instance.score,
 };
 
-PaymentResponseDetailsDetailsUnionCreditCardPayment
-_$PaymentResponseDetailsDetailsUnionCreditCardPaymentFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionCreditCardPayment(
-  paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  cardNumber: json['cardNumber'] as String,
-  expiryMonth: (json['expiryMonth'] as num).toInt(),
-  expiryYear: (json['expiryYear'] as num).toInt(),
-  cvv: json['cvv'] as String,
-  cardholderName: json['cardholderName'] as String?,
-  amount: (json['amount'] as num).toDouble(),
-);
+EntityPerson _$EntityPersonFromJson(Map<String, dynamic> json) =>
+    EntityPerson();
 
-Map<String, dynamic>
-_$PaymentResponseDetailsDetailsUnionCreditCardPaymentToJson(
-  PaymentResponseDetailsDetailsUnionCreditCardPayment instance,
-) => <String, dynamic>{
-  'paymentType': instance.paymentType,
-  'cardNumber': instance.cardNumber,
-  'expiryMonth': instance.expiryMonth,
-  'expiryYear': instance.expiryYear,
-  'cvv': instance.cvv,
-  'cardholderName': instance.cardholderName,
-  'amount': instance.amount,
-};
+Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) =>
+    <String, dynamic>{};
 
-PaymentResponseDetailsDetailsUnionBankTransferPayment
-_$PaymentResponseDetailsDetailsUnionBankTransferPaymentFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionBankTransferPayment(
-  paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  accountNumber: json['accountNumber'] as String,
-  routingNumber: json['routingNumber'] as String,
-  accountHolder: json['accountHolder'] as String?,
-  amount: (json['amount'] as num).toDouble(),
-  reference: json['reference'] as String?,
-);
+EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) =>
+    EntityOrganization();
 
-Map<String, dynamic>
-_$PaymentResponseDetailsDetailsUnionBankTransferPaymentToJson(
-  PaymentResponseDetailsDetailsUnionBankTransferPayment instance,
-) => <String, dynamic>{
-  'paymentType': instance.paymentType,
-  'accountNumber': instance.accountNumber,
-  'routingNumber': instance.routingNumber,
-  'accountHolder': instance.accountHolder,
-  'amount': instance.amount,
-  'reference': instance.reference,
-};
-
-PaymentResponseDetailsDetailsUnionCryptoPayment
-_$PaymentResponseDetailsDetailsUnionCryptoPaymentFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionCryptoPayment(
-  paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-    json['cryptocurrency'] as String,
-  ),
-  amount: (json['amount'] as num).toDouble(),
-  transactionHash: json['transactionHash'] as String?,
-);
-
-Map<String, dynamic> _$PaymentResponseDetailsDetailsUnionCryptoPaymentToJson(
-  PaymentResponseDetailsDetailsUnionCryptoPayment instance,
-) => <String, dynamic>{
-  'paymentType': instance.paymentType,
-  'walletAddress': instance.walletAddress,
-  'cryptocurrency': instance.cryptocurrency,
-  'amount': instance.amount,
-  'transactionHash': instance.transactionHash,
-};
+Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) =>
+    <String, dynamic>{};
 
 _User _$UserFromJson(Map<String, dynamic> json) => _User(
   id: json['id'] as String,
@@ -327,7 +334,7 @@ _PostModel _$PostModelFromJson(Map<String, dynamic> json) => _PostModel(
       : User.fromJson(json['author'] as Map<String, dynamic>),
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   categories: (json['categories'] as List<dynamic>?)
-      ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+      ?.map((e) => Category.fromJson(e as String))
       .toList(),
   publishedAt: json['publishedAt'] == null
       ? null
@@ -363,7 +370,7 @@ _Category _$CategoryFromJson(Map<String, dynamic> json) => _Category(
   slug: json['slug'] as String?,
   parent: json['parent'] == null
       ? null
-      : Category.fromJson(json['parent'] as Map<String, dynamic>),
+      : Category.fromJson(json['parent'] as String),
 );
 
 Map<String, dynamic> _$CategoryToJson(_Category instance) => <String, dynamic>{
@@ -471,74 +478,6 @@ Map<String, dynamic> _$FileUploadResponseToJson(_FileUploadResponse instance) =>
       'uploadedAt': instance.uploadedAt?.toIso8601String(),
     };
 
-PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestCreditCard(
-  cardNumber: json['cardNumber'] as String,
-  expiryMonth: (json['expiryMonth'] as num).toInt(),
-  expiryYear: (json['expiryYear'] as num).toInt(),
-  cvv: json['cvv'] as String,
-  amount: (json['amount'] as num).toDouble(),
-  cardholderName: json['cardholderName'] as String?,
-  $type: json['paymentType'] as String?,
-);
-
-Map<String, dynamic> _$PaymentRequestCreditCardToJson(
-  PaymentRequestCreditCard instance,
-) => <String, dynamic>{
-  'cardNumber': instance.cardNumber,
-  'expiryMonth': instance.expiryMonth,
-  'expiryYear': instance.expiryYear,
-  'cvv': instance.cvv,
-  'amount': instance.amount,
-  'cardholderName': instance.cardholderName,
-  'paymentType': instance.$type,
-};
-
-PaymentRequestBankTransfer _$PaymentRequestBankTransferFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestBankTransfer(
-  accountNumber: json['accountNumber'] as String,
-  routingNumber: json['routingNumber'] as String,
-  amount: (json['amount'] as num).toDouble(),
-  accountHolder: json['accountHolder'] as String?,
-  reference: json['reference'] as String?,
-  $type: json['paymentType'] as String?,
-);
-
-Map<String, dynamic> _$PaymentRequestBankTransferToJson(
-  PaymentRequestBankTransfer instance,
-) => <String, dynamic>{
-  'accountNumber': instance.accountNumber,
-  'routingNumber': instance.routingNumber,
-  'amount': instance.amount,
-  'accountHolder': instance.accountHolder,
-  'reference': instance.reference,
-  'paymentType': instance.$type,
-};
-
-PaymentRequestCrypto _$PaymentRequestCryptoFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestCrypto(
-  walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-    json['cryptocurrency'] as String,
-  ),
-  amount: (json['amount'] as num).toDouble(),
-  transactionHash: json['transactionHash'] as String?,
-  $type: json['paymentType'] as String?,
-);
-
-Map<String, dynamic> _$PaymentRequestCryptoToJson(
-  PaymentRequestCrypto instance,
-) => <String, dynamic>{
-  'walletAddress': instance.walletAddress,
-  'cryptocurrency': instance.cryptocurrency,
-  'amount': instance.amount,
-  'transactionHash': instance.transactionHash,
-  'paymentType': instance.$type,
-};
-
 _CreditCardPayment _$CreditCardPaymentFromJson(Map<String, dynamic> json) =>
     _CreditCardPayment(
       paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
@@ -618,7 +557,7 @@ _PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['processedAt'] as String),
       details: json['details'] == null
           ? null
-          : PaymentResponseDetailsDetailsUnion.fromJson(
+          : PaymentResponseDetailsUnion.fromJson(
               json['details'] as Map<String, dynamic>,
             ),
       currency: json['currency'] as String? ?? 'USD',
@@ -680,71 +619,6 @@ Map<String, dynamic> _$CommentSearchResultToJson(
   'comment': instance.comment,
   'score': instance.score,
 };
-
-EntityPerson _$EntityPersonFromJson(Map<String, dynamic> json) => EntityPerson(
-  id: json['id'] as String,
-  createdAt: DateTime.parse(json['createdAt'] as String),
-  dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
-  name: json['name'] as String?,
-  description: json['description'] as String?,
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-  nationality: json['nationality'] as String?,
-  occupation: json['occupation'] as String?,
-  socialProfiles: (json['socialProfiles'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ),
-  $type: json['entityType'] as String?,
-);
-
-Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
-      'name': instance.name,
-      'description': instance.description,
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'nationality': instance.nationality,
-      'occupation': instance.occupation,
-      'socialProfiles': instance.socialProfiles,
-      'entityType': instance.$type,
-    };
-
-EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) =>
-    EntityOrganization(
-      id: json['id'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      registrationNumber: json['registrationNumber'] as String,
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      foundedDate: json['foundedDate'] == null
-          ? null
-          : DateTime.parse(json['foundedDate'] as String),
-      industry: json['industry'] as String?,
-      employeeCount: (json['employeeCount'] as num?)?.toInt(),
-      revenue: (json['revenue'] as num?)?.toDouble(),
-      $type: json['entityType'] as String?,
-    );
-
-Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'registrationNumber': instance.registrationNumber,
-      'name': instance.name,
-      'description': instance.description,
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'foundedDate': instance.foundedDate?.toIso8601String(),
-      'industry': instance.industry,
-      'employeeCount': instance.employeeCount,
-      'revenue': instance.revenue,
-      'entityType': instance.$type,
-    };
 
 _BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) => _BaseEntity(
   id: json['id'] as String,
@@ -995,7 +869,7 @@ _GetPostResponse _$GetPostResponseFromJson(Map<String, dynamic> json) =>
           : User.fromJson(json['author'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
       categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Category.fromJson(e as String))
           .toList(),
       publishedAt: json['publishedAt'] == null
           ? null
@@ -1147,6 +1021,74 @@ Map<String, dynamic> _$UserSettingsPrivacyToJson(
 ) => <String, dynamic>{
   'profileVisibility': instance.profileVisibility,
   'showEmail': instance.showEmail,
+};
+
+PaymentResponseDetailsUnionCreditCard
+_$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionCreditCard(
+      cardNumber: json['cardNumber'] as String,
+      expiryMonth: (json['expiryMonth'] as num).toInt(),
+      expiryYear: (json['expiryYear'] as num).toInt(),
+      cvv: json['cvv'] as String,
+      amount: (json['amount'] as num).toDouble(),
+      cardholderName: json['cardholderName'] as String?,
+      $type: json['paymentType'] as String?,
+    );
+
+Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(
+  PaymentResponseDetailsUnionCreditCard instance,
+) => <String, dynamic>{
+  'cardNumber': instance.cardNumber,
+  'expiryMonth': instance.expiryMonth,
+  'expiryYear': instance.expiryYear,
+  'cvv': instance.cvv,
+  'amount': instance.amount,
+  'cardholderName': instance.cardholderName,
+  'paymentType': instance.$type,
+};
+
+PaymentResponseDetailsUnionBankTransfer
+_$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionBankTransfer(
+      accountNumber: json['accountNumber'] as String,
+      routingNumber: json['routingNumber'] as String,
+      amount: (json['amount'] as num).toDouble(),
+      accountHolder: json['accountHolder'] as String?,
+      reference: json['reference'] as String?,
+      $type: json['paymentType'] as String?,
+    );
+
+Map<String, dynamic> _$PaymentResponseDetailsUnionBankTransferToJson(
+  PaymentResponseDetailsUnionBankTransfer instance,
+) => <String, dynamic>{
+  'accountNumber': instance.accountNumber,
+  'routingNumber': instance.routingNumber,
+  'amount': instance.amount,
+  'accountHolder': instance.accountHolder,
+  'reference': instance.reference,
+  'paymentType': instance.$type,
+};
+
+PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(
+  Map<String, dynamic> json,
+) => PaymentResponseDetailsUnionCrypto(
+  walletAddress: json['walletAddress'] as String,
+  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
+    json['cryptocurrency'] as String,
+  ),
+  amount: (json['amount'] as num).toDouble(),
+  transactionHash: json['transactionHash'] as String?,
+  $type: json['paymentType'] as String?,
+);
+
+Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(
+  PaymentResponseDetailsUnionCrypto instance,
+) => <String, dynamic>{
+  'walletAddress': instance.walletAddress,
+  'cryptocurrency': instance.cryptocurrency,
+  'amount': instance.amount,
+  'transactionHash': instance.transactionHash,
+  'paymentType': instance.$type,
 };
 
 _DataNestedData _$DataNestedDataFromJson(Map<String, dynamic> json) =>
@@ -1715,7 +1657,7 @@ class _FilesClient implements FilesClient {
     required List<MultipartFile> files,
     bool? isPublic = false,
     String? description,
-    Enum0? category,
+    Category? category,
     FileMetadata? metadata,
   }) async {
     final _extra = <String, dynamic>{};
@@ -1907,7 +1849,7 @@ class _AdvancedClient implements AdvancedClient {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Entity _value;
     try {
       _value = Entity.fromJson(_result.data!);

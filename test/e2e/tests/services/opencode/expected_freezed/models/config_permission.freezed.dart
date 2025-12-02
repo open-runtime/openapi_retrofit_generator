@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ConfigPermission {
 
- dynamic get edit; dynamic get bash; dynamic get webfetch;
+ String? get edit; dynamic get bash; String? get webfetch;
 /// Create a copy of ConfigPermission
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $ConfigPermissionCopyWith<ConfigPermission> get copyWith => _$ConfigPermissionCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfigPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConfigPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(bash),webfetch);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $ConfigPermissionCopyWith<$Res>  {
   factory $ConfigPermissionCopyWith(ConfigPermission value, $Res Function(ConfigPermission) _then) = _$ConfigPermissionCopyWithImpl;
 @useResult
 $Res call({
- dynamic edit, dynamic bash, dynamic webfetch
+ String? edit, dynamic bash, String? webfetch
 });
 
 
@@ -68,9 +68,9 @@ class _$ConfigPermissionCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? edit = freezed,Object? bash = freezed,Object? webfetch = freezed,}) {
   return _then(_self.copyWith(
 edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
+as String?,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
 as dynamic,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String?,
   ));
 }
 
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( dynamic edit,  dynamic bash,  dynamic webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? edit,  dynamic bash,  String? webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ConfigPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -176,7 +176,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( dynamic edit,  dynamic bash,  dynamic webfetch)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? edit,  dynamic bash,  String? webfetch)  $default,) {final _that = this;
 switch (_that) {
 case _ConfigPermission():
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -196,7 +196,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( dynamic edit,  dynamic bash,  dynamic webfetch)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? edit,  dynamic bash,  String? webfetch)?  $default,) {final _that = this;
 switch (_that) {
 case _ConfigPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -214,9 +214,9 @@ class _ConfigPermission implements ConfigPermission {
   const _ConfigPermission({this.edit, this.bash, this.webfetch});
   factory _ConfigPermission.fromJson(Map<String, dynamic> json) => _$ConfigPermissionFromJson(json);
 
-@override final  dynamic edit;
+@override final  String? edit;
 @override final  dynamic bash;
-@override final  dynamic webfetch;
+@override final  String? webfetch;
 
 /// Create a copy of ConfigPermission
 /// with the given fields replaced by the non-null parameter values.
@@ -231,12 +231,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfigPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConfigPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(bash),webfetch);
 
 @override
 String toString() {
@@ -251,7 +251,7 @@ abstract mixin class _$ConfigPermissionCopyWith<$Res> implements $ConfigPermissi
   factory _$ConfigPermissionCopyWith(_ConfigPermission value, $Res Function(_ConfigPermission) _then) = __$ConfigPermissionCopyWithImpl;
 @override @useResult
 $Res call({
- dynamic edit, dynamic bash, dynamic webfetch
+ String? edit, dynamic bash, String? webfetch
 });
 
 
@@ -271,9 +271,9 @@ class __$ConfigPermissionCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? edit = freezed,Object? bash = freezed,Object? webfetch = freezed,}) {
   return _then(_ConfigPermission(
 edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
+as String?,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
 as dynamic,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String?,
   ));
 }
 

@@ -29,8 +29,8 @@ class EventFileWatcherUpdatedPropertiesMapper
     'file',
     _$file,
   );
-  static dynamic _$event(EventFileWatcherUpdatedProperties v) => v.event;
-  static const Field<EventFileWatcherUpdatedProperties, dynamic> _f$event =
+  static String _$event(EventFileWatcherUpdatedProperties v) => v.event;
+  static const Field<EventFileWatcherUpdatedProperties, String> _f$event =
       Field('event', _$event);
 
   @override
@@ -125,7 +125,7 @@ abstract class EventFileWatcherUpdatedPropertiesCopyWith<
   $Out
 >
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({String? file, dynamic event});
+  $R call({String? file, String? event});
   EventFileWatcherUpdatedPropertiesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -149,10 +149,10 @@ class _EventFileWatcherUpdatedPropertiesCopyWithImpl<$R, $Out>
   late final ClassMapperBase<EventFileWatcherUpdatedProperties> $mapper =
       EventFileWatcherUpdatedPropertiesMapper.ensureInitialized();
   @override
-  $R call({String? file, Object? event = $none}) => $apply(
+  $R call({String? file, String? event}) => $apply(
     FieldCopyWithData({
       if (file != null) #file: file,
-      if (event != $none) #event: event,
+      if (event != null) #event: event,
     }),
   );
   @override

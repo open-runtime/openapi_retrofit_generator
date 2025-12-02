@@ -45,7 +45,7 @@ class OneOfElementMapper extends ClassMapperBase<OneOfElement> {
     'anyClass',
     _$anyClass,
     opt: true,
-    def: EnumClass.value1,
+    def: 'value1',
   );
   static List<EnumClass> _$oneType(OneOfElement v) => v.oneType;
   static const Field<OneOfElement, List<EnumClass>> _f$oneType = Field(

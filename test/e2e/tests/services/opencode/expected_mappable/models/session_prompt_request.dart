@@ -6,7 +6,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 import 'session_prompt_request_model.dart';
 import 'session_prompt_request_acp_connection.dart';
-import 'session_prompt_request_parts_parts_union.dart';
+import 'session_prompt_request_parts_union.dart';
 
 part 'session_prompt_request.mapper.dart';
 
@@ -22,7 +22,7 @@ class SessionPromptRequest with SessionPromptRequestMappable {
     this.sessionPromptRequestAcpConnection,
   });
 
-  final List<SessionPromptRequestPartsPartsUnion> parts;
+  final List<SessionPromptRequestPartsUnion> parts;
   @MappableField(key: 'messageID')
   final String? messageId;
   @MappableField(key: 'SessionPromptRequestModel')

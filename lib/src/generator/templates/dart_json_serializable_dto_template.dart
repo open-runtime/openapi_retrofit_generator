@@ -1,12 +1,61 @@
-import 'dart:io';
-
 import 'package:collection/collection.dart';
 import 'package:openapi_retrofit_generator/src/parser/model/normalized_identifier.dart';
+import 'package:openapi_retrofit_generator/src/utils/generator_logger.dart';
 import 'package:openapi_retrofit_generator/src/parser/openapi_parser_core.dart';
 import 'package:openapi_retrofit_generator/src/utils/base_utils.dart';
 import 'package:openapi_retrofit_generator/src/utils/type_utils.dart';
 
-/// Provides template for generating dart DTO using JSON serializable
+/// Generates a Dart data transfer object (DTO) class using json_serializable.
+///
+/// This template generator creates data classes with JSON serialization support
+/// using the `json_serializable` package. It handles various schema patterns including:
+/// - Simple data classes with properties
+/// - Discriminated unions (sealed classes with variants)
+/// - Undiscriminated unions (wrapper classes with conversion methods)
+/// - Base64-encoded binary data (with custom converters)
+///
+/// The generated code includes:
+/// - `@JsonSerializable()` annotations for code generation
+/// - `fromJson` factory constructors for deserialization
+/// - `toJson` methods for serialization
+/// - Proper import statements for dependencies
+/// - Part directives for generated `.g.dart` files
+///
+/// **Discriminated Unions:**
+/// When [dataClass] contains a discriminator, generates a sealed class hierarchy
+/// with wrapper classes for each variant. The discriminator field determines
+/// which variant to deserialize.
+///
+/// **Undiscriminated Unions:**
+/// When [dataClass] contains undiscriminated union variants, generates a base
+/// wrapper class with conversion methods to each variant type.
+///
+/// **Binary Data:**
+/// Properties with `format: binary` or `format: byte` automatically get custom
+/// Base64 converters for encoding/decoding [Uint8List] data.
+///
+/// Parameters:
+/// - [dataClass]: The universal component class containing schema information
+/// - [markFileAsGenerated]: Whether to add generation warning comments
+/// - [includeIfNull]: Whether to include `@JsonKey(includeIfNull: ...)` annotations
+/// - [fallbackUnion]: Optional fallback variant name for unknown discriminator values
+///
+/// Returns: Generated Dart source code as a string.
+///
+/// Example output for a simple class:
+/// ```dart
+/// import 'package:json_annotation/json_annotation.dart';
+/// part 'user.g.dart';
+///
+/// @JsonSerializable()
+/// class User {
+///   const User({required this.id, this.name});
+///   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+///   final String id;
+///   final String? name;
+///   Map<String, Object?> toJson() => _$UserToJson(this);
+/// }
+/// ```
 String dartJsonSerializableDtoTemplate(
   UniversalComponentClass dataClass, {
   required bool markFileAsGenerated,
@@ -59,6 +108,18 @@ class $className {
 $base64ConverterClass''';
 }
 
+/// Generates the appropriate union template based on the union type.
+///
+/// This function determines whether the data class represents a discriminated
+/// or undiscriminated union and delegates to the appropriate generator function.
+///
+/// Parameters:
+/// - [dataClass]: The component class containing union information
+/// - [className]: The name for the generated class
+/// - [includeIfNull]: Whether to generate includeIfNull annotations
+/// - [fallbackUnion]: Optional fallback variant for unknown discriminator values
+///
+/// Returns: Generated Dart source code for the union type.
 String _generateUnionTemplate(
   UniversalComponentClass dataClass,
   String className,
@@ -90,6 +151,42 @@ String _generateUnionTemplate(
   return _generateSimpleMapWrapper(dataClass, className);
 }
 
+/// Generates a discriminated union type with sealed class hierarchy.
+///
+/// Creates a sealed base class with variant subclasses that extend it. Each
+/// variant is identified by a discriminator field in the JSON. The generated
+/// extension provides type-safe deserialization based on the discriminator value.
+///
+/// **Generated Structure:**
+/// - Sealed base class with abstract `toJson()` method
+/// - Variant classes extending the base (e.g., `Dog extends Animal`, `Cat extends Animal`)
+/// - Extension with `tryDeserialize` method for type-safe deserialization
+/// - Optional fallback class for unknown discriminator values
+///
+/// **Example:**
+/// For an `Animal` union with discriminator `type` and variants `dog`/`cat`:
+/// ```dart
+/// sealed class Animal {
+///   factory Animal.fromJson(Map<String, dynamic> json) =>
+///     AnimalUnionDeserializer.tryDeserialize(json);
+///   Map<String, dynamic> toJson();
+/// }
+///
+/// class AnimalDog extends Animal { ... }
+/// class AnimalCat extends Animal { ... }
+///
+/// extension AnimalUnionDeserializer on Animal {
+///   static Animal tryDeserialize(Map<String, dynamic> json, ...) { ... }
+/// }
+/// ```
+///
+/// Parameters:
+/// - [dataClass]: Component class with discriminator information
+/// - [className]: Base class name for the union
+/// - [includeIfNull]: Whether to generate includeIfNull annotations
+/// - [fallbackUnion]: Optional fallback variant name for unknown values
+///
+/// Returns: Generated Dart source code for the discriminated union.
 String _generateDiscriminatedUnionTemplate(
   UniversalComponentClass dataClass,
   String className,
@@ -151,6 +248,44 @@ $wrappers
 ''';
 }
 
+/// Generates an undiscriminated union type with conversion methods.
+///
+/// Creates a base wrapper class that stores raw JSON and provides conversion
+/// methods to transform the data into specific variant types. This is used when
+/// the schema specifies multiple possible types without a discriminator field.
+///
+/// **Generated Structure:**
+/// - Base class wrapping raw JSON data
+/// - `toVariant()` conversion methods for each variant type
+/// - Separate `@JsonSerializable` classes for each variant
+///
+/// **Example:**
+/// For a `Response` union with variants `success` and `error`:
+/// ```dart
+/// class Response {
+///   final Map<String, dynamic> _json;
+///   const Response(this._json);
+///   factory Response.fromJson(Map<String, dynamic> json) => Response(json);
+///   Map<String, dynamic> toJson() => _json;
+///
+///   ResponseSuccess toSuccess() => ResponseSuccess.fromJson(_json);
+///   ResponseError toError() => ResponseError.fromJson(_json);
+/// }
+///
+/// @JsonSerializable()
+/// class ResponseSuccess { ... }
+///
+/// @JsonSerializable()
+/// class ResponseError { ... }
+/// ```
+///
+/// Parameters:
+/// - [dataClass]: Component class with undiscriminated union variants
+/// - [className]: Base class name for the union wrapper
+/// - [includeIfNull]: Whether to generate includeIfNull annotations
+/// - [fallbackUnion]: Optional fallback variant name (currently unused for undiscriminated)
+///
+/// Returns: Generated Dart source code for the undiscriminated union.
 String _generateUndiscriminatedUnionTemplate(
   UniversalComponentClass dataClass,
   String className,
@@ -258,6 +393,31 @@ class $className {
 ''';
 }
 
+/// Generates an extension providing type-safe union deserialization.
+///
+/// Creates an extension on the sealed base class with a static `tryDeserialize`
+/// method that inspects the discriminator field value and returns the appropriate
+/// variant instance. The method supports custom discriminator mappings and
+/// optional fallback handling for unknown values.
+///
+/// **Generated Method Signature:**
+/// ```dart
+/// static BaseClass tryDeserialize(
+///   Map<String, dynamic> json, {
+///   String key = 'discriminatorField',
+///   Map<Type, Object?>? mapping,
+/// })
+/// ```
+///
+/// The mapping parameter allows overriding discriminator values at runtime,
+/// useful for schemas with non-standard discriminator formats.
+///
+/// Parameters:
+/// - [className]: The sealed base class name
+/// - [discriminator]: Discriminator configuration with field name and variant mappings
+/// - [fallbackUnion]: Optional fallback variant name for unrecognized discriminator values
+///
+/// Returns: Generated Dart extension source code.
 String _generateDiscriminatorExtension(
   String className,
   Discriminator discriminator,
@@ -475,6 +635,24 @@ class $fallbackClassName extends $className {
 }''';
 }
 
+/// Generates field declarations for class properties.
+///
+/// Creates final field declarations with proper types, names, and optional
+/// `@JsonKey` annotations. Filters out auto-generated descriptions (like
+/// normalization messages) from documentation comments.
+///
+/// **Generated Format:**
+/// ```dart
+/// /// User's email address.
+/// @JsonKey(name: 'email_address')
+/// final String email;
+/// ```
+///
+/// Parameters:
+/// - [parameters]: Set of property types to generate fields for
+/// - [includeIfNull]: Whether to generate `includeIfNull` in `@JsonKey` annotations
+///
+/// Returns: Generated field declarations as a string.
 String _parametersInClass(Set<UniversalType> parameters, bool includeIfNull) {
   // Filter out parameters with null or empty names
   final validParams = parameters.where(
@@ -525,7 +703,26 @@ String _parametersInConstructor(
       .join();
 }
 
-/// if jsonKey is different from the name
+/// Generates `@JsonKey` annotation when needed for special JSON handling.
+///
+/// Creates `@JsonKey` annotations for properties that require special JSON
+/// serialization behavior, including:
+/// - Different field name in JSON vs Dart (`name` parameter)
+/// - Null handling control (`includeIfNull` parameter)
+/// - Base64 encoding/decoding for binary data (`fromJson`/`toJson` converters)
+///
+/// **Examples:**
+/// ```dart
+/// @JsonKey(name: 'user_id')  // Field name mismatch
+/// @JsonKey(includeIfNull: true)  // Required nullable field
+/// @JsonKey(fromJson: _Base64Converter.staticFromJson, toJson: _Base64Converter.staticToJson)  // Binary data
+/// ```
+///
+/// Parameters:
+/// - [t]: The universal type containing field metadata
+/// - [includeIfNull]: Whether to generate includeIfNull annotations
+///
+/// Returns: Generated `@JsonKey(...)` annotation string, or empty if not needed.
 String _jsonKey(UniversalType t, bool includeIfNull) {
   final buffer = StringBuffer();
 
@@ -595,8 +792,10 @@ String _defaultValue(UniversalType t) {
   if (t.wrappingCollections.isNotEmpty &&
       !defaultValueStr.startsWith('[') &&
       !defaultValueStr.startsWith('{')) {
-    stdout.writeln(
-      'Warning: [Template] Skipping invalid default "$defaultValueStr" for collection type "${t.name ?? 'unknown'}" (type: ${t.type})',
+    GeneratorLogger.warning(
+      GeneratorLogCategory.template,
+      'Skipping invalid default "$defaultValueStr" for collection type (expected array/object)',
+      context: '${t.name ?? 'unknown'} (${t.type})',
     );
     return '';
   }
@@ -735,6 +934,44 @@ String _getDartCoreImports(Set<UniversalType> parameters) {
   return imports.isEmpty ? '' : '${imports.join('\n')}\n';
 }
 
+/// Generates a custom JsonConverter class for Base64 binary data encoding/decoding.
+///
+/// Creates a `_Base64Converter` class that implements `JsonConverter<Uint8List, String>`
+/// to handle binary data fields marked with `format: binary` or `format: byte` in the
+/// OpenAPI schema. The converter transforms between Base64 strings (in JSON) and
+/// [Uint8List] (in Dart).
+///
+/// **Generated Methods:**
+/// Only generates methods for the data patterns actually used in the class:
+/// - `staticFromJson`/`staticToJson`: For non-nullable scalar fields
+/// - `staticFromJsonNullable`/`staticToJsonNullable`: For nullable scalar fields
+/// - `staticFromJsonList`/`staticToJsonList`: For non-nullable list fields
+/// - `staticFromJsonListNullable`/`staticToJsonListNullable`: For nullable list fields
+///
+/// **Example:**
+/// ```dart
+/// class _Base64Converter implements JsonConverter<Uint8List, String> {
+///   const _Base64Converter();
+///   static const instance = _Base64Converter();
+///
+///   static Uint8List staticFromJson(String json) => instance.fromJson(json);
+///   static String staticToJson(Uint8List object) => instance.toJson(object);
+///
+///   @override
+///   Uint8List fromJson(String json) => base64Decode(json);
+///
+///   @override
+///   String toJson(Uint8List object) => base64Encode(object);
+/// }
+/// ```
+///
+/// Parameters:
+/// - [hasScalar]: Whether the class has non-nullable Uint8List fields
+/// - [hasNullable]: Whether the class has nullable Uint8List fields
+/// - [hasList]: Whether the class has non-nullable `List<Uint8List>` fields
+/// - [hasListNullable]: Whether the class has nullable `List<Uint8List>` fields
+///
+/// Returns: Generated converter class source code.
 String _base64ConverterClass({
   required bool hasScalar,
   required bool hasNullable,

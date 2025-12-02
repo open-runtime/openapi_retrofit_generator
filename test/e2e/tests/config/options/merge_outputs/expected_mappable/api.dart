@@ -83,11 +83,6 @@ abstract class UsersClient {
   /// Upload user avatar (multipart).
   ///
   /// [file] - Avatar image file.
-  /// Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
   ///
   /// [userId] - User ID.
   @MultiPart()
@@ -149,24 +144,14 @@ abstract class CommentsClient {
 abstract class FilesClient {
   factory FilesClient(Dio dio, {String? baseUrl}) = _FilesClient;
 
-  /// Upload file with metadata.
-  ///
-  /// [files] - Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [category] - Name not received and was auto-generated.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
-  ///
-  /// [isPublic] - Name not received - field will be skipped.
+  /// Upload file with metadata
   @MultiPart()
   @POST('/files/upload')
   Future<FileUploadResponse> uploadFile({
     @Part(name: 'files') required List<MultipartFile> files,
     @Part(name: 'isPublic') bool? isPublic = false,
     @Part(name: 'description') String? description,
-    @Part(name: 'category') Enum0? category,
+    @Part(name: 'category') Category? category,
     @Part(name: 'metadata') FileMetadata? metadata,
   });
 
@@ -501,7 +486,7 @@ class PostModel with PostModelMappable {
   final List<String>? tags;
   final List<Category>? categories;
   final DateTime? publishedAt;
-  final dynamic metadata;
+  final dynamic? metadata;
   final DateTime? updatedAt;
 
   static PostModel fromJson(Map<String, dynamic> json) =>
@@ -688,7 +673,7 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
 @MappableClass(discriminatorValue: 'credit_card')
 class PaymentRequestCreditCard extends PaymentRequest
     with PaymentRequestCreditCardMappable {
-  final CreditCardPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
   final int expiryYear;
@@ -710,7 +695,7 @@ class PaymentRequestCreditCard extends PaymentRequest
 @MappableClass(discriminatorValue: 'bank_transfer')
 class PaymentRequestBankTransfer extends PaymentRequest
     with PaymentRequestBankTransferMappable {
-  final BankTransferPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType2 paymentType;
   final String accountNumber;
   final String routingNumber;
   final String? accountHolder;
@@ -730,9 +715,9 @@ class PaymentRequestBankTransfer extends PaymentRequest
 @MappableClass(discriminatorValue: 'crypto')
 class PaymentRequestCrypto extends PaymentRequest
     with PaymentRequestCryptoMappable {
-  final CryptoPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType3 paymentType;
   final String walletAddress;
-  final CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency;
+  final PaymentRequestCryptocurrencyCryptocurrency cryptocurrency;
   final double amount;
   final String? transactionHash;
 
@@ -826,7 +811,7 @@ class PaymentResponse with PaymentResponseMappable {
   final PaymentResponseStatusStatus status;
   final double amount;
   final DateTime? processedAt;
-  final PaymentResponseDetailsDetailsUnion? details;
+  final PaymentResponseDetailsUnion? details;
   final String currency;
 
   static PaymentResponse fromJson(Map<String, dynamic> json) =>
@@ -997,58 +982,12 @@ extension EntityUnionDeserializer on Entity {
 
 @MappableClass(discriminatorValue: 'person')
 class EntityPerson extends Entity with EntityPersonMappable {
-  final String id;
-  final PersonEntityEntityTypeEntityType? entityType;
-  final String? name;
-  final String? description;
-  final DateTime createdAt;
-  final DateTime? updatedAt;
-  final DateTime dateOfBirth;
-  final String? nationality;
-  final String? occupation;
-  final Map<String, String>? socialProfiles;
-
-  const EntityPerson({
-    required this.id,
-    required this.entityType,
-    required this.name,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.dateOfBirth,
-    required this.nationality,
-    required this.occupation,
-    required this.socialProfiles,
-  });
+  const EntityPerson();
 }
 
 @MappableClass(discriminatorValue: 'organization')
 class EntityOrganization extends Entity with EntityOrganizationMappable {
-  final String id;
-  final OrganizationEntityEntityTypeEntityType? entityType;
-  final String? name;
-  final String? description;
-  final DateTime createdAt;
-  final DateTime? updatedAt;
-  final String registrationNumber;
-  final DateTime? foundedDate;
-  final String? industry;
-  final int? employeeCount;
-  final double? revenue;
-
-  const EntityOrganization({
-    required this.id,
-    required this.entityType,
-    required this.name,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.registrationNumber,
-    required this.foundedDate,
-    required this.industry,
-    required this.employeeCount,
-    required this.revenue,
-  });
+  const EntityOrganization();
 }
 
 @MappableClass()
@@ -1200,7 +1139,7 @@ class Result with ResultMappable {
   const Result({this.success, this.data, this.status});
 
   final bool? success;
-  final dynamic data;
+  final dynamic? data;
   final Status? status;
 
   static Result fromJson(Map<String, dynamic> json) =>
@@ -1276,7 +1215,7 @@ class CreatePostRequest with CreatePostRequestMappable {
   final String authorId;
   final List<String>? tags;
   final DateTime? publishAt;
-  final dynamic metadata;
+  final dynamic? metadata;
 
   static CreatePostRequest fromJson(Map<String, dynamic> json) =>
       CreatePostRequestMapper.fromJson(json);
@@ -1316,7 +1255,7 @@ class GetPostResponse with GetPostResponseMappable {
   final List<String>? tags;
   final List<Category>? categories;
   final DateTime? publishedAt;
-  final dynamic metadata;
+  final dynamic? metadata;
   final DateTime? updatedAt;
   final List<Comment>? comments;
 
@@ -1422,54 +1361,53 @@ class UserSettingsPrivacy with UserSettingsPrivacyMappable {
 }
 
 @MappableClass(
+  discriminatorKey: 'paymentType',
   includeSubClasses: [
-    PaymentResponseDetailsDetailsUnionCreditCardPayment,
-    PaymentResponseDetailsDetailsUnionBankTransferPayment,
-    PaymentResponseDetailsDetailsUnionCryptoPayment,
+    PaymentResponseDetailsUnionCreditCard,
+    PaymentResponseDetailsUnionBankTransfer,
+    PaymentResponseDetailsUnionCrypto,
   ],
 )
-sealed class PaymentResponseDetailsDetailsUnion
-    with PaymentResponseDetailsDetailsUnionMappable {
-  const PaymentResponseDetailsDetailsUnion();
+sealed class PaymentResponseDetailsUnion
+    with PaymentResponseDetailsUnionMappable {
+  const PaymentResponseDetailsUnion();
 
-  static PaymentResponseDetailsDetailsUnion fromJson(
-    Map<String, dynamic> json,
-  ) {
-    return PaymentResponseDetailsDetailsUnionDeserializer.tryDeserialize(json);
+  static PaymentResponseDetailsUnion fromJson(Map<String, dynamic> json) {
+    return PaymentResponseDetailsUnionDeserializer.tryDeserialize(json);
   }
 }
 
-extension PaymentResponseDetailsDetailsUnionDeserializer
-    on PaymentResponseDetailsDetailsUnion {
-  static PaymentResponseDetailsDetailsUnion tryDeserialize(
-    Map<String, dynamic> json,
-  ) {
-    try {
-      return PaymentResponseDetailsDetailsUnionCreditCardPaymentMapper.fromJson(
-        json,
-      );
-    } catch (_) {}
-    try {
-      return PaymentResponseDetailsDetailsUnionBankTransferPaymentMapper.fromJson(
-        json,
-      );
-    } catch (_) {}
-    try {
-      return PaymentResponseDetailsDetailsUnionCryptoPaymentMapper.fromJson(
-        json,
-      );
-    } catch (_) {}
-
-    throw FormatException(
-      'Could not determine the correct type for PaymentResponseDetailsDetailsUnion from: $json',
-    );
+extension PaymentResponseDetailsUnionDeserializer
+    on PaymentResponseDetailsUnion {
+  static PaymentResponseDetailsUnion tryDeserialize(
+    Map<String, dynamic> json, {
+    String key = 'paymentType',
+    Map<Type, Object?>? mapping,
+  }) {
+    final mappingFallback = const <Type, Object?>{
+      PaymentResponseDetailsUnionCreditCard: 'credit_card',
+      PaymentResponseDetailsUnionBankTransfer: 'bank_transfer',
+      PaymentResponseDetailsUnionCrypto: 'crypto',
+    };
+    final value = json[key];
+    final effective = mapping ?? mappingFallback;
+    return switch (value) {
+      _ when value == effective[PaymentResponseDetailsUnionCreditCard] =>
+        PaymentResponseDetailsUnionCreditCardMapper.fromJson(json),
+      _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
+        PaymentResponseDetailsUnionBankTransferMapper.fromJson(json),
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
+        PaymentResponseDetailsUnionCryptoMapper.fromJson(json),
+      _ => throw FormatException(
+        'Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion',
+      ),
+    };
   }
 }
 
-@MappableClass()
-class PaymentResponseDetailsDetailsUnionCreditCardPayment
-    extends PaymentResponseDetailsDetailsUnion
-    with PaymentResponseDetailsDetailsUnionCreditCardPaymentMappable {
+@MappableClass(discriminatorValue: 'credit_card')
+class PaymentResponseDetailsUnionCreditCard extends PaymentResponseDetailsUnion
+    with PaymentResponseDetailsUnionCreditCardMappable {
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -1478,7 +1416,7 @@ class PaymentResponseDetailsDetailsUnionCreditCardPayment
   final String? cardholderName;
   final double amount;
 
-  const PaymentResponseDetailsDetailsUnionCreditCardPayment({
+  const PaymentResponseDetailsUnionCreditCard({
     required this.paymentType,
     required this.cardNumber,
     required this.expiryMonth,
@@ -1489,10 +1427,10 @@ class PaymentResponseDetailsDetailsUnionCreditCardPayment
   });
 }
 
-@MappableClass()
-class PaymentResponseDetailsDetailsUnionBankTransferPayment
-    extends PaymentResponseDetailsDetailsUnion
-    with PaymentResponseDetailsDetailsUnionBankTransferPaymentMappable {
+@MappableClass(discriminatorValue: 'bank_transfer')
+class PaymentResponseDetailsUnionBankTransfer
+    extends PaymentResponseDetailsUnion
+    with PaymentResponseDetailsUnionBankTransferMappable {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -1500,7 +1438,7 @@ class PaymentResponseDetailsDetailsUnionBankTransferPayment
   final double amount;
   final String? reference;
 
-  const PaymentResponseDetailsDetailsUnionBankTransferPayment({
+  const PaymentResponseDetailsUnionBankTransfer({
     required this.paymentType,
     required this.accountNumber,
     required this.routingNumber,
@@ -1510,17 +1448,16 @@ class PaymentResponseDetailsDetailsUnionBankTransferPayment
   });
 }
 
-@MappableClass()
-class PaymentResponseDetailsDetailsUnionCryptoPayment
-    extends PaymentResponseDetailsDetailsUnion
-    with PaymentResponseDetailsDetailsUnionCryptoPaymentMappable {
+@MappableClass(discriminatorValue: 'crypto')
+class PaymentResponseDetailsUnionCrypto extends PaymentResponseDetailsUnion
+    with PaymentResponseDetailsUnionCryptoMappable {
   final CryptoPaymentPaymentTypePaymentType paymentType;
   final String walletAddress;
   final CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency;
   final double amount;
   final String? transactionHash;
 
-  const PaymentResponseDetailsDetailsUnionCryptoPayment({
+  const PaymentResponseDetailsUnionCrypto({
     required this.paymentType,
     required this.walletAddress,
     required this.cryptocurrency,
@@ -1582,9 +1519,8 @@ enum Sort {
       values.where((value) => value != Sort.unknown).toList();
 }
 
-/// Name not received and was auto-generated.
 @MappableEnum(defaultValue: 'unknown')
-enum Enum0 {
+enum Category {
   @MappableValue('image')
   image,
 
@@ -1606,8 +1542,8 @@ enum Enum0 {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Enum0> get $valuesDefined =>
-      values.where((value) => value != Enum0.unknown).toList();
+  static List<Category> get $valuesDefined =>
+      values.where((value) => value != Category.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1690,6 +1626,101 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
             UserSettingsPrivacyProfileVisibilityProfileVisibility.unknown,
       )
       .toList();
+}
+
+@MappableEnum(defaultValue: 'unknown')
+enum PaymentRequestPaymentTypePaymentType {
+  @MappableValue('credit_card')
+  creditCard,
+
+  @MappableValue('unknown')
+  unknown;
+
+  String toJson() => toValue().toString();
+
+  @override
+  String toString() => toValue().toString();
+
+  /// Returns all defined enum values excluding the unknown value.
+  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined => values
+      .where((value) => value != PaymentRequestPaymentTypePaymentType.unknown)
+      .toList();
+}
+
+@MappableEnum(defaultValue: 'unknown')
+enum PaymentRequestPaymentTypePaymentType2 {
+  @MappableValue('bank_transfer')
+  bankTransfer,
+
+  @MappableValue('unknown')
+  unknown;
+
+  String toJson() => toValue().toString();
+
+  @override
+  String toString() => toValue().toString();
+
+  /// Returns all defined enum values excluding the unknown value.
+  static List<PaymentRequestPaymentTypePaymentType2> get $valuesDefined =>
+      values
+          .where(
+            (value) => value != PaymentRequestPaymentTypePaymentType2.unknown,
+          )
+          .toList();
+}
+
+@MappableEnum(defaultValue: 'unknown')
+enum PaymentRequestPaymentTypePaymentType3 {
+  @MappableValue('crypto')
+  crypto,
+
+  @MappableValue('unknown')
+  unknown;
+
+  String toJson() => toValue().toString();
+
+  @override
+  String toString() => toValue().toString();
+
+  /// Returns all defined enum values excluding the unknown value.
+  static List<PaymentRequestPaymentTypePaymentType3> get $valuesDefined =>
+      values
+          .where(
+            (value) => value != PaymentRequestPaymentTypePaymentType3.unknown,
+          )
+          .toList();
+}
+
+@MappableEnum(defaultValue: 'unknown')
+enum PaymentRequestCryptocurrencyCryptocurrency {
+  @MappableValue('BTC')
+  btc,
+
+  @MappableValue('ETH')
+  eth,
+
+  @MappableValue('USDT')
+  usdt,
+
+  @MappableValue('BNB')
+  bnb,
+
+  @MappableValue('unknown')
+  unknown;
+
+  String toJson() => toValue().toString();
+
+  @override
+  String toString() => toValue().toString();
+
+  /// Returns all defined enum values excluding the unknown value.
+  static List<PaymentRequestCryptocurrencyCryptocurrency> get $valuesDefined =>
+      values
+          .where(
+            (value) =>
+                value != PaymentRequestCryptocurrencyCryptocurrency.unknown,
+          )
+          .toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')

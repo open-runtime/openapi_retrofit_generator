@@ -14,7 +14,7 @@ class OneOfElement with OneOfElementMappable {
     required this.nullableButRequiredClass,
     required this.requiredNullableListNonNullItems,
     required this.requiredNullableListNullableItems,
-    this.anyClass = EnumClass.value1,
+    this.anyClass = 'value1',
     this.oneType = const [],
     this.nullableType = const [],
     this.allClass,

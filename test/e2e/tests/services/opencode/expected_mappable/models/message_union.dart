@@ -4,7 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'assistant_message_error_error_union.dart';
+import 'assistant_message_error_union.dart';
 import 'assistant_message_path.dart';
 import 'assistant_message_time.dart';
 import 'assistant_message_tokens.dart';
@@ -44,8 +44,10 @@ extension MessageUnionDeserializer on MessageUnion {
 class MessageUnionUserMessage extends MessageUnion
     with MessageUnionUserMessageMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
   final String role;
+  @MappableField(key: 'UserMessageTime')
   final UserMessageTime userMessageTime;
 
   const MessageUnionUserMessage({
@@ -60,17 +62,23 @@ class MessageUnionUserMessage extends MessageUnion
 class MessageUnionAssistantMessage extends MessageUnion
     with MessageUnionAssistantMessageMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
   final String role;
+  @MappableField(key: 'AssistantMessageTime')
   final AssistantMessageTime assistantMessageTime;
-  final AssistantMessageErrorErrorUnion? error;
+  final AssistantMessageErrorUnion? error;
   final List<String> system;
+  @MappableField(key: 'modelID')
   final String modelId;
+  @MappableField(key: 'providerID')
   final String providerId;
   final String mode;
+  @MappableField(key: 'AssistantMessagePath')
   final AssistantMessagePath assistantMessagePath;
   final bool? summary;
   final num cost;
+  @MappableField(key: 'AssistantMessageTokens')
   final AssistantMessageTokens assistantMessageTokens;
 
   const MessageUnionAssistantMessage({

@@ -139,6 +139,7 @@ extension EventUnionDeserializer on EventUnion {
 class EventUnionEventInstallationUpdated extends EventUnion
     with EventUnionEventInstallationUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventInstallationUpdatedProperties')
   final EventInstallationUpdatedProperties eventInstallationUpdatedProperties;
 
   const EventUnionEventInstallationUpdated({
@@ -151,6 +152,7 @@ class EventUnionEventInstallationUpdated extends EventUnion
 class EventUnionEventLspClientDiagnostics extends EventUnion
     with EventUnionEventLspClientDiagnosticsMappable {
   final String type;
+  @MappableField(key: 'EventLspClientDiagnosticsProperties')
   final EventLspClientDiagnosticsProperties eventLspClientDiagnosticsProperties;
 
   const EventUnionEventLspClientDiagnostics({
@@ -163,6 +165,7 @@ class EventUnionEventLspClientDiagnostics extends EventUnion
 class EventUnionEventMessageUpdated extends EventUnion
     with EventUnionEventMessageUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventMessageUpdatedProperties')
   final EventMessageUpdatedProperties eventMessageUpdatedProperties;
 
   const EventUnionEventMessageUpdated({
@@ -175,6 +178,7 @@ class EventUnionEventMessageUpdated extends EventUnion
 class EventUnionEventMessageRemoved extends EventUnion
     with EventUnionEventMessageRemovedMappable {
   final String type;
+  @MappableField(key: 'EventMessageRemovedProperties')
   final EventMessageRemovedProperties eventMessageRemovedProperties;
 
   const EventUnionEventMessageRemoved({
@@ -187,6 +191,7 @@ class EventUnionEventMessageRemoved extends EventUnion
 class EventUnionEventMessagePartUpdated extends EventUnion
     with EventUnionEventMessagePartUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventMessagePartUpdatedProperties')
   final EventMessagePartUpdatedProperties eventMessagePartUpdatedProperties;
 
   const EventUnionEventMessagePartUpdated({
@@ -199,6 +204,7 @@ class EventUnionEventMessagePartUpdated extends EventUnion
 class EventUnionEventMessagePartRemoved extends EventUnion
     with EventUnionEventMessagePartRemovedMappable {
   final String type;
+  @MappableField(key: 'EventMessagePartRemovedProperties')
   final EventMessagePartRemovedProperties eventMessagePartRemovedProperties;
 
   const EventUnionEventMessagePartRemoved({
@@ -211,6 +217,7 @@ class EventUnionEventMessagePartRemoved extends EventUnion
 class EventUnionEventSessionCompacted extends EventUnion
     with EventUnionEventSessionCompactedMappable {
   final String type;
+  @MappableField(key: 'EventSessionCompactedProperties')
   final EventSessionCompactedProperties eventSessionCompactedProperties;
 
   const EventUnionEventSessionCompacted({
@@ -235,6 +242,7 @@ class EventUnionEventPermissionUpdated extends EventUnion
 class EventUnionEventPermissionReplied extends EventUnion
     with EventUnionEventPermissionRepliedMappable {
   final String type;
+  @MappableField(key: 'EventPermissionRepliedProperties')
   final EventPermissionRepliedProperties eventPermissionRepliedProperties;
 
   const EventUnionEventPermissionReplied({
@@ -247,6 +255,7 @@ class EventUnionEventPermissionReplied extends EventUnion
 class EventUnionEventFileEdited extends EventUnion
     with EventUnionEventFileEditedMappable {
   final String type;
+  @MappableField(key: 'EventFileEditedProperties')
   final EventFileEditedProperties eventFileEditedProperties;
 
   const EventUnionEventFileEdited({
@@ -259,6 +268,7 @@ class EventUnionEventFileEdited extends EventUnion
 class EventUnionEventFileWatcherUpdated extends EventUnion
     with EventUnionEventFileWatcherUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventFileWatcherUpdatedProperties')
   final EventFileWatcherUpdatedProperties eventFileWatcherUpdatedProperties;
 
   const EventUnionEventFileWatcherUpdated({
@@ -271,6 +281,7 @@ class EventUnionEventFileWatcherUpdated extends EventUnion
 class EventUnionEventTodoUpdated extends EventUnion
     with EventUnionEventTodoUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventTodoUpdatedProperties')
   final EventTodoUpdatedProperties eventTodoUpdatedProperties;
 
   const EventUnionEventTodoUpdated({
@@ -283,6 +294,7 @@ class EventUnionEventTodoUpdated extends EventUnion
 class EventUnionEventSessionIdle extends EventUnion
     with EventUnionEventSessionIdleMappable {
   final String type;
+  @MappableField(key: 'EventSessionIdleProperties')
   final EventSessionIdleProperties eventSessionIdleProperties;
 
   const EventUnionEventSessionIdle({
@@ -295,6 +307,7 @@ class EventUnionEventSessionIdle extends EventUnion
 class EventUnionEventSessionUpdated extends EventUnion
     with EventUnionEventSessionUpdatedMappable {
   final String type;
+  @MappableField(key: 'EventSessionUpdatedProperties')
   final EventSessionUpdatedProperties eventSessionUpdatedProperties;
 
   const EventUnionEventSessionUpdated({
@@ -307,6 +320,7 @@ class EventUnionEventSessionUpdated extends EventUnion
 class EventUnionEventSessionDeleted extends EventUnion
     with EventUnionEventSessionDeletedMappable {
   final String type;
+  @MappableField(key: 'EventSessionDeletedProperties')
   final EventSessionDeletedProperties eventSessionDeletedProperties;
 
   const EventUnionEventSessionDeleted({
@@ -319,6 +333,7 @@ class EventUnionEventSessionDeleted extends EventUnion
 class EventUnionEventSessionError extends EventUnion
     with EventUnionEventSessionErrorMappable {
   final String type;
+  @MappableField(key: 'EventSessionErrorProperties')
   final EventSessionErrorProperties eventSessionErrorProperties;
 
   const EventUnionEventSessionError({
@@ -343,6 +358,7 @@ class EventUnionEventServerConnected extends EventUnion
 class EventUnionEventIdeInstalled extends EventUnion
     with EventUnionEventIdeInstalledMappable {
   final String type;
+  @MappableField(key: 'EventIdeInstalledProperties')
   final EventIdeInstalledProperties eventIdeInstalledProperties;
 
   const EventUnionEventIdeInstalled({

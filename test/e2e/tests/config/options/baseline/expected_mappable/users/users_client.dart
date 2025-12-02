@@ -88,11 +88,6 @@ abstract class UsersClient {
   /// Upload user avatar (multipart).
   ///
   /// [file] - Avatar image file.
-  /// Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
   ///
   /// [userId] - User ID.
   @MultiPart()

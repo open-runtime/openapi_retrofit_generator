@@ -258,6 +258,7 @@ class ToolStateUnionToolStateRunningMapper
   _f$toolStateRunningTime = Field(
     'toolStateRunningTime',
     _$toolStateRunningTime,
+    key: r'ToolStateRunningTime',
   );
 
   @override
@@ -491,6 +492,7 @@ class ToolStateUnionToolStateCompletedMapper
   _f$toolStateCompletedTime = Field(
     'toolStateCompletedTime',
     _$toolStateCompletedTime,
+    key: r'ToolStateCompletedTime',
   );
   static List<FilePart>? _$attachments(ToolStateUnionToolStateCompleted v) =>
       v.attachments;
@@ -765,7 +767,11 @@ class ToolStateUnionToolStateErrorMapper
     ToolStateUnionToolStateError v,
   ) => v.toolStateErrorTime;
   static const Field<ToolStateUnionToolStateError, ToolStateErrorTime>
-  _f$toolStateErrorTime = Field('toolStateErrorTime', _$toolStateErrorTime);
+  _f$toolStateErrorTime = Field(
+    'toolStateErrorTime',
+    _$toolStateErrorTime,
+    key: r'ToolStateErrorTime',
+  );
 
   @override
   final MappableFields<ToolStateUnionToolStateError> fields = const {

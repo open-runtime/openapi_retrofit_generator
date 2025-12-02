@@ -11,9 +11,8 @@ _SessionPromptRequest _$SessionPromptRequestFromJson(
 ) => _SessionPromptRequest(
   parts: (json['parts'] as List<dynamic>)
       .map(
-        (e) => SessionPromptRequestPartsPartsUnion.fromJson(
-          e as Map<String, dynamic>,
-        ),
+        (e) =>
+            SessionPromptRequestPartsUnion.fromJson(e as Map<String, dynamic>),
       )
       .toList(),
   messageId: json['messageID'] as String?,

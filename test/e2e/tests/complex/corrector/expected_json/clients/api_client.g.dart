@@ -31,8 +31,8 @@ class _ApiClient implements ApiClient {
     dynamic p6,
     dynamic v2,
     dynamic v4,
-    Object0? p1Class,
-    Enum0? p2Enum,
+    P1Class? p1Class,
+    P2Enum? p2Enum,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

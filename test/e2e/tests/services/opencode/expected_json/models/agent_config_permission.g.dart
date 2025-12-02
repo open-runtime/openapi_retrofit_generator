@@ -9,9 +9,9 @@ part of 'agent_config_permission.dart';
 AgentConfigPermission _$AgentConfigPermissionFromJson(
   Map<String, dynamic> json,
 ) => AgentConfigPermission(
-  edit: json['edit'],
+  edit: json['edit'] as String?,
   bash: json['bash'],
-  webfetch: json['webfetch'],
+  webfetch: json['webfetch'] as String?,
 );
 
 Map<String, dynamic> _$AgentConfigPermissionToJson(

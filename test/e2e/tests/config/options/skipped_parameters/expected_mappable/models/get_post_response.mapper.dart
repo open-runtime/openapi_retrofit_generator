@@ -220,7 +220,7 @@ abstract class GetPostResponseCopyWith<$R, $In extends GetPostResponse, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   UserCopyWith<$R, User, User>? get author;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>? get tags;
-  ListCopyWith<$R, Category, CategoryCopyWith<$R, Category, Category>>?
+  ListCopyWith<$R, Category, ObjectCopyWith<$R, Category, Category>>?
   get categories;
   ListCopyWith<$R, Comment, CommentCopyWith<$R, Comment, Comment>>?
   get comments;
@@ -268,11 +268,11 @@ class _GetPostResponseCopyWithImpl<$R, $Out>
         )
       : null;
   @override
-  ListCopyWith<$R, Category, CategoryCopyWith<$R, Category, Category>>?
+  ListCopyWith<$R, Category, ObjectCopyWith<$R, Category, Category>>?
   get categories => $value.categories != null
       ? ListCopyWith(
           $value.categories!,
-          (v, t) => v.copyWith.$chain(t),
+          (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(categories: v),
         )
       : null;

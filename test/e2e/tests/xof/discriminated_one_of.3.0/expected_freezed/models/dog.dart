@@ -5,7 +5,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'dog_type_type.dart';
-import 'family_members_members_union.dart';
+import 'family_members_union.dart';
 
 part 'dog.freezed.dart';
 part 'dog.g.dart';

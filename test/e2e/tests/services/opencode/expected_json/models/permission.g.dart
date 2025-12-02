@@ -16,7 +16,7 @@ Permission _$PermissionFromJson(Map<String, dynamic> json) => Permission(
   permissionTime: PermissionTime.fromJson(
     json['PermissionTime'] as Map<String, dynamic>,
   ),
-  pattern: json['pattern'],
+  pattern: json['pattern'] as String?,
   callId: json['callID'] as String?,
 );
 

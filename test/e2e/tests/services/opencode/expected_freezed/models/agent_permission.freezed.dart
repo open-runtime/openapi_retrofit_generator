@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AgentPermission {
 
- dynamic get edit; Map<String, dynamic> get bash; dynamic get webfetch;
+ String get edit; Map<String, String> get bash; String? get webfetch;
 /// Create a copy of AgentPermission
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $AgentPermissionCopyWith<AgentPermission> get copyWith => _$AgentPermissionCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgentPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgentPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(bash),webfetch);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $AgentPermissionCopyWith<$Res>  {
   factory $AgentPermissionCopyWith(AgentPermission value, $Res Function(AgentPermission) _then) = _$AgentPermissionCopyWithImpl;
 @useResult
 $Res call({
- dynamic edit, Map<String, dynamic> bash, dynamic webfetch
+ String edit, Map<String, String> bash, String? webfetch
 });
 
 
@@ -65,12 +65,12 @@ class _$AgentPermissionCopyWithImpl<$Res>
 
 /// Create a copy of AgentPermission
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? edit = freezed,Object? bash = null,Object? webfetch = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? edit = null,Object? bash = null,Object? webfetch = freezed,}) {
   return _then(_self.copyWith(
-edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: null == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+edit: null == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
+as String,bash: null == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( dynamic edit,  Map<String, dynamic> bash,  dynamic webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String edit,  Map<String, String> bash,  String? webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AgentPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -176,7 +176,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( dynamic edit,  Map<String, dynamic> bash,  dynamic webfetch)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String edit,  Map<String, String> bash,  String? webfetch)  $default,) {final _that = this;
 switch (_that) {
 case _AgentPermission():
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -196,7 +196,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( dynamic edit,  Map<String, dynamic> bash,  dynamic webfetch)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String edit,  Map<String, String> bash,  String? webfetch)?  $default,) {final _that = this;
 switch (_that) {
 case _AgentPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -211,18 +211,18 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 @JsonSerializable()
 
 class _AgentPermission implements AgentPermission {
-  const _AgentPermission({required this.edit, required final  Map<String, dynamic> bash, this.webfetch}): _bash = bash;
+  const _AgentPermission({required this.edit, required final  Map<String, String> bash, this.webfetch}): _bash = bash;
   factory _AgentPermission.fromJson(Map<String, dynamic> json) => _$AgentPermissionFromJson(json);
 
-@override final  dynamic edit;
- final  Map<String, dynamic> _bash;
-@override Map<String, dynamic> get bash {
+@override final  String edit;
+ final  Map<String, String> _bash;
+@override Map<String, String> get bash {
   if (_bash is EqualUnmodifiableMapView) return _bash;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_bash);
 }
 
-@override final  dynamic webfetch;
+@override final  String? webfetch;
 
 /// Create a copy of AgentPermission
 /// with the given fields replaced by the non-null parameter values.
@@ -237,12 +237,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgentPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other._bash, _bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgentPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other._bash, _bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(_bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(_bash),webfetch);
 
 @override
 String toString() {
@@ -257,7 +257,7 @@ abstract mixin class _$AgentPermissionCopyWith<$Res> implements $AgentPermission
   factory _$AgentPermissionCopyWith(_AgentPermission value, $Res Function(_AgentPermission) _then) = __$AgentPermissionCopyWithImpl;
 @override @useResult
 $Res call({
- dynamic edit, Map<String, dynamic> bash, dynamic webfetch
+ String edit, Map<String, String> bash, String? webfetch
 });
 
 
@@ -274,12 +274,12 @@ class __$AgentPermissionCopyWithImpl<$Res>
 
 /// Create a copy of AgentPermission
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? edit = freezed,Object? bash = null,Object? webfetch = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? edit = null,Object? bash = null,Object? webfetch = freezed,}) {
   return _then(_AgentPermission(
-edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: null == bash ? _self._bash : bash // ignore: cast_nullable_to_non_nullable
-as Map<String, dynamic>,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+edit: null == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
+as String,bash: null == bash ? _self._bash : bash // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

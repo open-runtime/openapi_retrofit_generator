@@ -23,7 +23,7 @@ class _ApiClient implements ApiClient {
   Future<void> testMultipartRequiredTrue({
     required List<MultipartFile> files,
     required String? name,
-    Object0? address,
+    Address? address,
     MultipartFile? image,
   }) async {
     final _extra = <String, dynamic>{};
@@ -63,7 +63,7 @@ class _ApiClient implements ApiClient {
   Future<void> testMultipartRequiredFalse({
     required List<MultipartFile> files,
     required String? name,
-    Object1? address,
+    Address? address,
     MultipartFile? image,
   }) async {
     final _extra = <String, dynamic>{};

@@ -1,6 +1,7 @@
 import 'package:openapi_retrofit_generator/src/parser/model/normalized_identifier.dart';
 import 'package:openapi_retrofit_generator/src/parser/model/universal_data_class.dart';
 import 'package:openapi_retrofit_generator/src/parser/utils/dart_keywords.dart';
+import 'package:openapi_retrofit_generator/src/utils/generator_logger.dart';
 
 /// Extension for utils
 extension StringTypeX on String {
@@ -137,6 +138,10 @@ String? protectDefaultValue(
 
   /// Json is not supported
   if (nameStr.startsWith('{') && nameStr.endsWith('}')) {
+    GeneratorLogger.debug(
+      GeneratorLogCategory.defaults,
+      'Skipping JSON object default value: $nameStr',
+    );
     return null;
   }
 
@@ -173,6 +178,10 @@ String? protectDefaultValue(
   }
 
   if (isArray) {
+    GeneratorLogger.debug(
+      GeneratorLogCategory.defaults,
+      'Skipping non-array default for array type: $nameStr',
+    );
     return null;
   }
 
@@ -366,6 +375,15 @@ String _normalizeInvalidName(String name) {
     ),
     _ => (name, null),
   };
+
+  // Log name protection if the name was changed
+  if (newName != null && newName != name) {
+    GeneratorLogger.protectedName(
+      name ?? '<null>',
+      newName,
+      error ?? 'protection applied',
+    );
+  }
 
   return (
     newName,

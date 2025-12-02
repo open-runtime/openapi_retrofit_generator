@@ -6,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'credit_card_payment_payment_type_payment_type.dart';
 import 'payment_request.dart';
+import 'payment_response_details_union.dart';
 
 part 'credit_card_payment.g.dart';
 

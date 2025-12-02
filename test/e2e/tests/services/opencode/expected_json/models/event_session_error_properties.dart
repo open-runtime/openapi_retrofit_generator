@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'event_session_error_properties_error_error_union.dart';
+import 'event_session_error_properties_error_union.dart';
 
 part 'event_session_error_properties.g.dart';
 
@@ -17,7 +17,7 @@ class EventSessionErrorProperties {
 
   @JsonKey(name: 'sessionID')
   final String? sessionId;
-  final EventSessionErrorPropertiesErrorErrorUnion? error;
+  final EventSessionErrorPropertiesErrorUnion? error;
 
   Map<String, Object?> toJson() => _$EventSessionErrorPropertiesToJson(this);
 }

@@ -15,7 +15,7 @@ class EventFileWatcherUpdatedProperties
   });
 
   final String file;
-  final dynamic event;
+  final String event;
 
   static EventFileWatcherUpdatedProperties fromJson(
     Map<String, dynamic> json,

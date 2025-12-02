@@ -4,7 +4,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'event_session_error_properties_error_error_union.dart';
+import 'event_session_error_properties_error_union.dart';
 
 part 'event_session_error_properties.freezed.dart';
 part 'event_session_error_properties.g.dart';
@@ -13,7 +13,7 @@ part 'event_session_error_properties.g.dart';
 abstract class EventSessionErrorProperties with _$EventSessionErrorProperties {
   const factory EventSessionErrorProperties({
     @JsonKey(name: 'sessionID') String? sessionId,
-    EventSessionErrorPropertiesErrorErrorUnion? error,
+    EventSessionErrorPropertiesErrorUnion? error,
   }) = _EventSessionErrorProperties;
 
   factory EventSessionErrorProperties.fromJson(Map<String, Object?> json) =>

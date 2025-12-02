@@ -25,8 +25,8 @@ class AgentMapper extends ClassMapperBase<Agent> {
 
   static String _$name(Agent v) => v.name;
   static const Field<Agent, String> _f$name = Field('name', _$name);
-  static dynamic _$mode(Agent v) => v.mode;
-  static const Field<Agent, dynamic> _f$mode = Field('mode', _$mode);
+  static String _$mode(Agent v) => v.mode;
+  static const Field<Agent, String> _f$mode = Field('mode', _$mode);
   static bool _$builtIn(Agent v) => v.builtIn;
   static const Field<Agent, bool> _f$builtIn = Field('builtIn', _$builtIn);
   static AgentPermission _$agentPermission(Agent v) => v.agentPermission;
@@ -158,7 +158,7 @@ abstract class AgentCopyWith<$R, $In extends Agent, $Out>
   AgentModelCopyWith<$R, AgentModel, AgentModel>? get agentModel;
   $R call({
     String? name,
-    dynamic mode,
+    String? mode,
     bool? builtIn,
     AgentPermission? agentPermission,
     Map<String, bool>? tools,
@@ -202,7 +202,7 @@ class _AgentCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Agent, $Out>
   @override
   $R call({
     String? name,
-    Object? mode = $none,
+    String? mode,
     bool? builtIn,
     AgentPermission? agentPermission,
     Map<String, bool>? tools,
@@ -215,7 +215,7 @@ class _AgentCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Agent, $Out>
   }) => $apply(
     FieldCopyWithData({
       if (name != null) #name: name,
-      if (mode != $none) #mode: mode,
+      if (mode != null) #mode: mode,
       if (builtIn != null) #builtIn: builtIn,
       if (agentPermission != null) #agentPermission: agentPermission,
       if (tools != null) #tools: tools,

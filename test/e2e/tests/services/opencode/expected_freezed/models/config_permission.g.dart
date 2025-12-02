@@ -8,9 +8,9 @@ part of 'config_permission.dart';
 
 _ConfigPermission _$ConfigPermissionFromJson(Map<String, dynamic> json) =>
     _ConfigPermission(
-      edit: json['edit'],
+      edit: json['edit'] as String?,
       bash: json['bash'],
-      webfetch: json['webfetch'],
+      webfetch: json['webfetch'] as String?,
     );
 
 Map<String, dynamic> _$ConfigPermissionToJson(_ConfigPermission instance) =>

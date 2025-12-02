@@ -30,7 +30,7 @@ class AgentConfig with AgentConfigMappable {
   final Map<String, bool>? tools;
   final bool? disable;
   final String? description;
-  final dynamic mode;
+  final String? mode;
   @MappableField(key: 'AgentConfigPermission')
   final AgentConfigPermission? agentConfigPermission;
 

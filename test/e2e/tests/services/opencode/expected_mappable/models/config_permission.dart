@@ -10,9 +10,9 @@ part 'config_permission.mapper.dart';
 class ConfigPermission with ConfigPermissionMappable {
   const ConfigPermission({this.edit, this.bash, this.webfetch});
 
-  final dynamic edit;
-  final dynamic bash;
-  final dynamic webfetch;
+  final String? edit;
+  final dynamic? bash;
+  final String? webfetch;
 
   static ConfigPermission fromJson(Map<String, dynamic> json) =>
       ConfigPermissionMapper.fromJson(json);

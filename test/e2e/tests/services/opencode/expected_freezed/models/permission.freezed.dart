@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Permission {
 
- String get id; String get type;@JsonKey(name: 'sessionID') String get sessionId;@JsonKey(name: 'messageID') String get messageId; String get title; Map<String, dynamic> get metadata;@JsonKey(name: 'PermissionTime') PermissionTime get permissionTime; dynamic get pattern;@JsonKey(name: 'callID') String? get callId;
+ String get id; String get type;@JsonKey(name: 'sessionID') String get sessionId;@JsonKey(name: 'messageID') String get messageId; String get title; Map<String, dynamic> get metadata;@JsonKey(name: 'PermissionTime') PermissionTime get permissionTime; String? get pattern;@JsonKey(name: 'callID') String? get callId;
 /// Create a copy of Permission
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $PermissionCopyWith<Permission> get copyWith => _$PermissionCopyWithImpl<Permiss
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Permission&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.messageId, messageId) || other.messageId == messageId)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.metadata, metadata)&&(identical(other.permissionTime, permissionTime) || other.permissionTime == permissionTime)&&const DeepCollectionEquality().equals(other.pattern, pattern)&&(identical(other.callId, callId) || other.callId == callId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Permission&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.messageId, messageId) || other.messageId == messageId)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.metadata, metadata)&&(identical(other.permissionTime, permissionTime) || other.permissionTime == permissionTime)&&(identical(other.pattern, pattern) || other.pattern == pattern)&&(identical(other.callId, callId) || other.callId == callId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,sessionId,messageId,title,const DeepCollectionEquality().hash(metadata),permissionTime,const DeepCollectionEquality().hash(pattern),callId);
+int get hashCode => Object.hash(runtimeType,id,type,sessionId,messageId,title,const DeepCollectionEquality().hash(metadata),permissionTime,pattern,callId);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $PermissionCopyWith<$Res>  {
   factory $PermissionCopyWith(Permission value, $Res Function(Permission) _then) = _$PermissionCopyWithImpl;
 @useResult
 $Res call({
- String id, String type,@JsonKey(name: 'sessionID') String sessionId,@JsonKey(name: 'messageID') String messageId, String title, Map<String, dynamic> metadata,@JsonKey(name: 'PermissionTime') PermissionTime permissionTime, dynamic pattern,@JsonKey(name: 'callID') String? callId
+ String id, String type,@JsonKey(name: 'sessionID') String sessionId,@JsonKey(name: 'messageID') String messageId, String title, Map<String, dynamic> metadata,@JsonKey(name: 'PermissionTime') PermissionTime permissionTime, String? pattern,@JsonKey(name: 'callID') String? callId
 });
 
 
@@ -75,7 +75,7 @@ as String,title: null == title ? _self.title : title // ignore: cast_nullable_to
 as String,metadata: null == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>,permissionTime: null == permissionTime ? _self.permissionTime : permissionTime // ignore: cast_nullable_to_non_nullable
 as PermissionTime,pattern: freezed == pattern ? _self.pattern : pattern // ignore: cast_nullable_to_non_nullable
-as dynamic,callId: freezed == callId ? _self.callId : callId // ignore: cast_nullable_to_non_nullable
+as String?,callId: freezed == callId ? _self.callId : callId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -170,7 +170,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  dynamic pattern, @JsonKey(name: 'callID')  String? callId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  String? pattern, @JsonKey(name: 'callID')  String? callId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Permission() when $default != null:
 return $default(_that.id,_that.type,_that.sessionId,_that.messageId,_that.title,_that.metadata,_that.permissionTime,_that.pattern,_that.callId);case _:
@@ -191,7 +191,7 @@ return $default(_that.id,_that.type,_that.sessionId,_that.messageId,_that.title,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  dynamic pattern, @JsonKey(name: 'callID')  String? callId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  String? pattern, @JsonKey(name: 'callID')  String? callId)  $default,) {final _that = this;
 switch (_that) {
 case _Permission():
 return $default(_that.id,_that.type,_that.sessionId,_that.messageId,_that.title,_that.metadata,_that.permissionTime,_that.pattern,_that.callId);case _:
@@ -211,7 +211,7 @@ return $default(_that.id,_that.type,_that.sessionId,_that.messageId,_that.title,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  dynamic pattern, @JsonKey(name: 'callID')  String? callId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String type, @JsonKey(name: 'sessionID')  String sessionId, @JsonKey(name: 'messageID')  String messageId,  String title,  Map<String, dynamic> metadata, @JsonKey(name: 'PermissionTime')  PermissionTime permissionTime,  String? pattern, @JsonKey(name: 'callID')  String? callId)?  $default,) {final _that = this;
 switch (_that) {
 case _Permission() when $default != null:
 return $default(_that.id,_that.type,_that.sessionId,_that.messageId,_that.title,_that.metadata,_that.permissionTime,_that.pattern,_that.callId);case _:
@@ -242,7 +242,7 @@ class _Permission implements Permission {
 }
 
 @override@JsonKey(name: 'PermissionTime') final  PermissionTime permissionTime;
-@override final  dynamic pattern;
+@override final  String? pattern;
 @override@JsonKey(name: 'callID') final  String? callId;
 
 /// Create a copy of Permission
@@ -258,12 +258,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Permission&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.messageId, messageId) || other.messageId == messageId)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&(identical(other.permissionTime, permissionTime) || other.permissionTime == permissionTime)&&const DeepCollectionEquality().equals(other.pattern, pattern)&&(identical(other.callId, callId) || other.callId == callId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Permission&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.messageId, messageId) || other.messageId == messageId)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&(identical(other.permissionTime, permissionTime) || other.permissionTime == permissionTime)&&(identical(other.pattern, pattern) || other.pattern == pattern)&&(identical(other.callId, callId) || other.callId == callId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,type,sessionId,messageId,title,const DeepCollectionEquality().hash(_metadata),permissionTime,const DeepCollectionEquality().hash(pattern),callId);
+int get hashCode => Object.hash(runtimeType,id,type,sessionId,messageId,title,const DeepCollectionEquality().hash(_metadata),permissionTime,pattern,callId);
 
 @override
 String toString() {
@@ -278,7 +278,7 @@ abstract mixin class _$PermissionCopyWith<$Res> implements $PermissionCopyWith<$
   factory _$PermissionCopyWith(_Permission value, $Res Function(_Permission) _then) = __$PermissionCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String type,@JsonKey(name: 'sessionID') String sessionId,@JsonKey(name: 'messageID') String messageId, String title, Map<String, dynamic> metadata,@JsonKey(name: 'PermissionTime') PermissionTime permissionTime, dynamic pattern,@JsonKey(name: 'callID') String? callId
+ String id, String type,@JsonKey(name: 'sessionID') String sessionId,@JsonKey(name: 'messageID') String messageId, String title, Map<String, dynamic> metadata,@JsonKey(name: 'PermissionTime') PermissionTime permissionTime, String? pattern,@JsonKey(name: 'callID') String? callId
 });
 
 
@@ -305,7 +305,7 @@ as String,title: null == title ? _self.title : title // ignore: cast_nullable_to
 as String,metadata: null == metadata ? _self._metadata : metadata // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>,permissionTime: null == permissionTime ? _self.permissionTime : permissionTime // ignore: cast_nullable_to_non_nullable
 as PermissionTime,pattern: freezed == pattern ? _self.pattern : pattern // ignore: cast_nullable_to_non_nullable
-as dynamic,callId: freezed == callId ? _self.callId : callId // ignore: cast_nullable_to_non_nullable
+as String?,callId: freezed == callId ? _self.callId : callId // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

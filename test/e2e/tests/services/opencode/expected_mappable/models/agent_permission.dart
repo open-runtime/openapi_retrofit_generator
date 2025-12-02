@@ -14,9 +14,9 @@ class AgentPermission with AgentPermissionMappable {
     this.webfetch,
   });
 
-  final dynamic edit;
-  final Map<String, dynamic> bash;
-  final dynamic webfetch;
+  final String edit;
+  final Map<String, String> bash;
+  final String? webfetch;
 
   static AgentPermission fromJson(Map<String, dynamic> json) =>
       AgentPermissionMapper.fromJson(json);

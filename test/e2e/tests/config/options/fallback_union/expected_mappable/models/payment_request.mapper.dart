@@ -74,7 +74,7 @@ class PaymentRequestCreditCardMapper
         _instance = PaymentRequestCreditCardMapper._(),
       );
       PaymentRequestMapper.ensureInitialized().addSubMapper(_instance!);
-      CreditCardPaymentPaymentTypePaymentTypeMapper.ensureInitialized();
+      PaymentRequestPaymentTypePaymentTypeMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -82,12 +82,12 @@ class PaymentRequestCreditCardMapper
   @override
   final String id = 'PaymentRequestCreditCard';
 
-  static CreditCardPaymentPaymentTypePaymentType _$paymentType(
+  static PaymentRequestPaymentTypePaymentType _$paymentType(
     PaymentRequestCreditCard v,
   ) => v.paymentType;
   static const Field<
     PaymentRequestCreditCard,
-    CreditCardPaymentPaymentTypePaymentType
+    PaymentRequestPaymentTypePaymentType
   >
   _f$paymentType = Field('paymentType', _$paymentType);
   static String _$cardNumber(PaymentRequestCreditCard v) => v.cardNumber;
@@ -223,7 +223,7 @@ abstract class PaymentRequestCreditCardCopyWith<
     implements PaymentRequestCopyWith<$R, $In, $Out> {
   @override
   $R call({
-    CreditCardPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType? paymentType,
     String? cardNumber,
     int? expiryMonth,
     int? expiryYear,
@@ -247,7 +247,7 @@ class _PaymentRequestCreditCardCopyWithImpl<$R, $Out>
       PaymentRequestCreditCardMapper.ensureInitialized();
   @override
   $R call({
-    CreditCardPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType? paymentType,
     String? cardNumber,
     int? expiryMonth,
     int? expiryYear,
@@ -293,7 +293,7 @@ class PaymentRequestBankTransferMapper
         _instance = PaymentRequestBankTransferMapper._(),
       );
       PaymentRequestMapper.ensureInitialized().addSubMapper(_instance!);
-      BankTransferPaymentPaymentTypePaymentTypeMapper.ensureInitialized();
+      PaymentRequestPaymentTypePaymentType2Mapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -301,12 +301,12 @@ class PaymentRequestBankTransferMapper
   @override
   final String id = 'PaymentRequestBankTransfer';
 
-  static BankTransferPaymentPaymentTypePaymentType _$paymentType(
+  static PaymentRequestPaymentTypePaymentType2 _$paymentType(
     PaymentRequestBankTransfer v,
   ) => v.paymentType;
   static const Field<
     PaymentRequestBankTransfer,
-    BankTransferPaymentPaymentTypePaymentType
+    PaymentRequestPaymentTypePaymentType2
   >
   _f$paymentType = Field('paymentType', _$paymentType);
   static String _$accountNumber(PaymentRequestBankTransfer v) =>
@@ -437,7 +437,7 @@ abstract class PaymentRequestBankTransferCopyWith<
     implements PaymentRequestCopyWith<$R, $In, $Out> {
   @override
   $R call({
-    BankTransferPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType2? paymentType,
     String? accountNumber,
     String? routingNumber,
     String? accountHolder,
@@ -464,7 +464,7 @@ class _PaymentRequestBankTransferCopyWithImpl<$R, $Out>
       PaymentRequestBankTransferMapper.ensureInitialized();
   @override
   $R call({
-    BankTransferPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType2? paymentType,
     String? accountNumber,
     String? routingNumber,
     Object? accountHolder = $none,
@@ -506,8 +506,8 @@ class PaymentRequestCryptoMapper
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PaymentRequestCryptoMapper._());
       PaymentRequestMapper.ensureInitialized().addSubMapper(_instance!);
-      CryptoPaymentPaymentTypePaymentTypeMapper.ensureInitialized();
-      CryptoPaymentCryptocurrencyCryptocurrencyMapper.ensureInitialized();
+      PaymentRequestPaymentTypePaymentType3Mapper.ensureInitialized();
+      PaymentRequestCryptocurrencyCryptocurrencyMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -515,22 +515,25 @@ class PaymentRequestCryptoMapper
   @override
   final String id = 'PaymentRequestCrypto';
 
-  static CryptoPaymentPaymentTypePaymentType _$paymentType(
+  static PaymentRequestPaymentTypePaymentType3 _$paymentType(
     PaymentRequestCrypto v,
   ) => v.paymentType;
-  static const Field<PaymentRequestCrypto, CryptoPaymentPaymentTypePaymentType>
+  static const Field<
+    PaymentRequestCrypto,
+    PaymentRequestPaymentTypePaymentType3
+  >
   _f$paymentType = Field('paymentType', _$paymentType);
   static String _$walletAddress(PaymentRequestCrypto v) => v.walletAddress;
   static const Field<PaymentRequestCrypto, String> _f$walletAddress = Field(
     'walletAddress',
     _$walletAddress,
   );
-  static CryptoPaymentCryptocurrencyCryptocurrency _$cryptocurrency(
+  static PaymentRequestCryptocurrencyCryptocurrency _$cryptocurrency(
     PaymentRequestCrypto v,
   ) => v.cryptocurrency;
   static const Field<
     PaymentRequestCrypto,
-    CryptoPaymentCryptocurrencyCryptocurrency
+    PaymentRequestCryptocurrencyCryptocurrency
   >
   _f$cryptocurrency = Field('cryptocurrency', _$cryptocurrency);
   static double _$amount(PaymentRequestCrypto v) => v.amount;
@@ -643,9 +646,9 @@ abstract class PaymentRequestCryptoCopyWith<
     implements PaymentRequestCopyWith<$R, $In, $Out> {
   @override
   $R call({
-    CryptoPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType3? paymentType,
     String? walletAddress,
-    CryptoPaymentCryptocurrencyCryptocurrency? cryptocurrency,
+    PaymentRequestCryptocurrencyCryptocurrency? cryptocurrency,
     double? amount,
     String? transactionHash,
   });
@@ -664,9 +667,9 @@ class _PaymentRequestCryptoCopyWithImpl<$R, $Out>
       PaymentRequestCryptoMapper.ensureInitialized();
   @override
   $R call({
-    CryptoPaymentPaymentTypePaymentType? paymentType,
+    PaymentRequestPaymentTypePaymentType3? paymentType,
     String? walletAddress,
-    CryptoPaymentCryptocurrencyCryptocurrency? cryptocurrency,
+    PaymentRequestCryptocurrencyCryptocurrency? cryptocurrency,
     double? amount,
     Object? transactionHash = $none,
   }) => $apply(

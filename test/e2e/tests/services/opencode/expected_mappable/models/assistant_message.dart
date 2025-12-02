@@ -4,7 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'assistant_message_error_error_union.dart';
+import 'assistant_message_error_union.dart';
 import 'assistant_message_path.dart';
 import 'assistant_message_time.dart';
 import 'assistant_message_tokens.dart';
@@ -46,7 +46,7 @@ class AssistantMessage with AssistantMessageMappable {
   final num cost;
   @MappableField(key: 'AssistantMessageTokens')
   final AssistantMessageTokens assistantMessageTokens;
-  final AssistantMessageErrorErrorUnion? error;
+  final AssistantMessageErrorUnion? error;
   final bool? summary;
 
   static AssistantMessage fromJson(Map<String, dynamic> json) =>

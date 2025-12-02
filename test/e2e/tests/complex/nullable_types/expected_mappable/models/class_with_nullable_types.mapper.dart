@@ -17,6 +17,7 @@ class ClassWithNullableTypesMapper
       MapperContainer.globals.use(_instance = ClassWithNullableTypesMapper._());
       ClassWithNullableTypesP3Mapper.ensureInitialized();
       ClassWithNullableTypesP3NMapper.ensureInitialized();
+      ClassWithNullableTypesNonNullAnyOfUnionMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -47,16 +48,16 @@ class ClassWithNullableTypesMapper
     _$classWithNullableTypesP3,
     key: r'ClassWithNullableTypesP3',
   );
-  static dynamic _$requiredNullAnyOf(ClassWithNullableTypes v) =>
+  static String _$requiredNullAnyOf(ClassWithNullableTypes v) =>
       v.requiredNullAnyOf;
-  static const Field<ClassWithNullableTypes, dynamic> _f$requiredNullAnyOf =
+  static const Field<ClassWithNullableTypes, String> _f$requiredNullAnyOf =
       Field(
         'requiredNullAnyOf',
         _$requiredNullAnyOf,
         key: r'required_null_anyOf',
       );
-  static dynamic _$p1AnyOf(ClassWithNullableTypes v) => v.p1AnyOf;
-  static const Field<ClassWithNullableTypes, dynamic> _f$p1AnyOf = Field(
+  static String _$p1AnyOf(ClassWithNullableTypes v) => v.p1AnyOf;
+  static const Field<ClassWithNullableTypes, String> _f$p1AnyOf = Field(
     'p1AnyOf',
     _$p1AnyOf,
     key: r'p1_anyOf',
@@ -73,8 +74,8 @@ class ClassWithNullableTypesMapper
     _$p3AnyOf,
     key: r'p3_anyOf',
   );
-  static dynamic _$p1OneOf(ClassWithNullableTypes v) => v.p1OneOf;
-  static const Field<ClassWithNullableTypes, dynamic> _f$p1OneOf = Field(
+  static String _$p1OneOf(ClassWithNullableTypes v) => v.p1OneOf;
+  static const Field<ClassWithNullableTypes, String> _f$p1OneOf = Field(
     'p1OneOf',
     _$p1OneOf,
     key: r'p1_oneOf',
@@ -178,16 +179,23 @@ class ClassWithNullableTypesMapper
     key: r'p3_list',
     opt: true,
   );
-  static dynamic _$nonNullAnyOf(ClassWithNullableTypes v) => v.nonNullAnyOf;
-  static const Field<ClassWithNullableTypes, dynamic> _f$nonNullAnyOf = Field(
+  static ClassWithNullableTypesNonNullAnyOfUnion? _$nonNullAnyOf(
+    ClassWithNullableTypes v,
+  ) => v.nonNullAnyOf;
+  static const Field<
+    ClassWithNullableTypes,
+    ClassWithNullableTypesNonNullAnyOfUnion
+  >
+  _f$nonNullAnyOf = Field(
     'nonNullAnyOf',
     _$nonNullAnyOf,
     key: r'nonNull_anyOf',
     opt: true,
+    hook: const ClassWithNullableTypesNonNullAnyOfUnionHook(),
   );
-  static dynamic _$optionalNullAnyOf(ClassWithNullableTypes v) =>
+  static String? _$optionalNullAnyOf(ClassWithNullableTypes v) =>
       v.optionalNullAnyOf;
-  static const Field<ClassWithNullableTypes, dynamic> _f$optionalNullAnyOf =
+  static const Field<ClassWithNullableTypes, String> _f$optionalNullAnyOf =
       Field(
         'optionalNullAnyOf',
         _$optionalNullAnyOf,
@@ -353,17 +361,23 @@ abstract class ClassWithNullableTypesCopyWith<
   >?
   get classWithNullableTypesP3N;
   ListCopyWith<$R, dynamic, ObjectCopyWith<$R, dynamic, dynamic>>? get p2List;
+  ClassWithNullableTypesNonNullAnyOfUnionCopyWith<
+    $R,
+    ClassWithNullableTypesNonNullAnyOfUnion,
+    ClassWithNullableTypesNonNullAnyOfUnion
+  >?
+  get nonNullAnyOf;
   $R call({
     String? p1,
     List<String>? p2,
     List<List<String?>>? p2NullItem,
     List<dynamic>? p2NullAll,
     ClassWithNullableTypesP3? classWithNullableTypesP3,
-    dynamic requiredNullAnyOf,
-    dynamic p1AnyOf,
+    String? requiredNullAnyOf,
+    String? p1AnyOf,
     dynamic p2AnyOf,
     dynamic p3AnyOf,
-    dynamic p1OneOf,
+    String? p1OneOf,
     dynamic p2OneOf,
     dynamic p3OneOf,
     dynamic p1AllOf,
@@ -379,8 +393,8 @@ abstract class ClassWithNullableTypesCopyWith<
     String? p1List,
     List<dynamic>? p2List,
     dynamic p3List,
-    dynamic nonNullAnyOf,
-    dynamic optionalNullAnyOf,
+    ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf,
+    String? optionalNullAnyOf,
   });
   ClassWithNullableTypesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
@@ -476,17 +490,25 @@ class _ClassWithNullableTypesCopyWithImpl<$R, $Out>
         )
       : null;
   @override
+  ClassWithNullableTypesNonNullAnyOfUnionCopyWith<
+    $R,
+    ClassWithNullableTypesNonNullAnyOfUnion,
+    ClassWithNullableTypesNonNullAnyOfUnion
+  >?
+  get nonNullAnyOf =>
+      $value.nonNullAnyOf?.copyWith.$chain((v) => call(nonNullAnyOf: v));
+  @override
   $R call({
     String? p1,
     List<String>? p2,
     List<List<String?>>? p2NullItem,
     Object? p2NullAll = $none,
     ClassWithNullableTypesP3? classWithNullableTypesP3,
-    Object? requiredNullAnyOf = $none,
-    Object? p1AnyOf = $none,
+    String? requiredNullAnyOf,
+    String? p1AnyOf,
     Object? p2AnyOf = $none,
     Object? p3AnyOf = $none,
-    Object? p1OneOf = $none,
+    String? p1OneOf,
     Object? p2OneOf = $none,
     Object? p3OneOf = $none,
     Object? p1AllOf = $none,
@@ -512,11 +534,11 @@ class _ClassWithNullableTypesCopyWithImpl<$R, $Out>
       if (p2NullAll != $none) #p2NullAll: p2NullAll,
       if (classWithNullableTypesP3 != null)
         #classWithNullableTypesP3: classWithNullableTypesP3,
-      if (requiredNullAnyOf != $none) #requiredNullAnyOf: requiredNullAnyOf,
-      if (p1AnyOf != $none) #p1AnyOf: p1AnyOf,
+      if (requiredNullAnyOf != null) #requiredNullAnyOf: requiredNullAnyOf,
+      if (p1AnyOf != null) #p1AnyOf: p1AnyOf,
       if (p2AnyOf != $none) #p2AnyOf: p2AnyOf,
       if (p3AnyOf != $none) #p3AnyOf: p3AnyOf,
-      if (p1OneOf != $none) #p1OneOf: p1OneOf,
+      if (p1OneOf != null) #p1OneOf: p1OneOf,
       if (p2OneOf != $none) #p2OneOf: p2OneOf,
       if (p3OneOf != $none) #p3OneOf: p3OneOf,
       if (p1AllOf != $none) #p1AllOf: p1AllOf,

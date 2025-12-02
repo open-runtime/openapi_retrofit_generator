@@ -14,8 +14,8 @@ import 'config_watcher.dart';
 import 'formatter.dart';
 import 'keybinds_config.dart';
 import 'layout_config.dart';
-import 'lsp_lsp_union.dart';
-import 'mcp_mcp_union.dart';
+import 'lsp_union.dart';
+import 'mcp_union.dart';
 import 'provider.dart';
 
 part 'config.freezed.dart';
@@ -71,9 +71,9 @@ abstract class Config with _$Config {
     Map<String, Provider>? provider,
 
     /// MCP (Model Context Protocol) server configurations
-    Map<String, McpMcpUnion>? mcp,
+    Map<String, McpUnion>? mcp,
     Map<String, Formatter>? formatter,
-    Map<String, LspLspUnion>? lsp,
+    Map<String, LspUnion>? lsp,
 
     /// Additional instruction files or patterns to include
     List<String>? instructions,

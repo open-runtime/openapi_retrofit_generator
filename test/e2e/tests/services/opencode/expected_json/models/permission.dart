@@ -27,7 +27,7 @@ class Permission {
 
   final String id;
   final String type;
-  final dynamic pattern;
+  final String? pattern;
   @JsonKey(name: 'sessionID')
   final String sessionId;
   @JsonKey(name: 'messageID')

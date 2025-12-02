@@ -5,7 +5,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'cat_type_type.dart';
-import 'family_members_members_union.dart';
+import 'family_members_union.dart';
 
 part 'cat.g.dart';
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Agent {
 
- String get name; dynamic get mode; bool get builtIn;@JsonKey(name: 'AgentPermission') AgentPermission get agentPermission; Map<String, bool> get tools; Map<String, dynamic> get options; String? get description; num? get topP; num? get temperature;@JsonKey(name: 'AgentModel') AgentModel? get agentModel; String? get prompt;
+ String get name; String get mode; bool get builtIn;@JsonKey(name: 'AgentPermission') AgentPermission get agentPermission; Map<String, bool> get tools; Map<String, dynamic> get options; String? get description; num? get topP; num? get temperature;@JsonKey(name: 'AgentModel') AgentModel? get agentModel; String? get prompt;
 /// Create a copy of Agent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $AgentCopyWith<Agent> get copyWith => _$AgentCopyWithImpl<Agent>(this as Agent, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Agent&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.mode, mode)&&(identical(other.builtIn, builtIn) || other.builtIn == builtIn)&&(identical(other.agentPermission, agentPermission) || other.agentPermission == agentPermission)&&const DeepCollectionEquality().equals(other.tools, tools)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.description, description) || other.description == description)&&(identical(other.topP, topP) || other.topP == topP)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.agentModel, agentModel) || other.agentModel == agentModel)&&(identical(other.prompt, prompt) || other.prompt == prompt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Agent&&(identical(other.name, name) || other.name == name)&&(identical(other.mode, mode) || other.mode == mode)&&(identical(other.builtIn, builtIn) || other.builtIn == builtIn)&&(identical(other.agentPermission, agentPermission) || other.agentPermission == agentPermission)&&const DeepCollectionEquality().equals(other.tools, tools)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.description, description) || other.description == description)&&(identical(other.topP, topP) || other.topP == topP)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.agentModel, agentModel) || other.agentModel == agentModel)&&(identical(other.prompt, prompt) || other.prompt == prompt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(mode),builtIn,agentPermission,const DeepCollectionEquality().hash(tools),const DeepCollectionEquality().hash(options),description,topP,temperature,agentModel,prompt);
+int get hashCode => Object.hash(runtimeType,name,mode,builtIn,agentPermission,const DeepCollectionEquality().hash(tools),const DeepCollectionEquality().hash(options),description,topP,temperature,agentModel,prompt);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $AgentCopyWith<$Res>  {
   factory $AgentCopyWith(Agent value, $Res Function(Agent) _then) = _$AgentCopyWithImpl;
 @useResult
 $Res call({
- String name, dynamic mode, bool builtIn,@JsonKey(name: 'AgentPermission') AgentPermission agentPermission, Map<String, bool> tools, Map<String, dynamic> options, String? description, num? topP, num? temperature,@JsonKey(name: 'AgentModel') AgentModel? agentModel, String? prompt
+ String name, String mode, bool builtIn,@JsonKey(name: 'AgentPermission') AgentPermission agentPermission, Map<String, bool> tools, Map<String, dynamic> options, String? description, num? topP, num? temperature,@JsonKey(name: 'AgentModel') AgentModel? agentModel, String? prompt
 });
 
 
@@ -65,11 +65,11 @@ class _$AgentCopyWithImpl<$Res>
 
 /// Create a copy of Agent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? mode = freezed,Object? builtIn = null,Object? agentPermission = null,Object? tools = null,Object? options = null,Object? description = freezed,Object? topP = freezed,Object? temperature = freezed,Object? agentModel = freezed,Object? prompt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? mode = null,Object? builtIn = null,Object? agentPermission = null,Object? tools = null,Object? options = null,Object? description = freezed,Object? topP = freezed,Object? temperature = freezed,Object? agentModel = freezed,Object? prompt = freezed,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,mode: freezed == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
-as dynamic,builtIn: null == builtIn ? _self.builtIn : builtIn // ignore: cast_nullable_to_non_nullable
+as String,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
+as String,builtIn: null == builtIn ? _self.builtIn : builtIn // ignore: cast_nullable_to_non_nullable
 as bool,agentPermission: null == agentPermission ? _self.agentPermission : agentPermission // ignore: cast_nullable_to_non_nullable
 as AgentPermission,tools: null == tools ? _self.tools : tools // ignore: cast_nullable_to_non_nullable
 as Map<String, bool>,options: null == options ? _self.options : options // ignore: cast_nullable_to_non_nullable
@@ -184,7 +184,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  dynamic mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Agent() when $default != null:
 return $default(_that.name,_that.mode,_that.builtIn,_that.agentPermission,_that.tools,_that.options,_that.description,_that.topP,_that.temperature,_that.agentModel,_that.prompt);case _:
@@ -205,7 +205,7 @@ return $default(_that.name,_that.mode,_that.builtIn,_that.agentPermission,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  dynamic mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)  $default,) {final _that = this;
 switch (_that) {
 case _Agent():
 return $default(_that.name,_that.mode,_that.builtIn,_that.agentPermission,_that.tools,_that.options,_that.description,_that.topP,_that.temperature,_that.agentModel,_that.prompt);case _:
@@ -225,7 +225,7 @@ return $default(_that.name,_that.mode,_that.builtIn,_that.agentPermission,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  dynamic mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String mode,  bool builtIn, @JsonKey(name: 'AgentPermission')  AgentPermission agentPermission,  Map<String, bool> tools,  Map<String, dynamic> options,  String? description,  num? topP,  num? temperature, @JsonKey(name: 'AgentModel')  AgentModel? agentModel,  String? prompt)?  $default,) {final _that = this;
 switch (_that) {
 case _Agent() when $default != null:
 return $default(_that.name,_that.mode,_that.builtIn,_that.agentPermission,_that.tools,_that.options,_that.description,_that.topP,_that.temperature,_that.agentModel,_that.prompt);case _:
@@ -244,7 +244,7 @@ class _Agent implements Agent {
   factory _Agent.fromJson(Map<String, dynamic> json) => _$AgentFromJson(json);
 
 @override final  String name;
-@override final  dynamic mode;
+@override final  String mode;
 @override final  bool builtIn;
 @override@JsonKey(name: 'AgentPermission') final  AgentPermission agentPermission;
  final  Map<String, bool> _tools;
@@ -280,12 +280,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Agent&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.mode, mode)&&(identical(other.builtIn, builtIn) || other.builtIn == builtIn)&&(identical(other.agentPermission, agentPermission) || other.agentPermission == agentPermission)&&const DeepCollectionEquality().equals(other._tools, _tools)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.description, description) || other.description == description)&&(identical(other.topP, topP) || other.topP == topP)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.agentModel, agentModel) || other.agentModel == agentModel)&&(identical(other.prompt, prompt) || other.prompt == prompt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Agent&&(identical(other.name, name) || other.name == name)&&(identical(other.mode, mode) || other.mode == mode)&&(identical(other.builtIn, builtIn) || other.builtIn == builtIn)&&(identical(other.agentPermission, agentPermission) || other.agentPermission == agentPermission)&&const DeepCollectionEquality().equals(other._tools, _tools)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.description, description) || other.description == description)&&(identical(other.topP, topP) || other.topP == topP)&&(identical(other.temperature, temperature) || other.temperature == temperature)&&(identical(other.agentModel, agentModel) || other.agentModel == agentModel)&&(identical(other.prompt, prompt) || other.prompt == prompt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(mode),builtIn,agentPermission,const DeepCollectionEquality().hash(_tools),const DeepCollectionEquality().hash(_options),description,topP,temperature,agentModel,prompt);
+int get hashCode => Object.hash(runtimeType,name,mode,builtIn,agentPermission,const DeepCollectionEquality().hash(_tools),const DeepCollectionEquality().hash(_options),description,topP,temperature,agentModel,prompt);
 
 @override
 String toString() {
@@ -300,7 +300,7 @@ abstract mixin class _$AgentCopyWith<$Res> implements $AgentCopyWith<$Res> {
   factory _$AgentCopyWith(_Agent value, $Res Function(_Agent) _then) = __$AgentCopyWithImpl;
 @override @useResult
 $Res call({
- String name, dynamic mode, bool builtIn,@JsonKey(name: 'AgentPermission') AgentPermission agentPermission, Map<String, bool> tools, Map<String, dynamic> options, String? description, num? topP, num? temperature,@JsonKey(name: 'AgentModel') AgentModel? agentModel, String? prompt
+ String name, String mode, bool builtIn,@JsonKey(name: 'AgentPermission') AgentPermission agentPermission, Map<String, bool> tools, Map<String, dynamic> options, String? description, num? topP, num? temperature,@JsonKey(name: 'AgentModel') AgentModel? agentModel, String? prompt
 });
 
 
@@ -317,11 +317,11 @@ class __$AgentCopyWithImpl<$Res>
 
 /// Create a copy of Agent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? mode = freezed,Object? builtIn = null,Object? agentPermission = null,Object? tools = null,Object? options = null,Object? description = freezed,Object? topP = freezed,Object? temperature = freezed,Object? agentModel = freezed,Object? prompt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? mode = null,Object? builtIn = null,Object? agentPermission = null,Object? tools = null,Object? options = null,Object? description = freezed,Object? topP = freezed,Object? temperature = freezed,Object? agentModel = freezed,Object? prompt = freezed,}) {
   return _then(_Agent(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,mode: freezed == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
-as dynamic,builtIn: null == builtIn ? _self.builtIn : builtIn // ignore: cast_nullable_to_non_nullable
+as String,mode: null == mode ? _self.mode : mode // ignore: cast_nullable_to_non_nullable
+as String,builtIn: null == builtIn ? _self.builtIn : builtIn // ignore: cast_nullable_to_non_nullable
 as bool,agentPermission: null == agentPermission ? _self.agentPermission : agentPermission // ignore: cast_nullable_to_non_nullable
 as AgentPermission,tools: null == tools ? _self._tools : tools // ignore: cast_nullable_to_non_nullable
 as Map<String, bool>,options: null == options ? _self._options : options // ignore: cast_nullable_to_non_nullable

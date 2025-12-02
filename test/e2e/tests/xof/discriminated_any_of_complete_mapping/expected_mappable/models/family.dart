@@ -4,7 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'family_members_members_union.dart';
+import 'family_members_union.dart';
 
 part 'family.mapper.dart';
 
@@ -12,7 +12,7 @@ part 'family.mapper.dart';
 class Family with FamilyMappable {
   const Family({required this.members});
 
-  final List<FamilyMembersMembersUnion> members;
+  final List<FamilyMembersUnion> members;
 
   static Family fromJson(Map<String, dynamic> json) =>
       FamilyMapper.fromJson(json);

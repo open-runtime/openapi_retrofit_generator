@@ -14,8 +14,8 @@ import 'config_watcher.dart';
 import 'formatter.dart';
 import 'keybinds_config.dart';
 import 'layout_config.dart';
-import 'lsp_lsp_union.dart';
-import 'mcp_mcp_union.dart';
+import 'lsp_union.dart';
+import 'mcp_union.dart';
 import 'provider.dart';
 
 part 'config.g.dart';
@@ -105,9 +105,9 @@ class Config {
   final Map<String, Provider>? provider;
 
   /// MCP (Model Context Protocol) server configurations
-  final Map<String, McpMcpUnion>? mcp;
+  final Map<String, McpUnion>? mcp;
   final Map<String, Formatter>? formatter;
-  final Map<String, LspLspUnion>? lsp;
+  final Map<String, LspUnion>? lsp;
 
   /// Additional instruction files or patterns to include
   final List<String>? instructions;

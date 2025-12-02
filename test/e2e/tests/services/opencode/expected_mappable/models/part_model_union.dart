@@ -83,11 +83,14 @@ extension PartModelUnionDeserializer on PartModelUnion {
 class PartModelUnionTextPart extends PartModelUnion
     with PartModelUnionTextPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String text;
   final bool? synthetic;
+  @MappableField(key: 'TextPartTime')
   final TextPartTime? textPartTime;
   final Map<String, dynamic>? metadata;
 
@@ -107,11 +110,14 @@ class PartModelUnionTextPart extends PartModelUnion
 class PartModelUnionReasoningPart extends PartModelUnion
     with PartModelUnionReasoningPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String text;
   final Map<String, dynamic>? metadata;
+  @MappableField(key: 'ReasoningPartTime')
   final ReasoningPartTime reasoningPartTime;
 
   const PartModelUnionReasoningPart({
@@ -129,7 +135,9 @@ class PartModelUnionReasoningPart extends PartModelUnion
 class PartModelUnionFilePart extends PartModelUnion
     with PartModelUnionFilePartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String mime;
@@ -153,9 +161,12 @@ class PartModelUnionFilePart extends PartModelUnion
 class PartModelUnionToolPart extends PartModelUnion
     with PartModelUnionToolPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
+  @MappableField(key: 'callID')
   final String callId;
   final String tool;
   final ToolState state;
@@ -177,7 +188,9 @@ class PartModelUnionToolPart extends PartModelUnion
 class PartModelUnionStepStartPart extends PartModelUnion
     with PartModelUnionStepStartPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String? snapshot;
@@ -195,11 +208,14 @@ class PartModelUnionStepStartPart extends PartModelUnion
 class PartModelUnionStepFinishPart extends PartModelUnion
     with PartModelUnionStepFinishPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String? snapshot;
   final num cost;
+  @MappableField(key: 'StepFinishPartTokens')
   final StepFinishPartTokens stepFinishPartTokens;
 
   const PartModelUnionStepFinishPart({
@@ -217,7 +233,9 @@ class PartModelUnionStepFinishPart extends PartModelUnion
 class PartModelUnionSnapshotPart extends PartModelUnion
     with PartModelUnionSnapshotPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String snapshot;
@@ -235,7 +253,9 @@ class PartModelUnionSnapshotPart extends PartModelUnion
 class PartModelUnionPatchPart extends PartModelUnion
     with PartModelUnionPatchPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String hash;
@@ -255,10 +275,13 @@ class PartModelUnionPatchPart extends PartModelUnion
 class PartModelUnionAgentPart extends PartModelUnion
     with PartModelUnionAgentPartMappable {
   final String id;
+  @MappableField(key: 'sessionID')
   final String sessionId;
+  @MappableField(key: 'messageID')
   final String messageId;
   final String type;
   final String name;
+  @MappableField(key: 'AgentPartSource')
   final AgentPartSource? agentPartSource;
 
   const PartModelUnionAgentPart({

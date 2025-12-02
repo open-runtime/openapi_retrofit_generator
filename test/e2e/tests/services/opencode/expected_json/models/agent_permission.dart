@@ -17,9 +17,9 @@ class AgentPermission {
   factory AgentPermission.fromJson(Map<String, Object?> json) =>
       _$AgentPermissionFromJson(json);
 
-  final dynamic edit;
-  final Map<String, dynamic> bash;
-  final dynamic webfetch;
+  final String edit;
+  final Map<String, String> bash;
+  final String? webfetch;
 
   Map<String, Object?> toJson() => _$AgentPermissionToJson(this);
 }

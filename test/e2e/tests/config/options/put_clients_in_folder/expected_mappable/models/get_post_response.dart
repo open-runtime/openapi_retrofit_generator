@@ -46,7 +46,7 @@ class GetPostResponse with GetPostResponseMappable {
   final List<String>? tags;
   final List<Category>? categories;
   final DateTime? publishedAt;
-  final dynamic metadata;
+  final dynamic? metadata;
   final DateTime? updatedAt;
   final List<Comment>? comments;
 

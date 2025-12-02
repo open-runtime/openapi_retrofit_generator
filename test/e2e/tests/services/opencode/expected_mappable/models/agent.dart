@@ -26,7 +26,7 @@ class Agent with AgentMappable {
   });
 
   final String name;
-  final dynamic mode;
+  final String mode;
   final bool builtIn;
   @MappableField(key: 'AgentPermission')
   final AgentPermission agentPermission;

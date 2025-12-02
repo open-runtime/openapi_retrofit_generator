@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AgentConfigPermission {
 
- dynamic get edit; dynamic get bash; dynamic get webfetch;
+ String? get edit; dynamic get bash; String? get webfetch;
 /// Create a copy of AgentConfigPermission
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $AgentConfigPermissionCopyWith<AgentConfigPermission> get copyWith => _$AgentCon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgentConfigPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AgentConfigPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(bash),webfetch);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $AgentConfigPermissionCopyWith<$Res>  {
   factory $AgentConfigPermissionCopyWith(AgentConfigPermission value, $Res Function(AgentConfigPermission) _then) = _$AgentConfigPermissionCopyWithImpl;
 @useResult
 $Res call({
- dynamic edit, dynamic bash, dynamic webfetch
+ String? edit, dynamic bash, String? webfetch
 });
 
 
@@ -68,9 +68,9 @@ class _$AgentConfigPermissionCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? edit = freezed,Object? bash = freezed,Object? webfetch = freezed,}) {
   return _then(_self.copyWith(
 edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
+as String?,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
 as dynamic,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String?,
   ));
 }
 
@@ -155,7 +155,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( dynamic edit,  dynamic bash,  dynamic webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? edit,  dynamic bash,  String? webfetch)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AgentConfigPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -176,7 +176,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( dynamic edit,  dynamic bash,  dynamic webfetch)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? edit,  dynamic bash,  String? webfetch)  $default,) {final _that = this;
 switch (_that) {
 case _AgentConfigPermission():
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -196,7 +196,7 @@ return $default(_that.edit,_that.bash,_that.webfetch);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( dynamic edit,  dynamic bash,  dynamic webfetch)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? edit,  dynamic bash,  String? webfetch)?  $default,) {final _that = this;
 switch (_that) {
 case _AgentConfigPermission() when $default != null:
 return $default(_that.edit,_that.bash,_that.webfetch);case _:
@@ -214,9 +214,9 @@ class _AgentConfigPermission implements AgentConfigPermission {
   const _AgentConfigPermission({this.edit, this.bash, this.webfetch});
   factory _AgentConfigPermission.fromJson(Map<String, dynamic> json) => _$AgentConfigPermissionFromJson(json);
 
-@override final  dynamic edit;
+@override final  String? edit;
 @override final  dynamic bash;
-@override final  dynamic webfetch;
+@override final  String? webfetch;
 
 /// Create a copy of AgentConfigPermission
 /// with the given fields replaced by the non-null parameter values.
@@ -231,12 +231,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgentConfigPermission&&const DeepCollectionEquality().equals(other.edit, edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&const DeepCollectionEquality().equals(other.webfetch, webfetch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AgentConfigPermission&&(identical(other.edit, edit) || other.edit == edit)&&const DeepCollectionEquality().equals(other.bash, bash)&&(identical(other.webfetch, webfetch) || other.webfetch == webfetch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(edit),const DeepCollectionEquality().hash(bash),const DeepCollectionEquality().hash(webfetch));
+int get hashCode => Object.hash(runtimeType,edit,const DeepCollectionEquality().hash(bash),webfetch);
 
 @override
 String toString() {
@@ -251,7 +251,7 @@ abstract mixin class _$AgentConfigPermissionCopyWith<$Res> implements $AgentConf
   factory _$AgentConfigPermissionCopyWith(_AgentConfigPermission value, $Res Function(_AgentConfigPermission) _then) = __$AgentConfigPermissionCopyWithImpl;
 @override @useResult
 $Res call({
- dynamic edit, dynamic bash, dynamic webfetch
+ String? edit, dynamic bash, String? webfetch
 });
 
 
@@ -271,9 +271,9 @@ class __$AgentConfigPermissionCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? edit = freezed,Object? bash = freezed,Object? webfetch = freezed,}) {
   return _then(_AgentConfigPermission(
 edit: freezed == edit ? _self.edit : edit // ignore: cast_nullable_to_non_nullable
-as dynamic,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
+as String?,bash: freezed == bash ? _self.bash : bash // ignore: cast_nullable_to_non_nullable
 as dynamic,webfetch: freezed == webfetch ? _self.webfetch : webfetch // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String?,
   ));
 }
 

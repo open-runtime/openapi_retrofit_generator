@@ -4,6 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
+import 'class_with_nullable_types_non_null_any_of_union.dart';
 import 'class_with_nullable_types_p3.dart';
 import 'class_with_nullable_types_p3_n.dart';
 
@@ -50,15 +51,15 @@ class ClassWithNullableTypes with ClassWithNullableTypesMappable {
   @MappableField(key: 'ClassWithNullableTypesP3')
   final ClassWithNullableTypesP3 classWithNullableTypesP3;
   @MappableField(key: 'required_null_anyOf')
-  final dynamic requiredNullAnyOf;
+  final String requiredNullAnyOf;
   @MappableField(key: 'p1_anyOf')
-  final dynamic p1AnyOf;
+  final String p1AnyOf;
   @MappableField(key: 'p2_anyOf')
   final dynamic p2AnyOf;
   @MappableField(key: 'p3_anyOf')
   final dynamic p3AnyOf;
   @MappableField(key: 'p1_oneOf')
-  final dynamic p1OneOf;
+  final String p1OneOf;
   @MappableField(key: 'p2_oneOf')
   final dynamic p2OneOf;
   @MappableField(key: 'p3_oneOf')
@@ -88,11 +89,14 @@ class ClassWithNullableTypes with ClassWithNullableTypesMappable {
   @MappableField(key: 'p2_list')
   final List<dynamic>? p2List;
   @MappableField(key: 'p3_list')
-  final dynamic p3List;
-  @MappableField(key: 'nonNull_anyOf')
-  final dynamic nonNullAnyOf;
+  final dynamic? p3List;
+  @MappableField(
+    key: 'nonNull_anyOf',
+    hook: const ClassWithNullableTypesNonNullAnyOfUnionHook(),
+  )
+  final ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf;
   @MappableField(key: 'optional_null_anyOf')
-  final dynamic optionalNullAnyOf;
+  final String? optionalNullAnyOf;
 
   static ClassWithNullableTypes fromJson(Map<String, dynamic> json) =>
       ClassWithNullableTypesMapper.fromJson(json);

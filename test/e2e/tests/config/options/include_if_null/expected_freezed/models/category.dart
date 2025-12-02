@@ -4,22 +4,33 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'category.dart';
+@JsonEnum()
+enum Category {
+  @JsonValue('image')
+  image('image'),
+  @JsonValue('video')
+  video('video'),
+  @JsonValue('document')
+  document('document'),
+  @JsonValue('other')
+  other('other'),
 
-part 'category.freezed.dart';
-part 'category.g.dart';
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
 
-@Freezed()
-abstract class Category with _$Category {
-  const factory Category({
-    required String id,
-    required String name,
-    @JsonKey(includeIfNull: false) String? slug,
+  const Category(this.json);
 
-    /// Circular reference for nested categories
-    @JsonKey(includeIfNull: false) Category? parent,
-  }) = _Category;
+  factory Category.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<Category> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }

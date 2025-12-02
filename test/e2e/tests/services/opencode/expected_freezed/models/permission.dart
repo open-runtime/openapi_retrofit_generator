@@ -19,7 +19,7 @@ abstract class Permission with _$Permission {
     required String title,
     required Map<String, dynamic> metadata,
     @JsonKey(name: 'PermissionTime') required PermissionTime permissionTime,
-    dynamic pattern,
+    String? pattern,
     @JsonKey(name: 'callID') String? callId,
   }) = _Permission;
 

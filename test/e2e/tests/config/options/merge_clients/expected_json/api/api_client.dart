@@ -7,6 +7,7 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 import 'package:retrofit/error_logger.dart';
 
+import '../models/category.dart';
 import '../models/comment.dart';
 import '../models/create_comment_request.dart';
 import '../models/create_post_request.dart';
@@ -14,7 +15,6 @@ import '../models/create_user_request.dart';
 import '../models/dynamic_object.dart';
 import '../models/empty_object.dart';
 import '../models/entity.dart';
-import '../models/enum0.dart';
 import '../models/file_metadata.dart';
 import '../models/file_upload_response.dart';
 import '../models/filters.dart';
@@ -106,11 +106,6 @@ abstract class ApiClient {
   /// Upload user avatar (multipart).
   ///
   /// [file] - Avatar image file.
-  /// Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
   ///
   /// [userId] - User ID.
   @MultiPart()
@@ -157,24 +152,14 @@ abstract class ApiClient {
     @Query('depth') int? depth = 3,
   });
 
-  /// Upload file with metadata.
-  ///
-  /// [files] - Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [category] - Name not received and was auto-generated.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
-  ///
-  /// [isPublic] - Name not received - field will be skipped.
+  /// Upload file with metadata
   @MultiPart()
   @POST('/files/upload')
   Future<FileUploadResponse> uploadFile({
     @Part(name: 'files') required List<MultipartFile> files,
     @Part(name: 'isPublic') bool? isPublic = false,
     @Part(name: 'description') String? description,
-    @Part(name: 'category') Enum0? category,
+    @Part(name: 'category') Category? category,
     @Part(name: 'metadata') FileMetadata? metadata,
   });
 

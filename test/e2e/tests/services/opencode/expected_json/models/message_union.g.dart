@@ -37,7 +37,7 @@ MessageUnionAssistantMessage _$MessageUnionAssistantMessageFromJson(
   ),
   error: json['error'] == null
       ? null
-      : AssistantMessageErrorErrorUnion.fromJson(
+      : AssistantMessageErrorUnion.fromJson(
           json['error'] as Map<String, dynamic>,
         ),
   system: (json['system'] as List<dynamic>).map((e) => e as String).toList(),

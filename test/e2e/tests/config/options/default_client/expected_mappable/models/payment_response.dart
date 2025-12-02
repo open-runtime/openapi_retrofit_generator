@@ -4,7 +4,7 @@
 
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'payment_response_details_details_union.dart';
+import 'payment_response_details_union.dart';
 import 'payment_response_status_status.dart';
 
 part 'payment_response.mapper.dart';
@@ -24,7 +24,7 @@ class PaymentResponse with PaymentResponseMappable {
   final PaymentResponseStatusStatus status;
   final double amount;
   final DateTime? processedAt;
-  final PaymentResponseDetailsDetailsUnion? details;
+  final PaymentResponseDetailsUnion? details;
   final String currency;
 
   static PaymentResponse fromJson(Map<String, dynamic> json) =>

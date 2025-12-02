@@ -103,10 +103,10 @@ void main() {
       expect(result, equals("'<|endoftext|>'"));
     });
 
-    test('should NOT quote regular values with dynamic type', () {
-      // Regular values without special chars shouldn't be quoted
+    test('should quote regular values with dynamic type', () {
+      // All string values should be quoted for dynamic type to be valid Dart code
       final result = protectDefaultValue('normalValue', type: 'dynamic');
-      expect(result, equals('normalValue'));
+      expect(result, equals("'normalValue'"));
     });
 
     test('should NOT quote numeric values', () {

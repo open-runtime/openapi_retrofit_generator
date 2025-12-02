@@ -67,6 +67,7 @@ class ToolStateUnionToolStateRunning extends ToolStateUnion
   final dynamic input;
   final String? title;
   final Map<String, dynamic>? metadata;
+  @MappableField(key: 'ToolStateRunningTime')
   final ToolStateRunningTime toolStateRunningTime;
 
   const ToolStateUnionToolStateRunning({
@@ -86,6 +87,7 @@ class ToolStateUnionToolStateCompleted extends ToolStateUnion
   final String output;
   final String title;
   final Map<String, dynamic> metadata;
+  @MappableField(key: 'ToolStateCompletedTime')
   final ToolStateCompletedTime toolStateCompletedTime;
   final List<FilePart>? attachments;
 
@@ -107,6 +109,7 @@ class ToolStateUnionToolStateError extends ToolStateUnion
   final Map<String, dynamic> input;
   final String error;
   final Map<String, dynamic>? metadata;
+  @MappableField(key: 'ToolStateErrorTime')
   final ToolStateErrorTime toolStateErrorTime;
 
   const ToolStateUnionToolStateError({

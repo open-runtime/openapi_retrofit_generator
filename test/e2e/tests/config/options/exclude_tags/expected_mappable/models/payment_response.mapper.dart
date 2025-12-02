@@ -15,7 +15,7 @@ class PaymentResponseMapper extends ClassMapperBase<PaymentResponse> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = PaymentResponseMapper._());
       PaymentResponseStatusStatusMapper.ensureInitialized();
-      PaymentResponseDetailsDetailsUnionMapper.ensureInitialized();
+      PaymentResponseDetailsUnionMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -42,10 +42,9 @@ class PaymentResponseMapper extends ClassMapperBase<PaymentResponse> {
     _$processedAt,
     opt: true,
   );
-  static PaymentResponseDetailsDetailsUnion? _$details(PaymentResponse v) =>
-      v.details;
-  static const Field<PaymentResponse, PaymentResponseDetailsDetailsUnion>
-  _f$details = Field('details', _$details, opt: true);
+  static PaymentResponseDetailsUnion? _$details(PaymentResponse v) => v.details;
+  static const Field<PaymentResponse, PaymentResponseDetailsUnion> _f$details =
+      Field('details', _$details, opt: true);
   static String _$currency(PaymentResponse v) => v.currency;
   static const Field<PaymentResponse, String> _f$currency = Field(
     'currency',
@@ -137,10 +136,10 @@ extension PaymentResponseValueCopy<$R, $Out>
 
 abstract class PaymentResponseCopyWith<$R, $In extends PaymentResponse, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  PaymentResponseDetailsDetailsUnionCopyWith<
+  PaymentResponseDetailsUnionCopyWith<
     $R,
-    PaymentResponseDetailsDetailsUnion,
-    PaymentResponseDetailsDetailsUnion
+    PaymentResponseDetailsUnion,
+    PaymentResponseDetailsUnion
   >?
   get details;
   $R call({
@@ -148,7 +147,7 @@ abstract class PaymentResponseCopyWith<$R, $In extends PaymentResponse, $Out>
     PaymentResponseStatusStatus? status,
     double? amount,
     DateTime? processedAt,
-    PaymentResponseDetailsDetailsUnion? details,
+    PaymentResponseDetailsUnion? details,
     String? currency,
   });
   PaymentResponseCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
@@ -165,10 +164,10 @@ class _PaymentResponseCopyWithImpl<$R, $Out>
   late final ClassMapperBase<PaymentResponse> $mapper =
       PaymentResponseMapper.ensureInitialized();
   @override
-  PaymentResponseDetailsDetailsUnionCopyWith<
+  PaymentResponseDetailsUnionCopyWith<
     $R,
-    PaymentResponseDetailsDetailsUnion,
-    PaymentResponseDetailsDetailsUnion
+    PaymentResponseDetailsUnion,
+    PaymentResponseDetailsUnion
   >?
   get details => $value.details?.copyWith.$chain((v) => call(details: v));
   @override

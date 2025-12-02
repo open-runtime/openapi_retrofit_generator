@@ -87,11 +87,13 @@ class PartModelUnionTextPartMapper
   static const Field<PartModelUnionTextPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionTextPart v) => v.messageId;
   static const Field<PartModelUnionTextPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionTextPart v) => v.type;
   static const Field<PartModelUnionTextPart, String> _f$type = Field(
@@ -111,7 +113,7 @@ class PartModelUnionTextPartMapper
   static TextPartTime? _$textPartTime(PartModelUnionTextPart v) =>
       v.textPartTime;
   static const Field<PartModelUnionTextPart, TextPartTime> _f$textPartTime =
-      Field('textPartTime', _$textPartTime);
+      Field('textPartTime', _$textPartTime, key: r'TextPartTime');
   static Map<String, dynamic>? _$metadata(PartModelUnionTextPart v) =>
       v.metadata;
   static const Field<PartModelUnionTextPart, Map<String, dynamic>> _f$metadata =
@@ -320,11 +322,13 @@ class PartModelUnionReasoningPartMapper
   static const Field<PartModelUnionReasoningPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionReasoningPart v) => v.messageId;
   static const Field<PartModelUnionReasoningPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionReasoningPart v) => v.type;
   static const Field<PartModelUnionReasoningPart, String> _f$type = Field(
@@ -343,7 +347,11 @@ class PartModelUnionReasoningPartMapper
   static ReasoningPartTime _$reasoningPartTime(PartModelUnionReasoningPart v) =>
       v.reasoningPartTime;
   static const Field<PartModelUnionReasoningPart, ReasoningPartTime>
-  _f$reasoningPartTime = Field('reasoningPartTime', _$reasoningPartTime);
+  _f$reasoningPartTime = Field(
+    'reasoningPartTime',
+    _$reasoningPartTime,
+    key: r'ReasoningPartTime',
+  );
 
   @override
   final MappableFields<PartModelUnionReasoningPart> fields = const {
@@ -556,11 +564,13 @@ class PartModelUnionFilePartMapper
   static const Field<PartModelUnionFilePart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionFilePart v) => v.messageId;
   static const Field<PartModelUnionFilePart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionFilePart v) => v.type;
   static const Field<PartModelUnionFilePart, String> _f$type = Field(
@@ -774,11 +784,13 @@ class PartModelUnionToolPartMapper
   static const Field<PartModelUnionToolPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionToolPart v) => v.messageId;
   static const Field<PartModelUnionToolPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionToolPart v) => v.type;
   static const Field<PartModelUnionToolPart, String> _f$type = Field(
@@ -789,6 +801,7 @@ class PartModelUnionToolPartMapper
   static const Field<PartModelUnionToolPart, String> _f$callId = Field(
     'callId',
     _$callId,
+    key: r'callID',
   );
   static String _$tool(PartModelUnionToolPart v) => v.tool;
   static const Field<PartModelUnionToolPart, String> _f$tool = Field(
@@ -1007,11 +1020,13 @@ class PartModelUnionStepStartPartMapper
   static const Field<PartModelUnionStepStartPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionStepStartPart v) => v.messageId;
   static const Field<PartModelUnionStepStartPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionStepStartPart v) => v.type;
   static const Field<PartModelUnionStepStartPart, String> _f$type = Field(
@@ -1207,11 +1222,13 @@ class PartModelUnionStepFinishPartMapper
   static const Field<PartModelUnionStepFinishPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionStepFinishPart v) => v.messageId;
   static const Field<PartModelUnionStepFinishPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionStepFinishPart v) => v.type;
   static const Field<PartModelUnionStepFinishPart, String> _f$type = Field(
@@ -1235,6 +1252,7 @@ class PartModelUnionStepFinishPartMapper
   _f$stepFinishPartTokens = Field(
     'stepFinishPartTokens',
     _$stepFinishPartTokens,
+    key: r'StepFinishPartTokens',
   );
 
   @override
@@ -1441,11 +1459,13 @@ class PartModelUnionSnapshotPartMapper
   static const Field<PartModelUnionSnapshotPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionSnapshotPart v) => v.messageId;
   static const Field<PartModelUnionSnapshotPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionSnapshotPart v) => v.type;
   static const Field<PartModelUnionSnapshotPart, String> _f$type = Field(
@@ -1633,11 +1653,13 @@ class PartModelUnionPatchPartMapper
   static const Field<PartModelUnionPatchPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionPatchPart v) => v.messageId;
   static const Field<PartModelUnionPatchPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionPatchPart v) => v.type;
   static const Field<PartModelUnionPatchPart, String> _f$type = Field(
@@ -1836,11 +1858,13 @@ class PartModelUnionAgentPartMapper
   static const Field<PartModelUnionAgentPart, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$messageId(PartModelUnionAgentPart v) => v.messageId;
   static const Field<PartModelUnionAgentPart, String> _f$messageId = Field(
     'messageId',
     _$messageId,
+    key: r'messageID',
   );
   static String _$type(PartModelUnionAgentPart v) => v.type;
   static const Field<PartModelUnionAgentPart, String> _f$type = Field(
@@ -1855,7 +1879,11 @@ class PartModelUnionAgentPartMapper
   static AgentPartSource? _$agentPartSource(PartModelUnionAgentPart v) =>
       v.agentPartSource;
   static const Field<PartModelUnionAgentPart, AgentPartSource>
-  _f$agentPartSource = Field('agentPartSource', _$agentPartSource);
+  _f$agentPartSource = Field(
+    'agentPartSource',
+    _$agentPartSource,
+    key: r'AgentPartSource',
+  );
 
   @override
   final MappableFields<PartModelUnionAgentPart> fields = const {

@@ -4,6 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import 'class_with_nullable_types_non_null_any_of_union.dart';
 import 'class_with_nullable_types_p3.dart';
 import 'class_with_nullable_types_p3_n.dart';
 
@@ -73,19 +74,19 @@ class ClassWithNullableTypes {
   @JsonKey(name: 'p3_list')
   final dynamic p3List;
   @JsonKey(name: 'nonNull_anyOf')
-  final dynamic nonNullAnyOf;
+  final ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf;
   @JsonKey(name: 'optional_null_anyOf')
-  final dynamic optionalNullAnyOf;
+  final String? optionalNullAnyOf;
   @JsonKey(name: 'required_null_anyOf')
-  final dynamic requiredNullAnyOf;
+  final String requiredNullAnyOf;
   @JsonKey(name: 'p1_anyOf')
-  final dynamic p1AnyOf;
+  final String p1AnyOf;
   @JsonKey(name: 'p2_anyOf')
   final dynamic p2AnyOf;
   @JsonKey(name: 'p3_anyOf')
   final dynamic p3AnyOf;
   @JsonKey(name: 'p1_oneOf')
-  final dynamic p1OneOf;
+  final String p1OneOf;
   @JsonKey(name: 'p2_oneOf')
   final dynamic p2OneOf;
   @JsonKey(name: 'p3_oneOf')

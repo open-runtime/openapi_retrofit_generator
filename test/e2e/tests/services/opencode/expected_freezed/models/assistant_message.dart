@@ -4,7 +4,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'assistant_message_error_error_union.dart';
+import 'assistant_message_error_union.dart';
 import 'assistant_message_path.dart';
 import 'assistant_message_time.dart';
 import 'assistant_message_tokens.dart';
@@ -29,7 +29,7 @@ abstract class AssistantMessage with _$AssistantMessage {
     required num cost,
     @JsonKey(name: 'AssistantMessageTokens')
     required AssistantMessageTokens assistantMessageTokens,
-    AssistantMessageErrorErrorUnion? error,
+    AssistantMessageErrorUnion? error,
     bool? summary,
   }) = _AssistantMessage;
 

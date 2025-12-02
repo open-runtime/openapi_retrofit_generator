@@ -50,56 +50,10 @@ extension EntityUnionDeserializer on Entity {
 
 @MappableClass(discriminatorValue: 'person')
 class EntityPerson extends Entity with EntityPersonMappable {
-  final String id;
-  final PersonEntityEntityTypeEntityType? entityType;
-  final String? name;
-  final String? description;
-  final DateTime createdAt;
-  final DateTime? updatedAt;
-  final DateTime dateOfBirth;
-  final String? nationality;
-  final String? occupation;
-  final Map<String, String>? socialProfiles;
-
-  const EntityPerson({
-    required this.id,
-    required this.entityType,
-    required this.name,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.dateOfBirth,
-    required this.nationality,
-    required this.occupation,
-    required this.socialProfiles,
-  });
+  const EntityPerson();
 }
 
 @MappableClass(discriminatorValue: 'organization')
 class EntityOrganization extends Entity with EntityOrganizationMappable {
-  final String id;
-  final OrganizationEntityEntityTypeEntityType? entityType;
-  final String? name;
-  final String? description;
-  final DateTime createdAt;
-  final DateTime? updatedAt;
-  final String registrationNumber;
-  final DateTime? foundedDate;
-  final String? industry;
-  final int? employeeCount;
-  final double? revenue;
-
-  const EntityOrganization({
-    required this.id,
-    required this.entityType,
-    required this.name,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.registrationNumber,
-    required this.foundedDate,
-    required this.industry,
-    required this.employeeCount,
-    required this.revenue,
-  });
+  const EntityOrganization();
 }

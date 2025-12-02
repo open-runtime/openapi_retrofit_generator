@@ -14,7 +14,7 @@ class FamilyMapper extends ClassMapperBase<Family> {
   static FamilyMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = FamilyMapper._());
-      FamilyMembersMembersUnionMapper.ensureInitialized();
+      FamilyMembersUnionMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -22,9 +22,11 @@ class FamilyMapper extends ClassMapperBase<Family> {
   @override
   final String id = 'Family';
 
-  static List<FamilyMembersMembersUnion> _$members(Family v) => v.members;
-  static const Field<Family, List<FamilyMembersMembersUnion>> _f$members =
-      Field('members', _$members);
+  static List<FamilyMembersUnion> _$members(Family v) => v.members;
+  static const Field<Family, List<FamilyMembersUnion>> _f$members = Field(
+    'members',
+    _$members,
+  );
 
   @override
   final MappableFields<Family> fields = const {#members: _f$members};
@@ -81,15 +83,11 @@ abstract class FamilyCopyWith<$R, $In extends Family, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<
     $R,
-    FamilyMembersMembersUnion,
-    FamilyMembersMembersUnionCopyWith<
-      $R,
-      FamilyMembersMembersUnion,
-      FamilyMembersMembersUnion
-    >
+    FamilyMembersUnion,
+    FamilyMembersUnionCopyWith<$R, FamilyMembersUnion, FamilyMembersUnion>
   >
   get members;
-  $R call({List<FamilyMembersMembersUnion>? members});
+  $R call({List<FamilyMembersUnion>? members});
   FamilyCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -102,12 +100,8 @@ class _FamilyCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Family, $Out>
   @override
   ListCopyWith<
     $R,
-    FamilyMembersMembersUnion,
-    FamilyMembersMembersUnionCopyWith<
-      $R,
-      FamilyMembersMembersUnion,
-      FamilyMembersMembersUnion
-    >
+    FamilyMembersUnion,
+    FamilyMembersUnionCopyWith<$R, FamilyMembersUnion, FamilyMembersUnion>
   >
   get members => ListCopyWith(
     $value.members,
@@ -115,7 +109,7 @@ class _FamilyCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Family, $Out>
     (v) => call(members: v),
   );
   @override
-  $R call({List<FamilyMembersMembersUnion>? members}) =>
+  $R call({List<FamilyMembersUnion>? members}) =>
       $apply(FieldCopyWithData({if (members != null) #members: members}));
   @override
   Family $make(CopyWithData data) =>

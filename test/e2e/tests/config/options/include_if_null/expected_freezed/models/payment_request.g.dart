@@ -9,67 +9,73 @@ part of 'payment_request.dart';
 PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(
   Map<String, dynamic> json,
 ) => PaymentRequestCreditCard(
+  paymentType: PaymentRequestPaymentTypePaymentType.fromJson(
+    json['paymentType'] as String,
+  ),
   cardNumber: json['cardNumber'] as String,
   expiryMonth: (json['expiryMonth'] as num).toInt(),
   expiryYear: (json['expiryYear'] as num).toInt(),
   cvv: json['cvv'] as String,
-  amount: (json['amount'] as num).toDouble(),
   cardholderName: json['cardholderName'] as String?,
-  $type: json['paymentType'] as String?,
+  amount: (json['amount'] as num).toDouble(),
 );
 
 Map<String, dynamic> _$PaymentRequestCreditCardToJson(
   PaymentRequestCreditCard instance,
 ) => <String, dynamic>{
+  'paymentType': instance.paymentType,
   'cardNumber': instance.cardNumber,
   'expiryMonth': instance.expiryMonth,
   'expiryYear': instance.expiryYear,
   'cvv': instance.cvv,
+  'cardholderName': instance.cardholderName,
   'amount': instance.amount,
-  'cardholderName': ?instance.cardholderName,
-  'paymentType': instance.$type,
 };
 
 PaymentRequestBankTransfer _$PaymentRequestBankTransferFromJson(
   Map<String, dynamic> json,
 ) => PaymentRequestBankTransfer(
+  paymentType: PaymentRequestPaymentTypePaymentType2.fromJson(
+    json['paymentType'] as String,
+  ),
   accountNumber: json['accountNumber'] as String,
   routingNumber: json['routingNumber'] as String,
-  amount: (json['amount'] as num).toDouble(),
   accountHolder: json['accountHolder'] as String?,
+  amount: (json['amount'] as num).toDouble(),
   reference: json['reference'] as String?,
-  $type: json['paymentType'] as String?,
 );
 
 Map<String, dynamic> _$PaymentRequestBankTransferToJson(
   PaymentRequestBankTransfer instance,
 ) => <String, dynamic>{
+  'paymentType': instance.paymentType,
   'accountNumber': instance.accountNumber,
   'routingNumber': instance.routingNumber,
+  'accountHolder': instance.accountHolder,
   'amount': instance.amount,
-  'accountHolder': ?instance.accountHolder,
-  'reference': ?instance.reference,
-  'paymentType': instance.$type,
+  'reference': instance.reference,
 };
 
 PaymentRequestCrypto _$PaymentRequestCryptoFromJson(
   Map<String, dynamic> json,
 ) => PaymentRequestCrypto(
+  paymentType: PaymentRequestPaymentTypePaymentType3.fromJson(
+    json['paymentType'] as String,
+  ),
   walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
+  cryptocurrency: PaymentRequestCryptocurrencyCryptocurrency.fromJson(
     json['cryptocurrency'] as String,
   ),
   amount: (json['amount'] as num).toDouble(),
   transactionHash: json['transactionHash'] as String?,
-  $type: json['paymentType'] as String?,
 );
 
 Map<String, dynamic> _$PaymentRequestCryptoToJson(
   PaymentRequestCrypto instance,
 ) => <String, dynamic>{
+  'paymentType': instance.paymentType,
   'walletAddress': instance.walletAddress,
   'cryptocurrency': instance.cryptocurrency,
   'amount': instance.amount,
-  'transactionHash': ?instance.transactionHash,
-  'paymentType': instance.$type,
+  'transactionHash': instance.transactionHash,
 };

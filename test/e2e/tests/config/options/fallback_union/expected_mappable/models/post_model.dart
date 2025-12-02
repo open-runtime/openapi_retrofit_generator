@@ -43,7 +43,7 @@ class PostModel with PostModelMappable {
   final List<String>? tags;
   final List<Category>? categories;
   final DateTime? publishedAt;
-  final dynamic metadata;
+  final dynamic? metadata;
   final DateTime? updatedAt;
 
   static PostModel fromJson(Map<String, dynamic> json) =>

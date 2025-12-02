@@ -12,6 +12,16 @@ Future<void> main(List<String> arguments) async {
     // Read CLI input
     final argResults = parseConfigGeneratorArguments(arguments);
 
+    // Configure logger based on verbosity flag
+    if (argResults['verbose'] == true) {
+      GeneratorLogger.configure(GeneratorLoggerConfig.verbose);
+    } else if (argResults['debug'] == true) {
+      GeneratorLogger.configure(GeneratorLoggerConfig.info);
+    } else if (argResults['quiet'] == true) {
+      GeneratorLogger.configure(GeneratorLoggerConfig.quiet);
+    }
+    // Default is standard (warnings and errors)
+
     // Read YAML config
     final yamlMap = configProcessor.readConfigFromFile(arguments, argResults);
 

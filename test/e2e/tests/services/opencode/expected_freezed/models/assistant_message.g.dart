@@ -29,7 +29,7 @@ _AssistantMessage _$AssistantMessageFromJson(Map<String, dynamic> json) =>
       ),
       error: json['error'] == null
           ? null
-          : AssistantMessageErrorErrorUnion.fromJson(
+          : AssistantMessageErrorUnion.fromJson(
               json['error'] as Map<String, dynamic>,
             ),
       summary: json['summary'] as bool?,

@@ -16,7 +16,7 @@ PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['processedAt'] as String),
       details: json['details'] == null
           ? null
-          : PaymentResponseDetailsDetailsUnion.fromJson(
+          : PaymentResponseDetailsUnion.fromJson(
               json['details'] as Map<String, dynamic>,
             ),
       currency: json['currency'] as String? ?? 'USD',
@@ -29,5 +29,5 @@ Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
       'amount': instance.amount,
       'currency': instance.currency,
       'processedAt': ?instance.processedAt?.toIso8601String(),
-      'details': ?instance.details,
+      'details': instance.details,
     };

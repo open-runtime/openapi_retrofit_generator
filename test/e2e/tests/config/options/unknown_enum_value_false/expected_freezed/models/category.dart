@@ -4,22 +4,23 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'category.dart';
+@JsonEnum()
+enum Category {
+  @JsonValue('image')
+  image('image'),
+  @JsonValue('video')
+  video('video'),
+  @JsonValue('document')
+  document('document'),
+  @JsonValue('other')
+  other('other');
 
-part 'category.freezed.dart';
-part 'category.g.dart';
+  const Category(this.json);
 
-@Freezed()
-abstract class Category with _$Category {
-  const factory Category({
-    required String id,
-    required String name,
-    String? slug,
+  final String? json;
 
-    /// Circular reference for nested categories
-    Category? parent,
-  }) = _Category;
+  String toJson() => json ?? 'null';
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  @override
+  String toString() => json ?? super.toString();
 }

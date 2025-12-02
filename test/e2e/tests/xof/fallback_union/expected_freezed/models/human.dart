@@ -4,7 +4,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'family_members_members_union.dart';
+import 'family_members_union.dart';
 import 'human_type_type.dart';
 
 part 'human.freezed.dart';

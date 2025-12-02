@@ -195,7 +195,7 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
       : User.fromJson(json['author'] as Map<String, dynamic>),
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   categories: (json['categories'] as List<dynamic>?)
-      ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+      ?.map((e) => Category.fromJson(e as String))
       .toList(),
   publishedAt: json['publishedAt'] == null
       ? null
@@ -230,7 +230,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
   slug: json['slug'] as String?,
   parent: json['parent'] == null
       ? null
-      : Category.fromJson(json['parent'] as Map<String, dynamic>),
+      : Category.fromJson(json['parent'] as String),
 );
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
@@ -493,7 +493,7 @@ PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['processedAt'] as String),
       details: json['details'] == null
           ? null
-          : PaymentResponseDetailsDetailsUnion.fromJson(
+          : PaymentResponseDetailsUnion.fromJson(
               json['details'] as Map<String, dynamic>,
             ),
       currency: json['currency'] as String? ?? 'USD',
@@ -927,7 +927,7 @@ GetPostResponse _$GetPostResponseFromJson(Map<String, dynamic> json) =>
           : User.fromJson(json['author'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
       categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Category.fromJson(e as String))
           .toList(),
       publishedAt: json['publishedAt'] == null
           ? null
@@ -1081,24 +1081,26 @@ Map<String, dynamic> _$UserSettingsPrivacyToJson(
   'showEmail': instance.showEmail,
 };
 
-PaymentResponseDetailsDetailsUnionCreditCardPayment
-_$PaymentResponseDetailsDetailsUnionCreditCardPaymentFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionCreditCardPayment(
-  paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  cardNumber: json['cardNumber'] as String,
-  expiryMonth: (json['expiryMonth'] as num).toInt(),
-  expiryYear: (json['expiryYear'] as num).toInt(),
-  cvv: json['cvv'] as String,
-  cardholderName: json['cardholderName'] as String?,
-  amount: (json['amount'] as num).toDouble(),
-);
+Map<String, dynamic> _$PaymentResponseDetailsUnionToJson(
+  PaymentResponseDetailsUnion instance,
+) => <String, dynamic>{};
 
-Map<String, dynamic>
-_$PaymentResponseDetailsDetailsUnionCreditCardPaymentToJson(
-  PaymentResponseDetailsDetailsUnionCreditCardPayment instance,
+PaymentResponseDetailsUnionCreditCard
+_$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionCreditCard(
+      paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
+        json['paymentType'] as String,
+      ),
+      cardNumber: json['cardNumber'] as String,
+      expiryMonth: (json['expiryMonth'] as num).toInt(),
+      expiryYear: (json['expiryYear'] as num).toInt(),
+      cvv: json['cvv'] as String,
+      cardholderName: json['cardholderName'] as String?,
+      amount: (json['amount'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(
+  PaymentResponseDetailsUnionCreditCard instance,
 ) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'cardNumber': instance.cardNumber,
@@ -1109,23 +1111,21 @@ _$PaymentResponseDetailsDetailsUnionCreditCardPaymentToJson(
   'amount': instance.amount,
 };
 
-PaymentResponseDetailsDetailsUnionBankTransferPayment
-_$PaymentResponseDetailsDetailsUnionBankTransferPaymentFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionBankTransferPayment(
-  paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  accountNumber: json['accountNumber'] as String,
-  routingNumber: json['routingNumber'] as String,
-  accountHolder: json['accountHolder'] as String?,
-  amount: (json['amount'] as num).toDouble(),
-  reference: json['reference'] as String?,
-);
+PaymentResponseDetailsUnionBankTransfer
+_$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionBankTransfer(
+      paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
+        json['paymentType'] as String,
+      ),
+      accountNumber: json['accountNumber'] as String,
+      routingNumber: json['routingNumber'] as String,
+      accountHolder: json['accountHolder'] as String?,
+      amount: (json['amount'] as num).toDouble(),
+      reference: json['reference'] as String?,
+    );
 
-Map<String, dynamic>
-_$PaymentResponseDetailsDetailsUnionBankTransferPaymentToJson(
-  PaymentResponseDetailsDetailsUnionBankTransferPayment instance,
+Map<String, dynamic> _$PaymentResponseDetailsUnionBankTransferToJson(
+  PaymentResponseDetailsUnionBankTransfer instance,
 ) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'accountNumber': instance.accountNumber,
@@ -1135,10 +1135,9 @@ _$PaymentResponseDetailsDetailsUnionBankTransferPaymentToJson(
   'reference': instance.reference,
 };
 
-PaymentResponseDetailsDetailsUnionCryptoPayment
-_$PaymentResponseDetailsDetailsUnionCryptoPaymentFromJson(
+PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(
   Map<String, dynamic> json,
-) => PaymentResponseDetailsDetailsUnionCryptoPayment(
+) => PaymentResponseDetailsUnionCrypto(
   paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(
     json['paymentType'] as String,
   ),
@@ -1150,8 +1149,8 @@ _$PaymentResponseDetailsDetailsUnionCryptoPaymentFromJson(
   transactionHash: json['transactionHash'] as String?,
 );
 
-Map<String, dynamic> _$PaymentResponseDetailsDetailsUnionCryptoPaymentToJson(
-  PaymentResponseDetailsDetailsUnionCryptoPayment instance,
+Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(
+  PaymentResponseDetailsUnionCrypto instance,
 ) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'walletAddress': instance.walletAddress,
@@ -1725,7 +1724,7 @@ class _FilesClient implements FilesClient {
     required List<MultipartFile> files,
     bool? isPublic = false,
     String? description,
-    Enum0? category,
+    Category? category,
     FileMetadata? metadata,
   }) async {
     final _extra = <String, dynamic>{};

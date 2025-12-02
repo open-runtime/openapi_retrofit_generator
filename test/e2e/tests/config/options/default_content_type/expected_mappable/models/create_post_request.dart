@@ -22,7 +22,7 @@ class CreatePostRequest with CreatePostRequestMappable {
   final String authorId;
   final List<String>? tags;
   final DateTime? publishAt;
-  final dynamic metadata;
+  final dynamic? metadata;
 
   static CreatePostRequest fromJson(Map<String, dynamic> json) =>
       CreatePostRequestMapper.fromJson(json);

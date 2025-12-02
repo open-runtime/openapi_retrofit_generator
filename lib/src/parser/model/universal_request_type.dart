@@ -51,6 +51,23 @@ final class UniversalRequestType {
       'type: $type, '
       'parameterType: $parameterType, '
       'deprecated: $deprecated)';
+
+  /// Creates a copy of this [UniversalRequestType] with the given fields replaced
+  UniversalRequestType copyWith({
+    String? name,
+    UniversalType? type,
+    HttpParameterType? parameterType,
+    String? description,
+    bool? deprecated,
+  }) {
+    return UniversalRequestType(
+      name: name ?? this.name,
+      type: type ?? this.type,
+      parameterType: parameterType ?? this.parameterType,
+      description: description ?? this.description,
+      deprecated: deprecated ?? this.deprecated,
+    );
+  }
 }
 
 /// Type of parameter in rest client

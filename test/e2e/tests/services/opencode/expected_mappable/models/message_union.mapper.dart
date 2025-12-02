@@ -79,6 +79,7 @@ class MessageUnionUserMessageMapper
   static const Field<MessageUnionUserMessage, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$role(MessageUnionUserMessage v) => v.role;
   static const Field<MessageUnionUserMessage, String> _f$role = Field(
@@ -88,7 +89,11 @@ class MessageUnionUserMessageMapper
   static UserMessageTime _$userMessageTime(MessageUnionUserMessage v) =>
       v.userMessageTime;
   static const Field<MessageUnionUserMessage, UserMessageTime>
-  _f$userMessageTime = Field('userMessageTime', _$userMessageTime);
+  _f$userMessageTime = Field(
+    'userMessageTime',
+    _$userMessageTime,
+    key: r'UserMessageTime',
+  );
 
   @override
   final MappableFields<MessageUnionUserMessage> fields = const {
@@ -244,7 +249,7 @@ class MessageUnionAssistantMessageMapper
       );
       MessageUnionMapper.ensureInitialized();
       AssistantMessageTimeMapper.ensureInitialized();
-      AssistantMessageErrorErrorUnionMapper.ensureInitialized();
+      AssistantMessageErrorUnionMapper.ensureInitialized();
       AssistantMessagePathMapper.ensureInitialized();
       AssistantMessageTokensMapper.ensureInitialized();
     }
@@ -263,6 +268,7 @@ class MessageUnionAssistantMessageMapper
   static const Field<MessageUnionAssistantMessage, String> _f$sessionId = Field(
     'sessionId',
     _$sessionId,
+    key: r'sessionID',
   );
   static String _$role(MessageUnionAssistantMessage v) => v.role;
   static const Field<MessageUnionAssistantMessage, String> _f$role = Field(
@@ -276,14 +282,11 @@ class MessageUnionAssistantMessageMapper
   _f$assistantMessageTime = Field(
     'assistantMessageTime',
     _$assistantMessageTime,
+    key: r'AssistantMessageTime',
   );
-  static AssistantMessageErrorErrorUnion? _$error(
-    MessageUnionAssistantMessage v,
-  ) => v.error;
-  static const Field<
-    MessageUnionAssistantMessage,
-    AssistantMessageErrorErrorUnion
-  >
+  static AssistantMessageErrorUnion? _$error(MessageUnionAssistantMessage v) =>
+      v.error;
+  static const Field<MessageUnionAssistantMessage, AssistantMessageErrorUnion>
   _f$error = Field('error', _$error);
   static List<String> _$system(MessageUnionAssistantMessage v) => v.system;
   static const Field<MessageUnionAssistantMessage, List<String>> _f$system =
@@ -292,10 +295,11 @@ class MessageUnionAssistantMessageMapper
   static const Field<MessageUnionAssistantMessage, String> _f$modelId = Field(
     'modelId',
     _$modelId,
+    key: r'modelID',
   );
   static String _$providerId(MessageUnionAssistantMessage v) => v.providerId;
   static const Field<MessageUnionAssistantMessage, String> _f$providerId =
-      Field('providerId', _$providerId);
+      Field('providerId', _$providerId, key: r'providerID');
   static String _$mode(MessageUnionAssistantMessage v) => v.mode;
   static const Field<MessageUnionAssistantMessage, String> _f$mode = Field(
     'mode',
@@ -308,6 +312,7 @@ class MessageUnionAssistantMessageMapper
   _f$assistantMessagePath = Field(
     'assistantMessagePath',
     _$assistantMessagePath,
+    key: r'AssistantMessagePath',
   );
   static bool? _$summary(MessageUnionAssistantMessage v) => v.summary;
   static const Field<MessageUnionAssistantMessage, bool> _f$summary = Field(
@@ -326,6 +331,7 @@ class MessageUnionAssistantMessageMapper
   _f$assistantMessageTokens = Field(
     'assistantMessageTokens',
     _$assistantMessageTokens,
+    key: r'AssistantMessageTokens',
   );
 
   @override
@@ -438,10 +444,10 @@ abstract class MessageUnionAssistantMessageCopyWith<
     implements MessageUnionCopyWith<$R, $In, $Out> {
   AssistantMessageTimeCopyWith<$R, AssistantMessageTime, AssistantMessageTime>
   get assistantMessageTime;
-  AssistantMessageErrorErrorUnionCopyWith<
+  AssistantMessageErrorUnionCopyWith<
     $R,
-    AssistantMessageErrorErrorUnion,
-    AssistantMessageErrorErrorUnion
+    AssistantMessageErrorUnion,
+    AssistantMessageErrorUnion
   >?
   get error;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get system;
@@ -459,7 +465,7 @@ abstract class MessageUnionAssistantMessageCopyWith<
     String? sessionId,
     String? role,
     AssistantMessageTime? assistantMessageTime,
-    AssistantMessageErrorErrorUnion? error,
+    AssistantMessageErrorUnion? error,
     List<String>? system,
     String? modelId,
     String? providerId,
@@ -497,10 +503,10 @@ class _MessageUnionAssistantMessageCopyWithImpl<$R, $Out>
     (v) => call(assistantMessageTime: v),
   );
   @override
-  AssistantMessageErrorErrorUnionCopyWith<
+  AssistantMessageErrorUnionCopyWith<
     $R,
-    AssistantMessageErrorErrorUnion,
-    AssistantMessageErrorErrorUnion
+    AssistantMessageErrorUnion,
+    AssistantMessageErrorUnion
   >?
   get error => $value.error?.copyWith.$chain((v) => call(error: v));
   @override

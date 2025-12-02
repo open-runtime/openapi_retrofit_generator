@@ -22,7 +22,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<String> postMultipartRequestProps({
     required List<MultipartFile> images,
-    Object0? address,
+    Address? address,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -62,7 +62,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<String> postMultipartRequestRef({
     required List<MultipartFile> images,
-    Object1? address,
+    Address? address,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -1,0 +1,50 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'bank_transfer_payment.dart';
+import 'bank_transfer_payment_payment_type_payment_type.dart';
+import 'credit_card_payment.dart';
+import 'credit_card_payment_payment_type_payment_type.dart';
+import 'crypto_payment.dart';
+import 'crypto_payment_cryptocurrency_cryptocurrency.dart';
+import 'crypto_payment_payment_type_payment_type.dart';
+import 'payment_request.dart';
+
+part 'payment_response_details_union.freezed.dart';
+part 'payment_response_details_union.g.dart';
+
+@Freezed(unionKey: 'paymentType')
+sealed class PaymentResponseDetailsUnion with _$PaymentResponseDetailsUnion {
+  @FreezedUnionValue('credit_card')
+  const factory PaymentResponseDetailsUnion.creditCard({
+    required String cardNumber,
+    required int expiryMonth,
+    required int expiryYear,
+    required String cvv,
+    required double amount,
+    String? cardholderName,
+  }) = PaymentResponseDetailsUnionCreditCard;
+
+  @FreezedUnionValue('bank_transfer')
+  const factory PaymentResponseDetailsUnion.bankTransfer({
+    required String accountNumber,
+    required String routingNumber,
+    required double amount,
+    String? accountHolder,
+    String? reference,
+  }) = PaymentResponseDetailsUnionBankTransfer;
+
+  @FreezedUnionValue('crypto')
+  const factory PaymentResponseDetailsUnion.crypto({
+    required String walletAddress,
+    required CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency,
+    required double amount,
+    String? transactionHash,
+  }) = PaymentResponseDetailsUnionCrypto;
+
+  factory PaymentResponseDetailsUnion.fromJson(Map<String, Object?> json) =>
+      _$PaymentResponseDetailsUnionFromJson(json);
+}

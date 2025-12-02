@@ -10,9 +10,9 @@ part 'agent_config_permission.mapper.dart';
 class AgentConfigPermission with AgentConfigPermissionMappable {
   const AgentConfigPermission({this.edit, this.bash, this.webfetch});
 
-  final dynamic edit;
-  final dynamic bash;
-  final dynamic webfetch;
+  final String? edit;
+  final dynamic? bash;
+  final String? webfetch;
 
   static AgentConfigPermission fromJson(Map<String, dynamic> json) =>
       AgentConfigPermissionMapper.fromJson(json);

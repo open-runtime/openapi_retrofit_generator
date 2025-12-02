@@ -21,9 +21,9 @@ class ConfigMapper extends ClassMapperBase<Config> {
       ConfigShareShareMapper.ensureInitialized();
       AgentConfigMapper.ensureInitialized();
       ProviderMapper.ensureInitialized();
-      McpMcpUnionMapper.ensureInitialized();
+      McpUnionMapper.ensureInitialized();
       FormatterMapper.ensureInitialized();
-      LspLspUnionMapper.ensureInitialized();
+      LspUnionMapper.ensureInitialized();
       LayoutConfigMapper.ensureInitialized();
       ConfigPermissionMapper.ensureInitialized();
       ConfigExperimentalMapper.ensureInitialized();
@@ -147,8 +147,8 @@ class ConfigMapper extends ClassMapperBase<Config> {
     _$provider,
     opt: true,
   );
-  static Map<String, McpMcpUnion>? _$mcp(Config v) => v.mcp;
-  static const Field<Config, Map<String, McpMcpUnion>> _f$mcp = Field(
+  static Map<String, McpUnion>? _$mcp(Config v) => v.mcp;
+  static const Field<Config, Map<String, McpUnion>> _f$mcp = Field(
     'mcp',
     _$mcp,
     opt: true,
@@ -159,8 +159,8 @@ class ConfigMapper extends ClassMapperBase<Config> {
     _$formatter,
     opt: true,
   );
-  static Map<String, LspLspUnion>? _$lsp(Config v) => v.lsp;
-  static const Field<Config, Map<String, LspLspUnion>> _f$lsp = Field(
+  static Map<String, LspUnion>? _$lsp(Config v) => v.lsp;
+  static const Field<Config, Map<String, LspUnion>> _f$lsp = Field(
     'lsp',
     _$lsp,
     opt: true,
@@ -330,12 +330,7 @@ abstract class ConfigCopyWith<$R, $In extends Config, $Out>
   get agent;
   MapCopyWith<$R, String, Provider, ProviderCopyWith<$R, Provider, Provider>>?
   get provider;
-  MapCopyWith<
-    $R,
-    String,
-    McpMcpUnion,
-    McpMcpUnionCopyWith<$R, McpMcpUnion, McpMcpUnion>
-  >?
+  MapCopyWith<$R, String, McpUnion, McpUnionCopyWith<$R, McpUnion, McpUnion>>?
   get mcp;
   MapCopyWith<
     $R,
@@ -344,12 +339,7 @@ abstract class ConfigCopyWith<$R, $In extends Config, $Out>
     FormatterCopyWith<$R, Formatter, Formatter>
   >?
   get formatter;
-  MapCopyWith<
-    $R,
-    String,
-    LspLspUnion,
-    LspLspUnionCopyWith<$R, LspLspUnion, LspLspUnion>
-  >?
+  MapCopyWith<$R, String, LspUnion, LspUnionCopyWith<$R, LspUnion, LspUnion>>?
   get lsp;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>?
   get instructions;
@@ -377,9 +367,9 @@ abstract class ConfigCopyWith<$R, $In extends Config, $Out>
     Map<String, AgentConfig>? mode,
     Map<String, AgentConfig>? agent,
     Map<String, Provider>? provider,
-    Map<String, McpMcpUnion>? mcp,
+    Map<String, McpUnion>? mcp,
     Map<String, Formatter>? formatter,
-    Map<String, LspLspUnion>? lsp,
+    Map<String, LspUnion>? lsp,
     List<String>? instructions,
     LayoutConfig? layout,
     ConfigPermission? configPermission,
@@ -469,12 +459,7 @@ class _ConfigCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Config, $Out>
         )
       : null;
   @override
-  MapCopyWith<
-    $R,
-    String,
-    McpMcpUnion,
-    McpMcpUnionCopyWith<$R, McpMcpUnion, McpMcpUnion>
-  >?
+  MapCopyWith<$R, String, McpUnion, McpUnionCopyWith<$R, McpUnion, McpUnion>>?
   get mcp => $value.mcp != null
       ? MapCopyWith(
           $value.mcp!,
@@ -497,12 +482,7 @@ class _ConfigCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Config, $Out>
         )
       : null;
   @override
-  MapCopyWith<
-    $R,
-    String,
-    LspLspUnion,
-    LspLspUnionCopyWith<$R, LspLspUnion, LspLspUnion>
-  >?
+  MapCopyWith<$R, String, LspUnion, LspUnionCopyWith<$R, LspUnion, LspUnion>>?
   get lsp => $value.lsp != null
       ? MapCopyWith(
           $value.lsp!,

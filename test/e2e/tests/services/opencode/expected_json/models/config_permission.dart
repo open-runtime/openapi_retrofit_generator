@@ -13,9 +13,9 @@ class ConfigPermission {
   factory ConfigPermission.fromJson(Map<String, Object?> json) =>
       _$ConfigPermissionFromJson(json);
 
-  final dynamic edit;
+  final String? edit;
   final dynamic bash;
-  final dynamic webfetch;
+  final String? webfetch;
 
   Map<String, Object?> toJson() => _$ConfigPermissionToJson(this);
 }

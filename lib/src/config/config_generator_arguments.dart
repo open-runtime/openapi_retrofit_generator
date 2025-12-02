@@ -10,7 +10,20 @@ import 'package:openapi_retrofit_generator/src/utils/output/output_utils.dart';
 /// will show help message if `help` flag is provided.
 ArgResults parseConfigGeneratorArguments(List<String> arguments) {
   final parser = ArgParser()
-    ..addFlag('help', help: 'Show help message', abbr: 'h', negatable: false);
+    ..addFlag('help', help: 'Show help message', abbr: 'h', negatable: false)
+    ..addFlag(
+      'verbose',
+      help: 'Enable verbose logging (debug level)',
+      abbr: 'v',
+      negatable: false,
+    )
+    ..addFlag(
+      'debug',
+      help: 'Enable info-level logging',
+      abbr: 'd',
+      negatable: false,
+    )
+    ..addFlag('quiet', help: 'Only show errors', abbr: 'q', negatable: false);
 
   for (final arg in configGeneratorArguments) {
     parser.addOption(arg.$1, help: arg.$2, abbr: arg.$3);

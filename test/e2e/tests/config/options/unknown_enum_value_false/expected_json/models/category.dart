@@ -4,28 +4,23 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'category.dart';
+@JsonEnum()
+enum Category {
+  @JsonValue('image')
+  image('image'),
+  @JsonValue('video')
+  video('video'),
+  @JsonValue('document')
+  document('document'),
+  @JsonValue('other')
+  other('other');
 
-part 'category.g.dart';
+  const Category(this.json);
 
-@JsonSerializable()
-class Category {
-  const Category({
-    required this.id,
-    required this.name,
-    this.slug,
-    this.parent,
-  });
+  final String? json;
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  String toJson() => json ?? 'null';
 
-  final String id;
-  final String name;
-  final String? slug;
-
-  /// Circular reference for nested categories
-  final Category? parent;
-
-  Map<String, Object?> toJson() => _$CategoryToJson(this);
+  @override
+  String toString() => json ?? super.toString();
 }

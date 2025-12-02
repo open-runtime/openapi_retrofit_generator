@@ -19,6 +19,7 @@ import 'package:openapi_retrofit_generator/src/parser/utils/context_stack.dart';
 import 'package:openapi_retrofit_generator/src/parser/utils/dart_keywords.dart';
 import 'package:openapi_retrofit_generator/src/parser/utils/http_utils.dart';
 import 'package:openapi_retrofit_generator/src/parser/utils/type_utils.dart';
+import 'package:openapi_retrofit_generator/src/utils/generator_logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
@@ -52,6 +53,12 @@ class OpenApiParser {
   final _renamedSchemas = <String, String>{};
   final _operationIdUsagePerTag = <String, Map<String, int>>{};
 
+  /// Tracks names of classes that are union types (for setting isUnionType flag)
+  final _unionClassNames = <String>{};
+
+  /// Tracks names of classes that are primitive union types
+  /// (wrapping String, int, bool, or enums - these need MappingHooks for serialization)
+  final _primitiveUnionClassNames = <String>{};
   static const _additionalPropertiesConst = 'additionalProperties';
   static const _allOfConst = 'allOf';
   static const _anyOfConst = 'anyOf';
@@ -115,6 +122,7 @@ class OpenApiParser {
     );
 
     if (existingEnum != null) {
+      GeneratorLogger.deduplicatedEnum(name, existingEnum.name);
       return existingEnum;
     }
 
@@ -122,6 +130,7 @@ class OpenApiParser {
     if (_usedNamesCount.containsKey(name)) {
       _usedNamesCount[name] = _usedNamesCount[name]! + 1;
       uniqueName = '$name${_usedNamesCount[name]}';
+      GeneratorLogger.nameConflict(name, uniqueName, 'duplicate enum name');
     } else {
       _usedNamesCount[name] = 1;
       uniqueName = name;
@@ -139,6 +148,7 @@ class OpenApiParser {
     // Register in type registry
     _typeRegistry.registerEnum(enumClass.name);
 
+    GeneratorLogger.createdEnum(enumClass.name, items.length);
     return enumClass;
   }
 
@@ -169,6 +179,11 @@ class OpenApiParser {
         // Check for reserved class names
         if (reservedClassNames.contains(key)) {
           _renamedSchemas[key] = '${key}Model';
+          GeneratorLogger.nameConflict(
+            key,
+            '${key}Model',
+            'reserved class name',
+          );
           continue;
         }
 
@@ -176,6 +191,11 @@ class OpenApiParser {
         final (protectedName, _) = protectName(key);
         if (protectedName != null && protectedName != key) {
           _renamedSchemas[key] = protectedName;
+          GeneratorLogger.nameConflict(
+            key,
+            protectedName,
+            'invalid identifier',
+          );
         }
       }
     }
@@ -851,7 +871,86 @@ class OpenApiParser {
         });
       });
     });
+
+    // Post-process: Set isUnionType for REST client parameters that reference union classes
+    _setUnionTypeFlagsForRestClients(restClients);
+
     return restClients;
+  }
+
+  /// Checks if a union's variants indicate it's a primitive union
+  /// (wrapping String, int, bool, enum with a 'value' property)
+  bool _isPrimitiveUnion(Map<String, Set<UniversalType>>? variants) {
+    if (variants == null || variants.isEmpty) return false;
+
+    // Check if all variants have primitive-style names and a single 'value' property
+    for (final entry in variants.entries) {
+      final variantName = entry.key.toLowerCase();
+      final properties = entry.value;
+
+      // Primitive union variants are named like 'variantString', 'variantEnum', etc.
+      final isPrimitiveVariantName =
+          variantName.startsWith('variant') &&
+          (variantName.contains('string') ||
+              variantName.contains('enum') ||
+              variantName.contains('int') ||
+              variantName.contains('num') ||
+              variantName.contains('bool'));
+
+      if (!isPrimitiveVariantName) {
+        return false;
+      }
+
+      // Should have exactly one property named 'value'
+      if (properties.length != 1) {
+        return false;
+      }
+
+      final prop = properties.first;
+      if (prop.name != 'value') {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /// Sets the isUnionType flag for REST client parameters that reference union classes
+  void _setUnionTypeFlagsForRestClients(List<UniversalRestClient> restClients) {
+    // Scan _objectClasses for any union classes created during parsing
+    // and add them to _unionClassNames and _primitiveUnionClassNames
+    for (final objectClass in _objectClasses) {
+      final isUnion =
+          objectClass.discriminator != null ||
+          (objectClass.undiscriminatedUnionVariants?.isNotEmpty ?? false);
+      if (isUnion) {
+        _unionClassNames.add(objectClass.name);
+
+        // Check if it's a primitive union
+        if (_isPrimitiveUnion(objectClass.undiscriminatedUnionVariants)) {
+          _primitiveUnionClassNames.add(objectClass.name);
+        }
+      }
+    }
+
+    // Update REST client parameters
+    for (final restClient in restClients) {
+      for (final request in restClient.requests) {
+        for (var i = 0; i < request.parameters.length; i++) {
+          final param = request.parameters[i];
+          final cleanType = param.type.type.replaceAll('?', '');
+          if (_unionClassNames.contains(cleanType)) {
+            final isPrimitive = _primitiveUnionClassNames.contains(cleanType);
+            request.parameters[i] = param.copyWith(
+              type: param.type.copyWith(
+                isUnionType: true,
+                isPrimitiveUnion: isPrimitive,
+              ),
+            );
+          }
+        }
+      }
+    }
   }
 
   /// Used to find properties in map
@@ -986,6 +1085,10 @@ class OpenApiParser {
     entities.forEach((key, value) {
       _contextStack.withContext('schema:$key', () {
         if (_skipDataClasses.contains(key)) {
+          GeneratorLogger.debug(
+            GeneratorLogCategory.schema,
+            'Skipping schema "$key" (marked for skip)',
+          );
           return;
         }
 
@@ -993,6 +1096,18 @@ class OpenApiParser {
 
         // Get renamed schema name if it conflicts with dio/retrofit reserved types
         var schemaName = _renamedSchemas[key] ?? key;
+
+        // Determine schema type for logging
+        final schemaType = value.containsKey(_enumConst)
+            ? 'enum'
+            : value.containsKey(_discriminatorConst)
+            ? 'discriminated union'
+            : value.containsKey(_oneOfConst) || value.containsKey(_anyOfConst)
+            ? 'union'
+            : value.containsKey(_allOfConst)
+            ? 'allOf composition'
+            : 'object';
+        GeneratorLogger.processingSchema(schemaName, type: schemaType);
 
         // Track schema dependencies for filtering (use renamed name)
         _extractSchemaDependencies(value, schemaName);
@@ -1058,6 +1173,68 @@ class OpenApiParser {
           return;
         }
 
+        // Top-level discriminated oneOf/anyOf component handling
+        // If the schema defines a oneOf/anyOf WITH a discriminator (with or without mapping),
+        // create a sealed class union with variants based on the discriminator values.
+        final topLevelDiscriminator = _parseDiscriminatorInfo(value);
+        if (topLevelDiscriminator != null) {
+          final description = value[_descriptionConst]?.toString();
+          final ofList = value[_oneOfConst] ?? value[_anyOfConst];
+
+          if (ofList is List) {
+            // Build variant mapping from discriminator info
+            // Use discriminator value as key (e.g., "user", "conversation.created")
+            // so wrapper classes are named like ChatCompletionRequestMessageUser
+            // not ChatCompletionRequestMessageChatCompletionRequestUserMessage
+            final variantRefToProps = <String, Set<UniversalType>>{};
+
+            for (final entry
+                in topLevelDiscriminator
+                    .discriminatorValueToRefMapping
+                    .entries) {
+              final discriminatorValue = entry.key; // e.g., "user", "type"
+              final refName = entry
+                  .value; // e.g., "ChatCompletionRequestUserMessage", "TypeModel"
+
+              // Get the original ref name (before renaming) for schema resolution
+              final originalRefName =
+                  _renamedSchemas.entries
+                      .firstWhereOrNull((e) => e.value == refName)
+                      ?.key ??
+                  refName;
+
+              // Resolve the referenced schema to get its properties
+              final refSchema = _resolveRef(
+                '#/components/schemas/$originalRefName',
+              );
+              if (refSchema != null) {
+                final (findParameters, findImports) = _findParametersAndImports(
+                  refSchema,
+                  additionalName: schemaName,
+                );
+                // Use discriminator value as key, not ref name
+                variantRefToProps[discriminatorValue] = findParameters;
+                imports.addAll(findImports);
+                imports.add(refName);
+              }
+            }
+
+            // Create sealed union class
+            final union = UniversalComponentClass(
+              name: schemaName,
+              imports: imports,
+              parameters: {},
+              discriminator: topLevelDiscriminator,
+              undiscriminatedUnionVariants: variantRefToProps,
+              description: description,
+            );
+            dataClasses.add(union);
+            _typeRegistry.registerClass(schemaName);
+            _unionClassNames.add(schemaName);
+            return;
+          }
+        }
+
         // Top-level undiscriminated oneOf/anyOf component handling
         // If the schema defines a oneOf/anyOf without a discriminator, and all
         // variants are refs or inline objects, synthesize a union component.
@@ -1065,17 +1242,124 @@ class OpenApiParser {
             case final List<dynamic> unionValues) {
           final description = value[_descriptionConst]?.toString();
 
-          // Check if all variants are string types - if so, just typedef to String
+          // Check if all variants are string types (including refs to string schemas)
           final nonNullVariants = filterNullTypes(unionValues);
           final allStrings =
               nonNullVariants.isNotEmpty &&
               nonNullVariants.every((item) {
+                // Direct string type
                 final type = item[_typeConst]?.toString();
-                return type == 'string';
+                if (type == 'string') return true;
+                // Check if it's a ref to a string schema
+                if (item.containsKey(_refConst)) {
+                  final refName = _formatRef(item);
+                  return _isStringEnumRef(refName);
+                }
+                return false;
               });
 
           if (allStrings) {
-            // anyOf: [string, string+enum] -> typedef to String
+            // Check if we have a mix of enum and non-enum string variants
+            // Include refs to string enums as enum variants
+            final enumVariants = nonNullVariants.where((item) {
+              if (item.containsKey(_enumConst)) return true;
+              if (item.containsKey(_refConst)) {
+                final refName = _formatRef(item);
+                final resolved = _resolveRef('#/components/schemas/$refName');
+                return resolved != null && resolved.containsKey(_enumConst);
+              }
+              return false;
+            }).toList();
+            final plainStringVariants = nonNullVariants.where((item) {
+              if (item.containsKey(_enumConst)) return false;
+              if (item.containsKey(_refConst)) {
+                final refName = _formatRef(item);
+                final resolved = _resolveRef('#/components/schemas/$refName');
+                return resolved == null || !resolved.containsKey(_enumConst);
+              }
+              return item[_typeConst]?.toString() == 'string';
+            }).toList();
+
+            // If we have both enum and plain string variants, create a sealed union for type safety
+            if (enumVariants.isNotEmpty && plainStringVariants.isNotEmpty) {
+              // Create sealed union: VariantEnum + VariantString
+              final unionName = schemaName;
+              final variantRefToProps = <String, Set<UniversalType>>{};
+
+              // Collect all enum values from all enum variants (including refs)
+              final enumValues = <String>[];
+              for (final ev in enumVariants) {
+                // Direct enum values
+                final enumList = ev[_enumConst];
+                if (enumList is List) {
+                  enumValues.addAll(enumList.map((e) => e.toString()));
+                }
+                // Enum values from refs
+                else if (ev.containsKey(_refConst)) {
+                  final refName = _formatRef(ev);
+                  final resolved = _resolveRef('#/components/schemas/$refName');
+                  if (resolved != null) {
+                    final refEnumList = resolved[_enumConst];
+                    if (refEnumList is List) {
+                      enumValues.addAll(refEnumList.map((e) => e.toString()));
+                    }
+                  }
+                }
+              }
+
+              // Create enum class for the enum values
+              final enumItems = protectEnumItemsNames(enumValues);
+              final enumClass = _getUniqueEnumClass(
+                name: '${unionName}Enum',
+                items: enumItems,
+                type: 'string',
+                defaultValue: null, // No default for the enum itself
+                description: 'Enum values: ${enumValues.join(", ")}',
+              );
+              dataClasses.add(enumClass);
+
+              // Add enum variant
+              variantRefToProps['variantEnum'] = {
+                UniversalType(
+                  type: '${unionName}Enum',
+                  name: 'value',
+                  isRequired: true,
+                  description: 'One of: ${enumValues.join(", ")}',
+                ),
+              };
+
+              // Add string variant for arbitrary strings
+              variantRefToProps['variantString'] = {
+                UniversalType(
+                  type: 'String',
+                  name: 'value',
+                  isRequired: true,
+                  description: 'Any string value',
+                ),
+              };
+
+              // Create sealed union
+              final union = UniversalComponentClass(
+                name: unionName,
+                imports: {},
+                parameters: const {},
+                description: description,
+                undiscriminatedUnionVariants: variantRefToProps,
+              );
+              dataClasses.add(union);
+              _typeRegistry.registerClass(unionName);
+              if (_contextStack.current case final context?) {
+                _anchorRegistry.registerInlineSchema(unionName, context);
+              }
+              GeneratorLogger.createdUnion(
+                unionName,
+                variantRefToProps.length,
+                discriminated: false,
+              );
+              return;
+            }
+
+            // Otherwise, just typedef to String (all enums or all plain strings)
             final typedefClass = UniversalComponentClass(
               name: schemaName,
               imports: const {},
@@ -1318,11 +1602,94 @@ class OpenApiParser {
       }
     }
 
+    // Post-processing: Set isUnionType for all properties that reference union classes
+    final processedDataClasses = _setUnionTypeFlags(dataClasses);
+
     if (config.includeTags.isNotEmpty || config.excludeTags.isNotEmpty) {
-      return _filterUsedClasses(dataClasses);
+      return _filterUsedClasses(processedDataClasses);
     }
 
-    return dataClasses;
+    return processedDataClasses;
+  }
+
+  /// Sets `isUnionType: true` for all UniversalType parameters that reference
+  /// union classes (classes with undiscriminatedUnionVariants or discriminators).
+  ///
+  /// This is needed because when processing $ref, we don't always know if the
+  /// target is a union class yet. This post-processing step ensures all
+  /// references to union classes have the proper flag set.
+  List<UniversalDataClass> _setUnionTypeFlags(
+    List<UniversalDataClass> dataClasses,
+  ) {
+    // Build sets of union class names and primitive union class names for quick lookup
+    final unionClassNames = <String>{};
+    final primitiveUnionClassNames = <String>{};
+    for (final dc in dataClasses) {
+      if (dc is UniversalComponentClass) {
+        // Check for undiscriminated unions
+        if (dc.undiscriminatedUnionVariants != null &&
+            dc.undiscriminatedUnionVariants!.isNotEmpty) {
+          unionClassNames.add(dc.name);
+
+          // Check if it's a primitive union
+          if (_isPrimitiveUnion(dc.undiscriminatedUnionVariants)) {
+            primitiveUnionClassNames.add(dc.name);
+          }
+        }
+        // Also check for discriminated unions (sealed classes with discriminator)
+        else if (dc.discriminator != null &&
+            dc.discriminator!.discriminatorValueToRefMapping.isNotEmpty) {
+          unionClassNames.add(dc.name);
+          // Discriminated unions are NOT primitive unions
+        }
+      }
+    }
+
+    if (unionClassNames.isEmpty) {
+      return dataClasses; // No unions, nothing to update
+    }
+
+    // Update all component classes to set isUnionType and isPrimitiveUnion on relevant parameters
+    return dataClasses.map((dc) {
+      if (dc is! UniversalComponentClass) {
+        return dc;
+      }
+
+      // Check if any parameters reference union classes and need updating
+      var needsUpdate = false;
+      for (final param in dc.parameters) {
+        final cleanType = param.type.replaceAll('?', '');
+        if (unionClassNames.contains(cleanType) && !param.isUnionType) {
+          needsUpdate = true;
+          break;
+        }
+        // Also check for isPrimitiveUnion updates
+        if (primitiveUnionClassNames.contains(cleanType) &&
+            !param.isPrimitiveUnion) {
+          needsUpdate = true;
+          break;
+        }
+      }
+
+      if (!needsUpdate) {
+        return dc;
+      }
+
+      // Create new parameter set with isUnionType and isPrimitiveUnion set
+      final updatedParams = dc.parameters.map((param) {
+        final cleanType = param.type.replaceAll('?', '');
+        if (unionClassNames.contains(cleanType)) {
+          final isPrimitive = primitiveUnionClassNames.contains(cleanType);
+          return param.copyWith(
+            isUnionType: true,
+            isPrimitiveUnion: isPrimitive,
+          );
+        }
+        return param;
+      }).toSet();
+
+      return dc.copyWith(parameters: updatedParams);
+    }).toList();
   }
 
   /// Filter out unused schemas
@@ -1366,7 +1733,14 @@ class OpenApiParser {
     );
 
     // Apply schema renaming if the referenced schema was renamed
-    return _renamedSchemas[originalRef] ?? originalRef;
+    final resolvedRef = _renamedSchemas[originalRef] ?? originalRef;
+    if (resolvedRef != originalRef) {
+      GeneratorLogger.debug(
+        GeneratorLogCategory.reference,
+        'Resolved renamed ref "$originalRef" -> "$resolvedRef"',
+      );
+    }
+    return resolvedRef;
   }
 
   /// Check if a reference exists in the schema (supports both OpenAPI 2.0 and 3.0)
@@ -1862,7 +2236,9 @@ class OpenApiParser {
           name: newName.toCamel,
           description: description,
           format: format,
-          jsonKey: originalName,
+          // Use `name` for jsonKey (the actual property name from the spec),
+          // NOT `originalName` which may be the generated type name
+          jsonKey: name,
           defaultValue: defaultValue,
           nullable: switch (map[_nullableConst].toString().toBool()) {
             null => !isRequired,
@@ -1927,19 +2303,14 @@ class OpenApiParser {
 
       if (ofList is List<dynamic>) {
         // Handle first the special case of oneOf/anyOf with discriminator which should be handled as sealed class
-        if ((map.containsKey(_oneOfConst) || map.containsKey(_anyOfConst)) &&
-            map.containsKey(_discriminatorConst) &&
-            (map[_discriminatorConst] as Map<String, dynamic>).containsKey(
-              _propertyNameConst,
-            ) &&
-            (map[_discriminatorConst] as Map<String, dynamic>).containsKey(
-              _mappingConst,
-            )) {
-          final discriminator = _parseDiscriminatorInfo(map);
-
+        // Note: _parseDiscriminatorInfo now handles inferring the mapping if not explicitly provided
+        final discriminator = _parseDiscriminatorInfo(map);
+        if (discriminator != null) {
           // Create a base union class for the discriminated types
-          final baseClassName =
-              '${additionalName ?? ''} ${name ?? ''} Union'.toPascal;
+          // Use additionalName OR name, not both (additionalName already includes property name)
+          final baseClassName = additionalName != null
+              ? '$additionalName Union'.toPascal
+              : '${name ?? ''} Union'.toPascal;
           final (newName, description) = protectName(
             baseClassName,
             uniqueIfNull: true,
@@ -1951,7 +2322,7 @@ class OpenApiParser {
           final sealedParameters = {
             UniversalType(
               type: 'String',
-              name: discriminator?.propertyName,
+              name: discriminator.propertyName,
               isRequired: true,
             ),
           };
@@ -2115,6 +2486,11 @@ class OpenApiParser {
                 if (_contextStack.current case final context?) {
                   _anchorRegistry.registerInlineSchema(allOfClassName, context);
                 }
+                GeneratorLogger.composingAllOf(
+                  allOfClassName,
+                  refs.toList(),
+                  parameters.length,
+                );
 
                 ofType = UniversalType(
                   type: newName.toPascal,
@@ -2164,6 +2540,18 @@ class OpenApiParser {
                 return hasProps || type == _objectConst;
               }).toList();
 
+              // Check for primitive variants (integer, number, boolean)
+              // These are not strings, not objects, not refs
+              final primitiveVariants = otherItems.where((item) {
+                final type = item[_typeConst]?.toString();
+                return type == 'integer' ||
+                    type == 'number' ||
+                    type == 'boolean' ||
+                    type == 'int' ||
+                    type == 'num' ||
+                    type == 'bool';
+              }).toList();
+
               final areAllRefsOrObjects = _getAreAllRefsOrInlineObjects(
                 objectVariants.cast<Map<String, dynamic>>(),
               );
@@ -2174,8 +2562,10 @@ class OpenApiParser {
                   stringVariants.isNotEmpty &&
                   objectVariants.isNotEmpty &&
                   areAllRefsOrObjects) {
-                final baseClassName =
-                    '${additionalName ?? ''} ${name ?? ''} Union'.toPascal;
+                // Use additionalName OR name, not both (additionalName already includes property name)
+                final baseClassName = additionalName != null
+                    ? '$additionalName Union'.toPascal
+                    : '${name ?? ''} Union'.toPascal;
                 final (newName, description) = protectName(
                   baseClassName,
                   uniqueIfNull: true,
@@ -2234,6 +2624,11 @@ class OpenApiParser {
                 if (_contextStack.current case final context?) {
                   _anchorRegistry.registerInlineSchema(unionName, context);
                 }
+                GeneratorLogger.createdUnion(
+                  unionName,
+                  variantRefToProps.length,
+                  discriminated: false,
+                );
 
                 ofType = UniversalType(
                   type: unionName,
@@ -2244,6 +2639,7 @@ class OpenApiParser {
                   // Store the default value as a string to be used by the template
                   // The template should create StringValue variant for string defaults
                   defaultValue: map[_defaultConst],
+                  isUnionType: true, // This is a sealed union type
                 );
                 ofImport = unionName;
               }
@@ -2251,8 +2647,10 @@ class OpenApiParser {
               else if (areAllRefsOrObjects &&
                   isUnion &&
                   objectVariants.isNotEmpty) {
-                final baseClassName =
-                    '${additionalName ?? ''} ${name ?? ''} Union'.toPascal;
+                // Use additionalName OR name, not both (additionalName already includes property name)
+                final baseClassName = additionalName != null
+                    ? '$additionalName Union'.toPascal
+                    : '${name ?? ''} Union'.toPascal;
                 final (newName, description) = protectName(
                   baseClassName,
                   uniqueIfNull: true,
@@ -2280,6 +2678,11 @@ class OpenApiParser {
                 if (_contextStack.current case final context?) {
                   _anchorRegistry.registerInlineSchema(unionName, context);
                 }
+                GeneratorLogger.createdUnion(
+                  unionName,
+                  variantRefToProps.length,
+                  discriminated: false,
+                );
 
                 ofType = UniversalType(
                   type: unionName,
@@ -2287,20 +2690,223 @@ class OpenApiParser {
                   nullable:
                       map[_nullableConst].toString().toBool() ??
                       (root && !isRequired),
+                  isUnionType: true, // This is a sealed union type
                 );
                 ofImport = unionName;
               }
-              // Handle pure string union (all strings, some with enums)
-              else if (stringVariants.isNotEmpty && objectVariants.isEmpty) {
-                // Pattern: anyOf: [{ type: string }, { type: string, enum: [...] }]
-                // This represents "any string or one of these specific values" → use String type
+              // Handle mixed primitive union: string + integer/number/boolean
+              // Pattern: anyOf: [{ type: string, enum: ["auto"] }, { type: integer }]
+              // Creates a proper sealed class union for type safety
+              else if (stringVariants.isNotEmpty &&
+                  primitiveVariants.isNotEmpty) {
+                // Use additionalName OR name, not both (additionalName already includes property name)
+                final baseClassName = additionalName != null
+                    ? '$additionalName Union'.toPascal
+                    : '${name ?? ''} Union'.toPascal;
+                final (newName, description) = protectName(
+                  baseClassName,
+                  uniqueIfNull: true,
+                  description: map[_descriptionConst]?.toString(),
+                );
+
+                final unionName = newName!.toPascal;
+                final variantRefToProps = <String, Set<UniversalType>>{};
+
+                // Collect string enum values for documentation
+                final stringEnumValues = <String>[];
+                for (final sv in stringVariants) {
+                  final enumList = sv[_enumConst];
+                  if (enumList is List) {
+                    stringEnumValues.addAll(enumList.map((e) => e.toString()));
+                  }
+                }
+
+                // Add string variant
+                variantRefToProps['variantString'] = {
+                  UniversalType(
+                    type: 'String',
+                    name: 'value',
+                    isRequired: true,
+                    description: stringEnumValues.isNotEmpty
+                        ? 'One of: ${stringEnumValues.join(", ")}'
+                        : 'String value',
+                  ),
+                };
+
+                // Add primitive variants (int, num, bool)
+                for (final pv in primitiveVariants) {
+                  final primitiveType = pv[_typeConst]?.toString();
+                  final dartType = switch (primitiveType) {
+                    'integer' || 'int' => 'int',
+                    'number' || 'num' => 'num',
+                    'boolean' || 'bool' => 'bool',
+                    _ => 'dynamic',
+                  };
+                  // Use PascalCase for variant name but keep Dart primitive types lowercase
+                  final variantName = 'variant${dartType.toPascal}';
+
+                  // Only add if not already present (avoid duplicate int variants)
+                  if (!variantRefToProps.containsKey(variantName)) {
+                    variantRefToProps[variantName] = {
+                      UniversalType(
+                        type:
+                            dartType, // Keep lowercase for primitives (int, num, bool)
+                        name: 'value',
+                        isRequired: true,
+                        description: '${dartType.toPascal} value',
+                      ),
+                    };
+                  }
+                }
+
+                // Create union component class
+                _objectClasses.add(
+                  UniversalComponentClass(
+                    name: unionName,
+                    imports: const {},
+                    parameters: const {},
+                    description: description,
+                    undiscriminatedUnionVariants: variantRefToProps,
+                  ),
+                );
+                _typeRegistry.registerClass(unionName);
+                if (_contextStack.current case final context?) {
+                  _anchorRegistry.registerInlineSchema(unionName, context);
+                }
+                GeneratorLogger.createdUnion(
+                  unionName,
+                  variantRefToProps.length,
+                  discriminated: false,
+                );
+
                 ofType = UniversalType(
-                  type: 'String',
+                  type: unionName,
                   isRequired: isRequired,
                   nullable:
                       map[_nullableConst].toString().toBool() ??
                       (root && !isRequired),
+                  defaultValue: map[_defaultConst]?.toString(),
+                  isUnionType: true, // This is a sealed union type
                 );
+                ofImport = unionName;
+              }
+              // Handle pure string union (all strings, some with enums, NO primitives)
+              else if (stringVariants.isNotEmpty &&
+                  objectVariants.isEmpty &&
+                  primitiveVariants.isEmpty) {
+                // Check if we have a mix of enum and plain string variants
+                final enumStringVariants = stringVariants
+                    .where((sv) => sv.containsKey(_enumConst))
+                    .toList();
+                final plainStringVariants = stringVariants
+                    .where((sv) => !sv.containsKey(_enumConst))
+                    .toList();
+
+                // If we have both enum and plain string variants, create a sealed union for type safety
+                if (enumStringVariants.isNotEmpty &&
+                    plainStringVariants.isNotEmpty) {
+                  // Use additionalName OR name, not both (additionalName already includes property name)
+                  final baseClassName = additionalName != null
+                      ? '$additionalName Union'.toPascal
+                      : '${name ?? ''} Union'.toPascal;
+                  final (newName, description) = protectName(
+                    baseClassName,
+                    uniqueIfNull: true,
+                    description: map[_descriptionConst]?.toString(),
+                  );
+
+                  final unionName = newName!.toPascal;
+                  final variantRefToProps = <String, Set<UniversalType>>{};
+
+                  // Collect all enum values from enum variants
+                  final enumValues = <String>[];
+                  for (final ev in enumStringVariants) {
+                    final enumList = ev[_enumConst];
+                    if (enumList is List) {
+                      enumValues.addAll(enumList.map((e) => e.toString()));
+                    }
+                  }
+
+                  // Create enum class for the enum values
+                  final enumItems = protectEnumItemsNames(enumValues);
+                  final enumClassName = '${unionName}Enum';
+                  final enumClass = _getUniqueEnumClass(
+                    name: enumClassName,
+                    items: enumItems,
+                    type: 'string',
+                    defaultValue: null, // No default for the enum itself
+                    description: 'Enum values: ${enumValues.join(", ")}',
+                  );
+                  _enumClasses.add(enumClass);
+                  // Register inline enum in the anchor registry
+                  if (_contextStack.current case final context?) {
+                    _anchorRegistry.registerInlineSchema(
+                      enumClass.name,
+                      context,
+                    );
+                  }
+
+                  // Add enum variant
+                  variantRefToProps['variantEnum'] = {
+                    UniversalType(
+                      type: enumClassName,
+                      name: 'value',
+                      isRequired: true,
+                      description: 'One of: ${enumValues.join(", ")}',
+                    ),
+                  };
+
+                  // Add string variant for arbitrary strings
+                  variantRefToProps['variantString'] = {
+                    UniversalType(
+                      type: 'String',
+                      name: 'value',
+                      isRequired: true,
+                      description: 'Any string value',
+                    ),
+                  };
+
+                  // Create sealed union
+                  _objectClasses.add(
+                    UniversalComponentClass(
+                      name: unionName,
+                      imports: {},
+                      parameters: const {},
+                      description: description,
+                      undiscriminatedUnionVariants: variantRefToProps,
+                    ),
+                  );
+                  _typeRegistry.registerClass(unionName);
+                  if (_contextStack.current case final context?) {
+                    _anchorRegistry.registerInlineSchema(unionName, context);
+                  }
+                  GeneratorLogger.createdUnion(
+                    unionName,
+                    variantRefToProps.length,
+                    discriminated: false,
+                  );
+
+                  ofType = UniversalType(
+                    type: unionName,
+                    isRequired: isRequired,
+                    nullable:
+                        map[_nullableConst].toString().toBool() ??
+                        (root && !isRequired),
+                    defaultValue: map[_defaultConst]?.toString(),
+                    isUnionType: true, // This is a sealed union type
+                  );
+                  ofImport = unionName;
+                } else {
+                  // Pattern: all enums OR all plain strings → use String type
+                  ofType = UniversalType(
+                    type: 'String',
+                    isRequired: isRequired,
+                    nullable:
+                        map[_nullableConst].toString().toBool() ??
+                        (root && !isRequired),
+                    defaultValue: map[_defaultConst]?.toString(),
+                  );
+                }
               } else {
                 // Fallback if we cannot synthesize a proper union
                 ofType = UniversalType(
@@ -2640,34 +3246,63 @@ class OpenApiParser {
       return null;
     }
 
-    // Must have a discriminator object
-    if (!map.containsKey(_discriminatorConst)) {
-      return null;
-    }
-    final discriminatorRaw = map[_discriminatorConst];
-    if (discriminatorRaw is! Map<String, dynamic>) {
+    final ofList = map[_oneOfConst] ?? map[_anyOfConst];
+    if (ofList is! List || ofList.isEmpty) {
       return null;
     }
 
-    // Discriminator must have both propertyName and mapping
-    if (!discriminatorRaw.containsKey(_propertyNameConst) ||
-        !discriminatorRaw.containsKey(_mappingConst)) {
-      return null;
-    }
-
-    final propertyName = discriminatorRaw[_propertyNameConst] as String;
-    final refMappingRaw = discriminatorRaw[_mappingConst];
-    if (refMappingRaw is! Map) {
-      return null;
-    }
-
-    // Cleanup the refMapping to contain only the class name
+    String? propertyName;
     final cleanedRefMapping = <String, String>{};
-    for (final entry in refMappingRaw.entries) {
-      final key = entry.key.toString();
-      final refMap = <String, dynamic>{_refConst: entry.value};
-      cleanedRefMapping[key] = _formatRef(refMap);
+
+    // Check if explicit discriminator object exists
+    if (map.containsKey(_discriminatorConst)) {
+      final discriminatorRaw = map[_discriminatorConst];
+      if (discriminatorRaw is Map<String, dynamic> &&
+          discriminatorRaw.containsKey(_propertyNameConst)) {
+        propertyName = discriminatorRaw[_propertyNameConst] as String;
+
+        // If mapping is provided, use it
+        if (discriminatorRaw.containsKey(_mappingConst)) {
+          final refMappingRaw = discriminatorRaw[_mappingConst];
+          if (refMappingRaw is Map) {
+            for (final entry in refMappingRaw.entries) {
+              final key = entry.key.toString();
+              final refMap = <String, dynamic>{_refConst: entry.value};
+              cleanedRefMapping[key] = _formatRef(refMap);
+            }
+          }
+        }
+        // If no mapping, try to infer it from the variants
+        else {
+          final inferredMapping = _inferDiscriminatorMapping(
+            ofList,
+            propertyName,
+          );
+          cleanedRefMapping.addAll(inferredMapping);
+        }
+      }
     }
+
+    // If no explicit discriminator, try to INFER one from common single-value enum properties
+    // This handles Azure-style specs where variants have `role: enum: ["system"]` etc.
+    if (propertyName == null || cleanedRefMapping.isEmpty) {
+      final inferred = _inferDiscriminatorFromVariants(ofList);
+      if (inferred != null) {
+        propertyName = inferred.propertyName;
+        cleanedRefMapping.addAll(inferred.mapping);
+      }
+    }
+
+    // If we couldn't get any mapping, return null
+    if (propertyName == null || cleanedRefMapping.isEmpty) {
+      return null;
+    }
+
+    GeneratorLogger.foundDiscriminator(
+      _contextStack.current ?? 'unknown',
+      propertyName,
+      cleanedRefMapping,
+    );
 
     return (
       propertyName: propertyName,
@@ -2675,6 +3310,219 @@ class OpenApiParser {
       // This property is populated by the parser after all the data classes are created
       refProperties: <String, Set<UniversalType>>{},
     );
+  }
+
+  /// Infer a discriminator from variants when no explicit discriminator is provided.
+  /// Looks for a common property across all variants that has a single-value enum.
+  /// This handles specs (like Azure) where message types have `role: enum: ["system"]` etc.
+  ///
+  /// The algorithm:
+  /// 1. Scans all variants for properties with single-value enums or const values
+  /// 2. Collects these as candidate discriminator properties
+  /// 3. Ranks candidates by how many variants they uniquely identify
+  /// 4. Selects the best candidate that maps at least 2 variants with unique values
+  ///
+  /// NOTE: If the union contains non-object variants (strings, primitives), we DO NOT
+  /// infer a discriminator. Mixed unions with string and object variants should use
+  /// undiscriminated union handling (VariantString, VariantEnum, etc.).
+  ({String propertyName, Map<String, String> mapping})?
+  _inferDiscriminatorFromVariants(List<dynamic> variants) {
+    if (variants.isEmpty) return null;
+
+    // Check if there are any non-object variants (strings, primitives, etc.)
+    // If so, don't infer a discriminator - let it use undiscriminated union handling
+    for (final variant in variants) {
+      if (variant is! Map<String, dynamic>) continue;
+
+      // Check for inline string/primitive types (not $ref)
+      if (!variant.containsKey(_refConst)) {
+        // Inline type - check if it's a primitive
+        final type = variant[_typeConst]?.toString();
+        if (type == 'string' ||
+            type == 'integer' ||
+            type == 'number' ||
+            type == 'boolean') {
+          // Mixed union with primitives - don't infer discriminator
+          return null;
+        }
+        // Also check for enum (string enum is a primitive variant)
+        if (variant.containsKey(_enumConst)) {
+          return null;
+        }
+      } else {
+        // $ref variant - resolve and check if it's a string type or enum
+        final resolvedSchema = _resolveRef(variant[_refConst] as String);
+        if (resolvedSchema != null) {
+          final type = resolvedSchema[_typeConst]?.toString();
+          if (type == 'string' && resolvedSchema.containsKey(_enumConst)) {
+            // Reference to a string enum - this is a primitive variant
+            return null;
+          }
+        }
+      }
+    }
+
+    // Only consider $ref variants (inline schemas are harder to reason about)
+    final refVariants = variants
+        .whereType<Map<String, dynamic>>()
+        .where((v) => v.containsKey(_refConst))
+        .toList();
+
+    if (refVariants.length < 2) {
+      // Need at least 2 ref variants to infer a discriminator
+      return null;
+    }
+
+    // Collect all candidate properties: properties with single-value enums or const
+    // Map from property name to Map<discriminator value, ref name>
+    final candidateProperties = <String, Map<String, String>>{};
+
+    for (final variant in refVariants) {
+      final originalRefName = _formatRef(variant);
+      final refName = _renamedSchemas[originalRefName] ?? originalRefName;
+      final resolvedSchema = _resolveRef(variant[_refConst] as String);
+      if (resolvedSchema == null) continue;
+
+      final properties = resolvedSchema[_propertiesConst];
+      if (properties is! Map<String, dynamic>) continue;
+
+      // Check each property for single-value enums or const values
+      for (final entry in properties.entries) {
+        final propName = entry.key;
+        final propSchema = entry.value;
+        if (propSchema is! Map<String, dynamic>) continue;
+
+        String? discriminatorValue;
+
+        // Check for single-value enum (most common pattern)
+        final enumValues = propSchema[_enumConst];
+        if (enumValues is List && enumValues.length == 1) {
+          discriminatorValue = enumValues[0].toString();
+        }
+        // Check for const value (OpenAPI 3.1 / x-stainless-const pattern)
+        else if (propSchema.containsKey('const')) {
+          discriminatorValue = propSchema['const'].toString();
+        }
+
+        if (discriminatorValue != null) {
+          candidateProperties.putIfAbsent(propName, () => {});
+          // Only add if this discriminator value isn't already mapped to another ref
+          // (to avoid ambiguous mappings where multiple variants have the same value)
+          if (!candidateProperties[propName]!.containsKey(discriminatorValue)) {
+            candidateProperties[propName]![discriminatorValue] = refName;
+          }
+        }
+      }
+    }
+
+    if (candidateProperties.isEmpty) return null;
+
+    // Rank candidates by:
+    // 1. Number of variants uniquely identified (higher is better)
+    // 2. All discriminator values must be unique (no duplicates)
+    // 3. Prefer properties that map ALL ref variants
+
+    // Sort candidates by coverage (descending)
+    final rankedCandidates = candidateProperties.entries.toList()
+      ..sort((a, b) {
+        final coverageA = a.value.length;
+        final coverageB = b.value.length;
+        return coverageB.compareTo(coverageA); // Descending
+      });
+
+    for (final entry in rankedCandidates) {
+      final propName = entry.key;
+      final mapping = entry.value;
+
+      // Require at least 2 variants to be identified
+      if (mapping.length < 2) continue;
+
+      // Verify all refs are unique (each variant maps to exactly one discriminator value)
+      final uniqueRefs = mapping.values.toSet();
+      if (uniqueRefs.length != mapping.length) continue;
+
+      // Verify all discriminator values are unique
+      final uniqueValues = mapping.keys.toSet();
+      if (uniqueValues.length != mapping.length) continue;
+
+      // This candidate is valid
+      // Prefer candidates that map all variants, but accept partial coverage
+      // if it's the best we have
+      return (propertyName: propName, mapping: mapping);
+    }
+
+    return null;
+  }
+
+  /// Infer discriminator mapping from variant schemas when no explicit mapping is provided.
+  /// This looks at each variant's $ref, resolves the schema, and extracts the discriminator
+  /// property's enum value (if it has a single-value enum).
+  Map<String, String> _inferDiscriminatorMapping(
+    List<dynamic> variants,
+    String propertyName,
+  ) {
+    final mapping = <String, String>{};
+
+    for (final variant in variants) {
+      if (variant is! Map<String, dynamic>) continue;
+
+      // Only handle $ref variants
+      if (!variant.containsKey(_refConst)) continue;
+
+      final originalRefName = _formatRef(variant);
+      // Apply schema renaming if the ref was renamed (e.g., Type -> TypeModel)
+      final refName = _renamedSchemas[originalRefName] ?? originalRefName;
+
+      final resolvedSchema = _resolveRef(variant[_refConst] as String);
+      if (resolvedSchema == null) continue;
+
+      // Look for the discriminator property in the resolved schema
+      final properties = resolvedSchema[_propertiesConst];
+      if (properties is! Map<String, dynamic>) continue;
+
+      final discriminatorProp = properties[propertyName];
+      if (discriminatorProp is! Map<String, dynamic>) continue;
+
+      // Check if it has a single-value enum (which is the discriminator value)
+      final enumValues = discriminatorProp[_enumConst];
+      if (enumValues is List && enumValues.length == 1) {
+        final discriminatorValue = enumValues[0].toString();
+        mapping[discriminatorValue] = refName;
+      }
+      // Also check for const value (x-stainless-const pattern)
+      else if (discriminatorProp.containsKey('const')) {
+        final discriminatorValue = discriminatorProp['const'].toString();
+        mapping[discriminatorValue] = refName;
+      }
+    }
+
+    return mapping;
+  }
+
+  /// Resolve a $ref string to its schema definition
+  Map<String, dynamic>? _resolveRef(String ref) {
+    // Handle OpenAPI 3.0 format: #/components/schemas/SchemaName
+    if (ref.startsWith('#/components/schemas/')) {
+      final schemaName = ref.substring('#/components/schemas/'.length);
+      final components =
+          _definitionFileContent[_componentsConst] as Map<String, dynamic>?;
+      if (components != null) {
+        final schemas = components[_schemasConst] as Map<String, dynamic>?;
+        if (schemas != null && schemas.containsKey(schemaName)) {
+          return schemas[schemaName] as Map<String, dynamic>;
+        }
+      }
+    }
+    // Handle OpenAPI 2.0 format: #/definitions/SchemaName
+    else if (ref.startsWith('#/definitions/')) {
+      final schemaName = ref.substring('#/definitions/'.length);
+      final definitions =
+          _definitionFileContent[_definitionsConst] as Map<String, dynamic>?;
+      if (definitions != null && definitions.containsKey(schemaName)) {
+        return definitions[schemaName] as Map<String, dynamic>;
+      }
+    }
+    return null;
   }
 
   (
@@ -2930,13 +3778,18 @@ class OpenApiParser {
 
     // Valid array defaults must be arrays (start with '[') or objects (start with '{')
     if (!defaultStr.startsWith('[') && !defaultStr.startsWith('{')) {
-      stdout.writeln(
-        'Warning: [Parser] Invalid default "$defaultStr" for array type '
-        'in "${fieldName ?? 'unknown'}" - ignoring (expected array or object)',
+      GeneratorLogger.invalidDefault(
+        fieldName ?? 'unknown',
+        defaultStr,
+        'array',
       );
       return null;
     }
 
+    GeneratorLogger.debug(
+      GeneratorLogCategory.defaults,
+      'Validated array default for "${fieldName ?? 'unknown'}": $defaultStr',
+    );
     return rawDefault;
   }
 
@@ -2949,13 +3802,14 @@ class OpenApiParser {
 
     // Valid map defaults must be objects (start with '{') or arrays (for certain patterns)
     if (!defaultStr.startsWith('{') && !defaultStr.startsWith('[')) {
-      stdout.writeln(
-        'Warning: [Parser] Invalid default "$defaultStr" for map type '
-        'in "${fieldName ?? 'unknown'}" - ignoring (expected object or array)',
-      );
+      GeneratorLogger.invalidDefault(fieldName ?? 'unknown', defaultStr, 'map');
       return null;
     }
 
+    GeneratorLogger.debug(
+      GeneratorLogCategory.defaults,
+      'Validated map default for "${fieldName ?? 'unknown'}": $defaultStr',
+    );
     return rawDefault;
   }
 }

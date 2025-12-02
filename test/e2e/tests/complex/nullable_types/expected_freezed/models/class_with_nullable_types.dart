@@ -4,6 +4,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'class_with_nullable_types_non_null_any_of_union.dart';
 import 'class_with_nullable_types_p3.dart';
 import 'class_with_nullable_types_p3_n.dart';
 
@@ -19,11 +20,11 @@ abstract class ClassWithNullableTypes with _$ClassWithNullableTypes {
     @JsonKey(name: 'p2_null_all') required List<dynamic>? p2NullAll,
     @JsonKey(name: 'ClassWithNullableTypesP3')
     required ClassWithNullableTypesP3 classWithNullableTypesP3,
-    @JsonKey(name: 'required_null_anyOf') required dynamic requiredNullAnyOf,
-    @JsonKey(name: 'p1_anyOf') required dynamic p1AnyOf,
+    @JsonKey(name: 'required_null_anyOf') required String requiredNullAnyOf,
+    @JsonKey(name: 'p1_anyOf') required String p1AnyOf,
     @JsonKey(name: 'p2_anyOf') required dynamic p2AnyOf,
     @JsonKey(name: 'p3_anyOf') required dynamic p3AnyOf,
-    @JsonKey(name: 'p1_oneOf') required dynamic p1OneOf,
+    @JsonKey(name: 'p1_oneOf') required String p1OneOf,
     @JsonKey(name: 'p2_oneOf') required dynamic p2OneOf,
     @JsonKey(name: 'p3_oneOf') required dynamic p3OneOf,
     @JsonKey(name: 'p1_allOf') required dynamic p1AllOf,
@@ -40,8 +41,9 @@ abstract class ClassWithNullableTypes with _$ClassWithNullableTypes {
     @JsonKey(name: 'p1_list') String? p1List,
     @JsonKey(name: 'p2_list') List<dynamic>? p2List,
     @JsonKey(name: 'p3_list') dynamic p3List,
-    @JsonKey(name: 'nonNull_anyOf') dynamic nonNullAnyOf,
-    @JsonKey(name: 'optional_null_anyOf') dynamic optionalNullAnyOf,
+    @JsonKey(name: 'nonNull_anyOf')
+    ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf,
+    @JsonKey(name: 'optional_null_anyOf') String? optionalNullAnyOf,
   }) = _ClassWithNullableTypes;
 
   factory ClassWithNullableTypes.fromJson(Map<String, Object?> json) =>

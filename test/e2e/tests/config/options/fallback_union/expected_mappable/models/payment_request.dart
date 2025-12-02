@@ -11,6 +11,10 @@ import 'credit_card_payment_payment_type_payment_type.dart';
 import 'crypto_payment.dart';
 import 'crypto_payment_cryptocurrency_cryptocurrency.dart';
 import 'crypto_payment_payment_type_payment_type.dart';
+import 'payment_request_cryptocurrency_cryptocurrency.dart';
+import 'payment_request_payment_type_payment_type.dart';
+import 'payment_request_payment_type_payment_type2.dart';
+import 'payment_request_payment_type_payment_type3.dart';
 
 part 'payment_request.mapper.dart';
 
@@ -59,7 +63,7 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
 @MappableClass(discriminatorValue: 'credit_card')
 class PaymentRequestCreditCard extends PaymentRequest
     with PaymentRequestCreditCardMappable {
-  final CreditCardPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
   final int expiryYear;
@@ -81,7 +85,7 @@ class PaymentRequestCreditCard extends PaymentRequest
 @MappableClass(discriminatorValue: 'bank_transfer')
 class PaymentRequestBankTransfer extends PaymentRequest
     with PaymentRequestBankTransferMappable {
-  final BankTransferPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType2 paymentType;
   final String accountNumber;
   final String routingNumber;
   final String? accountHolder;
@@ -101,9 +105,9 @@ class PaymentRequestBankTransfer extends PaymentRequest
 @MappableClass(discriminatorValue: 'crypto')
 class PaymentRequestCrypto extends PaymentRequest
     with PaymentRequestCryptoMappable {
-  final CryptoPaymentPaymentTypePaymentType paymentType;
+  final PaymentRequestPaymentTypePaymentType3 paymentType;
   final String walletAddress;
-  final CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency;
+  final PaymentRequestCryptocurrencyCryptocurrency cryptocurrency;
   final double amount;
   final String? transactionHash;
 
@@ -122,7 +126,4 @@ class PaymentRequestUnknown extends PaymentRequest
   final Map<String, dynamic> json;
 
   const PaymentRequestUnknown(this.json);
-
-  static PaymentRequestUnknown fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnknown(json);
 }

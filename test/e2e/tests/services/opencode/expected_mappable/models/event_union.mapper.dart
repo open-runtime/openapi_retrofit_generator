@@ -102,6 +102,7 @@ class EventUnionEventInstallationUpdatedMapper
   _f$eventInstallationUpdatedProperties = Field(
     'eventInstallationUpdatedProperties',
     _$eventInstallationUpdatedProperties,
+    key: r'EventInstallationUpdatedProperties',
   );
 
   @override
@@ -308,6 +309,7 @@ class EventUnionEventLspClientDiagnosticsMapper
   _f$eventLspClientDiagnosticsProperties = Field(
     'eventLspClientDiagnosticsProperties',
     _$eventLspClientDiagnosticsProperties,
+    key: r'EventLspClientDiagnosticsProperties',
   );
 
   @override
@@ -519,6 +521,7 @@ class EventUnionEventMessageUpdatedMapper
   _f$eventMessageUpdatedProperties = Field(
     'eventMessageUpdatedProperties',
     _$eventMessageUpdatedProperties,
+    key: r'EventMessageUpdatedProperties',
   );
 
   @override
@@ -716,6 +719,7 @@ class EventUnionEventMessageRemovedMapper
   _f$eventMessageRemovedProperties = Field(
     'eventMessageRemovedProperties',
     _$eventMessageRemovedProperties,
+    key: r'EventMessageRemovedProperties',
   );
 
   @override
@@ -913,6 +917,7 @@ class EventUnionEventMessagePartUpdatedMapper
   _f$eventMessagePartUpdatedProperties = Field(
     'eventMessagePartUpdatedProperties',
     _$eventMessagePartUpdatedProperties,
+    key: r'EventMessagePartUpdatedProperties',
   );
 
   @override
@@ -1121,6 +1126,7 @@ class EventUnionEventMessagePartRemovedMapper
   _f$eventMessagePartRemovedProperties = Field(
     'eventMessagePartRemovedProperties',
     _$eventMessagePartRemovedProperties,
+    key: r'EventMessagePartRemovedProperties',
   );
 
   @override
@@ -1329,6 +1335,7 @@ class EventUnionEventSessionCompactedMapper
   _f$eventSessionCompactedProperties = Field(
     'eventSessionCompactedProperties',
     _$eventSessionCompactedProperties,
+    key: r'EventSessionCompactedProperties',
   );
 
   @override
@@ -1712,6 +1719,7 @@ class EventUnionEventPermissionRepliedMapper
   _f$eventPermissionRepliedProperties = Field(
     'eventPermissionRepliedProperties',
     _$eventPermissionRepliedProperties,
+    key: r'EventPermissionRepliedProperties',
   );
 
   @override
@@ -1916,6 +1924,7 @@ class EventUnionEventFileEditedMapper
   _f$eventFileEditedProperties = Field(
     'eventFileEditedProperties',
     _$eventFileEditedProperties,
+    key: r'EventFileEditedProperties',
   );
 
   @override
@@ -2096,6 +2105,7 @@ class EventUnionEventFileWatcherUpdatedMapper
   _f$eventFileWatcherUpdatedProperties = Field(
     'eventFileWatcherUpdatedProperties',
     _$eventFileWatcherUpdatedProperties,
+    key: r'EventFileWatcherUpdatedProperties',
   );
 
   @override
@@ -2301,6 +2311,7 @@ class EventUnionEventTodoUpdatedMapper
   _f$eventTodoUpdatedProperties = Field(
     'eventTodoUpdatedProperties',
     _$eventTodoUpdatedProperties,
+    key: r'EventTodoUpdatedProperties',
   );
 
   @override
@@ -2485,6 +2496,7 @@ class EventUnionEventSessionIdleMapper
   _f$eventSessionIdleProperties = Field(
     'eventSessionIdleProperties',
     _$eventSessionIdleProperties,
+    key: r'EventSessionIdleProperties',
   );
 
   @override
@@ -2672,6 +2684,7 @@ class EventUnionEventSessionUpdatedMapper
   _f$eventSessionUpdatedProperties = Field(
     'eventSessionUpdatedProperties',
     _$eventSessionUpdatedProperties,
+    key: r'EventSessionUpdatedProperties',
   );
 
   @override
@@ -2869,6 +2882,7 @@ class EventUnionEventSessionDeletedMapper
   _f$eventSessionDeletedProperties = Field(
     'eventSessionDeletedProperties',
     _$eventSessionDeletedProperties,
+    key: r'EventSessionDeletedProperties',
   );
 
   @override
@@ -3063,6 +3077,7 @@ class EventUnionEventSessionErrorMapper
   _f$eventSessionErrorProperties = Field(
     'eventSessionErrorProperties',
     _$eventSessionErrorProperties,
+    key: r'EventSessionErrorProperties',
   );
 
   @override
@@ -3417,6 +3432,7 @@ class EventUnionEventIdeInstalledMapper
   _f$eventIdeInstalledProperties = Field(
     'eventIdeInstalledProperties',
     _$eventIdeInstalledProperties,
+    key: r'EventIdeInstalledProperties',
   );
 
   @override

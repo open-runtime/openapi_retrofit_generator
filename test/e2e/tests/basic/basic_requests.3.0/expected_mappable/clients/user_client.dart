@@ -24,7 +24,7 @@ abstract class UserClient {
     @Query('tags') List<String>? tags,
   });
 
-  /// [avatar] - Name not received - field will be skipped.
+  /// null.
   ///
   /// Name not received - field will be skipped.
   @MultiPart()

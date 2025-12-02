@@ -8,7 +8,7 @@ part of 'agent.dart';
 
 _Agent _$AgentFromJson(Map<String, dynamic> json) => _Agent(
   name: json['name'] as String,
-  mode: json['mode'],
+  mode: json['mode'] as String,
   builtIn: json['builtIn'] as bool,
   agentPermission: AgentPermission.fromJson(
     json['AgentPermission'] as Map<String, dynamic>,

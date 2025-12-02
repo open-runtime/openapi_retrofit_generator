@@ -22,8 +22,8 @@ class AgentConfigPermissionMapper
   @override
   final String id = 'AgentConfigPermission';
 
-  static dynamic _$edit(AgentConfigPermission v) => v.edit;
-  static const Field<AgentConfigPermission, dynamic> _f$edit = Field(
+  static String? _$edit(AgentConfigPermission v) => v.edit;
+  static const Field<AgentConfigPermission, String> _f$edit = Field(
     'edit',
     _$edit,
     opt: true,
@@ -34,8 +34,8 @@ class AgentConfigPermissionMapper
     _$bash,
     opt: true,
   );
-  static dynamic _$webfetch(AgentConfigPermission v) => v.webfetch;
-  static const Field<AgentConfigPermission, dynamic> _f$webfetch = Field(
+  static String? _$webfetch(AgentConfigPermission v) => v.webfetch;
+  static const Field<AgentConfigPermission, String> _f$webfetch = Field(
     'webfetch',
     _$webfetch,
     opt: true,
@@ -126,7 +126,7 @@ abstract class AgentConfigPermissionCopyWith<
   $Out
 >
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({dynamic edit, dynamic bash, dynamic webfetch});
+  $R call({String? edit, dynamic bash, String? webfetch});
   AgentConfigPermissionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );

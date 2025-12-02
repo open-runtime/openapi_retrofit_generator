@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'session_prompt_request_model.dart';
 import 'session_prompt_request_acp_connection.dart';
-import 'session_prompt_request_parts_parts_union.dart';
+import 'session_prompt_request_parts_union.dart';
 
 part 'session_prompt_request.g.dart';
 
@@ -34,7 +34,7 @@ class SessionPromptRequest {
   final Map<String, bool>? tools;
   @JsonKey(name: 'SessionPromptRequestAcpConnection')
   final SessionPromptRequestAcpConnection? sessionPromptRequestAcpConnection;
-  final List<SessionPromptRequestPartsPartsUnion> parts;
+  final List<SessionPromptRequestPartsUnion> parts;
 
   Map<String, Object?> toJson() => _$SessionPromptRequestToJson(this);
 }

@@ -83,11 +83,6 @@ abstract class UsersClient {
   /// Upload user avatar (multipart).
   ///
   /// [file] - Avatar image file.
-  /// Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
   ///
   /// [userId] - User ID.
   @MultiPart()
@@ -149,24 +144,14 @@ abstract class CommentsClient {
 abstract class FilesClient {
   factory FilesClient(Dio dio, {String? baseUrl}) = _FilesClient;
 
-  /// Upload file with metadata.
-  ///
-  /// [files] - Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [category] - Name not received and was auto-generated.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
-  ///
-  /// [isPublic] - Name not received - field will be skipped.
+  /// Upload file with metadata
   @MultiPart()
   @POST('/files/upload')
   Future<FileUploadResponse> uploadFile({
     @Part(name: 'files') required List<MultipartFile> files,
     @Part(name: 'isPublic') bool? isPublic = false,
     @Part(name: 'description') String? description,
-    @Part(name: 'category') Enum0? category,
+    @Part(name: 'category') Category? category,
     @Part(name: 'metadata') FileMetadata? metadata,
   });
 
@@ -564,37 +549,93 @@ abstract class FileUploadResponse with _$FileUploadResponse {
       _$FileUploadResponseFromJson(json);
 }
 
-@Freezed(unionKey: 'paymentType')
-sealed class PaymentRequest with _$PaymentRequest {
-  @FreezedUnionValue('credit_card')
-  const factory PaymentRequest.creditCard({
-    required String cardNumber,
-    required int expiryMonth,
-    required int expiryYear,
-    required String cvv,
-    required double amount,
-    String? cardholderName,
-  }) = PaymentRequestCreditCard;
+class PaymentRequest {
+  final Map<String, dynamic> _json;
 
-  @FreezedUnionValue('bank_transfer')
-  const factory PaymentRequest.bankTransfer({
-    required String accountNumber,
-    required String routingNumber,
-    required double amount,
-    String? accountHolder,
-    String? reference,
-  }) = PaymentRequestBankTransfer;
+  const PaymentRequest(this._json);
 
-  @FreezedUnionValue('crypto')
-  const factory PaymentRequest.crypto({
-    required String walletAddress,
-    required CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency,
-    required double amount,
-    String? transactionHash,
-  }) = PaymentRequestCrypto;
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
+      PaymentRequest(json);
 
-  factory PaymentRequest.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestFromJson(json);
+  Map<String, dynamic> toJson() => _json;
+
+  PaymentRequestCreditCard toCreditCard() =>
+      PaymentRequestCreditCard.fromJson(_json);
+  PaymentRequestBankTransfer toBankTransfer() =>
+      PaymentRequestBankTransfer.fromJson(_json);
+  PaymentRequestCrypto toCrypto() => PaymentRequestCrypto.fromJson(_json);
+}
+
+@JsonSerializable()
+class PaymentRequestCreditCard {
+  final PaymentRequestPaymentTypePaymentType paymentType;
+  final String cardNumber;
+  final int expiryMonth;
+  final int expiryYear;
+  final String cvv;
+  final String? cardholderName;
+  final double amount;
+
+  const PaymentRequestCreditCard({
+    required this.paymentType,
+    required this.cardNumber,
+    required this.expiryMonth,
+    required this.expiryYear,
+    required this.cvv,
+    required this.cardholderName,
+    required this.amount,
+  });
+
+  factory PaymentRequestCreditCard.fromJson(Map<String, Object?> json) =>
+      _$PaymentRequestCreditCardFromJson(json);
+
+  Map<String, Object?> toJson() => _$PaymentRequestCreditCardToJson(this);
+}
+
+@JsonSerializable()
+class PaymentRequestBankTransfer {
+  final PaymentRequestPaymentTypePaymentType2 paymentType;
+  final String accountNumber;
+  final String routingNumber;
+  final String? accountHolder;
+  final double amount;
+  final String? reference;
+
+  const PaymentRequestBankTransfer({
+    required this.paymentType,
+    required this.accountNumber,
+    required this.routingNumber,
+    required this.accountHolder,
+    required this.amount,
+    required this.reference,
+  });
+
+  factory PaymentRequestBankTransfer.fromJson(Map<String, Object?> json) =>
+      _$PaymentRequestBankTransferFromJson(json);
+
+  Map<String, Object?> toJson() => _$PaymentRequestBankTransferToJson(this);
+}
+
+@JsonSerializable()
+class PaymentRequestCrypto {
+  final PaymentRequestPaymentTypePaymentType3 paymentType;
+  final String walletAddress;
+  final PaymentRequestCryptocurrencyCryptocurrency cryptocurrency;
+  final double amount;
+  final String? transactionHash;
+
+  const PaymentRequestCrypto({
+    required this.paymentType,
+    required this.walletAddress,
+    required this.cryptocurrency,
+    required this.amount,
+    required this.transactionHash,
+  });
+
+  factory PaymentRequestCrypto.fromJson(Map<String, Object?> json) =>
+      _$PaymentRequestCryptoFromJson(json);
+
+  Map<String, Object?> toJson() => _$PaymentRequestCryptoToJson(this);
 }
 
 @Freezed()
@@ -649,7 +690,7 @@ abstract class PaymentResponse with _$PaymentResponse {
     required PaymentResponseStatusStatus status,
     required double amount,
     DateTime? processedAt,
-    PaymentResponseDetailsDetailsUnion? details,
+    PaymentResponseDetailsUnion? details,
     @Default('USD') String currency,
   }) = _PaymentResponse;
 
@@ -776,36 +817,37 @@ abstract class CommentSearchResult with _$CommentSearchResult {
       _$CommentSearchResultFromJson(json);
 }
 
-@Freezed(unionKey: 'entityType')
-sealed class Entity with _$Entity {
-  @FreezedUnionValue('person')
-  const factory Entity.person({
-    required String id,
-    required DateTime createdAt,
-    required DateTime dateOfBirth,
-    String? name,
-    String? description,
-    DateTime? updatedAt,
-    String? nationality,
-    String? occupation,
-    Map<String, String>? socialProfiles,
-  }) = EntityPerson;
+class Entity {
+  final Map<String, dynamic> _json;
 
-  @FreezedUnionValue('organization')
-  const factory Entity.organization({
-    required String id,
-    required DateTime createdAt,
-    required String registrationNumber,
-    String? name,
-    String? description,
-    DateTime? updatedAt,
-    DateTime? foundedDate,
-    String? industry,
-    int? employeeCount,
-    double? revenue,
-  }) = EntityOrganization;
+  const Entity(this._json);
 
-  factory Entity.fromJson(Map<String, Object?> json) => _$EntityFromJson(json);
+  factory Entity.fromJson(Map<String, dynamic> json) => Entity(json);
+
+  Map<String, dynamic> toJson() => _json;
+
+  EntityPerson toPerson() => EntityPerson.fromJson(_json);
+  EntityOrganization toOrganization() => EntityOrganization.fromJson(_json);
+}
+
+@JsonSerializable()
+class EntityPerson {
+  const EntityPerson();
+
+  factory EntityPerson.fromJson(Map<String, Object?> json) =>
+      _$EntityPersonFromJson(json);
+
+  Map<String, Object?> toJson() => _$EntityPersonToJson(this);
+}
+
+@JsonSerializable()
+class EntityOrganization {
+  const EntityOrganization();
+
+  factory EntityOrganization.fromJson(Map<String, Object?> json) =>
+      _$EntityOrganizationFromJson(json);
+
+  Map<String, Object?> toJson() => _$EntityOrganizationToJson(this);
 }
 
 @Freezed()
@@ -1099,102 +1141,37 @@ abstract class UserSettingsPrivacy with _$UserSettingsPrivacy {
       _$UserSettingsPrivacyFromJson(json);
 }
 
-class PaymentResponseDetailsDetailsUnion {
-  final Map<String, dynamic> _json;
+@Freezed(unionKey: 'paymentType')
+sealed class PaymentResponseDetailsUnion with _$PaymentResponseDetailsUnion {
+  @FreezedUnionValue('credit_card')
+  const factory PaymentResponseDetailsUnion.creditCard({
+    required String cardNumber,
+    required int expiryMonth,
+    required int expiryYear,
+    required String cvv,
+    required double amount,
+    String? cardholderName,
+  }) = PaymentResponseDetailsUnionCreditCard;
 
-  const PaymentResponseDetailsDetailsUnion(this._json);
+  @FreezedUnionValue('bank_transfer')
+  const factory PaymentResponseDetailsUnion.bankTransfer({
+    required String accountNumber,
+    required String routingNumber,
+    required double amount,
+    String? accountHolder,
+    String? reference,
+  }) = PaymentResponseDetailsUnionBankTransfer;
 
-  factory PaymentResponseDetailsDetailsUnion.fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentResponseDetailsDetailsUnion(json);
+  @FreezedUnionValue('crypto')
+  const factory PaymentResponseDetailsUnion.crypto({
+    required String walletAddress,
+    required CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency,
+    required double amount,
+    String? transactionHash,
+  }) = PaymentResponseDetailsUnionCrypto;
 
-  Map<String, dynamic> toJson() => _json;
-
-  PaymentResponseDetailsDetailsUnionCreditCardPayment toCreditCardPayment() =>
-      PaymentResponseDetailsDetailsUnionCreditCardPayment.fromJson(_json);
-  PaymentResponseDetailsDetailsUnionBankTransferPayment
-  toBankTransferPayment() =>
-      PaymentResponseDetailsDetailsUnionBankTransferPayment.fromJson(_json);
-  PaymentResponseDetailsDetailsUnionCryptoPayment toCryptoPayment() =>
-      PaymentResponseDetailsDetailsUnionCryptoPayment.fromJson(_json);
-}
-
-@JsonSerializable()
-class PaymentResponseDetailsDetailsUnionCreditCardPayment {
-  final CreditCardPaymentPaymentTypePaymentType paymentType;
-  final String cardNumber;
-  final int expiryMonth;
-  final int expiryYear;
-  final String cvv;
-  final String? cardholderName;
-  final double amount;
-
-  const PaymentResponseDetailsDetailsUnionCreditCardPayment({
-    required this.paymentType,
-    required this.cardNumber,
-    required this.expiryMonth,
-    required this.expiryYear,
-    required this.cvv,
-    required this.cardholderName,
-    required this.amount,
-  });
-
-  factory PaymentResponseDetailsDetailsUnionCreditCardPayment.fromJson(
-    Map<String, Object?> json,
-  ) => _$PaymentResponseDetailsDetailsUnionCreditCardPaymentFromJson(json);
-
-  Map<String, Object?> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionCreditCardPaymentToJson(this);
-}
-
-@JsonSerializable()
-class PaymentResponseDetailsDetailsUnionBankTransferPayment {
-  final BankTransferPaymentPaymentTypePaymentType paymentType;
-  final String accountNumber;
-  final String routingNumber;
-  final String? accountHolder;
-  final double amount;
-  final String? reference;
-
-  const PaymentResponseDetailsDetailsUnionBankTransferPayment({
-    required this.paymentType,
-    required this.accountNumber,
-    required this.routingNumber,
-    required this.accountHolder,
-    required this.amount,
-    required this.reference,
-  });
-
-  factory PaymentResponseDetailsDetailsUnionBankTransferPayment.fromJson(
-    Map<String, Object?> json,
-  ) => _$PaymentResponseDetailsDetailsUnionBankTransferPaymentFromJson(json);
-
-  Map<String, Object?> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionBankTransferPaymentToJson(this);
-}
-
-@JsonSerializable()
-class PaymentResponseDetailsDetailsUnionCryptoPayment {
-  final CryptoPaymentPaymentTypePaymentType paymentType;
-  final String walletAddress;
-  final CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency;
-  final double amount;
-  final String? transactionHash;
-
-  const PaymentResponseDetailsDetailsUnionCryptoPayment({
-    required this.paymentType,
-    required this.walletAddress,
-    required this.cryptocurrency,
-    required this.amount,
-    required this.transactionHash,
-  });
-
-  factory PaymentResponseDetailsDetailsUnionCryptoPayment.fromJson(
-    Map<String, Object?> json,
-  ) => _$PaymentResponseDetailsDetailsUnionCryptoPaymentFromJson(json);
-
-  Map<String, Object?> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionCryptoPaymentToJson(this);
+  factory PaymentResponseDetailsUnion.fromJson(Map<String, Object?> json) =>
+      _$PaymentResponseDetailsUnionFromJson(json);
 }
 
 @Freezed()
@@ -1248,9 +1225,8 @@ enum Sort {
       values.where((value) => value != $unknown).toList();
 }
 
-/// Name not received and was auto-generated.
 @JsonEnum()
-enum Enum0 {
+enum Category {
   @JsonValue('image')
   image('image'),
   @JsonValue('video')
@@ -1263,9 +1239,9 @@ enum Enum0 {
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const Enum0(this.json);
+  const Category(this.json);
 
-  factory Enum0.fromJson(String json) =>
+  factory Category.fromJson(String json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
@@ -1276,7 +1252,7 @@ enum Enum0 {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Enum0> get $valuesDefined =>
+  static List<Category> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }
 
@@ -1366,6 +1342,112 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   /// Returns all defined enum values excluding the $unknown value.
   static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
   get $valuesDefined => values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType {
+  @JsonValue('credit_card')
+  creditCard('credit_card'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType2 {
+  @JsonValue('bank_transfer')
+  bankTransfer('bank_transfer'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType2(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType2.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType2> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType3 {
+  @JsonValue('crypto')
+  crypto('crypto'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType3(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType3.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType3> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestCryptocurrencyCryptocurrency {
+  @JsonValue('BTC')
+  btc('BTC'),
+  @JsonValue('ETH')
+  eth('ETH'),
+  @JsonValue('USDT')
+  usdt('USDT'),
+  @JsonValue('BNB')
+  bnb('BNB'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestCryptocurrencyCryptocurrency(this.json);
+
+  factory PaymentRequestCryptocurrencyCryptocurrency.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestCryptocurrencyCryptocurrency> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()

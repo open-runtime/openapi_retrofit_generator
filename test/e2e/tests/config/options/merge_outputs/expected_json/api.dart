@@ -81,11 +81,6 @@ abstract class UsersClient {
   /// Upload user avatar (multipart).
   ///
   /// [file] - Avatar image file.
-  /// Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
   ///
   /// [userId] - User ID.
   @MultiPart()
@@ -147,24 +142,14 @@ abstract class CommentsClient {
 abstract class FilesClient {
   factory FilesClient(Dio dio, {String? baseUrl}) = _FilesClient;
 
-  /// Upload file with metadata.
-  ///
-  /// [files] - Name not received - field will be skipped.
-  ///
-  /// [description] - Name not received - field will be skipped.
-  ///
-  /// [category] - Name not received and was auto-generated.
-  ///
-  /// [metadata] - Name not received - field will be skipped.
-  ///
-  /// [isPublic] - Name not received - field will be skipped.
+  /// Upload file with metadata
   @MultiPart()
   @POST('/files/upload')
   Future<FileUploadResponse> uploadFile({
     @Part(name: 'files') required List<MultipartFile> files,
     @Part(name: 'isPublic') bool? isPublic = false,
     @Part(name: 'description') String? description,
-    @Part(name: 'category') Enum0? category,
+    @Part(name: 'category') Category? category,
     @Part(name: 'metadata') FileMetadata? metadata,
   });
 
@@ -891,7 +876,7 @@ class PaymentResponse {
   final double amount;
   final String currency;
   final DateTime? processedAt;
-  final PaymentResponseDetailsDetailsUnion? details;
+  final PaymentResponseDetailsUnion? details;
 
   Map<String, Object?> toJson() => _$PaymentResponseToJson(this);
 }
@@ -1546,28 +1531,47 @@ class UserSettingsPrivacy {
   Map<String, Object?> toJson() => _$UserSettingsPrivacyToJson(this);
 }
 
-class PaymentResponseDetailsDetailsUnion {
-  final Map<String, dynamic> _json;
+@JsonSerializable(createFactory: false)
+sealed class PaymentResponseDetailsUnion {
+  const PaymentResponseDetailsUnion();
 
-  const PaymentResponseDetailsDetailsUnion(this._json);
+  factory PaymentResponseDetailsUnion.fromJson(Map<String, dynamic> json) =>
+      PaymentResponseDetailsUnionDeserializer.tryDeserialize(json);
 
-  factory PaymentResponseDetailsDetailsUnion.fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentResponseDetailsDetailsUnion(json);
+  Map<String, dynamic> toJson();
+}
 
-  Map<String, dynamic> toJson() => _json;
-
-  PaymentResponseDetailsDetailsUnionCreditCardPayment toCreditCardPayment() =>
-      PaymentResponseDetailsDetailsUnionCreditCardPayment.fromJson(_json);
-  PaymentResponseDetailsDetailsUnionBankTransferPayment
-  toBankTransferPayment() =>
-      PaymentResponseDetailsDetailsUnionBankTransferPayment.fromJson(_json);
-  PaymentResponseDetailsDetailsUnionCryptoPayment toCryptoPayment() =>
-      PaymentResponseDetailsDetailsUnionCryptoPayment.fromJson(_json);
+extension PaymentResponseDetailsUnionDeserializer
+    on PaymentResponseDetailsUnion {
+  static PaymentResponseDetailsUnion tryDeserialize(
+    Map<String, dynamic> json, {
+    String key = 'paymentType',
+    Map<Type, Object?>? mapping,
+  }) {
+    final mappingFallback = const <Type, Object?>{
+      PaymentResponseDetailsUnionCreditCard: 'credit_card',
+      PaymentResponseDetailsUnionBankTransfer: 'bank_transfer',
+      PaymentResponseDetailsUnionCrypto: 'crypto',
+    };
+    final value = json[key];
+    final effective = mapping ?? mappingFallback;
+    return switch (value) {
+      _ when value == effective[PaymentResponseDetailsUnionCreditCard] =>
+        PaymentResponseDetailsUnionCreditCard.fromJson(json),
+      _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
+        PaymentResponseDetailsUnionBankTransfer.fromJson(json),
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
+        PaymentResponseDetailsUnionCrypto.fromJson(json),
+      _ => throw FormatException(
+        'Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion',
+      ),
+    };
+  }
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsDetailsUnionCreditCardPayment {
+class PaymentResponseDetailsUnionCreditCard
+    extends PaymentResponseDetailsUnion {
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -1576,7 +1580,7 @@ class PaymentResponseDetailsDetailsUnionCreditCardPayment {
   final String? cardholderName;
   final double amount;
 
-  const PaymentResponseDetailsDetailsUnionCreditCardPayment({
+  const PaymentResponseDetailsUnionCreditCard({
     required this.paymentType,
     required this.cardNumber,
     required this.expiryMonth,
@@ -1586,16 +1590,18 @@ class PaymentResponseDetailsDetailsUnionCreditCardPayment {
     required this.amount,
   });
 
-  factory PaymentResponseDetailsDetailsUnionCreditCardPayment.fromJson(
+  factory PaymentResponseDetailsUnionCreditCard.fromJson(
     Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsDetailsUnionCreditCardPaymentFromJson(json);
+  ) => _$PaymentResponseDetailsUnionCreditCardFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionCreditCardPaymentToJson(this);
+      _$PaymentResponseDetailsUnionCreditCardToJson(this);
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsDetailsUnionBankTransferPayment {
+class PaymentResponseDetailsUnionBankTransfer
+    extends PaymentResponseDetailsUnion {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -1603,7 +1609,7 @@ class PaymentResponseDetailsDetailsUnionBankTransferPayment {
   final double amount;
   final String? reference;
 
-  const PaymentResponseDetailsDetailsUnionBankTransferPayment({
+  const PaymentResponseDetailsUnionBankTransfer({
     required this.paymentType,
     required this.accountNumber,
     required this.routingNumber,
@@ -1612,23 +1618,24 @@ class PaymentResponseDetailsDetailsUnionBankTransferPayment {
     required this.reference,
   });
 
-  factory PaymentResponseDetailsDetailsUnionBankTransferPayment.fromJson(
+  factory PaymentResponseDetailsUnionBankTransfer.fromJson(
     Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsDetailsUnionBankTransferPaymentFromJson(json);
+  ) => _$PaymentResponseDetailsUnionBankTransferFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionBankTransferPaymentToJson(this);
+      _$PaymentResponseDetailsUnionBankTransferToJson(this);
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsDetailsUnionCryptoPayment {
+class PaymentResponseDetailsUnionCrypto extends PaymentResponseDetailsUnion {
   final CryptoPaymentPaymentTypePaymentType paymentType;
   final String walletAddress;
   final CryptoPaymentCryptocurrencyCryptocurrency cryptocurrency;
   final double amount;
   final String? transactionHash;
 
-  const PaymentResponseDetailsDetailsUnionCryptoPayment({
+  const PaymentResponseDetailsUnionCrypto({
     required this.paymentType,
     required this.walletAddress,
     required this.cryptocurrency,
@@ -1636,12 +1643,13 @@ class PaymentResponseDetailsDetailsUnionCryptoPayment {
     required this.transactionHash,
   });
 
-  factory PaymentResponseDetailsDetailsUnionCryptoPayment.fromJson(
+  factory PaymentResponseDetailsUnionCrypto.fromJson(
     Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsDetailsUnionCryptoPaymentFromJson(json);
+  ) => _$PaymentResponseDetailsUnionCryptoFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsDetailsUnionCryptoPaymentToJson(this);
+      _$PaymentResponseDetailsUnionCryptoToJson(this);
 }
 
 @JsonSerializable()
@@ -1709,9 +1717,8 @@ enum Sort {
       values.where((value) => value != $unknown).toList();
 }
 
-/// Name not received and was auto-generated.
 @JsonEnum()
-enum Enum0 {
+enum Category {
   @JsonValue('image')
   image('image'),
   @JsonValue('video')
@@ -1724,9 +1731,9 @@ enum Enum0 {
   /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
   $unknown(null);
 
-  const Enum0(this.json);
+  const Category(this.json);
 
-  factory Enum0.fromJson(String json) =>
+  factory Category.fromJson(String json) =>
       values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
@@ -1737,7 +1744,7 @@ enum Enum0 {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Enum0> get $valuesDefined =>
+  static List<Category> get $valuesDefined =>
       values.where((value) => value != $unknown).toList();
 }
 
@@ -1827,6 +1834,112 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   /// Returns all defined enum values excluding the $unknown value.
   static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
   get $valuesDefined => values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType {
+  @JsonValue('credit_card')
+  creditCard('credit_card'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType2 {
+  @JsonValue('bank_transfer')
+  bankTransfer('bank_transfer'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType2(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType2.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType2> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestPaymentTypePaymentType3 {
+  @JsonValue('crypto')
+  crypto('crypto'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestPaymentTypePaymentType3(this.json);
+
+  factory PaymentRequestPaymentTypePaymentType3.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestPaymentTypePaymentType3> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
+}
+
+@JsonEnum()
+enum PaymentRequestCryptocurrencyCryptocurrency {
+  @JsonValue('BTC')
+  btc('BTC'),
+  @JsonValue('ETH')
+  eth('ETH'),
+  @JsonValue('USDT')
+  usdt('USDT'),
+  @JsonValue('BNB')
+  bnb('BNB'),
+
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
+
+  const PaymentRequestCryptocurrencyCryptocurrency(this.json);
+
+  factory PaymentRequestCryptocurrencyCryptocurrency.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+
+  final String? json;
+
+  String toJson() => json ?? 'null';
+
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<PaymentRequestCryptocurrencyCryptocurrency> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()

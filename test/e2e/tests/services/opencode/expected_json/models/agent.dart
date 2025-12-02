@@ -29,7 +29,7 @@ class Agent {
 
   final String name;
   final String? description;
-  final dynamic mode;
+  final String mode;
   final bool builtIn;
   final num? topP;
   final num? temperature;

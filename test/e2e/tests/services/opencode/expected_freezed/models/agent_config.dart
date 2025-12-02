@@ -21,7 +21,7 @@ abstract class AgentConfig with _$AgentConfig {
 
     /// Description of when to use the agent
     String? description,
-    dynamic mode,
+    String? mode,
     @JsonKey(name: 'AgentConfigPermission')
     AgentConfigPermission? agentConfigPermission,
   }) = _AgentConfig;

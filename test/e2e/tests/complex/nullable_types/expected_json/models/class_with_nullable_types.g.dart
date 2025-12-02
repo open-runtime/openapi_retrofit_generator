@@ -18,11 +18,11 @@ ClassWithNullableTypes _$ClassWithNullableTypesFromJson(
   classWithNullableTypesP3: ClassWithNullableTypesP3.fromJson(
     json['ClassWithNullableTypesP3'] as Map<String, dynamic>,
   ),
-  requiredNullAnyOf: json['required_null_anyOf'],
-  p1AnyOf: json['p1_anyOf'],
+  requiredNullAnyOf: json['required_null_anyOf'] as String,
+  p1AnyOf: json['p1_anyOf'] as String,
   p2AnyOf: json['p2_anyOf'],
   p3AnyOf: json['p3_anyOf'],
-  p1OneOf: json['p1_oneOf'],
+  p1OneOf: json['p1_oneOf'] as String,
   p2OneOf: json['p2_oneOf'],
   p3OneOf: json['p3_oneOf'],
   p1AllOf: json['p1_allOf'],
@@ -44,8 +44,12 @@ ClassWithNullableTypes _$ClassWithNullableTypesFromJson(
   p1List: json['p1_list'] as String?,
   p2List: json['p2_list'] as List<dynamic>?,
   p3List: json['p3_list'],
-  nonNullAnyOf: json['nonNull_anyOf'],
-  optionalNullAnyOf: json['optional_null_anyOf'],
+  nonNullAnyOf: json['nonNull_anyOf'] == null
+      ? null
+      : ClassWithNullableTypesNonNullAnyOfUnion.fromJson(
+          json['nonNull_anyOf'] as Map<String, dynamic>,
+        ),
+  optionalNullAnyOf: json['optional_null_anyOf'] as String?,
 );
 
 Map<String, dynamic> _$ClassWithNullableTypesToJson(

@@ -424,7 +424,7 @@ class _ApiClient implements ApiClient {
     required List<MultipartFile> files,
     bool? isPublic = false,
     String? description,
-    Enum0? category,
+    Category? category,
     FileMetadata? metadata,
   }) async {
     final _extra = <String, dynamic>{};
@@ -577,7 +577,7 @@ class _ApiClient implements ApiClient {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Entity _value;
     try {
       _value = Entity.fromJson(_result.data!);

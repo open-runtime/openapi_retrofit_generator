@@ -12,7 +12,7 @@ abstract class EventFileWatcherUpdatedProperties
     with _$EventFileWatcherUpdatedProperties {
   const factory EventFileWatcherUpdatedProperties({
     required String file,
-    required dynamic event,
+    required String event,
   }) = _EventFileWatcherUpdatedProperties;
 
   factory EventFileWatcherUpdatedProperties.fromJson(

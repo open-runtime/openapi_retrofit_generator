@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'family_members_members_union.dart';
+import 'family_members_union.dart';
 import 'human_type_type.dart';
 
 part 'human.g.dart';

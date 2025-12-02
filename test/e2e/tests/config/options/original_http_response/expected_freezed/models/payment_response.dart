@@ -4,7 +4,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'payment_response_details_details_union.dart';
+import 'payment_response_details_union.dart';
 import 'payment_response_status_status.dart';
 
 part 'payment_response.freezed.dart';
@@ -17,7 +17,7 @@ abstract class PaymentResponse with _$PaymentResponse {
     required PaymentResponseStatusStatus status,
     required double amount,
     DateTime? processedAt,
-    PaymentResponseDetailsDetailsUnion? details,
+    PaymentResponseDetailsUnion? details,
     @Default('USD') String currency,
   }) = _PaymentResponse;
 

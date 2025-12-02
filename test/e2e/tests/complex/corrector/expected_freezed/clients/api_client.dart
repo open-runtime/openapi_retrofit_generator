@@ -14,8 +14,8 @@ import '../models/class_name5.dart';
 import '../models/class_name56.dart';
 import '../models/data_att_v12.dart';
 import '../models/data_att_v14.dart';
-import '../models/enum0.dart';
-import '../models/object0.dart';
+import '../models/p1_class.dart';
+import '../models/p2_enum.dart';
 import '../models/post_api_v1_request.dart';
 import '../models/private_att_v1_data3.dart';
 import '../models/private_class_name4.dart';
@@ -27,29 +27,6 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   factory ApiClient(Dio dio, {String? baseUrl}) = _ApiClient;
 
-  /// [p1] - Name not received - field will be skipped.
-  ///
-  /// [p2] - Name not received - field will be skipped.
-  ///
-  /// [p3] - Name not received - field will be skipped.
-  ///
-  /// [p4] - Name not received - field will be skipped.
-  ///
-  /// [p5] - Name not received - field will be skipped.
-  ///
-  /// [p6] - Name not received - field will be skipped.
-  ///
-  /// [v1] - Name not received - field will be skipped.
-  ///
-  /// [v2] - Name not received - field will be skipped.
-  ///
-  /// [v3] - Name not received - field will be skipped.
-  ///
-  /// [v4] - Name not received - field will be skipped.
-  ///
-  /// [p1Class] - Name not received and was auto-generated.
-  ///
-  /// [p2Enum] - Name not received and was auto-generated.
   @MultiPart()
   @GET('/api/v1/')
   Future<String> getApiV1({
@@ -63,8 +40,8 @@ abstract class ApiClient {
     @Part(name: 'p6') ClassName56? p6,
     @Part(name: 'v2') DataAttV12? v2,
     @Part(name: 'v4') DataAttV14? v4,
-    @Part(name: 'p1_class') Object0? p1Class,
-    @Part(name: 'p2_enum') Enum0? p2Enum,
+    @Part(name: 'p1_class') P1Class? p1Class,
+    @Part(name: 'p2_enum') P2Enum? p2Enum,
   });
 
   @POST('/api/v1/')

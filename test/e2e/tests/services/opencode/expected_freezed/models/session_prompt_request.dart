@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'session_prompt_request_model.dart';
 import 'session_prompt_request_acp_connection.dart';
-import 'session_prompt_request_parts_parts_union.dart';
+import 'session_prompt_request_parts_union.dart';
 
 part 'session_prompt_request.freezed.dart';
 part 'session_prompt_request.g.dart';
@@ -14,7 +14,7 @@ part 'session_prompt_request.g.dart';
 @Freezed()
 abstract class SessionPromptRequest with _$SessionPromptRequest {
   const factory SessionPromptRequest({
-    required List<SessionPromptRequestPartsPartsUnion> parts,
+    required List<SessionPromptRequestPartsUnion> parts,
     @JsonKey(name: 'messageID') String? messageId,
     @JsonKey(name: 'SessionPromptRequestModel')
     SessionPromptRequestModel? sessionPromptRequestModel,

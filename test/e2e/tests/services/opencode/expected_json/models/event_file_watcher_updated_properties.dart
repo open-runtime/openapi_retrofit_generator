@@ -18,7 +18,7 @@ class EventFileWatcherUpdatedProperties {
   ) => _$EventFileWatcherUpdatedPropertiesFromJson(json);
 
   final String file;
-  final dynamic event;
+  final String event;
 
   Map<String, Object?> toJson() =>
       _$EventFileWatcherUpdatedPropertiesToJson(this);

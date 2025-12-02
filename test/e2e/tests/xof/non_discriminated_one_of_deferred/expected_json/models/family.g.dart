@@ -8,7 +8,7 @@ part of 'family.dart';
 
 Family _$FamilyFromJson(Map<String, dynamic> json) => Family(
   members: (json['members'] as List<dynamic>)
-      .map((e) => FamilyMembersMembersUnion.fromJson(e as Map<String, dynamic>))
+      .map((e) => FamilyMembersUnion.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 

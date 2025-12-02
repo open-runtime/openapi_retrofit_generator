@@ -21,8 +21,8 @@ class ConfigPermissionMapper extends ClassMapperBase<ConfigPermission> {
   @override
   final String id = 'ConfigPermission';
 
-  static dynamic _$edit(ConfigPermission v) => v.edit;
-  static const Field<ConfigPermission, dynamic> _f$edit = Field(
+  static String? _$edit(ConfigPermission v) => v.edit;
+  static const Field<ConfigPermission, String> _f$edit = Field(
     'edit',
     _$edit,
     opt: true,
@@ -33,8 +33,8 @@ class ConfigPermissionMapper extends ClassMapperBase<ConfigPermission> {
     _$bash,
     opt: true,
   );
-  static dynamic _$webfetch(ConfigPermission v) => v.webfetch;
-  static const Field<ConfigPermission, dynamic> _f$webfetch = Field(
+  static String? _$webfetch(ConfigPermission v) => v.webfetch;
+  static const Field<ConfigPermission, String> _f$webfetch = Field(
     'webfetch',
     _$webfetch,
     opt: true,
@@ -117,7 +117,7 @@ extension ConfigPermissionValueCopy<$R, $Out>
 
 abstract class ConfigPermissionCopyWith<$R, $In extends ConfigPermission, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({dynamic edit, dynamic bash, dynamic webfetch});
+  $R call({String? edit, dynamic bash, String? webfetch});
   ConfigPermissionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );

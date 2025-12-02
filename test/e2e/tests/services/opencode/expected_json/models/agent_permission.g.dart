@@ -8,9 +8,9 @@ part of 'agent_permission.dart';
 
 AgentPermission _$AgentPermissionFromJson(Map<String, dynamic> json) =>
     AgentPermission(
-      edit: json['edit'],
-      bash: json['bash'] as Map<String, dynamic>,
-      webfetch: json['webfetch'],
+      edit: json['edit'] as String,
+      bash: Map<String, String>.from(json['bash'] as Map),
+      webfetch: json['webfetch'] as String?,
     );
 
 Map<String, dynamic> _$AgentPermissionToJson(AgentPermission instance) =>

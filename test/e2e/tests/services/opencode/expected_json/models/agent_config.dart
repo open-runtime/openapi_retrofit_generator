@@ -35,7 +35,7 @@ class AgentConfig {
 
   /// Description of when to use the agent
   final String? description;
-  final dynamic mode;
+  final String? mode;
   @JsonKey(name: 'AgentConfigPermission')
   final AgentConfigPermission? agentConfigPermission;
 

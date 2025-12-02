@@ -14,3 +14,4 @@ export 'src/generator/generator/generator_processor.dart';
 export 'src/generator/model/generated_file.dart';
 export 'src/generator/model/json_serializer.dart';
 export 'src/parser/openapi_parser_core.dart';
+export 'src/utils/generator_logger.dart';

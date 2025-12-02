@@ -22,7 +22,7 @@ _GetPostResponse _$GetPostResponseFromJson(Map<String, dynamic> json) =>
           : User.fromJson(json['author'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
       categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => $enumDecode(_$CategoryEnumMap, e))
           .toList(),
       publishedAt: json['publishedAt'] == null
           ? null
@@ -61,4 +61,11 @@ const _$PostStatusEnumMap = {
   PostStatus.published: 'published',
   PostStatus.archived: 'archived',
   PostStatus.deleted: 'deleted',
+};
+
+const _$CategoryEnumMap = {
+  Category.image: 'image',
+  Category.video: 'video',
+  Category.document: 'document',
+  Category.other: 'other',
 };

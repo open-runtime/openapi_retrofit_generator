@@ -17,7 +17,7 @@ class EventSessionErrorPropertiesMapper
       MapperContainer.globals.use(
         _instance = EventSessionErrorPropertiesMapper._(),
       );
-      EventSessionErrorPropertiesErrorErrorUnionMapper.ensureInitialized();
+      EventSessionErrorPropertiesErrorUnionMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -32,12 +32,12 @@ class EventSessionErrorPropertiesMapper
     key: r'sessionID',
     opt: true,
   );
-  static EventSessionErrorPropertiesErrorErrorUnion? _$error(
+  static EventSessionErrorPropertiesErrorUnion? _$error(
     EventSessionErrorProperties v,
   ) => v.error;
   static const Field<
     EventSessionErrorProperties,
-    EventSessionErrorPropertiesErrorErrorUnion
+    EventSessionErrorPropertiesErrorUnion
   >
   _f$error = Field('error', _$error, opt: true);
 
@@ -128,16 +128,13 @@ abstract class EventSessionErrorPropertiesCopyWith<
   $Out
 >
     implements ClassCopyWith<$R, $In, $Out> {
-  EventSessionErrorPropertiesErrorErrorUnionCopyWith<
+  EventSessionErrorPropertiesErrorUnionCopyWith<
     $R,
-    EventSessionErrorPropertiesErrorErrorUnion,
-    EventSessionErrorPropertiesErrorErrorUnion
+    EventSessionErrorPropertiesErrorUnion,
+    EventSessionErrorPropertiesErrorUnion
   >?
   get error;
-  $R call({
-    String? sessionId,
-    EventSessionErrorPropertiesErrorErrorUnion? error,
-  });
+  $R call({String? sessionId, EventSessionErrorPropertiesErrorUnion? error});
   EventSessionErrorPropertiesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -161,10 +158,10 @@ class _EventSessionErrorPropertiesCopyWithImpl<$R, $Out>
   late final ClassMapperBase<EventSessionErrorProperties> $mapper =
       EventSessionErrorPropertiesMapper.ensureInitialized();
   @override
-  EventSessionErrorPropertiesErrorErrorUnionCopyWith<
+  EventSessionErrorPropertiesErrorUnionCopyWith<
     $R,
-    EventSessionErrorPropertiesErrorErrorUnion,
-    EventSessionErrorPropertiesErrorErrorUnion
+    EventSessionErrorPropertiesErrorUnion,
+    EventSessionErrorPropertiesErrorUnion
   >?
   get error => $value.error?.copyWith.$chain((v) => call(error: v));
   @override

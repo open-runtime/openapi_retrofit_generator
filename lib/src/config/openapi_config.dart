@@ -36,6 +36,8 @@ class OpenApiConfig {
     this.defaultClient = 'api',
     this.mergeOutputs = false,
     this.includeIfNull = false,
+    this.dartMappableIgnoreNull = false,
+    this.dartMappableIncludeTypeId = true,
   });
 
   /// Internal constructor of [OpenApiConfig]
@@ -66,6 +68,8 @@ class OpenApiConfig {
     required this.defaultClient,
     required this.mergeOutputs,
     required this.includeIfNull,
+    required this.dartMappableIgnoreNull,
+    required this.dartMappableIncludeTypeId,
     this.fallbackUnion,
   });
 
@@ -226,6 +230,14 @@ class OpenApiConfig {
     final includeIfNull =
         yamlMap['include_if_null'] as bool? ?? rootConfig?.includeIfNull;
 
+    final dartMappableIgnoreNull =
+        yamlMap['dart_mappable_ignore_null'] as bool? ??
+        rootConfig?.dartMappableIgnoreNull;
+
+    final dartMappableIncludeTypeId =
+        yamlMap['dart_mappable_include_type_id'] as bool? ??
+        rootConfig?.dartMappableIncludeTypeId;
+
     // Default config
     final dc = OpenApiConfig(name: name, outputDirectory: outputDirectory);
 
@@ -259,6 +271,10 @@ class OpenApiConfig {
       includeTags: includedTags ?? dc.includeTags,
       defaultClient: defaultClient ?? dc.defaultClient,
       includeIfNull: includeIfNull ?? dc.includeIfNull,
+      dartMappableIgnoreNull:
+          dartMappableIgnoreNull ?? dc.dartMappableIgnoreNull,
+      dartMappableIncludeTypeId:
+          dartMappableIncludeTypeId ?? dc.dartMappableIncludeTypeId,
     );
   }
 
@@ -575,6 +591,26 @@ class OpenApiConfig {
   /// Default: false
   final bool includeIfNull;
 
+  /// For dart_mappable: Add `ignoreNull: true` to @MappableClass annotations.
+  ///
+  /// When true: Null values are excluded from JSON serialization
+  /// When false: Null values are included in JSON serialization
+  ///
+  /// Useful for APIs that don't expect null values in requests.
+  ///
+  /// Default: false
+  final bool dartMappableIgnoreNull;
+
+  /// For dart_mappable: Add `includeTypeId: false` to @MappableClass annotations.
+  ///
+  /// When true: Includes `__type` discriminator field in JSON for sealed classes
+  /// When false: Excludes `__type` discriminator field from JSON
+  ///
+  /// Set to false for APIs that don't expect the `__type` field (like OpenAI/Azure).
+  ///
+  /// Default: true
+  final bool dartMappableIncludeTypeId;
+
   /// Convert [OpenApiConfig] to [GeneratorConfig]
   GeneratorConfig toGeneratorConfig() {
     return GeneratorConfig(
@@ -596,6 +632,8 @@ class OpenApiConfig {
       fallbackUnion: fallbackUnion,
       mergeOutputs: mergeOutputs,
       includeIfNull: includeIfNull,
+      dartMappableIgnoreNull: dartMappableIgnoreNull,
+      dartMappableIncludeTypeId: dartMappableIncludeTypeId,
     );
   }
 

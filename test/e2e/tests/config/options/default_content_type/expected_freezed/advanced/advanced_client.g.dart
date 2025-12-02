@@ -107,7 +107,7 @@ class _AdvancedClient implements AdvancedClient {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Entity _value;
     try {
       _value = Entity.fromJson(_result.data!);

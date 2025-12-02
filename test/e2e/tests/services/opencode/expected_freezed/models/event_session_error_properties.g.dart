@@ -12,7 +12,7 @@ _EventSessionErrorProperties _$EventSessionErrorPropertiesFromJson(
   sessionId: json['sessionID'] as String?,
   error: json['error'] == null
       ? null
-      : EventSessionErrorPropertiesErrorErrorUnion.fromJson(
+      : EventSessionErrorPropertiesErrorUnion.fromJson(
           json['error'] as Map<String, dynamic>,
         ),
 );

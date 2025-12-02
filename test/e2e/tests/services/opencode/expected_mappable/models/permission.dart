@@ -32,7 +32,7 @@ class Permission with PermissionMappable {
   final Map<String, dynamic> metadata;
   @MappableField(key: 'PermissionTime')
   final PermissionTime permissionTime;
-  final dynamic pattern;
+  final String? pattern;
   @MappableField(key: 'callID')
   final String? callId;
 

@@ -541,7 +541,7 @@ class _FilesClient implements FilesClient {
     required List<MultipartFile> files,
     bool? isPublic = false,
     String? description,
-    Enum0? category,
+    Category? category,
     FileMetadata? metadata,
   }) async {
     final _extra = <String, dynamic>{};

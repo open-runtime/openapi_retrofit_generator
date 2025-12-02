@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'bank_transfer_payment_payment_type_payment_type.dart';
 import 'payment_request.dart';
+import 'payment_response_details_union.dart';
 
 part 'bank_transfer_payment.freezed.dart';
 part 'bank_transfer_payment.g.dart';

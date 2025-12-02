@@ -51,8 +51,8 @@ class PermissionMapper extends ClassMapperBase<Permission> {
     _$permissionTime,
     key: r'PermissionTime',
   );
-  static dynamic _$pattern(Permission v) => v.pattern;
-  static const Field<Permission, dynamic> _f$pattern = Field(
+  static String? _$pattern(Permission v) => v.pattern;
+  static const Field<Permission, String> _f$pattern = Field(
     'pattern',
     _$pattern,
     opt: true,
@@ -163,7 +163,7 @@ abstract class PermissionCopyWith<$R, $In extends Permission, $Out>
     String? title,
     Map<String, dynamic>? metadata,
     PermissionTime? permissionTime,
-    dynamic pattern,
+    String? pattern,
     String? callId,
   });
   PermissionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);

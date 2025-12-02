@@ -38,6 +38,8 @@ final class FillController {
       generateValidator: config.generateValidator,
       includeIfNull: config.includeIfNull,
       fallbackUnion: config.fallbackUnion,
+      dartMappableIgnoreNull: config.dartMappableIgnoreNull,
+      dartMappableIncludeTypeId: config.dartMappableIncludeTypeId,
     ),
   );
 
@@ -48,6 +50,8 @@ final class FillController {
     required bool markFilesAsGenerated,
     required bool generateValidator,
     required bool includeIfNull,
+    required bool dartMappableIgnoreNull,
+    required bool dartMappableIncludeTypeId,
     String? fallbackUnion,
   }) {
     if (dataClass is UniversalEnumClass) {
@@ -78,6 +82,8 @@ final class FillController {
           dataClass,
           markFileAsGenerated: markFilesAsGenerated,
           fallbackUnion: fallbackUnion,
+          ignoreNull: dartMappableIgnoreNull,
+          includeTypeId: dartMappableIncludeTypeId,
         ),
       };
     }

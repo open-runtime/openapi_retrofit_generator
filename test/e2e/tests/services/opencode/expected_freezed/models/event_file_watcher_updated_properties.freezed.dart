@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EventFileWatcherUpdatedProperties {
 
- String get file; dynamic get event;
+ String get file; String get event;
 /// Create a copy of EventFileWatcherUpdatedProperties
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $EventFileWatcherUpdatedPropertiesCopyWith<EventFileWatcherUpdatedProperties> ge
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventFileWatcherUpdatedProperties&&(identical(other.file, file) || other.file == file)&&const DeepCollectionEquality().equals(other.event, event));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EventFileWatcherUpdatedProperties&&(identical(other.file, file) || other.file == file)&&(identical(other.event, event) || other.event == event));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,file,const DeepCollectionEquality().hash(event));
+int get hashCode => Object.hash(runtimeType,file,event);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $EventFileWatcherUpdatedPropertiesCopyWith<$Res>  {
   factory $EventFileWatcherUpdatedPropertiesCopyWith(EventFileWatcherUpdatedProperties value, $Res Function(EventFileWatcherUpdatedProperties) _then) = _$EventFileWatcherUpdatedPropertiesCopyWithImpl;
 @useResult
 $Res call({
- String file, dynamic event
+ String file, String event
 });
 
 
@@ -65,11 +65,11 @@ class _$EventFileWatcherUpdatedPropertiesCopyWithImpl<$Res>
 
 /// Create a copy of EventFileWatcherUpdatedProperties
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? event = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? file = null,Object? event = null,}) {
   return _then(_self.copyWith(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as String,event: freezed == event ? _self.event : event // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String,event: null == event ? _self.event : event // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -154,7 +154,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String file,  dynamic event)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String file,  String event)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EventFileWatcherUpdatedProperties() when $default != null:
 return $default(_that.file,_that.event);case _:
@@ -175,7 +175,7 @@ return $default(_that.file,_that.event);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String file,  dynamic event)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String file,  String event)  $default,) {final _that = this;
 switch (_that) {
 case _EventFileWatcherUpdatedProperties():
 return $default(_that.file,_that.event);case _:
@@ -195,7 +195,7 @@ return $default(_that.file,_that.event);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String file,  dynamic event)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String file,  String event)?  $default,) {final _that = this;
 switch (_that) {
 case _EventFileWatcherUpdatedProperties() when $default != null:
 return $default(_that.file,_that.event);case _:
@@ -214,7 +214,7 @@ class _EventFileWatcherUpdatedProperties implements EventFileWatcherUpdatedPrope
   factory _EventFileWatcherUpdatedProperties.fromJson(Map<String, dynamic> json) => _$EventFileWatcherUpdatedPropertiesFromJson(json);
 
 @override final  String file;
-@override final  dynamic event;
+@override final  String event;
 
 /// Create a copy of EventFileWatcherUpdatedProperties
 /// with the given fields replaced by the non-null parameter values.
@@ -229,12 +229,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EventFileWatcherUpdatedProperties&&(identical(other.file, file) || other.file == file)&&const DeepCollectionEquality().equals(other.event, event));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EventFileWatcherUpdatedProperties&&(identical(other.file, file) || other.file == file)&&(identical(other.event, event) || other.event == event));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,file,const DeepCollectionEquality().hash(event));
+int get hashCode => Object.hash(runtimeType,file,event);
 
 @override
 String toString() {
@@ -249,7 +249,7 @@ abstract mixin class _$EventFileWatcherUpdatedPropertiesCopyWith<$Res> implement
   factory _$EventFileWatcherUpdatedPropertiesCopyWith(_EventFileWatcherUpdatedProperties value, $Res Function(_EventFileWatcherUpdatedProperties) _then) = __$EventFileWatcherUpdatedPropertiesCopyWithImpl;
 @override @useResult
 $Res call({
- String file, dynamic event
+ String file, String event
 });
 
 
@@ -266,11 +266,11 @@ class __$EventFileWatcherUpdatedPropertiesCopyWithImpl<$Res>
 
 /// Create a copy of EventFileWatcherUpdatedProperties
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? event = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? file = null,Object? event = null,}) {
   return _then(_EventFileWatcherUpdatedProperties(
 file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as String,event: freezed == event ? _self.event : event // ignore: cast_nullable_to_non_nullable
-as dynamic,
+as String,event: null == event ? _self.event : event // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

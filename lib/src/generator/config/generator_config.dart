@@ -22,6 +22,8 @@ class GeneratorConfig {
     this.fallbackUnion,
     this.mergeOutputs = false,
     this.includeIfNull = false,
+    this.dartMappableIgnoreNull = false,
+    this.dartMappableIncludeTypeId = true,
   });
 
   /// API identifier used for naming folders and export files.
@@ -187,4 +189,24 @@ class GeneratorConfig {
   ///
   /// Default: false
   final bool includeIfNull;
+
+  /// For dart_mappable: Add `ignoreNull: true` to @MappableClass annotations.
+  ///
+  /// When true: Null values are excluded from JSON serialization
+  /// When false: Null values are included in JSON serialization
+  ///
+  /// Useful for APIs that don't expect null values in requests.
+  ///
+  /// Default: false
+  final bool dartMappableIgnoreNull;
+
+  /// For dart_mappable: Add `includeTypeId: false` to @MappableClass annotations.
+  ///
+  /// When true: Includes `__type` discriminator field in JSON for sealed classes
+  /// When false: Excludes `__type` discriminator field from JSON
+  ///
+  /// Set to false for APIs that don't expect the `__type` field (like OpenAI/Azure).
+  ///
+  /// Default: true
+  final bool dartMappableIncludeTypeId;
 }

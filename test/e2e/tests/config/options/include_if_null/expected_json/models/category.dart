@@ -4,30 +4,33 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'category.dart';
+@JsonEnum()
+enum Category {
+  @JsonValue('image')
+  image('image'),
+  @JsonValue('video')
+  video('video'),
+  @JsonValue('document')
+  document('document'),
+  @JsonValue('other')
+  other('other'),
 
-part 'category.g.dart';
+  /// Default value for all unparsed values, allows backward compatibility when adding new values on the backend.
+  $unknown(null);
 
-@JsonSerializable()
-class Category {
-  const Category({
-    required this.id,
-    required this.name,
-    this.slug,
-    this.parent,
-  });
+  const Category(this.json);
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
-  final String id;
-  final String name;
-  @JsonKey(includeIfNull: false)
-  final String? slug;
+  final String? json;
 
-  /// Circular reference for nested categories
-  @JsonKey(includeIfNull: false)
-  final Category? parent;
+  String toJson() => json ?? 'null';
 
-  Map<String, Object?> toJson() => _$CategoryToJson(this);
+  @override
+  String toString() => json ?? super.toString();
+
+  /// Returns all defined enum values excluding the $unknown value.
+  static List<Category> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }

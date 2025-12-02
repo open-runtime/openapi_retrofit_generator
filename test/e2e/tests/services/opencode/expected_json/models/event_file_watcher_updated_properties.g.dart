@@ -10,7 +10,7 @@ EventFileWatcherUpdatedProperties _$EventFileWatcherUpdatedPropertiesFromJson(
   Map<String, dynamic> json,
 ) => EventFileWatcherUpdatedProperties(
   file: json['file'] as String,
-  event: json['event'],
+  event: json['event'] as String,
 );
 
 Map<String, dynamic> _$EventFileWatcherUpdatedPropertiesToJson(

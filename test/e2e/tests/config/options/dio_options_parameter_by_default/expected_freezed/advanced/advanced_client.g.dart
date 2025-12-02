@@ -103,7 +103,7 @@ class _AdvancedClient implements AdvancedClient {
       queryParameters: queryParameters,
       path: '/entities/${entityId}',
     )..data = _data;
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late Entity _value;
     try {
       _value = Entity.fromJson(_result.data!);

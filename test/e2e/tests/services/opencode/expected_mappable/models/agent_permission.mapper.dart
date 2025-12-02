@@ -21,15 +21,15 @@ class AgentPermissionMapper extends ClassMapperBase<AgentPermission> {
   @override
   final String id = 'AgentPermission';
 
-  static dynamic _$edit(AgentPermission v) => v.edit;
-  static const Field<AgentPermission, dynamic> _f$edit = Field('edit', _$edit);
-  static Map<String, dynamic> _$bash(AgentPermission v) => v.bash;
-  static const Field<AgentPermission, Map<String, dynamic>> _f$bash = Field(
+  static String _$edit(AgentPermission v) => v.edit;
+  static const Field<AgentPermission, String> _f$edit = Field('edit', _$edit);
+  static Map<String, String> _$bash(AgentPermission v) => v.bash;
+  static const Field<AgentPermission, Map<String, String>> _f$bash = Field(
     'bash',
     _$bash,
   );
-  static dynamic _$webfetch(AgentPermission v) => v.webfetch;
-  static const Field<AgentPermission, dynamic> _f$webfetch = Field(
+  static String? _$webfetch(AgentPermission v) => v.webfetch;
+  static const Field<AgentPermission, String> _f$webfetch = Field(
     'webfetch',
     _$webfetch,
     opt: true,
@@ -112,9 +112,8 @@ extension AgentPermissionValueCopy<$R, $Out>
 
 abstract class AgentPermissionCopyWith<$R, $In extends AgentPermission, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  MapCopyWith<$R, String, dynamic, ObjectCopyWith<$R, dynamic, dynamic>>
-  get bash;
-  $R call({dynamic edit, Map<String, dynamic>? bash, dynamic webfetch});
+  MapCopyWith<$R, String, String, ObjectCopyWith<$R, String, String>> get bash;
+  $R call({String? edit, Map<String, String>? bash, String? webfetch});
   AgentPermissionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -129,7 +128,7 @@ class _AgentPermissionCopyWithImpl<$R, $Out>
   late final ClassMapperBase<AgentPermission> $mapper =
       AgentPermissionMapper.ensureInitialized();
   @override
-  MapCopyWith<$R, String, dynamic, ObjectCopyWith<$R, dynamic, dynamic>>
+  MapCopyWith<$R, String, String, ObjectCopyWith<$R, String, String>>
   get bash => MapCopyWith(
     $value.bash,
     (v, t) => ObjectCopyWith(v, $identity, t),
@@ -137,12 +136,12 @@ class _AgentPermissionCopyWithImpl<$R, $Out>
   );
   @override
   $R call({
-    Object? edit = $none,
-    Map<String, dynamic>? bash,
+    String? edit,
+    Map<String, String>? bash,
     Object? webfetch = $none,
   }) => $apply(
     FieldCopyWithData({
-      if (edit != $none) #edit: edit,
+      if (edit != null) #edit: edit,
       if (bash != null) #bash: bash,
       if (webfetch != $none) #webfetch: webfetch,
     }),
