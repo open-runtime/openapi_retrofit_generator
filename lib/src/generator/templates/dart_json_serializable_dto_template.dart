@@ -323,8 +323,13 @@ String _generateDiscriminatedWrapperClasses(
         final properties =
             discriminator.refProperties[variantName] ?? <UniversalType>{};
 
+        // Filter out properties with null or empty names
+        final validProps = properties.where(
+          (p) => p.name != null && p.name!.isNotEmpty,
+        ).toList();
+
         // Generate direct properties and collect imports
-        final directProperties = properties
+        final directProperties = validProps
             .map((prop) {
               final typeStr = _jsonSerializableSuitableType(prop);
               // Extract type names for imports (handles List<Foo>, Map<String, Bar>, etc.)
@@ -334,12 +339,12 @@ String _generateDiscriminatedWrapperClasses(
             .join('\n');
 
         // Generate constructor parameters
-        final constructorParams = properties
+        final constructorParams = validProps
             .map((prop) => '    required this.${prop.name},')
             .join('\n');
 
         // Handle empty properties case
-        final constructorSignature = properties.isEmpty
+        final constructorSignature = validProps.isEmpty
             ? 'const $wrapperClassName();'
             : '''const $wrapperClassName({
 $constructorParams
@@ -400,8 +405,13 @@ String _generateUndiscriminatedWrapperClasses(
         final properties = entry.value;
         final wrapperClassName = '$className${variantName.toPascal}';
 
+        // Filter out properties with null or empty names
+        final validProps = properties.where(
+          (p) => p.name != null && p.name!.isNotEmpty,
+        ).toList();
+
         // Generate direct properties and collect imports
-        final directProperties = properties
+        final directProperties = validProps
             .map((prop) {
               final typeStr = _jsonSerializableSuitableType(prop);
               // Extract type names for imports
@@ -411,12 +421,12 @@ String _generateUndiscriminatedWrapperClasses(
             .join('\n');
 
         // Generate constructor parameters
-        final constructorParams = properties
+        final constructorParams = validProps
             .map((prop) => '    required this.${prop.name},')
             .join('\n');
 
         // Handle empty properties case
-        final constructorSignature = properties.isEmpty
+        final constructorSignature = validProps.isEmpty
             ? 'const $wrapperClassName();'
             : '''const $wrapperClassName({
 $constructorParams
@@ -463,23 +473,26 @@ class $fallbackClassName extends $className {
 }''';
 }
 
-String _parametersInClass(
-  Set<UniversalType> parameters,
-  bool includeIfNull,
-) => parameters.mapIndexed((i, e) {
-  // Filter out auto-generated descriptions (normalization messages, conflict resolutions, etc.)
-  final shouldShowDescription =
-      e.description != null &&
-      !e.description!.contains('Normalized from:') &&
-      !e.description!.contains('The name has been replaced') &&
-      !e.description!.contains('Name not received') &&
-      !e.description!.contains('Incorrect name has been replaced');
+String _parametersInClass(Set<UniversalType> parameters, bool includeIfNull) {
+  // Filter out parameters with null or empty names
+  final validParams = parameters.where(
+    (p) => p.name != null && p.name!.isNotEmpty,
+  );
+  return validParams.mapIndexed((i, e) {
+    // Filter out auto-generated descriptions (normalization messages, conflict resolutions, etc.)
+    final shouldShowDescription =
+        e.description != null &&
+        !e.description!.contains('Normalized from:') &&
+        !e.description!.contains('The name has been replaced') &&
+        !e.description!.contains('Name not received') &&
+        !e.description!.contains('Incorrect name has been replaced');
 
-  final description = shouldShowDescription ? e.description : null;
+    final description = shouldShowDescription ? e.description : null;
 
-  return '\n${descriptionComment(description, tab: '  ')}'
-      '${_jsonKey(e, includeIfNull)}  final ${_jsonSerializableSuitableType(e)} ${e.name};';
-}).join();
+    return '\n${descriptionComment(description, tab: '  ')}'
+        '${_jsonKey(e, includeIfNull)}  final ${_jsonSerializableSuitableType(e)} ${e.name};';
+  }).join();
+}
 
 String _jsonSerializableSuitableType(UniversalType type) {
   var result = type.toSuitableType();
@@ -498,8 +511,12 @@ String _parametersInConstructor(
   Set<UniversalType> parameters,
   bool includeIfNull,
 ) {
+  // Filter out parameters with null or empty names
+  final validParams = parameters.where(
+    (p) => p.name != null && p.name!.isNotEmpty,
+  );
   final sortedByRequired = Set<UniversalType>.from(
-    parameters.sorted((a, b) => a.compareTo(b)),
+    validParams.sorted((a, b) => a.compareTo(b)),
   );
   return sortedByRequired
       .map((e) => '\n    ${_required(e)}this.${e.name}${_defaultValue(e)},')
@@ -571,14 +588,19 @@ String _defaultValue(UniversalType t) {
 
   final defaultValueStr = t.defaultValue.toString();
 
-  if (t.enumType != null) {
+  // Check if this is an enum type - either explicitly marked or detected by type name
+  final isEnumType = t.enumType != null || isLikelyEnumType(t.type);
+
+  if (isEnumType) {
     if (defaultValueStr.startsWith('[') && defaultValueStr.endsWith(']')) {
+      // Extract the element type from wrapping collections or from the type itself
+      final elementType = t.enumType ?? t.type;
       final values = defaultValueStr
           .substring(1, defaultValueStr.length - 1)
           .split(',')
           .map((v) => v.trim())
           .where((v) => v.isNotEmpty)
-          .map((v) => '${t.type}.${protectDefaultEnum(v)?.toCamel}')
+          .map((v) => '$elementType.${protectDefaultEnum(v)?.toCamel}')
           .join(', ');
       return ' = const [$values]';
     }

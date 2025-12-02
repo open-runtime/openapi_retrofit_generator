@@ -214,17 +214,24 @@ String _defaultValue(UniversalType t) {
 
   final defaultValueStr = t.defaultValue.toString();
 
-  if (t.enumType != null) {
+  // Check if this is an enum type - either explicitly marked or detected by type name
+  final isEnumType = t.enumType != null || isLikelyEnumType(t.type);
+
+  if (isEnumType) {
+    // For arrays of enums (e.g., List<Enum0>)
     if (defaultValueStr.startsWith('[') && defaultValueStr.endsWith(']')) {
+      // Extract the element type from wrapping collections or from the type itself
+      final elementType = t.enumType ?? t.type;
       final values = defaultValueStr
           .substring(1, defaultValueStr.length - 1)
           .split(',')
           .map((v) => v.trim())
           .where((v) => v.isNotEmpty)
-          .map((v) => '${t.type}.${protectDefaultEnum(v)?.toCamel}')
+          .map((v) => '$elementType.${protectDefaultEnum(v)?.toCamel}')
           .join(', ');
       return ' = const [$values]';
     }
+    // For single enum values
     return ' = ${t.type}.${protectDefaultEnum(t.defaultValue)?.toCamel}';
   }
 

@@ -65,6 +65,59 @@ String uniqueName({bool isEnum = false}) {
 final _enumNameRegExp = RegExp(r'^[a-zA-Z\d_\s-]*$');
 final _startWithNumberRegExp = RegExp(r'^-?\d+');
 
+/// Primitive types that should NOT be treated as enums
+const primitiveTypes = {
+  'int',
+  'double',
+  'num',
+  'String',
+  'bool',
+  'DateTime',
+  'Object',
+  'dynamic',
+  'void',
+  'MultipartFile',
+  'Uint8List',
+  'List',
+  'Map',
+  'Set',
+};
+
+/// Check if a type name looks like an enum type
+/// (PascalCase, not a primitive, and not a generic collection)
+///
+/// This is used as a fallback when enumType is not explicitly set
+/// but the default value needs to be qualified with the type prefix.
+bool isLikelyEnumType(String typeName) {
+  // Remove nullable suffix
+  final cleanType = typeName.replaceAll('?', '');
+
+  // If it's a primitive type, it's not an enum
+  if (primitiveTypes.contains(cleanType)) {
+    return false;
+  }
+
+  // If it's a generic type like List<X>, Map<K,V>, it's not an enum
+  if (cleanType.contains('<') || cleanType.contains('>')) {
+    return false;
+  }
+
+  // If it starts with a lowercase letter, it's probably not an enum
+  if (cleanType.isEmpty || cleanType[0].toLowerCase() == cleanType[0]) {
+    return false;
+  }
+
+  // Special case: types starting with "Enum" followed by a digit are definitely enums
+  // These are auto-generated inline enum names like Enum0, Enum1, etc.
+  if (RegExp(r'^Enum\d+$').hasMatch(cleanType)) {
+    return true;
+  }
+
+  // For other PascalCase names, we assume they could be enums
+  // This is a heuristic that works for most cases
+  return true;
+}
+
 /// Protect default enum value from incorrect symbols, keywords, etc.
 String? protectDefaultEnum(Object? name) =>
     protectDefaultValue(name, isEnum: true);
@@ -123,9 +176,23 @@ String? protectDefaultValue(
     return null;
   }
 
-  if (type == 'string') {
+  // Handle string default values - quote them properly
+  // Check for both 'string' (OpenAPI) and 'String' (Dart) types
+  if (type?.toLowerCase() == 'string') {
     final quote = dart ? "'" : '"';
     return '$quote${nameStr.replaceAll(quote, dart ? r"\'" : r'\"')}$quote';
+  }
+
+  // Also check if the value looks like it should be a string but isn't quoted
+  // (e.g., contains special characters like <|>)
+  if (type == 'dynamic' || type == null) {
+    // If value contains special chars that would break Dart syntax, quote it
+    if (nameStr.contains('<') ||
+        nameStr.contains('>') ||
+        nameStr.contains('|')) {
+      final quote = dart ? "'" : '"';
+      return '$quote${nameStr.replaceAll(quote, dart ? r"\'" : r'\"')}$quote';
+    }
   }
 
   return nameStr;

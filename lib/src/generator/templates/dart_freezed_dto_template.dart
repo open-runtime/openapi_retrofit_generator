@@ -393,8 +393,12 @@ String? _validationString(UniversalType type) {
 }
 
 String _parametersToString(Set<UniversalType> parameters, bool includeIfNull) {
+  // Filter out parameters with null or empty names
+  final validParams = parameters.where(
+    (p) => p.name != null && p.name!.isNotEmpty,
+  );
   final sortedByRequired = Set<UniversalType>.from(
-    parameters.sorted((a, b) => a.compareTo(b)),
+    validParams.sorted((a, b) => a.compareTo(b)),
   );
   return sortedByRequired.mapIndexed((i, e) {
     // Filter out auto-generated descriptions (normalization messages, conflict resolutions, etc.)
@@ -503,14 +507,19 @@ String _defaultValue(UniversalType t) {
 
   final defaultValueStr = t.defaultValue.toString();
 
-  if (t.enumType != null) {
+  // Check if this is an enum type - either explicitly marked or detected by type name
+  final isEnumType = t.enumType != null || isLikelyEnumType(t.type);
+
+  if (isEnumType) {
     if (defaultValueStr.startsWith('[') && defaultValueStr.endsWith(']')) {
+      // Extract the element type from wrapping collections or from the type itself
+      final elementType = t.enumType ?? t.type;
       final values = defaultValueStr
           .substring(1, defaultValueStr.length - 1)
           .split(',')
           .map((v) => v.trim())
           .where((v) => v.isNotEmpty)
-          .map((v) => '${t.type}.${protectDefaultEnum(v)?.toCamel}')
+          .map((v) => '$elementType.${protectDefaultEnum(v)?.toCamel}')
           .join(', ');
       return 'const [$values]';
     }

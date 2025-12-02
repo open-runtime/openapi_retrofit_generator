@@ -102,8 +102,12 @@ String getFields(
 }
 
 String _fieldsToString(List<UniversalType> parameters) {
+  // Filter out parameters with null or empty names
+  final validParams = parameters
+      .where((p) => p.name != null && p.name!.isNotEmpty)
+      .toList();
   final sortedByRequired = Set<UniversalType>.from(
-    parameters.sorted((a, b) => a.compareTo(b)),
+    validParams.sorted((a, b) => a.compareTo(b)),
   );
   return sortedByRequired
       .mapIndexed((i, e) {
@@ -113,8 +117,12 @@ String _fieldsToString(List<UniversalType> parameters) {
 }
 
 String _parametersToString(List<UniversalType> parameters) {
+  // Filter out parameters with null or empty names
+  final validParams = parameters
+      .where((p) => p.name != null && p.name!.isNotEmpty)
+      .toList();
   final sortedByRequired = Set<UniversalType>.from(
-    parameters.sorted((a, b) => a.compareTo(b)),
+    validParams.sorted((a, b) => a.compareTo(b)),
   );
   return sortedByRequired
       .mapIndexed(
@@ -162,14 +170,19 @@ String _defaultValue(UniversalType t) {
 
   final defaultValueStr = t.defaultValue.toString();
 
-  if (t.enumType != null) {
+  // Check if this is an enum type - either explicitly marked or detected by type name
+  final isEnumType = t.enumType != null || isLikelyEnumType(t.type);
+
+  if (isEnumType) {
     if (defaultValueStr.startsWith('[') && defaultValueStr.endsWith(']')) {
+      // Extract the element type from wrapping collections or from the type itself
+      final elementType = t.enumType ?? t.type;
       final values = defaultValueStr
           .substring(1, defaultValueStr.length - 1)
           .split(',')
           .map((v) => v.trim())
           .where((v) => v.isNotEmpty)
-          .map((v) => '${t.type}.${protectDefaultEnum(v)?.toCamel}')
+          .map((v) => '$elementType.${protectDefaultEnum(v)?.toCamel}')
           .join(', ');
       return 'const [$values]';
     }
@@ -375,8 +388,13 @@ String _generateVariantWrappers(
     final properties = entry.value;
     final wrapperClassName = '$className${variantName.toPascal}';
 
+    // Filter out properties with null or empty names
+    final validProps = properties.where(
+      (p) => p.name != null && p.name!.isNotEmpty,
+    ).toList();
+
     // Generate direct properties without @override since sealed base class has no properties
-    final directProperties = properties
+    final directProperties = validProps
         .map(
           (prop) =>
               '${indentation(2)}final ${prop.toSuitableType()} ${prop.name};',
@@ -384,12 +402,12 @@ String _generateVariantWrappers(
         .join('\n');
 
     // Generate constructor parameters
-    final constructorParams = properties
+    final constructorParams = validProps
         .map((prop) => '${indentation(4)}required this.${prop.name},')
         .join('\n');
 
     // Handle empty properties case
-    final constructorSignature = properties.isEmpty
+    final constructorSignature = validProps.isEmpty
         ? '${indentation(2)}const $wrapperClassName();'
         : '''${indentation(2)}const $wrapperClassName({
 $constructorParams
@@ -592,8 +610,10 @@ String _generateDiscriminatedWrapperClasses(
     final variantProperties =
         discriminator.refProperties[variantName] ?? <UniversalType>[];
 
-    // Include all properties (including discriminator property)
-    final filteredProperties = variantProperties;
+    // Filter out properties with null or empty names
+    final filteredProperties = variantProperties.where(
+      (p) => p.name != null && p.name!.isNotEmpty,
+    ).toList();
 
     // Generate direct properties instead of delegating getters
     final directProperties = filteredProperties
