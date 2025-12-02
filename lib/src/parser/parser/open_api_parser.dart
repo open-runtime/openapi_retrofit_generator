@@ -2068,7 +2068,15 @@ class OpenApiParser {
 
       var newName = variableName;
       if (additionalName != null) {
-        newName = '$additionalName $newName'.toPascal;
+        // Avoid duplicate words like "RoleRole" - check if additionalName already ends with variableName
+        final additionalLower = additionalName.toLowerCase();
+        final varNameLower = variableName.toLowerCase();
+        if (additionalLower.endsWith(varNameLower)) {
+          // additionalName already includes the property name, use it as-is
+          newName = additionalName.toPascal;
+        } else {
+          newName = '$additionalName $newName'.toPascal;
+        }
       }
 
       final Set<UniversalEnumItem> items;
