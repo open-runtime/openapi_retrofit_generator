@@ -9,9 +9,7 @@ part 'filters_date_range.g.dart';
 
 @Freezed()
 abstract class FiltersDateRange with _$FiltersDateRange {
-  const factory FiltersDateRange({DateTime? from, DateTime? to}) =
-      _FiltersDateRange;
+  const factory FiltersDateRange({DateTime? from, DateTime? to}) = _FiltersDateRange;
 
-  factory FiltersDateRange.fromJson(Map<String, Object?> json) =>
-      _$FiltersDateRangeFromJson(json);
+  factory FiltersDateRange.fromJson(Map<String, Object?> json) => _$FiltersDateRangeFromJson(json);
 }

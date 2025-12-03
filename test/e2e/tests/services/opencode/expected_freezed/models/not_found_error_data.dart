@@ -9,9 +9,7 @@ part 'not_found_error_data.g.dart';
 
 @Freezed()
 abstract class NotFoundErrorData with _$NotFoundErrorData {
-  const factory NotFoundErrorData({required String message}) =
-      _NotFoundErrorData;
+  const factory NotFoundErrorData({required String message}) = _NotFoundErrorData;
 
-  factory NotFoundErrorData.fromJson(Map<String, Object?> json) =>
-      _$NotFoundErrorDataFromJson(json);
+  factory NotFoundErrorData.fromJson(Map<String, Object?> json) => _$NotFoundErrorDataFromJson(json);
 }

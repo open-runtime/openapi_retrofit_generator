@@ -30,6 +30,5 @@ enum Type2 {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Type2> get $valuesDefined =>
-      values.where((value) => value != Type2.unknown).toList();
+  static List<Type2> get $valuesDefined => values.where((value) => value != Type2.unknown).toList();
 }

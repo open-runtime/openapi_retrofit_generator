@@ -14,6 +14,5 @@ class NullableUserDto with NullableUserDtoMappable {
 
   final UserDto? data;
 
-  static NullableUserDto fromJson(Map<String, dynamic> json) =>
-      NullableUserDtoMapper.fromJson(json);
+  static NullableUserDto fromJson(Map<String, dynamic> json) => NullableUserDtoMapper.fromJson(json);
 }

@@ -34,8 +34,7 @@ abstract class GetPostResponse with _$GetPostResponse {
     List<Comment>? comments,
   }) = _GetPostResponse;
 
-  factory GetPostResponse.fromJson(Map<String, Object?> json) =>
-      _$GetPostResponseFromJson(json);
+  factory GetPostResponse.fromJson(Map<String, Object?> json) => _$GetPostResponseFromJson(json);
   static const int titleMinLength = 1;
   static const int titleMaxLength = 200;
   static const int contentMinLength = 1;
@@ -69,8 +68,7 @@ extension GetPostResponseValidationX on GetPostResponse {
       return false;
     }
     try {
-      if (excerpt != null &&
-          excerpt!.length > GetPostResponse.excerptMaxLength) {
+      if (excerpt != null && excerpt!.length > GetPostResponse.excerptMaxLength) {
         return false;
       }
     } catch (e) {

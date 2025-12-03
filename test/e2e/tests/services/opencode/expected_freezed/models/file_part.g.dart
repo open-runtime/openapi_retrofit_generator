@@ -14,9 +14,7 @@ _FilePart _$FilePartFromJson(Map<String, dynamic> json) => _FilePart(
   mime: json['mime'] as String,
   url: json['url'] as String,
   filename: json['filename'] as String?,
-  source: json['source'] == null
-      ? null
-      : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
+  source: json['source'] == null ? null : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$FilePartToJson(_FilePart instance) => <String, dynamic>{

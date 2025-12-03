@@ -16,8 +16,7 @@ class StepStartPart {
     this.snapshot,
   });
 
-  factory StepStartPart.fromJson(Map<String, Object?> json) =>
-      _$StepStartPartFromJson(json);
+  factory StepStartPart.fromJson(Map<String, Object?> json) => _$StepStartPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

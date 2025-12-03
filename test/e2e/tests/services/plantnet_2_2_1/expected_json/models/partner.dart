@@ -10,15 +10,9 @@ part 'partner.g.dart';
 
 @JsonSerializable()
 class Partner {
-  const Partner({
-    required this.id,
-    required this.observationId,
-    this.author,
-    this.avatar,
-  });
+  const Partner({required this.id, required this.observationId, this.author, this.avatar});
 
-  factory Partner.fromJson(Map<String, Object?> json) =>
-      _$PartnerFromJson(json);
+  factory Partner.fromJson(Map<String, Object?> json) => _$PartnerFromJson(json);
 
   final Author? author;
   final String id;

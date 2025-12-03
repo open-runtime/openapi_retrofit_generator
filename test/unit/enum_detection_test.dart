@@ -13,10 +13,7 @@ void main() {
 
       test('PascalCase type names', () {
         expect(isLikelyEnumType('AudioResponseFormat'), isTrue);
-        expect(
-          isLikelyEnumType('CreateImageEditRequestBackgroundEnum'),
-          isTrue,
-        );
+        expect(isLikelyEnumType('CreateImageEditRequestBackgroundEnum'), isTrue);
         expect(isLikelyEnumType('TranscriptionInclude'), isTrue);
       });
 

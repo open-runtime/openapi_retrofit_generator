@@ -10,12 +10,7 @@ part 'user_message.mapper.dart';
 
 @MappableClass()
 class UserMessage with UserMessageMappable {
-  const UserMessage({
-    required this.id,
-    required this.sessionId,
-    required this.role,
-    required this.userMessageTime,
-  });
+  const UserMessage({required this.id, required this.sessionId, required this.role, required this.userMessageTime});
 
   final String id;
   @MappableField(key: 'sessionID')
@@ -24,6 +19,5 @@ class UserMessage with UserMessageMappable {
   @MappableField(key: 'UserMessageTime')
   final UserMessageTime userMessageTime;
 
-  static UserMessage fromJson(Map<String, dynamic> json) =>
-      UserMessageMapper.fromJson(json);
+  static UserMessage fromJson(Map<String, dynamic> json) => UserMessageMapper.fromJson(json);
 }

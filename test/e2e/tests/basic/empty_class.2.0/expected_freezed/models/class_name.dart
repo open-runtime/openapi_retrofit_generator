@@ -11,6 +11,5 @@ part 'class_name.g.dart';
 abstract class ClassName with _$ClassName {
   const factory ClassName() = _ClassName;
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 }

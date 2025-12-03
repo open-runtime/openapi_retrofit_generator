@@ -10,6 +10,5 @@ part 'class_name.mapper.dart';
 class ClassName with ClassNameMappable {
   const ClassName();
 
-  static ClassName fromJson(Map<String, dynamic> json) =>
-      ClassNameMapper.fromJson(json);
+  static ClassName fromJson(Map<String, dynamic> json) => ClassNameMapper.fromJson(json);
 }

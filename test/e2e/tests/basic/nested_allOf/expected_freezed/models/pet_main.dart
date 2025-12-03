@@ -9,9 +9,7 @@ part 'pet_main.g.dart';
 
 @Freezed()
 abstract class PetMain with _$PetMain {
-  const factory PetMain({int? propC, int? propB, int? propA, int? propMain}) =
-      _PetMain;
+  const factory PetMain({int? propC, int? propB, int? propA, int? propMain}) = _PetMain;
 
-  factory PetMain.fromJson(Map<String, Object?> json) =>
-      _$PetMainFromJson(json);
+  factory PetMain.fromJson(Map<String, Object?> json) => _$PetMainFromJson(json);
 }

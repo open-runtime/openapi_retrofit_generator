@@ -12,6 +12,5 @@ class FindTextResponsePath with FindTextResponsePathMappable {
 
   final String text;
 
-  static FindTextResponsePath fromJson(Map<String, dynamic> json) =>
-      FindTextResponsePathMapper.fromJson(json);
+  static FindTextResponsePath fromJson(Map<String, dynamic> json) => FindTextResponsePathMapper.fromJson(json);
 }

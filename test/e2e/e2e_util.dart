@@ -16,12 +16,7 @@ import '../test_utils.dart';
 /// providing a reliable way to catch regressions or unintended changes in the code generation process.
 Future<void> e2eTest(
   String testName,
-  OpenApiConfig Function(
-    String outputDirectory,
-    String schemaPath,
-    JsonSerializer serializer,
-  )
-  config, {
+  OpenApiConfig Function(String outputDirectory, String schemaPath, JsonSerializer serializer) config, {
   String? schemaFileName,
   required String buildFolder,
 }) async {
@@ -38,12 +33,7 @@ Future<void> e2eTest(
   print('\n[1/6] Cleaning generated folders...');
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolder = p.join(
-      'test',
-      'generated',
-      testName,
-      generatedFolderName,
-    );
+    final generatedFolder = p.join('test', 'generated', testName, generatedFolderName);
     final genDir = Directory(generatedFolder);
     if (genDir.existsSync()) {
       genDir.deleteSync(recursive: true);
@@ -57,8 +47,7 @@ Future<void> e2eTest(
   await generateFilesForAllSerializers(
     buildFolder: buildFolder,
     schemaPath: schemaPath,
-    configBuilder: (outputDirectory, schemaPath, serializer) =>
-        config(outputDirectory, schemaPath, serializer),
+    configBuilder: (outputDirectory, schemaPath, serializer) => config(outputDirectory, schemaPath, serializer),
   );
 
   print('\n[3/6] Running build_runner...');
@@ -75,9 +64,7 @@ Future<void> e2eTest(
   await Process.run('dart', ['format', libFolder]);
   print('  ✓ Files formatted');
 
-  print(
-    '\n[5/6] ${generateExpectedFiles ? "Moving to expected folders" : "Moving to generated folders"}...',
-  );
+  print('\n[5/6] ${generateExpectedFiles ? "Moving to expected folders" : "Moving to generated folders"}...');
   for (final serializer in JsonSerializer.values) {
     final expectedFolder = getExpectedFolderName(serializer);
     final generatedFolderName = getGeneratedFolderName(serializer);
@@ -123,12 +110,7 @@ Future<void> e2eTest(
     print('\n[7/7] Cleaning up generated folders...');
     for (final serializer in JsonSerializer.values) {
       final generatedFolderName = getGeneratedFolderName(serializer);
-      final generatedFolder = p.join(
-        'test',
-        'generated',
-        testName,
-        generatedFolderName,
-      );
+      final generatedFolder = p.join('test', 'generated', testName, generatedFolderName);
       final genDir = Directory(generatedFolder);
       if (genDir.existsSync()) {
         genDir.deleteSync(recursive: true);
@@ -144,12 +126,7 @@ Future<void> e2eTest(
     final generatedFolderName = getGeneratedFolderName(serializer);
 
     final expectedFolderPath = p.join(testFolder, expectedFolder);
-    final generatedFolderPath = p.join(
-      'test',
-      'generated',
-      testName,
-      generatedFolderName,
-    );
+    final generatedFolderPath = p.join('test', 'generated', testName, generatedFolderName);
 
     final expectedDir = Directory(expectedFolderPath);
     if (!expectedDir.existsSync()) {
@@ -160,58 +137,37 @@ Future<void> e2eTest(
       );
     }
 
-    final expectedFiles = expectedDir
-        .listSync(recursive: true, followLinks: false)
-        .whereType<File>()
-        .toList();
+    final expectedFiles = expectedDir.listSync(recursive: true, followLinks: false).whereType<File>().toList();
 
     final generatedFiles = Directory(
       generatedFolderPath,
     ).listSync(recursive: true, followLinks: false).whereType<File>().toList();
 
     for (final file in expectedFiles) {
-      final relativePath = p
-          .relative(file.path, from: expectedFolderPath)
-          .replaceAll(r'\', '/');
+      final relativePath = p.relative(file.path, from: expectedFolderPath).replaceAll(r'\', '/');
 
-      generatedFiles.firstWhere(
-        (gFile) {
-          final relPath = p
-              .relative(gFile.path, from: generatedFolderPath)
-              .replaceAll(r'\', '/');
-          return relPath == relativePath;
-        },
-        orElse: () => throw Exception(
-          'File not found in generated content: $relativePath (${serializer.name})',
-        ),
-      );
+      generatedFiles.firstWhere((gFile) {
+        final relPath = p.relative(gFile.path, from: generatedFolderPath).replaceAll(r'\', '/');
+        return relPath == relativePath;
+      }, orElse: () => throw Exception('File not found in generated content: $relativePath (${serializer.name})'));
     }
 
     for (final file in expectedFiles) {
-      final relativePath = p
-          .relative(file.path, from: expectedFolderPath)
-          .replaceAll(r'\', '/');
+      final relativePath = p.relative(file.path, from: expectedFolderPath).replaceAll(r'\', '/');
 
       final generatedFile = generatedFiles.firstWhere((gFile) {
-        final relPath = p
-            .relative(gFile.path, from: generatedFolderPath)
-            .replaceAll(r'\', '/');
+        final relPath = p.relative(gFile.path, from: generatedFolderPath).replaceAll(r'\', '/');
         return relPath == relativePath;
       });
 
       expect(
         generatedFile.readAsStringSync(),
         file.readAsStringSync(),
-        reason:
-            'Contents do not match for file: $relativePath (${serializer.name})',
+        reason: 'Contents do not match for file: $relativePath (${serializer.name})',
       );
     }
 
-    expect(
-      generatedFiles.length,
-      expectedFiles.length,
-      reason: 'Number of files does not match (${serializer.name})',
-    );
+    expect(generatedFiles.length, expectedFiles.length, reason: 'Number of files does not match (${serializer.name})');
 
     print('  ✓ ${serializer.name}: ${expectedFiles.length} files match');
   }
@@ -219,12 +175,7 @@ Future<void> e2eTest(
   // Cleanup all generated folders for this test
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolderPath = p.join(
-      'test',
-      'generated',
-      testName,
-      generatedFolderName,
-    );
+    final generatedFolderPath = p.join('test', 'generated', testName, generatedFolderName);
     final generatedDir = Directory(generatedFolderPath);
     if (generatedDir.existsSync()) {
       generatedDir.deleteSync(recursive: true);
@@ -265,29 +216,15 @@ Future<void> e2eNegativeTest(
 
   expect(
     () async => processor.generateFiles(),
-    throwsA(
-      isA<OpenApiParserException>().having(
-        (e) => e.message,
-        'message',
-        contains(expectedErrorPattern),
-      ),
-    ),
+    throwsA(isA<OpenApiParserException>().having((e) => e.message, 'message', contains(expectedErrorPattern))),
   );
 }
 
-Future<void> _runAnalyzer(
-  String testFolder,
-  String testName,
-  bool isRegenerateMode,
-) async {
-  final targetFolder = isRegenerateMode
-      ? testFolder
-      : p.join('test', 'generated', testName);
+Future<void> _runAnalyzer(String testFolder, String testName, bool isRegenerateMode) async {
+  final targetFolder = isRegenerateMode ? testFolder : p.join('test', 'generated', testName);
 
   for (final serializer in JsonSerializer.values) {
-    final folderName = isRegenerateMode
-        ? getExpectedFolderName(serializer)
-        : getGeneratedFolderName(serializer);
+    final folderName = isRegenerateMode ? getExpectedFolderName(serializer) : getGeneratedFolderName(serializer);
 
     final folderPath = p.join(targetFolder, folderName);
     final folder = Directory(folderPath);
@@ -300,9 +237,5 @@ Future<void> _runAnalyzer(
     }
   }
 
-  await runAnalyzer(
-    targetFolder,
-    testName,
-    useExpectedFolders: isRegenerateMode,
-  );
+  await runAnalyzer(targetFolder, testName, useExpectedFolders: isRegenerateMode);
 }

@@ -58,10 +58,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PUT('/users/{userId}')
-  Future<User> updateUser({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> updateUser({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -69,10 +66,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PATCH('/users/{userId}')
-  Future<User> patchUser({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUser({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///
@@ -158,9 +152,7 @@ abstract class FilesClient {
   /// Download file
   @GET('/files/{fileId}/download')
   @DioResponseType(ResponseType.bytes)
-  Future<HttpResponse<List<int>>> downloadFile({
-    @Path('fileId') required String fileId,
-  });
+  Future<HttpResponse<List<int>>> downloadFile({@Path('fileId') required String fileId});
 }
 
 @RestApi()
@@ -298,8 +290,7 @@ class CreateUserRequest with CreateUserRequestMappable {
   final int? age;
   final UserRole? role;
 
-  static CreateUserRequest fromJson(Map<String, dynamic> json) =>
-      CreateUserRequestMapper.fromJson(json);
+  static CreateUserRequest fromJson(Map<String, dynamic> json) => CreateUserRequestMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -320,21 +311,12 @@ class UpdateUserRequest with UpdateUserRequestMappable {
   final int? age;
   final String? bio;
 
-  static UpdateUserRequest fromJson(Map<String, dynamic> json) =>
-      UpdateUserRequestMapper.fromJson(json);
+  static UpdateUserRequest fromJson(Map<String, dynamic> json) => UpdateUserRequestMapper.fromJson(json);
 }
 
 @MappableClass()
 class PatchUserRequest with PatchUserRequestMappable {
-  const PatchUserRequest({
-    this.email,
-    this.username,
-    this.firstName,
-    this.lastName,
-    this.age,
-    this.bio,
-    this.settings,
-  });
+  const PatchUserRequest({this.email, this.username, this.firstName, this.lastName, this.age, this.bio, this.settings});
 
   final String? email;
   final String? username;
@@ -344,8 +326,7 @@ class PatchUserRequest with PatchUserRequestMappable {
   final String? bio;
   final UserSettings? settings;
 
-  static PatchUserRequest fromJson(Map<String, dynamic> json) =>
-      PatchUserRequestMapper.fromJson(json);
+  static PatchUserRequest fromJson(Map<String, dynamic> json) => PatchUserRequestMapper.fromJson(json);
 }
 
 /// User role enumeration
@@ -372,8 +353,7 @@ enum UserRole {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserRole> get $valuesDefined =>
-      values.where((value) => value != UserRole.unknown).toList();
+  static List<UserRole> get $valuesDefined => values.where((value) => value != UserRole.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -399,8 +379,7 @@ enum UserStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserStatus> get $valuesDefined =>
-      values.where((value) => value != UserStatus.unknown).toList();
+  static List<UserStatus> get $valuesDefined => values.where((value) => value != UserStatus.unknown).toList();
 }
 
 @MappableClass()
@@ -419,26 +398,19 @@ class UserSettings with UserSettingsMappable {
   final UserSettingsThemeTheme theme;
   final String language;
 
-  static UserSettings fromJson(Map<String, dynamic> json) =>
-      UserSettingsMapper.fromJson(json);
+  static UserSettings fromJson(Map<String, dynamic> json) => UserSettingsMapper.fromJson(json);
 }
 
 @MappableClass()
 class UserListResponse with UserListResponseMappable {
-  const UserListResponse({
-    required this.users,
-    required this.total,
-    this.page,
-    this.limit,
-  });
+  const UserListResponse({required this.users, required this.total, this.page, this.limit});
 
   final List<User> users;
   final int total;
   final int? page;
   final int? limit;
 
-  static UserListResponse fromJson(Map<String, dynamic> json) =>
-      UserListResponseMapper.fromJson(json);
+  static UserListResponse fromJson(Map<String, dynamic> json) => UserListResponseMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -449,8 +421,7 @@ class LegacyUser with LegacyUserMappable {
   final String? name;
   final String? email;
 
-  static LegacyUser fromJson(Map<String, dynamic> json) =>
-      LegacyUserMapper.fromJson(json);
+  static LegacyUser fromJson(Map<String, dynamic> json) => LegacyUserMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -489,8 +460,7 @@ class PostModel with PostModelMappable {
   final dynamic? metadata;
   final DateTime? updatedAt;
 
-  static PostModel fromJson(Map<String, dynamic> json) =>
-      PostModelMapper.fromJson(json);
+  static PostModel fromJson(Map<String, dynamic> json) => PostModelMapper.fromJson(json);
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -516,26 +486,19 @@ enum PostStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PostStatus> get $valuesDefined =>
-      values.where((value) => value != PostStatus.unknown).toList();
+  static List<PostStatus> get $valuesDefined => values.where((value) => value != PostStatus.unknown).toList();
 }
 
 @MappableClass()
 class Category with CategoryMappable {
-  const Category({
-    required this.id,
-    required this.name,
-    this.slug,
-    this.parent,
-  });
+  const Category({required this.id, required this.name, this.slug, this.parent});
 
   final String id;
   final String name;
   final String? slug;
   final Category? parent;
 
-  static Category fromJson(Map<String, dynamic> json) =>
-      CategoryMapper.fromJson(json);
+  static Category fromJson(Map<String, dynamic> json) => CategoryMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -570,26 +533,19 @@ class Comment with CommentMappable {
   final DateTime? updatedAt;
   final DateTime? deletedAt;
 
-  static Comment fromJson(Map<String, dynamic> json) =>
-      CommentMapper.fromJson(json);
+  static Comment fromJson(Map<String, dynamic> json) => CommentMapper.fromJson(json);
 }
 
 @MappableClass()
 class CreateCommentRequest with CreateCommentRequestMappable {
-  const CreateCommentRequest({
-    required this.content,
-    required this.authorId,
-    this.postId,
-    this.parentId,
-  });
+  const CreateCommentRequest({required this.content, required this.authorId, this.postId, this.parentId});
 
   final String content;
   final String authorId;
   final String? postId;
   final String? parentId;
 
-  static CreateCommentRequest fromJson(Map<String, dynamic> json) =>
-      CreateCommentRequestMapper.fromJson(json);
+  static CreateCommentRequest fromJson(Map<String, dynamic> json) => CreateCommentRequestMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -601,8 +557,7 @@ class FileMetadata with FileMetadataMappable {
   final int? size;
   final List<String>? tags;
 
-  static FileMetadata fromJson(Map<String, dynamic> json) =>
-      FileMetadataMapper.fromJson(json);
+  static FileMetadata fromJson(Map<String, dynamic> json) => FileMetadataMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -623,17 +578,12 @@ class FileUploadResponse with FileUploadResponseMappable {
   final String? mimeType;
   final DateTime? uploadedAt;
 
-  static FileUploadResponse fromJson(Map<String, dynamic> json) =>
-      FileUploadResponseMapper.fromJson(json);
+  static FileUploadResponse fromJson(Map<String, dynamic> json) => FileUploadResponseMapper.fromJson(json);
 }
 
 @MappableClass(
   discriminatorKey: 'paymentType',
-  includeSubClasses: [
-    PaymentRequestCreditCard,
-    PaymentRequestBankTransfer,
-    PaymentRequestCrypto,
-  ],
+  includeSubClasses: [PaymentRequestCreditCard, PaymentRequestBankTransfer, PaymentRequestCrypto],
 )
 sealed class PaymentRequest with PaymentRequestMappable {
   const PaymentRequest();
@@ -657,22 +607,16 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[PaymentRequestCreditCard] =>
-        PaymentRequestCreditCardMapper.fromJson(json),
-      _ when value == effective[PaymentRequestBankTransfer] =>
-        PaymentRequestBankTransferMapper.fromJson(json),
-      _ when value == effective[PaymentRequestCrypto] =>
-        PaymentRequestCryptoMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentRequest',
-      ),
+      _ when value == effective[PaymentRequestCreditCard] => PaymentRequestCreditCardMapper.fromJson(json),
+      _ when value == effective[PaymentRequestBankTransfer] => PaymentRequestBankTransferMapper.fromJson(json),
+      _ when value == effective[PaymentRequestCrypto] => PaymentRequestCryptoMapper.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentRequest'),
     };
   }
 }
 
 @MappableClass(discriminatorValue: 'credit_card')
-class PaymentRequestCreditCard extends PaymentRequest
-    with PaymentRequestCreditCardMappable {
+class PaymentRequestCreditCard extends PaymentRequest with PaymentRequestCreditCardMappable {
   final PaymentRequestPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -693,8 +637,7 @@ class PaymentRequestCreditCard extends PaymentRequest
 }
 
 @MappableClass(discriminatorValue: 'bank_transfer')
-class PaymentRequestBankTransfer extends PaymentRequest
-    with PaymentRequestBankTransferMappable {
+class PaymentRequestBankTransfer extends PaymentRequest with PaymentRequestBankTransferMappable {
   final PaymentRequestPaymentTypePaymentType2 paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -713,8 +656,7 @@ class PaymentRequestBankTransfer extends PaymentRequest
 }
 
 @MappableClass(discriminatorValue: 'crypto')
-class PaymentRequestCrypto extends PaymentRequest
-    with PaymentRequestCryptoMappable {
+class PaymentRequestCrypto extends PaymentRequest with PaymentRequestCryptoMappable {
   final PaymentRequestPaymentTypePaymentType3 paymentType;
   final String walletAddress;
   final PaymentRequestCryptocurrencyCryptocurrency cryptocurrency;
@@ -750,8 +692,7 @@ class CreditCardPayment with CreditCardPaymentMappable {
   final double amount;
   final String? cardholderName;
 
-  static CreditCardPayment fromJson(Map<String, dynamic> json) =>
-      CreditCardPaymentMapper.fromJson(json);
+  static CreditCardPayment fromJson(Map<String, dynamic> json) => CreditCardPaymentMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -772,8 +713,7 @@ class BankTransferPayment with BankTransferPaymentMappable {
   final String? accountHolder;
   final String? reference;
 
-  static BankTransferPayment fromJson(Map<String, dynamic> json) =>
-      BankTransferPaymentMapper.fromJson(json);
+  static BankTransferPayment fromJson(Map<String, dynamic> json) => BankTransferPaymentMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -792,8 +732,7 @@ class CryptoPayment with CryptoPaymentMappable {
   final double amount;
   final String? transactionHash;
 
-  static CryptoPayment fromJson(Map<String, dynamic> json) =>
-      CryptoPaymentMapper.fromJson(json);
+  static CryptoPayment fromJson(Map<String, dynamic> json) => CryptoPaymentMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -814,8 +753,7 @@ class PaymentResponse with PaymentResponseMappable {
   final PaymentResponseDetailsUnion? details;
   final String currency;
 
-  static PaymentResponse fromJson(Map<String, dynamic> json) =>
-      PaymentResponseMapper.fromJson(json);
+  static PaymentResponse fromJson(Map<String, dynamic> json) => PaymentResponseMapper.fromJson(json);
 }
 
 @MappableClass(
@@ -845,29 +783,21 @@ extension SearchResultUnionDeserializer on SearchResultUnion {
       return SearchResultUnionCommentSearchResultMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for SearchResultUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for SearchResultUnion from: $json');
   }
 }
 
 @MappableClass()
-class SearchResultUnionUserSearchResult extends SearchResultUnion
-    with SearchResultUnionUserSearchResultMappable {
+class SearchResultUnionUserSearchResult extends SearchResultUnion with SearchResultUnionUserSearchResultMappable {
   final UserSearchResultTypeType type;
   final User user;
   final double? score;
 
-  const SearchResultUnionUserSearchResult({
-    required this.type,
-    required this.user,
-    required this.score,
-  });
+  const SearchResultUnionUserSearchResult({required this.type, required this.user, required this.score});
 }
 
 @MappableClass()
-class SearchResultUnionPostSearchResult extends SearchResultUnion
-    with SearchResultUnionPostSearchResultMappable {
+class SearchResultUnionPostSearchResult extends SearchResultUnion with SearchResultUnionPostSearchResultMappable {
   final PostSearchResultTypeType type;
   final PostModel post;
   final double? score;
@@ -882,17 +812,12 @@ class SearchResultUnionPostSearchResult extends SearchResultUnion
 }
 
 @MappableClass()
-class SearchResultUnionCommentSearchResult extends SearchResultUnion
-    with SearchResultUnionCommentSearchResultMappable {
+class SearchResultUnionCommentSearchResult extends SearchResultUnion with SearchResultUnionCommentSearchResultMappable {
   final CommentSearchResultTypeType type;
   final Comment comment;
   final double? score;
 
-  const SearchResultUnionCommentSearchResult({
-    required this.type,
-    required this.comment,
-    required this.score,
-  });
+  const SearchResultUnionCommentSearchResult({required this.type, required this.comment, required this.score});
 }
 
 typedef SearchResult = SearchResultUnion?;
@@ -905,48 +830,33 @@ class UserSearchResult with UserSearchResultMappable {
   final User user;
   final double? score;
 
-  static UserSearchResult fromJson(Map<String, dynamic> json) =>
-      UserSearchResultMapper.fromJson(json);
+  static UserSearchResult fromJson(Map<String, dynamic> json) => UserSearchResultMapper.fromJson(json);
 }
 
 @MappableClass()
 class PostSearchResult with PostSearchResultMappable {
-  const PostSearchResult({
-    required this.type,
-    required this.post,
-    this.score,
-    this.highlights,
-  });
+  const PostSearchResult({required this.type, required this.post, this.score, this.highlights});
 
   final PostSearchResultTypeType type;
   final PostModel post;
   final double? score;
   final List<String>? highlights;
 
-  static PostSearchResult fromJson(Map<String, dynamic> json) =>
-      PostSearchResultMapper.fromJson(json);
+  static PostSearchResult fromJson(Map<String, dynamic> json) => PostSearchResultMapper.fromJson(json);
 }
 
 @MappableClass()
 class CommentSearchResult with CommentSearchResultMappable {
-  const CommentSearchResult({
-    required this.type,
-    required this.comment,
-    this.score,
-  });
+  const CommentSearchResult({required this.type, required this.comment, this.score});
 
   final CommentSearchResultTypeType type;
   final Comment comment;
   final double? score;
 
-  static CommentSearchResult fromJson(Map<String, dynamic> json) =>
-      CommentSearchResultMapper.fromJson(json);
+  static CommentSearchResult fromJson(Map<String, dynamic> json) => CommentSearchResultMapper.fromJson(json);
 }
 
-@MappableClass(
-  discriminatorKey: 'entityType',
-  includeSubClasses: [EntityPerson, EntityOrganization],
-)
+@MappableClass(discriminatorKey: 'entityType', includeSubClasses: [EntityPerson, EntityOrganization])
 sealed class Entity with EntityMappable {
   const Entity();
 
@@ -956,26 +866,14 @@ sealed class Entity with EntityMappable {
 }
 
 extension EntityUnionDeserializer on Entity {
-  static Entity tryDeserialize(
-    Map<String, dynamic> json, {
-    String key = 'entityType',
-    Map<Type, Object?>? mapping,
-  }) {
-    final mappingFallback = const <Type, Object?>{
-      EntityPerson: 'person',
-      EntityOrganization: 'organization',
-    };
+  static Entity tryDeserialize(Map<String, dynamic> json, {String key = 'entityType', Map<Type, Object?>? mapping}) {
+    final mappingFallback = const <Type, Object?>{EntityPerson: 'person', EntityOrganization: 'organization'};
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[EntityPerson] => EntityPersonMapper.fromJson(
-        json,
-      ),
-      _ when value == effective[EntityOrganization] =>
-        EntityOrganizationMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for Entity',
-      ),
+      _ when value == effective[EntityPerson] => EntityPersonMapper.fromJson(json),
+      _ when value == effective[EntityOrganization] => EntityOrganizationMapper.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for Entity'),
     };
   }
 }
@@ -1008,8 +906,7 @@ class BaseEntity with BaseEntityMappable {
   final String? description;
   final DateTime? updatedAt;
 
-  static BaseEntity fromJson(Map<String, dynamic> json) =>
-      BaseEntityMapper.fromJson(json);
+  static BaseEntity fromJson(Map<String, dynamic> json) => BaseEntityMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1038,8 +935,7 @@ class PersonEntity with PersonEntityMappable {
   final String? occupation;
   final Map<String, String>? socialProfiles;
 
-  static PersonEntity fromJson(Map<String, dynamic> json) =>
-      PersonEntityMapper.fromJson(json);
+  static PersonEntity fromJson(Map<String, dynamic> json) => PersonEntityMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1070,8 +966,7 @@ class OrganizationEntity with OrganizationEntityMappable {
   final int? employeeCount;
   final double? revenue;
 
-  static OrganizationEntity fromJson(Map<String, dynamic> json) =>
-      OrganizationEntityMapper.fromJson(json);
+  static OrganizationEntity fromJson(Map<String, dynamic> json) => OrganizationEntityMapper.fromJson(json);
 }
 
 /// Object with arbitrary string properties
@@ -1094,13 +989,7 @@ class Data with DataMappable {
 
 @MappableClass()
 class Error with ErrorMappable {
-  const Error({
-    required this.code,
-    required this.message,
-    this.details,
-    this.timestamp,
-    this.requestId,
-  });
+  const Error({required this.code, required this.message, this.details, this.timestamp, this.requestId});
 
   final String code;
   final String message;
@@ -1108,8 +997,7 @@ class Error with ErrorMappable {
   final DateTime? timestamp;
   final String? requestId;
 
-  static Error fromJson(Map<String, dynamic> json) =>
-      ErrorMapper.fromJson(json);
+  static Error fromJson(Map<String, dynamic> json) => ErrorMapper.fromJson(json);
 }
 
 /// Generic status (conflicts with UserStatus)
@@ -1130,8 +1018,7 @@ enum Status {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Status> get $valuesDefined =>
-      values.where((value) => value != Status.unknown).toList();
+  static List<Status> get $valuesDefined => values.where((value) => value != Status.unknown).toList();
 }
 
 @MappableClass()
@@ -1142,8 +1029,7 @@ class Result with ResultMappable {
   final dynamic? data;
   final Status? status;
 
-  static Result fromJson(Map<String, dynamic> json) =>
-      ResultMapper.fromJson(json);
+  static Result fromJson(Map<String, dynamic> json) => ResultMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1160,19 +1046,14 @@ class ListPostsResponsePagination with ListPostsResponsePaginationMappable {
 
 @MappableClass()
 class ListPostsResponse with ListPostsResponseMappable {
-  const ListPostsResponse({
-    this.posts,
-    this.listPostsResponsePagination,
-    this.metadata,
-  });
+  const ListPostsResponse({this.posts, this.listPostsResponsePagination, this.metadata});
 
   final List<PostModel>? posts;
   @MappableField(key: 'ListPostsResponsePagination')
   final ListPostsResponsePagination? listPostsResponsePagination;
   final Map<String, String>? metadata;
 
-  static ListPostsResponse fromJson(Map<String, dynamic> json) =>
-      ListPostsResponseMapper.fromJson(json);
+  static ListPostsResponse fromJson(Map<String, dynamic> json) => ListPostsResponseMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1182,8 +1063,7 @@ class FiltersDateRange with FiltersDateRangeMappable {
   final DateTime? from;
   final DateTime? to;
 
-  static FiltersDateRange fromJson(Map<String, dynamic> json) =>
-      FiltersDateRangeMapper.fromJson(json);
+  static FiltersDateRange fromJson(Map<String, dynamic> json) => FiltersDateRangeMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1195,8 +1075,7 @@ class Filters with FiltersMappable {
   @MappableField(key: 'FiltersDateRange')
   final FiltersDateRange? filtersDateRange;
 
-  static Filters fromJson(Map<String, dynamic> json) =>
-      FiltersMapper.fromJson(json);
+  static Filters fromJson(Map<String, dynamic> json) => FiltersMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1217,8 +1096,7 @@ class CreatePostRequest with CreatePostRequestMappable {
   final DateTime? publishAt;
   final dynamic? metadata;
 
-  static CreatePostRequest fromJson(Map<String, dynamic> json) =>
-      CreatePostRequestMapper.fromJson(json);
+  static CreatePostRequest fromJson(Map<String, dynamic> json) => CreatePostRequestMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1259,8 +1137,7 @@ class GetPostResponse with GetPostResponseMappable {
   final DateTime? updatedAt;
   final List<Comment>? comments;
 
-  static GetPostResponse fromJson(Map<String, dynamic> json) =>
-      GetPostResponseMapper.fromJson(json);
+  static GetPostResponse fromJson(Map<String, dynamic> json) => GetPostResponseMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1269,8 +1146,7 @@ class SearchResponse with SearchResponseMappable {
 
   final List<SearchResult>? results;
 
-  static SearchResponse fromJson(Map<String, dynamic> json) =>
-      SearchResponseMapper.fromJson(json);
+  static SearchResponse fromJson(Map<String, dynamic> json) => SearchResponseMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1280,8 +1156,7 @@ class SearchRequest with SearchRequestMappable {
   final String? query;
   final Map<String, String>? filters;
 
-  static SearchRequest fromJson(Map<String, dynamic> json) =>
-      SearchRequestMapper.fromJson(json);
+  static SearchRequest fromJson(Map<String, dynamic> json) => SearchRequestMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1295,8 +1170,7 @@ class InternalHealthCheckResponse with InternalHealthCheckResponseMappable {
 }
 
 @MappableClass()
-class GetDuplicateResponseMetadataData
-    with GetDuplicateResponseMetadataDataMappable {
+class GetDuplicateResponseMetadataData with GetDuplicateResponseMetadataDataMappable {
   const GetDuplicateResponseMetadataData({this.id, this.value});
 
   final String? id;
@@ -1325,17 +1199,12 @@ class GetDuplicateResponse with GetDuplicateResponseMappable {
   @MappableField(key: 'GetDuplicateResponseMetadata')
   final GetDuplicateResponseMetadata? getDuplicateResponseMetadata;
 
-  static GetDuplicateResponse fromJson(Map<String, dynamic> json) =>
-      GetDuplicateResponseMapper.fromJson(json);
+  static GetDuplicateResponse fromJson(Map<String, dynamic> json) => GetDuplicateResponseMapper.fromJson(json);
 }
 
 @MappableClass()
 class UserSettingsNotifications with UserSettingsNotificationsMappable {
-  const UserSettingsNotifications({
-    this.email = true,
-    this.push = false,
-    this.sms = false,
-  });
+  const UserSettingsNotifications({this.email = true, this.push = false, this.sms = false});
 
   final bool email;
   final bool push;
@@ -1348,16 +1217,14 @@ class UserSettingsNotifications with UserSettingsNotificationsMappable {
 @MappableClass()
 class UserSettingsPrivacy with UserSettingsPrivacyMappable {
   const UserSettingsPrivacy({
-    this.profileVisibility =
-        UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
+    this.profileVisibility = UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
     this.showEmail = false,
   });
 
   final UserSettingsPrivacyProfileVisibilityProfileVisibility profileVisibility;
   final bool showEmail;
 
-  static UserSettingsPrivacy fromJson(Map<String, dynamic> json) =>
-      UserSettingsPrivacyMapper.fromJson(json);
+  static UserSettingsPrivacy fromJson(Map<String, dynamic> json) => UserSettingsPrivacyMapper.fromJson(json);
 }
 
 @MappableClass(
@@ -1368,8 +1235,7 @@ class UserSettingsPrivacy with UserSettingsPrivacyMappable {
     PaymentResponseDetailsUnionCrypto,
   ],
 )
-sealed class PaymentResponseDetailsUnion
-    with PaymentResponseDetailsUnionMappable {
+sealed class PaymentResponseDetailsUnion with PaymentResponseDetailsUnionMappable {
   const PaymentResponseDetailsUnion();
 
   static PaymentResponseDetailsUnion fromJson(Map<String, dynamic> json) {
@@ -1377,8 +1243,7 @@ sealed class PaymentResponseDetailsUnion
   }
 }
 
-extension PaymentResponseDetailsUnionDeserializer
-    on PaymentResponseDetailsUnion {
+extension PaymentResponseDetailsUnionDeserializer on PaymentResponseDetailsUnion {
   static PaymentResponseDetailsUnion tryDeserialize(
     Map<String, dynamic> json, {
     String key = 'paymentType',
@@ -1396,11 +1261,10 @@ extension PaymentResponseDetailsUnionDeserializer
         PaymentResponseDetailsUnionCreditCardMapper.fromJson(json),
       _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
         PaymentResponseDetailsUnionBankTransferMapper.fromJson(json),
-      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
-        PaymentResponseDetailsUnionCryptoMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion',
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] => PaymentResponseDetailsUnionCryptoMapper.fromJson(
+        json,
       ),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion'),
     };
   }
 }
@@ -1428,8 +1292,7 @@ class PaymentResponseDetailsUnionCreditCard extends PaymentResponseDetailsUnion
 }
 
 @MappableClass(discriminatorValue: 'bank_transfer')
-class PaymentResponseDetailsUnionBankTransfer
-    extends PaymentResponseDetailsUnion
+class PaymentResponseDetailsUnionBankTransfer extends PaymentResponseDetailsUnion
     with PaymentResponseDetailsUnionBankTransferMappable {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
@@ -1473,8 +1336,7 @@ class DataNestedData with DataNestedDataMappable {
   final int? id;
   final String? name;
 
-  static DataNestedData fromJson(Map<String, dynamic> json) =>
-      DataNestedDataMapper.fromJson(json);
+  static DataNestedData fromJson(Map<String, dynamic> json) => DataNestedDataMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1483,8 +1345,7 @@ class DataNested with DataNestedMappable {
 
   final List<DataNestedData>? data;
 
-  static DataNested fromJson(Map<String, dynamic> json) =>
-      DataNestedMapper.fromJson(json);
+  static DataNested fromJson(Map<String, dynamic> json) => DataNestedMapper.fromJson(json);
 }
 
 @MappableClass()
@@ -1494,8 +1355,7 @@ class ErrorDetails with ErrorDetailsMappable {
   final String? field;
   final String? message;
 
-  static ErrorDetails fromJson(Map<String, dynamic> json) =>
-      ErrorDetailsMapper.fromJson(json);
+  static ErrorDetails fromJson(Map<String, dynamic> json) => ErrorDetailsMapper.fromJson(json);
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1515,8 +1375,7 @@ enum Sort {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Sort> get $valuesDefined =>
-      values.where((value) => value != Sort.unknown).toList();
+  static List<Sort> get $valuesDefined => values.where((value) => value != Sort.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1542,8 +1401,7 @@ enum Category {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Category> get $valuesDefined =>
-      values.where((value) => value != Category.unknown).toList();
+  static List<Category> get $valuesDefined => values.where((value) => value != Category.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1567,11 +1425,7 @@ enum InternalHealthCheckResponseStatusStatus {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<InternalHealthCheckResponseStatusStatus> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != InternalHealthCheckResponseStatusStatus.unknown,
-          )
-          .toList();
+      values.where((value) => value != InternalHealthCheckResponseStatusStatus.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1618,14 +1472,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
-  get $valuesDefined => values
-      .where(
-        (value) =>
-            value !=
-            UserSettingsPrivacyProfileVisibilityProfileVisibility.unknown,
-      )
-      .toList();
+  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility> get $valuesDefined =>
+      values.where((value) => value != UserSettingsPrivacyProfileVisibilityProfileVisibility.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1642,9 +1490,8 @@ enum PaymentRequestPaymentTypePaymentType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined => values
-      .where((value) => value != PaymentRequestPaymentTypePaymentType.unknown)
-      .toList();
+  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined =>
+      values.where((value) => value != PaymentRequestPaymentTypePaymentType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1662,11 +1509,7 @@ enum PaymentRequestPaymentTypePaymentType2 {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<PaymentRequestPaymentTypePaymentType2> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != PaymentRequestPaymentTypePaymentType2.unknown,
-          )
-          .toList();
+      values.where((value) => value != PaymentRequestPaymentTypePaymentType2.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1684,11 +1527,7 @@ enum PaymentRequestPaymentTypePaymentType3 {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<PaymentRequestPaymentTypePaymentType3> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != PaymentRequestPaymentTypePaymentType3.unknown,
-          )
-          .toList();
+      values.where((value) => value != PaymentRequestPaymentTypePaymentType3.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1715,12 +1554,7 @@ enum PaymentRequestCryptocurrencyCryptocurrency {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<PaymentRequestCryptocurrencyCryptocurrency> get $valuesDefined =>
-      values
-          .where(
-            (value) =>
-                value != PaymentRequestCryptocurrencyCryptocurrency.unknown,
-          )
-          .toList();
+      values.where((value) => value != PaymentRequestCryptocurrencyCryptocurrency.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1738,11 +1572,7 @@ enum CreditCardPaymentPaymentTypePaymentType {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<CreditCardPaymentPaymentTypePaymentType> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != CreditCardPaymentPaymentTypePaymentType.unknown,
-          )
-          .toList();
+      values.where((value) => value != CreditCardPaymentPaymentTypePaymentType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1760,12 +1590,7 @@ enum BankTransferPaymentPaymentTypePaymentType {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<BankTransferPaymentPaymentTypePaymentType> get $valuesDefined =>
-      values
-          .where(
-            (value) =>
-                value != BankTransferPaymentPaymentTypePaymentType.unknown,
-          )
-          .toList();
+      values.where((value) => value != BankTransferPaymentPaymentTypePaymentType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1782,9 +1607,8 @@ enum CryptoPaymentPaymentTypePaymentType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<CryptoPaymentPaymentTypePaymentType> get $valuesDefined => values
-      .where((value) => value != CryptoPaymentPaymentTypePaymentType.unknown)
-      .toList();
+  static List<CryptoPaymentPaymentTypePaymentType> get $valuesDefined =>
+      values.where((value) => value != CryptoPaymentPaymentTypePaymentType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1811,12 +1635,7 @@ enum CryptoPaymentCryptocurrencyCryptocurrency {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<CryptoPaymentCryptocurrencyCryptocurrency> get $valuesDefined =>
-      values
-          .where(
-            (value) =>
-                value != CryptoPaymentCryptocurrencyCryptocurrency.unknown,
-          )
-          .toList();
+      values.where((value) => value != CryptoPaymentCryptocurrencyCryptocurrency.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1842,9 +1661,8 @@ enum PaymentResponseStatusStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PaymentResponseStatusStatus> get $valuesDefined => values
-      .where((value) => value != PaymentResponseStatusStatus.unknown)
-      .toList();
+  static List<PaymentResponseStatusStatus> get $valuesDefined =>
+      values.where((value) => value != PaymentResponseStatusStatus.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1861,9 +1679,8 @@ enum UserSearchResultTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserSearchResultTypeType> get $valuesDefined => values
-      .where((value) => value != UserSearchResultTypeType.unknown)
-      .toList();
+  static List<UserSearchResultTypeType> get $valuesDefined =>
+      values.where((value) => value != UserSearchResultTypeType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1880,9 +1697,8 @@ enum PostSearchResultTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PostSearchResultTypeType> get $valuesDefined => values
-      .where((value) => value != PostSearchResultTypeType.unknown)
-      .toList();
+  static List<PostSearchResultTypeType> get $valuesDefined =>
+      values.where((value) => value != PostSearchResultTypeType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1899,9 +1715,8 @@ enum CommentSearchResultTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<CommentSearchResultTypeType> get $valuesDefined => values
-      .where((value) => value != CommentSearchResultTypeType.unknown)
-      .toList();
+  static List<CommentSearchResultTypeType> get $valuesDefined =>
+      values.where((value) => value != CommentSearchResultTypeType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1918,9 +1733,8 @@ enum PersonEntityEntityTypeEntityType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PersonEntityEntityTypeEntityType> get $valuesDefined => values
-      .where((value) => value != PersonEntityEntityTypeEntityType.unknown)
-      .toList();
+  static List<PersonEntityEntityTypeEntityType> get $valuesDefined =>
+      values.where((value) => value != PersonEntityEntityTypeEntityType.unknown).toList();
 }
 
 @MappableEnum(defaultValue: 'unknown')
@@ -1938,11 +1752,7 @@ enum OrganizationEntityEntityTypeEntityType {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<OrganizationEntityEntityTypeEntityType> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != OrganizationEntityEntityTypeEntityType.unknown,
-          )
-          .toList();
+      values.where((value) => value != OrganizationEntityEntityTypeEntityType.unknown).toList();
 }
 
 /// Comprehensive API Test Schema `v1.0.0`.
@@ -1998,21 +1808,17 @@ class RestClient {
 
   PostsClient get posts => _posts ??= PostsClient(_dio, baseUrl: _baseUrl);
 
-  CommentsClient get comments =>
-      _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
+  CommentsClient get comments => _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
 
   FilesClient get files => _files ??= FilesClient(_dio, baseUrl: _baseUrl);
 
-  AdvancedClient get advanced =>
-      _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
+  AdvancedClient get advanced => _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
 
-  DeprecatedClient get deprecated =>
-      _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
+  DeprecatedClient get deprecated => _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
 
   AdminClient get admin => _admin ??= AdminClient(_dio, baseUrl: _baseUrl);
 
-  InternalClient get internal =>
-      _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
+  InternalClient get internal => _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
 
   ApiClient get api => _api ??= ApiClient(_dio, baseUrl: _baseUrl);
 }

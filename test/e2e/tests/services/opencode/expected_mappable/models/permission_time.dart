@@ -12,6 +12,5 @@ class PermissionTime with PermissionTimeMappable {
 
   final num created;
 
-  static PermissionTime fromJson(Map<String, dynamic> json) =>
-      PermissionTimeMapper.fromJson(json);
+  static PermissionTime fromJson(Map<String, dynamic> json) => PermissionTimeMapper.fromJson(json);
 }

@@ -10,10 +10,8 @@ part 'event_session_deleted_properties.freezed.dart';
 part 'event_session_deleted_properties.g.dart';
 
 @Freezed()
-abstract class EventSessionDeletedProperties
-    with _$EventSessionDeletedProperties {
-  const factory EventSessionDeletedProperties({required Session info}) =
-      _EventSessionDeletedProperties;
+abstract class EventSessionDeletedProperties with _$EventSessionDeletedProperties {
+  const factory EventSessionDeletedProperties({required Session info}) = _EventSessionDeletedProperties;
 
   factory EventSessionDeletedProperties.fromJson(Map<String, Object?> json) =>
       _$EventSessionDeletedPropertiesFromJson(json);

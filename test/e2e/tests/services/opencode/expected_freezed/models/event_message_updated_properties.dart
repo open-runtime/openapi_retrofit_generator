@@ -10,10 +10,8 @@ part 'event_message_updated_properties.freezed.dart';
 part 'event_message_updated_properties.g.dart';
 
 @Freezed()
-abstract class EventMessageUpdatedProperties
-    with _$EventMessageUpdatedProperties {
-  const factory EventMessageUpdatedProperties({required Message info}) =
-      _EventMessageUpdatedProperties;
+abstract class EventMessageUpdatedProperties with _$EventMessageUpdatedProperties {
+  const factory EventMessageUpdatedProperties({required Message info}) = _EventMessageUpdatedProperties;
 
   factory EventMessageUpdatedProperties.fromJson(Map<String, Object?> json) =>
       _$EventMessageUpdatedPropertiesFromJson(json);

@@ -10,14 +10,9 @@ part 'paginated_user_dto.g.dart';
 
 @JsonSerializable()
 class PaginatedUserDto {
-  const PaginatedUserDto({
-    required this.nextCursor,
-    required this.previousCursor,
-    required this.data,
-  });
+  const PaginatedUserDto({required this.nextCursor, required this.previousCursor, required this.data});
 
-  factory PaginatedUserDto.fromJson(Map<String, Object?> json) =>
-      _$PaginatedUserDtoFromJson(json);
+  factory PaginatedUserDto.fromJson(Map<String, Object?> json) => _$PaginatedUserDtoFromJson(json);
 
   @JsonKey(includeIfNull: true)
   final String? nextCursor;

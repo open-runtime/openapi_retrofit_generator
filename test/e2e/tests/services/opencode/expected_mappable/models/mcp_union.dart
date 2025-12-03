@@ -9,9 +9,7 @@ import 'mcp_remote_config.dart';
 
 part 'mcp_union.mapper.dart';
 
-@MappableClass(
-  includeSubClasses: [McpUnionMcpLocalConfig, McpUnionMcpRemoteConfig],
-)
+@MappableClass(includeSubClasses: [McpUnionMcpLocalConfig, McpUnionMcpRemoteConfig])
 sealed class McpUnion with McpUnionMappable {
   const McpUnion();
 
@@ -29,15 +27,12 @@ extension McpUnionDeserializer on McpUnion {
       return McpUnionMcpRemoteConfigMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for McpUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for McpUnion from: $json');
   }
 }
 
 @MappableClass()
-class McpUnionMcpLocalConfig extends McpUnion
-    with McpUnionMcpLocalConfigMappable {
+class McpUnionMcpLocalConfig extends McpUnion with McpUnionMcpLocalConfigMappable {
   final String type;
   final List<String> command;
   final Map<String, String>? environment;
@@ -52,17 +47,11 @@ class McpUnionMcpLocalConfig extends McpUnion
 }
 
 @MappableClass()
-class McpUnionMcpRemoteConfig extends McpUnion
-    with McpUnionMcpRemoteConfigMappable {
+class McpUnionMcpRemoteConfig extends McpUnion with McpUnionMcpRemoteConfigMappable {
   final String type;
   final String url;
   final bool? enabled;
   final Map<String, String>? headers;
 
-  const McpUnionMcpRemoteConfig({
-    required this.type,
-    required this.url,
-    required this.enabled,
-    required this.headers,
-  });
+  const McpUnionMcpRemoteConfig({required this.type, required this.url, required this.enabled, required this.headers});
 }

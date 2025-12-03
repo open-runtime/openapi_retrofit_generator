@@ -16,6 +16,5 @@ abstract class PathModel with _$PathModel {
     required String directory,
   }) = _PathModel;
 
-  factory PathModel.fromJson(Map<String, Object?> json) =>
-      _$PathModelFromJson(json);
+  factory PathModel.fromJson(Map<String, Object?> json) => _$PathModelFromJson(json);
 }

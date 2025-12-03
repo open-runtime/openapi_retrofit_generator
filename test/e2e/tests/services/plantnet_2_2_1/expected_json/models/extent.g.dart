@@ -9,11 +9,7 @@ part of 'extent.dart';
 Extent _$ExtentFromJson(Map<String, dynamic> json) => Extent(
   type: TypeModel.fromJson(json['type'] as String),
   coordinates: (json['coordinates'] as List<dynamic>)
-      .map(
-        (e) => (e as List<dynamic>)
-            .map((e) => (e as List<dynamic>).map((e) => e as num).toList())
-            .toList(),
-      )
+      .map((e) => (e as List<dynamic>).map((e) => (e as List<dynamic>).map((e) => e as num).toList()).toList())
       .toList(),
 );
 

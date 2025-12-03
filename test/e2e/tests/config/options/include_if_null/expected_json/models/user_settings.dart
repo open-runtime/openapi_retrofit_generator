@@ -19,8 +19,7 @@ class UserSettings {
     this.language = 'en',
   });
 
-  factory UserSettings.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsFromJson(json);
+  factory UserSettings.fromJson(Map<String, Object?> json) => _$UserSettingsFromJson(json);
 
   final UserSettingsThemeTheme theme;
   @JsonKey(includeIfNull: false, name: 'UserSettingsNotifications')

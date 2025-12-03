@@ -29,6 +29,5 @@ abstract class Prediction with _$Prediction {
     bool? observed,
   }) = _Prediction;
 
-  factory Prediction.fromJson(Map<String, Object?> json) =>
-      _$PredictionFromJson(json);
+  factory Prediction.fromJson(Map<String, Object?> json) => _$PredictionFromJson(json);
 }

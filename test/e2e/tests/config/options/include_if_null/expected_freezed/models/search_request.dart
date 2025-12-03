@@ -14,6 +14,5 @@ abstract class SearchRequest with _$SearchRequest {
     @JsonKey(includeIfNull: false) Map<String, String>? filters,
   }) = _SearchRequest;
 
-  factory SearchRequest.fromJson(Map<String, Object?> json) =>
-      _$SearchRequestFromJson(json);
+  factory SearchRequest.fromJson(Map<String, Object?> json) => _$SearchRequestFromJson(json);
 }

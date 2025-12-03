@@ -9,10 +9,7 @@ part 'post_api_v1_request_p1_class.g.dart';
 
 @Freezed()
 abstract class PostApiV1RequestP1Class with _$PostApiV1RequestP1Class {
-  const factory PostApiV1RequestP1Class({
-    @JsonKey(includeIfNull: false) DateTime? test,
-  }) = _PostApiV1RequestP1Class;
+  const factory PostApiV1RequestP1Class({@JsonKey(includeIfNull: false) DateTime? test}) = _PostApiV1RequestP1Class;
 
-  factory PostApiV1RequestP1Class.fromJson(Map<String, Object?> json) =>
-      _$PostApiV1RequestP1ClassFromJson(json);
+  factory PostApiV1RequestP1Class.fromJson(Map<String, Object?> json) => _$PostApiV1RequestP1ClassFromJson(json);
 }

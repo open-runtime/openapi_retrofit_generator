@@ -10,8 +10,7 @@ part 'api_schedule_detail.g.dart';
 class ApiScheduleDetail {
   const ApiScheduleDetail({required this.startTime, required this.endTime});
 
-  factory ApiScheduleDetail.fromJson(Map<String, Object?> json) =>
-      _$ApiScheduleDetailFromJson(json);
+  factory ApiScheduleDetail.fromJson(Map<String, Object?> json) => _$ApiScheduleDetailFromJson(json);
 
   final String startTime;
   final String endTime;

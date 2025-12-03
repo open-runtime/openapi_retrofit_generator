@@ -23,6 +23,5 @@ class StepFinishPartTokens with StepFinishPartTokensMappable {
   @MappableField(key: 'StepFinishPartTokensCache')
   final StepFinishPartTokensCache stepFinishPartTokensCache;
 
-  static StepFinishPartTokens fromJson(Map<String, dynamic> json) =>
-      StepFinishPartTokensMapper.fromJson(json);
+  static StepFinishPartTokens fromJson(Map<String, dynamic> json) => StepFinishPartTokensMapper.fromJson(json);
 }

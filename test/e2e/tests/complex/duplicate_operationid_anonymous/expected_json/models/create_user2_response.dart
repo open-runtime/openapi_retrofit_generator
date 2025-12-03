@@ -10,8 +10,7 @@ part 'create_user2_response.g.dart';
 class CreateUser2Response {
   const CreateUser2Response({this.id, this.created});
 
-  factory CreateUser2Response.fromJson(Map<String, Object?> json) =>
-      _$CreateUser2ResponseFromJson(json);
+  factory CreateUser2Response.fromJson(Map<String, Object?> json) => _$CreateUser2ResponseFromJson(json);
 
   final int? id;
   final bool? created;

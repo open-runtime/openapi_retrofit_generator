@@ -12,8 +12,7 @@ part 'model89.g.dart';
 class Model89 {
   const Model89({required this.point});
 
-  factory Model89.fromJson(Map<String, Object?> json) =>
-      _$Model89FromJson(json);
+  factory Model89.fromJson(Map<String, Object?> json) => _$Model89FromJson(json);
 
   final Point point;
 

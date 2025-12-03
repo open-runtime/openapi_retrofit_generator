@@ -18,17 +18,13 @@ class SearchResultUnion {
 
   const SearchResultUnion(this._json);
 
-  factory SearchResultUnion.fromJson(Map<String, dynamic> json) =>
-      SearchResultUnion(json);
+  factory SearchResultUnion.fromJson(Map<String, dynamic> json) => SearchResultUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  SearchResultUnionUserSearchResult toUserSearchResult() =>
-      SearchResultUnionUserSearchResult.fromJson(_json);
-  SearchResultUnionPostSearchResult toPostSearchResult() =>
-      SearchResultUnionPostSearchResult.fromJson(_json);
-  SearchResultUnionCommentSearchResult toCommentSearchResult() =>
-      SearchResultUnionCommentSearchResult.fromJson(_json);
+  SearchResultUnionUserSearchResult toUserSearchResult() => SearchResultUnionUserSearchResult.fromJson(_json);
+  SearchResultUnionPostSearchResult toPostSearchResult() => SearchResultUnionPostSearchResult.fromJson(_json);
+  SearchResultUnionCommentSearchResult toCommentSearchResult() => SearchResultUnionCommentSearchResult.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -37,18 +33,12 @@ class SearchResultUnionUserSearchResult {
   final User user;
   final double? score;
 
-  const SearchResultUnionUserSearchResult({
-    required this.type,
-    required this.user,
-    required this.score,
-  });
+  const SearchResultUnionUserSearchResult({required this.type, required this.user, required this.score});
 
-  factory SearchResultUnionUserSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionUserSearchResultFromJson(json);
+  factory SearchResultUnionUserSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionUserSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionUserSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionUserSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -65,12 +55,10 @@ class SearchResultUnionPostSearchResult {
     required this.highlights,
   });
 
-  factory SearchResultUnionPostSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionPostSearchResultFromJson(json);
+  factory SearchResultUnionPostSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionPostSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionPostSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionPostSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -79,16 +67,10 @@ class SearchResultUnionCommentSearchResult {
   final Comment comment;
   final double? score;
 
-  const SearchResultUnionCommentSearchResult({
-    required this.type,
-    required this.comment,
-    required this.score,
-  });
+  const SearchResultUnionCommentSearchResult({required this.type, required this.comment, required this.score});
 
-  factory SearchResultUnionCommentSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionCommentSearchResultFromJson(json);
+  factory SearchResultUnionCommentSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionCommentSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionCommentSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionCommentSearchResultToJson(this);
 }

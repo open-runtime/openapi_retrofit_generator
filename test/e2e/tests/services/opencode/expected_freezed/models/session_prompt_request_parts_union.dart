@@ -15,8 +15,7 @@ class SessionPromptRequestPartsUnion {
 
   const SessionPromptRequestPartsUnion(this._json);
 
-  factory SessionPromptRequestPartsUnion.fromJson(Map<String, dynamic> json) =>
-      SessionPromptRequestPartsUnion(json);
+  factory SessionPromptRequestPartsUnion.fromJson(Map<String, dynamic> json) => SessionPromptRequestPartsUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
@@ -46,12 +45,10 @@ class SessionPromptRequestPartsUnionTextPartInput {
     required this.metadata,
   });
 
-  factory SessionPromptRequestPartsUnionTextPartInput.fromJson(
-    Map<String, Object?> json,
-  ) => _$SessionPromptRequestPartsUnionTextPartInputFromJson(json);
+  factory SessionPromptRequestPartsUnionTextPartInput.fromJson(Map<String, Object?> json) =>
+      _$SessionPromptRequestPartsUnionTextPartInputFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SessionPromptRequestPartsUnionTextPartInputToJson(this);
+  Map<String, Object?> toJson() => _$SessionPromptRequestPartsUnionTextPartInputToJson(this);
 }
 
 @JsonSerializable()
@@ -72,12 +69,10 @@ class SessionPromptRequestPartsUnionFilePartInput {
     required this.source,
   });
 
-  factory SessionPromptRequestPartsUnionFilePartInput.fromJson(
-    Map<String, Object?> json,
-  ) => _$SessionPromptRequestPartsUnionFilePartInputFromJson(json);
+  factory SessionPromptRequestPartsUnionFilePartInput.fromJson(Map<String, Object?> json) =>
+      _$SessionPromptRequestPartsUnionFilePartInputFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SessionPromptRequestPartsUnionFilePartInputToJson(this);
+  Map<String, Object?> toJson() => _$SessionPromptRequestPartsUnionFilePartInputToJson(this);
 }
 
 @JsonSerializable()
@@ -94,10 +89,8 @@ class SessionPromptRequestPartsUnionAgentPartInput {
     required this.agentPartInputSource,
   });
 
-  factory SessionPromptRequestPartsUnionAgentPartInput.fromJson(
-    Map<String, Object?> json,
-  ) => _$SessionPromptRequestPartsUnionAgentPartInputFromJson(json);
+  factory SessionPromptRequestPartsUnionAgentPartInput.fromJson(Map<String, Object?> json) =>
+      _$SessionPromptRequestPartsUnionAgentPartInputFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SessionPromptRequestPartsUnionAgentPartInputToJson(this);
+  Map<String, Object?> toJson() => _$SessionPromptRequestPartsUnionAgentPartInputToJson(this);
 }

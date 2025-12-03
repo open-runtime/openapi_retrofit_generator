@@ -22,6 +22,5 @@ abstract class ToolPart with _$ToolPart {
     Map<String, dynamic>? metadata,
   }) = _ToolPart;
 
-  factory ToolPart.fromJson(Map<String, Object?> json) =>
-      _$ToolPartFromJson(json);
+  factory ToolPart.fromJson(Map<String, Object?> json) => _$ToolPartFromJson(json);
 }

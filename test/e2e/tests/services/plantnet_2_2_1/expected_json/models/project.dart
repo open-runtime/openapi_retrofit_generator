@@ -10,8 +10,7 @@ part 'project.g.dart';
 class Project {
   const Project({this.id, this.title, this.description, this.speciesCount});
 
-  factory Project.fromJson(Map<String, Object?> json) =>
-      _$ProjectFromJson(json);
+  factory Project.fromJson(Map<String, Object?> json) => _$ProjectFromJson(json);
 
   final String? id;
   final String? title;

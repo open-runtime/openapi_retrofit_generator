@@ -48,29 +48,21 @@ extension SearchResultUnionDeserializer on SearchResultUnion {
       return SearchResultUnionUnknownMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for SearchResultUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for SearchResultUnion from: $json');
   }
 }
 
 @MappableClass()
-class SearchResultUnionUserSearchResult extends SearchResultUnion
-    with SearchResultUnionUserSearchResultMappable {
+class SearchResultUnionUserSearchResult extends SearchResultUnion with SearchResultUnionUserSearchResultMappable {
   final UserSearchResultTypeType type;
   final User user;
   final double? score;
 
-  const SearchResultUnionUserSearchResult({
-    required this.type,
-    required this.user,
-    required this.score,
-  });
+  const SearchResultUnionUserSearchResult({required this.type, required this.user, required this.score});
 }
 
 @MappableClass()
-class SearchResultUnionPostSearchResult extends SearchResultUnion
-    with SearchResultUnionPostSearchResultMappable {
+class SearchResultUnionPostSearchResult extends SearchResultUnion with SearchResultUnionPostSearchResultMappable {
   final PostSearchResultTypeType type;
   final PostModel post;
   final double? score;
@@ -85,22 +77,16 @@ class SearchResultUnionPostSearchResult extends SearchResultUnion
 }
 
 @MappableClass()
-class SearchResultUnionCommentSearchResult extends SearchResultUnion
-    with SearchResultUnionCommentSearchResultMappable {
+class SearchResultUnionCommentSearchResult extends SearchResultUnion with SearchResultUnionCommentSearchResultMappable {
   final CommentSearchResultTypeType type;
   final Comment comment;
   final double? score;
 
-  const SearchResultUnionCommentSearchResult({
-    required this.type,
-    required this.comment,
-    required this.score,
-  });
+  const SearchResultUnionCommentSearchResult({required this.type, required this.comment, required this.score});
 }
 
 @MappableClass()
-class SearchResultUnionUnknown extends SearchResultUnion
-    with SearchResultUnionUnknownMappable {
+class SearchResultUnionUnknown extends SearchResultUnion with SearchResultUnionUnknownMappable {
   final Map<String, dynamic> json;
 
   const SearchResultUnionUnknown(this.json);

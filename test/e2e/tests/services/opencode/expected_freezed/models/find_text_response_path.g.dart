@@ -6,10 +6,9 @@ part of 'find_text_response_path.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_FindTextResponsePath _$FindTextResponsePathFromJson(
-  Map<String, dynamic> json,
-) => _FindTextResponsePath(text: json['text'] as String);
+_FindTextResponsePath _$FindTextResponsePathFromJson(Map<String, dynamic> json) =>
+    _FindTextResponsePath(text: json['text'] as String);
 
-Map<String, dynamic> _$FindTextResponsePathToJson(
-  _FindTextResponsePath instance,
-) => <String, dynamic>{'text': instance.text};
+Map<String, dynamic> _$FindTextResponsePathToJson(_FindTextResponsePath instance) => <String, dynamic>{
+  'text': instance.text,
+};

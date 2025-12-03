@@ -26,6 +26,5 @@ class PatchPart with PatchPartMappable {
   final String hash;
   final List<String> files;
 
-  static PatchPart fromJson(Map<String, dynamic> json) =>
-      PatchPartMapper.fromJson(json);
+  static PatchPart fromJson(Map<String, dynamic> json) => PatchPartMapper.fromJson(json);
 }

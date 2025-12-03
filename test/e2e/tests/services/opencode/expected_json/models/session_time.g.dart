@@ -12,9 +12,8 @@ SessionTime _$SessionTimeFromJson(Map<String, dynamic> json) => SessionTime(
   compacting: json['compacting'] as num?,
 );
 
-Map<String, dynamic> _$SessionTimeToJson(SessionTime instance) =>
-    <String, dynamic>{
-      'created': instance.created,
-      'updated': instance.updated,
-      'compacting': instance.compacting,
-    };
+Map<String, dynamic> _$SessionTimeToJson(SessionTime instance) => <String, dynamic>{
+  'created': instance.created,
+  'updated': instance.updated,
+  'compacting': instance.compacting,
+};

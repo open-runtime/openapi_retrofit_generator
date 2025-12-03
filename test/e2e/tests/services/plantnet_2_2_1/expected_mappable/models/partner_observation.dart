@@ -67,6 +67,5 @@ class PartnerObservation with PartnerObservationMappable {
   final bool? censored;
   final Votes? votes;
 
-  static PartnerObservation fromJson(Map<String, dynamic> json) =>
-      PartnerObservationMapper.fromJson(json);
+  static PartnerObservation fromJson(Map<String, dynamic> json) => PartnerObservationMapper.fromJson(json);
 }

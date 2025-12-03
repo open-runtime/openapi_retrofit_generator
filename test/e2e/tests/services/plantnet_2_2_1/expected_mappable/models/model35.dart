@@ -15,6 +15,5 @@ class Model35 with Model35Mappable {
   final num? score;
   final bool? selected;
 
-  static Model35 fromJson(Map<String, dynamic> json) =>
-      Model35Mapper.fromJson(json);
+  static Model35 fromJson(Map<String, dynamic> json) => Model35Mapper.fromJson(json);
 }

@@ -22,9 +22,7 @@ abstract class PostsClient {
   ///
   /// [filters] - Complex filter object (inline schema).
   @GET('/posts')
-  Future<HttpResponse<ListPostsResponse>> listPosts({
-    @Query('filters') Filters? filters,
-  });
+  Future<HttpResponse<ListPostsResponse>> listPosts({@Query('filters') Filters? filters});
 
   /// Create post with inline request schema
   @POST('/posts')
@@ -32,7 +30,5 @@ abstract class PostsClient {
 
   /// Get post with nested comments
   @GET('/posts/{postId}')
-  Future<HttpResponse<GetPostResponse>> getPost({
-    @Path('postId') required String postId,
-  });
+  Future<HttpResponse<GetPostResponse>> getPost({@Path('postId') required String postId});
 }

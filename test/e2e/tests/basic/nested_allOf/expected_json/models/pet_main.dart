@@ -10,8 +10,7 @@ part 'pet_main.g.dart';
 class PetMain {
   const PetMain({this.propC, this.propB, this.propA, this.propMain});
 
-  factory PetMain.fromJson(Map<String, Object?> json) =>
-      _$PetMainFromJson(json);
+  factory PetMain.fromJson(Map<String, Object?> json) => _$PetMainFromJson(json);
 
   final int? propC;
   final int? propB;

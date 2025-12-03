@@ -8,13 +8,7 @@ part 'command.mapper.dart';
 
 @MappableClass()
 class Command with CommandMappable {
-  const Command({
-    required this.template,
-    this.description,
-    this.agent,
-    this.model,
-    this.subtask,
-  });
+  const Command({required this.template, this.description, this.agent, this.model, this.subtask});
 
   final String template;
   final String? description;
@@ -22,6 +16,5 @@ class Command with CommandMappable {
   final String? model;
   final bool? subtask;
 
-  static Command fromJson(Map<String, dynamic> json) =>
-      CommandMapper.fromJson(json);
+  static Command fromJson(Map<String, dynamic> json) => CommandMapper.fromJson(json);
 }

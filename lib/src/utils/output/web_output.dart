@@ -14,10 +14,7 @@ void generateMessage() {
   print('Generate...');
 }
 
-void successMessage({
-  required int successSchemasCount,
-  required int schemesCount,
-}) {
+void successMessage({required int successSchemasCount, required int schemesCount}) {
   if (successSchemasCount == 0) {
     print(
       'The generation was completed with errors.\n'
@@ -40,11 +37,7 @@ void successExtractMessage() {
   print('The extraction was completed successfully.');
 }
 
-void schemaStatisticsMessage({
-  required OpenApiInfo openApi,
-  required GenerationStatistic statistics,
-  String? name,
-}) {
+void schemaStatisticsMessage({required OpenApiInfo openApi, required GenerationStatistic statistics, String? name}) {
   final version = openApi.apiVersion != null ? 'v${openApi.apiVersion}' : '';
 
   var title = name ?? '';

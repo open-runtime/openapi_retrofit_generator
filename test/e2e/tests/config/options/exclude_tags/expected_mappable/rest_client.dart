@@ -63,16 +63,13 @@ class RestClient {
 
   PostsClient get posts => _posts ??= PostsClient(_dio, baseUrl: _baseUrl);
 
-  CommentsClient get comments =>
-      _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
+  CommentsClient get comments => _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
 
   FilesClient get files => _files ??= FilesClient(_dio, baseUrl: _baseUrl);
 
-  AdvancedClient get advanced =>
-      _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
+  AdvancedClient get advanced => _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
 
-  DeprecatedClient get deprecated =>
-      _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
+  DeprecatedClient get deprecated => _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
 
   ApiClient get api => _api ??= ApiClient(_dio, baseUrl: _baseUrl);
 }

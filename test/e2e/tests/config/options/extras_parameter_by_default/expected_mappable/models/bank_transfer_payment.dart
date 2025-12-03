@@ -27,6 +27,5 @@ class BankTransferPayment with BankTransferPaymentMappable {
   final String? accountHolder;
   final String? reference;
 
-  static BankTransferPayment fromJson(Map<String, dynamic> json) =>
-      BankTransferPaymentMapper.fromJson(json);
+  static BankTransferPayment fromJson(Map<String, dynamic> json) => BankTransferPaymentMapper.fromJson(json);
 }

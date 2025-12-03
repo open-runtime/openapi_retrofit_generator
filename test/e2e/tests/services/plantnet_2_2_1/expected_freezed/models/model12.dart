@@ -23,6 +23,5 @@ abstract class Model12 with _$Model12 {
     String? predictedName,
   }) = _Model12;
 
-  factory Model12.fromJson(Map<String, Object?> json) =>
-      _$Model12FromJson(json);
+  factory Model12.fromJson(Map<String, Object?> json) => _$Model12FromJson(json);
 }

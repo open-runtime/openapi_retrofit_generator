@@ -20,8 +20,7 @@ enum PostStatus {
 
   const PostStatus(this.json);
 
-  factory PostStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory PostStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -31,6 +30,5 @@ enum PostStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

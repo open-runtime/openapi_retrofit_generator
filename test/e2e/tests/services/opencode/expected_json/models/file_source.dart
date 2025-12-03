@@ -10,14 +10,9 @@ part 'file_source.g.dart';
 
 @JsonSerializable()
 class FileSource {
-  const FileSource({
-    required this.text,
-    required this.type,
-    required this.path,
-  });
+  const FileSource({required this.text, required this.type, required this.path});
 
-  factory FileSource.fromJson(Map<String, Object?> json) =>
-      _$FileSourceFromJson(json);
+  factory FileSource.fromJson(Map<String, Object?> json) => _$FileSourceFromJson(json);
 
   final FilePartSourceText text;
   final String type;

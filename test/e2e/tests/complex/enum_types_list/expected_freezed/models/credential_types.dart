@@ -16,8 +16,7 @@ enum CredentialTypes {
 
   const CredentialTypes(this.json);
 
-  factory CredentialTypes.fromJson(dynamic json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory CredentialTypes.fromJson(dynamic json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final dynamic json;
 
@@ -27,6 +26,5 @@ enum CredentialTypes {
   String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<CredentialTypes> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<CredentialTypes> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

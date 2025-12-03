@@ -7,10 +7,9 @@ part of 'determination_vote.dart';
 // **************************************************************************
 
 DeterminationVote _$DeterminationVoteFromJson(Map<String, dynamic> json) =>
-    DeterminationVote(
-      name: json['name'] as String,
-      score: json['score'] as num,
-    );
+    DeterminationVote(name: json['name'] as String, score: json['score'] as num);
 
-Map<String, dynamic> _$DeterminationVoteToJson(DeterminationVote instance) =>
-    <String, dynamic>{'name': instance.name, 'score': instance.score};
+Map<String, dynamic> _$DeterminationVoteToJson(DeterminationVote instance) => <String, dynamic>{
+  'name': instance.name,
+  'score': instance.score,
+};

@@ -15,7 +15,5 @@ abstract class FileClient {
   /// Download a file
   @GET('/files/{id}')
   @DioResponseType(ResponseType.bytes)
-  Future<HttpResponse<List<int>>> downloadFile({
-    @Path('id') required String id,
-  });
+  Future<HttpResponse<List<int>>> downloadFile({@Path('id') required String id});
 }

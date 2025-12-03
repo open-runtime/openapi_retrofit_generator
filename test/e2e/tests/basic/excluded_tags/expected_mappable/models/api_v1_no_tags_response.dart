@@ -12,6 +12,5 @@ class ApiV1NoTagsResponse with ApiV1NoTagsResponseMappable {
 
   final String? noTagsField;
 
-  static ApiV1NoTagsResponse fromJson(Map<String, dynamic> json) =>
-      ApiV1NoTagsResponseMapper.fromJson(json);
+  static ApiV1NoTagsResponse fromJson(Map<String, dynamic> json) => ApiV1NoTagsResponseMapper.fromJson(json);
 }

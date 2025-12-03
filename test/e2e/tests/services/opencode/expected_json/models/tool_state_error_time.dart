@@ -10,8 +10,7 @@ part 'tool_state_error_time.g.dart';
 class ToolStateErrorTime {
   const ToolStateErrorTime({required this.start, required this.end});
 
-  factory ToolStateErrorTime.fromJson(Map<String, Object?> json) =>
-      _$ToolStateErrorTimeFromJson(json);
+  factory ToolStateErrorTime.fromJson(Map<String, Object?> json) => _$ToolStateErrorTimeFromJson(json);
 
   final num start;
   final num end;

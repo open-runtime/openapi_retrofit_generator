@@ -17,6 +17,5 @@ abstract class EventSessionDeleted with _$EventSessionDeleted {
     required EventSessionDeletedProperties eventSessionDeletedProperties,
   }) = _EventSessionDeleted;
 
-  factory EventSessionDeleted.fromJson(Map<String, Object?> json) =>
-      _$EventSessionDeletedFromJson(json);
+  factory EventSessionDeleted.fromJson(Map<String, Object?> json) => _$EventSessionDeletedFromJson(json);
 }

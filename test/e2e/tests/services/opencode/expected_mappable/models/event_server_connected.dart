@@ -13,6 +13,5 @@ class EventServerConnected with EventServerConnectedMappable {
   final String type;
   final dynamic properties;
 
-  static EventServerConnected fromJson(Map<String, dynamic> json) =>
-      EventServerConnectedMapper.fromJson(json);
+  static EventServerConnected fromJson(Map<String, dynamic> json) => EventServerConnectedMapper.fromJson(json);
 }

@@ -9,9 +9,7 @@ part 'tui_append_prompt_request.g.dart';
 
 @Freezed()
 abstract class TuiAppendPromptRequest with _$TuiAppendPromptRequest {
-  const factory TuiAppendPromptRequest({required String text}) =
-      _TuiAppendPromptRequest;
+  const factory TuiAppendPromptRequest({required String text}) = _TuiAppendPromptRequest;
 
-  factory TuiAppendPromptRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiAppendPromptRequestFromJson(json);
+  factory TuiAppendPromptRequest.fromJson(Map<String, Object?> json) => _$TuiAppendPromptRequestFromJson(json);
 }

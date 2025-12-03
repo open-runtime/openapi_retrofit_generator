@@ -13,6 +13,5 @@ class Eunis with EunisMappable {
   final String typo;
   final String habitat;
 
-  static Eunis fromJson(Map<String, dynamic> json) =>
-      EunisMapper.fromJson(json);
+  static Eunis fromJson(Map<String, dynamic> json) => EunisMapper.fromJson(json);
 }

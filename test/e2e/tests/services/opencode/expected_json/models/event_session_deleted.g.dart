@@ -6,17 +6,14 @@ part of 'event_session_deleted.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EventSessionDeleted _$EventSessionDeletedFromJson(Map<String, dynamic> json) =>
-    EventSessionDeleted(
-      type: json['type'] as String,
-      eventSessionDeletedProperties: EventSessionDeletedProperties.fromJson(
-        json['EventSessionDeletedProperties'] as Map<String, dynamic>,
-      ),
-    );
+EventSessionDeleted _$EventSessionDeletedFromJson(Map<String, dynamic> json) => EventSessionDeleted(
+  type: json['type'] as String,
+  eventSessionDeletedProperties: EventSessionDeletedProperties.fromJson(
+    json['EventSessionDeletedProperties'] as Map<String, dynamic>,
+  ),
+);
 
-Map<String, dynamic> _$EventSessionDeletedToJson(
-  EventSessionDeleted instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$EventSessionDeletedToJson(EventSessionDeleted instance) => <String, dynamic>{
   'type': instance.type,
   'EventSessionDeletedProperties': instance.eventSessionDeletedProperties,
 };

@@ -10,12 +10,10 @@ part 'event_installation_updated_properties.g.dart';
 class EventInstallationUpdatedProperties {
   const EventInstallationUpdatedProperties({required this.version});
 
-  factory EventInstallationUpdatedProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventInstallationUpdatedPropertiesFromJson(json);
+  factory EventInstallationUpdatedProperties.fromJson(Map<String, Object?> json) =>
+      _$EventInstallationUpdatedPropertiesFromJson(json);
 
   final String version;
 
-  Map<String, Object?> toJson() =>
-      _$EventInstallationUpdatedPropertiesToJson(this);
+  Map<String, Object?> toJson() => _$EventInstallationUpdatedPropertiesToJson(this);
 }

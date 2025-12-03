@@ -15,6 +15,5 @@ class PetMain with PetMainMappable {
   final int? propA;
   final int? propMain;
 
-  static PetMain fromJson(Map<String, dynamic> json) =>
-      PetMainMapper.fromJson(json);
+  static PetMain fromJson(Map<String, dynamic> json) => PetMainMapper.fromJson(json);
 }

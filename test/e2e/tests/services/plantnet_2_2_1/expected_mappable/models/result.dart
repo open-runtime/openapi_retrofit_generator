@@ -14,14 +14,7 @@ part 'result.mapper.dart';
 
 @MappableClass()
 class Result with ResultMappable {
-  const Result({
-    this.score,
-    this.species,
-    this.images,
-    this.gbif,
-    this.powo,
-    this.iucn,
-  });
+  const Result({this.score, this.species, this.images, this.gbif, this.powo, this.iucn});
 
   final num? score;
   final Model15? species;
@@ -30,6 +23,5 @@ class Result with ResultMappable {
   final Powo? powo;
   final Model16? iucn;
 
-  static Result fromJson(Map<String, dynamic> json) =>
-      ResultMapper.fromJson(json);
+  static Result fromJson(Map<String, dynamic> json) => ResultMapper.fromJson(json);
 }

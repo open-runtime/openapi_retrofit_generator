@@ -10,12 +10,7 @@ part 'partner.mapper.dart';
 
 @MappableClass()
 class Partner with PartnerMappable {
-  const Partner({
-    required this.id,
-    required this.observationId,
-    this.author,
-    this.avatar,
-  });
+  const Partner({required this.id, required this.observationId, this.author, this.avatar});
 
   final String id;
   @MappableField(key: 'observation_id')
@@ -23,6 +18,5 @@ class Partner with PartnerMappable {
   final Author? author;
   final String? avatar;
 
-  static Partner fromJson(Map<String, dynamic> json) =>
-      PartnerMapper.fromJson(json);
+  static Partner fromJson(Map<String, dynamic> json) => PartnerMapper.fromJson(json);
 }

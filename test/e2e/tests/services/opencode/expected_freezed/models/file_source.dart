@@ -11,12 +11,8 @@ part 'file_source.g.dart';
 
 @Freezed()
 abstract class FileSource with _$FileSource {
-  const factory FileSource({
-    required FilePartSourceText text,
-    required String type,
-    required String path,
-  }) = _FileSource;
+  const factory FileSource({required FilePartSourceText text, required String type, required String path}) =
+      _FileSource;
 
-  factory FileSource.fromJson(Map<String, Object?> json) =>
-      _$FileSourceFromJson(json);
+  factory FileSource.fromJson(Map<String, Object?> json) => _$FileSourceFromJson(json);
 }

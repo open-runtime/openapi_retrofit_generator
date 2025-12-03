@@ -12,15 +12,7 @@ part 'model12.mapper.dart';
 
 @MappableClass()
 class Model12 with Model12Mappable {
-  const Model12({
-    this.name,
-    this.author,
-    this.family,
-    this.commonNames,
-    this.images,
-    this.iucn,
-    this.predictedName,
-  });
+  const Model12({this.name, this.author, this.family, this.commonNames, this.images, this.iucn, this.predictedName});
 
   final String? name;
   final String? author;
@@ -30,6 +22,5 @@ class Model12 with Model12Mappable {
   final Iucn? iucn;
   final String? predictedName;
 
-  static Model12 fromJson(Map<String, dynamic> json) =>
-      Model12Mapper.fromJson(json);
+  static Model12 fromJson(Map<String, dynamic> json) => Model12Mapper.fromJson(json);
 }

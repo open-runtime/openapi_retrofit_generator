@@ -41,6 +41,5 @@ class Comment with CommentMappable {
   final DateTime? updatedAt;
   final DateTime? deletedAt;
 
-  static Comment fromJson(Map<String, dynamic> json) =>
-      CommentMapper.fromJson(json);
+  static Comment fromJson(Map<String, dynamic> json) => CommentMapper.fromJson(json);
 }

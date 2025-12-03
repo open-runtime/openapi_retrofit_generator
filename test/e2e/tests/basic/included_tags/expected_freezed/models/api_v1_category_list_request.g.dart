@@ -6,32 +6,22 @@ part of 'api_v1_category_list_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ApiV1CategoryListRequest _$ApiV1CategoryListRequestFromJson(
-  Map<String, dynamic> json,
-) => _ApiV1CategoryListRequest(
+_ApiV1CategoryListRequest _$ApiV1CategoryListRequestFromJson(Map<String, dynamic> json) => _ApiV1CategoryListRequest(
   includedField: json['includedField'] as String,
-  apiV1CategoryListRequestNestedIncluded:
-      json['ApiV1CategoryListRequestNestedIncluded'] == null
+  apiV1CategoryListRequestNestedIncluded: json['ApiV1CategoryListRequestNestedIncluded'] == null
       ? null
       : ApiV1CategoryListRequestNestedIncluded.fromJson(
-          json['ApiV1CategoryListRequestNestedIncluded']
-              as Map<String, dynamic>,
+          json['ApiV1CategoryListRequestNestedIncluded'] as Map<String, dynamic>,
         ),
-  apiV1CategoryListRequestAnchorReference:
-      json['ApiV1CategoryListRequestAnchorReference'] == null
+  apiV1CategoryListRequestAnchorReference: json['ApiV1CategoryListRequestAnchorReference'] == null
       ? null
       : ApiV1CategoryListRequestAnchorReference.fromJson(
-          json['ApiV1CategoryListRequestAnchorReference']
-              as Map<String, dynamic>,
+          json['ApiV1CategoryListRequestAnchorReference'] as Map<String, dynamic>,
         ),
 );
 
-Map<String, dynamic> _$ApiV1CategoryListRequestToJson(
-  _ApiV1CategoryListRequest instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$ApiV1CategoryListRequestToJson(_ApiV1CategoryListRequest instance) => <String, dynamic>{
   'includedField': instance.includedField,
-  'ApiV1CategoryListRequestNestedIncluded':
-      ?instance.apiV1CategoryListRequestNestedIncluded,
-  'ApiV1CategoryListRequestAnchorReference':
-      ?instance.apiV1CategoryListRequestAnchorReference,
+  'ApiV1CategoryListRequestNestedIncluded': ?instance.apiV1CategoryListRequestNestedIncluded,
+  'ApiV1CategoryListRequestAnchorReference': ?instance.apiV1CategoryListRequestAnchorReference,
 };

@@ -10,13 +10,9 @@ part 'event_ide_installed.g.dart';
 
 @JsonSerializable()
 class EventIdeInstalled {
-  const EventIdeInstalled({
-    required this.type,
-    required this.eventIdeInstalledProperties,
-  });
+  const EventIdeInstalled({required this.type, required this.eventIdeInstalledProperties});
 
-  factory EventIdeInstalled.fromJson(Map<String, Object?> json) =>
-      _$EventIdeInstalledFromJson(json);
+  factory EventIdeInstalled.fromJson(Map<String, Object?> json) => _$EventIdeInstalledFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventIdeInstalledProperties')

@@ -9,12 +9,8 @@ part 'agent_permission.g.dart';
 
 @Freezed()
 abstract class AgentPermission with _$AgentPermission {
-  const factory AgentPermission({
-    required String edit,
-    required Map<String, String> bash,
-    String? webfetch,
-  }) = _AgentPermission;
+  const factory AgentPermission({required String edit, required Map<String, String> bash, String? webfetch}) =
+      _AgentPermission;
 
-  factory AgentPermission.fromJson(Map<String, Object?> json) =>
-      _$AgentPermissionFromJson(json);
+  factory AgentPermission.fromJson(Map<String, Object?> json) => _$AgentPermissionFromJson(json);
 }

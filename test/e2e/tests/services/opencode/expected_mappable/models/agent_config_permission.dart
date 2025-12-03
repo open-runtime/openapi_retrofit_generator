@@ -14,6 +14,5 @@ class AgentConfigPermission with AgentConfigPermissionMappable {
   final dynamic? bash;
   final String? webfetch;
 
-  static AgentConfigPermission fromJson(Map<String, dynamic> json) =>
-      AgentConfigPermissionMapper.fromJson(json);
+  static AgentConfigPermission fromJson(Map<String, dynamic> json) => AgentConfigPermissionMapper.fromJson(json);
 }

@@ -12,6 +12,5 @@ class ValueClass with ValueClassMappable {
 
   final String testProp;
 
-  static ValueClass fromJson(Map<String, dynamic> json) =>
-      ValueClassMapper.fromJson(json);
+  static ValueClass fromJson(Map<String, dynamic> json) => ValueClassMapper.fromJson(json);
 }

@@ -10,8 +10,7 @@ part 'above_quota.g.dart';
 class AboveQuota {
   const AboveQuota({this.identify});
 
-  factory AboveQuota.fromJson(Map<String, Object?> json) =>
-      _$AboveQuotaFromJson(json);
+  factory AboveQuota.fromJson(Map<String, Object?> json) => _$AboveQuotaFromJson(json);
 
   final num? identify;
 

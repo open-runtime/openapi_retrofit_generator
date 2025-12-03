@@ -13,8 +13,7 @@ part 'post_model.g.dart';
 class PostModel {
   const PostModel({this.id, this.title, this.author, this.comments});
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final int? id;

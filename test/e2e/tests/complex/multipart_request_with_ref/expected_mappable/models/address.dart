@@ -13,6 +13,5 @@ class Address with AddressMappable {
   final String? street;
   final bool? deleted;
 
-  static Address fromJson(Map<String, dynamic> json) =>
-      AddressMapper.fromJson(json);
+  static Address fromJson(Map<String, dynamic> json) => AddressMapper.fromJson(json);
 }

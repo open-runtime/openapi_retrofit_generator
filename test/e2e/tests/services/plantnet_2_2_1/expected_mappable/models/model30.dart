@@ -15,6 +15,5 @@ class Model30 with Model30Mappable {
   final String? day;
   final Model29? quota;
 
-  static Model30 fromJson(Map<String, dynamic> json) =>
-      Model30Mapper.fromJson(json);
+  static Model30 fromJson(Map<String, dynamic> json) => Model30Mapper.fromJson(json);
 }

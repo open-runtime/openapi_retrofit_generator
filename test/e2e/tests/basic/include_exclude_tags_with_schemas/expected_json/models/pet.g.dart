@@ -9,9 +9,7 @@ part of 'pet.dart';
 Pet _$PetFromJson(Map<String, dynamic> json) => Pet(
   id: (json['id'] as num?)?.toInt(),
   name: json['name'] as String?,
-  category: json['category'] == null
-      ? null
-      : Category.fromJson(json['category'] as Map<String, dynamic>),
+  category: json['category'] == null ? null : Category.fromJson(json['category'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$PetToJson(Pet instance) => <String, dynamic>{

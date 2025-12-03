@@ -8,14 +8,9 @@ part 'tool_list_item.g.dart';
 
 @JsonSerializable()
 class ToolListItem {
-  const ToolListItem({
-    required this.id,
-    required this.description,
-    required this.parameters,
-  });
+  const ToolListItem({required this.id, required this.description, required this.parameters});
 
-  factory ToolListItem.fromJson(Map<String, Object?> json) =>
-      _$ToolListItemFromJson(json);
+  factory ToolListItem.fromJson(Map<String, Object?> json) => _$ToolListItemFromJson(json);
 
   final String id;
   final String description;

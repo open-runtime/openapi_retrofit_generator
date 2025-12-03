@@ -29,7 +29,6 @@ enum TuiShowToastRequestVariantVariant {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<TuiShowToastRequestVariantVariant> get $valuesDefined => values
-      .where((value) => value != TuiShowToastRequestVariantVariant.unknown)
-      .toList();
+  static List<TuiShowToastRequestVariantVariant> get $valuesDefined =>
+      values.where((value) => value != TuiShowToastRequestVariantVariant.unknown).toList();
 }

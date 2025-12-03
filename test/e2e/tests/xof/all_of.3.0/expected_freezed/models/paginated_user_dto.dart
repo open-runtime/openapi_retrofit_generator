@@ -17,6 +17,5 @@ abstract class PaginatedUserDto with _$PaginatedUserDto {
     required List<UserDto> data,
   }) = _PaginatedUserDto;
 
-  factory PaginatedUserDto.fromJson(Map<String, Object?> json) =>
-      _$PaginatedUserDtoFromJson(json);
+  factory PaginatedUserDto.fromJson(Map<String, Object?> json) => _$PaginatedUserDtoFromJson(json);
 }

@@ -8,14 +8,12 @@ part 'config_experimental_hook_session_completed.freezed.dart';
 part 'config_experimental_hook_session_completed.g.dart';
 
 @Freezed()
-abstract class ConfigExperimentalHookSessionCompleted
-    with _$ConfigExperimentalHookSessionCompleted {
+abstract class ConfigExperimentalHookSessionCompleted with _$ConfigExperimentalHookSessionCompleted {
   const factory ConfigExperimentalHookSessionCompleted({
     required List<String> command,
     Map<String, String>? environment,
   }) = _ConfigExperimentalHookSessionCompleted;
 
-  factory ConfigExperimentalHookSessionCompleted.fromJson(
-    Map<String, Object?> json,
-  ) => _$ConfigExperimentalHookSessionCompletedFromJson(json);
+  factory ConfigExperimentalHookSessionCompleted.fromJson(Map<String, Object?> json) =>
+      _$ConfigExperimentalHookSessionCompletedFromJson(json);
 }

@@ -10,8 +10,7 @@ part 'determination_vote.g.dart';
 class DeterminationVote {
   const DeterminationVote({required this.name, required this.score});
 
-  factory DeterminationVote.fromJson(Map<String, Object?> json) =>
-      _$DeterminationVoteFromJson(json);
+  factory DeterminationVote.fromJson(Map<String, Object?> json) => _$DeterminationVoteFromJson(json);
 
   /// Species name
   final String name;

@@ -10,8 +10,7 @@ part 'p1_class.g.dart';
 class P1Class {
   const P1Class({this.test});
 
-  factory P1Class.fromJson(Map<String, Object?> json) =>
-      _$P1ClassFromJson(json);
+  factory P1Class.fromJson(Map<String, Object?> json) => _$P1ClassFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final DateTime? test;

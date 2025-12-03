@@ -67,6 +67,5 @@ class DarwinCoreOccurrence with DarwinCoreOccurrenceMappable {
   final Model36? votes;
   final Comments? comments;
 
-  static DarwinCoreOccurrence fromJson(Map<String, dynamic> json) =>
-      DarwinCoreOccurrenceMapper.fromJson(json);
+  static DarwinCoreOccurrence fromJson(Map<String, dynamic> json) => DarwinCoreOccurrenceMapper.fromJson(json);
 }

@@ -12,8 +12,7 @@ part 'data_class2.g.dart';
 class DataClass2 {
   const DataClass2({required this.title, required this.errors});
 
-  factory DataClass2.fromJson(Map<String, Object?> json) =>
-      _$DataClass2FromJson(json);
+  factory DataClass2.fromJson(Map<String, Object?> json) => _$DataClass2FromJson(json);
 
   final String title;
   final List<Map<String, List<List<Map<String, DataClass1>>>>> errors;

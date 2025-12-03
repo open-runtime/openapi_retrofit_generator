@@ -13,6 +13,5 @@ class FileEdited with FileEditedMappable {
   final List<String> command;
   final Map<String, String>? environment;
 
-  static FileEdited fromJson(Map<String, dynamic> json) =>
-      FileEditedMapper.fromJson(json);
+  static FileEdited fromJson(Map<String, dynamic> json) => FileEditedMapper.fromJson(json);
 }

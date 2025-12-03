@@ -9,14 +9,11 @@ part of 'symbol_model.dart';
 SymbolModel _$SymbolModelFromJson(Map<String, dynamic> json) => SymbolModel(
   name: json['name'] as String,
   kind: json['kind'] as num,
-  symbolModelLocation: SymbolModelLocation.fromJson(
-    json['SymbolModelLocation'] as Map<String, dynamic>,
-  ),
+  symbolModelLocation: SymbolModelLocation.fromJson(json['SymbolModelLocation'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$SymbolModelToJson(SymbolModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'kind': instance.kind,
-      'SymbolModelLocation': instance.symbolModelLocation,
-    };
+Map<String, dynamic> _$SymbolModelToJson(SymbolModel instance) => <String, dynamic>{
+  'name': instance.name,
+  'kind': instance.kind,
+  'SymbolModelLocation': instance.symbolModelLocation,
+};

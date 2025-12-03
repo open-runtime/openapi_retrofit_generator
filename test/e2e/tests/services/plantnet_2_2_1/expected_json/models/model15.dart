@@ -21,8 +21,7 @@ class Model15 {
     this.commonNames,
   });
 
-  factory Model15.fromJson(Map<String, Object?> json) =>
-      _$Model15FromJson(json);
+  factory Model15.fromJson(Map<String, Object?> json) => _$Model15FromJson(json);
 
   final String? scientificNameWithoutAuthor;
   final String? scientificNameAuthorship;

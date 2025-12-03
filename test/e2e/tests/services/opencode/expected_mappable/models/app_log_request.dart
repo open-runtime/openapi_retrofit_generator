@@ -10,18 +10,12 @@ part 'app_log_request.mapper.dart';
 
 @MappableClass()
 class AppLogRequest with AppLogRequestMappable {
-  const AppLogRequest({
-    required this.service,
-    required this.level,
-    required this.message,
-    this.extra,
-  });
+  const AppLogRequest({required this.service, required this.level, required this.message, this.extra});
 
   final String service;
   final AppLogRequestLevelLevel level;
   final String message;
   final Map<String, dynamic>? extra;
 
-  static AppLogRequest fromJson(Map<String, dynamic> json) =>
-      AppLogRequestMapper.fromJson(json);
+  static AppLogRequest fromJson(Map<String, dynamic> json) => AppLogRequestMapper.fromJson(json);
 }

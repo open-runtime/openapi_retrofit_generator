@@ -13,6 +13,5 @@ part 'model10.g.dart';
 abstract class Model10 with _$Model10 {
   const factory Model10({Indicators? indicators, num? total}) = _Model10;
 
-  factory Model10.fromJson(Map<String, Object?> json) =>
-      _$Model10FromJson(json);
+  factory Model10.fromJson(Map<String, Object?> json) => _$Model10FromJson(json);
 }

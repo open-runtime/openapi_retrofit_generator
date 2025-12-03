@@ -12,19 +12,15 @@ part 'class_with_nullable_types_non_null_any_of_union.mapper.dart';
     ClassWithNullableTypesNonNullAnyOfUnionVariantInt,
   ],
 )
-sealed class ClassWithNullableTypesNonNullAnyOfUnion
-    with ClassWithNullableTypesNonNullAnyOfUnionMappable {
+sealed class ClassWithNullableTypesNonNullAnyOfUnion with ClassWithNullableTypesNonNullAnyOfUnionMappable {
   const ClassWithNullableTypesNonNullAnyOfUnion();
 
   static ClassWithNullableTypesNonNullAnyOfUnion fromJson(dynamic json) {
-    return ClassWithNullableTypesNonNullAnyOfUnionDeserializer.tryDeserialize(
-      json,
-    );
+    return ClassWithNullableTypesNonNullAnyOfUnionDeserializer.tryDeserialize(json);
   }
 }
 
-extension ClassWithNullableTypesNonNullAnyOfUnionDeserializer
-    on ClassWithNullableTypesNonNullAnyOfUnion {
+extension ClassWithNullableTypesNonNullAnyOfUnionDeserializer on ClassWithNullableTypesNonNullAnyOfUnion {
   static ClassWithNullableTypesNonNullAnyOfUnion tryDeserialize(dynamic json) {
     // Try string variant
     if (json is String) {
@@ -37,9 +33,7 @@ extension ClassWithNullableTypesNonNullAnyOfUnionDeserializer
 
     // Also handle wrapped format: {'value': ...}
     if (json is Map<String, dynamic> && json.containsKey('value')) {
-      return ClassWithNullableTypesNonNullAnyOfUnionDeserializer.tryDeserialize(
-        json['value'],
-      );
+      return ClassWithNullableTypesNonNullAnyOfUnionDeserializer.tryDeserialize(json['value']);
     }
 
     throw FormatException(
@@ -49,31 +43,24 @@ extension ClassWithNullableTypesNonNullAnyOfUnionDeserializer
 }
 
 @MappableClass()
-class ClassWithNullableTypesNonNullAnyOfUnionVariantString
-    extends ClassWithNullableTypesNonNullAnyOfUnion
+class ClassWithNullableTypesNonNullAnyOfUnionVariantString extends ClassWithNullableTypesNonNullAnyOfUnion
     with ClassWithNullableTypesNonNullAnyOfUnionVariantStringMappable {
   final String value;
 
-  const ClassWithNullableTypesNonNullAnyOfUnionVariantString({
-    required this.value,
-  });
+  const ClassWithNullableTypesNonNullAnyOfUnionVariantString({required this.value});
 }
 
 @MappableClass()
-class ClassWithNullableTypesNonNullAnyOfUnionVariantInt
-    extends ClassWithNullableTypesNonNullAnyOfUnion
+class ClassWithNullableTypesNonNullAnyOfUnionVariantInt extends ClassWithNullableTypesNonNullAnyOfUnion
     with ClassWithNullableTypesNonNullAnyOfUnionVariantIntMappable {
   final int value;
 
-  const ClassWithNullableTypesNonNullAnyOfUnionVariantInt({
-    required this.value,
-  });
+  const ClassWithNullableTypesNonNullAnyOfUnionVariantInt({required this.value});
 }
 
 /// Extension to get raw value for JSON serialization of primitive unions.
 /// Use this instead of toJson() when serializing to API requests.
-extension ClassWithNullableTypesNonNullAnyOfUnionJsonValue
-    on ClassWithNullableTypesNonNullAnyOfUnion {
+extension ClassWithNullableTypesNonNullAnyOfUnionJsonValue on ClassWithNullableTypesNonNullAnyOfUnion {
   /// Get the raw value for JSON serialization.
   /// Returns the primitive value (String, int, bool, enum) directly.
   dynamic get toJsonValue {
@@ -103,9 +90,7 @@ class ClassWithNullableTypesNonNullAnyOfUnionHook extends MappingHook {
   Object? beforeDecode(Object? value) {
     // Intercept raw primitive values BEFORE normal decoding
     // This prevents the mapper from failing on String/int values
-    if (value != null &&
-        value is! ClassWithNullableTypesNonNullAnyOfUnion &&
-        value is! Map<String, dynamic>) {
+    if (value != null && value is! ClassWithNullableTypesNonNullAnyOfUnion && value is! Map<String, dynamic>) {
       // Raw primitive value - deserialize using our custom fromJson
       return ClassWithNullableTypesNonNullAnyOfUnion.fromJson(value);
     }

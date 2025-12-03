@@ -37,6 +37,5 @@ class IdentificationResult with IdentificationResultMappable {
   final PredictedOrgans? predictedOrgans;
   final OtherResults? otherResults;
 
-  static IdentificationResult fromJson(Map<String, dynamic> json) =>
-      IdentificationResultMapper.fromJson(json);
+  static IdentificationResult fromJson(Map<String, dynamic> json) => IdentificationResultMapper.fromJson(json);
 }

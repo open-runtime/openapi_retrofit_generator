@@ -10,13 +10,11 @@ part 'get_parcel_pending_webhook_url_response.g.dart';
 class GetParcelPendingWebhookUrlResponse {
   const GetParcelPendingWebhookUrlResponse({this.webhookUrl});
 
-  factory GetParcelPendingWebhookUrlResponse.fromJson(
-    Map<String, Object?> json,
-  ) => _$GetParcelPendingWebhookUrlResponseFromJson(json);
+  factory GetParcelPendingWebhookUrlResponse.fromJson(Map<String, Object?> json) =>
+      _$GetParcelPendingWebhookUrlResponseFromJson(json);
 
   @JsonKey(includeIfNull: false, name: 'webhookURL')
   final String? webhookUrl;
 
-  Map<String, Object?> toJson() =>
-      _$GetParcelPendingWebhookUrlResponseToJson(this);
+  Map<String, Object?> toJson() => _$GetParcelPendingWebhookUrlResponseToJson(this);
 }

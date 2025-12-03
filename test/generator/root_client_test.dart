@@ -17,9 +17,7 @@ void main() {
 
   group('Version getter', () {
     test('dart', () async {
-      final clients = [
-        const UniversalRestClient(name: 'One', imports: {}, requests: []),
-      ];
+      final clients = [const UniversalRestClient(name: 'One', imports: {}, requests: [])];
       const fillController = FillController(
         config: GeneratorConfig(name: '', outputDirectory: '.'),
         info: OpenApiInfo(apiVersion: '1.0.0', schemaVersion: OAS.v3_1),
@@ -54,9 +52,7 @@ class RestClient {
 
   group('root client with one client', () {
     test('dart', () async {
-      final clients = [
-        const UniversalRestClient(name: 'One', imports: {}, requests: []),
-      ];
+      final clients = [const UniversalRestClient(name: 'One', imports: {}, requests: [])];
       const fillController = FillController(
         config: GeneratorConfig(name: '', outputDirectory: '.'),
       );
@@ -144,15 +140,9 @@ class RestClient {
 
   group('root client with one client and put clients in folder', () {
     test('dart', () async {
-      final clients = [
-        const UniversalRestClient(name: 'One', imports: {}, requests: []),
-      ];
+      final clients = [const UniversalRestClient(name: 'One', imports: {}, requests: [])];
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          putClientsInFolder: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', putClientsInFolder: true),
       );
       final filledContent = fillController.fillRootClient(clients);
       const expectedContents = '''
@@ -191,11 +181,7 @@ class RestClient {
         const UniversalRestClient(name: 'Five', imports: {}, requests: []),
       ];
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          putClientsInFolder: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', putClientsInFolder: true),
       );
       final filledContent = fillController.fillRootClient(clients);
       const expectedContents = '''

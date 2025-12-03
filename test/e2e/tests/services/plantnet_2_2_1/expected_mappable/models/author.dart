@@ -13,6 +13,5 @@ class Author with AuthorMappable {
   final String id;
   final String name;
 
-  static Author fromJson(Map<String, dynamic> json) =>
-      AuthorMapper.fromJson(json);
+  static Author fromJson(Map<String, dynamic> json) => AuthorMapper.fromJson(json);
 }

@@ -14,10 +14,8 @@ abstract class SymbolModel with _$SymbolModel {
   const factory SymbolModel({
     required String name,
     required num kind,
-    @JsonKey(name: 'SymbolModelLocation')
-    required SymbolModelLocation symbolModelLocation,
+    @JsonKey(name: 'SymbolModelLocation') required SymbolModelLocation symbolModelLocation,
   }) = _SymbolModel;
 
-  factory SymbolModel.fromJson(Map<String, Object?> json) =>
-      _$SymbolModelFromJson(json);
+  factory SymbolModel.fromJson(Map<String, Object?> json) => _$SymbolModelFromJson(json);
 }

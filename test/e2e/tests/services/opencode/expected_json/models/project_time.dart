@@ -10,8 +10,7 @@ part 'project_time.g.dart';
 class ProjectTime {
   const ProjectTime({required this.created, this.initialized});
 
-  factory ProjectTime.fromJson(Map<String, Object?> json) =>
-      _$ProjectTimeFromJson(json);
+  factory ProjectTime.fromJson(Map<String, Object?> json) => _$ProjectTimeFromJson(json);
 
   final num created;
   final num? initialized;

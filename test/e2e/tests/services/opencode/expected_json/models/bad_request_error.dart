@@ -8,14 +8,9 @@ part 'bad_request_error.g.dart';
 
 @JsonSerializable()
 class BadRequestError {
-  const BadRequestError({
-    required this.data,
-    required this.errors,
-    required this.success,
-  });
+  const BadRequestError({required this.data, required this.errors, required this.success});
 
-  factory BadRequestError.fromJson(Map<String, Object?> json) =>
-      _$BadRequestErrorFromJson(json);
+  factory BadRequestError.fromJson(Map<String, Object?> json) => _$BadRequestErrorFromJson(json);
 
   final dynamic data;
   final List<Map<String, dynamic>> errors;

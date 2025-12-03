@@ -13,9 +13,7 @@ _ToolPart _$ToolPartFromJson(Map<String, dynamic> json) => _ToolPart(
   type: json['type'] as String,
   callId: json['callID'] as String,
   tool: json['tool'] as String,
-  state: json['state'] == null
-      ? null
-      : ToolStateUnion.fromJson(json['state'] as Map<String, dynamic>),
+  state: json['state'] == null ? null : ToolStateUnion.fromJson(json['state'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 

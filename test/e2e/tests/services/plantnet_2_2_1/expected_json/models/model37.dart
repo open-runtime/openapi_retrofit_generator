@@ -10,8 +10,7 @@ part 'model37.g.dart';
 class Model37 {
   const Model37({this.lang, this.date, this.author, this.message});
 
-  factory Model37.fromJson(Map<String, Object?> json) =>
-      _$Model37FromJson(json);
+  factory Model37.fromJson(Map<String, Object?> json) => _$Model37FromJson(json);
 
   final String? lang;
   final String? date;

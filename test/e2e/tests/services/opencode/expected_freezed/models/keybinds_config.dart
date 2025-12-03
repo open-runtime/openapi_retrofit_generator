@@ -12,9 +12,7 @@ part 'keybinds_config.g.dart';
 abstract class KeybindsConfig with _$KeybindsConfig {
   const factory KeybindsConfig({
     /// Cycle to next child session
-    @JsonKey(name: 'session_child_cycle')
-    @Default('ctrl+right')
-    String sessionChildCycle,
+    @JsonKey(name: 'session_child_cycle') @Default('ctrl+right') String sessionChildCycle,
 
     /// Show help dialog
     @JsonKey(name: 'app_help') @Default('<leader>h') String appHelp,
@@ -35,9 +33,7 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'tool_details') @Default('<leader>d') String toolDetails,
 
     /// Toggle thinking blocks
-    @JsonKey(name: 'thinking_blocks')
-    @Default('<leader>b')
-    String thinkingBlocks,
+    @JsonKey(name: 'thinking_blocks') @Default('<leader>b') String thinkingBlocks,
 
     /// Export session to editor
     @JsonKey(name: 'session_export') @Default('<leader>x') String sessionExport,
@@ -49,9 +45,7 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'session_list') @Default('<leader>l') String sessionList,
 
     /// Show session timeline
-    @JsonKey(name: 'session_timeline')
-    @Default('<leader>g')
-    String sessionTimeline,
+    @JsonKey(name: 'session_timeline') @Default('<leader>g') String sessionTimeline,
 
     /// Share current session
     @JsonKey(name: 'session_share') @Default('<leader>s') String sessionShare,
@@ -63,35 +57,25 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'session_interrupt') @Default('esc') String sessionInterrupt,
 
     /// Compact the session
-    @JsonKey(name: 'session_compact')
-    @Default('<leader>c')
-    String sessionCompact,
+    @JsonKey(name: 'session_compact') @Default('<leader>c') String sessionCompact,
 
     /// Leader key for keybind combinations
     @Default('ctrl+x') String leader,
 
     /// Cycle to previous child session
-    @JsonKey(name: 'session_child_cycle_reverse')
-    @Default('ctrl+left')
-    String sessionChildCycleReverse,
+    @JsonKey(name: 'session_child_cycle_reverse') @Default('ctrl+left') String sessionChildCycleReverse,
 
     /// Scroll messages up by one page
     @JsonKey(name: 'messages_page_up') @Default('pgup') String messagesPageUp,
 
     /// Scroll messages down by one page
-    @JsonKey(name: 'messages_page_down')
-    @Default('pgdown')
-    String messagesPageDown,
+    @JsonKey(name: 'messages_page_down') @Default('pgdown') String messagesPageDown,
 
     /// Scroll messages up by half page
-    @JsonKey(name: 'messages_half_page_up')
-    @Default('ctrl+alt+u')
-    String messagesHalfPageUp,
+    @JsonKey(name: 'messages_half_page_up') @Default('ctrl+alt+u') String messagesHalfPageUp,
 
     /// Scroll messages down by half page
-    @JsonKey(name: 'messages_half_page_down')
-    @Default('ctrl+alt+d')
-    String messagesHalfPageDown,
+    @JsonKey(name: 'messages_half_page_down') @Default('ctrl+alt+d') String messagesHalfPageDown,
 
     /// Navigate to first message
     @JsonKey(name: 'messages_first') @Default('ctrl+g') String messagesFirst,
@@ -115,9 +99,7 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'model_cycle_recent') @Default('f2') String modelCycleRecent,
 
     /// Previous recent model
-    @JsonKey(name: 'model_cycle_recent_reverse')
-    @Default('shift+f2')
-    String modelCycleRecentReverse,
+    @JsonKey(name: 'model_cycle_recent_reverse') @Default('shift+f2') String modelCycleRecentReverse,
 
     /// List agents
     @JsonKey(name: 'agent_list') @Default('<leader>a') String agentList,
@@ -138,25 +120,19 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'input_submit') @Default('enter') String inputSubmit,
 
     /// Insert newline in input
-    @JsonKey(name: 'input_newline')
-    @Default('shift+enter,ctrl+j')
-    String inputNewline,
+    @JsonKey(name: 'input_newline') @Default('shift+enter,ctrl+j') String inputNewline,
 
     /// @deprecated use agent_cycle. Next mode
     @JsonKey(name: 'switch_mode') @Default('none') String switchMode,
 
     /// @deprecated use agent_cycle_reverse. Previous mode
-    @JsonKey(name: 'switch_mode_reverse')
-    @Default('none')
-    String switchModeReverse,
+    @JsonKey(name: 'switch_mode_reverse') @Default('none') String switchModeReverse,
 
     /// @deprecated use agent_cycle. Next agent
     @JsonKey(name: 'switch_agent') @Default('tab') String switchAgent,
 
     /// @deprecated use agent_cycle_reverse. Previous agent
-    @JsonKey(name: 'switch_agent_reverse')
-    @Default('shift+tab')
-    String switchAgentReverse,
+    @JsonKey(name: 'switch_agent_reverse') @Default('shift+tab') String switchAgentReverse,
 
     /// @deprecated Currently not available. List files
     @JsonKey(name: 'file_list') @Default('none') String fileList,
@@ -171,24 +147,17 @@ abstract class KeybindsConfig with _$KeybindsConfig {
     @JsonKey(name: 'file_diff_toggle') @Default('none') String fileDiffToggle,
 
     /// @deprecated Navigate to previous message
-    @JsonKey(name: 'messages_previous')
-    @Default('none')
-    String messagesPrevious,
+    @JsonKey(name: 'messages_previous') @Default('none') String messagesPrevious,
 
     /// @deprecated Navigate to next message
     @JsonKey(name: 'messages_next') @Default('none') String messagesNext,
 
     /// @deprecated Toggle layout
-    @JsonKey(name: 'messages_layout_toggle')
-    @Default('none')
-    String messagesLayoutToggle,
+    @JsonKey(name: 'messages_layout_toggle') @Default('none') String messagesLayoutToggle,
 
     /// Previous agent
-    @JsonKey(name: 'agent_cycle_reverse')
-    @Default('shift+tab')
-    String agentCycleReverse,
+    @JsonKey(name: 'agent_cycle_reverse') @Default('shift+tab') String agentCycleReverse,
   }) = _KeybindsConfig;
 
-  factory KeybindsConfig.fromJson(Map<String, Object?> json) =>
-      _$KeybindsConfigFromJson(json);
+  factory KeybindsConfig.fromJson(Map<String, Object?> json) => _$KeybindsConfigFromJson(json);
 }

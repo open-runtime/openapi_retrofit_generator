@@ -87,8 +87,7 @@ final class UniversalComponentClass extends UniversalDataClass {
       typeDef: typeDef ?? this.typeDef,
       discriminator: discriminator ?? this.discriminator,
       discriminatorValue: discriminatorValue ?? this.discriminatorValue,
-      undiscriminatedUnionVariants:
-          undiscriminatedUnionVariants ?? this.undiscriminatedUnionVariants,
+      undiscriminatedUnionVariants: undiscriminatedUnionVariants ?? this.undiscriminatedUnionVariants,
       description: description ?? super.description,
     );
   }
@@ -102,10 +101,7 @@ final class UniversalComponentClass extends UniversalDataClass {
           const DeepCollectionEquality().equals(parameters, other.parameters) &&
           allOf == other.allOf &&
           typeDef == other.typeDef &&
-          const DeepCollectionEquality().equals(
-            undiscriminatedUnionVariants,
-            other.undiscriminatedUnionVariants,
-          );
+          const DeepCollectionEquality().equals(undiscriminatedUnionVariants, other.undiscriminatedUnionVariants);
 
   @override
   int get hashCode =>

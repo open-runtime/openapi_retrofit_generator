@@ -9,9 +9,7 @@ part of 'project.dart';
 Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
   id: json['id'] as String,
   worktree: json['worktree'] as String,
-  projectTime: ProjectTime.fromJson(
-    json['ProjectTime'] as Map<String, dynamic>,
-  ),
+  projectTime: ProjectTime.fromJson(json['ProjectTime'] as Map<String, dynamic>),
   vcs: json['vcs'] as String?,
 );
 

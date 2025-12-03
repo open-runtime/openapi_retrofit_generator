@@ -11,14 +11,11 @@ _DebugSchema _$DebugSchemaFromJson(Map<String, dynamic> json) => _DebugSchema(
   message: json['message'] as String?,
   debugSchemaData: json['DebugSchemaData'] == null
       ? null
-      : DebugSchemaData.fromJson(
-          json['DebugSchemaData'] as Map<String, dynamic>,
-        ),
+      : DebugSchemaData.fromJson(json['DebugSchemaData'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$DebugSchemaToJson(_DebugSchema instance) =>
-    <String, dynamic>{
-      'id': ?instance.id,
-      'message': ?instance.message,
-      'DebugSchemaData': ?instance.debugSchemaData,
-    };
+Map<String, dynamic> _$DebugSchemaToJson(_DebugSchema instance) => <String, dynamic>{
+  'id': ?instance.id,
+  'message': ?instance.message,
+  'DebugSchemaData': ?instance.debugSchemaData,
+};

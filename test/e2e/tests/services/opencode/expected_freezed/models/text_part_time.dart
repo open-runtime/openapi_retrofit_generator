@@ -11,6 +11,5 @@ part 'text_part_time.g.dart';
 abstract class TextPartTime with _$TextPartTime {
   const factory TextPartTime({required num start, num? end}) = _TextPartTime;
 
-  factory TextPartTime.fromJson(Map<String, Object?> json) =>
-      _$TextPartTimeFromJson(json);
+  factory TextPartTime.fromJson(Map<String, Object?> json) => _$TextPartTimeFromJson(json);
 }

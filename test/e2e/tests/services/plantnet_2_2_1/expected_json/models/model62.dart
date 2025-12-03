@@ -13,8 +13,7 @@ part 'model62.g.dart';
 class Model62 {
   const Model62({this.status, this.version, this.query, this.results});
 
-  factory Model62.fromJson(Map<String, Object?> json) =>
-      _$Model62FromJson(json);
+  factory Model62.fromJson(Map<String, Object?> json) => _$Model62FromJson(json);
 
   final String? status;
   final String? version;

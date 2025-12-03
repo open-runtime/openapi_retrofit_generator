@@ -6,8 +6,6 @@ part of 'value_class.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ValueClass _$ValueClassFromJson(Map<String, dynamic> json) =>
-    _ValueClass(testProp: json['testProp'] as String);
+_ValueClass _$ValueClassFromJson(Map<String, dynamic> json) => _ValueClass(testProp: json['testProp'] as String);
 
-Map<String, dynamic> _$ValueClassToJson(_ValueClass instance) =>
-    <String, dynamic>{'testProp': instance.testProp};
+Map<String, dynamic> _$ValueClassToJson(_ValueClass instance) => <String, dynamic>{'testProp': instance.testProp};

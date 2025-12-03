@@ -12,6 +12,5 @@ class GetEmptyTagsResponse with GetEmptyTagsResponseMappable {
 
   final String? value;
 
-  static GetEmptyTagsResponse fromJson(Map<String, dynamic> json) =>
-      GetEmptyTagsResponseMapper.fromJson(json);
+  static GetEmptyTagsResponse fromJson(Map<String, dynamic> json) => GetEmptyTagsResponseMapper.fromJson(json);
 }

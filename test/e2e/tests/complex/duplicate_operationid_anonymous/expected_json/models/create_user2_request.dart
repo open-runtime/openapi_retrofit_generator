@@ -10,8 +10,7 @@ part 'create_user2_request.g.dart';
 class CreateUser2Request {
   const CreateUser2Request({required this.username, required this.role});
 
-  factory CreateUser2Request.fromJson(Map<String, Object?> json) =>
-      _$CreateUser2RequestFromJson(json);
+  factory CreateUser2Request.fromJson(Map<String, Object?> json) => _$CreateUser2RequestFromJson(json);
 
   final String username;
   final String role;

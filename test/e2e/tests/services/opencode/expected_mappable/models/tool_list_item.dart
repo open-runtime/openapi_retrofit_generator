@@ -8,16 +8,11 @@ part 'tool_list_item.mapper.dart';
 
 @MappableClass()
 class ToolListItem with ToolListItemMappable {
-  const ToolListItem({
-    required this.id,
-    required this.description,
-    required this.parameters,
-  });
+  const ToolListItem({required this.id, required this.description, required this.parameters});
 
   final String id;
   final String description;
   final dynamic parameters;
 
-  static ToolListItem fromJson(Map<String, dynamic> json) =>
-      ToolListItemMapper.fromJson(json);
+  static ToolListItem fromJson(Map<String, dynamic> json) => ToolListItemMapper.fromJson(json);
 }

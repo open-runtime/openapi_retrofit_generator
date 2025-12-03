@@ -17,15 +17,12 @@ class MessageUnion {
 
   const MessageUnion(this._json);
 
-  factory MessageUnion.fromJson(Map<String, dynamic> json) =>
-      MessageUnion(json);
+  factory MessageUnion.fromJson(Map<String, dynamic> json) => MessageUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  MessageUnionUserMessage toUserMessage() =>
-      MessageUnionUserMessage.fromJson(_json);
-  MessageUnionAssistantMessage toAssistantMessage() =>
-      MessageUnionAssistantMessage.fromJson(_json);
+  MessageUnionUserMessage toUserMessage() => MessageUnionUserMessage.fromJson(_json);
+  MessageUnionAssistantMessage toAssistantMessage() => MessageUnionAssistantMessage.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -42,8 +39,7 @@ class MessageUnionUserMessage {
     required this.userMessageTime,
   });
 
-  factory MessageUnionUserMessage.fromJson(Map<String, dynamic> json) =>
-      _$MessageUnionUserMessageFromJson(json);
+  factory MessageUnionUserMessage.fromJson(Map<String, dynamic> json) => _$MessageUnionUserMessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageUnionUserMessageToJson(this);
 }

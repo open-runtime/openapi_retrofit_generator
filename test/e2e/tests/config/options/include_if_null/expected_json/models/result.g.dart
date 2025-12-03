@@ -9,9 +9,7 @@ part of 'result.dart';
 Result _$ResultFromJson(Map<String, dynamic> json) => Result(
   success: json['success'] as bool?,
   data: json['data'],
-  status: json['status'] == null
-      ? null
-      : Status.fromJson(json['status'] as String),
+  status: json['status'] == null ? null : Status.fromJson(json['status'] as String),
 );
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{

@@ -12,8 +12,7 @@ part 'model50.g.dart';
 class Model50 {
   const Model50({this.center, this.size, this.score, this.organ});
 
-  factory Model50.fromJson(Map<String, Object?> json) =>
-      _$Model50FromJson(json);
+  factory Model50.fromJson(Map<String, Object?> json) => _$Model50FromJson(json);
 
   final Center? center;
   final num? size;

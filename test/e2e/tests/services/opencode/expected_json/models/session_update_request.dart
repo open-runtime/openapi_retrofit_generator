@@ -10,8 +10,7 @@ part 'session_update_request.g.dart';
 class SessionUpdateRequest {
   const SessionUpdateRequest({this.title});
 
-  factory SessionUpdateRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionUpdateRequestFromJson(json);
+  factory SessionUpdateRequest.fromJson(Map<String, Object?> json) => _$SessionUpdateRequestFromJson(json);
 
   final String? title;
 

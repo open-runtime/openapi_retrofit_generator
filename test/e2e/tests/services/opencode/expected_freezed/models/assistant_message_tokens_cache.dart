@@ -9,10 +9,7 @@ part 'assistant_message_tokens_cache.g.dart';
 
 @Freezed()
 abstract class AssistantMessageTokensCache with _$AssistantMessageTokensCache {
-  const factory AssistantMessageTokensCache({
-    required num read,
-    required num write,
-  }) = _AssistantMessageTokensCache;
+  const factory AssistantMessageTokensCache({required num read, required num write}) = _AssistantMessageTokensCache;
 
   factory AssistantMessageTokensCache.fromJson(Map<String, Object?> json) =>
       _$AssistantMessageTokensCacheFromJson(json);

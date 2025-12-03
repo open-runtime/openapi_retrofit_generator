@@ -14,6 +14,5 @@ class ClassName with ClassNameMappable {
 
   final List<ClassNameStatusStatus> status;
 
-  static ClassName fromJson(Map<String, dynamic> json) =>
-      ClassNameMapper.fromJson(json);
+  static ClassName fromJson(Map<String, dynamic> json) => ClassNameMapper.fromJson(json);
 }

@@ -10,8 +10,7 @@ part 'error_details.g.dart';
 class ErrorDetails {
   const ErrorDetails({this.field, this.message});
 
-  factory ErrorDetails.fromJson(Map<String, Object?> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory ErrorDetails.fromJson(Map<String, Object?> json) => _$ErrorDetailsFromJson(json);
 
   final String? field;
   final String? message;

@@ -3,8 +3,7 @@
 library;
 
 export 'src/config/config_exception.dart';
-export 'src/config/config_generator_arguments.dart'
-    show parseConfigGeneratorArguments;
+export 'src/config/config_generator_arguments.dart' show parseConfigGeneratorArguments;
 export 'src/config/openapi_config.dart';
 export 'src/generator/config/generator_config.dart';
 export 'src/generator/exception/generator_exception.dart';

@@ -27,8 +27,7 @@ class Comment {
     this.deletedAt,
   });
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
 
   final String id;
   final String content;

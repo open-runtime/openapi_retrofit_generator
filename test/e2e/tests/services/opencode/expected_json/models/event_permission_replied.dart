@@ -10,13 +10,9 @@ part 'event_permission_replied.g.dart';
 
 @JsonSerializable()
 class EventPermissionReplied {
-  const EventPermissionReplied({
-    required this.type,
-    required this.eventPermissionRepliedProperties,
-  });
+  const EventPermissionReplied({required this.type, required this.eventPermissionRepliedProperties});
 
-  factory EventPermissionReplied.fromJson(Map<String, Object?> json) =>
-      _$EventPermissionRepliedFromJson(json);
+  factory EventPermissionReplied.fromJson(Map<String, Object?> json) => _$EventPermissionRepliedFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventPermissionRepliedProperties')

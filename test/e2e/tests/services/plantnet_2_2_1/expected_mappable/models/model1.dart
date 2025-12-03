@@ -14,6 +14,5 @@ class Model1 with Model1Mappable {
 
   final Status? status;
 
-  static Model1 fromJson(Map<String, dynamic> json) =>
-      Model1Mapper.fromJson(json);
+  static Model1 fromJson(Map<String, dynamic> json) => Model1Mapper.fromJson(json);
 }

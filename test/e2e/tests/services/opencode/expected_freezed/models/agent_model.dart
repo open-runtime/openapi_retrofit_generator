@@ -14,6 +14,5 @@ abstract class AgentModel with _$AgentModel {
     @JsonKey(name: 'providerID') required String providerId,
   }) = _AgentModel;
 
-  factory AgentModel.fromJson(Map<String, Object?> json) =>
-      _$AgentModelFromJson(json);
+  factory AgentModel.fromJson(Map<String, Object?> json) => _$AgentModelFromJson(json);
 }

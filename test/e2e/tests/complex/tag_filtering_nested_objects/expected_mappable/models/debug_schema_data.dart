@@ -11,12 +11,7 @@ part 'debug_schema_data.mapper.dart';
 
 @MappableClass()
 class DebugSchemaData with DebugSchemaDataMappable {
-  const DebugSchemaData({
-    this.name,
-    this.id,
-    this.status,
-    this.debugSchemaDataMetadata,
-  });
+  const DebugSchemaData({this.name, this.id, this.status, this.debugSchemaDataMetadata});
 
   final String? name;
   final int? id;
@@ -24,6 +19,5 @@ class DebugSchemaData with DebugSchemaDataMappable {
   @MappableField(key: 'DebugSchemaDataMetadata')
   final DebugSchemaDataMetadata? debugSchemaDataMetadata;
 
-  static DebugSchemaData fromJson(Map<String, dynamic> json) =>
-      DebugSchemaDataMapper.fromJson(json);
+  static DebugSchemaData fromJson(Map<String, dynamic> json) => DebugSchemaDataMapper.fromJson(json);
 }

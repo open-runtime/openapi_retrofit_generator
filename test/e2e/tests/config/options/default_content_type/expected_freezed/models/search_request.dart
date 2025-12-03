@@ -9,9 +9,7 @@ part 'search_request.g.dart';
 
 @Freezed()
 abstract class SearchRequest with _$SearchRequest {
-  const factory SearchRequest({String? query, Map<String, String>? filters}) =
-      _SearchRequest;
+  const factory SearchRequest({String? query, Map<String, String>? filters}) = _SearchRequest;
 
-  factory SearchRequest.fromJson(Map<String, Object?> json) =>
-      _$SearchRequestFromJson(json);
+  factory SearchRequest.fromJson(Map<String, Object?> json) => _$SearchRequestFromJson(json);
 }

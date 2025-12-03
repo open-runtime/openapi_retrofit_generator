@@ -6,16 +6,13 @@ part of 'comment_search_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_CommentSearchResult _$CommentSearchResultFromJson(Map<String, dynamic> json) =>
-    _CommentSearchResult(
-      type: CommentSearchResultTypeType.fromJson(json['type'] as String),
-      comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
-      score: (json['score'] as num?)?.toDouble(),
-    );
+_CommentSearchResult _$CommentSearchResultFromJson(Map<String, dynamic> json) => _CommentSearchResult(
+  type: CommentSearchResultTypeType.fromJson(json['type'] as String),
+  comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
+  score: (json['score'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$CommentSearchResultToJson(
-  _CommentSearchResult instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$CommentSearchResultToJson(_CommentSearchResult instance) => <String, dynamic>{
   'type': instance.type,
   'comment': instance.comment,
   'score': instance.score,

@@ -10,15 +10,9 @@ part 'test2_request.g.dart';
 
 @JsonSerializable()
 class Test2Request {
-  const Test2Request({
-    required this.list1,
-    required this.name,
-    this.list2,
-    this.lastname,
-  });
+  const Test2Request({required this.list1, required this.name, this.list2, this.lastname});
 
-  factory Test2Request.fromJson(Map<String, Object?> json) =>
-      _$Test2RequestFromJson(json);
+  factory Test2Request.fromJson(Map<String, Object?> json) => _$Test2RequestFromJson(json);
 
   final List<Example> list1;
   @JsonKey(includeIfNull: false)

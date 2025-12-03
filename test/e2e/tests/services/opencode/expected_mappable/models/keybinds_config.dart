@@ -159,6 +159,5 @@ class KeybindsConfig with KeybindsConfigMappable {
   @MappableField(key: 'agent_cycle_reverse')
   final String agentCycleReverse;
 
-  static KeybindsConfig fromJson(Map<String, dynamic> json) =>
-      KeybindsConfigMapper.fromJson(json);
+  static KeybindsConfig fromJson(Map<String, dynamic> json) => KeybindsConfigMapper.fromJson(json);
 }

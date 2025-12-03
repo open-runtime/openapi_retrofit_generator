@@ -10,8 +10,7 @@ part 'tui_append_prompt_request.g.dart';
 class TuiAppendPromptRequest {
   const TuiAppendPromptRequest({required this.text});
 
-  factory TuiAppendPromptRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiAppendPromptRequestFromJson(json);
+  factory TuiAppendPromptRequest.fromJson(Map<String, Object?> json) => _$TuiAppendPromptRequestFromJson(json);
 
   final String text;
 

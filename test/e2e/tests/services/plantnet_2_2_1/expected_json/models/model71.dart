@@ -33,8 +33,7 @@ class Model71 {
     this.percentageCovered,
   });
 
-  factory Model71.fromJson(Map<String, Object?> json) =>
-      _$Model71FromJson(json);
+  factory Model71.fromJson(Map<String, Object?> json) => _$Model71FromJson(json);
 
   final String? name;
   final String? author;

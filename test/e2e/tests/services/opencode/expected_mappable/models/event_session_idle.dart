@@ -10,15 +10,11 @@ part 'event_session_idle.mapper.dart';
 
 @MappableClass()
 class EventSessionIdle with EventSessionIdleMappable {
-  const EventSessionIdle({
-    required this.type,
-    required this.eventSessionIdleProperties,
-  });
+  const EventSessionIdle({required this.type, required this.eventSessionIdleProperties});
 
   final String type;
   @MappableField(key: 'EventSessionIdleProperties')
   final EventSessionIdleProperties eventSessionIdleProperties;
 
-  static EventSessionIdle fromJson(Map<String, dynamic> json) =>
-      EventSessionIdleMapper.fromJson(json);
+  static EventSessionIdle fromJson(Map<String, dynamic> json) => EventSessionIdleMapper.fromJson(json);
 }

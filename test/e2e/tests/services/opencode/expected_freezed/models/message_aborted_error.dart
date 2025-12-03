@@ -13,10 +13,8 @@ part 'message_aborted_error.g.dart';
 abstract class MessageAbortedError with _$MessageAbortedError {
   const factory MessageAbortedError({
     required String name,
-    @JsonKey(name: 'MessageAbortedErrorData')
-    required MessageAbortedErrorData messageAbortedErrorData,
+    @JsonKey(name: 'MessageAbortedErrorData') required MessageAbortedErrorData messageAbortedErrorData,
   }) = _MessageAbortedError;
 
-  factory MessageAbortedError.fromJson(Map<String, Object?> json) =>
-      _$MessageAbortedErrorFromJson(json);
+  factory MessageAbortedError.fromJson(Map<String, Object?> json) => _$MessageAbortedErrorFromJson(json);
 }

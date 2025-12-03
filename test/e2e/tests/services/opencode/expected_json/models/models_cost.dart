@@ -8,15 +8,9 @@ part 'models_cost.g.dart';
 
 @JsonSerializable()
 class ModelsCost {
-  const ModelsCost({
-    required this.input,
-    required this.output,
-    this.cacheRead,
-    this.cacheWrite,
-  });
+  const ModelsCost({required this.input, required this.output, this.cacheRead, this.cacheWrite});
 
-  factory ModelsCost.fromJson(Map<String, Object?> json) =>
-      _$ModelsCostFromJson(json);
+  factory ModelsCost.fromJson(Map<String, Object?> json) => _$ModelsCostFromJson(json);
 
   final num input;
   final num output;

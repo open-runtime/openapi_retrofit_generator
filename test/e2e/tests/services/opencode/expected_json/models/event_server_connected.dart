@@ -10,8 +10,7 @@ part 'event_server_connected.g.dart';
 class EventServerConnected {
   const EventServerConnected({required this.type, required this.properties});
 
-  factory EventServerConnected.fromJson(Map<String, Object?> json) =>
-      _$EventServerConnectedFromJson(json);
+  factory EventServerConnected.fromJson(Map<String, Object?> json) => _$EventServerConnectedFromJson(json);
 
   final String type;
   final dynamic properties;

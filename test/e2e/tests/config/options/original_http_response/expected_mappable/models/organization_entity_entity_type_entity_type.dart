@@ -21,9 +21,5 @@ enum OrganizationEntityEntityTypeEntityType {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<OrganizationEntityEntityTypeEntityType> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != OrganizationEntityEntityTypeEntityType.unknown,
-          )
-          .toList();
+      values.where((value) => value != OrganizationEntityEntityTypeEntityType.unknown).toList();
 }

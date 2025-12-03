@@ -10,8 +10,7 @@ part 'session_create_request.g.dart';
 class SessionCreateRequest {
   const SessionCreateRequest({this.parentId, this.title});
 
-  factory SessionCreateRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionCreateRequestFromJson(json);
+  factory SessionCreateRequest.fromJson(Map<String, Object?> json) => _$SessionCreateRequestFromJson(json);
 
   @JsonKey(name: 'parentID')
   final String? parentId;

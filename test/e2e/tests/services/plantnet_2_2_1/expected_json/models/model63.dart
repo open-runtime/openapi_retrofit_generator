@@ -10,8 +10,7 @@ part 'model63.g.dart';
 class Model63 {
   const Model63({this.type, this.format, this.identifier, this.largeUrl});
 
-  factory Model63.fromJson(Map<String, Object?> json) =>
-      _$Model63FromJson(json);
+  factory Model63.fromJson(Map<String, Object?> json) => _$Model63FromJson(json);
 
   final String? type;
   final String? format;

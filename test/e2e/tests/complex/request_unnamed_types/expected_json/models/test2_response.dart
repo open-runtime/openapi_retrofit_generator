@@ -10,8 +10,7 @@ part 'test2_response.g.dart';
 class Test2Response {
   const Test2Response({required this.list, required this.name, this.lastname});
 
-  factory Test2Response.fromJson(Map<String, Object?> json) =>
-      _$Test2ResponseFromJson(json);
+  factory Test2Response.fromJson(Map<String, Object?> json) => _$Test2ResponseFromJson(json);
 
   final List<String> list;
   @JsonKey(includeIfNull: true)

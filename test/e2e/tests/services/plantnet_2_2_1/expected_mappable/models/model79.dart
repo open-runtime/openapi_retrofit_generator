@@ -15,6 +15,5 @@ class Model79 with Model79Mappable {
   final num? max;
   final num? mean;
 
-  static Model79 fromJson(Map<String, dynamic> json) =>
-      Model79Mapper.fromJson(json);
+  static Model79 fromJson(Map<String, dynamic> json) => Model79Mapper.fromJson(json);
 }

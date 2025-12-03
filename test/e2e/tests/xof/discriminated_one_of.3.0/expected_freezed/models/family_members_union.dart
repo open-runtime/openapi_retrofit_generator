@@ -34,6 +34,5 @@ sealed class FamilyMembersUnion with _$FamilyMembersUnion {
     required String job,
   }) = FamilyMembersUnionHuman;
 
-  factory FamilyMembersUnion.fromJson(Map<String, Object?> json) =>
-      _$FamilyMembersUnionFromJson(json);
+  factory FamilyMembersUnion.fromJson(Map<String, Object?> json) => _$FamilyMembersUnionFromJson(json);
 }

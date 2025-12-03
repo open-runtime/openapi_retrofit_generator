@@ -9,9 +9,7 @@ part of 'security.dart';
 _Security _$SecurityFromJson(Map<String, dynamic> json) => _Security(
   exposeKey: json['exposeKey'] as bool?,
   ips: (json['ips'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  domains: (json['domains'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  domains: (json['domains'] as List<dynamic>?)?.map((e) => e as String).toList(),
 );
 
 Map<String, dynamic> _$SecurityToJson(_Security instance) => <String, dynamic>{

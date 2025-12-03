@@ -14,7 +14,5 @@ abstract class AdminClient {
 
   /// Get admin settings
   @GET('/admin/settings')
-  Future<Map<String, String>> getAdminSettings({
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<Map<String, String>> getAdminSettings({@Extras() Map<String, dynamic>? extras});
 }

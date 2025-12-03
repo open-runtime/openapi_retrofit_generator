@@ -19,8 +19,7 @@ class Model65 {
     this.taxon,
   });
 
-  factory Model65.fromJson(Map<String, Object?> json) =>
-      _$Model65FromJson(json);
+  factory Model65.fromJson(Map<String, Object?> json) => _$Model65FromJson(json);
 
   final String name;
   final num? organismQuantity;

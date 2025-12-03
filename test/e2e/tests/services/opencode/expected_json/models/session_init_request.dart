@@ -8,14 +8,9 @@ part 'session_init_request.g.dart';
 
 @JsonSerializable()
 class SessionInitRequest {
-  const SessionInitRequest({
-    required this.modelId,
-    required this.providerId,
-    required this.messageId,
-  });
+  const SessionInitRequest({required this.modelId, required this.providerId, required this.messageId});
 
-  factory SessionInitRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionInitRequestFromJson(json);
+  factory SessionInitRequest.fromJson(Map<String, Object?> json) => _$SessionInitRequestFromJson(json);
 
   @JsonKey(name: 'modelID')
   final String modelId;

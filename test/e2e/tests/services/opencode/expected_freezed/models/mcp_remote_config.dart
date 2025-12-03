@@ -23,6 +23,5 @@ abstract class McpRemoteConfig with _$McpRemoteConfig {
     Map<String, String>? headers,
   }) = _McpRemoteConfig;
 
-  factory McpRemoteConfig.fromJson(Map<String, Object?> json) =>
-      _$McpRemoteConfigFromJson(json);
+  factory McpRemoteConfig.fromJson(Map<String, Object?> json) => _$McpRemoteConfigFromJson(json);
 }

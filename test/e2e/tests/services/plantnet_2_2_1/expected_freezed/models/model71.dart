@@ -34,6 +34,5 @@ abstract class Model71 with _$Model71 {
     @JsonKey(name: 'percentage_covered') num? percentageCovered,
   }) = _Model71;
 
-  factory Model71.fromJson(Map<String, Object?> json) =>
-      _$Model71FromJson(json);
+  factory Model71.fromJson(Map<String, Object?> json) => _$Model71FromJson(json);
 }

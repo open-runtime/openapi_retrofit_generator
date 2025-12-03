@@ -13,6 +13,5 @@ class DebugSchemaDataMetadata with DebugSchemaDataMetadataMappable {
   final DateTime? createdAt;
   final String? updatedBy;
 
-  static DebugSchemaDataMetadata fromJson(Map<String, dynamic> json) =>
-      DebugSchemaDataMetadataMapper.fromJson(json);
+  static DebugSchemaDataMetadata fromJson(Map<String, dynamic> json) => DebugSchemaDataMetadataMapper.fromJson(json);
 }

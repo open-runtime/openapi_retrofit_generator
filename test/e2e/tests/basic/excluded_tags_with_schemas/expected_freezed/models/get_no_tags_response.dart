@@ -9,10 +9,7 @@ part 'get_no_tags_response.g.dart';
 
 @Freezed()
 abstract class GetNoTagsResponse with _$GetNoTagsResponse {
-  const factory GetNoTagsResponse({
-    @JsonKey(includeIfNull: false) String? result,
-  }) = _GetNoTagsResponse;
+  const factory GetNoTagsResponse({@JsonKey(includeIfNull: false) String? result}) = _GetNoTagsResponse;
 
-  factory GetNoTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$GetNoTagsResponseFromJson(json);
+  factory GetNoTagsResponse.fromJson(Map<String, Object?> json) => _$GetNoTagsResponseFromJson(json);
 }

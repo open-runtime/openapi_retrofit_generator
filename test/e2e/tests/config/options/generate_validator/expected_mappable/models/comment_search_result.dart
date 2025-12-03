@@ -11,16 +11,11 @@ part 'comment_search_result.mapper.dart';
 
 @MappableClass()
 class CommentSearchResult with CommentSearchResultMappable {
-  const CommentSearchResult({
-    required this.type,
-    required this.comment,
-    this.score,
-  });
+  const CommentSearchResult({required this.type, required this.comment, this.score});
 
   final CommentSearchResultTypeType type;
   final Comment comment;
   final double? score;
 
-  static CommentSearchResult fromJson(Map<String, dynamic> json) =>
-      CommentSearchResultMapper.fromJson(json);
+  static CommentSearchResult fromJson(Map<String, dynamic> json) => CommentSearchResultMapper.fromJson(json);
 }

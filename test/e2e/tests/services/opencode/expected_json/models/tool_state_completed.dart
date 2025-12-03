@@ -21,8 +21,7 @@ class ToolStateCompleted {
     this.attachments,
   });
 
-  factory ToolStateCompleted.fromJson(Map<String, Object?> json) =>
-      _$ToolStateCompletedFromJson(json);
+  factory ToolStateCompleted.fromJson(Map<String, Object?> json) => _$ToolStateCompletedFromJson(json);
 
   final String status;
   final Map<String, dynamic> input;

@@ -15,6 +15,5 @@ class Model37 with Model37Mappable {
   final String? author;
   final String? message;
 
-  static Model37 fromJson(Map<String, dynamic> json) =>
-      Model37Mapper.fromJson(json);
+  static Model37 fromJson(Map<String, dynamic> json) => Model37Mapper.fromJson(json);
 }

@@ -20,9 +20,8 @@ enum ApiV1CategoryListResponseIncludedDataStatusStatus {
 
   const ApiV1CategoryListResponseIncludedDataStatusStatus(this.json);
 
-  factory ApiV1CategoryListResponseIncludedDataStatusStatus.fromJson(
-    String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory ApiV1CategoryListResponseIncludedDataStatusStatus.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -32,6 +31,6 @@ enum ApiV1CategoryListResponseIncludedDataStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<ApiV1CategoryListResponseIncludedDataStatusStatus>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+  static List<ApiV1CategoryListResponseIncludedDataStatusStatus> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }

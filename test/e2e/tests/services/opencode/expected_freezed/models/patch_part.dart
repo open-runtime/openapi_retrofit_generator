@@ -18,6 +18,5 @@ abstract class PatchPart with _$PatchPart {
     required List<String> files,
   }) = _PatchPart;
 
-  factory PatchPart.fromJson(Map<String, Object?> json) =>
-      _$PatchPartFromJson(json);
+  factory PatchPart.fromJson(Map<String, Object?> json) => _$PatchPartFromJson(json);
 }

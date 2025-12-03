@@ -12,8 +12,7 @@ part 'organ_vote.g.dart';
 class OrganVote {
   const OrganVote({required this.organ, required this.score});
 
-  factory OrganVote.fromJson(Map<String, Object?> json) =>
-      _$OrganVoteFromJson(json);
+  factory OrganVote.fromJson(Map<String, Object?> json) => _$OrganVoteFromJson(json);
 
   final Organ organ;
 

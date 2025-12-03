@@ -11,6 +11,5 @@ part 'session_share.g.dart';
 abstract class SessionShare with _$SessionShare {
   const factory SessionShare({required String url}) = _SessionShare;
 
-  factory SessionShare.fromJson(Map<String, Object?> json) =>
-      _$SessionShareFromJson(json);
+  factory SessionShare.fromJson(Map<String, Object?> json) => _$SessionShareFromJson(json);
 }

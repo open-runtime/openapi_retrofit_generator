@@ -15,26 +15,14 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
   firstName: json['firstName'] as String?,
   lastName: json['lastName'] as String?,
   age: (json['age'] as num?)?.toInt(),
-  status: json['status'] == null
-      ? null
-      : UserStatus.fromJson(json['status'] as String),
+  status: json['status'] == null ? null : UserStatus.fromJson(json['status'] as String),
   avatar: json['avatar'] as String?,
   bio: json['bio'] as String?,
-  settings: json['settings'] == null
-      ? null
-      : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
-  metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ),
-  friends: (json['friends'] as List<dynamic>?)
-      ?.map((e) => User.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-  deletedAt: json['deletedAt'] == null
-      ? null
-      : DateTime.parse(json['deletedAt'] as String),
+  settings: json['settings'] == null ? null : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
+  metadata: (json['metadata'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
+  friends: (json['friends'] as List<dynamic>?)?.map((e) => User.fromJson(e as Map<String, dynamic>)).toList(),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  deletedAt: json['deletedAt'] == null ? null : DateTime.parse(json['deletedAt'] as String),
 );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -56,129 +44,104 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
   'deletedAt': instance.deletedAt?.toIso8601String(),
 };
 
-CreateUserRequest _$CreateUserRequestFromJson(Map<String, dynamic> json) =>
-    CreateUserRequest(
-      email: json['email'] as String,
-      username: json['username'] as String,
-      password: json['password'] as String,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      age: (json['age'] as num?)?.toInt(),
-      role: json['role'] == null
-          ? null
-          : UserRole.fromJson(json['role'] as String),
-    );
+CreateUserRequest _$CreateUserRequestFromJson(Map<String, dynamic> json) => CreateUserRequest(
+  email: json['email'] as String,
+  username: json['username'] as String,
+  password: json['password'] as String,
+  firstName: json['firstName'] as String?,
+  lastName: json['lastName'] as String?,
+  age: (json['age'] as num?)?.toInt(),
+  role: json['role'] == null ? null : UserRole.fromJson(json['role'] as String),
+);
 
-Map<String, dynamic> _$CreateUserRequestToJson(CreateUserRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'username': instance.username,
-      'password': instance.password,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'age': instance.age,
-      'role': instance.role,
-    };
+Map<String, dynamic> _$CreateUserRequestToJson(CreateUserRequest instance) => <String, dynamic>{
+  'email': instance.email,
+  'username': instance.username,
+  'password': instance.password,
+  'firstName': instance.firstName,
+  'lastName': instance.lastName,
+  'age': instance.age,
+  'role': instance.role,
+};
 
-UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) =>
-    UpdateUserRequest(
-      email: json['email'] as String,
-      username: json['username'] as String,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      age: (json['age'] as num?)?.toInt(),
-      bio: json['bio'] as String?,
-    );
+UpdateUserRequest _$UpdateUserRequestFromJson(Map<String, dynamic> json) => UpdateUserRequest(
+  email: json['email'] as String,
+  username: json['username'] as String,
+  firstName: json['firstName'] as String?,
+  lastName: json['lastName'] as String?,
+  age: (json['age'] as num?)?.toInt(),
+  bio: json['bio'] as String?,
+);
 
-Map<String, dynamic> _$UpdateUserRequestToJson(UpdateUserRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'username': instance.username,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'age': instance.age,
-      'bio': instance.bio,
-    };
+Map<String, dynamic> _$UpdateUserRequestToJson(UpdateUserRequest instance) => <String, dynamic>{
+  'email': instance.email,
+  'username': instance.username,
+  'firstName': instance.firstName,
+  'lastName': instance.lastName,
+  'age': instance.age,
+  'bio': instance.bio,
+};
 
-PatchUserRequest _$PatchUserRequestFromJson(Map<String, dynamic> json) =>
-    PatchUserRequest(
-      email: json['email'] as String?,
-      username: json['username'] as String?,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      age: (json['age'] as num?)?.toInt(),
-      bio: json['bio'] as String?,
-      settings: json['settings'] == null
-          ? null
-          : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
-    );
+PatchUserRequest _$PatchUserRequestFromJson(Map<String, dynamic> json) => PatchUserRequest(
+  email: json['email'] as String?,
+  username: json['username'] as String?,
+  firstName: json['firstName'] as String?,
+  lastName: json['lastName'] as String?,
+  age: (json['age'] as num?)?.toInt(),
+  bio: json['bio'] as String?,
+  settings: json['settings'] == null ? null : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
+);
 
-Map<String, dynamic> _$PatchUserRequestToJson(PatchUserRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'username': instance.username,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'age': instance.age,
-      'bio': instance.bio,
-      'settings': instance.settings,
-    };
+Map<String, dynamic> _$PatchUserRequestToJson(PatchUserRequest instance) => <String, dynamic>{
+  'email': instance.email,
+  'username': instance.username,
+  'firstName': instance.firstName,
+  'lastName': instance.lastName,
+  'age': instance.age,
+  'bio': instance.bio,
+  'settings': instance.settings,
+};
 
 UserSettings _$UserSettingsFromJson(Map<String, dynamic> json) => UserSettings(
   userSettingsNotifications: json['UserSettingsNotifications'] == null
       ? null
-      : UserSettingsNotifications.fromJson(
-          json['UserSettingsNotifications'] as Map<String, dynamic>,
-        ),
+      : UserSettingsNotifications.fromJson(json['UserSettingsNotifications'] as Map<String, dynamic>),
   userSettingsPrivacy: json['UserSettingsPrivacy'] == null
       ? null
-      : UserSettingsPrivacy.fromJson(
-          json['UserSettingsPrivacy'] as Map<String, dynamic>,
-        ),
-  theme: json['theme'] == null
-      ? UserSettingsThemeTheme.auto
-      : UserSettingsThemeTheme.fromJson(json['theme'] as String),
+      : UserSettingsPrivacy.fromJson(json['UserSettingsPrivacy'] as Map<String, dynamic>),
+  theme: json['theme'] == null ? UserSettingsThemeTheme.auto : UserSettingsThemeTheme.fromJson(json['theme'] as String),
   language: json['language'] as String? ?? 'en',
 );
 
-Map<String, dynamic> _$UserSettingsToJson(UserSettings instance) =>
-    <String, dynamic>{
-      'theme': instance.theme,
-      'UserSettingsNotifications': instance.userSettingsNotifications,
-      'UserSettingsPrivacy': instance.userSettingsPrivacy,
-      'language': instance.language,
-    };
+Map<String, dynamic> _$UserSettingsToJson(UserSettings instance) => <String, dynamic>{
+  'theme': instance.theme,
+  'UserSettingsNotifications': instance.userSettingsNotifications,
+  'UserSettingsPrivacy': instance.userSettingsPrivacy,
+  'language': instance.language,
+};
 
-UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) =>
-    UserListResponse(
-      users: (json['users'] as List<dynamic>)
-          .map((e) => User.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      total: (json['total'] as num).toInt(),
-      page: (json['page'] as num?)?.toInt(),
-      limit: (json['limit'] as num?)?.toInt(),
-    );
-
-Map<String, dynamic> _$UserListResponseToJson(UserListResponse instance) =>
-    <String, dynamic>{
-      'users': instance.users,
-      'total': instance.total,
-      'page': instance.page,
-      'limit': instance.limit,
-    };
-
-LegacyUser _$LegacyUserFromJson(Map<String, dynamic> json) => LegacyUser(
-  id: (json['id'] as num?)?.toInt(),
-  name: json['name'] as String?,
-  email: json['email'] as String?,
+UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) => UserListResponse(
+  users: (json['users'] as List<dynamic>).map((e) => User.fromJson(e as Map<String, dynamic>)).toList(),
+  total: (json['total'] as num).toInt(),
+  page: (json['page'] as num?)?.toInt(),
+  limit: (json['limit'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$LegacyUserToJson(LegacyUser instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-    };
+Map<String, dynamic> _$UserListResponseToJson(UserListResponse instance) => <String, dynamic>{
+  'users': instance.users,
+  'total': instance.total,
+  'page': instance.page,
+  'limit': instance.limit,
+};
+
+LegacyUser _$LegacyUserFromJson(Map<String, dynamic> json) =>
+    LegacyUser(id: (json['id'] as num?)?.toInt(), name: json['name'] as String?, email: json['email'] as String?);
+
+Map<String, dynamic> _$LegacyUserToJson(LegacyUser instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'email': instance.email,
+};
 
 PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
   id: json['id'] as String,
@@ -190,20 +153,12 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
   viewCount: (json['viewCount'] as num?)?.toInt() ?? 0,
   likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
   excerpt: json['excerpt'] as String?,
-  author: json['author'] == null
-      ? null
-      : User.fromJson(json['author'] as Map<String, dynamic>),
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  categories: (json['categories'] as List<dynamic>?)
-      ?.map((e) => Category.fromJson(e as String))
-      .toList(),
-  publishedAt: json['publishedAt'] == null
-      ? null
-      : DateTime.parse(json['publishedAt'] as String),
+  categories: (json['categories'] as List<dynamic>?)?.map((e) => Category.fromJson(e as String)).toList(),
+  publishedAt: json['publishedAt'] == null ? null : DateTime.parse(json['publishedAt'] as String),
   metadata: json['metadata'],
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
 );
 
 Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{
@@ -228,9 +183,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
   id: json['id'] as String,
   name: json['name'] as String,
   slug: json['slug'] as String?,
-  parent: json['parent'] == null
-      ? null
-      : Category.fromJson(json['parent'] as String),
+  parent: json['parent'] == null ? null : Category.fromJson(json['parent'] as String),
 );
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
@@ -247,23 +200,13 @@ Comment _$CommentFromJson(Map<String, dynamic> json) => Comment(
   createdAt: DateTime.parse(json['createdAt'] as String),
   depth: (json['depth'] as num?)?.toInt() ?? 0,
   likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
-  author: json['author'] == null
-      ? null
-      : User.fromJson(json['author'] as Map<String, dynamic>),
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
   postId: json['postId'] as String?,
   parentId: json['parentId'] as String?,
-  parent: json['parent'] == null
-      ? null
-      : Comment.fromJson(json['parent'] as Map<String, dynamic>),
-  replies: (json['replies'] as List<dynamic>?)
-      ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-  deletedAt: json['deletedAt'] == null
-      ? null
-      : DateTime.parse(json['deletedAt'] as String),
+  parent: json['parent'] == null ? null : Comment.fromJson(json['parent'] as Map<String, dynamic>),
+  replies: (json['replies'] as List<dynamic>?)?.map((e) => Comment.fromJson(e as Map<String, dynamic>)).toList(),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  deletedAt: json['deletedAt'] == null ? null : DateTime.parse(json['deletedAt'] as String),
 );
 
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
@@ -282,18 +225,14 @@ Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
   'deletedAt': instance.deletedAt?.toIso8601String(),
 };
 
-CreateCommentRequest _$CreateCommentRequestFromJson(
-  Map<String, dynamic> json,
-) => CreateCommentRequest(
+CreateCommentRequest _$CreateCommentRequestFromJson(Map<String, dynamic> json) => CreateCommentRequest(
   content: json['content'] as String,
   authorId: json['authorId'] as String,
   postId: json['postId'] as String?,
   parentId: json['parentId'] as String?,
 );
 
-Map<String, dynamic> _$CreateCommentRequestToJson(
-  CreateCommentRequest instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$CreateCommentRequestToJson(CreateCommentRequest instance) => <String, dynamic>{
   'content': instance.content,
   'authorId': instance.authorId,
   'postId': instance.postId,
@@ -307,45 +246,35 @@ FileMetadata _$FileMetadataFromJson(Map<String, dynamic> json) => FileMetadata(
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
 );
 
-Map<String, dynamic> _$FileMetadataToJson(FileMetadata instance) =>
-    <String, dynamic>{
-      'filename': instance.filename,
-      'mimeType': instance.mimeType,
-      'size': instance.size,
-      'tags': instance.tags,
-    };
+Map<String, dynamic> _$FileMetadataToJson(FileMetadata instance) => <String, dynamic>{
+  'filename': instance.filename,
+  'mimeType': instance.mimeType,
+  'size': instance.size,
+  'tags': instance.tags,
+};
 
-FileUploadResponse _$FileUploadResponseFromJson(Map<String, dynamic> json) =>
-    FileUploadResponse(
-      id: json['id'] as String,
-      url: json['url'] as String,
-      filename: json['filename'] as String,
-      size: (json['size'] as num).toInt(),
-      mimeType: json['mimeType'] as String?,
-      uploadedAt: json['uploadedAt'] == null
-          ? null
-          : DateTime.parse(json['uploadedAt'] as String),
-    );
+FileUploadResponse _$FileUploadResponseFromJson(Map<String, dynamic> json) => FileUploadResponse(
+  id: json['id'] as String,
+  url: json['url'] as String,
+  filename: json['filename'] as String,
+  size: (json['size'] as num).toInt(),
+  mimeType: json['mimeType'] as String?,
+  uploadedAt: json['uploadedAt'] == null ? null : DateTime.parse(json['uploadedAt'] as String),
+);
 
-Map<String, dynamic> _$FileUploadResponseToJson(FileUploadResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'url': instance.url,
-      'filename': instance.filename,
-      'mimeType': instance.mimeType,
-      'size': instance.size,
-      'uploadedAt': instance.uploadedAt?.toIso8601String(),
-    };
+Map<String, dynamic> _$FileUploadResponseToJson(FileUploadResponse instance) => <String, dynamic>{
+  'id': instance.id,
+  'url': instance.url,
+  'filename': instance.filename,
+  'mimeType': instance.mimeType,
+  'size': instance.size,
+  'uploadedAt': instance.uploadedAt?.toIso8601String(),
+};
 
-Map<String, dynamic> _$PaymentRequestToJson(PaymentRequest instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$PaymentRequestToJson(PaymentRequest instance) => <String, dynamic>{};
 
-PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestCreditCard(
-  paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
+PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(Map<String, dynamic> json) => PaymentRequestCreditCard(
+  paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
   cardNumber: json['cardNumber'] as String,
   expiryMonth: (json['expiryMonth'] as num).toInt(),
   expiryYear: (json['expiryYear'] as num).toInt(),
@@ -354,9 +283,7 @@ PaymentRequestCreditCard _$PaymentRequestCreditCardFromJson(
   amount: (json['amount'] as num).toDouble(),
 );
 
-Map<String, dynamic> _$PaymentRequestCreditCardToJson(
-  PaymentRequestCreditCard instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PaymentRequestCreditCardToJson(PaymentRequestCreditCard instance) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'cardNumber': instance.cardNumber,
   'expiryMonth': instance.expiryMonth,
@@ -366,22 +293,17 @@ Map<String, dynamic> _$PaymentRequestCreditCardToJson(
   'amount': instance.amount,
 };
 
-PaymentRequestBankTransfer _$PaymentRequestBankTransferFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestBankTransfer(
-  paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  accountNumber: json['accountNumber'] as String,
-  routingNumber: json['routingNumber'] as String,
-  accountHolder: json['accountHolder'] as String?,
-  amount: (json['amount'] as num).toDouble(),
-  reference: json['reference'] as String?,
-);
+PaymentRequestBankTransfer _$PaymentRequestBankTransferFromJson(Map<String, dynamic> json) =>
+    PaymentRequestBankTransfer(
+      paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
+      accountNumber: json['accountNumber'] as String,
+      routingNumber: json['routingNumber'] as String,
+      accountHolder: json['accountHolder'] as String?,
+      amount: (json['amount'] as num).toDouble(),
+      reference: json['reference'] as String?,
+    );
 
-Map<String, dynamic> _$PaymentRequestBankTransferToJson(
-  PaymentRequestBankTransfer instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PaymentRequestBankTransferToJson(PaymentRequestBankTransfer instance) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'accountNumber': instance.accountNumber,
   'routingNumber': instance.routingNumber,
@@ -390,23 +312,15 @@ Map<String, dynamic> _$PaymentRequestBankTransferToJson(
   'reference': instance.reference,
 };
 
-PaymentRequestCrypto _$PaymentRequestCryptoFromJson(
-  Map<String, dynamic> json,
-) => PaymentRequestCrypto(
-  paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
+PaymentRequestCrypto _$PaymentRequestCryptoFromJson(Map<String, dynamic> json) => PaymentRequestCrypto(
+  paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
   walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-    json['cryptocurrency'] as String,
-  ),
+  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(json['cryptocurrency'] as String),
   amount: (json['amount'] as num).toDouble(),
   transactionHash: json['transactionHash'] as String?,
 );
 
-Map<String, dynamic> _$PaymentRequestCryptoToJson(
-  PaymentRequestCrypto instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PaymentRequestCryptoToJson(PaymentRequestCrypto instance) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'walletAddress': instance.walletAddress,
   'cryptocurrency': instance.cryptocurrency,
@@ -414,45 +328,36 @@ Map<String, dynamic> _$PaymentRequestCryptoToJson(
   'transactionHash': instance.transactionHash,
 };
 
-CreditCardPayment _$CreditCardPaymentFromJson(Map<String, dynamic> json) =>
-    CreditCardPayment(
-      paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
-        json['paymentType'] as String,
-      ),
-      cardNumber: json['cardNumber'] as String,
-      expiryMonth: (json['expiryMonth'] as num).toInt(),
-      expiryYear: (json['expiryYear'] as num).toInt(),
-      cvv: json['cvv'] as String,
-      amount: (json['amount'] as num).toDouble(),
-      cardholderName: json['cardholderName'] as String?,
-    );
+CreditCardPayment _$CreditCardPaymentFromJson(Map<String, dynamic> json) => CreditCardPayment(
+  paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
+  cardNumber: json['cardNumber'] as String,
+  expiryMonth: (json['expiryMonth'] as num).toInt(),
+  expiryYear: (json['expiryYear'] as num).toInt(),
+  cvv: json['cvv'] as String,
+  amount: (json['amount'] as num).toDouble(),
+  cardholderName: json['cardholderName'] as String?,
+);
 
-Map<String, dynamic> _$CreditCardPaymentToJson(CreditCardPayment instance) =>
-    <String, dynamic>{
-      'paymentType': instance.paymentType,
-      'cardNumber': instance.cardNumber,
-      'expiryMonth': instance.expiryMonth,
-      'expiryYear': instance.expiryYear,
-      'cvv': instance.cvv,
-      'cardholderName': instance.cardholderName,
-      'amount': instance.amount,
-    };
+Map<String, dynamic> _$CreditCardPaymentToJson(CreditCardPayment instance) => <String, dynamic>{
+  'paymentType': instance.paymentType,
+  'cardNumber': instance.cardNumber,
+  'expiryMonth': instance.expiryMonth,
+  'expiryYear': instance.expiryYear,
+  'cvv': instance.cvv,
+  'cardholderName': instance.cardholderName,
+  'amount': instance.amount,
+};
 
-BankTransferPayment _$BankTransferPaymentFromJson(Map<String, dynamic> json) =>
-    BankTransferPayment(
-      paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
-        json['paymentType'] as String,
-      ),
-      accountNumber: json['accountNumber'] as String,
-      routingNumber: json['routingNumber'] as String,
-      amount: (json['amount'] as num).toDouble(),
-      accountHolder: json['accountHolder'] as String?,
-      reference: json['reference'] as String?,
-    );
+BankTransferPayment _$BankTransferPaymentFromJson(Map<String, dynamic> json) => BankTransferPayment(
+  paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
+  accountNumber: json['accountNumber'] as String,
+  routingNumber: json['routingNumber'] as String,
+  amount: (json['amount'] as num).toDouble(),
+  accountHolder: json['accountHolder'] as String?,
+  reference: json['reference'] as String?,
+);
 
-Map<String, dynamic> _$BankTransferPaymentToJson(
-  BankTransferPayment instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$BankTransferPaymentToJson(BankTransferPayment instance) => <String, dynamic>{
   'paymentType': instance.paymentType,
   'accountNumber': instance.accountNumber,
   'routingNumber': instance.routingNumber,
@@ -461,131 +366,61 @@ Map<String, dynamic> _$BankTransferPaymentToJson(
   'reference': instance.reference,
 };
 
-CryptoPayment _$CryptoPaymentFromJson(Map<String, dynamic> json) =>
-    CryptoPayment(
-      paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(
-        json['paymentType'] as String,
-      ),
-      walletAddress: json['walletAddress'] as String,
-      cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-        json['cryptocurrency'] as String,
-      ),
-      amount: (json['amount'] as num).toDouble(),
-      transactionHash: json['transactionHash'] as String?,
-    );
-
-Map<String, dynamic> _$CryptoPaymentToJson(CryptoPayment instance) =>
-    <String, dynamic>{
-      'paymentType': instance.paymentType,
-      'walletAddress': instance.walletAddress,
-      'cryptocurrency': instance.cryptocurrency,
-      'amount': instance.amount,
-      'transactionHash': instance.transactionHash,
-    };
-
-PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
-    PaymentResponse(
-      transactionId: json['transactionId'] as String,
-      status: PaymentResponseStatusStatus.fromJson(json['status'] as String),
-      amount: (json['amount'] as num).toDouble(),
-      processedAt: json['processedAt'] == null
-          ? null
-          : DateTime.parse(json['processedAt'] as String),
-      details: json['details'] == null
-          ? null
-          : PaymentResponseDetailsUnion.fromJson(
-              json['details'] as Map<String, dynamic>,
-            ),
-      currency: json['currency'] as String? ?? 'USD',
-    );
-
-Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) =>
-    <String, dynamic>{
-      'transactionId': instance.transactionId,
-      'status': instance.status,
-      'amount': instance.amount,
-      'currency': instance.currency,
-      'processedAt': instance.processedAt?.toIso8601String(),
-      'details': instance.details,
-    };
-
-SearchResultUnionUserSearchResult _$SearchResultUnionUserSearchResultFromJson(
-  Map<String, dynamic> json,
-) => SearchResultUnionUserSearchResult(
-  type: UserSearchResultTypeType.fromJson(json['type'] as String),
-  user: User.fromJson(json['user'] as Map<String, dynamic>),
-  score: (json['score'] as num?)?.toDouble(),
+CryptoPayment _$CryptoPaymentFromJson(Map<String, dynamic> json) => CryptoPayment(
+  paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
+  walletAddress: json['walletAddress'] as String,
+  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(json['cryptocurrency'] as String),
+  amount: (json['amount'] as num).toDouble(),
+  transactionHash: json['transactionHash'] as String?,
 );
 
-Map<String, dynamic> _$SearchResultUnionUserSearchResultToJson(
-  SearchResultUnionUserSearchResult instance,
-) => <String, dynamic>{
-  'type': instance.type,
-  'user': instance.user,
-  'score': instance.score,
+Map<String, dynamic> _$CryptoPaymentToJson(CryptoPayment instance) => <String, dynamic>{
+  'paymentType': instance.paymentType,
+  'walletAddress': instance.walletAddress,
+  'cryptocurrency': instance.cryptocurrency,
+  'amount': instance.amount,
+  'transactionHash': instance.transactionHash,
 };
 
-SearchResultUnionPostSearchResult _$SearchResultUnionPostSearchResultFromJson(
-  Map<String, dynamic> json,
-) => SearchResultUnionPostSearchResult(
-  type: PostSearchResultTypeType.fromJson(json['type'] as String),
-  post: PostModel.fromJson(json['post'] as Map<String, dynamic>),
-  score: (json['score'] as num?)?.toDouble(),
-  highlights: (json['highlights'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) => PaymentResponse(
+  transactionId: json['transactionId'] as String,
+  status: PaymentResponseStatusStatus.fromJson(json['status'] as String),
+  amount: (json['amount'] as num).toDouble(),
+  processedAt: json['processedAt'] == null ? null : DateTime.parse(json['processedAt'] as String),
+  details: json['details'] == null
+      ? null
+      : PaymentResponseDetailsUnion.fromJson(json['details'] as Map<String, dynamic>),
+  currency: json['currency'] as String? ?? 'USD',
 );
 
-Map<String, dynamic> _$SearchResultUnionPostSearchResultToJson(
-  SearchResultUnionPostSearchResult instance,
-) => <String, dynamic>{
-  'type': instance.type,
-  'post': instance.post,
-  'score': instance.score,
-  'highlights': instance.highlights,
+Map<String, dynamic> _$PaymentResponseToJson(PaymentResponse instance) => <String, dynamic>{
+  'transactionId': instance.transactionId,
+  'status': instance.status,
+  'amount': instance.amount,
+  'currency': instance.currency,
+  'processedAt': instance.processedAt?.toIso8601String(),
+  'details': instance.details,
 };
 
-SearchResultUnionCommentSearchResult
-_$SearchResultUnionCommentSearchResultFromJson(Map<String, dynamic> json) =>
-    SearchResultUnionCommentSearchResult(
-      type: CommentSearchResultTypeType.fromJson(json['type'] as String),
-      comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
-      score: (json['score'] as num?)?.toDouble(),
-    );
-
-Map<String, dynamic> _$SearchResultUnionCommentSearchResultToJson(
-  SearchResultUnionCommentSearchResult instance,
-) => <String, dynamic>{
-  'type': instance.type,
-  'comment': instance.comment,
-  'score': instance.score,
-};
-
-UserSearchResult _$UserSearchResultFromJson(Map<String, dynamic> json) =>
-    UserSearchResult(
+SearchResultUnionUserSearchResult _$SearchResultUnionUserSearchResultFromJson(Map<String, dynamic> json) =>
+    SearchResultUnionUserSearchResult(
       type: UserSearchResultTypeType.fromJson(json['type'] as String),
       user: User.fromJson(json['user'] as Map<String, dynamic>),
       score: (json['score'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$UserSearchResultToJson(UserSearchResult instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'user': instance.user,
-      'score': instance.score,
-    };
+Map<String, dynamic> _$SearchResultUnionUserSearchResultToJson(SearchResultUnionUserSearchResult instance) =>
+    <String, dynamic>{'type': instance.type, 'user': instance.user, 'score': instance.score};
 
-PostSearchResult _$PostSearchResultFromJson(Map<String, dynamic> json) =>
-    PostSearchResult(
+SearchResultUnionPostSearchResult _$SearchResultUnionPostSearchResultFromJson(Map<String, dynamic> json) =>
+    SearchResultUnionPostSearchResult(
       type: PostSearchResultTypeType.fromJson(json['type'] as String),
       post: PostModel.fromJson(json['post'] as Map<String, dynamic>),
       score: (json['score'] as num?)?.toDouble(),
-      highlights: (json['highlights'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      highlights: (json['highlights'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$PostSearchResultToJson(PostSearchResult instance) =>
+Map<String, dynamic> _$SearchResultUnionPostSearchResultToJson(SearchResultUnionPostSearchResult instance) =>
     <String, dynamic>{
       'type': instance.type,
       'post': instance.post,
@@ -593,16 +428,49 @@ Map<String, dynamic> _$PostSearchResultToJson(PostSearchResult instance) =>
       'highlights': instance.highlights,
     };
 
-CommentSearchResult _$CommentSearchResultFromJson(Map<String, dynamic> json) =>
-    CommentSearchResult(
+SearchResultUnionCommentSearchResult _$SearchResultUnionCommentSearchResultFromJson(Map<String, dynamic> json) =>
+    SearchResultUnionCommentSearchResult(
       type: CommentSearchResultTypeType.fromJson(json['type'] as String),
       comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
       score: (json['score'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$CommentSearchResultToJson(
-  CommentSearchResult instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$SearchResultUnionCommentSearchResultToJson(SearchResultUnionCommentSearchResult instance) =>
+    <String, dynamic>{'type': instance.type, 'comment': instance.comment, 'score': instance.score};
+
+UserSearchResult _$UserSearchResultFromJson(Map<String, dynamic> json) => UserSearchResult(
+  type: UserSearchResultTypeType.fromJson(json['type'] as String),
+  user: User.fromJson(json['user'] as Map<String, dynamic>),
+  score: (json['score'] as num?)?.toDouble(),
+);
+
+Map<String, dynamic> _$UserSearchResultToJson(UserSearchResult instance) => <String, dynamic>{
+  'type': instance.type,
+  'user': instance.user,
+  'score': instance.score,
+};
+
+PostSearchResult _$PostSearchResultFromJson(Map<String, dynamic> json) => PostSearchResult(
+  type: PostSearchResultTypeType.fromJson(json['type'] as String),
+  post: PostModel.fromJson(json['post'] as Map<String, dynamic>),
+  score: (json['score'] as num?)?.toDouble(),
+  highlights: (json['highlights'] as List<dynamic>?)?.map((e) => e as String).toList(),
+);
+
+Map<String, dynamic> _$PostSearchResultToJson(PostSearchResult instance) => <String, dynamic>{
+  'type': instance.type,
+  'post': instance.post,
+  'score': instance.score,
+  'highlights': instance.highlights,
+};
+
+CommentSearchResult _$CommentSearchResultFromJson(Map<String, dynamic> json) => CommentSearchResult(
+  type: CommentSearchResultTypeType.fromJson(json['type'] as String),
+  comment: Comment.fromJson(json['comment'] as Map<String, dynamic>),
+  score: (json['score'] as num?)?.toDouble(),
+);
+
+Map<String, dynamic> _$CommentSearchResultToJson(CommentSearchResult instance) => <String, dynamic>{
   'type': instance.type,
   'comment': instance.comment,
   'score': instance.score,
@@ -618,68 +486,55 @@ EntityPerson _$EntityPersonFromJson(Map<String, dynamic> json) => EntityPerson(
   name: json['name'] as String?,
   description: json['description'] as String?,
   createdAt: DateTime.parse(json['createdAt'] as String),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
   dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
   nationality: json['nationality'] as String?,
   occupation: json['occupation'] as String?,
-  socialProfiles: (json['socialProfiles'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ),
+  socialProfiles: (json['socialProfiles'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
 );
 
-Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'entityType': instance.entityType,
-      'name': instance.name,
-      'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
-      'nationality': instance.nationality,
-      'occupation': instance.occupation,
-      'socialProfiles': instance.socialProfiles,
-    };
+Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) => <String, dynamic>{
+  'id': instance.id,
+  'entityType': instance.entityType,
+  'name': instance.name,
+  'description': instance.description,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+  'nationality': instance.nationality,
+  'occupation': instance.occupation,
+  'socialProfiles': instance.socialProfiles,
+};
 
-EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) =>
-    EntityOrganization(
-      id: json['id'] as String,
-      entityType: json['entityType'] == null
-          ? null
-          : OrganizationEntityEntityTypeEntityType.fromJson(
-              json['entityType'] as String,
-            ),
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      registrationNumber: json['registrationNumber'] as String,
-      foundedDate: json['foundedDate'] == null
-          ? null
-          : DateTime.parse(json['foundedDate'] as String),
-      industry: json['industry'] as String?,
-      employeeCount: (json['employeeCount'] as num?)?.toInt(),
-      revenue: (json['revenue'] as num?)?.toDouble(),
-    );
+EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) => EntityOrganization(
+  id: json['id'] as String,
+  entityType: json['entityType'] == null
+      ? null
+      : OrganizationEntityEntityTypeEntityType.fromJson(json['entityType'] as String),
+  name: json['name'] as String?,
+  description: json['description'] as String?,
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  registrationNumber: json['registrationNumber'] as String,
+  foundedDate: json['foundedDate'] == null ? null : DateTime.parse(json['foundedDate'] as String),
+  industry: json['industry'] as String?,
+  employeeCount: (json['employeeCount'] as num?)?.toInt(),
+  revenue: (json['revenue'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'entityType': instance.entityType,
-      'name': instance.name,
-      'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'registrationNumber': instance.registrationNumber,
-      'foundedDate': instance.foundedDate?.toIso8601String(),
-      'industry': instance.industry,
-      'employeeCount': instance.employeeCount,
-      'revenue': instance.revenue,
-    };
+Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) => <String, dynamic>{
+  'id': instance.id,
+  'entityType': instance.entityType,
+  'name': instance.name,
+  'description': instance.description,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'registrationNumber': instance.registrationNumber,
+  'foundedDate': instance.foundedDate?.toIso8601String(),
+  'industry': instance.industry,
+  'employeeCount': instance.employeeCount,
+  'revenue': instance.revenue,
+};
 
 BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) => BaseEntity(
   id: json['id'] as String,
@@ -687,20 +542,17 @@ BaseEntity _$BaseEntityFromJson(Map<String, dynamic> json) => BaseEntity(
   createdAt: DateTime.parse(json['createdAt'] as String),
   name: json['name'] as String?,
   description: json['description'] as String?,
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
 );
 
-Map<String, dynamic> _$BaseEntityToJson(BaseEntity instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'entityType': instance.entityType,
-      'name': instance.name,
-      'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-    };
+Map<String, dynamic> _$BaseEntityToJson(BaseEntity instance) => <String, dynamic>{
+  'id': instance.id,
+  'entityType': instance.entityType,
+  'name': instance.name,
+  'description': instance.description,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+};
 
 PersonEntity _$PersonEntityFromJson(Map<String, dynamic> json) => PersonEntity(
   id: json['id'] as String,
@@ -711,74 +563,59 @@ PersonEntity _$PersonEntityFromJson(Map<String, dynamic> json) => PersonEntity(
       : PersonEntityEntityTypeEntityType.fromJson(json['entityType'] as String),
   name: json['name'] as String?,
   description: json['description'] as String?,
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
   nationality: json['nationality'] as String?,
   occupation: json['occupation'] as String?,
-  socialProfiles: (json['socialProfiles'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ),
+  socialProfiles: (json['socialProfiles'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
 );
 
-Map<String, dynamic> _$PersonEntityToJson(PersonEntity instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'entityType': instance.entityType,
-      'name': instance.name,
-      'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'dateOfBirth': instance.dateOfBirth.toIso8601String(),
-      'nationality': instance.nationality,
-      'occupation': instance.occupation,
-      'socialProfiles': instance.socialProfiles,
-    };
+Map<String, dynamic> _$PersonEntityToJson(PersonEntity instance) => <String, dynamic>{
+  'id': instance.id,
+  'entityType': instance.entityType,
+  'name': instance.name,
+  'description': instance.description,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+  'nationality': instance.nationality,
+  'occupation': instance.occupation,
+  'socialProfiles': instance.socialProfiles,
+};
 
-OrganizationEntity _$OrganizationEntityFromJson(Map<String, dynamic> json) =>
-    OrganizationEntity(
-      id: json['id'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      registrationNumber: json['registrationNumber'] as String,
-      entityType: json['entityType'] == null
-          ? null
-          : OrganizationEntityEntityTypeEntityType.fromJson(
-              json['entityType'] as String,
-            ),
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      foundedDate: json['foundedDate'] == null
-          ? null
-          : DateTime.parse(json['foundedDate'] as String),
-      industry: json['industry'] as String?,
-      employeeCount: (json['employeeCount'] as num?)?.toInt(),
-      revenue: (json['revenue'] as num?)?.toDouble(),
-    );
+OrganizationEntity _$OrganizationEntityFromJson(Map<String, dynamic> json) => OrganizationEntity(
+  id: json['id'] as String,
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  registrationNumber: json['registrationNumber'] as String,
+  entityType: json['entityType'] == null
+      ? null
+      : OrganizationEntityEntityTypeEntityType.fromJson(json['entityType'] as String),
+  name: json['name'] as String?,
+  description: json['description'] as String?,
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  foundedDate: json['foundedDate'] == null ? null : DateTime.parse(json['foundedDate'] as String),
+  industry: json['industry'] as String?,
+  employeeCount: (json['employeeCount'] as num?)?.toInt(),
+  revenue: (json['revenue'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$OrganizationEntityToJson(OrganizationEntity instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'entityType': instance.entityType,
-      'name': instance.name,
-      'description': instance.description,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'registrationNumber': instance.registrationNumber,
-      'foundedDate': instance.foundedDate?.toIso8601String(),
-      'industry': instance.industry,
-      'employeeCount': instance.employeeCount,
-      'revenue': instance.revenue,
-    };
+Map<String, dynamic> _$OrganizationEntityToJson(OrganizationEntity instance) => <String, dynamic>{
+  'id': instance.id,
+  'entityType': instance.entityType,
+  'name': instance.name,
+  'description': instance.description,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'registrationNumber': instance.registrationNumber,
+  'foundedDate': instance.foundedDate?.toIso8601String(),
+  'industry': instance.industry,
+  'employeeCount': instance.employeeCount,
+  'revenue': instance.revenue,
+};
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
   id: json['id'] as String,
   value: json['value'] as String,
-  dataNested: json['DataNested'] == null
-      ? null
-      : DataNested.fromJson(json['DataNested'] as Map<String, dynamic>),
+  dataNested: json['DataNested'] == null ? null : DataNested.fromJson(json['DataNested'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -790,12 +627,8 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
 Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
   code: json['code'] as String,
   message: json['message'] as String,
-  details: (json['details'] as List<dynamic>?)
-      ?.map((e) => ErrorDetails.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  timestamp: json['timestamp'] == null
-      ? null
-      : DateTime.parse(json['timestamp'] as String),
+  details: (json['details'] as List<dynamic>?)?.map((e) => ErrorDetails.fromJson(e as Map<String, dynamic>)).toList(),
+  timestamp: json['timestamp'] == null ? null : DateTime.parse(json['timestamp'] as String),
   requestId: json['requestId'] as String?,
 );
 
@@ -810,9 +643,7 @@ Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
 Result _$ResultFromJson(Map<String, dynamic> json) => Result(
   success: json['success'] as bool?,
   data: json['data'],
-  status: json['status'] == null
-      ? null
-      : Status.fromJson(json['status'] as String),
+  status: json['status'] == null ? null : Status.fromJson(json['status'] as String),
 );
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
@@ -821,66 +652,49 @@ Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
   'status': instance.status,
 };
 
-ListPostsResponsePagination _$ListPostsResponsePaginationFromJson(
-  Map<String, dynamic> json,
-) => ListPostsResponsePagination(
-  page: (json['page'] as num?)?.toInt(),
-  total: (json['total'] as num?)?.toInt(),
-  hasNext: json['hasNext'] as bool?,
-);
+ListPostsResponsePagination _$ListPostsResponsePaginationFromJson(Map<String, dynamic> json) =>
+    ListPostsResponsePagination(
+      page: (json['page'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
+      hasNext: json['hasNext'] as bool?,
+    );
 
-Map<String, dynamic> _$ListPostsResponsePaginationToJson(
-  ListPostsResponsePagination instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$ListPostsResponsePaginationToJson(ListPostsResponsePagination instance) => <String, dynamic>{
   'page': instance.page,
   'total': instance.total,
   'hasNext': instance.hasNext,
 };
 
-ListPostsResponse _$ListPostsResponseFromJson(Map<String, dynamic> json) =>
-    ListPostsResponse(
-      posts: (json['posts'] as List<dynamic>?)
-          ?.map((e) => PostModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      listPostsResponsePagination: json['ListPostsResponsePagination'] == null
-          ? null
-          : ListPostsResponsePagination.fromJson(
-              json['ListPostsResponsePagination'] as Map<String, dynamic>,
-            ),
-      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-    );
+ListPostsResponse _$ListPostsResponseFromJson(Map<String, dynamic> json) => ListPostsResponse(
+  posts: (json['posts'] as List<dynamic>?)?.map((e) => PostModel.fromJson(e as Map<String, dynamic>)).toList(),
+  listPostsResponsePagination: json['ListPostsResponsePagination'] == null
+      ? null
+      : ListPostsResponsePagination.fromJson(json['ListPostsResponsePagination'] as Map<String, dynamic>),
+  metadata: (json['metadata'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
+);
 
-Map<String, dynamic> _$ListPostsResponseToJson(ListPostsResponse instance) =>
-    <String, dynamic>{
-      'posts': instance.posts,
-      'ListPostsResponsePagination': instance.listPostsResponsePagination,
-      'metadata': instance.metadata,
-    };
+Map<String, dynamic> _$ListPostsResponseToJson(ListPostsResponse instance) => <String, dynamic>{
+  'posts': instance.posts,
+  'ListPostsResponsePagination': instance.listPostsResponsePagination,
+  'metadata': instance.metadata,
+};
 
-FiltersDateRange _$FiltersDateRangeFromJson(Map<String, dynamic> json) =>
-    FiltersDateRange(
-      from: json['from'] == null
-          ? null
-          : DateTime.parse(json['from'] as String),
-      to: json['to'] == null ? null : DateTime.parse(json['to'] as String),
-    );
+FiltersDateRange _$FiltersDateRangeFromJson(Map<String, dynamic> json) => FiltersDateRange(
+  from: json['from'] == null ? null : DateTime.parse(json['from'] as String),
+  to: json['to'] == null ? null : DateTime.parse(json['to'] as String),
+);
 
-Map<String, dynamic> _$FiltersDateRangeToJson(FiltersDateRange instance) =>
-    <String, dynamic>{
-      'from': instance.from?.toIso8601String(),
-      'to': instance.to?.toIso8601String(),
-    };
+Map<String, dynamic> _$FiltersDateRangeToJson(FiltersDateRange instance) => <String, dynamic>{
+  'from': instance.from?.toIso8601String(),
+  'to': instance.to?.toIso8601String(),
+};
 
 Filters _$FiltersFromJson(Map<String, dynamic> json) => Filters(
   authorId: json['authorId'] as String?,
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   filtersDateRange: json['FiltersDateRange'] == null
       ? null
-      : FiltersDateRange.fromJson(
-          json['FiltersDateRange'] as Map<String, dynamic>,
-        ),
+      : FiltersDateRange.fromJson(json['FiltersDateRange'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$FiltersToJson(Filters instance) => <String, dynamic>{
@@ -889,208 +703,149 @@ Map<String, dynamic> _$FiltersToJson(Filters instance) => <String, dynamic>{
   'FiltersDateRange': instance.filtersDateRange,
 };
 
-CreatePostRequest _$CreatePostRequestFromJson(Map<String, dynamic> json) =>
-    CreatePostRequest(
-      title: json['title'] as String,
-      content: json['content'] as String,
-      authorId: json['authorId'] as String,
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      publishAt: json['publishAt'] == null
-          ? null
-          : DateTime.parse(json['publishAt'] as String),
-      metadata: json['metadata'],
-    );
-
-Map<String, dynamic> _$CreatePostRequestToJson(CreatePostRequest instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
-      'authorId': instance.authorId,
-      'tags': instance.tags,
-      'publishAt': instance.publishAt?.toIso8601String(),
-      'metadata': instance.metadata,
-    };
-
-GetPostResponse _$GetPostResponseFromJson(Map<String, dynamic> json) =>
-    GetPostResponse(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      content: json['content'] as String,
-      authorId: json['authorId'] as String,
-      status: PostStatus.fromJson(json['status'] as String),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      viewCount: (json['viewCount'] as num?)?.toInt() ?? 0,
-      likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
-      excerpt: json['excerpt'] as String?,
-      author: json['author'] == null
-          ? null
-          : User.fromJson(json['author'] as Map<String, dynamic>),
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Category.fromJson(e as String))
-          .toList(),
-      publishedAt: json['publishedAt'] == null
-          ? null
-          : DateTime.parse(json['publishedAt'] as String),
-      metadata: json['metadata'],
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      comments: (json['comments'] as List<dynamic>?)
-          ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$GetPostResponseToJson(GetPostResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'content': instance.content,
-      'excerpt': instance.excerpt,
-      'authorId': instance.authorId,
-      'author': instance.author,
-      'status': instance.status,
-      'tags': instance.tags,
-      'categories': instance.categories,
-      'publishedAt': instance.publishedAt?.toIso8601String(),
-      'viewCount': instance.viewCount,
-      'likeCount': instance.likeCount,
-      'metadata': instance.metadata,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'comments': instance.comments,
-    };
-
-SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
-    SearchResponse(
-      results: (json['results'] as List<dynamic>?)
-          ?.map(
-            (e) => e == null
-                ? null
-                : SearchResultUnion.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
-
-Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) =>
-    <String, dynamic>{'results': instance.results};
-
-SearchRequest _$SearchRequestFromJson(Map<String, dynamic> json) =>
-    SearchRequest(
-      query: json['query'] as String?,
-      filters: (json['filters'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-    );
-
-Map<String, dynamic> _$SearchRequestToJson(SearchRequest instance) =>
-    <String, dynamic>{'query': instance.query, 'filters': instance.filters};
-
-InternalHealthCheckResponse _$InternalHealthCheckResponseFromJson(
-  Map<String, dynamic> json,
-) => InternalHealthCheckResponse(
-  status: json['status'] == null
-      ? null
-      : InternalHealthCheckResponseStatusStatus.fromJson(
-          json['status'] as String,
-        ),
+CreatePostRequest _$CreatePostRequestFromJson(Map<String, dynamic> json) => CreatePostRequest(
+  title: json['title'] as String,
+  content: json['content'] as String,
+  authorId: json['authorId'] as String,
+  tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  publishAt: json['publishAt'] == null ? null : DateTime.parse(json['publishAt'] as String),
+  metadata: json['metadata'],
 );
 
-Map<String, dynamic> _$InternalHealthCheckResponseToJson(
-  InternalHealthCheckResponse instance,
-) => <String, dynamic>{'status': instance.status};
+Map<String, dynamic> _$CreatePostRequestToJson(CreatePostRequest instance) => <String, dynamic>{
+  'title': instance.title,
+  'content': instance.content,
+  'authorId': instance.authorId,
+  'tags': instance.tags,
+  'publishAt': instance.publishAt?.toIso8601String(),
+  'metadata': instance.metadata,
+};
 
-GetDuplicateResponseMetadataData _$GetDuplicateResponseMetadataDataFromJson(
-  Map<String, dynamic> json,
-) => GetDuplicateResponseMetadataData(
-  id: json['id'] as String?,
-  value: (json['value'] as num?)?.toInt(),
+GetPostResponse _$GetPostResponseFromJson(Map<String, dynamic> json) => GetPostResponse(
+  id: json['id'] as String,
+  title: json['title'] as String,
+  content: json['content'] as String,
+  authorId: json['authorId'] as String,
+  status: PostStatus.fromJson(json['status'] as String),
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  viewCount: (json['viewCount'] as num?)?.toInt() ?? 0,
+  likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
+  excerpt: json['excerpt'] as String?,
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
+  tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  categories: (json['categories'] as List<dynamic>?)?.map((e) => Category.fromJson(e as String)).toList(),
+  publishedAt: json['publishedAt'] == null ? null : DateTime.parse(json['publishedAt'] as String),
+  metadata: json['metadata'],
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  comments: (json['comments'] as List<dynamic>?)?.map((e) => Comment.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
-Map<String, dynamic> _$GetDuplicateResponseMetadataDataToJson(
-  GetDuplicateResponseMetadataData instance,
-) => <String, dynamic>{'id': instance.id, 'value': instance.value};
+Map<String, dynamic> _$GetPostResponseToJson(GetPostResponse instance) => <String, dynamic>{
+  'id': instance.id,
+  'title': instance.title,
+  'content': instance.content,
+  'excerpt': instance.excerpt,
+  'authorId': instance.authorId,
+  'author': instance.author,
+  'status': instance.status,
+  'tags': instance.tags,
+  'categories': instance.categories,
+  'publishedAt': instance.publishedAt?.toIso8601String(),
+  'viewCount': instance.viewCount,
+  'likeCount': instance.likeCount,
+  'metadata': instance.metadata,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt?.toIso8601String(),
+  'comments': instance.comments,
+};
 
-GetDuplicateResponseMetadata _$GetDuplicateResponseMetadataFromJson(
-  Map<String, dynamic> json,
-) => GetDuplicateResponseMetadata(
-  getDuplicateResponseMetadataData:
-      json['GetDuplicateResponseMetadataData'] == null
-      ? null
-      : GetDuplicateResponseMetadataData.fromJson(
-          json['GetDuplicateResponseMetadataData'] as Map<String, dynamic>,
-        ),
+SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) => SearchResponse(
+  results: (json['results'] as List<dynamic>?)
+      ?.map((e) => e == null ? null : SearchResultUnion.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
-Map<String, dynamic> _$GetDuplicateResponseMetadataToJson(
-  GetDuplicateResponseMetadata instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$SearchResponseToJson(SearchResponse instance) => <String, dynamic>{'results': instance.results};
+
+SearchRequest _$SearchRequestFromJson(Map<String, dynamic> json) => SearchRequest(
+  query: json['query'] as String?,
+  filters: (json['filters'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
+);
+
+Map<String, dynamic> _$SearchRequestToJson(SearchRequest instance) => <String, dynamic>{
+  'query': instance.query,
+  'filters': instance.filters,
+};
+
+InternalHealthCheckResponse _$InternalHealthCheckResponseFromJson(Map<String, dynamic> json) =>
+    InternalHealthCheckResponse(
+      status: json['status'] == null
+          ? null
+          : InternalHealthCheckResponseStatusStatus.fromJson(json['status'] as String),
+    );
+
+Map<String, dynamic> _$InternalHealthCheckResponseToJson(InternalHealthCheckResponse instance) => <String, dynamic>{
+  'status': instance.status,
+};
+
+GetDuplicateResponseMetadataData _$GetDuplicateResponseMetadataDataFromJson(Map<String, dynamic> json) =>
+    GetDuplicateResponseMetadataData(id: json['id'] as String?, value: (json['value'] as num?)?.toInt());
+
+Map<String, dynamic> _$GetDuplicateResponseMetadataDataToJson(GetDuplicateResponseMetadataData instance) =>
+    <String, dynamic>{'id': instance.id, 'value': instance.value};
+
+GetDuplicateResponseMetadata _$GetDuplicateResponseMetadataFromJson(Map<String, dynamic> json) =>
+    GetDuplicateResponseMetadata(
+      getDuplicateResponseMetadataData: json['GetDuplicateResponseMetadataData'] == null
+          ? null
+          : GetDuplicateResponseMetadataData.fromJson(json['GetDuplicateResponseMetadataData'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$GetDuplicateResponseMetadataToJson(GetDuplicateResponseMetadata instance) => <String, dynamic>{
   'GetDuplicateResponseMetadataData': instance.getDuplicateResponseMetadataData,
 };
 
-GetDuplicateResponse _$GetDuplicateResponseFromJson(
-  Map<String, dynamic> json,
-) => GetDuplicateResponse(
-  data: json['data'] == null
-      ? null
-      : Data.fromJson(json['data'] as Map<String, dynamic>),
+GetDuplicateResponse _$GetDuplicateResponseFromJson(Map<String, dynamic> json) => GetDuplicateResponse(
+  data: json['data'] == null ? null : Data.fromJson(json['data'] as Map<String, dynamic>),
   getDuplicateResponseMetadata: json['GetDuplicateResponseMetadata'] == null
       ? null
-      : GetDuplicateResponseMetadata.fromJson(
-          json['GetDuplicateResponseMetadata'] as Map<String, dynamic>,
-        ),
+      : GetDuplicateResponseMetadata.fromJson(json['GetDuplicateResponseMetadata'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$GetDuplicateResponseToJson(
-  GetDuplicateResponse instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$GetDuplicateResponseToJson(GetDuplicateResponse instance) => <String, dynamic>{
   'data': instance.data,
   'GetDuplicateResponseMetadata': instance.getDuplicateResponseMetadata,
 };
 
-UserSettingsNotifications _$UserSettingsNotificationsFromJson(
-  Map<String, dynamic> json,
-) => UserSettingsNotifications(
+UserSettingsNotifications _$UserSettingsNotificationsFromJson(Map<String, dynamic> json) => UserSettingsNotifications(
   email: json['email'] as bool? ?? true,
   push: json['push'] as bool? ?? false,
   sms: json['sms'] as bool? ?? false,
 );
 
-Map<String, dynamic> _$UserSettingsNotificationsToJson(
-  UserSettingsNotifications instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$UserSettingsNotificationsToJson(UserSettingsNotifications instance) => <String, dynamic>{
   'email': instance.email,
   'push': instance.push,
   'sms': instance.sms,
 };
 
-UserSettingsPrivacy _$UserSettingsPrivacyFromJson(Map<String, dynamic> json) =>
-    UserSettingsPrivacy(
-      profileVisibility: json['profileVisibility'] == null
-          ? UserSettingsPrivacyProfileVisibilityProfileVisibility.public
-          : UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(
-              json['profileVisibility'] as String,
-            ),
-      showEmail: json['showEmail'] as bool? ?? false,
-    );
+UserSettingsPrivacy _$UserSettingsPrivacyFromJson(Map<String, dynamic> json) => UserSettingsPrivacy(
+  profileVisibility: json['profileVisibility'] == null
+      ? UserSettingsPrivacyProfileVisibilityProfileVisibility.public
+      : UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(json['profileVisibility'] as String),
+  showEmail: json['showEmail'] as bool? ?? false,
+);
 
-Map<String, dynamic> _$UserSettingsPrivacyToJson(
-  UserSettingsPrivacy instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$UserSettingsPrivacyToJson(UserSettingsPrivacy instance) => <String, dynamic>{
   'profileVisibility': instance.profileVisibility,
   'showEmail': instance.showEmail,
 };
 
-Map<String, dynamic> _$PaymentResponseDetailsUnionToJson(
-  PaymentResponseDetailsUnion instance,
-) => <String, dynamic>{};
+Map<String, dynamic> _$PaymentResponseDetailsUnionToJson(PaymentResponseDetailsUnion instance) => <String, dynamic>{};
 
-PaymentResponseDetailsUnionCreditCard
-_$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
+PaymentResponseDetailsUnionCreditCard _$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
     PaymentResponseDetailsUnionCreditCard(
-      paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(
-        json['paymentType'] as String,
-      ),
+      paymentType: CreditCardPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
       cardNumber: json['cardNumber'] as String,
       expiryMonth: (json['expiryMonth'] as num).toInt(),
       expiryYear: (json['expiryYear'] as num).toInt(),
@@ -1099,24 +854,20 @@ _$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
       amount: (json['amount'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(
-  PaymentResponseDetailsUnionCreditCard instance,
-) => <String, dynamic>{
-  'paymentType': instance.paymentType,
-  'cardNumber': instance.cardNumber,
-  'expiryMonth': instance.expiryMonth,
-  'expiryYear': instance.expiryYear,
-  'cvv': instance.cvv,
-  'cardholderName': instance.cardholderName,
-  'amount': instance.amount,
-};
+Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(PaymentResponseDetailsUnionCreditCard instance) =>
+    <String, dynamic>{
+      'paymentType': instance.paymentType,
+      'cardNumber': instance.cardNumber,
+      'expiryMonth': instance.expiryMonth,
+      'expiryYear': instance.expiryYear,
+      'cvv': instance.cvv,
+      'cardholderName': instance.cardholderName,
+      'amount': instance.amount,
+    };
 
-PaymentResponseDetailsUnionBankTransfer
-_$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
+PaymentResponseDetailsUnionBankTransfer _$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
     PaymentResponseDetailsUnionBankTransfer(
-      paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(
-        json['paymentType'] as String,
-      ),
+      paymentType: BankTransferPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
       accountNumber: json['accountNumber'] as String,
       routingNumber: json['routingNumber'] as String,
       accountHolder: json['accountHolder'] as String?,
@@ -1135,55 +886,45 @@ Map<String, dynamic> _$PaymentResponseDetailsUnionBankTransferToJson(
   'reference': instance.reference,
 };
 
-PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsUnionCrypto(
-  paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(
-    json['paymentType'] as String,
-  ),
-  walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-    json['cryptocurrency'] as String,
-  ),
-  amount: (json['amount'] as num).toDouble(),
-  transactionHash: json['transactionHash'] as String?,
-);
-
-Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(
-  PaymentResponseDetailsUnionCrypto instance,
-) => <String, dynamic>{
-  'paymentType': instance.paymentType,
-  'walletAddress': instance.walletAddress,
-  'cryptocurrency': instance.cryptocurrency,
-  'amount': instance.amount,
-  'transactionHash': instance.transactionHash,
-};
-
-DataNestedData _$DataNestedDataFromJson(Map<String, dynamic> json) =>
-    DataNestedData(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
+PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionCrypto(
+      paymentType: CryptoPaymentPaymentTypePaymentType.fromJson(json['paymentType'] as String),
+      walletAddress: json['walletAddress'] as String,
+      cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(json['cryptocurrency'] as String),
+      amount: (json['amount'] as num).toDouble(),
+      transactionHash: json['transactionHash'] as String?,
     );
 
-Map<String, dynamic> _$DataNestedDataToJson(DataNestedData instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
+Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(PaymentResponseDetailsUnionCrypto instance) =>
+    <String, dynamic>{
+      'paymentType': instance.paymentType,
+      'walletAddress': instance.walletAddress,
+      'cryptocurrency': instance.cryptocurrency,
+      'amount': instance.amount,
+      'transactionHash': instance.transactionHash,
+    };
+
+DataNestedData _$DataNestedDataFromJson(Map<String, dynamic> json) =>
+    DataNestedData(id: (json['id'] as num?)?.toInt(), name: json['name'] as String?);
+
+Map<String, dynamic> _$DataNestedDataToJson(DataNestedData instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+};
 
 DataNested _$DataNestedFromJson(Map<String, dynamic> json) => DataNested(
-  data: (json['data'] as List<dynamic>?)
-      ?.map((e) => DataNestedData.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  data: (json['data'] as List<dynamic>?)?.map((e) => DataNestedData.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
-Map<String, dynamic> _$DataNestedToJson(DataNested instance) =>
-    <String, dynamic>{'data': instance.data};
+Map<String, dynamic> _$DataNestedToJson(DataNested instance) => <String, dynamic>{'data': instance.data};
 
-ErrorDetails _$ErrorDetailsFromJson(Map<String, dynamic> json) => ErrorDetails(
-  field: json['field'] as String?,
-  message: json['message'] as String?,
-);
+ErrorDetails _$ErrorDetailsFromJson(Map<String, dynamic> json) =>
+    ErrorDetails(field: json['field'] as String?, message: json['message'] as String?);
 
-Map<String, dynamic> _$ErrorDetailsToJson(ErrorDetails instance) =>
-    <String, dynamic>{'field': instance.field, 'message': instance.message};
+Map<String, dynamic> _$ErrorDetailsToJson(ErrorDetails instance) => <String, dynamic>{
+  'field': instance.field,
+  'message': instance.message,
+};
 
 // dart format off
 

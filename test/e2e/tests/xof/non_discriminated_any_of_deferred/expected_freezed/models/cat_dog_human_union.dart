@@ -11,8 +11,7 @@ class CatDogHumanUnion {
 
   const CatDogHumanUnion(this._json);
 
-  factory CatDogHumanUnion.fromJson(Map<String, dynamic> json) =>
-      CatDogHumanUnion(json);
+  factory CatDogHumanUnion.fromJson(Map<String, dynamic> json) => CatDogHumanUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
@@ -27,8 +26,7 @@ class CatDogHumanUnionCat {
 
   const CatDogHumanUnionCat({required this.mewCount});
 
-  factory CatDogHumanUnionCat.fromJson(Map<String, Object?> json) =>
-      _$CatDogHumanUnionCatFromJson(json);
+  factory CatDogHumanUnionCat.fromJson(Map<String, Object?> json) => _$CatDogHumanUnionCatFromJson(json);
 
   Map<String, Object?> toJson() => _$CatDogHumanUnionCatToJson(this);
 }
@@ -39,8 +37,7 @@ class CatDogHumanUnionDog {
 
   const CatDogHumanUnionDog({required this.barkSound});
 
-  factory CatDogHumanUnionDog.fromJson(Map<String, Object?> json) =>
-      _$CatDogHumanUnionDogFromJson(json);
+  factory CatDogHumanUnionDog.fromJson(Map<String, Object?> json) => _$CatDogHumanUnionDogFromJson(json);
 
   Map<String, Object?> toJson() => _$CatDogHumanUnionDogToJson(this);
 }
@@ -51,8 +48,7 @@ class CatDogHumanUnionHuman {
 
   const CatDogHumanUnionHuman({required this.job});
 
-  factory CatDogHumanUnionHuman.fromJson(Map<String, Object?> json) =>
-      _$CatDogHumanUnionHumanFromJson(json);
+  factory CatDogHumanUnionHuman.fromJson(Map<String, Object?> json) => _$CatDogHumanUnionHumanFromJson(json);
 
   Map<String, Object?> toJson() => _$CatDogHumanUnionHumanToJson(this);
 }

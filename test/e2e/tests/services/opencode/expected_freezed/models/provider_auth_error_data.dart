@@ -14,6 +14,5 @@ abstract class ProviderAuthErrorData with _$ProviderAuthErrorData {
     required String message,
   }) = _ProviderAuthErrorData;
 
-  factory ProviderAuthErrorData.fromJson(Map<String, Object?> json) =>
-      _$ProviderAuthErrorDataFromJson(json);
+  factory ProviderAuthErrorData.fromJson(Map<String, Object?> json) => _$ProviderAuthErrorDataFromJson(json);
 }

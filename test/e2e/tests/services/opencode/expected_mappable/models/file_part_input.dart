@@ -10,14 +10,7 @@ part 'file_part_input.mapper.dart';
 
 @MappableClass()
 class FilePartInput with FilePartInputMappable {
-  const FilePartInput({
-    required this.type,
-    required this.mime,
-    required this.url,
-    this.id,
-    this.filename,
-    this.source,
-  });
+  const FilePartInput({required this.type, required this.mime, required this.url, this.id, this.filename, this.source});
 
   final String type;
   final String mime;
@@ -26,6 +19,5 @@ class FilePartInput with FilePartInputMappable {
   final String? filename;
   final FilePartSource? source;
 
-  static FilePartInput fromJson(Map<String, dynamic> json) =>
-      FilePartInputMapper.fromJson(json);
+  static FilePartInput fromJson(Map<String, dynamic> json) => FilePartInputMapper.fromJson(json);
 }

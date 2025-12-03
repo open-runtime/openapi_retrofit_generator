@@ -13,6 +13,5 @@ class SessionShellRequest with SessionShellRequestMappable {
   final String agent;
   final String command;
 
-  static SessionShellRequest fromJson(Map<String, dynamic> json) =>
-      SessionShellRequestMapper.fromJson(json);
+  static SessionShellRequest fromJson(Map<String, dynamic> json) => SessionShellRequestMapper.fromJson(json);
 }

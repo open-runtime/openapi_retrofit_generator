@@ -15,6 +15,5 @@ class SessionRevertRequest with SessionRevertRequestMappable {
   @MappableField(key: 'partID')
   final String? partId;
 
-  static SessionRevertRequest fromJson(Map<String, dynamic> json) =>
-      SessionRevertRequestMapper.fromJson(json);
+  static SessionRevertRequest fromJson(Map<String, dynamic> json) => SessionRevertRequestMapper.fromJson(json);
 }

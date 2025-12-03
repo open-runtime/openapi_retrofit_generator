@@ -23,6 +23,5 @@ abstract class McpLocalConfig with _$McpLocalConfig {
     bool? enabled,
   }) = _McpLocalConfig;
 
-  factory McpLocalConfig.fromJson(Map<String, Object?> json) =>
-      _$McpLocalConfigFromJson(json);
+  factory McpLocalConfig.fromJson(Map<String, Object?> json) => _$McpLocalConfigFromJson(json);
 }

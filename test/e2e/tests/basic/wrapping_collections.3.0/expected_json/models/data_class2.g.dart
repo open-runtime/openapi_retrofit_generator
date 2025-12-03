@@ -17,10 +17,7 @@ DataClass2 _$DataClass2FromJson(Map<String, dynamic> json) => DataClass2(
                   (e) => (e as List<dynamic>)
                       .map(
                         (e) => (e as Map<String, dynamic>).map(
-                          (k, e) => MapEntry(
-                            k,
-                            DataClass1.fromJson(e as Map<String, dynamic>),
-                          ),
+                          (k, e) => MapEntry(k, DataClass1.fromJson(e as Map<String, dynamic>)),
                         ),
                       )
                       .toList(),
@@ -33,5 +30,7 @@ DataClass2 _$DataClass2FromJson(Map<String, dynamic> json) => DataClass2(
   title: json['title'] as String?,
 );
 
-Map<String, dynamic> _$DataClass2ToJson(DataClass2 instance) =>
-    <String, dynamic>{'title': ?instance.title, 'errors': instance.errors};
+Map<String, dynamic> _$DataClass2ToJson(DataClass2 instance) => <String, dynamic>{
+  'title': ?instance.title,
+  'errors': instance.errors,
+};

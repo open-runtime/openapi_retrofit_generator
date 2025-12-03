@@ -13,8 +13,7 @@ part 'other_results.g.dart';
 class OtherResults {
   const OtherResults({this.genus, this.family});
 
-  factory OtherResults.fromJson(Map<String, Object?> json) =>
-      _$OtherResultsFromJson(json);
+  factory OtherResults.fromJson(Map<String, Object?> json) => _$OtherResultsFromJson(json);
 
   final Model19? genus;
   final Model22? family;

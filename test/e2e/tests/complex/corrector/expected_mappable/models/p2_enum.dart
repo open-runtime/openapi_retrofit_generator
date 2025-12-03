@@ -26,6 +26,5 @@ enum P2Enum {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<P2Enum> get $valuesDefined =>
-      values.where((value) => value != P2Enum.unknown).toList();
+  static List<P2Enum> get $valuesDefined => values.where((value) => value != P2Enum.unknown).toList();
 }

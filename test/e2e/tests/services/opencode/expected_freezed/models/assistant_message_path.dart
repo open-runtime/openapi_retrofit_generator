@@ -9,11 +9,7 @@ part 'assistant_message_path.g.dart';
 
 @Freezed()
 abstract class AssistantMessagePath with _$AssistantMessagePath {
-  const factory AssistantMessagePath({
-    required String cwd,
-    required String root,
-  }) = _AssistantMessagePath;
+  const factory AssistantMessagePath({required String cwd, required String root}) = _AssistantMessagePath;
 
-  factory AssistantMessagePath.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessagePathFromJson(json);
+  factory AssistantMessagePath.fromJson(Map<String, Object?> json) => _$AssistantMessagePathFromJson(json);
 }

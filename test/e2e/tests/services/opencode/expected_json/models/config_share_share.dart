@@ -19,8 +19,7 @@ enum ConfigShareShare {
 
   const ConfigShareShare(this.json);
 
-  factory ConfigShareShare.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory ConfigShareShare.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -30,6 +29,5 @@ enum ConfigShareShare {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<ConfigShareShare> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<ConfigShareShare> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

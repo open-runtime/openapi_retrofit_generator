@@ -39,8 +39,7 @@ class ComplexCasingModel {
     required this.xml2jsonV3Parser,
   });
 
-  factory ComplexCasingModel.fromJson(Map<String, Object?> json) =>
-      _$ComplexCasingModelFromJson(json);
+  factory ComplexCasingModel.fromJson(Map<String, Object?> json) => _$ComplexCasingModelFromJson(json);
 
   @JsonKey(name: 'is-not-on-blocklist')
   final String isNotOnBlocklist;

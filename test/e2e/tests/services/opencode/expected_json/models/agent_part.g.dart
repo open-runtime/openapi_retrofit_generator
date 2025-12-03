@@ -14,9 +14,7 @@ AgentPart _$AgentPartFromJson(Map<String, dynamic> json) => AgentPart(
   name: json['name'] as String,
   agentPartSource: json['AgentPartSource'] == null
       ? null
-      : AgentPartSource.fromJson(
-          json['AgentPartSource'] as Map<String, dynamic>,
-        ),
+      : AgentPartSource.fromJson(json['AgentPartSource'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$AgentPartToJson(AgentPart instance) => <String, dynamic>{

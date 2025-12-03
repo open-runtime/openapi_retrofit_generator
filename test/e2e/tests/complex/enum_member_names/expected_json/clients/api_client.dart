@@ -16,7 +16,5 @@ abstract class ApiClient {
 
   /// [enumClass] - description
   @GET('/api/v1/category/')
-  Future<void> apiV1CategoryList({
-    @Query('enum_class') required List<EnumClass> enumClass,
-  });
+  Future<void> apiV1CategoryList({@Query('enum_class') required List<EnumClass> enumClass});
 }

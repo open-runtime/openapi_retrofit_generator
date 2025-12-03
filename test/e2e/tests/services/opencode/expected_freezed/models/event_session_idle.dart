@@ -13,10 +13,8 @@ part 'event_session_idle.g.dart';
 abstract class EventSessionIdle with _$EventSessionIdle {
   const factory EventSessionIdle({
     required String type,
-    @JsonKey(name: 'EventSessionIdleProperties')
-    required EventSessionIdleProperties eventSessionIdleProperties,
+    @JsonKey(name: 'EventSessionIdleProperties') required EventSessionIdleProperties eventSessionIdleProperties,
   }) = _EventSessionIdle;
 
-  factory EventSessionIdle.fromJson(Map<String, Object?> json) =>
-      _$EventSessionIdleFromJson(json);
+  factory EventSessionIdle.fromJson(Map<String, Object?> json) => _$EventSessionIdleFromJson(json);
 }

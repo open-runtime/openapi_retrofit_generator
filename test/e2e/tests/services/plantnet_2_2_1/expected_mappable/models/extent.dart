@@ -17,6 +17,5 @@ class Extent with ExtentMappable {
   final TypeModel type;
   final Coordinates coordinates;
 
-  static Extent fromJson(Map<String, dynamic> json) =>
-      ExtentMapper.fromJson(json);
+  static Extent fromJson(Map<String, dynamic> json) => ExtentMapper.fromJson(json);
 }

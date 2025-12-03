@@ -16,6 +16,5 @@ abstract class DataClass2 with _$DataClass2 {
     required List<Map<String, List<List<Map<String, DataClass1>>>>> errors,
   }) = _DataClass2;
 
-  factory DataClass2.fromJson(Map<String, Object?> json) =>
-      _$DataClass2FromJson(json);
+  factory DataClass2.fromJson(Map<String, Object?> json) => _$DataClass2FromJson(json);
 }

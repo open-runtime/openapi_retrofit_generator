@@ -14,6 +14,5 @@ abstract class Example with _$Example {
     required Map<String, dynamic> data,
   }) = _Example;
 
-  factory Example.fromJson(Map<String, Object?> json) =>
-      _$ExampleFromJson(json);
+  factory Example.fromJson(Map<String, Object?> json) => _$ExampleFromJson(json);
 }

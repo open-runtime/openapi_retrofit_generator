@@ -13,10 +13,7 @@ part 'extent.g.dart';
 /// Geojson of extent area inside the case study area in epsg:4326, following the right-hand rule
 @Freezed()
 abstract class Extent with _$Extent {
-  const factory Extent({
-    required TypeModel type,
-    required Coordinates coordinates,
-  }) = _Extent;
+  const factory Extent({required TypeModel type, required Coordinates coordinates}) = _Extent;
 
   factory Extent.fromJson(Map<String, Object?> json) => _$ExtentFromJson(json);
 }

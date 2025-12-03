@@ -9,11 +9,7 @@ part 'event_server_connected.g.dart';
 
 @Freezed()
 abstract class EventServerConnected with _$EventServerConnected {
-  const factory EventServerConnected({
-    required String type,
-    required dynamic properties,
-  }) = _EventServerConnected;
+  const factory EventServerConnected({required String type, required dynamic properties}) = _EventServerConnected;
 
-  factory EventServerConnected.fromJson(Map<String, Object?> json) =>
-      _$EventServerConnectedFromJson(json);
+  factory EventServerConnected.fromJson(Map<String, Object?> json) => _$EventServerConnectedFromJson(json);
 }

@@ -10,14 +10,9 @@ part 'tui_show_toast_request.g.dart';
 
 @JsonSerializable()
 class TuiShowToastRequest {
-  const TuiShowToastRequest({
-    required this.message,
-    required this.variant,
-    this.title,
-  });
+  const TuiShowToastRequest({required this.message, required this.variant, this.title});
 
-  factory TuiShowToastRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiShowToastRequestFromJson(json);
+  factory TuiShowToastRequest.fromJson(Map<String, Object?> json) => _$TuiShowToastRequestFromJson(json);
 
   final String? title;
   final String message;

@@ -117,8 +117,7 @@ enum Lang {
 
   const Lang(this.json);
 
-  factory Lang.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Lang.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -128,6 +127,5 @@ enum Lang {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Lang> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Lang> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

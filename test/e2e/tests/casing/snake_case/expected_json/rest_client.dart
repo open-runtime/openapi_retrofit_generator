@@ -17,6 +17,5 @@ class RestClient {
 
   TestApiClient? _testApi;
 
-  TestApiClient get testApi =>
-      _testApi ??= TestApiClient(_dio, baseUrl: _baseUrl);
+  TestApiClient get testApi => _testApi ??= TestApiClient(_dio, baseUrl: _baseUrl);
 }

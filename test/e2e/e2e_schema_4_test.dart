@@ -14,10 +14,7 @@ import '../test_utils.dart';
 
 Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   final schemaPath = p.join('test', 'e2e', 'tests', 'schemas', schemaFileName);
-  final schemaNameWithoutExt = schemaFileName.replaceAll(
-    RegExp(r'\.(yaml|json)$'),
-    '',
-  );
+  final schemaNameWithoutExt = schemaFileName.replaceAll(RegExp(r'\.(yaml|json)$'), '');
 
   print('\n=== SCHEMA TEST: $schemaFileName ===');
   print('Schema: $schemaPath');
@@ -25,13 +22,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   print('\n[1/6] Cleaning generated folders...');
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolder = p.join(
-      'test',
-      'generated',
-      'schema_4',
-      schemaNameWithoutExt,
-      generatedFolderName,
-    );
+    final generatedFolder = p.join('test', 'generated', 'schema_4', schemaNameWithoutExt, generatedFolderName);
     final genDir = Directory(generatedFolder);
     if (genDir.existsSync()) {
       genDir.deleteSync(recursive: true);
@@ -67,13 +58,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     for (final serializer in JsonSerializer.values) {
       final generatedFolderName = getGeneratedFolderName(serializer);
       final buildOutputPath = p.join(libFolder, generatedFolderName);
-      final targetPath = p.join(
-        'test',
-        'generated',
-        'schema_4',
-        schemaNameWithoutExt,
-        generatedFolderName,
-      );
+      final targetPath = p.join('test', 'generated', 'schema_4', schemaNameWithoutExt, generatedFolderName);
 
       final buildOutput = Directory(buildOutputPath);
       if (buildOutput.existsSync()) {
@@ -87,12 +72,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     }
 
     print('\n[6/6] Running analyzer...');
-    final targetPath = p.join(
-      'test',
-      'generated',
-      'schema_4',
-      schemaNameWithoutExt,
-    );
+    final targetPath = p.join('test', 'generated', 'schema_4', schemaNameWithoutExt);
     await runAnalyzer(targetPath, schemaFileName);
 
     print('\n=== TEST PASSED ===\n');
@@ -124,10 +104,7 @@ void main() {
 
   group('schemas_4', () {
     test('petstore-with-operations-without-required-params.yaml', () async {
-      await schemaTest(
-        'petstore-with-operations-without-required-params.yaml',
-        buildFolder,
-      );
+      await schemaTest('petstore-with-operations-without-required-params.yaml', buildFolder);
     });
 
     test('petstore-with-problem-details.yaml', () async {
@@ -223,10 +200,7 @@ void main() {
     });
 
     test('removeAnyOfOneOfAndKeepPropertiesOnly_test.yaml', () async {
-      await schemaTest(
-        'removeAnyOfOneOfAndKeepPropertiesOnly_test.yaml',
-        buildFolder,
-      );
+      await schemaTest('removeAnyOfOneOfAndKeepPropertiesOnly_test.yaml', buildFolder);
     });
 
     test('required-and-readonly-property.yaml', () async {
@@ -306,10 +280,7 @@ void main() {
     });
 
     test('simplifyAnyOfStringAndEnumString_test.yaml', () async {
-      await schemaTest(
-        'simplifyAnyOfStringAndEnumString_test.yaml',
-        buildFolder,
-      );
+      await schemaTest('simplifyAnyOfStringAndEnumString_test.yaml', buildFolder);
     });
 
     test('simplifyBooleanEnum_test.yaml', () async {
@@ -340,21 +311,12 @@ void main() {
       await schemaTest('specs__petstore.yaml', buildFolder);
     });
 
-    test(
-      'spring__petstore-with-fake-endpoints-models-for-testing.yaml',
-      () async {
-        await schemaTest(
-          'spring__petstore-with-fake-endpoints-models-for-testing.yaml',
-          buildFolder,
-        );
-      },
-    );
+    test('spring__petstore-with-fake-endpoints-models-for-testing.yaml', () async {
+      await schemaTest('spring__petstore-with-fake-endpoints-models-for-testing.yaml', buildFolder);
+    });
 
     test('spring__petstore-with-spring-pageable.yaml', () async {
-      await schemaTest(
-        'spring__petstore-with-spring-pageable.yaml',
-        buildFolder,
-      );
+      await schemaTest('spring__petstore-with-spring-pageable.yaml', buildFolder);
     });
 
     test('sse.yaml', () async {
@@ -378,10 +340,7 @@ void main() {
     });
 
     test('Swift5CodeGenerationStackOverflow#2966.yaml', () async {
-      await schemaTest(
-        'Swift5CodeGenerationStackOverflow#2966.yaml',
-        buildFolder,
-      );
+      await schemaTest('Swift5CodeGenerationStackOverflow#2966.yaml', buildFolder);
     });
 
     test('tags.yaml', () async {
@@ -401,10 +360,7 @@ void main() {
     });
 
     test('typescript-angular__composed-schemas.yaml', () async {
-      await schemaTest(
-        'typescript-angular__composed-schemas.yaml',
-        buildFolder,
-      );
+      await schemaTest('typescript-angular__composed-schemas.yaml', buildFolder);
     });
 
     test('typescript-fetch__enum.yaml', () async {

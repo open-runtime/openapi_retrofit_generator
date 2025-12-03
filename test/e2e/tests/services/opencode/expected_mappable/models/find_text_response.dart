@@ -30,6 +30,5 @@ class FindTextResponse with FindTextResponseMappable {
   final num absoluteOffset;
   final List<FindTextResponseSubmatches> submatches;
 
-  static FindTextResponse fromJson(Map<String, dynamic> json) =>
-      FindTextResponseMapper.fromJson(json);
+  static FindTextResponse fromJson(Map<String, dynamic> json) => FindTextResponseMapper.fromJson(json);
 }

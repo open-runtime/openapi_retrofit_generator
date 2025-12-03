@@ -18,6 +18,5 @@ abstract class Partner with _$Partner {
     String? avatar,
   }) = _Partner;
 
-  factory Partner.fromJson(Map<String, Object?> json) =>
-      _$PartnerFromJson(json);
+  factory Partner.fromJson(Map<String, Object?> json) => _$PartnerFromJson(json);
 }

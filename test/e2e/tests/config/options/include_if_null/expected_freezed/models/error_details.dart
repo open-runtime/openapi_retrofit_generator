@@ -14,6 +14,5 @@ abstract class ErrorDetails with _$ErrorDetails {
     @JsonKey(includeIfNull: false) String? message,
   }) = _ErrorDetails;
 
-  factory ErrorDetails.fromJson(Map<String, Object?> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory ErrorDetails.fromJson(Map<String, Object?> json) => _$ErrorDetailsFromJson(json);
 }

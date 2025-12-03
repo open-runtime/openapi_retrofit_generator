@@ -13,6 +13,5 @@ class ConfigTui with ConfigTuiMappable {
   @MappableField(key: 'scroll_speed')
   final num scrollSpeed;
 
-  static ConfigTui fromJson(Map<String, dynamic> json) =>
-      ConfigTuiMapper.fromJson(json);
+  static ConfigTui fromJson(Map<String, dynamic> json) => ConfigTuiMapper.fromJson(json);
 }

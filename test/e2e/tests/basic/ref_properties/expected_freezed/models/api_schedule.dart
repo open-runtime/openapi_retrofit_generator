@@ -21,6 +21,5 @@ abstract class ApiSchedule with _$ApiSchedule {
     @JsonKey(includeIfNull: true, name: 'SAT') required ApiScheduleDetail? sat,
   }) = _ApiSchedule;
 
-  factory ApiSchedule.fromJson(Map<String, Object?> json) =>
-      _$ApiScheduleFromJson(json);
+  factory ApiSchedule.fromJson(Map<String, Object?> json) => _$ApiScheduleFromJson(json);
 }

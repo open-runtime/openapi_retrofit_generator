@@ -9,12 +9,8 @@ part of 'comment.dart';
 _Comment _$CommentFromJson(Map<String, dynamic> json) => _Comment(
   id: (json['id'] as num?)?.toInt(),
   text: json['text'] as String?,
-  author: json['author'] == null
-      ? null
-      : User.fromJson(json['author'] as Map<String, dynamic>),
-  post: json['post'] == null
-      ? null
-      : PostModel.fromJson(json['post'] as Map<String, dynamic>),
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
+  post: json['post'] == null ? null : PostModel.fromJson(json['post'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CommentToJson(_Comment instance) => <String, dynamic>{

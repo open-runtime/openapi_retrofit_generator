@@ -12,8 +12,7 @@ part 'symbol_model_location.g.dart';
 class SymbolModelLocation {
   const SymbolModelLocation({required this.uri, required this.range});
 
-  factory SymbolModelLocation.fromJson(Map<String, Object?> json) =>
-      _$SymbolModelLocationFromJson(json);
+  factory SymbolModelLocation.fromJson(Map<String, Object?> json) => _$SymbolModelLocationFromJson(json);
 
   final String uri;
   final Range range;

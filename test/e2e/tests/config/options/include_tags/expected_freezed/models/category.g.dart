@@ -10,9 +10,7 @@ _Category _$CategoryFromJson(Map<String, dynamic> json) => _Category(
   id: json['id'] as String,
   name: json['name'] as String,
   slug: json['slug'] as String?,
-  parent: json['parent'] == null
-      ? null
-      : Category.fromJson(json['parent'] as Map<String, dynamic>),
+  parent: json['parent'] == null ? null : Category.fromJson(json['parent'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CategoryToJson(_Category instance) => <String, dynamic>{

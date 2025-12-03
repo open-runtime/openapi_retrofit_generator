@@ -20,6 +20,5 @@ enum CatTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<CatTypeType> get $valuesDefined =>
-      values.where((value) => value != CatTypeType.unknown).toList();
+  static List<CatTypeType> get $valuesDefined => values.where((value) => value != CatTypeType.unknown).toList();
 }

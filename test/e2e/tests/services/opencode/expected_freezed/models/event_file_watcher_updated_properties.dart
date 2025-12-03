@@ -8,14 +8,10 @@ part 'event_file_watcher_updated_properties.freezed.dart';
 part 'event_file_watcher_updated_properties.g.dart';
 
 @Freezed()
-abstract class EventFileWatcherUpdatedProperties
-    with _$EventFileWatcherUpdatedProperties {
-  const factory EventFileWatcherUpdatedProperties({
-    required String file,
-    required String event,
-  }) = _EventFileWatcherUpdatedProperties;
+abstract class EventFileWatcherUpdatedProperties with _$EventFileWatcherUpdatedProperties {
+  const factory EventFileWatcherUpdatedProperties({required String file, required String event}) =
+      _EventFileWatcherUpdatedProperties;
 
-  factory EventFileWatcherUpdatedProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventFileWatcherUpdatedPropertiesFromJson(json);
+  factory EventFileWatcherUpdatedProperties.fromJson(Map<String, Object?> json) =>
+      _$EventFileWatcherUpdatedPropertiesFromJson(json);
 }

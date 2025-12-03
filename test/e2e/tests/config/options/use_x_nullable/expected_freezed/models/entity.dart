@@ -28,8 +28,7 @@ class Entity {
 class EntityPerson {
   const EntityPerson();
 
-  factory EntityPerson.fromJson(Map<String, Object?> json) =>
-      _$EntityPersonFromJson(json);
+  factory EntityPerson.fromJson(Map<String, Object?> json) => _$EntityPersonFromJson(json);
 
   Map<String, Object?> toJson() => _$EntityPersonToJson(this);
 }
@@ -38,8 +37,7 @@ class EntityPerson {
 class EntityOrganization {
   const EntityOrganization();
 
-  factory EntityOrganization.fromJson(Map<String, Object?> json) =>
-      _$EntityOrganizationFromJson(json);
+  factory EntityOrganization.fromJson(Map<String, Object?> json) => _$EntityOrganizationFromJson(json);
 
   Map<String, Object?> toJson() => _$EntityOrganizationToJson(this);
 }

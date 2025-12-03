@@ -11,11 +11,7 @@ part 'symbol_model_location.g.dart';
 
 @Freezed()
 abstract class SymbolModelLocation with _$SymbolModelLocation {
-  const factory SymbolModelLocation({
-    required String uri,
-    required Range range,
-  }) = _SymbolModelLocation;
+  const factory SymbolModelLocation({required String uri, required Range range}) = _SymbolModelLocation;
 
-  factory SymbolModelLocation.fromJson(Map<String, Object?> json) =>
-      _$SymbolModelLocationFromJson(json);
+  factory SymbolModelLocation.fromJson(Map<String, Object?> json) => _$SymbolModelLocationFromJson(json);
 }

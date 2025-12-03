@@ -13,8 +13,7 @@ part 'session_message_response.g.dart';
 class SessionMessageResponse {
   const SessionMessageResponse({required this.info, required this.parts});
 
-  factory SessionMessageResponse.fromJson(Map<String, Object?> json) =>
-      _$SessionMessageResponseFromJson(json);
+  factory SessionMessageResponse.fromJson(Map<String, Object?> json) => _$SessionMessageResponseFromJson(json);
 
   final Message info;
   final List<PartModel> parts;

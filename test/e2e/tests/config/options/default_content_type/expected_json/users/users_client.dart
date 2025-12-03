@@ -67,10 +67,7 @@ abstract class UsersClient {
   /// [userId] - User ID.
   @FormUrlEncoded()
   @PUT('/users/{userId}')
-  Future<User> updateUser({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> updateUser({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -79,10 +76,7 @@ abstract class UsersClient {
   /// [userId] - User ID.
   @FormUrlEncoded()
   @PATCH('/users/{userId}')
-  Future<User> patchUser({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUser({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///

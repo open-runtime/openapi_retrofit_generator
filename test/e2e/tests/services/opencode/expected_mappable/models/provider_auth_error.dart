@@ -10,15 +10,11 @@ part 'provider_auth_error.mapper.dart';
 
 @MappableClass()
 class ProviderAuthError with ProviderAuthErrorMappable {
-  const ProviderAuthError({
-    required this.name,
-    required this.providerAuthErrorData,
-  });
+  const ProviderAuthError({required this.name, required this.providerAuthErrorData});
 
   final String name;
   @MappableField(key: 'ProviderAuthErrorData')
   final ProviderAuthErrorData providerAuthErrorData;
 
-  static ProviderAuthError fromJson(Map<String, dynamic> json) =>
-      ProviderAuthErrorMapper.fromJson(json);
+  static ProviderAuthError fromJson(Map<String, dynamic> json) => ProviderAuthErrorMapper.fromJson(json);
 }

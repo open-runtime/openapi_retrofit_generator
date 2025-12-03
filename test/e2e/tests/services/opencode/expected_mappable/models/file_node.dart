@@ -24,6 +24,5 @@ class FileNode with FileNodeMappable {
   final FileNodeTypeType type;
   final bool ignored;
 
-  static FileNode fromJson(Map<String, dynamic> json) =>
-      FileNodeMapper.fromJson(json);
+  static FileNode fromJson(Map<String, dynamic> json) => FileNodeMapper.fromJson(json);
 }

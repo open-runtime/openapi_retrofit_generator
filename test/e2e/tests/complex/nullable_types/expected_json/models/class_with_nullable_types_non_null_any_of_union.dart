@@ -11,9 +11,8 @@ class ClassWithNullableTypesNonNullAnyOfUnion {
 
   const ClassWithNullableTypesNonNullAnyOfUnion(this._json);
 
-  factory ClassWithNullableTypesNonNullAnyOfUnion.fromJson(
-    Map<String, dynamic> json,
-  ) => ClassWithNullableTypesNonNullAnyOfUnion(json);
+  factory ClassWithNullableTypesNonNullAnyOfUnion.fromJson(Map<String, dynamic> json) =>
+      ClassWithNullableTypesNonNullAnyOfUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
@@ -27,30 +26,22 @@ class ClassWithNullableTypesNonNullAnyOfUnion {
 class ClassWithNullableTypesNonNullAnyOfUnionVariantString {
   final String value;
 
-  const ClassWithNullableTypesNonNullAnyOfUnionVariantString({
-    required this.value,
-  });
+  const ClassWithNullableTypesNonNullAnyOfUnionVariantString({required this.value});
 
-  factory ClassWithNullableTypesNonNullAnyOfUnionVariantString.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ClassWithNullableTypesNonNullAnyOfUnionVariantStringFromJson(json);
+  factory ClassWithNullableTypesNonNullAnyOfUnionVariantString.fromJson(Map<String, dynamic> json) =>
+      _$ClassWithNullableTypesNonNullAnyOfUnionVariantStringFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ClassWithNullableTypesNonNullAnyOfUnionVariantStringToJson(this);
+  Map<String, dynamic> toJson() => _$ClassWithNullableTypesNonNullAnyOfUnionVariantStringToJson(this);
 }
 
 @JsonSerializable()
 class ClassWithNullableTypesNonNullAnyOfUnionVariantInt {
   final int value;
 
-  const ClassWithNullableTypesNonNullAnyOfUnionVariantInt({
-    required this.value,
-  });
+  const ClassWithNullableTypesNonNullAnyOfUnionVariantInt({required this.value});
 
-  factory ClassWithNullableTypesNonNullAnyOfUnionVariantInt.fromJson(
-    Map<String, dynamic> json,
-  ) => _$ClassWithNullableTypesNonNullAnyOfUnionVariantIntFromJson(json);
+  factory ClassWithNullableTypesNonNullAnyOfUnionVariantInt.fromJson(Map<String, dynamic> json) =>
+      _$ClassWithNullableTypesNonNullAnyOfUnionVariantIntFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ClassWithNullableTypesNonNullAnyOfUnionVariantIntToJson(this);
+  Map<String, dynamic> toJson() => _$ClassWithNullableTypesNonNullAnyOfUnionVariantIntToJson(this);
 }

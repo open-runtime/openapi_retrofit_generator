@@ -9,11 +9,8 @@ part 'address.g.dart';
 
 @Freezed()
 abstract class Address with _$Address {
-  const factory Address({
-    @JsonKey(includeIfNull: false) String? street,
-    @JsonKey(includeIfNull: false) bool? deleted,
-  }) = _Address;
+  const factory Address({@JsonKey(includeIfNull: false) String? street, @JsonKey(includeIfNull: false) bool? deleted}) =
+      _Address;
 
-  factory Address.fromJson(Map<String, Object?> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, Object?> json) => _$AddressFromJson(json);
 }

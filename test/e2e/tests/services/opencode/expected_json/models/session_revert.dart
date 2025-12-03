@@ -8,15 +8,9 @@ part 'session_revert.g.dart';
 
 @JsonSerializable()
 class SessionRevert {
-  const SessionRevert({
-    required this.messageId,
-    this.partId,
-    this.snapshot,
-    this.diff,
-  });
+  const SessionRevert({required this.messageId, this.partId, this.snapshot, this.diff});
 
-  factory SessionRevert.fromJson(Map<String, Object?> json) =>
-      _$SessionRevertFromJson(json);
+  factory SessionRevert.fromJson(Map<String, Object?> json) => _$SessionRevertFromJson(json);
 
   @JsonKey(name: 'messageID')
   final String messageId;

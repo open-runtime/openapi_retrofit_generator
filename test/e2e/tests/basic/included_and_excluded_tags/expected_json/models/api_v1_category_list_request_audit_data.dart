@@ -8,14 +8,10 @@ part 'api_v1_category_list_request_audit_data.g.dart';
 
 @JsonSerializable()
 class ApiV1CategoryListRequestAuditData {
-  const ApiV1CategoryListRequestAuditData({
-    required this.lastModified,
-    this.modifiedBy,
-  });
+  const ApiV1CategoryListRequestAuditData({required this.lastModified, this.modifiedBy});
 
-  factory ApiV1CategoryListRequestAuditData.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestAuditDataFromJson(json);
+  factory ApiV1CategoryListRequestAuditData.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestAuditDataFromJson(json);
 
   /// Last modified timestamp from anchor
   final DateTime lastModified;
@@ -24,6 +20,5 @@ class ApiV1CategoryListRequestAuditData {
   @JsonKey(includeIfNull: false)
   final String? modifiedBy;
 
-  Map<String, Object?> toJson() =>
-      _$ApiV1CategoryListRequestAuditDataToJson(this);
+  Map<String, Object?> toJson() => _$ApiV1CategoryListRequestAuditDataToJson(this);
 }

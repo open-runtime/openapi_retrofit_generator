@@ -10,16 +10,11 @@ part 'paginated_user_dto.mapper.dart';
 
 @MappableClass()
 class PaginatedUserDto with PaginatedUserDtoMappable {
-  const PaginatedUserDto({
-    required this.nextCursor,
-    required this.previousCursor,
-    required this.data,
-  });
+  const PaginatedUserDto({required this.nextCursor, required this.previousCursor, required this.data});
 
   final String? nextCursor;
   final String? previousCursor;
   final List<UserDto> data;
 
-  static PaginatedUserDto fromJson(Map<String, dynamic> json) =>
-      PaginatedUserDtoMapper.fromJson(json);
+  static PaginatedUserDto fromJson(Map<String, dynamic> json) => PaginatedUserDtoMapper.fromJson(json);
 }

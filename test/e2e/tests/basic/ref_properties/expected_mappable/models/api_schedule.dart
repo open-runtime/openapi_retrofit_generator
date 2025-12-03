@@ -35,6 +35,5 @@ class ApiSchedule with ApiScheduleMappable {
   @MappableField(key: 'SAT')
   final ApiScheduleDetail? sat;
 
-  static ApiSchedule fromJson(Map<String, dynamic> json) =>
-      ApiScheduleMapper.fromJson(json);
+  static ApiSchedule fromJson(Map<String, dynamic> json) => ApiScheduleMapper.fromJson(json);
 }

@@ -23,8 +23,7 @@ part 'payment_response_details_union.mapper.dart';
     PaymentResponseDetailsUnionCrypto,
   ],
 )
-sealed class PaymentResponseDetailsUnion
-    with PaymentResponseDetailsUnionMappable {
+sealed class PaymentResponseDetailsUnion with PaymentResponseDetailsUnionMappable {
   const PaymentResponseDetailsUnion();
 
   static PaymentResponseDetailsUnion fromJson(Map<String, dynamic> json) {
@@ -32,8 +31,7 @@ sealed class PaymentResponseDetailsUnion
   }
 }
 
-extension PaymentResponseDetailsUnionDeserializer
-    on PaymentResponseDetailsUnion {
+extension PaymentResponseDetailsUnionDeserializer on PaymentResponseDetailsUnion {
   static PaymentResponseDetailsUnion tryDeserialize(
     Map<String, dynamic> json, {
     String key = 'paymentType',
@@ -51,11 +49,10 @@ extension PaymentResponseDetailsUnionDeserializer
         PaymentResponseDetailsUnionCreditCardMapper.fromJson(json),
       _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
         PaymentResponseDetailsUnionBankTransferMapper.fromJson(json),
-      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
-        PaymentResponseDetailsUnionCryptoMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion',
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] => PaymentResponseDetailsUnionCryptoMapper.fromJson(
+        json,
       ),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion'),
     };
   }
 }
@@ -83,8 +80,7 @@ class PaymentResponseDetailsUnionCreditCard extends PaymentResponseDetailsUnion
 }
 
 @MappableClass(discriminatorValue: 'bank_transfer')
-class PaymentResponseDetailsUnionBankTransfer
-    extends PaymentResponseDetailsUnion
+class PaymentResponseDetailsUnionBankTransfer extends PaymentResponseDetailsUnion
     with PaymentResponseDetailsUnionBankTransferMappable {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;

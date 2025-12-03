@@ -20,27 +20,22 @@ _ClassName _$ClassNameFromJson(Map<String, dynamic> json) => _ClassName(
   object1: json['object1'],
   array1: (json['array1'] as List<dynamic>).map((e) => e as String).toList(),
   array2: (json['array2'] as List<dynamic>)
-      .map(
-        (e) => (e as List<dynamic>)
-            .map((e) => (e as List<dynamic>).map((e) => e as String).toList())
-            .toList(),
-      )
+      .map((e) => (e as List<dynamic>).map((e) => (e as List<dynamic>).map((e) => e as String).toList()).toList())
       .toList(),
 );
 
-Map<String, dynamic> _$ClassNameToJson(_ClassName instance) =>
-    <String, dynamic>{
-      'integer1': instance.integer1,
-      'float1': instance.float1,
-      'double1': instance.double1,
-      'string1': instance.string1,
-      'number1': instance.number1,
-      'string2': _Base64Converter.staticToJson(instance.string2),
-      'string3': instance.string3.toIso8601String(),
-      'string4': instance.string4,
-      'string5': instance.string5,
-      'bool1': instance.bool1,
-      'object1': instance.object1,
-      'array1': instance.array1,
-      'array2': instance.array2,
-    };
+Map<String, dynamic> _$ClassNameToJson(_ClassName instance) => <String, dynamic>{
+  'integer1': instance.integer1,
+  'float1': instance.float1,
+  'double1': instance.double1,
+  'string1': instance.string1,
+  'number1': instance.number1,
+  'string2': _Base64Converter.staticToJson(instance.string2),
+  'string3': instance.string3.toIso8601String(),
+  'string4': instance.string4,
+  'string5': instance.string5,
+  'bool1': instance.bool1,
+  'object1': instance.object1,
+  'array1': instance.array1,
+  'array2': instance.array2,
+};

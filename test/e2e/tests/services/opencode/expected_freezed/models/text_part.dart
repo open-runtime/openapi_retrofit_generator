@@ -22,6 +22,5 @@ abstract class TextPart with _$TextPart {
     Map<String, dynamic>? metadata,
   }) = _TextPart;
 
-  factory TextPart.fromJson(Map<String, Object?> json) =>
-      _$TextPartFromJson(json);
+  factory TextPart.fromJson(Map<String, Object?> json) => _$TextPartFromJson(json);
 }

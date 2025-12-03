@@ -14,6 +14,5 @@ abstract class ConfigTui with _$ConfigTui {
     @JsonKey(name: 'scroll_speed') @Default(2) num scrollSpeed,
   }) = _ConfigTui;
 
-  factory ConfigTui.fromJson(Map<String, Object?> json) =>
-      _$ConfigTuiFromJson(json);
+  factory ConfigTui.fromJson(Map<String, Object?> json) => _$ConfigTuiFromJson(json);
 }

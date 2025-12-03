@@ -9,9 +9,7 @@ part 'assistant_message_time.g.dart';
 
 @Freezed()
 abstract class AssistantMessageTime with _$AssistantMessageTime {
-  const factory AssistantMessageTime({required num created, num? completed}) =
-      _AssistantMessageTime;
+  const factory AssistantMessageTime({required num created, num? completed}) = _AssistantMessageTime;
 
-  factory AssistantMessageTime.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessageTimeFromJson(json);
+  factory AssistantMessageTime.fromJson(Map<String, Object?> json) => _$AssistantMessageTimeFromJson(json);
 }

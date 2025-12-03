@@ -29,8 +29,7 @@ class AssistantMessage {
     this.summary,
   });
 
-  factory AssistantMessage.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessageFromJson(json);
+  factory AssistantMessage.fromJson(Map<String, Object?> json) => _$AssistantMessageFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

@@ -17,6 +17,5 @@ abstract class EventSessionCompacted with _$EventSessionCompacted {
     required EventSessionCompactedProperties eventSessionCompactedProperties,
   }) = _EventSessionCompacted;
 
-  factory EventSessionCompacted.fromJson(Map<String, Object?> json) =>
-      _$EventSessionCompactedFromJson(json);
+  factory EventSessionCompacted.fromJson(Map<String, Object?> json) => _$EventSessionCompactedFromJson(json);
 }

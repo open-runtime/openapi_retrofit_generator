@@ -9,13 +9,11 @@ import 'post_session_id_permissions_permission_id_request_response_response.dart
 part 'post_session_id_permissions_permission_id_request.mapper.dart';
 
 @MappableClass()
-class PostSessionIdPermissionsPermissionIdRequest
-    with PostSessionIdPermissionsPermissionIdRequestMappable {
+class PostSessionIdPermissionsPermissionIdRequest with PostSessionIdPermissionsPermissionIdRequestMappable {
   const PostSessionIdPermissionsPermissionIdRequest({required this.response});
 
   final PostSessionIdPermissionsPermissionIdRequestResponseResponse response;
 
-  static PostSessionIdPermissionsPermissionIdRequest fromJson(
-    Map<String, dynamic> json,
-  ) => PostSessionIdPermissionsPermissionIdRequestMapper.fromJson(json);
+  static PostSessionIdPermissionsPermissionIdRequest fromJson(Map<String, dynamic> json) =>
+      PostSessionIdPermissionsPermissionIdRequestMapper.fromJson(json);
 }

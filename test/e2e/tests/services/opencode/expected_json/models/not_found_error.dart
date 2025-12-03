@@ -12,8 +12,7 @@ part 'not_found_error.g.dart';
 class NotFoundError {
   const NotFoundError({required this.name, required this.notFoundErrorData});
 
-  factory NotFoundError.fromJson(Map<String, Object?> json) =>
-      _$NotFoundErrorFromJson(json);
+  factory NotFoundError.fromJson(Map<String, Object?> json) => _$NotFoundErrorFromJson(json);
 
   final String name;
   @JsonKey(name: 'NotFoundErrorData')

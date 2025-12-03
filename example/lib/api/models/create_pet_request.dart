@@ -8,15 +8,9 @@ part 'create_pet_request.g.dart';
 
 @JsonSerializable()
 class CreatePetRequest {
-  const CreatePetRequest({
-    required this.name,
-    this.category,
-    this.age,
-    this.tags,
-  });
+  const CreatePetRequest({required this.name, this.category, this.age, this.tags});
 
-  factory CreatePetRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePetRequestFromJson(json);
+  factory CreatePetRequest.fromJson(Map<String, Object?> json) => _$CreatePetRequestFromJson(json);
 
   final String name;
 

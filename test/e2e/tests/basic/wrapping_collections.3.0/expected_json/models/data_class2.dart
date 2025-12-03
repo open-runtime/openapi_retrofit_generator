@@ -12,8 +12,7 @@ part 'data_class2.g.dart';
 class DataClass2 {
   const DataClass2({required this.errors, this.title});
 
-  factory DataClass2.fromJson(Map<String, Object?> json) =>
-      _$DataClass2FromJson(json);
+  factory DataClass2.fromJson(Map<String, Object?> json) => _$DataClass2FromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? title;

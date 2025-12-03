@@ -17,6 +17,5 @@ abstract class UserDto with _$UserDto {
     @JsonKey(includeIfNull: true) required String? username,
   }) = _UserDto;
 
-  factory UserDto.fromJson(Map<String, Object?> json) =>
-      _$UserDtoFromJson(json);
+  factory UserDto.fromJson(Map<String, Object?> json) => _$UserDtoFromJson(json);
 }

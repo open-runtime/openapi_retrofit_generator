@@ -7,9 +7,7 @@ part of 'model50.dart';
 // **************************************************************************
 
 Model50 _$Model50FromJson(Map<String, dynamic> json) => Model50(
-  center: json['center'] == null
-      ? null
-      : Center.fromJson(json['center'] as Map<String, dynamic>),
+  center: json['center'] == null ? null : Center.fromJson(json['center'] as Map<String, dynamic>),
   size: json['size'] as num?,
   score: json['score'] as num?,
   organ: json['organ'] as String?,

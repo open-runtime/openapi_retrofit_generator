@@ -12,8 +12,7 @@ part 'class_name.g.dart';
 class ClassName {
   const ClassName({required this.id, required this.another});
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 
   final int id;
   final AnotherClass another;

@@ -21,6 +21,5 @@ abstract class Provider with _$Provider {
     Map<String, dynamic>? options,
   }) = _Provider;
 
-  factory Provider.fromJson(Map<String, Object?> json) =>
-      _$ProviderFromJson(json);
+  factory Provider.fromJson(Map<String, Object?> json) => _$ProviderFromJson(json);
 }

@@ -30,6 +30,5 @@ class Option with OptionMappable {
   @MappableField(key: 'optional_name')
   final String? optionalName;
 
-  static Option fromJson(Map<String, dynamic> json) =>
-      OptionMapper.fromJson(json);
+  static Option fromJson(Map<String, dynamic> json) => OptionMapper.fromJson(json);
 }

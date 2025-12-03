@@ -10,15 +10,9 @@ part 'user_message.g.dart';
 
 @JsonSerializable()
 class UserMessage {
-  const UserMessage({
-    required this.id,
-    required this.sessionId,
-    required this.role,
-    required this.userMessageTime,
-  });
+  const UserMessage({required this.id, required this.sessionId, required this.role, required this.userMessageTime});
 
-  factory UserMessage.fromJson(Map<String, Object?> json) =>
-      _$UserMessageFromJson(json);
+  factory UserMessage.fromJson(Map<String, Object?> json) => _$UserMessageFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

@@ -6,9 +6,6 @@ part of 'human.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Human _$HumanFromJson(Map<String, dynamic> json) =>
-    Human(job: json['job'] as String);
+Human _$HumanFromJson(Map<String, dynamic> json) => Human(job: json['job'] as String);
 
-Map<String, dynamic> _$HumanToJson(Human instance) => <String, dynamic>{
-  'job': instance.job,
-};
+Map<String, dynamic> _$HumanToJson(Human instance) => <String, dynamic>{'job': instance.job};

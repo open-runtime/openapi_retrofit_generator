@@ -8,10 +8,7 @@ part 'session_prompt_request_model.mapper.dart';
 
 @MappableClass()
 class SessionPromptRequestModel with SessionPromptRequestModelMappable {
-  const SessionPromptRequestModel({
-    required this.providerId,
-    required this.modelId,
-  });
+  const SessionPromptRequestModel({required this.providerId, required this.modelId});
 
   @MappableField(key: 'providerID')
   final String providerId;

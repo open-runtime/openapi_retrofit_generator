@@ -6,10 +6,7 @@ import 'package:openapi_retrofit_generator/src/utils/base_utils.dart';
 import 'package:openapi_retrofit_generator/src/utils/type_utils.dart';
 
 /// Provides template for generating dart typedefs using JSON serializable
-String dartTypeDefTemplate(
-  UniversalComponentClass dataClass, {
-  JsonSerializer? jsonSerializer,
-}) {
+String dartTypeDefTemplate(UniversalComponentClass dataClass, {JsonSerializer? jsonSerializer}) {
   final className = dataClass.name.toPascal;
   final type = dataClass.parameters.firstOrNull;
   final import = dataClass.imports.firstOrNull;

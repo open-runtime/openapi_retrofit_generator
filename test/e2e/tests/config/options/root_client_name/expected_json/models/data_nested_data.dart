@@ -10,8 +10,7 @@ part 'data_nested_data.g.dart';
 class DataNestedData {
   const DataNestedData({this.id, this.name});
 
-  factory DataNestedData.fromJson(Map<String, Object?> json) =>
-      _$DataNestedDataFromJson(json);
+  factory DataNestedData.fromJson(Map<String, Object?> json) => _$DataNestedDataFromJson(json);
 
   final int? id;
   final String? name;

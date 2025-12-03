@@ -10,16 +10,9 @@ part 'partner_observations.g.dart';
 
 @JsonSerializable()
 class PartnerObservations {
-  const PartnerObservations({
-    required this.data,
-    required this.hasMore,
-    this.prev,
-    this.next,
-    this.nextStartDate,
-  });
+  const PartnerObservations({required this.data, required this.hasMore, this.prev, this.next, this.nextStartDate});
 
-  factory PartnerObservations.fromJson(Map<String, Object?> json) =>
-      _$PartnerObservationsFromJson(json);
+  factory PartnerObservations.fromJson(Map<String, Object?> json) => _$PartnerObservationsFromJson(json);
 
   final Data data;
   final bool hasMore;

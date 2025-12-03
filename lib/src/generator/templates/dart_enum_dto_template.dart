@@ -13,10 +13,7 @@ String dartEnumDtoTemplate(
   required bool markFileAsGenerated,
 }) {
   if (jsonSerializer == JsonSerializer.dartMappable) {
-    return _dartEnumDartMappableTemplate(
-      enumClass,
-      unknownEnumValue: unknownEnumValue,
-    );
+    return _dartEnumDartMappableTemplate(enumClass, unknownEnumValue: unknownEnumValue);
   } else {
     final className = enumClass.name.toPascal;
 
@@ -45,29 +42,17 @@ ${enumBodyParts.join()}
   }
 }
 
-String _dartEnumDartMappableTemplate(
-  UniversalEnumClass enumClass, {
-  required bool unknownEnumValue,
-}) {
+String _dartEnumDartMappableTemplate(UniversalEnumClass enumClass, {required bool unknownEnumValue}) {
   final className = enumClass.name.toPascal;
 
-  final values =
-      [
-            ...enumClass.items,
-            if (unknownEnumValue &&
-                !enumClass.items.any(
-                  (item) =>
-                      item.name.toLowerCase() == 'unknown' ||
-                      item.jsonKey.toLowerCase() == 'unknown',
-                ))
-              const UniversalEnumItem(name: 'unknown', jsonKey: 'unknown'),
-          ]
-          .mapIndexed((i, e) => _enumValueDartMappable(i, enumClass.type, e))
-          .join(',\n');
+  final values = [
+    ...enumClass.items,
+    if (unknownEnumValue &&
+        !enumClass.items.any((item) => item.name.toLowerCase() == 'unknown' || item.jsonKey.toLowerCase() == 'unknown'))
+      const UniversalEnumItem(name: 'unknown', jsonKey: 'unknown'),
+  ].mapIndexed((i, e) => _enumValueDartMappable(i, enumClass.type, e)).join(',\n');
 
-  final annotationParameters = [
-    if (unknownEnumValue) "defaultValue: 'unknown'",
-  ].join(', ');
+  final annotationParameters = [if (unknownEnumValue) "defaultValue: 'unknown'"].join(', ');
 
   final enumBodyParts = [
     '$values;',
@@ -133,9 +118,7 @@ String _enumValue(int index, String type, UniversalEnumItem item) {
       if (protectedJsonKey == 'null') {
         value = null;
       } else {
-        final isNumber = RegExp(
-          r'^-?\d+(\.\d+)?$',
-        ).hasMatch(protectedJsonKey ?? '');
+        final isNumber = RegExp(r'^-?\d+(\.\d+)?$').hasMatch(protectedJsonKey ?? '');
         if (isNumber) {
           value = protectedJsonKey;
         } else {
@@ -150,9 +133,7 @@ String _enumValue(int index, String type, UniversalEnumItem item) {
   final isStringField = dartType == 'String' || dartType == 'String?';
 
   if (isStringField) {
-    constructorValue = value == null
-        ? null
-        : (value.startsWith("'") ? value : "'$value'");
+    constructorValue = value == null ? null : (value.startsWith("'") ? value : "'$value'");
   } else {
     constructorValue = value;
   }
@@ -167,8 +148,7 @@ String _enumValueDartMappable(int index, String type, UniversalEnumItem item) {
   final protectedJsonKey = protectJsonKey(item.jsonKey);
 
   final String? mappableValue;
-  if (item.name.toLowerCase() == 'unknown' ||
-      item.jsonKey.toLowerCase() == 'unknown') {
+  if (item.name.toLowerCase() == 'unknown' || item.jsonKey.toLowerCase() == 'unknown') {
     mappableValue = "'unknown'";
   } else if (type == 'string') {
     mappableValue = "'$protectedJsonKey'";
@@ -181,9 +161,7 @@ String _enumValueDartMappable(int index, String type, UniversalEnumItem item) {
       if (protectedJsonKey == 'null') {
         mappableValue = null;
       } else {
-        final isNumber = RegExp(
-          r'^-?\d+(\.\d+)?$',
-        ).hasMatch(protectedJsonKey ?? '');
+        final isNumber = RegExp(r'^-?\d+(\.\d+)?$').hasMatch(protectedJsonKey ?? '');
         if (isNumber) {
           mappableValue = protectedJsonKey;
         } else {
@@ -220,8 +198,7 @@ String _toString(UniversalEnumClass enumClass) {
   }
 }
 
-String _toStringDartMappable() =>
-    '\n\n  @override\n  String toString() => toValue().toString();\n';
+String _toStringDartMappable() => '\n\n  @override\n  String toString() => toValue().toString();\n';
 
 String _valuesDefined(String className) => '''
 

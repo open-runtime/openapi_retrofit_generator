@@ -49,9 +49,7 @@ String dartImports({required Set<String> imports, String? pathPrefix}) {
   if (imports.isEmpty) {
     return '';
   }
-  final filteredImports = imports.where(
-    (import) => !_primitiveTypes.contains(import.toLowerCase()),
-  );
+  final filteredImports = imports.where((import) => !_primitiveTypes.contains(import.toLowerCase()));
   if (filteredImports.isEmpty) {
     return '';
   }
@@ -102,12 +100,7 @@ String indentation(int length) => ' ' * length;
 /// // Returns:
 /// // /// User email address.
 /// ```
-String descriptionComment(
-  String? description, {
-  bool tabForFirstLine = true,
-  String tab = '',
-  String end = '',
-}) {
+String descriptionComment(String? description, {bool tabForFirstLine = true, String tab = '', String end = ''}) {
   if (description == null || description.isEmpty) {
     return '';
   }
@@ -147,9 +140,7 @@ String descriptionComment(
 /// addDot(null) // Returns null
 /// ```
 String? addDot(String? text) =>
-    text != null && text.trim().isNotEmpty && !_punctuationRegExp.hasMatch(text)
-    ? '$text.'
-    : text;
+    text != null && text.trim().isNotEmpty && !_punctuationRegExp.hasMatch(text) ? '$text.' : text;
 
 /// Regular expression pattern matching ending punctuation marks.
 ///
@@ -200,10 +191,8 @@ String? replaceNotEnglishLetter(String? text) {
 /// formatNumber(42) // Returns '42'
 /// formatNumber(1000000) // Returns '1 000 000'
 /// ```
-String formatNumber(int number) => number.toString().replaceAllMapped(
-  RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-  (match) => '${match[1]} ',
-);
+String formatNumber(int number) =>
+    number.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]} ');
 
 /// Generates standard header comments for generated Dart files.
 ///

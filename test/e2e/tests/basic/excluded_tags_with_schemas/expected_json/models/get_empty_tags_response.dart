@@ -10,8 +10,7 @@ part 'get_empty_tags_response.g.dart';
 class GetEmptyTagsResponse {
   const GetEmptyTagsResponse({this.value});
 
-  factory GetEmptyTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$GetEmptyTagsResponseFromJson(json);
+  factory GetEmptyTagsResponse.fromJson(Map<String, Object?> json) => _$GetEmptyTagsResponseFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? value;

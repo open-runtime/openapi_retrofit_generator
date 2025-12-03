@@ -12,8 +12,7 @@ part 'event_permission_updated.g.dart';
 class EventPermissionUpdated {
   const EventPermissionUpdated({required this.type, required this.properties});
 
-  factory EventPermissionUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventPermissionUpdatedFromJson(json);
+  factory EventPermissionUpdated.fromJson(Map<String, Object?> json) => _$EventPermissionUpdatedFromJson(json);
 
   final String type;
   final Permission properties;

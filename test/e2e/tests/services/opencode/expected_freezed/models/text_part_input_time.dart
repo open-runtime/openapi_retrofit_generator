@@ -9,9 +9,7 @@ part 'text_part_input_time.g.dart';
 
 @Freezed()
 abstract class TextPartInputTime with _$TextPartInputTime {
-  const factory TextPartInputTime({required num start, num? end}) =
-      _TextPartInputTime;
+  const factory TextPartInputTime({required num start, num? end}) = _TextPartInputTime;
 
-  factory TextPartInputTime.fromJson(Map<String, Object?> json) =>
-      _$TextPartInputTimeFromJson(json);
+  factory TextPartInputTime.fromJson(Map<String, Object?> json) => _$TextPartInputTimeFromJson(json);
 }

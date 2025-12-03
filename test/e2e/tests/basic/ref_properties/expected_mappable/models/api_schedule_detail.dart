@@ -13,6 +13,5 @@ class ApiScheduleDetail with ApiScheduleDetailMappable {
   final String startTime;
   final String endTime;
 
-  static ApiScheduleDetail fromJson(Map<String, dynamic> json) =>
-      ApiScheduleDetailMapper.fromJson(json);
+  static ApiScheduleDetail fromJson(Map<String, dynamic> json) => ApiScheduleDetailMapper.fromJson(json);
 }

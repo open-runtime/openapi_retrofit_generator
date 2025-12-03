@@ -17,6 +17,5 @@ class UserSearchResult with UserSearchResultMappable {
   final User user;
   final double? score;
 
-  static UserSearchResult fromJson(Map<String, dynamic> json) =>
-      UserSearchResultMapper.fromJson(json);
+  static UserSearchResult fromJson(Map<String, dynamic> json) => UserSearchResultMapper.fromJson(json);
 }

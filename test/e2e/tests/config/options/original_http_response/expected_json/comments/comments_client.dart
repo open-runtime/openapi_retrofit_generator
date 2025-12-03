@@ -19,9 +19,7 @@ abstract class CommentsClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/comments')
-  Future<HttpResponse<Comment>> createComment({
-    @Body() CreateCommentRequest? body,
-  });
+  Future<HttpResponse<Comment>> createComment({@Body() CreateCommentRequest? body});
 
   /// Get nested comment replies.
   ///

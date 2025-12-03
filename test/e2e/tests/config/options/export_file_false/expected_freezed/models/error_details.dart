@@ -11,6 +11,5 @@ part 'error_details.g.dart';
 abstract class ErrorDetails with _$ErrorDetails {
   const factory ErrorDetails({String? field, String? message}) = _ErrorDetails;
 
-  factory ErrorDetails.fromJson(Map<String, Object?> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory ErrorDetails.fromJson(Map<String, Object?> json) => _$ErrorDetailsFromJson(json);
 }

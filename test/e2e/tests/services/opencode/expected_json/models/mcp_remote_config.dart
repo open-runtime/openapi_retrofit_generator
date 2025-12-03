@@ -8,15 +8,9 @@ part 'mcp_remote_config.g.dart';
 
 @JsonSerializable()
 class McpRemoteConfig {
-  const McpRemoteConfig({
-    required this.type,
-    required this.url,
-    this.enabled,
-    this.headers,
-  });
+  const McpRemoteConfig({required this.type, required this.url, this.enabled, this.headers});
 
-  factory McpRemoteConfig.fromJson(Map<String, Object?> json) =>
-      _$McpRemoteConfigFromJson(json);
+  factory McpRemoteConfig.fromJson(Map<String, Object?> json) => _$McpRemoteConfigFromJson(json);
 
   /// Type of MCP server connection
   final String type;

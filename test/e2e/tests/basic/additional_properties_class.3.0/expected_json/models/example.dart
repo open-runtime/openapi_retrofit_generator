@@ -10,8 +10,7 @@ part 'example.g.dart';
 class Example {
   const Example({required this.data});
 
-  factory Example.fromJson(Map<String, Object?> json) =>
-      _$ExampleFromJson(json);
+  factory Example.fromJson(Map<String, Object?> json) => _$ExampleFromJson(json);
 
   /// data
   final Map<String, dynamic> data;

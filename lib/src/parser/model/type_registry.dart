@@ -42,8 +42,7 @@ class TypeRegistry {
 
   /// Check if a type is a custom type (not primitive)
   bool isCustomType(String typeName) =>
-      !_primitiveTypes.contains(typeName) &&
-      (isEnum(typeName) || isClass(typeName) || isTypedef(typeName));
+      !_primitiveTypes.contains(typeName) && (isEnum(typeName) || isClass(typeName) || isTypedef(typeName));
 
   /// Check if a type is a primitive
   bool isPrimitive(String typeName) => _primitiveTypes.contains(typeName);

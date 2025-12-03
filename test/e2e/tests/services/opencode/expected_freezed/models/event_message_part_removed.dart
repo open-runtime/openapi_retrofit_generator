@@ -14,10 +14,8 @@ abstract class EventMessagePartRemoved with _$EventMessagePartRemoved {
   const factory EventMessagePartRemoved({
     required String type,
     @JsonKey(name: 'EventMessagePartRemovedProperties')
-    required EventMessagePartRemovedProperties
-    eventMessagePartRemovedProperties,
+    required EventMessagePartRemovedProperties eventMessagePartRemovedProperties,
   }) = _EventMessagePartRemoved;
 
-  factory EventMessagePartRemoved.fromJson(Map<String, Object?> json) =>
-      _$EventMessagePartRemovedFromJson(json);
+  factory EventMessagePartRemoved.fromJson(Map<String, Object?> json) => _$EventMessagePartRemovedFromJson(json);
 }

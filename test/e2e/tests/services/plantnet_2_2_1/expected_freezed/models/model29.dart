@@ -13,6 +13,5 @@ part 'model29.g.dart';
 abstract class Model29 with _$Model29 {
   const factory Model29({Identify? identify}) = _Model29;
 
-  factory Model29.fromJson(Map<String, Object?> json) =>
-      _$Model29FromJson(json);
+  factory Model29.fromJson(Map<String, Object?> json) => _$Model29FromJson(json);
 }

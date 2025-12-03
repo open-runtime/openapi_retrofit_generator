@@ -16,6 +16,5 @@ abstract class TestModel with _$TestModel {
     @JsonKey(includeIfNull: false) String? optionalNullableField,
   }) = _TestModel;
 
-  factory TestModel.fromJson(Map<String, Object?> json) =>
-      _$TestModelFromJson(json);
+  factory TestModel.fromJson(Map<String, Object?> json) => _$TestModelFromJson(json);
 }

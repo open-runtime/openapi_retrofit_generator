@@ -21,9 +21,5 @@ enum PaymentRequestPaymentTypePaymentType2 {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<PaymentRequestPaymentTypePaymentType2> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != PaymentRequestPaymentTypePaymentType2.unknown,
-          )
-          .toList();
+      values.where((value) => value != PaymentRequestPaymentTypePaymentType2.unknown).toList();
 }

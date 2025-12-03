@@ -54,6 +54,5 @@ class Model42 with Model42Mappable {
   @MappableField(key: 'iucn_red_list_category')
   final String? iucnRedListCategory;
 
-  static Model42 fromJson(Map<String, dynamic> json) =>
-      Model42Mapper.fromJson(json);
+  static Model42 fromJson(Map<String, dynamic> json) => Model42Mapper.fromJson(json);
 }

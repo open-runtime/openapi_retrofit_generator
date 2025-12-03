@@ -14,6 +14,5 @@ class ConfigPermission with ConfigPermissionMappable {
   final dynamic? bash;
   final String? webfetch;
 
-  static ConfigPermission fromJson(Map<String, dynamic> json) =>
-      ConfigPermissionMapper.fromJson(json);
+  static ConfigPermission fromJson(Map<String, dynamic> json) => ConfigPermissionMapper.fromJson(json);
 }

@@ -29,11 +29,6 @@ enum ApiV1CategoryListResponseIncludedDataLevelLevel {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<ApiV1CategoryListResponseIncludedDataLevelLevel>
-  get $valuesDefined => values
-      .where(
-        (value) =>
-            value != ApiV1CategoryListResponseIncludedDataLevelLevel.unknown,
-      )
-      .toList();
+  static List<ApiV1CategoryListResponseIncludedDataLevelLevel> get $valuesDefined =>
+      values.where((value) => value != ApiV1CategoryListResponseIncludedDataLevelLevel.unknown).toList();
 }

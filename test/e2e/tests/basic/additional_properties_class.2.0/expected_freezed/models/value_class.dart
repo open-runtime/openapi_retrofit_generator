@@ -14,6 +14,5 @@ abstract class ValueClass with _$ValueClass {
     required String testProp,
   }) = _ValueClass;
 
-  factory ValueClass.fromJson(Map<String, Object?> json) =>
-      _$ValueClassFromJson(json);
+  factory ValueClass.fromJson(Map<String, Object?> json) => _$ValueClassFromJson(json);
 }

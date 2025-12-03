@@ -17,6 +17,5 @@ abstract class DeterminationVote with _$DeterminationVote {
     required num score,
   }) = _DeterminationVote;
 
-  factory DeterminationVote.fromJson(Map<String, Object?> json) =>
-      _$DeterminationVoteFromJson(json);
+  factory DeterminationVote.fromJson(Map<String, Object?> json) => _$DeterminationVoteFromJson(json);
 }

@@ -11,10 +11,7 @@ part 'nullable_user_dto.g.dart';
 
 @Freezed()
 abstract class NullableUserDto with _$NullableUserDto {
-  const factory NullableUserDto({
-    @JsonKey(includeIfNull: true) required UserDto? data,
-  }) = _NullableUserDto;
+  const factory NullableUserDto({@JsonKey(includeIfNull: true) required UserDto? data}) = _NullableUserDto;
 
-  factory NullableUserDto.fromJson(Map<String, Object?> json) =>
-      _$NullableUserDtoFromJson(json);
+  factory NullableUserDto.fromJson(Map<String, Object?> json) => _$NullableUserDtoFromJson(json);
 }

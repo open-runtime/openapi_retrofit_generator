@@ -12,6 +12,5 @@ class AboveQuota with AboveQuotaMappable {
 
   final num? identify;
 
-  static AboveQuota fromJson(Map<String, dynamic> json) =>
-      AboveQuotaMapper.fromJson(json);
+  static AboveQuota fromJson(Map<String, dynamic> json) => AboveQuotaMapper.fromJson(json);
 }

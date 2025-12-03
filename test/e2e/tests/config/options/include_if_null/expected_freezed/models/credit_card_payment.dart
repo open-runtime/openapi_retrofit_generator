@@ -23,6 +23,5 @@ abstract class CreditCardPayment with _$CreditCardPayment {
     @JsonKey(includeIfNull: false) String? cardholderName,
   }) = _CreditCardPayment;
 
-  factory CreditCardPayment.fromJson(Map<String, Object?> json) =>
-      _$CreditCardPaymentFromJson(json);
+  factory CreditCardPayment.fromJson(Map<String, Object?> json) => _$CreditCardPaymentFromJson(json);
 }

@@ -14,21 +14,13 @@ Models _$ModelsFromJson(Map<String, dynamic> json) => Models(
   reasoning: json['reasoning'] as bool?,
   temperature: json['temperature'] as bool?,
   toolCall: json['tool_call'] as bool?,
-  modelsCost: json['ModelsCost'] == null
-      ? null
-      : ModelsCost.fromJson(json['ModelsCost'] as Map<String, dynamic>),
-  modelsLimit: json['ModelsLimit'] == null
-      ? null
-      : ModelsLimit.fromJson(json['ModelsLimit'] as Map<String, dynamic>),
+  modelsCost: json['ModelsCost'] == null ? null : ModelsCost.fromJson(json['ModelsCost'] as Map<String, dynamic>),
+  modelsLimit: json['ModelsLimit'] == null ? null : ModelsLimit.fromJson(json['ModelsLimit'] as Map<String, dynamic>),
   modelsModalities: json['ModelsModalities'] == null
       ? null
-      : ModelsModalities.fromJson(
-          json['ModelsModalities'] as Map<String, dynamic>,
-        ),
+      : ModelsModalities.fromJson(json['ModelsModalities'] as Map<String, dynamic>),
   experimental: json['experimental'] as bool?,
-  status: json['status'] == null
-      ? null
-      : ModelsStatusStatus.fromJson(json['status'] as String),
+  status: json['status'] == null ? null : ModelsStatusStatus.fromJson(json['status'] as String),
   options: json['options'] as Map<String, dynamic>?,
   modelsProvider: json['ModelsProvider'] == null
       ? null

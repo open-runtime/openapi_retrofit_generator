@@ -10,8 +10,7 @@ part 'model24.g.dart';
 class Model24 {
   const Model24({required this.species, this.score});
 
-  factory Model24.fromJson(Map<String, Object?> json) =>
-      _$Model24FromJson(json);
+  factory Model24.fromJson(Map<String, Object?> json) => _$Model24FromJson(json);
 
   final String species;
   final num? score;

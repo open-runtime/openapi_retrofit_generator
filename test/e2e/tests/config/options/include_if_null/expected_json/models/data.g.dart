@@ -9,9 +9,7 @@ part of 'data.dart';
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
   id: json['id'] as String,
   value: json['value'] as String,
-  dataNested: json['DataNested'] == null
-      ? null
-      : DataNested.fromJson(json['DataNested'] as Map<String, dynamic>),
+  dataNested: json['DataNested'] == null ? null : DataNested.fromJson(json['DataNested'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{

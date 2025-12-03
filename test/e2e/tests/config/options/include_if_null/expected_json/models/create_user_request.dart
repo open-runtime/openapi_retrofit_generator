@@ -20,8 +20,7 @@ class CreateUserRequest {
     this.role,
   });
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 
   final String email;
   final String username;

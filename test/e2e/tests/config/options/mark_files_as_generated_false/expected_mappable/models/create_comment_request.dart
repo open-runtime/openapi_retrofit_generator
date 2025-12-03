@@ -8,18 +8,12 @@ part 'create_comment_request.mapper.dart';
 
 @MappableClass()
 class CreateCommentRequest with CreateCommentRequestMappable {
-  const CreateCommentRequest({
-    required this.content,
-    required this.authorId,
-    this.postId,
-    this.parentId,
-  });
+  const CreateCommentRequest({required this.content, required this.authorId, this.postId, this.parentId});
 
   final String content;
   final String authorId;
   final String? postId;
   final String? parentId;
 
-  static CreateCommentRequest fromJson(Map<String, dynamic> json) =>
-      CreateCommentRequestMapper.fromJson(json);
+  static CreateCommentRequest fromJson(Map<String, dynamic> json) => CreateCommentRequestMapper.fromJson(json);
 }

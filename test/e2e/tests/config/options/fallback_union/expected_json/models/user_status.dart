@@ -20,8 +20,7 @@ enum UserStatus {
 
   const UserStatus(this.json);
 
-  factory UserStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -31,6 +30,5 @@ enum UserStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

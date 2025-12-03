@@ -14,6 +14,5 @@ class Model2 with Model2Mappable {
 
   final Quota? quota;
 
-  static Model2 fromJson(Map<String, dynamic> json) =>
-      Model2Mapper.fromJson(json);
+  static Model2 fromJson(Map<String, dynamic> json) => Model2Mapper.fromJson(json);
 }

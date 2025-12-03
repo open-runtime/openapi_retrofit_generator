@@ -39,6 +39,5 @@ class Model61 with Model61Mappable {
   final Model56? genus;
   final Model60? family;
 
-  static Model61 fromJson(Map<String, dynamic> json) =>
-      Model61Mapper.fromJson(json);
+  static Model61 fromJson(Map<String, dynamic> json) => Model61Mapper.fromJson(json);
 }

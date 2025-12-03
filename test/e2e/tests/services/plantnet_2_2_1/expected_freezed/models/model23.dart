@@ -24,6 +24,5 @@ abstract class Model23 with _$Model23 {
     String? gbifId,
   }) = _Model23;
 
-  factory Model23.fromJson(Map<String, Object?> json) =>
-      _$Model23FromJson(json);
+  factory Model23.fromJson(Map<String, Object?> json) => _$Model23FromJson(json);
 }

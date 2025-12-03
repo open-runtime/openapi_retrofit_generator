@@ -16,6 +16,5 @@ abstract class EventTodoUpdatedProperties with _$EventTodoUpdatedProperties {
     required List<Todo> todos,
   }) = _EventTodoUpdatedProperties;
 
-  factory EventTodoUpdatedProperties.fromJson(Map<String, Object?> json) =>
-      _$EventTodoUpdatedPropertiesFromJson(json);
+  factory EventTodoUpdatedProperties.fromJson(Map<String, Object?> json) => _$EventTodoUpdatedPropertiesFromJson(json);
 }

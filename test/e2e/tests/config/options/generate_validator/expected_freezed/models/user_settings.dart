@@ -14,16 +14,13 @@ part 'user_settings.g.dart';
 @Freezed()
 abstract class UserSettings with _$UserSettings {
   const factory UserSettings({
-    @JsonKey(name: 'UserSettingsNotifications')
-    UserSettingsNotifications? userSettingsNotifications,
-    @JsonKey(name: 'UserSettingsPrivacy')
-    UserSettingsPrivacy? userSettingsPrivacy,
+    @JsonKey(name: 'UserSettingsNotifications') UserSettingsNotifications? userSettingsNotifications,
+    @JsonKey(name: 'UserSettingsPrivacy') UserSettingsPrivacy? userSettingsPrivacy,
     @Default(UserSettingsThemeTheme.auto) UserSettingsThemeTheme theme,
     @Default('en') String language,
   }) = _UserSettings;
 
-  factory UserSettings.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsFromJson(json);
+  factory UserSettings.fromJson(Map<String, Object?> json) => _$UserSettingsFromJson(json);
   static const String languagePattern = r"^[a-z]{2}(-[A-Z]{2})?$";
 }
 

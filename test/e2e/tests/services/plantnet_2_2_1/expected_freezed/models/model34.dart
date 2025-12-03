@@ -20,6 +20,5 @@ abstract class Model34 with _$Model34 {
     @JsonKey(name: 'observation_id') String? observationId,
   }) = _Model34;
 
-  factory Model34.fromJson(Map<String, Object?> json) =>
-      _$Model34FromJson(json);
+  factory Model34.fromJson(Map<String, Object?> json) => _$Model34FromJson(json);
 }

@@ -10,8 +10,7 @@ part 'file_metadata.g.dart';
 class FileMetadata {
   const FileMetadata({this.filename, this.mimeType, this.size, this.tags});
 
-  factory FileMetadata.fromJson(Map<String, Object?> json) =>
-      _$FileMetadataFromJson(json);
+  factory FileMetadata.fromJson(Map<String, Object?> json) => _$FileMetadataFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? filename;

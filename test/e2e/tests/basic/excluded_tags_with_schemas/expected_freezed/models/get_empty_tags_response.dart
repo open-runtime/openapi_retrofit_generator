@@ -9,10 +9,7 @@ part 'get_empty_tags_response.g.dart';
 
 @Freezed()
 abstract class GetEmptyTagsResponse with _$GetEmptyTagsResponse {
-  const factory GetEmptyTagsResponse({
-    @JsonKey(includeIfNull: false) String? value,
-  }) = _GetEmptyTagsResponse;
+  const factory GetEmptyTagsResponse({@JsonKey(includeIfNull: false) String? value}) = _GetEmptyTagsResponse;
 
-  factory GetEmptyTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$GetEmptyTagsResponseFromJson(json);
+  factory GetEmptyTagsResponse.fromJson(Map<String, Object?> json) => _$GetEmptyTagsResponseFromJson(json);
 }

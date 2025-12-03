@@ -7,10 +7,7 @@ part of 'data_nested.dart';
 // **************************************************************************
 
 DataNested _$DataNestedFromJson(Map<String, dynamic> json) => DataNested(
-  data: (json['data'] as List<dynamic>?)
-      ?.map((e) => DataNestedData.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  data: (json['data'] as List<dynamic>?)?.map((e) => DataNestedData.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
-Map<String, dynamic> _$DataNestedToJson(DataNested instance) =>
-    <String, dynamic>{'data': ?instance.data};
+Map<String, dynamic> _$DataNestedToJson(DataNested instance) => <String, dynamic>{'data': ?instance.data};

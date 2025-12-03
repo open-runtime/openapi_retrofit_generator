@@ -49,8 +49,7 @@ enum EnumClassDynamic {
 
   const EnumClassDynamic(this.json);
 
-  factory EnumClassDynamic.fromJson(dynamic json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory EnumClassDynamic.fromJson(dynamic json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final dynamic json;
 
@@ -60,6 +59,5 @@ enum EnumClassDynamic {
   String toString() => json?.toString() ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<EnumClassDynamic> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<EnumClassDynamic> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

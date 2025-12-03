@@ -10,13 +10,7 @@ import 'human.dart';
 
 part 'cat_dog_human_union.mapper.dart';
 
-@MappableClass(
-  includeSubClasses: [
-    CatDogHumanUnionCat,
-    CatDogHumanUnionDog,
-    CatDogHumanUnionHuman,
-  ],
-)
+@MappableClass(includeSubClasses: [CatDogHumanUnionCat, CatDogHumanUnionDog, CatDogHumanUnionHuman])
 sealed class CatDogHumanUnion with CatDogHumanUnionMappable {
   const CatDogHumanUnion();
 
@@ -37,31 +31,26 @@ extension CatDogHumanUnionDeserializer on CatDogHumanUnion {
       return CatDogHumanUnionHumanMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for CatDogHumanUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for CatDogHumanUnion from: $json');
   }
 }
 
 @MappableClass()
-class CatDogHumanUnionCat extends CatDogHumanUnion
-    with CatDogHumanUnionCatMappable {
+class CatDogHumanUnionCat extends CatDogHumanUnion with CatDogHumanUnionCatMappable {
   final int mewCount;
 
   const CatDogHumanUnionCat({required this.mewCount});
 }
 
 @MappableClass()
-class CatDogHumanUnionDog extends CatDogHumanUnion
-    with CatDogHumanUnionDogMappable {
+class CatDogHumanUnionDog extends CatDogHumanUnion with CatDogHumanUnionDogMappable {
   final String barkSound;
 
   const CatDogHumanUnionDog({required this.barkSound});
 }
 
 @MappableClass()
-class CatDogHumanUnionHuman extends CatDogHumanUnion
-    with CatDogHumanUnionHumanMappable {
+class CatDogHumanUnionHuman extends CatDogHumanUnion with CatDogHumanUnionHumanMappable {
   final String job;
 
   const CatDogHumanUnionHuman({required this.job});

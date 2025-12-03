@@ -10,8 +10,7 @@ part 'tool_state_running_time.g.dart';
 class ToolStateRunningTime {
   const ToolStateRunningTime({required this.start});
 
-  factory ToolStateRunningTime.fromJson(Map<String, Object?> json) =>
-      _$ToolStateRunningTimeFromJson(json);
+  factory ToolStateRunningTime.fromJson(Map<String, Object?> json) => _$ToolStateRunningTimeFromJson(json);
 
   final num start;
 

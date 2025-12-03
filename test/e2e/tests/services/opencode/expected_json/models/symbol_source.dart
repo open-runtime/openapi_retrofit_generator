@@ -20,8 +20,7 @@ class SymbolSource {
     required this.kind,
   });
 
-  factory SymbolSource.fromJson(Map<String, Object?> json) =>
-      _$SymbolSourceFromJson(json);
+  factory SymbolSource.fromJson(Map<String, Object?> json) => _$SymbolSourceFromJson(json);
 
   final FilePartSourceText text;
   final String type;

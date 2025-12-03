@@ -7,31 +7,22 @@ part of 'merged_outputs.dart';
 // **************************************************************************
 
 RegisterUserDto _$RegisterUserDtoFromJson(Map<String, dynamic> json) =>
-    RegisterUserDto(
-      email: json['email'] as String,
-      name: json['name'] as String,
-      password: json['password'] as String,
-    );
+    RegisterUserDto(email: json['email'] as String, name: json['name'] as String, password: json['password'] as String);
 
-Map<String, dynamic> _$RegisterUserDtoToJson(RegisterUserDto instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'name': instance.name,
-      'password': instance.password,
-    };
+Map<String, dynamic> _$RegisterUserDtoToJson(RegisterUserDto instance) => <String, dynamic>{
+  'email': instance.email,
+  'name': instance.name,
+  'password': instance.password,
+};
 
-UserInfoDto _$UserInfoDtoFromJson(Map<String, dynamic> json) => UserInfoDto(
-  email: json['email'] as String,
-  name: json['name'] as String,
-  phone: json['phone'] as String,
-);
+UserInfoDto _$UserInfoDtoFromJson(Map<String, dynamic> json) =>
+    UserInfoDto(email: json['email'] as String, name: json['name'] as String, phone: json['phone'] as String);
 
-Map<String, dynamic> _$UserInfoDtoToJson(UserInfoDto instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'name': instance.name,
-      'phone': instance.phone,
-    };
+Map<String, dynamic> _$UserInfoDtoToJson(UserInfoDto instance) => <String, dynamic>{
+  'email': instance.email,
+  'name': instance.name,
+  'phone': instance.phone,
+};
 
 // dart format off
 

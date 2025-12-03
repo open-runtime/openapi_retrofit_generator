@@ -17,11 +17,9 @@ abstract class ReasoningPart with _$ReasoningPart {
     @JsonKey(name: 'messageID') required String messageId,
     required String type,
     required String text,
-    @JsonKey(name: 'ReasoningPartTime')
-    required ReasoningPartTime reasoningPartTime,
+    @JsonKey(name: 'ReasoningPartTime') required ReasoningPartTime reasoningPartTime,
     Map<String, dynamic>? metadata,
   }) = _ReasoningPart;
 
-  factory ReasoningPart.fromJson(Map<String, Object?> json) =>
-      _$ReasoningPartFromJson(json);
+  factory ReasoningPart.fromJson(Map<String, Object?> json) => _$ReasoningPartFromJson(json);
 }

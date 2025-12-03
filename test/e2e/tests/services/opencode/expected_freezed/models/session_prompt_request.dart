@@ -16,8 +16,7 @@ abstract class SessionPromptRequest with _$SessionPromptRequest {
   const factory SessionPromptRequest({
     required List<SessionPromptRequestPartsUnion> parts,
     @JsonKey(name: 'messageID') String? messageId,
-    @JsonKey(name: 'SessionPromptRequestModel')
-    SessionPromptRequestModel? sessionPromptRequestModel,
+    @JsonKey(name: 'SessionPromptRequestModel') SessionPromptRequestModel? sessionPromptRequestModel,
     String? agent,
     String? system,
     Map<String, bool>? tools,
@@ -25,6 +24,5 @@ abstract class SessionPromptRequest with _$SessionPromptRequest {
     SessionPromptRequestAcpConnection? sessionPromptRequestAcpConnection,
   }) = _SessionPromptRequest;
 
-  factory SessionPromptRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionPromptRequestFromJson(json);
+  factory SessionPromptRequest.fromJson(Map<String, Object?> json) => _$SessionPromptRequestFromJson(json);
 }

@@ -37,10 +37,7 @@ abstract class PartnersClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/observations/{id}')
-  Future<PartnerObservation> getV2ObservationsId({
-    @Path('id') required String id,
-    @Query('api-key') String? apiKey,
-  });
+  Future<PartnerObservation> getV2ObservationsId({@Path('id') required String id, @Query('api-key') String? apiKey});
 
   /// Get latest updated observations.
   ///
@@ -76,9 +73,7 @@ abstract class PartnersClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/observations/sync/partnerids')
-  Future<PartnerObservationsIDs> getV2ObservationsSyncPartnerids({
-    @Query('api-key') String? apiKey,
-  });
+  Future<PartnerObservationsIDs> getV2ObservationsSyncPartnerids({@Query('api-key') String? apiKey});
 
   /// Geolocation based species prediction.
   ///

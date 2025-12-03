@@ -14,10 +14,8 @@ abstract class EventMessagePartUpdated with _$EventMessagePartUpdated {
   const factory EventMessagePartUpdated({
     required String type,
     @JsonKey(name: 'EventMessagePartUpdatedProperties')
-    required EventMessagePartUpdatedProperties
-    eventMessagePartUpdatedProperties,
+    required EventMessagePartUpdatedProperties eventMessagePartUpdatedProperties,
   }) = _EventMessagePartUpdated;
 
-  factory EventMessagePartUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventMessagePartUpdatedFromJson(json);
+  factory EventMessagePartUpdated.fromJson(Map<String, Object?> json) => _$EventMessagePartUpdatedFromJson(json);
 }

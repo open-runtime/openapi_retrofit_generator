@@ -14,15 +14,12 @@ class FilePartSourceUnion {
 
   const FilePartSourceUnion(this._json);
 
-  factory FilePartSourceUnion.fromJson(Map<String, dynamic> json) =>
-      FilePartSourceUnion(json);
+  factory FilePartSourceUnion.fromJson(Map<String, dynamic> json) => FilePartSourceUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  FilePartSourceUnionFileSource toFileSource() =>
-      FilePartSourceUnionFileSource.fromJson(_json);
-  FilePartSourceUnionSymbolSource toSymbolSource() =>
-      FilePartSourceUnionSymbolSource.fromJson(_json);
+  FilePartSourceUnionFileSource toFileSource() => FilePartSourceUnionFileSource.fromJson(_json);
+  FilePartSourceUnionSymbolSource toSymbolSource() => FilePartSourceUnionSymbolSource.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -31,11 +28,7 @@ class FilePartSourceUnionFileSource {
   final String type;
   final String path;
 
-  const FilePartSourceUnionFileSource({
-    required this.text,
-    required this.type,
-    required this.path,
-  });
+  const FilePartSourceUnionFileSource({required this.text, required this.type, required this.path});
 
   factory FilePartSourceUnionFileSource.fromJson(Map<String, Object?> json) =>
       _$FilePartSourceUnionFileSourceFromJson(json);
@@ -64,6 +57,5 @@ class FilePartSourceUnionSymbolSource {
   factory FilePartSourceUnionSymbolSource.fromJson(Map<String, Object?> json) =>
       _$FilePartSourceUnionSymbolSourceFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$FilePartSourceUnionSymbolSourceToJson(this);
+  Map<String, Object?> toJson() => _$FilePartSourceUnionSymbolSourceToJson(this);
 }

@@ -20,8 +20,7 @@ class StepFinishPart {
     this.snapshot,
   });
 
-  factory StepFinishPart.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartFromJson(json);
+  factory StepFinishPart.fromJson(Map<String, Object?> json) => _$StepFinishPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

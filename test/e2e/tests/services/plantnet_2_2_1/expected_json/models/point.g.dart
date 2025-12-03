@@ -6,10 +6,6 @@ part of 'point.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Point _$PointFromJson(Map<String, dynamic> json) =>
-    Point(lat: json['lat'] as num, lon: json['lon'] as num);
+Point _$PointFromJson(Map<String, dynamic> json) => Point(lat: json['lat'] as num, lon: json['lon'] as num);
 
-Map<String, dynamic> _$PointToJson(Point instance) => <String, dynamic>{
-  'lat': instance.lat,
-  'lon': instance.lon,
-};
+Map<String, dynamic> _$PointToJson(Point instance) => <String, dynamic>{'lat': instance.lat, 'lon': instance.lon};

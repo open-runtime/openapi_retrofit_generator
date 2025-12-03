@@ -21,8 +21,7 @@ class DarwinCoreOccurrences {
     this.startTime,
   });
 
-  factory DarwinCoreOccurrences.fromJson(Map<String, Object?> json) =>
-      _$DarwinCoreOccurrencesFromJson(json);
+  factory DarwinCoreOccurrences.fromJson(Map<String, Object?> json) => _$DarwinCoreOccurrencesFromJson(json);
 
   final Model38 results;
   final num offset;

@@ -6,8 +6,7 @@ part of 'payment_response_details_union.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentResponseDetailsUnionCreditCard
-_$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
+PaymentResponseDetailsUnionCreditCard _$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
     PaymentResponseDetailsUnionCreditCard(
       cardNumber: json['cardNumber'] as String,
       expiryMonth: (json['expiryMonth'] as num).toInt(),
@@ -18,20 +17,18 @@ _$PaymentResponseDetailsUnionCreditCardFromJson(Map<String, dynamic> json) =>
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(
-  PaymentResponseDetailsUnionCreditCard instance,
-) => <String, dynamic>{
-  'cardNumber': instance.cardNumber,
-  'expiryMonth': instance.expiryMonth,
-  'expiryYear': instance.expiryYear,
-  'cvv': instance.cvv,
-  'amount': instance.amount,
-  'cardholderName': ?instance.cardholderName,
-  'paymentType': instance.$type,
-};
+Map<String, dynamic> _$PaymentResponseDetailsUnionCreditCardToJson(PaymentResponseDetailsUnionCreditCard instance) =>
+    <String, dynamic>{
+      'cardNumber': instance.cardNumber,
+      'expiryMonth': instance.expiryMonth,
+      'expiryYear': instance.expiryYear,
+      'cvv': instance.cvv,
+      'amount': instance.amount,
+      'cardholderName': ?instance.cardholderName,
+      'paymentType': instance.$type,
+    };
 
-PaymentResponseDetailsUnionBankTransfer
-_$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
+PaymentResponseDetailsUnionBankTransfer _$PaymentResponseDetailsUnionBankTransferFromJson(Map<String, dynamic> json) =>
     PaymentResponseDetailsUnionBankTransfer(
       accountNumber: json['accountNumber'] as String,
       routingNumber: json['routingNumber'] as String,
@@ -52,24 +49,20 @@ Map<String, dynamic> _$PaymentResponseDetailsUnionBankTransferToJson(
   'paymentType': instance.$type,
 };
 
-PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(
-  Map<String, dynamic> json,
-) => PaymentResponseDetailsUnionCrypto(
-  walletAddress: json['walletAddress'] as String,
-  cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(
-    json['cryptocurrency'] as String,
-  ),
-  amount: (json['amount'] as num).toDouble(),
-  transactionHash: json['transactionHash'] as String?,
-  $type: json['paymentType'] as String?,
-);
+PaymentResponseDetailsUnionCrypto _$PaymentResponseDetailsUnionCryptoFromJson(Map<String, dynamic> json) =>
+    PaymentResponseDetailsUnionCrypto(
+      walletAddress: json['walletAddress'] as String,
+      cryptocurrency: CryptoPaymentCryptocurrencyCryptocurrency.fromJson(json['cryptocurrency'] as String),
+      amount: (json['amount'] as num).toDouble(),
+      transactionHash: json['transactionHash'] as String?,
+      $type: json['paymentType'] as String?,
+    );
 
-Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(
-  PaymentResponseDetailsUnionCrypto instance,
-) => <String, dynamic>{
-  'walletAddress': instance.walletAddress,
-  'cryptocurrency': instance.cryptocurrency,
-  'amount': instance.amount,
-  'transactionHash': ?instance.transactionHash,
-  'paymentType': instance.$type,
-};
+Map<String, dynamic> _$PaymentResponseDetailsUnionCryptoToJson(PaymentResponseDetailsUnionCrypto instance) =>
+    <String, dynamic>{
+      'walletAddress': instance.walletAddress,
+      'cryptocurrency': instance.cryptocurrency,
+      'amount': instance.amount,
+      'transactionHash': ?instance.transactionHash,
+      'paymentType': instance.$type,
+    };

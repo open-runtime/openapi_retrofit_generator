@@ -9,8 +9,7 @@ part 'event_ide_installed_properties.g.dart';
 
 @Freezed()
 abstract class EventIdeInstalledProperties with _$EventIdeInstalledProperties {
-  const factory EventIdeInstalledProperties({required String ide}) =
-      _EventIdeInstalledProperties;
+  const factory EventIdeInstalledProperties({required String ide}) = _EventIdeInstalledProperties;
 
   factory EventIdeInstalledProperties.fromJson(Map<String, Object?> json) =>
       _$EventIdeInstalledPropertiesFromJson(json);

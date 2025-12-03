@@ -13,6 +13,5 @@ class Model25 with Model25Mappable {
   final String? id;
   final String? title;
 
-  static Model25 fromJson(Map<String, dynamic> json) =>
-      Model25Mapper.fromJson(json);
+  static Model25 fromJson(Map<String, dynamic> json) => Model25Mapper.fromJson(json);
 }

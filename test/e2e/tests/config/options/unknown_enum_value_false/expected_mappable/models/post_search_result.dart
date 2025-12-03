@@ -11,18 +11,12 @@ part 'post_search_result.mapper.dart';
 
 @MappableClass()
 class PostSearchResult with PostSearchResultMappable {
-  const PostSearchResult({
-    required this.type,
-    required this.post,
-    this.score,
-    this.highlights,
-  });
+  const PostSearchResult({required this.type, required this.post, this.score, this.highlights});
 
   final PostSearchResultTypeType type;
   final PostModel post;
   final double? score;
   final List<String>? highlights;
 
-  static PostSearchResult fromJson(Map<String, dynamic> json) =>
-      PostSearchResultMapper.fromJson(json);
+  static PostSearchResult fromJson(Map<String, dynamic> json) => PostSearchResultMapper.fromJson(json);
 }

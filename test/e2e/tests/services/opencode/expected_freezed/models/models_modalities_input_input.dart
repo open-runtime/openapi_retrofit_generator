@@ -33,6 +33,5 @@ enum ModelsModalitiesInputInput {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<ModelsModalitiesInputInput> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<ModelsModalitiesInputInput> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

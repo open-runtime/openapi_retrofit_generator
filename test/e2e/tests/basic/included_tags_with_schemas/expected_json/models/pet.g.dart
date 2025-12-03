@@ -12,9 +12,7 @@ Pet _$PetFromJson(Map<String, dynamic> json) => Pet(
   availability: json['availability'] == null
       ? null
       : PetAvailabilityAvailability.fromJson(json['availability'] as String),
-  category: json['category'] == null
-      ? null
-      : Category.fromJson(json['category'] as Map<String, dynamic>),
+  category: json['category'] == null ? null : Category.fromJson(json['category'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$PetToJson(Pet instance) => <String, dynamic>{

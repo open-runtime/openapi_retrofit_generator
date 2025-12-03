@@ -23,8 +23,7 @@ abstract class CreditCardPayment with _$CreditCardPayment {
     String? cardholderName,
   }) = _CreditCardPayment;
 
-  factory CreditCardPayment.fromJson(Map<String, Object?> json) =>
-      _$CreditCardPaymentFromJson(json);
+  factory CreditCardPayment.fromJson(Map<String, Object?> json) => _$CreditCardPaymentFromJson(json);
   static const String cardNumberPattern = r"^\d{16}$";
   static const int expiryMonthMin = 1;
   static const int expiryMonthMax = 12;

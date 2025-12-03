@@ -8,15 +8,9 @@ part 'mcp_local_config.g.dart';
 
 @JsonSerializable()
 class McpLocalConfig {
-  const McpLocalConfig({
-    required this.type,
-    required this.command,
-    this.environment,
-    this.enabled,
-  });
+  const McpLocalConfig({required this.type, required this.command, this.environment, this.enabled});
 
-  factory McpLocalConfig.fromJson(Map<String, Object?> json) =>
-      _$McpLocalConfigFromJson(json);
+  factory McpLocalConfig.fromJson(Map<String, Object?> json) => _$McpLocalConfigFromJson(json);
 
   /// Type of MCP server connection
   final String type;

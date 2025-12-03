@@ -47,10 +47,7 @@ void writeSchemaToFile(String schemaContent, String filePath) {
 }
 
 /// Creates DTO file
-Future<void> generateFile(
-  String outputDirectory,
-  GeneratedFile generatedFile,
-) async {
+Future<void> generateFile(String outputDirectory, GeneratedFile generatedFile) async {
   final file = File(p.join(outputDirectory, generatedFile.name));
   await file.create(recursive: true);
   await file.writeAsString(generatedFile.content);
@@ -81,8 +78,7 @@ void validateBuildYamlForDartMappable() {
     );
   }
 
-  final dartMappableBuilder =
-      globalOptions['dart_mappable_builder'] as YamlMap?;
+  final dartMappableBuilder = globalOptions['dart_mappable_builder'] as YamlMap?;
   if (dartMappableBuilder == null) {
     throw const ConfigException(
       'build.yaml must contain "global_options.dart_mappable_builder" section when using dart_mappable serializer.',
@@ -99,9 +95,7 @@ void validateBuildYamlForDartMappable() {
 
   final options = dartMappableBuilder['options'] as YamlMap?;
   if (options == null) {
-    throw const ConfigException(
-      'build.yaml must contain "global_options.dart_mappable_builder.options" section.',
-    );
+    throw const ConfigException('build.yaml must contain "global_options.dart_mappable_builder.options" section.');
   }
 
   final renameMethods = options['renameMethods'] as YamlMap?;
@@ -125,16 +119,12 @@ void validateBuildYamlForDartMappable() {
 
   final fromJsonValue = renameMethods['fromJson']?.toString();
   if (fromJsonValue == null || fromJsonValue == 'fromJson') {
-    errors.add(
-      'fromJson must be renamed to a different name (cannot be "fromJson")',
-    );
+    errors.add('fromJson must be renamed to a different name (cannot be "fromJson")');
   }
 
   final toJsonValue = renameMethods['toJson']?.toString();
   if (toJsonValue == null || toJsonValue == 'toJson') {
-    errors.add(
-      'toJson must be renamed to a different name (cannot be "toJson")',
-    );
+    errors.add('toJson must be renamed to a different name (cannot be "toJson")');
   }
 
   if (errors.isNotEmpty) {

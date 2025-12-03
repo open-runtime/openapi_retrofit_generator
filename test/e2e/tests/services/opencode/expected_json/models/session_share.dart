@@ -10,8 +10,7 @@ part 'session_share.g.dart';
 class SessionShare {
   const SessionShare({required this.url});
 
-  factory SessionShare.fromJson(Map<String, Object?> json) =>
-      _$SessionShareFromJson(json);
+  factory SessionShare.fromJson(Map<String, Object?> json) => _$SessionShareFromJson(json);
 
   final String url;
 

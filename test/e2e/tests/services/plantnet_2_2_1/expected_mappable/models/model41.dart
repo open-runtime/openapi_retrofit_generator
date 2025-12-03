@@ -15,6 +15,5 @@ class Model41 with Model41Mappable {
   final Plots? plots;
   final num? total;
 
-  static Model41 fromJson(Map<String, dynamic> json) =>
-      Model41Mapper.fromJson(json);
+  static Model41 fromJson(Map<String, dynamic> json) => Model41Mapper.fromJson(json);
 }

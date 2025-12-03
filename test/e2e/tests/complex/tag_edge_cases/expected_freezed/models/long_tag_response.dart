@@ -14,6 +14,5 @@ abstract class LongTagResponse with _$LongTagResponse {
     @JsonKey(includeIfNull: false) DateTime? timestamp,
   }) = _LongTagResponse;
 
-  factory LongTagResponse.fromJson(Map<String, Object?> json) =>
-      _$LongTagResponseFromJson(json);
+  factory LongTagResponse.fromJson(Map<String, Object?> json) => _$LongTagResponseFromJson(json);
 }

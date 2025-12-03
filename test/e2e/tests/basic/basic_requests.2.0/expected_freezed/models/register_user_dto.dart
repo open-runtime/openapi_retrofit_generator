@@ -9,12 +9,8 @@ part 'register_user_dto.g.dart';
 
 @Freezed()
 abstract class RegisterUserDto with _$RegisterUserDto {
-  const factory RegisterUserDto({
-    required String email,
-    required String name,
-    required String password,
-  }) = _RegisterUserDto;
+  const factory RegisterUserDto({required String email, required String name, required String password}) =
+      _RegisterUserDto;
 
-  factory RegisterUserDto.fromJson(Map<String, Object?> json) =>
-      _$RegisterUserDtoFromJson(json);
+  factory RegisterUserDto.fromJson(Map<String, Object?> json) => _$RegisterUserDtoFromJson(json);
 }

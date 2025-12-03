@@ -34,9 +34,7 @@ abstract class PetClient {
   ///
   /// [status] - Status values that need to be considered for filter.
   @GET('/pet/findByStatus')
-  Future<List<Pet>> findPetsByStatus({
-    @Query('status') required List<Status> status,
-  });
+  Future<List<Pet>> findPetsByStatus({@Query('status') required List<Status> status});
 
   /// Finds Pets by tags.
   ///
@@ -74,8 +72,5 @@ abstract class PetClient {
   ///
   /// [petId] - Pet id to delete.
   @DELETE('/pet/{petId}')
-  Future<void> deletePet({
-    @Path('petId') required int petId,
-    @Header('api_key') String? apiKey,
-  });
+  Future<void> deletePet({@Path('petId') required int petId, @Header('api_key') String? apiKey});
 }

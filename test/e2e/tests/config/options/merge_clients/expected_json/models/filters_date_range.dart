@@ -10,8 +10,7 @@ part 'filters_date_range.g.dart';
 class FiltersDateRange {
   const FiltersDateRange({this.from, this.to});
 
-  factory FiltersDateRange.fromJson(Map<String, Object?> json) =>
-      _$FiltersDateRangeFromJson(json);
+  factory FiltersDateRange.fromJson(Map<String, Object?> json) => _$FiltersDateRangeFromJson(json);
 
   final DateTime? from;
   final DateTime? to;

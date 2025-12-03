@@ -10,8 +10,7 @@ part 'config_permission.g.dart';
 class ConfigPermission {
   const ConfigPermission({this.edit, this.bash, this.webfetch});
 
-  factory ConfigPermission.fromJson(Map<String, Object?> json) =>
-      _$ConfigPermissionFromJson(json);
+  factory ConfigPermission.fromJson(Map<String, Object?> json) => _$ConfigPermissionFromJson(json);
 
   final String? edit;
   final dynamic bash;

@@ -8,16 +8,9 @@ part 'command.g.dart';
 
 @JsonSerializable()
 class Command {
-  const Command({
-    required this.template,
-    this.description,
-    this.agent,
-    this.model,
-    this.subtask,
-  });
+  const Command({required this.template, this.description, this.agent, this.model, this.subtask});
 
-  factory Command.fromJson(Map<String, Object?> json) =>
-      _$CommandFromJson(json);
+  factory Command.fromJson(Map<String, Object?> json) => _$CommandFromJson(json);
 
   final String template;
   final String? description;

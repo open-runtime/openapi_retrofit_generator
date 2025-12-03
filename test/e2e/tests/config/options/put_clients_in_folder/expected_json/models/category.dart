@@ -20,8 +20,7 @@ enum Category {
 
   const Category(this.json);
 
-  factory Category.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Category.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -31,6 +30,5 @@ enum Category {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Category> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Category> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

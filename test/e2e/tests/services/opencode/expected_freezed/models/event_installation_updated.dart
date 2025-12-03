@@ -14,10 +14,8 @@ abstract class EventInstallationUpdated with _$EventInstallationUpdated {
   const factory EventInstallationUpdated({
     required String type,
     @JsonKey(name: 'EventInstallationUpdatedProperties')
-    required EventInstallationUpdatedProperties
-    eventInstallationUpdatedProperties,
+    required EventInstallationUpdatedProperties eventInstallationUpdatedProperties,
   }) = _EventInstallationUpdated;
 
-  factory EventInstallationUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventInstallationUpdatedFromJson(json);
+  factory EventInstallationUpdated.fromJson(Map<String, Object?> json) => _$EventInstallationUpdatedFromJson(json);
 }

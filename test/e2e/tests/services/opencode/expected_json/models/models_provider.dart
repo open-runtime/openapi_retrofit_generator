@@ -10,8 +10,7 @@ part 'models_provider.g.dart';
 class ModelsProvider {
   const ModelsProvider({required this.npm});
 
-  factory ModelsProvider.fromJson(Map<String, Object?> json) =>
-      _$ModelsProviderFromJson(json);
+  factory ModelsProvider.fromJson(Map<String, Object?> json) => _$ModelsProviderFromJson(json);
 
   final String npm;
 

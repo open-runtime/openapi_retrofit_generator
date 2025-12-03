@@ -15,6 +15,5 @@ class Model20 with Model20Mappable {
   final String? scientificName;
   final CommonNames? commonNames;
 
-  static Model20 fromJson(Map<String, dynamic> json) =>
-      Model20Mapper.fromJson(json);
+  static Model20 fromJson(Map<String, dynamic> json) => Model20Mapper.fromJson(json);
 }

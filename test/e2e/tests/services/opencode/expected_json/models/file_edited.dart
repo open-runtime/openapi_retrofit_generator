@@ -10,8 +10,7 @@ part 'file_edited.g.dart';
 class FileEdited {
   const FileEdited({required this.command, this.environment});
 
-  factory FileEdited.fromJson(Map<String, Object?> json) =>
-      _$FileEditedFromJson(json);
+  factory FileEdited.fromJson(Map<String, Object?> json) => _$FileEditedFromJson(json);
 
   final List<String> command;
   final Map<String, String>? environment;

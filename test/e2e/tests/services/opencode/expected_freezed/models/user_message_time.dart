@@ -11,6 +11,5 @@ part 'user_message_time.g.dart';
 abstract class UserMessageTime with _$UserMessageTime {
   const factory UserMessageTime({required num created}) = _UserMessageTime;
 
-  factory UserMessageTime.fromJson(Map<String, Object?> json) =>
-      _$UserMessageTimeFromJson(json);
+  factory UserMessageTime.fromJson(Map<String, Object?> json) => _$UserMessageTimeFromJson(json);
 }

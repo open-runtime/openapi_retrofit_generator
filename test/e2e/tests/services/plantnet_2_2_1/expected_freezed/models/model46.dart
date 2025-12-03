@@ -9,13 +9,7 @@ part 'model46.g.dart';
 
 @Freezed()
 abstract class Model46 with _$Model46 {
-  const factory Model46({
-    required String id,
-    required String o,
-    required String m,
-    required String s,
-  }) = _Model46;
+  const factory Model46({required String id, required String o, required String m, required String s}) = _Model46;
 
-  factory Model46.fromJson(Map<String, Object?> json) =>
-      _$Model46FromJson(json);
+  factory Model46.fromJson(Map<String, Object?> json) => _$Model46FromJson(json);
 }

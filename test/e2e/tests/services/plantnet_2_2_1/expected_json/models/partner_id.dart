@@ -10,8 +10,7 @@ part 'partner_id.g.dart';
 class PartnerId {
   const PartnerId({required this.id});
 
-  factory PartnerId.fromJson(Map<String, Object?> json) =>
-      _$PartnerIdFromJson(json);
+  factory PartnerId.fromJson(Map<String, Object?> json) => _$PartnerIdFromJson(json);
 
   final String id;
 

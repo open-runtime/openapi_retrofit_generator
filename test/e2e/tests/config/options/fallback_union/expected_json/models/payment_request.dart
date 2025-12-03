@@ -15,8 +15,7 @@ part 'payment_request.g.dart';
 sealed class PaymentRequest {
   const PaymentRequest();
 
-  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionDeserializer.tryDeserialize(json);
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) => PaymentRequestUnionDeserializer.tryDeserialize(json);
 
   Map<String, dynamic> toJson();
 }
@@ -35,12 +34,9 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[PaymentRequestCreditCard] =>
-        PaymentRequestCreditCard.fromJson(json),
-      _ when value == effective[PaymentRequestBankTransfer] =>
-        PaymentRequestBankTransfer.fromJson(json),
-      _ when value == effective[PaymentRequestCrypto] =>
-        PaymentRequestCrypto.fromJson(json),
+      _ when value == effective[PaymentRequestCreditCard] => PaymentRequestCreditCard.fromJson(json),
+      _ when value == effective[PaymentRequestBankTransfer] => PaymentRequestBankTransfer.fromJson(json),
+      _ when value == effective[PaymentRequestCrypto] => PaymentRequestCrypto.fromJson(json),
       _ => PaymentRequestUnknown.fromJson(json),
     };
   }
@@ -66,8 +62,7 @@ class PaymentRequestCreditCard extends PaymentRequest {
     required this.amount,
   });
 
-  factory PaymentRequestCreditCard.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestCreditCardFromJson(json);
+  factory PaymentRequestCreditCard.fromJson(Map<String, dynamic> json) => _$PaymentRequestCreditCardFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestCreditCardToJson(this);
@@ -91,8 +86,7 @@ class PaymentRequestBankTransfer extends PaymentRequest {
     required this.reference,
   });
 
-  factory PaymentRequestBankTransfer.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestBankTransferFromJson(json);
+  factory PaymentRequestBankTransfer.fromJson(Map<String, dynamic> json) => _$PaymentRequestBankTransferFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestBankTransferToJson(this);
@@ -114,8 +108,7 @@ class PaymentRequestCrypto extends PaymentRequest {
     required this.transactionHash,
   });
 
-  factory PaymentRequestCrypto.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestCryptoFromJson(json);
+  factory PaymentRequestCrypto.fromJson(Map<String, dynamic> json) => _$PaymentRequestCryptoFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestCryptoToJson(this);
@@ -127,8 +120,7 @@ class PaymentRequestUnknown extends PaymentRequest {
 
   const PaymentRequestUnknown(this.json);
 
-  factory PaymentRequestUnknown.fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnknown(json);
+  factory PaymentRequestUnknown.fromJson(Map<String, dynamic> json) => PaymentRequestUnknown(json);
 
   @override
   Map<String, dynamic> toJson() => json;

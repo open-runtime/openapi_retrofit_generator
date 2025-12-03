@@ -13,6 +13,5 @@ class AssistantMessagePath with AssistantMessagePathMappable {
   final String cwd;
   final String root;
 
-  static AssistantMessagePath fromJson(Map<String, dynamic> json) =>
-      AssistantMessagePathMapper.fromJson(json);
+  static AssistantMessagePath fromJson(Map<String, dynamic> json) => AssistantMessagePathMapper.fromJson(json);
 }

@@ -14,6 +14,5 @@ class Test2Response with Test2ResponseMappable {
   final String? name;
   final String? lastname;
 
-  static Test2Response fromJson(Map<String, dynamic> json) =>
-      Test2ResponseMapper.fromJson(json);
+  static Test2Response fromJson(Map<String, dynamic> json) => Test2ResponseMapper.fromJson(json);
 }

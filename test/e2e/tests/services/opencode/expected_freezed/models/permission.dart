@@ -23,6 +23,5 @@ abstract class Permission with _$Permission {
     @JsonKey(name: 'callID') String? callId,
   }) = _Permission;
 
-  factory Permission.fromJson(Map<String, Object?> json) =>
-      _$PermissionFromJson(json);
+  factory Permission.fromJson(Map<String, Object?> json) => _$PermissionFromJson(json);
 }

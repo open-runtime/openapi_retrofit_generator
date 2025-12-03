@@ -13,6 +13,5 @@ class Position with PositionMappable {
   final num lat;
   final num lon;
 
-  static Position fromJson(Map<String, dynamic> json) =>
-      PositionMapper.fromJson(json);
+  static Position fromJson(Map<String, dynamic> json) => PositionMapper.fromJson(json);
 }

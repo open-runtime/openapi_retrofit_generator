@@ -74,8 +74,7 @@ abstract class DarwinCoreClient {
     @Query('hasIdentification') bool? hasIdentification,
     @Query('scientificName') String? scientificName,
     @Query('taxonId') int? taxonId,
-    @Query('identificationVerificationStatus')
-    IdentificationVerificationStatus? identificationVerificationStatus,
+    @Query('identificationVerificationStatus') IdentificationVerificationStatus? identificationVerificationStatus,
     @Query('hasCoordinate') bool? hasCoordinate,
     @Query('minDecimalLongitude') num? minDecimalLongitude,
     @Query('maxDecimalLongitude') num? maxDecimalLongitude,
@@ -158,10 +157,8 @@ abstract class DarwinCoreClient {
     @Part(name: 'offset') int? offset = 0,
     @Part(name: 'limit') int? limit = 100,
     @Part(name: 'scientificNameMatchCase') bool? scientificNameMatchCase = true,
-    @Part(name: 'scientificNameMatchAuthor')
-    bool? scientificNameMatchAuthor = true,
-    @Part(name: 'sortDirection')
-    SortDirection? sortDirection = SortDirection.desc,
+    @Part(name: 'scientificNameMatchAuthor') bool? scientificNameMatchAuthor = true,
+    @Part(name: 'sortDirection') SortDirection? sortDirection = SortDirection.desc,
     @Query('api-key') String? apiKey,
     @Query('authenix-access-token') String? authenixAccessToken,
     @Part(name: 'page') int? page,
@@ -172,8 +169,7 @@ abstract class DarwinCoreClient {
     @Part(name: 'hasIdentification') bool? hasIdentification,
     @Part(name: 'scientificName') String? scientificName,
     @Part(name: 'taxonKey') int? taxonKey,
-    @Part(name: 'identificationVerificationStatus')
-    IdentificationVerificationStatus? identificationVerificationStatus,
+    @Part(name: 'identificationVerificationStatus') IdentificationVerificationStatus? identificationVerificationStatus,
     @Part(name: 'hasCoordinate') bool? hasCoordinate,
     @Part(name: 'minDecimalLongitude') num? minDecimalLongitude,
     @Part(name: 'maxDecimalLongitude') num? maxDecimalLongitude,
@@ -223,8 +219,7 @@ abstract class DarwinCoreClient {
     @Query('lang') Lang? lang = Lang.en,
     @Part(name: 'offset') int? offset = 0,
     @Part(name: 'limit') int? limit = 100,
-    @Part(name: 'sortDirection')
-    SortDirection? sortDirection = SortDirection.desc,
+    @Part(name: 'sortDirection') SortDirection? sortDirection = SortDirection.desc,
     @Query('api-key') String? apiKey,
     @Query('authenix-access-token') String? authenixAccessToken,
     @Part(name: 'page') int? page,

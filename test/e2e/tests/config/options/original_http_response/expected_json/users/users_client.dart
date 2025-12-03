@@ -83,9 +83,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @DELETE('/users/{userId}')
-  Future<HttpResponse<void>> deleteUser({
-    @Path('userId') required String userId,
-  });
+  Future<HttpResponse<void>> deleteUser({@Path('userId') required String userId});
 
   /// Upload user avatar (multipart).
   ///
@@ -105,7 +103,5 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @GET('/users/{userId}/friends')
-  Future<HttpResponse<List<User>>> getUserFriends({
-    @Path('userId') required String userId,
-  });
+  Future<HttpResponse<List<User>>> getUserFriends({@Path('userId') required String userId});
 }

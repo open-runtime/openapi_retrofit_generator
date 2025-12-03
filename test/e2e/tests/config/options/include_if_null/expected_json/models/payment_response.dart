@@ -20,8 +20,7 @@ class PaymentResponse {
     this.currency = 'USD',
   });
 
-  factory PaymentResponse.fromJson(Map<String, Object?> json) =>
-      _$PaymentResponseFromJson(json);
+  factory PaymentResponse.fromJson(Map<String, Object?> json) => _$PaymentResponseFromJson(json);
 
   final String transactionId;
   final PaymentResponseStatusStatus status;

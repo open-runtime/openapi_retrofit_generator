@@ -10,12 +10,7 @@ part 'file.mapper.dart';
 
 @MappableClass()
 class File with FileMappable {
-  const File({
-    required this.path,
-    required this.added,
-    required this.removed,
-    required this.status,
-  });
+  const File({required this.path, required this.added, required this.removed, required this.status});
 
   final String path;
   final int added;

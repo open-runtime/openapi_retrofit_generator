@@ -21,8 +21,7 @@ class CryptoPayment {
     this.transactionHash,
   });
 
-  factory CryptoPayment.fromJson(Map<String, Object?> json) =>
-      _$CryptoPaymentFromJson(json);
+  factory CryptoPayment.fromJson(Map<String, Object?> json) => _$CryptoPaymentFromJson(json);
 
   final CryptoPaymentPaymentTypePaymentType paymentType;
   final String walletAddress;

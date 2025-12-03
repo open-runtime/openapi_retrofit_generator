@@ -65,28 +65,18 @@ String dartJsonSerializableDtoTemplate(
   final originalClassName = dataClass.name.toPascal;
 
   // Check if this is a union type
-  final isUnion =
-      dataClass.discriminator != null ||
-      (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false);
+  final isUnion = dataClass.discriminator != null || (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false);
 
   final className = originalClassName;
   final classNameSnake = className.toSnake;
 
   if (isUnion) {
-    return _generateUnionTemplate(
-      dataClass,
-      className,
-      includeIfNull,
-      fallbackUnion,
-    );
+    return _generateUnionTemplate(dataClass, className, includeIfNull, fallbackUnion);
   }
 
   final base64Types = _getBase64FieldTypes(dataClass.parameters);
   final needsBase64Converter =
-      base64Types.hasScalar ||
-      base64Types.hasNullable ||
-      base64Types.hasList ||
-      base64Types.hasListNullable;
+      base64Types.hasScalar || base64Types.hasNullable || base64Types.hasList || base64Types.hasListNullable;
   final base64ConverterClass = needsBase64Converter
       ? '\n${_base64ConverterClass(hasScalar: base64Types.hasScalar, hasNullable: base64Types.hasNullable, hasList: base64Types.hasList, hasListNullable: base64Types.hasListNullable)}'
       : '';
@@ -129,22 +119,12 @@ String _generateUnionTemplate(
 ) {
   // Check if this is a discriminated union
   if (dataClass.discriminator != null) {
-    return _generateDiscriminatedUnionTemplate(
-      dataClass,
-      className,
-      includeIfNull,
-      fallbackUnion,
-    );
+    return _generateDiscriminatedUnionTemplate(dataClass, className, includeIfNull, fallbackUnion);
   }
 
   // Handle undiscriminated unions
   if (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false) {
-    return _generateUndiscriminatedUnionTemplate(
-      dataClass,
-      className,
-      includeIfNull,
-      fallbackUnion,
-    );
+    return _generateUndiscriminatedUnionTemplate(dataClass, className, includeIfNull, fallbackUnion);
   }
 
   // Fallback to simple map wrapper for unknown union types
@@ -222,17 +202,10 @@ sealed class $className {
   );
 
   // Generate public extension-based deserializer
-  final deserializerExtension = _generateDiscriminatorExtension(
-    className,
-    discriminator,
-    fallbackUnion,
-  );
+  final deserializerExtension = _generateDiscriminatorExtension(className, discriminator, fallbackUnion);
 
   // Merge collected imports with base imports
-  final allImports = {
-    ..._importsForDiscriminatedUnion(dataClass, fallbackUnion),
-    ...collectedImports,
-  };
+  final allImports = {..._importsForDiscriminatedUnion(dataClass, fallbackUnion), ...collectedImports};
 
   return '''
 import 'package:json_annotation/json_annotation.dart';
@@ -331,10 +304,7 @@ $conversionMethods
   );
 
   // Merge collected imports with base imports
-  final allImports = {
-    ..._importsForUndiscriminatedUnion(dataClass),
-    ...collectedImports,
-  };
+  final allImports = {..._importsForUndiscriminatedUnion(dataClass), ...collectedImports};
 
   return '''
 import 'package:json_annotation/json_annotation.dart';
@@ -348,26 +318,19 @@ $wrappers
 ''';
 }
 
-String _generateSimpleMapWrapper(
-  UniversalComponentClass dataClass,
-  String className,
-) {
+String _generateSimpleMapWrapper(UniversalComponentClass dataClass, String className) {
   // Generate list of possible variants for documentation
   final variants = <String>[];
 
   if (dataClass.discriminator != null) {
-    variants.addAll(
-      dataClass.discriminator!.discriminatorValueToRefMapping.values,
-    );
+    variants.addAll(dataClass.discriminator!.discriminatorValueToRefMapping.values);
   }
 
   if (dataClass.undiscriminatedUnionVariants != null) {
     variants.addAll(dataClass.undiscriminatedUnionVariants!.keys);
   }
 
-  final variantsList = variants.isNotEmpty
-      ? variants.join(', ')
-      : 'multiple possible types';
+  final variantsList = variants.isNotEmpty ? variants.join(', ') : 'multiple possible types';
 
   final discriminatorComment = dataClass.discriminator != null
       ? "\n  /// Check the '${dataClass.discriminator!.propertyName}' field to determine which variant."
@@ -418,11 +381,7 @@ class $className {
 /// - [fallbackUnion]: Optional fallback variant name for unrecognized discriminator values
 ///
 /// Returns: Generated Dart extension source code.
-String _generateDiscriminatorExtension(
-  String className,
-  Discriminator discriminator,
-  String? fallbackUnion,
-) {
+String _generateDiscriminatorExtension(String className, Discriminator discriminator, String? fallbackUnion) {
   final discriminatorKey = discriminator.propertyName;
   final variants = discriminator.discriminatorValueToRefMapping;
 
@@ -482,13 +441,10 @@ String _generateDiscriminatedWrapperClasses(
         final discriminatorKey = entry.key;
         final variantName = entry.value;
         final wrapperClassName = '$className${discriminatorKey.toPascal}';
-        final properties =
-            discriminator.refProperties[variantName] ?? <UniversalType>{};
+        final properties = discriminator.refProperties[variantName] ?? <UniversalType>{};
 
         // Filter out properties with null or empty names
-        final validProps = properties
-            .where((p) => p.name != null && p.name!.isNotEmpty)
-            .toList();
+        final validProps = properties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
         // Generate direct properties and collect imports
         final directProperties = validProps
@@ -501,9 +457,7 @@ String _generateDiscriminatedWrapperClasses(
             .join('\n');
 
         // Generate constructor parameters
-        final constructorParams = validProps
-            .map((prop) => '    required this.${prop.name},')
-            .join('\n');
+        final constructorParams = validProps.map((prop) => '    required this.${prop.name},').join('\n');
 
         // Handle empty properties case
         final constructorSignature = validProps.isEmpty
@@ -543,11 +497,7 @@ void _extractAndAddTypeImports(String typeStr, Set<String> imports) {
   for (final match in matches) {
     final typeName = match.group(1)!;
     // Skip Dart built-in types
-    if (typeName != 'String' &&
-        typeName != 'List' &&
-        typeName != 'Map' &&
-        typeName != 'Set' &&
-        typeName != 'Object') {
+    if (typeName != 'String' && typeName != 'List' && typeName != 'Map' && typeName != 'Set' && typeName != 'Object') {
       imports.add(typeName);
     }
   }
@@ -568,9 +518,7 @@ String _generateUndiscriminatedWrapperClasses(
         final wrapperClassName = '$className${variantName.toPascal}';
 
         // Filter out properties with null or empty names
-        final validProps = properties
-            .where((p) => p.name != null && p.name!.isNotEmpty)
-            .toList();
+        final validProps = properties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
         // Generate direct properties and collect imports
         final directProperties = validProps
@@ -583,9 +531,7 @@ String _generateUndiscriminatedWrapperClasses(
             .join('\n');
 
         // Generate constructor parameters
-        final constructorParams = validProps
-            .map((prop) => '    required this.${prop.name},')
-            .join('\n');
+        final constructorParams = validProps.map((prop) => '    required this.${prop.name},').join('\n');
 
         // Handle empty properties case
         final constructorSignature = validProps.isEmpty
@@ -655,9 +601,7 @@ class $fallbackClassName extends $className {
 /// Returns: Generated field declarations as a string.
 String _parametersInClass(Set<UniversalType> parameters, bool includeIfNull) {
   // Filter out parameters with null or empty names
-  final validParams = parameters.where(
-    (p) => p.name != null && p.name!.isNotEmpty,
-  );
+  final validParams = parameters.where((p) => p.name != null && p.name!.isNotEmpty);
   return validParams.mapIndexed((i, e) {
     // Filter out auto-generated descriptions (normalization messages, conflict resolutions, etc.)
     final shouldShowDescription =
@@ -677,30 +621,18 @@ String _parametersInClass(Set<UniversalType> parameters, bool includeIfNull) {
 String _jsonSerializableSuitableType(UniversalType type) {
   var result = type.toSuitableType();
 
-  if (!type.isRequired &&
-      type.defaultValue == null &&
-      !result.endsWith('?') &&
-      !result.contains('dynamic')) {
+  if (!type.isRequired && type.defaultValue == null && !result.endsWith('?') && !result.contains('dynamic')) {
     result = '$result?';
   }
 
   return result;
 }
 
-String _parametersInConstructor(
-  Set<UniversalType> parameters,
-  bool includeIfNull,
-) {
+String _parametersInConstructor(Set<UniversalType> parameters, bool includeIfNull) {
   // Filter out parameters with null or empty names
-  final validParams = parameters.where(
-    (p) => p.name != null && p.name!.isNotEmpty,
-  );
-  final sortedByRequired = Set<UniversalType>.from(
-    validParams.sorted((a, b) => a.compareTo(b)),
-  );
-  return sortedByRequired
-      .map((e) => '\n    ${_required(e)}this.${e.name}${_defaultValue(e)},')
-      .join();
+  final validParams = parameters.where((p) => p.name != null && p.name!.isNotEmpty);
+  final sortedByRequired = Set<UniversalType>.from(validParams.sorted((a, b) => a.compareTo(b)));
+  return sortedByRequired.map((e) => '\n    ${_required(e)}this.${e.name}${_defaultValue(e)},').join();
 }
 
 /// Generates `@JsonKey` annotation when needed for special JSON handling.
@@ -742,14 +674,11 @@ String _jsonKey(UniversalType t, bool includeIfNull) {
 
   if ((t.format == 'binary' || t.format == 'byte') || t.type == 'Uint8List') {
     final isNullable = !t.isRequired && t.defaultValue == null;
-    final isList =
-        t.wrappingCollections.isNotEmpty &&
-        t.wrappingCollections.first.collectionPrefix.startsWith('List<');
+    final isList = t.wrappingCollections.isNotEmpty && t.wrappingCollections.first.collectionPrefix.startsWith('List<');
 
     if (isList) {
       if (isNullable) {
-        jsonKeyParams['fromJson'] =
-            '_Base64Converter.staticFromJsonListNullable';
+        jsonKeyParams['fromJson'] = '_Base64Converter.staticFromJsonListNullable';
         jsonKeyParams['toJson'] = '_Base64Converter.staticToJsonListNullable';
       } else {
         jsonKeyParams['fromJson'] = '_Base64Converter.staticFromJsonList';
@@ -767,17 +696,14 @@ String _jsonKey(UniversalType t, bool includeIfNull) {
   }
 
   if (jsonKeyParams.isNotEmpty) {
-    buffer.write(
-      "  @JsonKey(${jsonKeyParams.entries.map((e) => '${e.key}: ${e.value}').join(',')})\n",
-    );
+    buffer.write("  @JsonKey(${jsonKeyParams.entries.map((e) => '${e.key}: ${e.value}').join(',')})\n");
   }
 
   return buffer.toString();
 }
 
 /// return required if isRequired
-String _required(UniversalType t) =>
-    t.isRequired && t.defaultValue == null ? 'required ' : '';
+String _required(UniversalType t) => t.isRequired && t.defaultValue == null ? 'required ' : '';
 
 /// return defaultValue if have
 String _defaultValue(UniversalType t) {
@@ -789,9 +715,7 @@ String _defaultValue(UniversalType t) {
 
   // Skip invalid default values: string defaults for array/map types
   // This handles spec bugs like `default: "eval"` for `type: array`
-  if (t.wrappingCollections.isNotEmpty &&
-      !defaultValueStr.startsWith('[') &&
-      !defaultValueStr.startsWith('{')) {
+  if (t.wrappingCollections.isNotEmpty && !defaultValueStr.startsWith('[') && !defaultValueStr.startsWith('{')) {
     GeneratorLogger.warning(
       GeneratorLogCategory.template,
       'Skipping invalid default "$defaultValueStr" for collection type (expected array/object)',
@@ -835,10 +759,7 @@ Set<String> _filterUnionImports(UniversalComponentClass dataClass) {
 
 /// Imports for discriminated unions: only include types used in variant properties.
 /// Since wrapper classes no longer implement variant interfaces, we don't need those imports.
-Set<String> _importsForDiscriminatedUnion(
-  UniversalComponentClass dataClass,
-  String? fallbackUnion,
-) {
+Set<String> _importsForDiscriminatedUnion(UniversalComponentClass dataClass, String? fallbackUnion) {
   // Start with empty set - imports will be collected from property types during wrapper generation
   return {};
 }
@@ -861,8 +782,7 @@ Set<String> _filterUnionImportsForNonUnion(UniversalComponentClass dataClass) {
   for (final import in dataClass.imports) {
     // If this is a model that's part of a union, skip union imports
     // Otherwise, allow all imports (including union imports for classes that use unions)
-    final shouldSkip =
-        shouldFilterUnionImports && import.toLowerCase().contains('union');
+    final shouldSkip = shouldFilterUnionImports && import.toLowerCase().contains('union');
 
     if (!shouldSkip) {
       filteredImports.add(import);
@@ -873,24 +793,21 @@ Set<String> _filterUnionImportsForNonUnion(UniversalComponentClass dataClass) {
 }
 
 String _deserializerExtensionName(String className) =>
-    className.endsWith('Union')
-    ? '${className}Deserializer'
-    : '${className}UnionDeserializer';
+    className.endsWith('Union') ? '${className}Deserializer' : '${className}UnionDeserializer';
 
-({bool hasScalar, bool hasNullable, bool hasList, bool hasListNullable})
-_getBase64FieldTypes(Set<UniversalType> parameters) {
+({bool hasScalar, bool hasNullable, bool hasList, bool hasListNullable}) _getBase64FieldTypes(
+  Set<UniversalType> parameters,
+) {
   bool hasScalar = false;
   bool hasNullable = false;
   bool hasList = false;
   bool hasListNullable = false;
 
   for (final param in parameters) {
-    if ((param.format == 'binary' || param.format == 'byte') ||
-        param.type == 'Uint8List') {
+    if ((param.format == 'binary' || param.format == 'byte') || param.type == 'Uint8List') {
       final isNullable = !param.isRequired && param.defaultValue == null;
       final isList =
-          param.wrappingCollections.isNotEmpty &&
-          param.wrappingCollections.first.collectionPrefix.startsWith('List<');
+          param.wrappingCollections.isNotEmpty && param.wrappingCollections.first.collectionPrefix.startsWith('List<');
 
       if (isList) {
         if (isNullable) {
@@ -908,12 +825,7 @@ _getBase64FieldTypes(Set<UniversalType> parameters) {
     }
   }
 
-  return (
-    hasScalar: hasScalar,
-    hasNullable: hasNullable,
-    hasList: hasList,
-    hasListNullable: hasListNullable,
-  );
+  return (hasScalar: hasScalar, hasNullable: hasNullable, hasList: hasList, hasListNullable: hasListNullable);
 }
 
 String _getDartCoreImports(Set<UniversalType> parameters) {
@@ -921,10 +833,7 @@ String _getDartCoreImports(Set<UniversalType> parameters) {
 
   final base64Types = _getBase64FieldTypes(parameters);
   final hasAnyBase64 =
-      base64Types.hasScalar ||
-      base64Types.hasNullable ||
-      base64Types.hasList ||
-      base64Types.hasListNullable;
+      base64Types.hasScalar || base64Types.hasNullable || base64Types.hasList || base64Types.hasListNullable;
 
   if (hasAnyBase64) {
     imports.add("import 'dart:convert';");
@@ -986,13 +895,9 @@ String _base64ConverterClass({
 
   if (hasScalar) {
     methods.add('');
-    methods.add(
-      '  static Uint8List staticFromJson(String json) => instance.fromJson(json);',
-    );
+    methods.add('  static Uint8List staticFromJson(String json) => instance.fromJson(json);');
     methods.add('');
-    methods.add(
-      '  static String staticToJson(Uint8List object) => instance.toJson(object);',
-    );
+    methods.add('  static String staticToJson(Uint8List object) => instance.toJson(object);');
   }
 
   if (hasNullable) {

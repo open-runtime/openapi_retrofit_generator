@@ -6,9 +6,7 @@ part of 'step_finish_part_tokens.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StepFinishPartTokens _$StepFinishPartTokensFromJson(
-  Map<String, dynamic> json,
-) => StepFinishPartTokens(
+StepFinishPartTokens _$StepFinishPartTokensFromJson(Map<String, dynamic> json) => StepFinishPartTokens(
   input: json['input'] as num,
   output: json['output'] as num,
   reasoning: json['reasoning'] as num,
@@ -17,9 +15,7 @@ StepFinishPartTokens _$StepFinishPartTokensFromJson(
   ),
 );
 
-Map<String, dynamic> _$StepFinishPartTokensToJson(
-  StepFinishPartTokens instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$StepFinishPartTokensToJson(StepFinishPartTokens instance) => <String, dynamic>{
   'input': instance.input,
   'output': instance.output,
   'reasoning': instance.reasoning,

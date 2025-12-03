@@ -12,9 +12,7 @@ part 'security.g.dart';
 
 @Freezed()
 abstract class Security with _$Security {
-  const factory Security({bool? exposeKey, Ips? ips, Domains? domains}) =
-      _Security;
+  const factory Security({bool? exposeKey, Ips? ips, Domains? domains}) = _Security;
 
-  factory Security.fromJson(Map<String, Object?> json) =>
-      _$SecurityFromJson(json);
+  factory Security.fromJson(Map<String, Object?> json) => _$SecurityFromJson(json);
 }

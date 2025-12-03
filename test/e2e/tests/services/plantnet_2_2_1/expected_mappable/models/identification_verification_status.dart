@@ -24,7 +24,6 @@ enum IdentificationVerificationStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<IdentificationVerificationStatus> get $valuesDefined => values
-      .where((value) => value != IdentificationVerificationStatus.unknown)
-      .toList();
+  static List<IdentificationVerificationStatus> get $valuesDefined =>
+      values.where((value) => value != IdentificationVerificationStatus.unknown).toList();
 }

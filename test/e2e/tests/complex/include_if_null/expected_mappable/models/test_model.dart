@@ -8,18 +8,12 @@ part 'test_model.mapper.dart';
 
 @MappableClass()
 class TestModel with TestModelMappable {
-  const TestModel({
-    required this.id,
-    required this.requiredNullableField,
-    this.name,
-    this.optionalNullableField,
-  });
+  const TestModel({required this.id, required this.requiredNullableField, this.name, this.optionalNullableField});
 
   final int id;
   final String? requiredNullableField;
   final String? name;
   final String? optionalNullableField;
 
-  static TestModel fromJson(Map<String, dynamic> json) =>
-      TestModelMapper.fromJson(json);
+  static TestModel fromJson(Map<String, dynamic> json) => TestModelMapper.fromJson(json);
 }

@@ -14,6 +14,5 @@ abstract class QualityVote with _$QualityVote {
     required bool quality,
   }) = _QualityVote;
 
-  factory QualityVote.fromJson(Map<String, Object?> json) =>
-      _$QualityVoteFromJson(json);
+  factory QualityVote.fromJson(Map<String, Object?> json) => _$QualityVoteFromJson(json);
 }

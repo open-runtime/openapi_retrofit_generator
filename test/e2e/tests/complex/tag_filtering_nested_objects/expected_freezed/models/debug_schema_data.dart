@@ -16,10 +16,8 @@ abstract class DebugSchemaData with _$DebugSchemaData {
     @JsonKey(includeIfNull: false) String? name,
     @JsonKey(includeIfNull: false) int? id,
     @JsonKey(includeIfNull: false) DebugSchemaDataStatusStatus? status,
-    @JsonKey(includeIfNull: false, name: 'DebugSchemaDataMetadata')
-    DebugSchemaDataMetadata? debugSchemaDataMetadata,
+    @JsonKey(includeIfNull: false, name: 'DebugSchemaDataMetadata') DebugSchemaDataMetadata? debugSchemaDataMetadata,
   }) = _DebugSchemaData;
 
-  factory DebugSchemaData.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaDataFromJson(json);
+  factory DebugSchemaData.fromJson(Map<String, Object?> json) => _$DebugSchemaDataFromJson(json);
 }

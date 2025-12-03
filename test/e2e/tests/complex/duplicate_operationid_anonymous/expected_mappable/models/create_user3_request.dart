@@ -12,6 +12,5 @@ class CreateUser3Request with CreateUser3RequestMappable {
 
   final String? guestName;
 
-  static CreateUser3Request fromJson(Map<String, dynamic> json) =>
-      CreateUser3RequestMapper.fromJson(json);
+  static CreateUser3Request fromJson(Map<String, dynamic> json) => CreateUser3RequestMapper.fromJson(json);
 }

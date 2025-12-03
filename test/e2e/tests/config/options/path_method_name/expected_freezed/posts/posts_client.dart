@@ -30,7 +30,5 @@ abstract class PostsClient {
 
   /// Get post with nested comments
   @GET('/posts/{postId}')
-  Future<GetPostResponse> getPostsPostId({
-    @Path('postId') required String postId,
-  });
+  Future<GetPostResponse> getPostsPostId({@Path('postId') required String postId});
 }

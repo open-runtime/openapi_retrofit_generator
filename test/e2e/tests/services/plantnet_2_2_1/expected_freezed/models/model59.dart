@@ -19,6 +19,5 @@ abstract class Model59 with _$Model59 {
     Model58? location,
   }) = _Model59;
 
-  factory Model59.fromJson(Map<String, Object?> json) =>
-      _$Model59FromJson(json);
+  factory Model59.fromJson(Map<String, Object?> json) => _$Model59FromJson(json);
 }

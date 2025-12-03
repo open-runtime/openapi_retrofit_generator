@@ -16,6 +16,5 @@ class Model63 with Model63Mappable {
   @MappableField(key: 'large_url')
   final String? largeUrl;
 
-  static Model63 fromJson(Map<String, dynamic> json) =>
-      Model63Mapper.fromJson(json);
+  static Model63 fromJson(Map<String, dynamic> json) => Model63Mapper.fromJson(json);
 }

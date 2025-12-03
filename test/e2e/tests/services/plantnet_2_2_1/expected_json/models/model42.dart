@@ -30,8 +30,7 @@ class Model42 {
     this.iucnRedListCategory,
   });
 
-  factory Model42.fromJson(Map<String, Object?> json) =>
-      _$Model42FromJson(json);
+  factory Model42.fromJson(Map<String, Object?> json) => _$Model42FromJson(json);
 
   final String? name;
   final String? author;

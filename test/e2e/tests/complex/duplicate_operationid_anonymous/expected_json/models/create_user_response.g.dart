@@ -9,5 +9,4 @@ part of 'create_user_response.dart';
 CreateUserResponse _$CreateUserResponseFromJson(Map<String, dynamic> json) =>
     CreateUserResponse(id: (json['id'] as num?)?.toInt());
 
-Map<String, dynamic> _$CreateUserResponseToJson(CreateUserResponse instance) =>
-    <String, dynamic>{'id': instance.id};
+Map<String, dynamic> _$CreateUserResponseToJson(CreateUserResponse instance) => <String, dynamic>{'id': instance.id};

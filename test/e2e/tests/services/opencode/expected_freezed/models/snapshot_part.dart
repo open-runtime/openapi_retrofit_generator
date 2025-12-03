@@ -17,6 +17,5 @@ abstract class SnapshotPart with _$SnapshotPart {
     required String snapshot,
   }) = _SnapshotPart;
 
-  factory SnapshotPart.fromJson(Map<String, Object?> json) =>
-      _$SnapshotPartFromJson(json);
+  factory SnapshotPart.fromJson(Map<String, Object?> json) => _$SnapshotPartFromJson(json);
 }

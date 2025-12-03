@@ -8,10 +8,7 @@ part 'event_message_removed_properties.mapper.dart';
 
 @MappableClass()
 class EventMessageRemovedProperties with EventMessageRemovedPropertiesMappable {
-  const EventMessageRemovedProperties({
-    required this.sessionId,
-    required this.messageId,
-  });
+  const EventMessageRemovedProperties({required this.sessionId, required this.messageId});
 
   @MappableField(key: 'sessionID')
   final String sessionId;

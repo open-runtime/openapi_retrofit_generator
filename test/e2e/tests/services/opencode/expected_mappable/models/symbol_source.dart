@@ -27,6 +27,5 @@ class SymbolSource with SymbolSourceMappable {
   final String name;
   final int kind;
 
-  static SymbolSource fromJson(Map<String, dynamic> json) =>
-      SymbolSourceMapper.fromJson(json);
+  static SymbolSource fromJson(Map<String, dynamic> json) => SymbolSourceMapper.fromJson(json);
 }

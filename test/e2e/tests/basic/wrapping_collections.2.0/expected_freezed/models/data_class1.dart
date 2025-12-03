@@ -15,6 +15,5 @@ abstract class DataClass1 with _$DataClass1 {
     required Map<String, List<String>> errors,
   }) = _DataClass1;
 
-  factory DataClass1.fromJson(Map<String, Object?> json) =>
-      _$DataClass1FromJson(json);
+  factory DataClass1.fromJson(Map<String, Object?> json) => _$DataClass1FromJson(json);
 }

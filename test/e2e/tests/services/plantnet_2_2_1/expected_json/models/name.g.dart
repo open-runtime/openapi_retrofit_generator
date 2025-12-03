@@ -6,10 +6,6 @@ part of 'name.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Name _$NameFromJson(Map<String, dynamic> json) =>
-    Name(first: json['first'] as String?, last: json['last'] as String?);
+Name _$NameFromJson(Map<String, dynamic> json) => Name(first: json['first'] as String?, last: json['last'] as String?);
 
-Map<String, dynamic> _$NameToJson(Name instance) => <String, dynamic>{
-  'first': instance.first,
-  'last': instance.last,
-};
+Map<String, dynamic> _$NameToJson(Name instance) => <String, dynamic>{'first': instance.first, 'last': instance.last};

@@ -10,15 +10,9 @@ part 'app_log_request.g.dart';
 
 @JsonSerializable()
 class AppLogRequest {
-  const AppLogRequest({
-    required this.service,
-    required this.level,
-    required this.message,
-    this.extra,
-  });
+  const AppLogRequest({required this.service, required this.level, required this.message, this.extra});
 
-  factory AppLogRequest.fromJson(Map<String, Object?> json) =>
-      _$AppLogRequestFromJson(json);
+  factory AppLogRequest.fromJson(Map<String, Object?> json) => _$AppLogRequestFromJson(json);
 
   /// Service name for the log entry
   final String service;

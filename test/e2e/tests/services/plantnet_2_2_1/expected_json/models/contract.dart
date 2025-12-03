@@ -18,8 +18,7 @@ class Contract {
     this.currency,
   });
 
-  factory Contract.fromJson(Map<String, Object?> json) =>
-      _$ContractFromJson(json);
+  factory Contract.fromJson(Map<String, Object?> json) => _$ContractFromJson(json);
 
   final String? plan;
   final String? status;

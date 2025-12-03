@@ -8,16 +8,11 @@ part 'agent_permission.mapper.dart';
 
 @MappableClass()
 class AgentPermission with AgentPermissionMappable {
-  const AgentPermission({
-    required this.edit,
-    required this.bash,
-    this.webfetch,
-  });
+  const AgentPermission({required this.edit, required this.bash, this.webfetch});
 
   final String edit;
   final Map<String, String> bash;
   final String? webfetch;
 
-  static AgentPermission fromJson(Map<String, dynamic> json) =>
-      AgentPermissionMapper.fromJson(json);
+  static AgentPermission fromJson(Map<String, dynamic> json) => AgentPermissionMapper.fromJson(json);
 }

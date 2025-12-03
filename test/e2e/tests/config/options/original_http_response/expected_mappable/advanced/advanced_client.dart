@@ -25,9 +25,7 @@ abstract class AdvancedClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/payments')
-  Future<HttpResponse<PaymentResponse>> createPayment({
-    @Body() required PaymentRequest body,
-  });
+  Future<HttpResponse<PaymentResponse>> createPayment({@Body() required PaymentRequest body});
 
   /// Search with anyOf result types
   @POST('/search')
@@ -35,9 +33,7 @@ abstract class AdvancedClient {
 
   /// Get polymorphic entity
   @GET('/entities/{entityId}')
-  Future<HttpResponse<Entity>> getEntity({
-    @Path('entityId') required String entityId,
-  });
+  Future<HttpResponse<Entity>> getEntity({@Path('entityId') required String entityId});
 
   /// Endpoint with potentially conflicting names
   @GET('/conflicts/duplicate')
@@ -47,9 +43,7 @@ abstract class AdvancedClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/dynamic')
-  Future<HttpResponse<EmptyObject>> createDynamic({
-    @Body() DynamicObject? body,
-  });
+  Future<HttpResponse<EmptyObject>> createDynamic({@Body() DynamicObject? body});
 
   /// Check if methods endpoint exists
   @HEAD('/methods')

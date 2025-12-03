@@ -8,12 +8,7 @@ part 'todo.g.dart';
 
 @JsonSerializable()
 class Todo {
-  const Todo({
-    required this.content,
-    required this.status,
-    required this.priority,
-    required this.id,
-  });
+  const Todo({required this.content, required this.status, required this.priority, required this.id});
 
   factory Todo.fromJson(Map<String, Object?> json) => _$TodoFromJson(json);
 

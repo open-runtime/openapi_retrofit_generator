@@ -60,10 +60,7 @@ abstract class GuardenClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/guarden/species')
-  Future<Model13> getV2GuardenSpecies({
-    @Query('api-key') String? apiKey,
-    @Query('lang') Lang? lang = Lang.en,
-  });
+  Future<Model13> getV2GuardenSpecies({@Query('api-key') String? apiKey, @Query('lang') Lang? lang = Lang.en});
 
   /// Get geolocated plots list.
   ///
@@ -97,10 +94,7 @@ abstract class GuardenClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/guarden/{cs}/habitats')
-  Future<Model8> getV2GuardenCsHabitats({
-    @Query('api-key') String? apiKey,
-    @Path('cs') required String cs,
-  });
+  Future<Model8> getV2GuardenCsHabitats({@Query('api-key') String? apiKey, @Path('cs') required String cs});
 
   /// Get indicators list.
   ///
@@ -110,10 +104,7 @@ abstract class GuardenClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/guarden/{cs}/indicators')
-  Future<Model10> getV2GuardenCsIndicators({
-    @Query('api-key') String? apiKey,
-    @Path('cs') required String cs,
-  });
+  Future<Model10> getV2GuardenCsIndicators({@Query('api-key') String? apiKey, @Path('cs') required String cs});
 
   /// Get species list in area.
   ///

@@ -6,8 +6,7 @@ part of 'api_parcel_pending_building_settings_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ApiParcelPendingBuildingSettingsRequest
-_$ApiParcelPendingBuildingSettingsRequestFromJson(Map<String, dynamic> json) =>
+ApiParcelPendingBuildingSettingsRequest _$ApiParcelPendingBuildingSettingsRequestFromJson(Map<String, dynamic> json) =>
     ApiParcelPendingBuildingSettingsRequest(
       isDellaManaged: json['isDellaManaged'] as bool,
       externalPropertyId: json['externalPropertyId'] as String?,

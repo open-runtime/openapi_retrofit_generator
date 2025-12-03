@@ -14,6 +14,5 @@ abstract class Address with _$Address {
     required String street,
   }) = _Address;
 
-  factory Address.fromJson(Map<String, Object?> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, Object?> json) => _$AddressFromJson(json);
 }

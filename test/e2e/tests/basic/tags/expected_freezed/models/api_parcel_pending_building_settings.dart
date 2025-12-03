@@ -8,15 +8,13 @@ part 'api_parcel_pending_building_settings.freezed.dart';
 part 'api_parcel_pending_building_settings.g.dart';
 
 @Freezed()
-abstract class ApiParcelPendingBuildingSettings
-    with _$ApiParcelPendingBuildingSettings {
+abstract class ApiParcelPendingBuildingSettings with _$ApiParcelPendingBuildingSettings {
   const factory ApiParcelPendingBuildingSettings({
     required bool isDellaManaged,
     @JsonKey(includeIfNull: false) String? externalPropertyId,
     @JsonKey(includeIfNull: false) String? externalBuildingName,
   }) = _ApiParcelPendingBuildingSettings;
 
-  factory ApiParcelPendingBuildingSettings.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiParcelPendingBuildingSettingsFromJson(json);
+  factory ApiParcelPendingBuildingSettings.fromJson(Map<String, Object?> json) =>
+      _$ApiParcelPendingBuildingSettingsFromJson(json);
 }

@@ -13,8 +13,7 @@ part 'session_prompt_response.g.dart';
 class SessionPromptResponse {
   const SessionPromptResponse({required this.info, required this.parts});
 
-  factory SessionPromptResponse.fromJson(Map<String, Object?> json) =>
-      _$SessionPromptResponseFromJson(json);
+  factory SessionPromptResponse.fromJson(Map<String, Object?> json) => _$SessionPromptResponseFromJson(json);
 
   final AssistantMessage info;
   final List<PartModel> parts;

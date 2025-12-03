@@ -8,14 +8,9 @@ part 'agent_part_source.g.dart';
 
 @JsonSerializable()
 class AgentPartSource {
-  const AgentPartSource({
-    required this.value,
-    required this.start,
-    required this.end,
-  });
+  const AgentPartSource({required this.value, required this.start, required this.end});
 
-  factory AgentPartSource.fromJson(Map<String, Object?> json) =>
-      _$AgentPartSourceFromJson(json);
+  factory AgentPartSource.fromJson(Map<String, Object?> json) => _$AgentPartSourceFromJson(json);
 
   final String value;
   final int start;

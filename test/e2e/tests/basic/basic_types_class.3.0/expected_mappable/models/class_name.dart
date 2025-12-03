@@ -43,8 +43,7 @@ class ClassName with ClassNameMappable {
   final List<List<List<String>>> array2;
   final List<String> arrayWithDefault;
 
-  static ClassName fromJson(Map<String, dynamic> json) =>
-      ClassNameMapper.fromJson(json);
+  static ClassName fromJson(Map<String, dynamic> json) => ClassNameMapper.fromJson(json);
 }
 
 class _Base64Hook extends MappingHook {

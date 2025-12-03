@@ -13,6 +13,5 @@ class Billing with BillingMappable {
   final String? nextDueDate;
   final num? estimatedAmount;
 
-  static Billing fromJson(Map<String, dynamic> json) =>
-      BillingMapper.fromJson(json);
+  static Billing fromJson(Map<String, dynamic> json) => BillingMapper.fromJson(json);
 }

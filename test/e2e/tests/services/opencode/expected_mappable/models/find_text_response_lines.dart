@@ -12,6 +12,5 @@ class FindTextResponseLines with FindTextResponseLinesMappable {
 
   final String text;
 
-  static FindTextResponseLines fromJson(Map<String, dynamic> json) =>
-      FindTextResponseLinesMapper.fromJson(json);
+  static FindTextResponseLines fromJson(Map<String, dynamic> json) => FindTextResponseLinesMapper.fromJson(json);
 }

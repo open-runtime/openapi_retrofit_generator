@@ -17,6 +17,5 @@ abstract class UserSettingsPrivacy with _$UserSettingsPrivacy {
     @Default(false) bool showEmail,
   }) = _UserSettingsPrivacy;
 
-  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsPrivacyFromJson(json);
+  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) => _$UserSettingsPrivacyFromJson(json);
 }

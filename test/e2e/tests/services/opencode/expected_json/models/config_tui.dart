@@ -10,8 +10,7 @@ part 'config_tui.g.dart';
 class ConfigTui {
   const ConfigTui({this.scrollSpeed = 2});
 
-  factory ConfigTui.fromJson(Map<String, Object?> json) =>
-      _$ConfigTuiFromJson(json);
+  factory ConfigTui.fromJson(Map<String, Object?> json) => _$ConfigTuiFromJson(json);
 
   /// TUI scroll speed
   @JsonKey(name: 'scroll_speed')

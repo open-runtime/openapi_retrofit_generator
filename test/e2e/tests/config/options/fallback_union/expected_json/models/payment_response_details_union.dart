@@ -21,8 +21,7 @@ sealed class PaymentResponseDetailsUnion {
   Map<String, dynamic> toJson();
 }
 
-extension PaymentResponseDetailsUnionDeserializer
-    on PaymentResponseDetailsUnion {
+extension PaymentResponseDetailsUnionDeserializer on PaymentResponseDetailsUnion {
   static PaymentResponseDetailsUnion tryDeserialize(
     Map<String, dynamic> json, {
     String key = 'paymentType',
@@ -40,16 +39,14 @@ extension PaymentResponseDetailsUnionDeserializer
         PaymentResponseDetailsUnionCreditCard.fromJson(json),
       _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
         PaymentResponseDetailsUnionBankTransfer.fromJson(json),
-      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
-        PaymentResponseDetailsUnionCrypto.fromJson(json),
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] => PaymentResponseDetailsUnionCrypto.fromJson(json),
       _ => PaymentResponseDetailsUnionUnknown.fromJson(json),
     };
   }
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsUnionCreditCard
-    extends PaymentResponseDetailsUnion {
+class PaymentResponseDetailsUnionCreditCard extends PaymentResponseDetailsUnion {
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -68,18 +65,15 @@ class PaymentResponseDetailsUnionCreditCard
     required this.amount,
   });
 
-  factory PaymentResponseDetailsUnionCreditCard.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionCreditCardFromJson(json);
+  factory PaymentResponseDetailsUnionCreditCard.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionCreditCardFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionCreditCardToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionCreditCardToJson(this);
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsUnionBankTransfer
-    extends PaymentResponseDetailsUnion {
+class PaymentResponseDetailsUnionBankTransfer extends PaymentResponseDetailsUnion {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -96,13 +90,11 @@ class PaymentResponseDetailsUnionBankTransfer
     required this.reference,
   });
 
-  factory PaymentResponseDetailsUnionBankTransfer.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionBankTransferFromJson(json);
+  factory PaymentResponseDetailsUnionBankTransfer.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionBankTransferFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionBankTransferToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionBankTransferToJson(this);
 }
 
 @JsonSerializable()
@@ -121,13 +113,11 @@ class PaymentResponseDetailsUnionCrypto extends PaymentResponseDetailsUnion {
     required this.transactionHash,
   });
 
-  factory PaymentResponseDetailsUnionCrypto.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionCryptoFromJson(json);
+  factory PaymentResponseDetailsUnionCrypto.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionCryptoFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionCryptoToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionCryptoToJson(this);
 }
 
 @JsonSerializable(createFactory: false)
@@ -136,9 +126,8 @@ class PaymentResponseDetailsUnionUnknown extends PaymentResponseDetailsUnion {
 
   const PaymentResponseDetailsUnionUnknown(this.json);
 
-  factory PaymentResponseDetailsUnionUnknown.fromJson(
-    Map<String, dynamic> json,
-  ) => PaymentResponseDetailsUnionUnknown(json);
+  factory PaymentResponseDetailsUnionUnknown.fromJson(Map<String, dynamic> json) =>
+      PaymentResponseDetailsUnionUnknown(json);
 
   @override
   Map<String, dynamic> toJson() => json;

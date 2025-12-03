@@ -13,14 +13,7 @@ class OpenApiCorrector {
   final ParserConfig config;
 
   /// Reserved Retrofit/Dio annotation names that should have "Model" postfix added
-  static const _reservedNames = {
-    'Path',
-    'Query',
-    'Body',
-    'Header',
-    'Part',
-    'Extras',
-  };
+  static const _reservedNames = {'Path', 'Query', 'Body', 'Header', 'Part', 'Extras'};
 
   /// Corrects the OpenAPI definition file content
   Map<String, dynamic> correct() {
@@ -31,12 +24,10 @@ class OpenApiCorrector {
         : (loadYaml(fileContent) as YamlMap).toMap();
 
     // OpenAPI 3.0 and 3.1
-    final components =
-        definitionFileContent['components'] as Map<String, dynamic>?;
+    final components = definitionFileContent['components'] as Map<String, dynamic>?;
     final schemes = components?['schemas'] as Map<String, dynamic>?;
     // OpenAPI 2.0
-    final definitions =
-        definitionFileContent['definitions'] as Map<String, dynamic>?;
+    final definitions = definitionFileContent['definitions'] as Map<String, dynamic>?;
 
     final models = schemes ?? definitions;
     final typeRenames = <String, String>{};
@@ -63,8 +54,7 @@ class OpenApiCorrector {
 
           // Replace in $ref paths
           // Match: "#/components/schemas/name" or "#/components/schemes/name" (typo) or "#/definitions/name"
-          final refPattern =
-              '(["\']#/(?:components/(?:schemas|schemes)|definitions)/)($escapedType)(["\'])';
+          final refPattern = '(["\']#/(?:components/(?:schemas|schemes)|definitions)/)($escapedType)(["\'])';
           fileContent = fileContent.replaceAllMapped(
             RegExp(refPattern),
             (match) => '${match[1]}$correctType${match[3]}',
@@ -90,10 +80,7 @@ class OpenApiCorrector {
           // This ensures we match "Pet to add" but not "Pet1" or "object1"
           // The lookahead (?=\s+[a-z]) checks that the type is followed by space + lowercase word
           final descPattern = '(description:\\s+)($escapedType)(?=\\s+[a-z])';
-          fileContent = fileContent.replaceAllMapped(
-            RegExp(descPattern),
-            (match) => '${match[1]}$correctType',
-          );
+          fileContent = fileContent.replaceAllMapped(RegExp(descPattern), (match) => '${match[1]}$correctType');
         }
       }
     }
@@ -106,8 +93,7 @@ class OpenApiCorrector {
     // Rename schema keys in the parsed result to match the corrected $refs
     if (typeRenames.isNotEmpty) {
       final resultComponents = result['components'] as Map<String, dynamic>?;
-      final resultSchemas =
-          resultComponents?['schemas'] as Map<String, dynamic>?;
+      final resultSchemas = resultComponents?['schemas'] as Map<String, dynamic>?;
       final resultDefinitions = result['definitions'] as Map<String, dynamic>?;
 
       final resultModels = resultSchemas ?? resultDefinitions;
@@ -124,9 +110,7 @@ class OpenApiCorrector {
 
           // If the proposed new name is already used, keep the original name
           // The parser will handle deduplication properly
-          final newKey = usedNames.contains(proposedNewKey)
-              ? oldKey
-              : proposedNewKey;
+          final newKey = usedNames.contains(proposedNewKey) ? oldKey : proposedNewKey;
           usedNames.add(newKey);
 
           renamedModels[newKey] = entry.value;
@@ -152,9 +136,7 @@ extension YamlMapX on YamlMap {
     final map = <String, Object?>{};
     for (final entry in entries) {
       // Use .value for YamlScalar keys to preserve original case
-      final rawKey = entry.key is YamlScalar
-          ? (entry.key as YamlScalar).value
-          : entry.key;
+      final rawKey = entry.key is YamlScalar ? (entry.key as YamlScalar).value : entry.key;
       final key = rawKey.toString();
 
       if (entry.value is YamlMap || entry.value is Map) {

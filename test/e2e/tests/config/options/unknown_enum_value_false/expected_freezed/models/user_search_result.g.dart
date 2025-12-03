@@ -6,20 +6,16 @@ part of 'user_search_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UserSearchResult _$UserSearchResultFromJson(Map<String, dynamic> json) =>
-    _UserSearchResult(
-      type: $enumDecode(_$UserSearchResultTypeTypeEnumMap, json['type']),
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
-      score: (json['score'] as num?)?.toDouble(),
-    );
+_UserSearchResult _$UserSearchResultFromJson(Map<String, dynamic> json) => _UserSearchResult(
+  type: $enumDecode(_$UserSearchResultTypeTypeEnumMap, json['type']),
+  user: User.fromJson(json['user'] as Map<String, dynamic>),
+  score: (json['score'] as num?)?.toDouble(),
+);
 
-Map<String, dynamic> _$UserSearchResultToJson(_UserSearchResult instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'user': instance.user,
-      'score': instance.score,
-    };
-
-const _$UserSearchResultTypeTypeEnumMap = {
-  UserSearchResultTypeType.user: 'user',
+Map<String, dynamic> _$UserSearchResultToJson(_UserSearchResult instance) => <String, dynamic>{
+  'type': instance.type,
+  'user': instance.user,
+  'score': instance.score,
 };
+
+const _$UserSearchResultTypeTypeEnumMap = {UserSearchResultTypeType.user: 'user'};

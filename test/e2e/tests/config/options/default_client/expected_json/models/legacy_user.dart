@@ -10,8 +10,7 @@ part 'legacy_user.g.dart';
 class LegacyUser {
   const LegacyUser({this.id, this.name, this.email});
 
-  factory LegacyUser.fromJson(Map<String, Object?> json) =>
-      _$LegacyUserFromJson(json);
+  factory LegacyUser.fromJson(Map<String, Object?> json) => _$LegacyUserFromJson(json);
 
   final int? id;
   final String? name;

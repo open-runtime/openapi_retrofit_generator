@@ -10,8 +10,7 @@ part 'tool_state_pending.g.dart';
 class ToolStatePending {
   const ToolStatePending({required this.status});
 
-  factory ToolStatePending.fromJson(Map<String, Object?> json) =>
-      _$ToolStatePendingFromJson(json);
+  factory ToolStatePending.fromJson(Map<String, Object?> json) => _$ToolStatePendingFromJson(json);
 
   final String status;
 

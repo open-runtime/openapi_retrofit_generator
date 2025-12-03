@@ -13,6 +13,5 @@ class Center with CenterMappable {
   final num? x;
   final num? y;
 
-  static Center fromJson(Map<String, dynamic> json) =>
-      CenterMapper.fromJson(json);
+  static Center fromJson(Map<String, dynamic> json) => CenterMapper.fromJson(json);
 }

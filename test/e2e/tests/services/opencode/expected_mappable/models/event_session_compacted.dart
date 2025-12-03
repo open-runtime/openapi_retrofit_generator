@@ -10,15 +10,11 @@ part 'event_session_compacted.mapper.dart';
 
 @MappableClass()
 class EventSessionCompacted with EventSessionCompactedMappable {
-  const EventSessionCompacted({
-    required this.type,
-    required this.eventSessionCompactedProperties,
-  });
+  const EventSessionCompacted({required this.type, required this.eventSessionCompactedProperties});
 
   final String type;
   @MappableField(key: 'EventSessionCompactedProperties')
   final EventSessionCompactedProperties eventSessionCompactedProperties;
 
-  static EventSessionCompacted fromJson(Map<String, dynamic> json) =>
-      EventSessionCompactedMapper.fromJson(json);
+  static EventSessionCompacted fromJson(Map<String, dynamic> json) => EventSessionCompactedMapper.fromJson(json);
 }

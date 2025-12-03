@@ -12,8 +12,7 @@ part 'model49.g.dart';
 class Model49 {
   const Model49({this.estimatedCost, this.query});
 
-  factory Model49.fromJson(Map<String, Object?> json) =>
-      _$Model49FromJson(json);
+  factory Model49.fromJson(Map<String, Object?> json) => _$Model49FromJson(json);
 
   @JsonKey(name: 'estimated_cost')
   final num? estimatedCost;

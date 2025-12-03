@@ -13,6 +13,5 @@ class Model48 with Model48Mappable {
   final String source;
   final num score;
 
-  static Model48 fromJson(Map<String, dynamic> json) =>
-      Model48Mapper.fromJson(json);
+  static Model48 fromJson(Map<String, dynamic> json) => Model48Mapper.fromJson(json);
 }

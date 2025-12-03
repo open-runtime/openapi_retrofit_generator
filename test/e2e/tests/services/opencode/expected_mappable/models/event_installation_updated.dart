@@ -10,15 +10,11 @@ part 'event_installation_updated.mapper.dart';
 
 @MappableClass()
 class EventInstallationUpdated with EventInstallationUpdatedMappable {
-  const EventInstallationUpdated({
-    required this.type,
-    required this.eventInstallationUpdatedProperties,
-  });
+  const EventInstallationUpdated({required this.type, required this.eventInstallationUpdatedProperties});
 
   final String type;
   @MappableField(key: 'EventInstallationUpdatedProperties')
   final EventInstallationUpdatedProperties eventInstallationUpdatedProperties;
 
-  static EventInstallationUpdated fromJson(Map<String, dynamic> json) =>
-      EventInstallationUpdatedMapper.fromJson(json);
+  static EventInstallationUpdated fromJson(Map<String, dynamic> json) => EventInstallationUpdatedMapper.fromJson(json);
 }

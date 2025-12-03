@@ -10,8 +10,7 @@ part 'event_session_idle_properties.g.dart';
 class EventSessionIdleProperties {
   const EventSessionIdleProperties({required this.sessionId});
 
-  factory EventSessionIdleProperties.fromJson(Map<String, Object?> json) =>
-      _$EventSessionIdlePropertiesFromJson(json);
+  factory EventSessionIdleProperties.fromJson(Map<String, Object?> json) => _$EventSessionIdlePropertiesFromJson(json);
 
   @JsonKey(name: 'sessionID')
   final String sessionId;

@@ -12,6 +12,5 @@ class PartnerId with PartnerIdMappable {
 
   final String id;
 
-  static PartnerId fromJson(Map<String, dynamic> json) =>
-      PartnerIdMapper.fromJson(json);
+  static PartnerId fromJson(Map<String, dynamic> json) => PartnerIdMapper.fromJson(json);
 }

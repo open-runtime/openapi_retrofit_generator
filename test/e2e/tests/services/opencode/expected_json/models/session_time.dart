@@ -8,14 +8,9 @@ part 'session_time.g.dart';
 
 @JsonSerializable()
 class SessionTime {
-  const SessionTime({
-    required this.created,
-    required this.updated,
-    this.compacting,
-  });
+  const SessionTime({required this.created, required this.updated, this.compacting});
 
-  factory SessionTime.fromJson(Map<String, Object?> json) =>
-      _$SessionTimeFromJson(json);
+  factory SessionTime.fromJson(Map<String, Object?> json) => _$SessionTimeFromJson(json);
 
   final num created;
   final num updated;

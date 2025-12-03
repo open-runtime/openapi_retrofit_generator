@@ -29,6 +29,5 @@ enum UserRoleRole {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserRoleRole> get $valuesDefined =>
-      values.where((value) => value != UserRoleRole.unknown).toList();
+  static List<UserRoleRole> get $valuesDefined => values.where((value) => value != UserRoleRole.unknown).toList();
 }

@@ -18,21 +18,17 @@ abstract class AssistantMessage with _$AssistantMessage {
     required String id,
     @JsonKey(name: 'sessionID') required String sessionId,
     required String role,
-    @JsonKey(name: 'AssistantMessageTime')
-    required AssistantMessageTime assistantMessageTime,
+    @JsonKey(name: 'AssistantMessageTime') required AssistantMessageTime assistantMessageTime,
     required List<String> system,
     @JsonKey(name: 'modelID') required String modelId,
     @JsonKey(name: 'providerID') required String providerId,
     required String mode,
-    @JsonKey(name: 'AssistantMessagePath')
-    required AssistantMessagePath assistantMessagePath,
+    @JsonKey(name: 'AssistantMessagePath') required AssistantMessagePath assistantMessagePath,
     required num cost,
-    @JsonKey(name: 'AssistantMessageTokens')
-    required AssistantMessageTokens assistantMessageTokens,
+    @JsonKey(name: 'AssistantMessageTokens') required AssistantMessageTokens assistantMessageTokens,
     AssistantMessageErrorUnion? error,
     bool? summary,
   }) = _AssistantMessage;
 
-  factory AssistantMessage.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessageFromJson(json);
+  factory AssistantMessage.fromJson(Map<String, Object?> json) => _$AssistantMessageFromJson(json);
 }

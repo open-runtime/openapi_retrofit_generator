@@ -42,8 +42,7 @@ class DarwinCoreOccurrence {
     this.comments,
   });
 
-  factory DarwinCoreOccurrence.fromJson(Map<String, Object?> json) =>
-      _$DarwinCoreOccurrenceFromJson(json);
+  factory DarwinCoreOccurrence.fromJson(Map<String, Object?> json) => _$DarwinCoreOccurrenceFromJson(json);
 
   final String id;
   final String eventDate;

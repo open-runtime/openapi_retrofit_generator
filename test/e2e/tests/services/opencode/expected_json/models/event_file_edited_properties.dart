@@ -10,8 +10,7 @@ part 'event_file_edited_properties.g.dart';
 class EventFileEditedProperties {
   const EventFileEditedProperties({required this.file});
 
-  factory EventFileEditedProperties.fromJson(Map<String, Object?> json) =>
-      _$EventFileEditedPropertiesFromJson(json);
+  factory EventFileEditedProperties.fromJson(Map<String, Object?> json) => _$EventFileEditedPropertiesFromJson(json);
 
   final String file;
 

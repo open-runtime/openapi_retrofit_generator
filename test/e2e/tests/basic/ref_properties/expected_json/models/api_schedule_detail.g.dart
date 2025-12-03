@@ -7,13 +7,9 @@ part of 'api_schedule_detail.dart';
 // **************************************************************************
 
 ApiScheduleDetail _$ApiScheduleDetailFromJson(Map<String, dynamic> json) =>
-    ApiScheduleDetail(
-      startTime: json['startTime'] as String,
-      endTime: json['endTime'] as String,
-    );
+    ApiScheduleDetail(startTime: json['startTime'] as String, endTime: json['endTime'] as String);
 
-Map<String, dynamic> _$ApiScheduleDetailToJson(ApiScheduleDetail instance) =>
-    <String, dynamic>{
-      'startTime': instance.startTime,
-      'endTime': instance.endTime,
-    };
+Map<String, dynamic> _$ApiScheduleDetailToJson(ApiScheduleDetail instance) => <String, dynamic>{
+  'startTime': instance.startTime,
+  'endTime': instance.endTime,
+};

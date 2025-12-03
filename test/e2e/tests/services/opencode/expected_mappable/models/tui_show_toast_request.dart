@@ -10,16 +10,11 @@ part 'tui_show_toast_request.mapper.dart';
 
 @MappableClass()
 class TuiShowToastRequest with TuiShowToastRequestMappable {
-  const TuiShowToastRequest({
-    required this.message,
-    required this.variant,
-    this.title,
-  });
+  const TuiShowToastRequest({required this.message, required this.variant, this.title});
 
   final String message;
   final TuiShowToastRequestVariantVariant variant;
   final String? title;
 
-  static TuiShowToastRequest fromJson(Map<String, dynamic> json) =>
-      TuiShowToastRequestMapper.fromJson(json);
+  static TuiShowToastRequest fromJson(Map<String, dynamic> json) => TuiShowToastRequestMapper.fromJson(json);
 }

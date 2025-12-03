@@ -10,8 +10,7 @@ part 'vote_response.g.dart';
 class VoteResponse {
   const VoteResponse({required this.updated});
 
-  factory VoteResponse.fromJson(Map<String, Object?> json) =>
-      _$VoteResponseFromJson(json);
+  factory VoteResponse.fromJson(Map<String, Object?> json) => _$VoteResponseFromJson(json);
 
   final bool updated;
 

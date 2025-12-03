@@ -9,14 +9,8 @@ final _digitPattern = RegExp(r'\d');
 class NormalizedIdentifier {
   const NormalizedIdentifier._(this._words, {this.isPrivate = false});
 
-  factory NormalizedIdentifier.fromWords(
-    List<String> words, {
-    bool isPrivate = false,
-  }) {
-    return NormalizedIdentifier._(
-      words.where((w) => w.isNotEmpty).toList(),
-      isPrivate: isPrivate,
-    );
+  factory NormalizedIdentifier.fromWords(List<String> words, {bool isPrivate = false}) {
+    return NormalizedIdentifier._(words.where((w) => w.isNotEmpty).toList(), isPrivate: isPrivate);
   }
 
   /// Parses the given [text] and splits it into words based on casing, spaces, etc.
@@ -76,10 +70,7 @@ class NormalizedIdentifier {
   }
 
   static List<String> _splitIntoAlphanumericParts(String text) {
-    return text
-        .split(_separatorSplitPattern)
-        .where((w) => w.isNotEmpty)
-        .toList();
+    return text.split(_separatorSplitPattern).where((w) => w.isNotEmpty).toList();
   }
 
   static bool _hasMixedCase(String text) {
@@ -228,9 +219,7 @@ extension StringToCaseX on String {
   /// The result is prefixed with `private` if the given text indicates a private entity
   String get toCamel {
     final identifier = NormalizedIdentifier.parse(this);
-    return identifier.isPrivate
-        ? 'private${identifier.pascalCase}'
-        : identifier.camelCase;
+    return identifier.isPrivate ? 'private${identifier.pascalCase}' : identifier.camelCase;
   }
 
   /// Return text formatted to PascalCase
@@ -238,9 +227,7 @@ extension StringToCaseX on String {
   /// The result is prefixed with `Private` if the given text indicates a private entity
   String get toPascal {
     final identifier = NormalizedIdentifier.parse(this);
-    return identifier.isPrivate
-        ? 'Private${identifier.pascalCase}'
-        : identifier.pascalCase;
+    return identifier.isPrivate ? 'Private${identifier.pascalCase}' : identifier.pascalCase;
   }
 
   /// Return text formatted to snake_case
@@ -248,9 +235,7 @@ extension StringToCaseX on String {
   /// The result is prefixed with `private_` if the given text indicates a private entity
   String get toSnake {
     final identifier = NormalizedIdentifier.parse(this);
-    return identifier.isPrivate
-        ? 'private_${identifier.snakeCase}'
-        : identifier.snakeCase;
+    return identifier.isPrivate ? 'private_${identifier.snakeCase}' : identifier.snakeCase;
   }
 
   /// Return text formatted to SCREAMING_SNAKE_CASE
@@ -258,8 +243,6 @@ extension StringToCaseX on String {
   /// The result is prefixed with `PRIVATE_` if the given text indicates a private entity
   String get toScreamingSnake {
     final identifier = NormalizedIdentifier.parse(this);
-    return identifier.isPrivate
-        ? 'PRIVATE_${identifier.screamingSnakeCase}'
-        : identifier.screamingSnakeCase;
+    return identifier.isPrivate ? 'PRIVATE_${identifier.screamingSnakeCase}' : identifier.screamingSnakeCase;
   }
 }

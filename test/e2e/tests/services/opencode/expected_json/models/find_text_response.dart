@@ -20,8 +20,7 @@ class FindTextResponse {
     required this.submatches,
   });
 
-  factory FindTextResponse.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseFromJson(json);
+  factory FindTextResponse.fromJson(Map<String, Object?> json) => _$FindTextResponseFromJson(json);
 
   @JsonKey(name: 'FindTextResponsePath')
   final FindTextResponsePath findTextResponsePath;

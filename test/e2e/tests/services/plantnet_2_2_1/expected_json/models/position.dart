@@ -10,8 +10,7 @@ part 'position.g.dart';
 class Position {
   const Position({required this.lat, required this.lon});
 
-  factory Position.fromJson(Map<String, Object?> json) =>
-      _$PositionFromJson(json);
+  factory Position.fromJson(Map<String, Object?> json) => _$PositionFromJson(json);
 
   final num lat;
   final num lon;

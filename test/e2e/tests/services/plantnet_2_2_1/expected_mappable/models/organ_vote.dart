@@ -15,6 +15,5 @@ class OrganVote with OrganVoteMappable {
   final Organ organ;
   final num score;
 
-  static OrganVote fromJson(Map<String, dynamic> json) =>
-      OrganVoteMapper.fromJson(json);
+  static OrganVote fromJson(Map<String, dynamic> json) => OrganVoteMapper.fromJson(json);
 }

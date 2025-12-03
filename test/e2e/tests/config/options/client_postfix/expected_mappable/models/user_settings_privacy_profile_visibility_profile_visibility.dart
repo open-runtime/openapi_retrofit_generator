@@ -26,12 +26,6 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
-  get $valuesDefined => values
-      .where(
-        (value) =>
-            value !=
-            UserSettingsPrivacyProfileVisibilityProfileVisibility.unknown,
-      )
-      .toList();
+  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility> get $valuesDefined =>
+      values.where((value) => value != UserSettingsPrivacyProfileVisibilityProfileVisibility.unknown).toList();
 }

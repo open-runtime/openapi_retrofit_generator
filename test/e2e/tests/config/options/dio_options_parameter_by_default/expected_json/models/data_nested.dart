@@ -12,8 +12,7 @@ part 'data_nested.g.dart';
 class DataNested {
   const DataNested({this.data});
 
-  factory DataNested.fromJson(Map<String, Object?> json) =>
-      _$DataNestedFromJson(json);
+  factory DataNested.fromJson(Map<String, Object?> json) => _$DataNestedFromJson(json);
 
   final List<DataNestedData>? data;
 

@@ -8,15 +8,9 @@ part 'formatter.g.dart';
 
 @JsonSerializable()
 class Formatter {
-  const Formatter({
-    this.disabled,
-    this.command,
-    this.environment,
-    this.extensions,
-  });
+  const Formatter({this.disabled, this.command, this.environment, this.extensions});
 
-  factory Formatter.fromJson(Map<String, Object?> json) =>
-      _$FormatterFromJson(json);
+  factory Formatter.fromJson(Map<String, Object?> json) => _$FormatterFromJson(json);
 
   final bool? disabled;
   final List<String>? command;

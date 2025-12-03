@@ -10,15 +10,9 @@ part 'project.g.dart';
 
 @JsonSerializable()
 class Project {
-  const Project({
-    required this.id,
-    required this.worktree,
-    required this.projectTime,
-    this.vcs,
-  });
+  const Project({required this.id, required this.worktree, required this.projectTime, this.vcs});
 
-  factory Project.fromJson(Map<String, Object?> json) =>
-      _$ProjectFromJson(json);
+  factory Project.fromJson(Map<String, Object?> json) => _$ProjectFromJson(json);
 
   final String id;
   final String worktree;

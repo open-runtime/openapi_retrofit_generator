@@ -13,22 +13,19 @@ Permission _$PermissionFromJson(Map<String, dynamic> json) => Permission(
   messageId: json['messageID'] as String,
   title: json['title'] as String,
   metadata: json['metadata'] as Map<String, dynamic>,
-  permissionTime: PermissionTime.fromJson(
-    json['PermissionTime'] as Map<String, dynamic>,
-  ),
+  permissionTime: PermissionTime.fromJson(json['PermissionTime'] as Map<String, dynamic>),
   pattern: json['pattern'] as String?,
   callId: json['callID'] as String?,
 );
 
-Map<String, dynamic> _$PermissionToJson(Permission instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'type': instance.type,
-      'pattern': instance.pattern,
-      'sessionID': instance.sessionId,
-      'messageID': instance.messageId,
-      'callID': instance.callId,
-      'title': instance.title,
-      'metadata': instance.metadata,
-      'PermissionTime': instance.permissionTime,
-    };
+Map<String, dynamic> _$PermissionToJson(Permission instance) => <String, dynamic>{
+  'id': instance.id,
+  'type': instance.type,
+  'pattern': instance.pattern,
+  'sessionID': instance.sessionId,
+  'messageID': instance.messageId,
+  'callID': instance.callId,
+  'title': instance.title,
+  'metadata': instance.metadata,
+  'PermissionTime': instance.permissionTime,
+};

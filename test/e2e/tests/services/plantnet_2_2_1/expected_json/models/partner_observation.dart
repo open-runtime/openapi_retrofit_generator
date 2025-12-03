@@ -43,8 +43,7 @@ class PartnerObservation {
     this.votes,
   });
 
-  factory PartnerObservation.fromJson(Map<String, Object?> json) =>
-      _$PartnerObservationFromJson(json);
+  factory PartnerObservation.fromJson(Map<String, Object?> json) => _$PartnerObservationFromJson(json);
 
   final String id;
   final String license;

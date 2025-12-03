@@ -13,6 +13,5 @@ class Model16 with Model16Mappable {
   final String id;
   final String category;
 
-  static Model16 fromJson(Map<String, dynamic> json) =>
-      Model16Mapper.fromJson(json);
+  static Model16 fromJson(Map<String, dynamic> json) => Model16Mapper.fromJson(json);
 }

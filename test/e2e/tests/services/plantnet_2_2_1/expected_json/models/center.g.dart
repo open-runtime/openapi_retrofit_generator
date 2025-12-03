@@ -6,10 +6,6 @@ part of 'center.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Center _$CenterFromJson(Map<String, dynamic> json) =>
-    Center(x: json['x'] as num?, y: json['y'] as num?);
+Center _$CenterFromJson(Map<String, dynamic> json) => Center(x: json['x'] as num?, y: json['y'] as num?);
 
-Map<String, dynamic> _$CenterToJson(Center instance) => <String, dynamic>{
-  'x': instance.x,
-  'y': instance.y,
-};
+Map<String, dynamic> _$CenterToJson(Center instance) => <String, dynamic>{'x': instance.x, 'y': instance.y};

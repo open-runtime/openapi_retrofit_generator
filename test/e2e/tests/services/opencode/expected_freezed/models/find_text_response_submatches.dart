@@ -18,6 +18,5 @@ abstract class FindTextResponseSubmatches with _$FindTextResponseSubmatches {
     required num end,
   }) = _FindTextResponseSubmatches;
 
-  factory FindTextResponseSubmatches.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseSubmatchesFromJson(json);
+  factory FindTextResponseSubmatches.fromJson(Map<String, Object?> json) => _$FindTextResponseSubmatchesFromJson(json);
 }

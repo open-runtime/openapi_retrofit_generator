@@ -14,9 +14,7 @@ import 'assistant_message.dart';
 
 part 'message_union.mapper.dart';
 
-@MappableClass(
-  includeSubClasses: [MessageUnionUserMessage, MessageUnionAssistantMessage],
-)
+@MappableClass(includeSubClasses: [MessageUnionUserMessage, MessageUnionAssistantMessage])
 sealed class MessageUnion with MessageUnionMappable {
   const MessageUnion();
 
@@ -34,15 +32,12 @@ extension MessageUnionDeserializer on MessageUnion {
       return MessageUnionAssistantMessageMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for MessageUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for MessageUnion from: $json');
   }
 }
 
 @MappableClass()
-class MessageUnionUserMessage extends MessageUnion
-    with MessageUnionUserMessageMappable {
+class MessageUnionUserMessage extends MessageUnion with MessageUnionUserMessageMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -59,8 +54,7 @@ class MessageUnionUserMessage extends MessageUnion
 }
 
 @MappableClass()
-class MessageUnionAssistantMessage extends MessageUnion
-    with MessageUnionAssistantMessageMappable {
+class MessageUnionAssistantMessage extends MessageUnion with MessageUnionAssistantMessageMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;

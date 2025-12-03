@@ -10,8 +10,7 @@ part 'text_part_time.g.dart';
 class TextPartTime {
   const TextPartTime({required this.start, this.end});
 
-  factory TextPartTime.fromJson(Map<String, Object?> json) =>
-      _$TextPartTimeFromJson(json);
+  factory TextPartTime.fromJson(Map<String, Object?> json) => _$TextPartTimeFromJson(json);
 
   final num start;
   final num? end;

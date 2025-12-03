@@ -20,8 +20,7 @@ enum UserRoleRole {
 
   const UserRoleRole(this.json);
 
-  factory UserRoleRole.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserRoleRole.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -31,6 +30,5 @@ enum UserRoleRole {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserRoleRole> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserRoleRole> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

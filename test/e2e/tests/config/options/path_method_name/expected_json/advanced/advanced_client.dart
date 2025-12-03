@@ -33,9 +33,7 @@ abstract class AdvancedClient {
 
   /// Get polymorphic entity
   @GET('/entities/{entityId}')
-  Future<Entity> getEntitiesEntityId({
-    @Path('entityId') required String entityId,
-  });
+  Future<Entity> getEntitiesEntityId({@Path('entityId') required String entityId});
 
   /// Endpoint with potentially conflicting names
   @GET('/conflicts/duplicate')

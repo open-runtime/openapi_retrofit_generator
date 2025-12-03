@@ -10,8 +10,7 @@ part 'session_fork_request.g.dart';
 class SessionForkRequest {
   const SessionForkRequest({this.messageId});
 
-  factory SessionForkRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionForkRequestFromJson(json);
+  factory SessionForkRequest.fromJson(Map<String, Object?> json) => _$SessionForkRequestFromJson(json);
 
   @JsonKey(name: 'messageID')
   final String? messageId;

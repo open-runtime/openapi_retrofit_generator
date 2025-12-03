@@ -12,9 +12,8 @@ TestRequest _$TestRequestFromJson(Map<String, dynamic> json) => TestRequest(
   lastname: json['lastname'] as String?,
 );
 
-Map<String, dynamic> _$TestRequestToJson(TestRequest instance) =>
-    <String, dynamic>{
-      'list': instance.list,
-      'name': instance.name,
-      'lastname': ?instance.lastname,
-    };
+Map<String, dynamic> _$TestRequestToJson(TestRequest instance) => <String, dynamic>{
+  'list': instance.list,
+  'name': instance.name,
+  'lastname': ?instance.lastname,
+};

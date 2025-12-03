@@ -10,8 +10,7 @@ part 'get_no_tags_response.g.dart';
 class GetNoTagsResponse {
   const GetNoTagsResponse({this.result});
 
-  factory GetNoTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$GetNoTagsResponseFromJson(json);
+  factory GetNoTagsResponse.fromJson(Map<String, Object?> json) => _$GetNoTagsResponseFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? result;

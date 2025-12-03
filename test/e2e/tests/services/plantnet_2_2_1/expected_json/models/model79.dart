@@ -10,8 +10,7 @@ part 'model79.g.dart';
 class Model79 {
   const Model79({this.alias, this.min, this.max, this.mean});
 
-  factory Model79.fromJson(Map<String, Object?> json) =>
-      _$Model79FromJson(json);
+  factory Model79.fromJson(Map<String, Object?> json) => _$Model79FromJson(json);
 
   final String? alias;
   final num? min;

@@ -19,6 +19,5 @@ abstract class PartnerObservations with _$PartnerObservations {
     String? nextStartDate,
   }) = _PartnerObservations;
 
-  factory PartnerObservations.fromJson(Map<String, Object?> json) =>
-      _$PartnerObservationsFromJson(json);
+  factory PartnerObservations.fromJson(Map<String, Object?> json) => _$PartnerObservationsFromJson(json);
 }

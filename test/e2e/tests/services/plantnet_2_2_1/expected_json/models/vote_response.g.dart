@@ -6,8 +6,6 @@ part of 'vote_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VoteResponse _$VoteResponseFromJson(Map<String, dynamic> json) =>
-    VoteResponse(updated: json['updated'] as bool);
+VoteResponse _$VoteResponseFromJson(Map<String, dynamic> json) => VoteResponse(updated: json['updated'] as bool);
 
-Map<String, dynamic> _$VoteResponseToJson(VoteResponse instance) =>
-    <String, dynamic>{'updated': instance.updated};
+Map<String, dynamic> _$VoteResponseToJson(VoteResponse instance) => <String, dynamic>{'updated': instance.updated};

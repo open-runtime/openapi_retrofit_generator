@@ -12,6 +12,5 @@ class UnknownErrorData with UnknownErrorDataMappable {
 
   final String message;
 
-  static UnknownErrorData fromJson(Map<String, dynamic> json) =>
-      UnknownErrorDataMapper.fromJson(json);
+  static UnknownErrorData fromJson(Map<String, dynamic> json) => UnknownErrorDataMapper.fromJson(json);
 }

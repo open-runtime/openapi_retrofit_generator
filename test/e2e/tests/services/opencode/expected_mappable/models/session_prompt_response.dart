@@ -16,6 +16,5 @@ class SessionPromptResponse with SessionPromptResponseMappable {
   final AssistantMessage info;
   final List<PartModel> parts;
 
-  static SessionPromptResponse fromJson(Map<String, dynamic> json) =>
-      SessionPromptResponseMapper.fromJson(json);
+  static SessionPromptResponse fromJson(Map<String, dynamic> json) => SessionPromptResponseMapper.fromJson(json);
 }

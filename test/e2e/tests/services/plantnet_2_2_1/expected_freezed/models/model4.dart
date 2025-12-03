@@ -15,13 +15,8 @@ part 'model4.g.dart';
 
 @Freezed()
 abstract class Model4 with _$Model4 {
-  const factory Model4({
-    Account? account,
-    Contract? contract,
-    History? history,
-    Billing? billing,
-    Security? security,
-  }) = _Model4;
+  const factory Model4({Account? account, Contract? contract, History? history, Billing? billing, Security? security}) =
+      _Model4;
 
   factory Model4.fromJson(Map<String, Object?> json) => _$Model4FromJson(json);
 }

@@ -13,10 +13,9 @@ _TestModel _$TestModelFromJson(Map<String, dynamic> json) => _TestModel(
   optionalNullableField: json['optionalNullableField'] as String?,
 );
 
-Map<String, dynamic> _$TestModelToJson(_TestModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'requiredNullableField': instance.requiredNullableField,
-      'name': ?instance.name,
-      'optionalNullableField': ?instance.optionalNullableField,
-    };
+Map<String, dynamic> _$TestModelToJson(_TestModel instance) => <String, dynamic>{
+  'id': instance.id,
+  'requiredNullableField': instance.requiredNullableField,
+  'name': ?instance.name,
+  'optionalNullableField': ?instance.optionalNullableField,
+};

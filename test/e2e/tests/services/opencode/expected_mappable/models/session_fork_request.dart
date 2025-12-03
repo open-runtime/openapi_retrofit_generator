@@ -13,6 +13,5 @@ class SessionForkRequest with SessionForkRequestMappable {
   @MappableField(key: 'messageID')
   final String? messageId;
 
-  static SessionForkRequest fromJson(Map<String, dynamic> json) =>
-      SessionForkRequestMapper.fromJson(json);
+  static SessionForkRequest fromJson(Map<String, dynamic> json) => SessionForkRequestMapper.fromJson(json);
 }

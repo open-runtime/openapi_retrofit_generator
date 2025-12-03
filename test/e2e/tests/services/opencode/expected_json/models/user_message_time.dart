@@ -10,8 +10,7 @@ part 'user_message_time.g.dart';
 class UserMessageTime {
   const UserMessageTime({required this.created});
 
-  factory UserMessageTime.fromJson(Map<String, Object?> json) =>
-      _$UserMessageTimeFromJson(json);
+  factory UserMessageTime.fromJson(Map<String, Object?> json) => _$UserMessageTimeFromJson(json);
 
   final num created;
 

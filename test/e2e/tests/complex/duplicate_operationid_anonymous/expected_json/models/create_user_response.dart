@@ -10,8 +10,7 @@ part 'create_user_response.g.dart';
 class CreateUserResponse {
   const CreateUserResponse({this.id});
 
-  factory CreateUserResponse.fromJson(Map<String, Object?> json) =>
-      _$CreateUserResponseFromJson(json);
+  factory CreateUserResponse.fromJson(Map<String, Object?> json) => _$CreateUserResponseFromJson(json);
 
   final int? id;
 

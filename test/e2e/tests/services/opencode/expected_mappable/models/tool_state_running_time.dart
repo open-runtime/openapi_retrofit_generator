@@ -12,6 +12,5 @@ class ToolStateRunningTime with ToolStateRunningTimeMappable {
 
   final num start;
 
-  static ToolStateRunningTime fromJson(Map<String, dynamic> json) =>
-      ToolStateRunningTimeMapper.fromJson(json);
+  static ToolStateRunningTime fromJson(Map<String, dynamic> json) => ToolStateRunningTimeMapper.fromJson(json);
 }

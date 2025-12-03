@@ -8,18 +8,12 @@ part 'formatter.mapper.dart';
 
 @MappableClass()
 class Formatter with FormatterMappable {
-  const Formatter({
-    this.disabled,
-    this.command,
-    this.environment,
-    this.extensions,
-  });
+  const Formatter({this.disabled, this.command, this.environment, this.extensions});
 
   final bool? disabled;
   final List<String>? command;
   final Map<String, String>? environment;
   final List<String>? extensions;
 
-  static Formatter fromJson(Map<String, dynamic> json) =>
-      FormatterMapper.fromJson(json);
+  static Formatter fromJson(Map<String, dynamic> json) => FormatterMapper.fromJson(json);
 }

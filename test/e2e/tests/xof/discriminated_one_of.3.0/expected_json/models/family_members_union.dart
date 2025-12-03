@@ -14,8 +14,7 @@ part 'family_members_union.g.dart';
 sealed class FamilyMembersUnion {
   const FamilyMembersUnion();
 
-  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) =>
-      FamilyMembersUnionDeserializer.tryDeserialize(json);
+  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) => FamilyMembersUnionDeserializer.tryDeserialize(json);
 
   Map<String, dynamic> toJson();
 }
@@ -34,15 +33,10 @@ extension FamilyMembersUnionDeserializer on FamilyMembersUnion {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[FamilyMembersUnionCat] =>
-        FamilyMembersUnionCat.fromJson(json),
-      _ when value == effective[FamilyMembersUnionDog] =>
-        FamilyMembersUnionDog.fromJson(json),
-      _ when value == effective[FamilyMembersUnionHuman] =>
-        FamilyMembersUnionHuman.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for FamilyMembersUnion',
-      ),
+      _ when value == effective[FamilyMembersUnionCat] => FamilyMembersUnionCat.fromJson(json),
+      _ when value == effective[FamilyMembersUnionDog] => FamilyMembersUnionDog.fromJson(json),
+      _ when value == effective[FamilyMembersUnionHuman] => FamilyMembersUnionHuman.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for FamilyMembersUnion'),
     };
   }
 }
@@ -54,8 +48,7 @@ class FamilyMembersUnionCat extends FamilyMembersUnion {
 
   const FamilyMembersUnionCat({required this.type, required this.mewCount});
 
-  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionCatFromJson(json);
+  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionCatFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FamilyMembersUnionCatToJson(this);
@@ -68,8 +61,7 @@ class FamilyMembersUnionDog extends FamilyMembersUnion {
 
   const FamilyMembersUnionDog({required this.type, required this.barkSound});
 
-  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionDogFromJson(json);
+  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionDogFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FamilyMembersUnionDogToJson(this);
@@ -82,8 +74,7 @@ class FamilyMembersUnionHuman extends FamilyMembersUnion {
 
   const FamilyMembersUnionHuman({required this.type, required this.job});
 
-  factory FamilyMembersUnionHuman.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionHumanFromJson(json);
+  factory FamilyMembersUnionHuman.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionHumanFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FamilyMembersUnionHumanToJson(this);

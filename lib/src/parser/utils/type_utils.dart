@@ -120,17 +120,10 @@ bool isLikelyEnumType(String typeName) {
 }
 
 /// Protect default enum value from incorrect symbols, keywords, etc.
-String? protectDefaultEnum(Object? name) =>
-    protectDefaultValue(name, isEnum: true);
+String? protectDefaultEnum(Object? name) => protectDefaultValue(name, isEnum: true);
 
 /// Protect default value from incorrect symbols, keywords, etc.
-String? protectDefaultValue(
-  Object? name, {
-  String? type,
-  bool isEnum = false,
-  bool isArray = false,
-  bool dart = true,
-}) {
+String? protectDefaultValue(Object? name, {String? type, bool isEnum = false, bool isArray = false, bool dart = true}) {
   final nameStr = name?.toString();
   if (nameStr == null) {
     return null;
@@ -138,10 +131,7 @@ String? protectDefaultValue(
 
   /// Json is not supported
   if (nameStr.startsWith('{') && nameStr.endsWith('}')) {
-    GeneratorLogger.debug(
-      GeneratorLogCategory.defaults,
-      'Skipping JSON object default value: $nameStr',
-    );
+    GeneratorLogger.debug(GeneratorLogCategory.defaults, 'Skipping JSON object default value: $nameStr');
     return null;
   }
 
@@ -178,10 +168,7 @@ String? protectDefaultValue(
   }
 
   if (isArray) {
-    GeneratorLogger.debug(
-      GeneratorLogCategory.defaults,
-      'Skipping non-array default for array type: $nameStr',
-    );
+    GeneratorLogger.debug(GeneratorLogCategory.defaults, 'Skipping non-array default for array type: $nameStr');
     return null;
   }
 
@@ -247,14 +234,11 @@ Set<UniversalEnumItem> protectEnumItemsNames(Iterable<String> names) {
 
   for (final name in names) {
     final (newName, renameDescription) = switch (name) {
-      '' => (
-        uniqueEnumItemName(),
-        'Incorrect name has been replaced. Original name: empty string.',
+      '' => (uniqueEnumItemName(), 'Incorrect name has been replaced. Original name: empty string.'),
+      _ when _startWithNumberRegExp.hasMatch(name) && _enumNameRegExp.hasMatch(numberEnumItemName(name).toCamel) => (
+        numberEnumItemName(name),
+        null,
       ),
-      _
-          when _startWithNumberRegExp.hasMatch(name) &&
-              _enumNameRegExp.hasMatch(numberEnumItemName(name).toCamel) =>
-        (numberEnumItemName(name), null),
       _ when !_enumNameRegExp.hasMatch(name) => (
         uniqueEnumItemName(),
         'Incorrect name has been replaced. Original name: `$name`.',
@@ -265,23 +249,14 @@ Set<UniversalEnumItem> protectEnumItemsNames(Iterable<String> names) {
       ),
       _ => (leadingDashToMinus(name), null),
     };
-    items.add(
-      UniversalEnumItem(
-        name: newName,
-        jsonKey: name,
-        description: renameDescription,
-      ),
-    );
+    items.add(UniversalEnumItem(name: newName, jsonKey: name, description: renameDescription));
   }
 
   return items;
 }
 
 /// Protect enum items names from incorrect symbols, keywords, etc.
-Set<UniversalEnumItem> protectEnumItemsNamesAndValues(
-  Iterable<String> names,
-  Iterable<String> values,
-) {
+Set<UniversalEnumItem> protectEnumItemsNamesAndValues(Iterable<String> names, Iterable<String> values) {
   final items = <UniversalEnumItem>{};
   final nameList = names.toList();
   final valueList = values.toList();
@@ -327,15 +302,9 @@ String _normalizeInvalidName(String name) {
   final (newName, error) = switch (name) {
     null || '' =>
       uniqueIfNull
-          ? (
-              uniqueName(isEnum: isEnum),
-              'Name not received and was auto-generated.',
-            )
+          ? (uniqueName(isEnum: isEnum), 'Name not received and was auto-generated.')
           : (null, 'Name not received - field will be skipped.'),
-    _
-        when name.startsWith(r'$') &&
-            name.split('').where((e) => e == r'$').length == 1 =>
-      (name.substring(1), null),
+    _ when name.startsWith(r'$') && name.split('').where((e) => e == r'$').length == 1 => (name.substring(1), null),
     _ when !_nameRegExp.hasMatch(name) => () {
       final normalized = name.toCamel;
       if (normalized.isNotEmpty && _nameRegExp.hasMatch(normalized)) {
@@ -350,16 +319,10 @@ String _normalizeInvalidName(String name) {
 
       // If normalization failed and uniqueIfNull is true, generate a unique name
       if (uniqueIfNull) {
-        return (
-          uniqueName(isEnum: isEnum),
-          'Invalid name `$name` replaced with auto-generated name.',
-        );
+        return (uniqueName(isEnum: isEnum), 'Invalid name `$name` replaced with auto-generated name.');
       }
 
-      return (
-        null,
-        'Invalid name `$name` could not be normalized - field will be skipped.',
-      );
+      return (null, 'Invalid name `$name` could not be normalized - field will be skipped.');
     }(),
     _ when isEnum && reservedFieldNames.contains(name.toCamel) => (
       '$name $_enumConst',
@@ -378,11 +341,7 @@ String _normalizeInvalidName(String name) {
 
   // Log name protection if the name was changed
   if (newName != null && newName != name) {
-    GeneratorLogger.protectedName(
-      name ?? '<null>',
-      newName,
-      error ?? 'protection applied',
-    );
+    GeneratorLogger.protectedName(name ?? '<null>', newName, error ?? 'protection applied');
   }
 
   return (
@@ -397,5 +356,4 @@ String _normalizeInvalidName(String name) {
 }
 
 /// Protect JsonKeys from incorrect symbols, keywords, etc.
-String? protectJsonKey(String? name) =>
-    name?.replaceAll(r'\', r'\\').replaceAll(r'$', r'\$');
+String? protectJsonKey(String? name) => name?.replaceAll(r'\', r'\\').replaceAll(r'$', r'\$');

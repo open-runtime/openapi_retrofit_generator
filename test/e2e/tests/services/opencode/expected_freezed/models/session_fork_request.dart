@@ -9,10 +9,7 @@ part 'session_fork_request.g.dart';
 
 @Freezed()
 abstract class SessionForkRequest with _$SessionForkRequest {
-  const factory SessionForkRequest({
-    @JsonKey(name: 'messageID') String? messageId,
-  }) = _SessionForkRequest;
+  const factory SessionForkRequest({@JsonKey(name: 'messageID') String? messageId}) = _SessionForkRequest;
 
-  factory SessionForkRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionForkRequestFromJson(json);
+  factory SessionForkRequest.fromJson(Map<String, Object?> json) => _$SessionForkRequestFromJson(json);
 }

@@ -14,6 +14,5 @@ class Model29 with Model29Mappable {
 
   final Identify? identify;
 
-  static Model29 fromJson(Map<String, dynamic> json) =>
-      Model29Mapper.fromJson(json);
+  static Model29 fromJson(Map<String, dynamic> json) => Model29Mapper.fromJson(json);
 }

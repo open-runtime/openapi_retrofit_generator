@@ -8,16 +8,11 @@ part 'register_user_dto.mapper.dart';
 
 @MappableClass()
 class RegisterUserDto with RegisterUserDtoMappable {
-  const RegisterUserDto({
-    required this.email,
-    required this.name,
-    required this.password,
-  });
+  const RegisterUserDto({required this.email, required this.name, required this.password});
 
   final String email;
   final String name;
   final String password;
 
-  static RegisterUserDto fromJson(Map<String, dynamic> json) =>
-      RegisterUserDtoMapper.fromJson(json);
+  static RegisterUserDto fromJson(Map<String, dynamic> json) => RegisterUserDtoMapper.fromJson(json);
 }

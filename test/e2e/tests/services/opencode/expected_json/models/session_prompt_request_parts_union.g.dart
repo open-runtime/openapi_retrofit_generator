@@ -6,8 +6,7 @@ part of 'session_prompt_request_parts_union.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SessionPromptRequestPartsUnionTextPartInput
-_$SessionPromptRequestPartsUnionTextPartInputFromJson(
+SessionPromptRequestPartsUnionTextPartInput _$SessionPromptRequestPartsUnionTextPartInputFromJson(
   Map<String, dynamic> json,
 ) => SessionPromptRequestPartsUnionTextPartInput(
   id: json['id'] as String?,
@@ -16,9 +15,7 @@ _$SessionPromptRequestPartsUnionTextPartInputFromJson(
   synthetic: json['synthetic'] as bool?,
   textPartInputTime: json['textPartInputTime'] == null
       ? null
-      : TextPartInputTime.fromJson(
-          json['textPartInputTime'] as Map<String, dynamic>,
-        ),
+      : TextPartInputTime.fromJson(json['textPartInputTime'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -33,8 +30,7 @@ Map<String, dynamic> _$SessionPromptRequestPartsUnionTextPartInputToJson(
   'metadata': instance.metadata,
 };
 
-SessionPromptRequestPartsUnionFilePartInput
-_$SessionPromptRequestPartsUnionFilePartInputFromJson(
+SessionPromptRequestPartsUnionFilePartInput _$SessionPromptRequestPartsUnionFilePartInputFromJson(
   Map<String, dynamic> json,
 ) => SessionPromptRequestPartsUnionFilePartInput(
   id: json['id'] as String?,
@@ -42,9 +38,7 @@ _$SessionPromptRequestPartsUnionFilePartInputFromJson(
   mime: json['mime'] as String,
   filename: json['filename'] as String?,
   url: json['url'] as String,
-  source: json['source'] == null
-      ? null
-      : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
+  source: json['source'] == null ? null : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$SessionPromptRequestPartsUnionFilePartInputToJson(
@@ -58,8 +52,7 @@ Map<String, dynamic> _$SessionPromptRequestPartsUnionFilePartInputToJson(
   'source': instance.source,
 };
 
-SessionPromptRequestPartsUnionAgentPartInput
-_$SessionPromptRequestPartsUnionAgentPartInputFromJson(
+SessionPromptRequestPartsUnionAgentPartInput _$SessionPromptRequestPartsUnionAgentPartInputFromJson(
   Map<String, dynamic> json,
 ) => SessionPromptRequestPartsUnionAgentPartInput(
   id: json['id'] as String?,
@@ -67,9 +60,7 @@ _$SessionPromptRequestPartsUnionAgentPartInputFromJson(
   name: json['name'] as String,
   agentPartInputSource: json['agentPartInputSource'] == null
       ? null
-      : AgentPartInputSource.fromJson(
-          json['agentPartInputSource'] as Map<String, dynamic>,
-        ),
+      : AgentPartInputSource.fromJson(json['agentPartInputSource'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$SessionPromptRequestPartsUnionAgentPartInputToJson(

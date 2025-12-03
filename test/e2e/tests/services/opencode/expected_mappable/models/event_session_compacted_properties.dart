@@ -7,8 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'event_session_compacted_properties.mapper.dart';
 
 @MappableClass()
-class EventSessionCompactedProperties
-    with EventSessionCompactedPropertiesMappable {
+class EventSessionCompactedProperties with EventSessionCompactedPropertiesMappable {
   const EventSessionCompactedProperties({required this.sessionId});
 
   @MappableField(key: 'sessionID')

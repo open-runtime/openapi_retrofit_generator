@@ -25,6 +25,5 @@ abstract class PersonEntity with _$PersonEntity {
     Map<String, String>? socialProfiles,
   }) = _PersonEntity;
 
-  factory PersonEntity.fromJson(Map<String, Object?> json) =>
-      _$PersonEntityFromJson(json);
+  factory PersonEntity.fromJson(Map<String, Object?> json) => _$PersonEntityFromJson(json);
 }

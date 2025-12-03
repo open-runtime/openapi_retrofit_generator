@@ -14,6 +14,5 @@ class Model9 with Model9Mappable {
   final String? alias;
   final String? description;
 
-  static Model9 fromJson(Map<String, dynamic> json) =>
-      Model9Mapper.fromJson(json);
+  static Model9 fromJson(Map<String, dynamic> json) => Model9Mapper.fromJson(json);
 }

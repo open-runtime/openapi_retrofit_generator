@@ -18,8 +18,7 @@ class ToolStateRunning {
     this.metadata,
   });
 
-  factory ToolStateRunning.fromJson(Map<String, Object?> json) =>
-      _$ToolStateRunningFromJson(json);
+  factory ToolStateRunning.fromJson(Map<String, Object?> json) => _$ToolStateRunningFromJson(json);
 
   final String status;
   final dynamic input;

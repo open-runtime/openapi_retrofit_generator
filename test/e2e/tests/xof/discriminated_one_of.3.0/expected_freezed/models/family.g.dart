@@ -12,6 +12,4 @@ _Family _$FamilyFromJson(Map<String, dynamic> json) => _Family(
       .toList(),
 );
 
-Map<String, dynamic> _$FamilyToJson(_Family instance) => <String, dynamic>{
-  'members': instance.members,
-};
+Map<String, dynamic> _$FamilyToJson(_Family instance) => <String, dynamic>{'members': instance.members};

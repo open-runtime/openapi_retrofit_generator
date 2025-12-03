@@ -14,6 +14,5 @@ class SearchResponse with SearchResponseMappable {
 
   final List<SearchResult>? results;
 
-  static SearchResponse fromJson(Map<String, dynamic> json) =>
-      SearchResponseMapper.fromJson(json);
+  static SearchResponse fromJson(Map<String, dynamic> json) => SearchResponseMapper.fromJson(json);
 }

@@ -10,12 +10,8 @@ _Model65 _$Model65FromJson(Map<String, dynamic> json) => _Model65(
   name: json['name'] as String,
   organismQuantityType: json['organismQuantityType'] as String,
   organismQuantity: json['organismQuantity'] as num?,
-  organs: json['organs'] == null
-      ? null
-      : Organs.fromJson(json['organs'] as String),
-  taxon: json['taxon'] == null
-      ? null
-      : Taxon.fromJson(json['taxon'] as Map<String, dynamic>),
+  organs: json['organs'] == null ? null : Organs.fromJson(json['organs'] as String),
+  taxon: json['taxon'] == null ? null : Taxon.fromJson(json['taxon'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$Model65ToJson(_Model65 instance) => <String, dynamic>{

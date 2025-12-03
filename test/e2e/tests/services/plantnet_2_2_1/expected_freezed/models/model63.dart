@@ -16,6 +16,5 @@ abstract class Model63 with _$Model63 {
     @JsonKey(name: 'large_url') String? largeUrl,
   }) = _Model63;
 
-  factory Model63.fromJson(Map<String, Object?> json) =>
-      _$Model63FromJson(json);
+  factory Model63.fromJson(Map<String, Object?> json) => _$Model63FromJson(json);
 }

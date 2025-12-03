@@ -14,6 +14,5 @@ abstract class SessionSummarizeRequest with _$SessionSummarizeRequest {
     @JsonKey(name: 'modelID') required String modelId,
   }) = _SessionSummarizeRequest;
 
-  factory SessionSummarizeRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionSummarizeRequestFromJson(json);
+  factory SessionSummarizeRequest.fromJson(Map<String, Object?> json) => _$SessionSummarizeRequestFromJson(json);
 }

@@ -7,13 +7,8 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'event_message_part_removed_properties.mapper.dart';
 
 @MappableClass()
-class EventMessagePartRemovedProperties
-    with EventMessagePartRemovedPropertiesMappable {
-  const EventMessagePartRemovedProperties({
-    required this.sessionId,
-    required this.messageId,
-    required this.partId,
-  });
+class EventMessagePartRemovedProperties with EventMessagePartRemovedPropertiesMappable {
+  const EventMessagePartRemovedProperties({required this.sessionId, required this.messageId, required this.partId});
 
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -22,7 +17,6 @@ class EventMessagePartRemovedProperties
   @MappableField(key: 'partID')
   final String partId;
 
-  static EventMessagePartRemovedProperties fromJson(
-    Map<String, dynamic> json,
-  ) => EventMessagePartRemovedPropertiesMapper.fromJson(json);
+  static EventMessagePartRemovedProperties fromJson(Map<String, dynamic> json) =>
+      EventMessagePartRemovedPropertiesMapper.fromJson(json);
 }

@@ -12,13 +12,11 @@ part 'event_message_part_updated_properties.g.dart';
 class EventMessagePartUpdatedProperties {
   const EventMessagePartUpdatedProperties({required this.partField});
 
-  factory EventMessagePartUpdatedProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventMessagePartUpdatedPropertiesFromJson(json);
+  factory EventMessagePartUpdatedProperties.fromJson(Map<String, Object?> json) =>
+      _$EventMessagePartUpdatedPropertiesFromJson(json);
 
   @JsonKey(name: 'part')
   final PartModel partField;
 
-  Map<String, Object?> toJson() =>
-      _$EventMessagePartUpdatedPropertiesToJson(this);
+  Map<String, Object?> toJson() => _$EventMessagePartUpdatedPropertiesToJson(this);
 }

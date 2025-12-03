@@ -9,5 +9,7 @@ part of 'another_class.dart';
 AnotherClass _$AnotherClassFromJson(Map<String, dynamic> json) =>
     AnotherClass(id: (json['id'] as num).toInt(), name: json['name'] as String);
 
-Map<String, dynamic> _$AnotherClassToJson(AnotherClass instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
+Map<String, dynamic> _$AnotherClassToJson(AnotherClass instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+};

@@ -16,7 +16,5 @@ abstract class InternalClient {
 
   /// Internal health check
   @GET('/internal/health')
-  Future<InternalHealthCheckResponse> internalHealthCheck({
-    @DioOptions() RequestOptions? options,
-  });
+  Future<InternalHealthCheckResponse> internalHealthCheck({@DioOptions() RequestOptions? options});
 }

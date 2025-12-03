@@ -19,8 +19,7 @@ enum Lifecycle {
 
   const Lifecycle(this.json);
 
-  factory Lifecycle.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Lifecycle.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -30,6 +29,5 @@ enum Lifecycle {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Lifecycle> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Lifecycle> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

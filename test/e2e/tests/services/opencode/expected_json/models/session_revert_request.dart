@@ -10,8 +10,7 @@ part 'session_revert_request.g.dart';
 class SessionRevertRequest {
   const SessionRevertRequest({required this.messageId, this.partId});
 
-  factory SessionRevertRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionRevertRequestFromJson(json);
+  factory SessionRevertRequest.fromJson(Map<String, Object?> json) => _$SessionRevertRequestFromJson(json);
 
   @JsonKey(name: 'messageID')
   final String messageId;

@@ -85,6 +85,5 @@ class Config with ConfigMappable {
   @MappableField(key: 'ConfigExperimental')
   final ConfigExperimental? configExperimental;
 
-  static Config fromJson(Map<String, dynamic> json) =>
-      ConfigMapper.fromJson(json);
+  static Config fromJson(Map<String, dynamic> json) => ConfigMapper.fromJson(json);
 }

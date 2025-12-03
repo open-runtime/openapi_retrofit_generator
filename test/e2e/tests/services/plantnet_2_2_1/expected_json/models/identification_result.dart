@@ -26,8 +26,7 @@ class IdentificationResult {
     this.otherResults,
   });
 
-  factory IdentificationResult.fromJson(Map<String, Object?> json) =>
-      _$IdentificationResultFromJson(json);
+  factory IdentificationResult.fromJson(Map<String, Object?> json) => _$IdentificationResultFromJson(json);
 
   final QueryModel? query;
   final String? language;

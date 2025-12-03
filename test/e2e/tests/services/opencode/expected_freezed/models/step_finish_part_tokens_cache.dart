@@ -9,11 +9,7 @@ part 'step_finish_part_tokens_cache.g.dart';
 
 @Freezed()
 abstract class StepFinishPartTokensCache with _$StepFinishPartTokensCache {
-  const factory StepFinishPartTokensCache({
-    required num read,
-    required num write,
-  }) = _StepFinishPartTokensCache;
+  const factory StepFinishPartTokensCache({required num read, required num write}) = _StepFinishPartTokensCache;
 
-  factory StepFinishPartTokensCache.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartTokensCacheFromJson(json);
+  factory StepFinishPartTokensCache.fromJson(Map<String, Object?> json) => _$StepFinishPartTokensCacheFromJson(json);
 }

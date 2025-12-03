@@ -9,5 +9,6 @@ part of 'not_found_error_data.dart';
 NotFoundErrorData _$NotFoundErrorDataFromJson(Map<String, dynamic> json) =>
     NotFoundErrorData(message: json['message'] as String);
 
-Map<String, dynamic> _$NotFoundErrorDataToJson(NotFoundErrorData instance) =>
-    <String, dynamic>{'message': instance.message};
+Map<String, dynamic> _$NotFoundErrorDataToJson(NotFoundErrorData instance) => <String, dynamic>{
+  'message': instance.message,
+};

@@ -11,6 +11,5 @@ part 'vote_response.g.dart';
 abstract class VoteResponse with _$VoteResponse {
   const factory VoteResponse({required bool updated}) = _VoteResponse;
 
-  factory VoteResponse.fromJson(Map<String, Object?> json) =>
-      _$VoteResponseFromJson(json);
+  factory VoteResponse.fromJson(Map<String, Object?> json) => _$VoteResponseFromJson(json);
 }

@@ -12,6 +12,5 @@ class CreateUserResponse with CreateUserResponseMappable {
 
   final int? id;
 
-  static CreateUserResponse fromJson(Map<String, dynamic> json) =>
-      CreateUserResponseMapper.fromJson(json);
+  static CreateUserResponse fromJson(Map<String, dynamic> json) => CreateUserResponseMapper.fromJson(json);
 }

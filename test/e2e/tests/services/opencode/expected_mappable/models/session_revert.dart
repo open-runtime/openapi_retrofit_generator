@@ -8,12 +8,7 @@ part 'session_revert.mapper.dart';
 
 @MappableClass()
 class SessionRevert with SessionRevertMappable {
-  const SessionRevert({
-    required this.messageId,
-    this.partId,
-    this.snapshot,
-    this.diff,
-  });
+  const SessionRevert({required this.messageId, this.partId, this.snapshot, this.diff});
 
   @MappableField(key: 'messageID')
   final String messageId;
@@ -22,6 +17,5 @@ class SessionRevert with SessionRevertMappable {
   final String? snapshot;
   final String? diff;
 
-  static SessionRevert fromJson(Map<String, dynamic> json) =>
-      SessionRevertMapper.fromJson(json);
+  static SessionRevert fromJson(Map<String, dynamic> json) => SessionRevertMapper.fromJson(json);
 }

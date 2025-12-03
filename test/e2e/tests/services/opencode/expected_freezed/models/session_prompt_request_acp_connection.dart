@@ -8,14 +8,10 @@ part 'session_prompt_request_acp_connection.freezed.dart';
 part 'session_prompt_request_acp_connection.g.dart';
 
 @Freezed()
-abstract class SessionPromptRequestAcpConnection
-    with _$SessionPromptRequestAcpConnection {
-  const factory SessionPromptRequestAcpConnection({
-    required dynamic connection,
-    required String sessionId,
-  }) = _SessionPromptRequestAcpConnection;
+abstract class SessionPromptRequestAcpConnection with _$SessionPromptRequestAcpConnection {
+  const factory SessionPromptRequestAcpConnection({required dynamic connection, required String sessionId}) =
+      _SessionPromptRequestAcpConnection;
 
-  factory SessionPromptRequestAcpConnection.fromJson(
-    Map<String, Object?> json,
-  ) => _$SessionPromptRequestAcpConnectionFromJson(json);
+  factory SessionPromptRequestAcpConnection.fromJson(Map<String, Object?> json) =>
+      _$SessionPromptRequestAcpConnectionFromJson(json);
 }

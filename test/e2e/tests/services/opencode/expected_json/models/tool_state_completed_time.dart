@@ -8,14 +8,9 @@ part 'tool_state_completed_time.g.dart';
 
 @JsonSerializable()
 class ToolStateCompletedTime {
-  const ToolStateCompletedTime({
-    required this.start,
-    required this.end,
-    this.compacted,
-  });
+  const ToolStateCompletedTime({required this.start, required this.end, this.compacted});
 
-  factory ToolStateCompletedTime.fromJson(Map<String, Object?> json) =>
-      _$ToolStateCompletedTimeFromJson(json);
+  factory ToolStateCompletedTime.fromJson(Map<String, Object?> json) => _$ToolStateCompletedTimeFromJson(json);
 
   final num start;
   final num end;

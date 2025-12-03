@@ -28,6 +28,5 @@ class Model15 with Model15Mappable {
   final Family? family;
   final CommonNames? commonNames;
 
-  static Model15 fromJson(Map<String, dynamic> json) =>
-      Model15Mapper.fromJson(json);
+  static Model15 fromJson(Map<String, dynamic> json) => Model15Mapper.fromJson(json);
 }

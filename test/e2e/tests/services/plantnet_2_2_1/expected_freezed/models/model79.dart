@@ -9,9 +9,7 @@ part 'model79.g.dart';
 
 @Freezed()
 abstract class Model79 with _$Model79 {
-  const factory Model79({String? alias, num? min, num? max, num? mean}) =
-      _Model79;
+  const factory Model79({String? alias, num? min, num? max, num? mean}) = _Model79;
 
-  factory Model79.fromJson(Map<String, Object?> json) =>
-      _$Model79FromJson(json);
+  factory Model79.fromJson(Map<String, Object?> json) => _$Model79FromJson(json);
 }

@@ -8,12 +8,7 @@ part 'todo.mapper.dart';
 
 @MappableClass()
 class Todo with TodoMappable {
-  const Todo({
-    required this.content,
-    required this.status,
-    required this.priority,
-    required this.id,
-  });
+  const Todo({required this.content, required this.status, required this.priority, required this.id});
 
   final String content;
   final String status;

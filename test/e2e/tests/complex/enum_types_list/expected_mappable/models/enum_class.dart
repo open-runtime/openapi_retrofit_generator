@@ -70,6 +70,5 @@ enum EnumClass {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<EnumClass> get $valuesDefined =>
-      values.where((value) => value != EnumClass.unknown).toList();
+  static List<EnumClass> get $valuesDefined => values.where((value) => value != EnumClass.unknown).toList();
 }

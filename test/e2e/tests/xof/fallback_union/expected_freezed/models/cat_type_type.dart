@@ -14,8 +14,7 @@ enum CatTypeType {
 
   const CatTypeType(this.json);
 
-  factory CatTypeType.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory CatTypeType.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -25,6 +24,5 @@ enum CatTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<CatTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<CatTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

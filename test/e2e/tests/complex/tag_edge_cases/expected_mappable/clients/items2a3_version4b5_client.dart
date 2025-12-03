@@ -12,8 +12,7 @@ part 'items2a3_version4b5_client.g.dart';
 
 @RestApi()
 abstract class Items2a3Version4b5Client {
-  factory Items2a3Version4b5Client(Dio dio, {String? baseUrl}) =
-      _Items2a3Version4b5Client;
+  factory Items2a3Version4b5Client(Dio dio, {String? baseUrl}) = _Items2a3Version4b5Client;
 
   /// Get items with multiple version markers
   @GET('/items/multi-version')

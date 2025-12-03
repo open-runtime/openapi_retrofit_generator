@@ -21,6 +21,5 @@ abstract class PatchUserRequest with _$PatchUserRequest {
     @JsonKey(includeIfNull: false) UserSettings? settings,
   }) = _PatchUserRequest;
 
-  factory PatchUserRequest.fromJson(Map<String, Object?> json) =>
-      _$PatchUserRequestFromJson(json);
+  factory PatchUserRequest.fromJson(Map<String, Object?> json) => _$PatchUserRequestFromJson(json);
 }

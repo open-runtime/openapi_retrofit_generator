@@ -18,8 +18,7 @@ abstract class CreatePostRequest with _$CreatePostRequest {
     dynamic metadata,
   }) = _CreatePostRequest;
 
-  factory CreatePostRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePostRequestFromJson(json);
+  factory CreatePostRequest.fromJson(Map<String, Object?> json) => _$CreatePostRequestFromJson(json);
   static const int titleMinLength = 1;
   static const int titleMaxLength = 200;
   static const int contentMinLength = 1;

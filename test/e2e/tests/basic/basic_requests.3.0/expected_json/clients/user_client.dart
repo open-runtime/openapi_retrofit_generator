@@ -19,18 +19,12 @@ abstract class UserClient {
   ///
   /// Name not received - field will be skipped.
   @GET('/api/User/info')
-  Future<UserInfoDto> getApiUserInfo({
-    @Query('limit') int? limit,
-    @Query('tags') List<String>? tags,
-  });
+  Future<UserInfoDto> getApiUserInfo({@Query('limit') int? limit, @Query('tags') List<String>? tags});
 
   /// null.
   ///
   /// Name not received - field will be skipped.
   @MultiPart()
   @PATCH('/api/User/{id}/avatar')
-  Future<void> patchApiUserIdAvatar({
-    @Path('id') int? id,
-    @Part(name: 'avatar') MultipartFile? avatar,
-  });
+  Future<void> patchApiUserIdAvatar({@Path('id') int? id, @Part(name: 'avatar') MultipartFile? avatar});
 }

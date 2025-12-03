@@ -8,18 +8,12 @@ part 'o_auth.mapper.dart';
 
 @MappableClass()
 class OAuth with OAuthMappable {
-  const OAuth({
-    required this.type,
-    required this.refresh,
-    required this.access,
-    required this.expires,
-  });
+  const OAuth({required this.type, required this.refresh, required this.access, required this.expires});
 
   final String type;
   final String refresh;
   final String access;
   final num expires;
 
-  static OAuth fromJson(Map<String, dynamic> json) =>
-      OAuthMapper.fromJson(json);
+  static OAuth fromJson(Map<String, dynamic> json) => OAuthMapper.fromJson(json);
 }

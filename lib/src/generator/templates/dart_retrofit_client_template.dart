@@ -73,8 +73,7 @@ String dartRetrofitClientTemplate({
   // When using dartMappable with merged clients, we need TWO retrofit imports:
   // 1. With 'as retrofit' prefix to use retrofit.Field
   // 2. With 'hide Field' to use other annotations without prefix
-  final needFieldPrefix =
-      jsonSerializer == JsonSerializer.dartMappable && mergeClients;
+  final needFieldPrefix = jsonSerializer == JsonSerializer.dartMappable && mergeClients;
   final retrofitImports = needFieldPrefix
       ? "import 'package:retrofit/retrofit.dart' as retrofit;\nimport 'package:retrofit/retrofit.dart' hide Field;\nimport 'package:retrofit/error_logger.dart';"
       : "import 'package:retrofit/retrofit.dart';\nimport 'package:retrofit/error_logger.dart';";
@@ -113,15 +112,12 @@ String _toClientRequest(
   required bool extrasParameterByDefault,
   required bool dioOptionsParameterByDefault,
 }) {
-  var responseType = request.returnType == null
-      ? 'void'
-      : request.returnType!.toSuitableType();
+  var responseType = request.returnType == null ? 'void' : request.returnType!.toSuitableType();
 
   // Check if this is a binary response (file download)
   final isBinaryResponse =
       request.returnType?.format == 'binary' ||
-      (request.returnType?.type == 'string' &&
-          request.returnType?.format == 'binary');
+      (request.returnType?.type == 'string' && request.returnType?.format == 'binary');
 
   // For non-binary responses, if type is Uint8List, use String instead
   // (Retrofit doesn't support Uint8List serialization for regular responses)
@@ -135,17 +131,13 @@ String _toClientRequest(
       : (originalHttpResponse ? 'HttpResponse<$responseType>' : responseType);
 
   // Add @DioResponseType(ResponseType.bytes) for binary responses - after @GET
-  final dioResponseTypeAnnotation = isBinaryResponse
-      ? '\n  @DioResponseType(ResponseType.bytes)'
-      : '';
+  final dioResponseTypeAnnotation = isBinaryResponse ? '\n  @DioResponseType(ResponseType.bytes)' : '';
 
   final sb = StringBuffer('''
 
   ${descriptionComment(request.description, tabForFirstLine: false, tab: '  ', end: '  ')}${request.isDeprecated ? "@Deprecated('This method is marked as deprecated')\n  " : ''}${_contentTypeHeader(request, defaultContentType)}@${request.requestType.name.toUpperCase()}('${request.route}')$dioResponseTypeAnnotation
   Future<$finalResponseType> ${request.name}(''');
-  if (request.parameters.isNotEmpty ||
-      extrasParameterByDefault ||
-      dioOptionsParameterByDefault) {
+  if (request.parameters.isNotEmpty || extrasParameterByDefault || dioOptionsParameterByDefault) {
     sb.write('{\n');
   }
 
@@ -161,9 +153,7 @@ String _toClientRequest(
     uniqueParameters.values.sorted((a, b) => a.type.compareTo(b.type)),
   );
   for (final parameter in sortedByRequired) {
-    sb.write(
-      '${_toParameter(parameter, request.isMultiPart, needFieldPrefix)}\n',
-    );
+    sb.write('${_toParameter(parameter, request.isMultiPart, needFieldPrefix)}\n');
   }
   if (extrasParameterByDefault) {
     sb.write(_addExtraParameter());
@@ -171,9 +161,7 @@ String _toClientRequest(
   if (dioOptionsParameterByDefault) {
     sb.write(_addDioOptionsParameter());
   }
-  if (request.parameters.isNotEmpty ||
-      extrasParameterByDefault ||
-      dioOptionsParameterByDefault) {
+  if (request.parameters.isNotEmpty || extrasParameterByDefault || dioOptionsParameterByDefault) {
     sb.write('  });\n');
   } else {
     sb.write(');\n');
@@ -182,11 +170,7 @@ String _toClientRequest(
 }
 
 String _convertImport(UniversalRestClient restClient) =>
-    restClient.requests.any(
-      (r) => r.parameters.any((e) => e.parameterType.isPart),
-    )
-    ? "import 'dart:convert';\n"
-    : '';
+    restClient.requests.any((r) => r.parameters.any((e) => e.parameterType.isPart)) ? "import 'dart:convert';\n" : '';
 
 String _addExtraParameter() {
   return '    @Extras() Map<String, dynamic>? extras,\n';
@@ -196,14 +180,9 @@ String _addDioOptionsParameter() {
   return '    @DioOptions() RequestOptions? options,\n';
 }
 
-String _toParameter(
-  UniversalRequestType parameter,
-  bool multiPart,
-  bool needFieldPrefix,
-) {
+String _toParameter(UniversalRequestType parameter, bool multiPart, bool needFieldPrefix) {
   var parameterType = parameter.type.toSuitableType(multiPart: multiPart);
-  if (parameter.parameterType.isBody &&
-      (parameterType == 'Object' || parameterType == 'Object?')) {
+  if (parameter.parameterType.isBody && (parameterType == 'Object' || parameterType == 'Object?')) {
     parameterType = 'dynamic';
   }
 
@@ -213,21 +192,16 @@ String _toParameter(
   }
 
   // Reserved words cannot be used as keyword arguments
-  var keywordArguments =
-      (parameter.type.name ?? parameter.name ?? 'param').toCamel;
+  var keywordArguments = (parameter.type.name ?? parameter.name ?? 'param').toCamel;
   if (reservedFieldNames.contains(keywordArguments)) {
     keywordArguments = '${keywordArguments}Param';
   }
 
-  final deprecatedAnnotation = parameter.deprecated
-      ? "    @Deprecated('This is marked as deprecated')\n"
-      : '';
+  final deprecatedAnnotation = parameter.deprecated ? "    @Deprecated('This is marked as deprecated')\n" : '';
 
   // When using dartMappable with merged clients, prefix Field with retrofit. to avoid conflict
   final annotationType = parameter.parameterType.type;
-  final annotationPrefix = (needFieldPrefix && annotationType == 'Field')
-      ? 'retrofit.'
-      : '';
+  final annotationPrefix = (needFieldPrefix && annotationType == 'Field') ? 'retrofit.' : '';
 
   return '$deprecatedAnnotation    @$annotationPrefix$annotationType'
       "(${parameter.name != null && !parameter.parameterType.isBody ? "${parameter.parameterType.isPart ? 'name: ' : ''}${_startWith$(parameter.name!) ? 'r' : ''}'${parameter.name}'" : ''}) "

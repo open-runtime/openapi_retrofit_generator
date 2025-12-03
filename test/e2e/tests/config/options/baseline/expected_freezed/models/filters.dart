@@ -17,6 +17,5 @@ abstract class Filters with _$Filters {
     @JsonKey(name: 'FiltersDateRange') FiltersDateRange? filtersDateRange,
   }) = _Filters;
 
-  factory Filters.fromJson(Map<String, Object?> json) =>
-      _$FiltersFromJson(json);
+  factory Filters.fromJson(Map<String, Object?> json) => _$FiltersFromJson(json);
 }

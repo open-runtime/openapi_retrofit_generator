@@ -6,9 +6,6 @@ part of 'dog.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Dog _$DogFromJson(Map<String, dynamic> json) =>
-    Dog(barkSound: json['barkSound'] as String);
+Dog _$DogFromJson(Map<String, dynamic> json) => Dog(barkSound: json['barkSound'] as String);
 
-Map<String, dynamic> _$DogToJson(Dog instance) => <String, dynamic>{
-  'barkSound': instance.barkSound,
-};
+Map<String, dynamic> _$DogToJson(Dog instance) => <String, dynamic>{'barkSound': instance.barkSound};

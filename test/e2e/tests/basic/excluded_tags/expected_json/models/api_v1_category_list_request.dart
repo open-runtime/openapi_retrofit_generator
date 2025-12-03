@@ -17,14 +17,12 @@ class ApiV1CategoryListRequest {
     this.apiV1CategoryListRequestMetadata,
   });
 
-  factory ApiV1CategoryListRequest.fromJson(Map<String, Object?> json) =>
-      _$ApiV1CategoryListRequestFromJson(json);
+  factory ApiV1CategoryListRequest.fromJson(Map<String, Object?> json) => _$ApiV1CategoryListRequestFromJson(json);
 
   /// This field should be included
   final String includedField;
   @JsonKey(includeIfNull: false, name: 'ApiV1CategoryListRequestNestedIncluded')
-  final ApiV1CategoryListRequestNestedIncluded?
-  apiV1CategoryListRequestNestedIncluded;
+  final ApiV1CategoryListRequestNestedIncluded? apiV1CategoryListRequestNestedIncluded;
   @JsonKey(includeIfNull: false, name: 'ApiV1CategoryListRequestMetadata')
   final ApiV1CategoryListRequestMetadata? apiV1CategoryListRequestMetadata;
 

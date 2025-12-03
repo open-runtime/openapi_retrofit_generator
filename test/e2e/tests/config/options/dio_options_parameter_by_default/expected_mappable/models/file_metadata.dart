@@ -15,6 +15,5 @@ class FileMetadata with FileMetadataMappable {
   final int? size;
   final List<String>? tags;
 
-  static FileMetadata fromJson(Map<String, dynamic> json) =>
-      FileMetadataMapper.fromJson(json);
+  static FileMetadata fromJson(Map<String, dynamic> json) => FileMetadataMapper.fromJson(json);
 }

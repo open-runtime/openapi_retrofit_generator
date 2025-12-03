@@ -22,8 +22,7 @@ class SessionPromptRequest {
     this.sessionPromptRequestAcpConnection,
   });
 
-  factory SessionPromptRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionPromptRequestFromJson(json);
+  factory SessionPromptRequest.fromJson(Map<String, Object?> json) => _$SessionPromptRequestFromJson(json);
 
   @JsonKey(name: 'messageID')
   final String? messageId;

@@ -6,28 +6,22 @@ part of 'payment_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) =>
-    _PaymentResponse(
-      transactionId: json['transactionId'] as String,
-      status: PaymentResponseStatusStatus.fromJson(json['status'] as String),
-      amount: (json['amount'] as num).toDouble(),
-      processedAt: json['processedAt'] == null
-          ? null
-          : DateTime.parse(json['processedAt'] as String),
-      details: json['details'] == null
-          ? null
-          : PaymentResponseDetailsUnion.fromJson(
-              json['details'] as Map<String, dynamic>,
-            ),
-      currency: json['currency'] as String? ?? 'USD',
-    );
+_PaymentResponse _$PaymentResponseFromJson(Map<String, dynamic> json) => _PaymentResponse(
+  transactionId: json['transactionId'] as String,
+  status: PaymentResponseStatusStatus.fromJson(json['status'] as String),
+  amount: (json['amount'] as num).toDouble(),
+  processedAt: json['processedAt'] == null ? null : DateTime.parse(json['processedAt'] as String),
+  details: json['details'] == null
+      ? null
+      : PaymentResponseDetailsUnion.fromJson(json['details'] as Map<String, dynamic>),
+  currency: json['currency'] as String? ?? 'USD',
+);
 
-Map<String, dynamic> _$PaymentResponseToJson(_PaymentResponse instance) =>
-    <String, dynamic>{
-      'transactionId': instance.transactionId,
-      'status': instance.status,
-      'amount': instance.amount,
-      'processedAt': instance.processedAt?.toIso8601String(),
-      'details': instance.details,
-      'currency': instance.currency,
-    };
+Map<String, dynamic> _$PaymentResponseToJson(_PaymentResponse instance) => <String, dynamic>{
+  'transactionId': instance.transactionId,
+  'status': instance.status,
+  'amount': instance.amount,
+  'processedAt': instance.processedAt?.toIso8601String(),
+  'details': instance.details,
+  'currency': instance.currency,
+};

@@ -22,6 +22,5 @@ abstract class DarwinCoreOccurrences with _$DarwinCoreOccurrences {
     num? startTime,
   }) = _DarwinCoreOccurrences;
 
-  factory DarwinCoreOccurrences.fromJson(Map<String, Object?> json) =>
-      _$DarwinCoreOccurrencesFromJson(json);
+  factory DarwinCoreOccurrences.fromJson(Map<String, Object?> json) => _$DarwinCoreOccurrencesFromJson(json);
 }

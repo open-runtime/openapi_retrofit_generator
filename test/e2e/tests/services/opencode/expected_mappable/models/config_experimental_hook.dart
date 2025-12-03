@@ -18,6 +18,5 @@ class ConfigExperimentalHook with ConfigExperimentalHookMappable {
   @MappableField(key: 'session_completed')
   final List<ConfigExperimentalHookSessionCompleted>? sessionCompleted;
 
-  static ConfigExperimentalHook fromJson(Map<String, dynamic> json) =>
-      ConfigExperimentalHookMapper.fromJson(json);
+  static ConfigExperimentalHook fromJson(Map<String, dynamic> json) => ConfigExperimentalHookMapper.fromJson(json);
 }

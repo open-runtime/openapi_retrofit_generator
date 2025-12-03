@@ -25,8 +25,7 @@ class LspUnionVariant1 {
 
   const LspUnionVariant1({required this.disabled});
 
-  factory LspUnionVariant1.fromJson(Map<String, Object?> json) =>
-      _$LspUnionVariant1FromJson(json);
+  factory LspUnionVariant1.fromJson(Map<String, Object?> json) => _$LspUnionVariant1FromJson(json);
 
   Map<String, Object?> toJson() => _$LspUnionVariant1ToJson(this);
 }
@@ -47,8 +46,7 @@ class LspUnionVariant2 {
     required this.initialization,
   });
 
-  factory LspUnionVariant2.fromJson(Map<String, Object?> json) =>
-      _$LspUnionVariant2FromJson(json);
+  factory LspUnionVariant2.fromJson(Map<String, Object?> json) => _$LspUnionVariant2FromJson(json);
 
   Map<String, Object?> toJson() => _$LspUnionVariant2ToJson(this);
 }

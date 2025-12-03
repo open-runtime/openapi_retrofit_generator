@@ -21,20 +21,16 @@ class RestClient {
 
   Items2a3Version4b5Client? _items2a3Version4b5;
   ItemsDraftClient? _itemsDraft;
-  VeryLongTagNameWithNumbers123AndMoreTextClient?
-  _veryLongTagNameWithNumbers123AndMoreText;
+  VeryLongTagNameWithNumbers123AndMoreTextClient? _veryLongTagNameWithNumbers123AndMoreText;
 
   Items2a3Version4b5Client get items2a3Version4b5 =>
       _items2a3Version4b5 ??= Items2a3Version4b5Client(_dio, baseUrl: _baseUrl);
 
-  ItemsDraftClient get itemsDraft =>
-      _itemsDraft ??= ItemsDraftClient(_dio, baseUrl: _baseUrl);
+  ItemsDraftClient get itemsDraft => _itemsDraft ??= ItemsDraftClient(_dio, baseUrl: _baseUrl);
 
-  VeryLongTagNameWithNumbers123AndMoreTextClient
-  get veryLongTagNameWithNumbers123AndMoreText =>
-      _veryLongTagNameWithNumbers123AndMoreText ??=
-          VeryLongTagNameWithNumbers123AndMoreTextClient(
-            _dio,
-            baseUrl: _baseUrl,
-          );
+  VeryLongTagNameWithNumbers123AndMoreTextClient get veryLongTagNameWithNumbers123AndMoreText =>
+      _veryLongTagNameWithNumbers123AndMoreText ??= VeryLongTagNameWithNumbers123AndMoreTextClient(
+        _dio,
+        baseUrl: _baseUrl,
+      );
 }

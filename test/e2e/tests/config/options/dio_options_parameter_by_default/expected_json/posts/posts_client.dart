@@ -22,22 +22,13 @@ abstract class PostsClient {
   ///
   /// [filters] - Complex filter object (inline schema).
   @GET('/posts')
-  Future<ListPostsResponse> listPosts({
-    @Query('filters') Filters? filters,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<ListPostsResponse> listPosts({@Query('filters') Filters? filters, @DioOptions() RequestOptions? options});
 
   /// Create post with inline request schema
   @POST('/posts')
-  Future<PostModel> createPost({
-    @Body() CreatePostRequest? body,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<PostModel> createPost({@Body() CreatePostRequest? body, @DioOptions() RequestOptions? options});
 
   /// Get post with nested comments
   @GET('/posts/{postId}')
-  Future<GetPostResponse> getPost({
-    @Path('postId') required String postId,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<GetPostResponse> getPost({@Path('postId') required String postId, @DioOptions() RequestOptions? options});
 }

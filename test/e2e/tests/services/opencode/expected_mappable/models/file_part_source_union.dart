@@ -11,12 +11,7 @@ import 'symbol_source.dart';
 
 part 'file_part_source_union.mapper.dart';
 
-@MappableClass(
-  includeSubClasses: [
-    FilePartSourceUnionFileSource,
-    FilePartSourceUnionSymbolSource,
-  ],
-)
+@MappableClass(includeSubClasses: [FilePartSourceUnionFileSource, FilePartSourceUnionSymbolSource])
 sealed class FilePartSourceUnion with FilePartSourceUnionMappable {
   const FilePartSourceUnion();
 
@@ -34,29 +29,21 @@ extension FilePartSourceUnionDeserializer on FilePartSourceUnion {
       return FilePartSourceUnionSymbolSourceMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for FilePartSourceUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for FilePartSourceUnion from: $json');
   }
 }
 
 @MappableClass()
-class FilePartSourceUnionFileSource extends FilePartSourceUnion
-    with FilePartSourceUnionFileSourceMappable {
+class FilePartSourceUnionFileSource extends FilePartSourceUnion with FilePartSourceUnionFileSourceMappable {
   final FilePartSourceText text;
   final String type;
   final String path;
 
-  const FilePartSourceUnionFileSource({
-    required this.text,
-    required this.type,
-    required this.path,
-  });
+  const FilePartSourceUnionFileSource({required this.text, required this.type, required this.path});
 }
 
 @MappableClass()
-class FilePartSourceUnionSymbolSource extends FilePartSourceUnion
-    with FilePartSourceUnionSymbolSourceMappable {
+class FilePartSourceUnionSymbolSource extends FilePartSourceUnion with FilePartSourceUnionSymbolSourceMappable {
   final FilePartSourceText text;
   final String type;
   final String path;

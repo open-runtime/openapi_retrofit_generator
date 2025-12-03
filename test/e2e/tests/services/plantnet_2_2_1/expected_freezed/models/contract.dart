@@ -19,6 +19,5 @@ abstract class Contract with _$Contract {
     String? currency,
   }) = _Contract;
 
-  factory Contract.fromJson(Map<String, Object?> json) =>
-      _$ContractFromJson(json);
+  factory Contract.fromJson(Map<String, Object?> json) => _$ContractFromJson(json);
 }

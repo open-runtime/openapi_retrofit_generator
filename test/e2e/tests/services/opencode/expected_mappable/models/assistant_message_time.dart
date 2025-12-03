@@ -13,6 +13,5 @@ class AssistantMessageTime with AssistantMessageTimeMappable {
   final num created;
   final num? completed;
 
-  static AssistantMessageTime fromJson(Map<String, dynamic> json) =>
-      AssistantMessageTimeMapper.fromJson(json);
+  static AssistantMessageTime fromJson(Map<String, dynamic> json) => AssistantMessageTimeMapper.fromJson(json);
 }

@@ -21,6 +21,5 @@ abstract class CreateUserRequest with _$CreateUserRequest {
     @JsonKey(includeIfNull: false) UserRole? role,
   }) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 }

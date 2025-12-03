@@ -18,6 +18,5 @@ abstract class Test2Request with _$Test2Request {
     @JsonKey(includeIfNull: false) String? lastname,
   }) = _Test2Request;
 
-  factory Test2Request.fromJson(Map<String, Object?> json) =>
-      _$Test2RequestFromJson(json);
+  factory Test2Request.fromJson(Map<String, Object?> json) => _$Test2RequestFromJson(json);
 }

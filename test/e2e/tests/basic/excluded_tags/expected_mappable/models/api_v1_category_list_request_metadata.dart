@@ -7,8 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'api_v1_category_list_request_metadata.mapper.dart';
 
 @MappableClass()
-class ApiV1CategoryListRequestMetadata
-    with ApiV1CategoryListRequestMetadataMappable {
+class ApiV1CategoryListRequestMetadata with ApiV1CategoryListRequestMetadataMappable {
   const ApiV1CategoryListRequestMetadata({this.createdAt, this.version});
 
   final DateTime? createdAt;

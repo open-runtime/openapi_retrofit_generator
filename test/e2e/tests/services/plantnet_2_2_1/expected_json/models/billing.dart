@@ -10,8 +10,7 @@ part 'billing.g.dart';
 class Billing {
   const Billing({this.nextDueDate, this.estimatedAmount});
 
-  factory Billing.fromJson(Map<String, Object?> json) =>
-      _$BillingFromJson(json);
+  factory Billing.fromJson(Map<String, Object?> json) => _$BillingFromJson(json);
 
   final String? nextDueDate;
   final num? estimatedAmount;

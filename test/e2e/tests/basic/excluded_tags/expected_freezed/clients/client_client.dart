@@ -16,7 +16,5 @@ abstract class ClientClient {
   factory ClientClient(Dio dio, {String? baseUrl}) = _ClientClient;
 
   @POST('/api/v1/not-tagged-should-be-included/')
-  Future<ApiV1CategoryListResponse> apiV1CategoryList({
-    @Body() required ApiV1CategoryListRequest body,
-  });
+  Future<ApiV1CategoryListResponse> apiV1CategoryList({@Body() required ApiV1CategoryListRequest body});
 }

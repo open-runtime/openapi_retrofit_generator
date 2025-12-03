@@ -6,9 +6,7 @@ part of 'part_model_union.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PartModelUnionTextPart _$PartModelUnionTextPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionTextPart(
+PartModelUnionTextPart _$PartModelUnionTextPartFromJson(Map<String, dynamic> json) => PartModelUnionTextPart(
   id: json['id'] as String,
   sessionId: json['sessionId'] as String,
   messageId: json['messageId'] as String,
@@ -21,9 +19,7 @@ PartModelUnionTextPart _$PartModelUnionTextPartFromJson(
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
-Map<String, dynamic> _$PartModelUnionTextPartToJson(
-  PartModelUnionTextPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionTextPartToJson(PartModelUnionTextPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -34,23 +30,18 @@ Map<String, dynamic> _$PartModelUnionTextPartToJson(
   'metadata': instance.metadata,
 };
 
-PartModelUnionReasoningPart _$PartModelUnionReasoningPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionReasoningPart(
-  id: json['id'] as String,
-  sessionId: json['sessionId'] as String,
-  messageId: json['messageId'] as String,
-  type: json['type'] as String,
-  text: json['text'] as String,
-  metadata: json['metadata'] as Map<String, dynamic>?,
-  reasoningPartTime: ReasoningPartTime.fromJson(
-    json['reasoningPartTime'] as Map<String, dynamic>,
-  ),
-);
+PartModelUnionReasoningPart _$PartModelUnionReasoningPartFromJson(Map<String, dynamic> json) =>
+    PartModelUnionReasoningPart(
+      id: json['id'] as String,
+      sessionId: json['sessionId'] as String,
+      messageId: json['messageId'] as String,
+      type: json['type'] as String,
+      text: json['text'] as String,
+      metadata: json['metadata'] as Map<String, dynamic>?,
+      reasoningPartTime: ReasoningPartTime.fromJson(json['reasoningPartTime'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$PartModelUnionReasoningPartToJson(
-  PartModelUnionReasoningPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionReasoningPartToJson(PartModelUnionReasoningPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -60,9 +51,7 @@ Map<String, dynamic> _$PartModelUnionReasoningPartToJson(
   'reasoningPartTime': instance.reasoningPartTime,
 };
 
-PartModelUnionFilePart _$PartModelUnionFilePartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionFilePart(
+PartModelUnionFilePart _$PartModelUnionFilePartFromJson(Map<String, dynamic> json) => PartModelUnionFilePart(
   id: json['id'] as String,
   sessionId: json['sessionId'] as String,
   messageId: json['messageId'] as String,
@@ -70,14 +59,10 @@ PartModelUnionFilePart _$PartModelUnionFilePartFromJson(
   mime: json['mime'] as String,
   filename: json['filename'] as String?,
   url: json['url'] as String,
-  source: json['source'] == null
-      ? null
-      : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
+  source: json['source'] == null ? null : FilePartSourceUnion.fromJson(json['source'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PartModelUnionFilePartToJson(
-  PartModelUnionFilePart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionFilePartToJson(PartModelUnionFilePart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -88,24 +73,18 @@ Map<String, dynamic> _$PartModelUnionFilePartToJson(
   'source': instance.source,
 };
 
-PartModelUnionToolPart _$PartModelUnionToolPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionToolPart(
+PartModelUnionToolPart _$PartModelUnionToolPartFromJson(Map<String, dynamic> json) => PartModelUnionToolPart(
   id: json['id'] as String,
   sessionId: json['sessionId'] as String,
   messageId: json['messageId'] as String,
   type: json['type'] as String,
   callId: json['callId'] as String,
   tool: json['tool'] as String,
-  state: json['state'] == null
-      ? null
-      : ToolStateUnion.fromJson(json['state'] as Map<String, dynamic>),
+  state: json['state'] == null ? null : ToolStateUnion.fromJson(json['state'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
-Map<String, dynamic> _$PartModelUnionToolPartToJson(
-  PartModelUnionToolPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionToolPartToJson(PartModelUnionToolPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -116,19 +95,16 @@ Map<String, dynamic> _$PartModelUnionToolPartToJson(
   'metadata': instance.metadata,
 };
 
-PartModelUnionStepStartPart _$PartModelUnionStepStartPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionStepStartPart(
-  id: json['id'] as String,
-  sessionId: json['sessionId'] as String,
-  messageId: json['messageId'] as String,
-  type: json['type'] as String,
-  snapshot: json['snapshot'] as String?,
-);
+PartModelUnionStepStartPart _$PartModelUnionStepStartPartFromJson(Map<String, dynamic> json) =>
+    PartModelUnionStepStartPart(
+      id: json['id'] as String,
+      sessionId: json['sessionId'] as String,
+      messageId: json['messageId'] as String,
+      type: json['type'] as String,
+      snapshot: json['snapshot'] as String?,
+    );
 
-Map<String, dynamic> _$PartModelUnionStepStartPartToJson(
-  PartModelUnionStepStartPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionStepStartPartToJson(PartModelUnionStepStartPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -136,23 +112,18 @@ Map<String, dynamic> _$PartModelUnionStepStartPartToJson(
   'snapshot': instance.snapshot,
 };
 
-PartModelUnionStepFinishPart _$PartModelUnionStepFinishPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionStepFinishPart(
-  id: json['id'] as String,
-  sessionId: json['sessionId'] as String,
-  messageId: json['messageId'] as String,
-  type: json['type'] as String,
-  snapshot: json['snapshot'] as String?,
-  cost: json['cost'] as num,
-  stepFinishPartTokens: StepFinishPartTokens.fromJson(
-    json['stepFinishPartTokens'] as Map<String, dynamic>,
-  ),
-);
+PartModelUnionStepFinishPart _$PartModelUnionStepFinishPartFromJson(Map<String, dynamic> json) =>
+    PartModelUnionStepFinishPart(
+      id: json['id'] as String,
+      sessionId: json['sessionId'] as String,
+      messageId: json['messageId'] as String,
+      type: json['type'] as String,
+      snapshot: json['snapshot'] as String?,
+      cost: json['cost'] as num,
+      stepFinishPartTokens: StepFinishPartTokens.fromJson(json['stepFinishPartTokens'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$PartModelUnionStepFinishPartToJson(
-  PartModelUnionStepFinishPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionStepFinishPartToJson(PartModelUnionStepFinishPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -162,19 +133,16 @@ Map<String, dynamic> _$PartModelUnionStepFinishPartToJson(
   'stepFinishPartTokens': instance.stepFinishPartTokens,
 };
 
-PartModelUnionSnapshotPart _$PartModelUnionSnapshotPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionSnapshotPart(
-  id: json['id'] as String,
-  sessionId: json['sessionId'] as String,
-  messageId: json['messageId'] as String,
-  type: json['type'] as String,
-  snapshot: json['snapshot'] as String,
-);
+PartModelUnionSnapshotPart _$PartModelUnionSnapshotPartFromJson(Map<String, dynamic> json) =>
+    PartModelUnionSnapshotPart(
+      id: json['id'] as String,
+      sessionId: json['sessionId'] as String,
+      messageId: json['messageId'] as String,
+      type: json['type'] as String,
+      snapshot: json['snapshot'] as String,
+    );
 
-Map<String, dynamic> _$PartModelUnionSnapshotPartToJson(
-  PartModelUnionSnapshotPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionSnapshotPartToJson(PartModelUnionSnapshotPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -182,9 +150,7 @@ Map<String, dynamic> _$PartModelUnionSnapshotPartToJson(
   'snapshot': instance.snapshot,
 };
 
-PartModelUnionPatchPart _$PartModelUnionPatchPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionPatchPart(
+PartModelUnionPatchPart _$PartModelUnionPatchPartFromJson(Map<String, dynamic> json) => PartModelUnionPatchPart(
   id: json['id'] as String,
   sessionId: json['sessionId'] as String,
   messageId: json['messageId'] as String,
@@ -193,9 +159,7 @@ PartModelUnionPatchPart _$PartModelUnionPatchPartFromJson(
   files: (json['files'] as List<dynamic>).map((e) => e as String).toList(),
 );
 
-Map<String, dynamic> _$PartModelUnionPatchPartToJson(
-  PartModelUnionPatchPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionPatchPartToJson(PartModelUnionPatchPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,
@@ -204,9 +168,7 @@ Map<String, dynamic> _$PartModelUnionPatchPartToJson(
   'files': instance.files,
 };
 
-PartModelUnionAgentPart _$PartModelUnionAgentPartFromJson(
-  Map<String, dynamic> json,
-) => PartModelUnionAgentPart(
+PartModelUnionAgentPart _$PartModelUnionAgentPartFromJson(Map<String, dynamic> json) => PartModelUnionAgentPart(
   id: json['id'] as String,
   sessionId: json['sessionId'] as String,
   messageId: json['messageId'] as String,
@@ -214,14 +176,10 @@ PartModelUnionAgentPart _$PartModelUnionAgentPartFromJson(
   name: json['name'] as String,
   agentPartSource: json['agentPartSource'] == null
       ? null
-      : AgentPartSource.fromJson(
-          json['agentPartSource'] as Map<String, dynamic>,
-        ),
+      : AgentPartSource.fromJson(json['agentPartSource'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PartModelUnionAgentPartToJson(
-  PartModelUnionAgentPart instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$PartModelUnionAgentPartToJson(PartModelUnionAgentPart instance) => <String, dynamic>{
   'id': instance.id,
   'sessionId': instance.sessionId,
   'messageId': instance.messageId,

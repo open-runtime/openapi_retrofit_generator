@@ -22,6 +22,5 @@ abstract class Model40 with _$Model40 {
     Position? position,
   }) = _Model40;
 
-  factory Model40.fromJson(Map<String, Object?> json) =>
-      _$Model40FromJson(json);
+  factory Model40.fromJson(Map<String, Object?> json) => _$Model40FromJson(json);
 }

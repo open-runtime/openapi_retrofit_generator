@@ -4,11 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('Empty data class', () {
     test('dart + json_serializable', () async {
-      const dataClass = UniversalComponentClass(
-        name: 'ClassName',
-        imports: {},
-        parameters: {},
-      );
+      const dataClass = UniversalComponentClass(name: 'ClassName', imports: {}, parameters: {});
       const fillController = FillController(
         config: GeneratorConfig(name: '', outputDirectory: '.'),
       );
@@ -31,17 +27,9 @@ class ClassName {
     });
 
     test('dart + freezed', () async {
-      const dataClass = UniversalComponentClass(
-        name: 'ClassName',
-        imports: {},
-        parameters: {},
-      );
+      const dataClass = UniversalComponentClass(name: 'ClassName', imports: {}, parameters: {});
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -65,13 +53,7 @@ abstract class ClassName with _$ClassName {
     test('dart + json_serializable', () async {
       const dataClass = UniversalComponentClass(
         name: 'ClassName',
-        imports: {
-          'camelClass',
-          'snake_class',
-          'kebab-class',
-          'PascalClass',
-          'Space class',
-        },
+        imports: {'camelClass', 'snake_class', 'kebab-class', 'PascalClass', 'Space class'},
         parameters: {},
       );
       const fillController = FillController(
@@ -104,21 +86,11 @@ class ClassName {
     test('dart + freezed', () async {
       const dataClass = UniversalComponentClass(
         name: 'ClassName',
-        imports: {
-          'camelClass',
-          'snake_class',
-          'kebab-class',
-          'PascalClass',
-          'Space class',
-        },
+        imports: {'camelClass', 'snake_class', 'kebab-class', 'PascalClass', 'Space class'},
         parameters: {},
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -150,66 +122,17 @@ abstract class ClassName with _$ClassName {
         name: 'ClassName',
         imports: const {},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            name: 'numberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'double',
-            name: 'doubleNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'float',
-            name: 'floatNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'binary',
-            name: 'binaryStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date',
-            name: 'dateStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date-time',
-            name: 'dateTimeStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'object',
-            name: 'objectType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherType',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', isRequired: true),
+          const UniversalType(type: 'number', name: 'numberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'double', name: 'doubleNumberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'float', name: 'floatNumberType', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'binary', name: 'binaryStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date', name: 'dateStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date-time', name: 'dateTimeStringType', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', isRequired: true),
+          const UniversalType(type: 'object', name: 'objectType', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherType', isRequired: true),
         },
       );
       const fillController = FillController(
@@ -280,74 +203,21 @@ class _Base64Converter implements JsonConverter<Uint8List, String> {
         name: 'ClassName',
         imports: const {},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            name: 'numberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'double',
-            name: 'doubleNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'float',
-            name: 'floatNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'binary',
-            name: 'binaryStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date',
-            name: 'dateStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date-time',
-            name: 'dateTimeStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'object',
-            name: 'objectType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherType',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', isRequired: true),
+          const UniversalType(type: 'number', name: 'numberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'double', name: 'doubleNumberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'float', name: 'floatNumberType', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'binary', name: 'binaryStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date', name: 'dateStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date-time', name: 'dateTimeStringType', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', isRequired: true),
+          const UniversalType(type: 'object', name: 'objectType', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherType', isRequired: true),
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -401,74 +271,21 @@ class _Base64Converter implements JsonConverter<Uint8List, String> {
         name: 'ClassName',
         imports: const {},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            name: 'numberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'double',
-            name: 'doubleNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'number',
-            format: 'float',
-            name: 'floatNumberType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'binary',
-            name: 'binaryStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date',
-            name: 'dateStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            format: 'date-time',
-            name: 'dateTimeStringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'object',
-            name: 'objectType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherType',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', isRequired: true),
+          const UniversalType(type: 'number', name: 'numberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'double', name: 'doubleNumberType', isRequired: true),
+          const UniversalType(type: 'number', format: 'float', name: 'floatNumberType', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'binary', name: 'binaryStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date', name: 'dateStringType', isRequired: true),
+          const UniversalType(type: 'string', format: 'date-time', name: 'dateTimeStringType', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', isRequired: true),
+          const UniversalType(type: 'object', name: 'objectType', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherType', isRequired: true),
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.dartMappable,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.dartMappable),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = '''
@@ -538,21 +355,10 @@ class _Base64Hook extends MappingHook {
       final dataClass = UniversalComponentClass(
         name: 'ClassName',
         imports: const {},
-        parameters: {
-          const UniversalType(
-            type: 'string',
-            name: 'imageUrl',
-            jsonKey: 'imageURL',
-            isRequired: true,
-          ),
-        },
+        parameters: {const UniversalType(type: 'string', name: 'imageUrl', jsonKey: 'imageURL', isRequired: true)},
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.dartMappable,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.dartMappable),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = '''
@@ -592,10 +398,7 @@ class ClassName with ClassNameMappable {
           const UniversalType(
             type: 'string',
             name: 'list1',
-            wrappingCollections: [
-              UniversalCollections.list,
-              UniversalCollections.list,
-            ],
+            wrappingCollections: [UniversalCollections.list, UniversalCollections.list],
             isRequired: true,
           ),
           const UniversalType(
@@ -657,10 +460,7 @@ class ClassName {
           const UniversalType(
             type: 'string',
             name: 'list1',
-            wrappingCollections: [
-              UniversalCollections.list,
-              UniversalCollections.list,
-            ],
+            wrappingCollections: [UniversalCollections.list, UniversalCollections.list],
             isRequired: true,
           ),
           const UniversalType(
@@ -678,11 +478,7 @@ class ClassName {
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -714,30 +510,10 @@ abstract class ClassName with _$ClassName {
         name: 'ClassName',
         imports: const {},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            jsonKey: 'int_type',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            jsonKey: 'stringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            jsonKey: 'bool-type',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherType',
-            jsonKey: 'another',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', jsonKey: 'int_type', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', jsonKey: 'stringType', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', jsonKey: 'bool-type', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherType', jsonKey: 'another', isRequired: true),
         },
       );
       const fillController = FillController(
@@ -779,38 +555,14 @@ class ClassName {
         name: 'ClassName',
         imports: const {},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            jsonKey: 'int_type',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            jsonKey: 'stringType',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            jsonKey: 'bool-type',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherType',
-            jsonKey: 'another',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', jsonKey: 'int_type', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', jsonKey: 'stringType', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', jsonKey: 'bool-type', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherType', jsonKey: 'another', isRequired: true),
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -844,24 +596,9 @@ abstract class ClassName with _$ClassName {
         name: 'ClassName',
         imports: const {'Haha'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            defaultValue: '1',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            defaultValue: 'str',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            defaultValue: 'false',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', defaultValue: '1', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', defaultValue: 'str', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', defaultValue: 'false', isRequired: true),
           const UniversalType(
             type: 'number',
             name: 'nullableType',
@@ -879,11 +616,7 @@ abstract class ClassName with _$ClassName {
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          includeIfNull: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', includeIfNull: true),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -923,24 +656,9 @@ class ClassName {
         name: 'ClassName',
         imports: const {'Haha'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            defaultValue: '1',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'stringType',
-            defaultValue: 'str',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'boolean',
-            name: 'boolType',
-            defaultValue: 'false',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', defaultValue: '1', isRequired: true),
+          const UniversalType(type: 'string', name: 'stringType', defaultValue: 'str', isRequired: true),
+          const UniversalType(type: 'boolean', name: 'boolType', defaultValue: 'false', isRequired: true),
           const UniversalType(
             type: 'number',
             name: 'nullableType',
@@ -1003,41 +721,24 @@ abstract class ClassName with _$ClassName {
         name: 'ClassName',
         imports: const {'Another'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', isRequired: false, nullable: true),
           const UniversalType(
             type: 'string',
             wrappingCollections: [UniversalCollections.nullableList],
             name: 'list',
             isRequired: false,
           ),
+          const UniversalType(type: 'Another', name: 'another', isRequired: false, nullable: true),
           const UniversalType(
             type: 'Another',
-            name: 'another',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            wrappingCollections: [
-              UniversalCollections.list,
-              UniversalCollections.list,
-            ],
+            wrappingCollections: [UniversalCollections.list, UniversalCollections.list],
             name: 'anotherList',
             isRequired: true,
           ),
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          includeIfNull: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', includeIfNull: true),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -1076,30 +777,17 @@ class ClassName {
         name: 'ClassName',
         imports: const {'Another'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intType',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intType', isRequired: false, nullable: true),
           const UniversalType(
             type: 'string',
             wrappingCollections: [UniversalCollections.nullableList],
             name: 'list',
             isRequired: false,
           ),
+          const UniversalType(type: 'Another', name: 'another', isRequired: false, nullable: true),
           const UniversalType(
             type: 'Another',
-            name: 'another',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            wrappingCollections: [
-              UniversalCollections.list,
-              UniversalCollections.list,
-            ],
+            wrappingCollections: [UniversalCollections.list, UniversalCollections.list],
             name: 'anotherList',
             isRequired: true,
           ),
@@ -1146,23 +834,9 @@ abstract class ClassName with _$ClassName {
         name: 'ClassName',
         imports: const {'Another'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intNotRequired',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'integer',
-            name: 'intRequired',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherNotRequired',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intNotRequired', isRequired: false, nullable: true),
+          const UniversalType(type: 'integer', name: 'intRequired', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherNotRequired', isRequired: false, nullable: true),
           const UniversalType(
             type: 'Another',
             name: 'list',
@@ -1172,11 +846,7 @@ abstract class ClassName with _$ClassName {
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          includeIfNull: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', includeIfNull: true),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -1215,23 +885,9 @@ class ClassName {
         name: 'ClassName',
         imports: const {'Another'},
         parameters: {
-          const UniversalType(
-            type: 'integer',
-            name: 'intNotRequired',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'integer',
-            name: 'intRequired',
-            isRequired: true,
-          ),
-          const UniversalType(
-            type: 'Another',
-            name: 'anotherNotRequired',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'integer', name: 'intNotRequired', isRequired: false, nullable: true),
+          const UniversalType(type: 'integer', name: 'intRequired', isRequired: true),
+          const UniversalType(type: 'Another', name: 'anotherNotRequired', isRequired: false, nullable: true),
           const UniversalType(
             type: 'Another',
             name: 'list',
@@ -1279,21 +935,11 @@ abstract class ClassName with _$ClassName {
     group('dart + json_serializable', () {
       test('without toJson()', () async {
         final dataClasses = [
-          UniversalEnumClass(
-            name: 'EnumName',
-            type: 'int',
-            items: UniversalEnumItem.listFromNames({'1', '2', '3'}),
-          ),
+          UniversalEnumClass(name: 'EnumName', type: 'int', items: UniversalEnumItem.listFromNames({'1', '2', '3'})),
           UniversalEnumClass(
             name: 'EnumNameString',
             type: 'string',
-            items: UniversalEnumItem.listFromNames({
-              'itemOne',
-              'ItemTwo',
-              'item_three',
-              'ITEM-FOUR',
-              'пятый',
-            }),
+            items: UniversalEnumItem.listFromNames({'itemOne', 'ItemTwo', 'item_three', 'ITEM-FOUR', 'пятый'}),
           ),
           UniversalEnumClass(
             name: 'KeywordsName',
@@ -1315,11 +961,7 @@ abstract class ClassName with _$ClassName {
         ];
 
         const fillController = FillController(
-          config: GeneratorConfig(
-            name: '',
-            outputDirectory: '.',
-            unknownEnumValue: false,
-          ),
+          config: GeneratorConfig(name: '', outputDirectory: '.', unknownEnumValue: false),
         );
         final files = <GeneratedFile>[];
         for (final enumClass in dataClasses) {
@@ -1439,29 +1081,16 @@ enum EnumNameStringWithLeadingNumbers {
 
       test('with toJson() in enums', () async {
         final dataClasses = [
-          UniversalEnumClass(
-            name: 'EnumName',
-            type: 'int',
-            items: UniversalEnumItem.listFromNames({'1', '2', '3'}),
-          ),
+          UniversalEnumClass(name: 'EnumName', type: 'int', items: UniversalEnumItem.listFromNames({'1', '2', '3'})),
           UniversalEnumClass(
             name: 'EnumNameString',
             type: 'string',
-            items: UniversalEnumItem.listFromNames({
-              'itemOne',
-              'ItemTwo',
-              'item_three',
-              'ITEM-FOUR',
-            }),
+            items: UniversalEnumItem.listFromNames({'itemOne', 'ItemTwo', 'item_three', 'ITEM-FOUR'}),
           ),
         ];
 
         const fillController = FillController(
-          config: GeneratorConfig(
-            name: '',
-            outputDirectory: '.',
-            unknownEnumValue: false,
-          ),
+          config: GeneratorConfig(name: '', outputDirectory: '.', unknownEnumValue: false),
         );
         final files = <GeneratedFile>[];
         for (final enumClass in dataClasses) {
@@ -1523,20 +1152,11 @@ enum EnumNameString {
     group('dart + freezed', () {
       test('without toJson()', () async {
         final dataClasses = [
-          UniversalEnumClass(
-            name: 'EnumName',
-            type: 'int',
-            items: UniversalEnumItem.listFromNames({'1', '2', '3'}),
-          ),
+          UniversalEnumClass(name: 'EnumName', type: 'int', items: UniversalEnumItem.listFromNames({'1', '2', '3'})),
           UniversalEnumClass(
             name: 'EnumNameString',
             type: 'string',
-            items: UniversalEnumItem.listFromNames({
-              'itemOne',
-              'ItemTwo',
-              'item_three',
-              'ITEM-FOUR',
-            }),
+            items: UniversalEnumItem.listFromNames({'itemOne', 'ItemTwo', 'item_three', 'ITEM-FOUR'}),
           ),
           UniversalEnumClass(
             name: 'KeywordsName',
@@ -1635,29 +1255,15 @@ enum KeywordsName {
 
       test('with toJson()', () async {
         final dataClasses = [
-          UniversalEnumClass(
-            name: 'EnumName',
-            type: 'int',
-            items: UniversalEnumItem.listFromNames({'1', '2', '3'}),
-          ),
+          UniversalEnumClass(name: 'EnumName', type: 'int', items: UniversalEnumItem.listFromNames({'1', '2', '3'})),
           UniversalEnumClass(
             name: 'EnumNameString',
             type: 'string',
-            items: UniversalEnumItem.listFromNames({
-              'itemOne',
-              'ItemTwo',
-              'item_three',
-              'ITEM-FOUR',
-              'Item five',
-            }),
+            items: UniversalEnumItem.listFromNames({'itemOne', 'ItemTwo', 'item_three', 'ITEM-FOUR', 'Item five'}),
           ),
         ];
         const fillController = FillController(
-          config: GeneratorConfig(
-            name: '',
-            outputDirectory: '.',
-            jsonSerializer: JsonSerializer.freezed,
-          ),
+          config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
         );
         final files = <GeneratedFile>[];
         for (final enumClass in dataClasses) {
@@ -1793,11 +1399,7 @@ enum EnumName {
         items: UniversalEnumItem.listFromNames({'-2', '-1', '0', '1'}),
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final file = fillController.fillDtoContent(dataClass);
 
@@ -1845,24 +1447,14 @@ enum EnumName {
         UniversalComponentClass(
           name: 'Date',
           imports: const {},
-          parameters: {
-            const UniversalType(
-              type: 'string',
-              format: 'date',
-              isRequired: true,
-            ),
-          },
+          parameters: {const UniversalType(type: 'string', format: 'date', isRequired: true)},
           typeDef: true,
         ),
         UniversalComponentClass(
           name: 'BooleanList',
           imports: const {},
           parameters: {
-            const UniversalType(
-              type: 'boolean',
-              wrappingCollections: [UniversalCollections.list],
-              isRequired: true,
-            ),
+            const UniversalType(type: 'boolean', wrappingCollections: [UniversalCollections.list], isRequired: true),
           },
           typeDef: true,
         ),
@@ -1916,33 +1508,14 @@ typedef AnotherValue = Another;
             isRequired: false,
             nullable: true,
           ),
-          const UniversalType(
-            type: 'string',
-            name: 'list2',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'string', name: 'list2', isRequired: false, nullable: true),
           const UniversalType(type: 'string', name: 'list3', isRequired: true),
-          const UniversalType(
-            type: 'string',
-            name: 'list4',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'list5',
-            isRequired: true,
-            nullable: true,
-          ),
+          const UniversalType(type: 'string', name: 'list4', isRequired: false, nullable: true),
+          const UniversalType(type: 'string', name: 'list5', isRequired: true, nullable: true),
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          includeIfNull: true,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', includeIfNull: true),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -1995,25 +1568,10 @@ class ClassName {
             isRequired: false,
             nullable: true,
           ),
-          const UniversalType(
-            type: 'string',
-            name: 'list2',
-            isRequired: false,
-            nullable: true,
-          ),
+          const UniversalType(type: 'string', name: 'list2', isRequired: false, nullable: true),
           const UniversalType(type: 'string', name: 'list3', isRequired: true),
-          const UniversalType(
-            type: 'string',
-            name: 'list4',
-            isRequired: false,
-            nullable: true,
-          ),
-          const UniversalType(
-            type: 'string',
-            name: 'list5',
-            isRequired: true,
-            nullable: true,
-          ),
+          const UniversalType(type: 'string', name: 'list4', isRequired: false, nullable: true),
+          const UniversalType(type: 'string', name: 'list5', isRequired: true, nullable: true),
         },
       );
       const fillController = FillController(
@@ -2059,12 +1617,7 @@ abstract class ClassName with _$ClassName {
         imports: const {},
         description: 'Test class',
         parameters: {
-          const UniversalType(
-            type: 'string',
-            description: 'Some string',
-            name: 'stringType',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'string', description: 'Some string', name: 'stringType', isRequired: true),
           const UniversalType(
             type: 'string',
             description: 'Default value',
@@ -2086,12 +1639,7 @@ abstract class ClassName with _$ClassName {
             jsonKey: 'mega_MIND',
             isRequired: true,
           ),
-          const UniversalType(
-            type: 'object',
-            description: '',
-            name: 'emptyDescription',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'object', description: '', name: 'emptyDescription', isRequired: true),
           const UniversalType(
             type: 'string',
             description: 'List of data\nThis data is a list',
@@ -2151,12 +1699,7 @@ class ClassName {
         imports: const {},
         description: 'Test class',
         parameters: {
-          const UniversalType(
-            type: 'string',
-            description: 'Some string',
-            name: 'stringType',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'string', description: 'Some string', name: 'stringType', isRequired: true),
           const UniversalType(
             type: 'string',
             description: 'Default value',
@@ -2178,12 +1721,7 @@ class ClassName {
             jsonKey: 'mega_MIND',
             isRequired: true,
           ),
-          const UniversalType(
-            type: 'object',
-            description: '',
-            name: 'emptyDescription',
-            isRequired: true,
-          ),
+          const UniversalType(type: 'object', description: '', name: 'emptyDescription', isRequired: true),
           const UniversalType(
             type: 'string',
             description: 'List of data\nThis data is a list',
@@ -2194,11 +1732,7 @@ class ClassName {
         },
       );
       const fillController = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.freezed,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.freezed),
       );
       final filledContent = fillController.fillDtoContent(dataClass);
       const expectedContents = r'''
@@ -2241,26 +1775,14 @@ abstract class ClassName with _$ClassName {
       imports: const {'cat', 'dog'},
       parameters: const {},
       undiscriminatedUnionVariants: {
-        'Cat': {
-          const UniversalType(type: 'int', name: 'mewCount', isRequired: true),
-        },
-        'Dog': {
-          const UniversalType(
-            type: 'String',
-            name: 'barkSound',
-            isRequired: true,
-          ),
-        },
+        'Cat': {const UniversalType(type: 'int', name: 'mewCount', isRequired: true)},
+        'Dog': {const UniversalType(type: 'String', name: 'barkSound', isRequired: true)},
       },
     );
 
     test('dart_mappable unions use sealed naming', () {
       const controller = FillController(
-        config: GeneratorConfig(
-          name: '',
-          outputDirectory: '.',
-          jsonSerializer: JsonSerializer.dartMappable,
-        ),
+        config: GeneratorConfig(name: '', outputDirectory: '.', jsonSerializer: JsonSerializer.dartMappable),
       );
 
       final generated = controller.fillDtoContent(buildUnionDataClass());

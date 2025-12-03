@@ -20,7 +20,6 @@ enum PersonEntityEntityTypeEntityType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PersonEntityEntityTypeEntityType> get $valuesDefined => values
-      .where((value) => value != PersonEntityEntityTypeEntityType.unknown)
-      .toList();
+  static List<PersonEntityEntityTypeEntityType> get $valuesDefined =>
+      values.where((value) => value != PersonEntityEntityTypeEntityType.unknown).toList();
 }

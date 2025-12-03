@@ -9,9 +9,7 @@ part 'event_file_edited_properties.g.dart';
 
 @Freezed()
 abstract class EventFileEditedProperties with _$EventFileEditedProperties {
-  const factory EventFileEditedProperties({required String file}) =
-      _EventFileEditedProperties;
+  const factory EventFileEditedProperties({required String file}) = _EventFileEditedProperties;
 
-  factory EventFileEditedProperties.fromJson(Map<String, Object?> json) =>
-      _$EventFileEditedPropertiesFromJson(json);
+  factory EventFileEditedProperties.fromJson(Map<String, Object?> json) => _$EventFileEditedPropertiesFromJson(json);
 }

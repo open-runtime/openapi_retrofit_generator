@@ -8,10 +8,7 @@ import 'package:openapi_retrofit_generator/src/utils/base_utils.dart';
 import 'package:openapi_retrofit_generator/src/utils/type_utils.dart';
 
 /// Build the base @MappableClass parameters based on config
-String _buildMappableBaseParams({
-  required bool ignoreNull,
-  required bool includeTypeId,
-}) {
+String _buildMappableBaseParams({required bool ignoreNull, required bool includeTypeId}) {
   final params = <String>[];
   if (ignoreNull) {
     params.add('ignoreNull: true');
@@ -34,8 +31,7 @@ String dartDartMappableDtoTemplate(
   final effectiveFallbackUnion = fallbackUnion;
   final originalClassName = dataClass.name.toPascal;
   final discriminator = dataClass.discriminator;
-  final isUndiscriminatedUnion =
-      dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false;
+  final isUndiscriminatedUnion = dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false;
   final isUnion = discriminator != null || isUndiscriminatedUnion;
 
   final className = originalClassName;
@@ -44,27 +40,19 @@ String dartDartMappableDtoTemplate(
   // For dart_mappable, treat discriminated unions with complete mapping as undiscriminated
   // to use the wrapper pattern instead of direct inheritance
   final shouldUseWrapperPattern =
-      isUndiscriminatedUnion ||
-      (discriminator != null && _isCompleteDiscriminatorMapping(discriminator));
+      isUndiscriminatedUnion || (discriminator != null && _isCompleteDiscriminatorMapping(discriminator));
 
   // For discriminated union variants that should become standalone classes for wrapper pattern
   // We detect this by checking if this is a discriminator variant (has discriminatorValue)
   // and if the discriminator value matches the class name (indicating complete mapping)
   final isDiscriminatorVariant = dataClass.discriminatorValue != null;
-  final hasCompleteMapping =
-      isDiscriminatorVariant &&
-      dataClass.discriminatorValue!.propertyValue == originalClassName;
+  final hasCompleteMapping = isDiscriminatorVariant && dataClass.discriminatorValue!.propertyValue == originalClassName;
 
-  final parent = (isDiscriminatorVariant && hasCompleteMapping)
-      ? null
-      : dataClass.discriminatorValue?.parentClass;
+  final parent = (isDiscriminatorVariant && hasCompleteMapping) ? null : dataClass.discriminatorValue?.parentClass;
 
   // Check if this is a simple data class that could be used in unions
   final isSimpleDataClass =
-      !isUnion &&
-      parent == null &&
-      dataClass.parameters.isNotEmpty &&
-      dataClass.discriminatorValue == null;
+      !isUnion && parent == null && dataClass.parameters.isNotEmpty && dataClass.discriminatorValue == null;
 
   // Generate additional classes for undiscriminated unions or discriminated unions with complete mapping
   final additionalClasses = shouldUseWrapperPattern
@@ -78,9 +66,7 @@ String dartDartMappableDtoTemplate(
       : '';
 
   final needsBase64Converter = _hasBase64Fields(dataClass.parameters);
-  final base64ConverterClass = needsBase64Converter
-      ? '\n${_base64ConverterClass()}'
-      : '';
+  final base64ConverterClass = needsBase64Converter ? '\n${_base64ConverterClass()}' : '';
   final dartCoreImports = _getDartCoreImports(dataClass.parameters);
 
   return '''
@@ -99,9 +85,7 @@ $additionalClasses$base64ConverterClass''';
 String getParameters(UniversalComponentClass dataClass) {
   // if this class has discriminated values, don't populate the discriminator field
   // in the parent class
-  final parameters = dataClass.parameters
-      .where((it) => it.name != dataClass.discriminator?.propertyName)
-      .toList();
+  final parameters = dataClass.parameters.where((it) => it.name != dataClass.discriminator?.propertyName).toList();
   if (parameters.isNotEmpty) {
     return '{\n${_parametersToString(parameters)}\n${indentation(2)}}';
   } else {
@@ -109,15 +93,10 @@ String getParameters(UniversalComponentClass dataClass) {
   }
 }
 
-String getFields(
-  UniversalComponentClass dataClass, {
-  bool isSimpleDataClass = false,
-}) {
+String getFields(UniversalComponentClass dataClass, {bool isSimpleDataClass = false}) {
   // if this class has discriminated values, don't populate the discriminator field
   // in the parent class
-  final parameters = dataClass.parameters
-      .where((it) => it.name != dataClass.discriminator?.propertyName)
-      .toList();
+  final parameters = dataClass.parameters.where((it) => it.name != dataClass.discriminator?.propertyName).toList();
   if (parameters.isNotEmpty) {
     return '${_fieldsToString(parameters)}\n';
   } else {
@@ -127,19 +106,14 @@ String getFields(
 
 String _fieldsToString(List<UniversalType> parameters) {
   // Filter out parameters with null or empty names
-  final validParams = parameters
-      .where((p) => p.name != null && p.name!.isNotEmpty)
-      .toList();
-  final sortedByRequired = Set<UniversalType>.from(
-    validParams.sorted((a, b) => a.compareTo(b)),
-  );
+  final validParams = parameters.where((p) => p.name != null && p.name!.isNotEmpty).toList();
+  final sortedByRequired = Set<UniversalType>.from(validParams.sorted((a, b) => a.compareTo(b)));
   return sortedByRequired
       .mapIndexed((i, e) {
         var type = e.toSuitableType();
         // In Dart, optional fields without valid defaults must be nullable
         // Check if the default value is actually valid (not empty after processing)
-        final hasValidDefault =
-            e.defaultValue != null && _defaultValue(e).isNotEmpty;
+        final hasValidDefault = e.defaultValue != null && _defaultValue(e).isNotEmpty;
         // If a field is optional (!isRequired), has no valid default, and is non-nullable,
         // we need to make it nullable to avoid compile errors
         if (!e.isRequired && !hasValidDefault && !type.endsWith('?')) {
@@ -152,17 +126,10 @@ String _fieldsToString(List<UniversalType> parameters) {
 
 String _parametersToString(List<UniversalType> parameters) {
   // Filter out parameters with null or empty names
-  final validParams = parameters
-      .where((p) => p.name != null && p.name!.isNotEmpty)
-      .toList();
-  final sortedByRequired = Set<UniversalType>.from(
-    validParams.sorted((a, b) => a.compareTo(b)),
-  );
+  final validParams = parameters.where((p) => p.name != null && p.name!.isNotEmpty).toList();
+  final sortedByRequired = Set<UniversalType>.from(validParams.sorted((a, b) => a.compareTo(b)));
   return sortedByRequired
-      .mapIndexed(
-        (i, e) =>
-            '${indentation(4)}${_required(e)}this.${e.name}${getDefaultValue(e)},',
-      )
+      .mapIndexed((i, e) => '${indentation(4)}${_required(e)}this.${e.name}${getDefaultValue(e)},')
       .join('\n');
 }
 
@@ -203,8 +170,7 @@ String getDefaultValue(UniversalType t) {
 }
 
 /// return required if isRequired
-String _required(UniversalType t) =>
-    t.isRequired && t.defaultValue == null ? 'required ' : '';
+String _required(UniversalType t) => t.isRequired && t.defaultValue == null ? 'required ' : '';
 
 /// return defaultValue if have
 String _defaultValue(UniversalType t) {
@@ -217,9 +183,7 @@ String _defaultValue(UniversalType t) {
 
   // Skip invalid default values: string defaults for array types
   // This handles spec bugs like `default: "eval"` for `type: array`
-  if (t.wrappingCollections.isNotEmpty &&
-      !defaultValueStr.startsWith('[') &&
-      !defaultValueStr.startsWith('{')) {
+  if (t.wrappingCollections.isNotEmpty && !defaultValueStr.startsWith('[') && !defaultValueStr.startsWith('{')) {
     GeneratorLogger.warning(
       GeneratorLogCategory.template,
       'Skipping invalid default "$defaultValueStr" for collection type (expected array/object)',
@@ -279,10 +243,7 @@ String _defaultValue(UniversalType t) {
   return '$protectedValue';
 }
 
-String _classModifier({
-  required bool isUnion,
-  bool isUndiscriminatedUnion = false,
-}) {
+String _classModifier({required bool isUnion, bool isUndiscriminatedUnion = false}) {
   return isUnion ? 'sealed ' : '';
 }
 
@@ -304,19 +265,13 @@ ${indentation(2)}static $className fromJson(Map<String, dynamic> json) => ${clas
   }
 
   // Union class generation
-  if (dataClass.undiscriminatedUnionVariants case final variants?
-      when variants.isNotEmpty) {
-    return _generateUndiscriminatedUnionBody(
-      className,
-      variants,
-      fallbackUnion,
-    );
+  if (dataClass.undiscriminatedUnionVariants case final variants? when variants.isNotEmpty) {
+    return _generateUndiscriminatedUnionBody(className, variants, fallbackUnion);
   }
 
   // Discriminated unions with complete mapping use wrapper pattern
   // and the public extension-based deserializer
-  if (dataClass.discriminator != null &&
-      _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
+  if (dataClass.discriminator != null && _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
     return '''
 ${indentation(2)}const $className();
 
@@ -408,11 +363,7 @@ String _generateUndiscriminatedUnionClasses(
   final isPrimitive = _isPrimitiveUnion(variants);
 
   if (isPrimitive) {
-    final deserializerExtension = _generatePrimitiveUnionMappableExtension(
-      className,
-      variants,
-      fallbackUnion,
-    );
+    final deserializerExtension = _generatePrimitiveUnionMappableExtension(className, variants, fallbackUnion);
     // Use special primitive variant wrappers that serialize to raw values
     final wrappers = _generatePrimitiveVariantWrappers(
       className,
@@ -427,11 +378,7 @@ $deserializerExtension
 $wrappers''';
   }
 
-  final deserializerExtension = _generateUndiscriminatedMappableExtension(
-    className,
-    variants,
-    fallbackUnion,
-  );
+  final deserializerExtension = _generateUndiscriminatedMappableExtension(className, variants, fallbackUnion);
   final wrappers = _generateVariantWrappers(
     className,
     variants,
@@ -455,10 +402,7 @@ String _generatePrimitiveVariantWrappers(
   bool includeTypeId = true,
 }) {
   final wrappersList = <String>[];
-  final baseParams = _buildMappableBaseParams(
-    ignoreNull: ignoreNull,
-    includeTypeId: includeTypeId,
-  );
+  final baseParams = _buildMappableBaseParams(ignoreNull: ignoreNull, includeTypeId: includeTypeId);
   final annotationParams = baseParams.isEmpty ? '' : baseParams;
 
   for (final entry in variants.entries) {
@@ -467,22 +411,15 @@ String _generatePrimitiveVariantWrappers(
     final wrapperClassName = '$className${variantName.toPascal}';
 
     // Filter out properties with null or empty names
-    final validProps = properties
-        .where((p) => p.name != null && p.name!.isNotEmpty)
-        .toList();
+    final validProps = properties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
     // Generate direct properties
     final directProperties = validProps
-        .map(
-          (prop) =>
-              '${indentation(2)}final ${prop.toSuitableType()} ${prop.name};',
-        )
+        .map((prop) => '${indentation(2)}final ${prop.toSuitableType()} ${prop.name};')
         .join('\n');
 
     // Generate constructor parameters
-    final constructorParams = validProps
-        .map((prop) => '${indentation(4)}required this.${prop.name},')
-        .join('\n');
+    final constructorParams = validProps.map((prop) => '${indentation(4)}required this.${prop.name},').join('\n');
 
     // Handle empty properties case
     final constructorSignature = validProps.isEmpty
@@ -704,32 +641,27 @@ ${indentation(2)}}
 }''';
 }
 
-String _generateDiscriminatorHelper(
-  String className,
-  Discriminator discriminator, [
-  String? fallbackUnion,
-]) {
+String _generateDiscriminatorHelper(String className, Discriminator discriminator, [String? fallbackUnion]) {
   final discriminatorKey = discriminator.propertyName;
   final discriminatorMappings = discriminator.discriminatorValueToRefMapping;
 
-  // Build default mapping literal: { WrapperType: 'DiscriminatorValue', ... }
-  final mappingEntries = discriminatorMappings.entries
-      .map((entry) {
-        final discriminatorKey = entry.key;
-        final discriminatorValue = entry.key;
-        final wrapperClassName = '$className${discriminatorKey.toPascal}';
-        return "${indentation(6)}$wrapperClassName: '$discriminatorValue',";
-      })
-      .join('\n');
+  // Build default mapping literal and switch cases using actual variant names
+  final mappingEntries = <String>[];
+  final switchCases = <String>[];
 
-  // Build switch cases using guarded mapping
-  final switchCases = discriminatorMappings.entries
-      .map((entry) {
-        final discriminatorKey = entry.key;
-        final wrapperClassName = '$className${discriminatorKey.toPascal}';
-        return '''${indentation(6)}_ when value == effective[$wrapperClassName] => ${wrapperClassName}Mapper.fromJson(json),''';
-      })
-      .join('\n');
+  for (final entry in discriminatorMappings.entries) {
+    final discriminatorValue = entry.key; // e.g., 'tool', 'system'
+    final variantRefName = entry.value; // e.g., 'ChatCompletionRequestToolMessage'
+    final expectedInlineName = '$className${discriminatorValue.toPascal}';
+
+    // Use actual ref name if it's a top-level component, otherwise use inline name
+    final subclassName = variantRefName == expectedInlineName ? expectedInlineName : variantRefName;
+
+    mappingEntries.add("${indentation(6)}$subclassName: '$discriminatorValue',");
+    switchCases.add(
+      '''${indentation(6)}_ when value == effective[$subclassName] => ${subclassName}Mapper.fromJson(json),''',
+    );
+  }
 
   final fallbackCase = (fallbackUnion != null && fallbackUnion.isNotEmpty)
       ? '${indentation(6)}_ => $className${fallbackUnion.toPascal}Mapper.fromJson(json),'
@@ -743,12 +675,12 @@ ${indentation(2)}  String key = '$discriminatorKey',
 ${indentation(2)}  Map<Type, Object?>? mapping,
 ${indentation(2)}}) {
 ${indentation(4)}final mappingFallback = const <Type, Object?>{
-$mappingEntries
+${mappingEntries.join('\n')}
 ${indentation(4)}};
 ${indentation(4)}final value = json[key];
 ${indentation(4)}final effective = mapping ?? mappingFallback;
 ${indentation(4)}return switch (value) {
-$switchCases
+${switchCases.join('\n')}
 $fallbackCase
 ${indentation(4)}};
 ${indentation(2)}}
@@ -756,9 +688,7 @@ ${indentation(2)}}
 }
 
 String _deserializerExtensionName(String className) =>
-    className.endsWith('Union')
-    ? '${className}Deserializer'
-    : '${className}UnionDeserializer';
+    className.endsWith('Union') ? '${className}Deserializer' : '${className}UnionDeserializer';
 
 String _generateVariantWrappers(
   String className,
@@ -768,10 +698,7 @@ String _generateVariantWrappers(
   bool includeTypeId = true,
 }) {
   final wrappersList = <String>[];
-  final baseParams = _buildMappableBaseParams(
-    ignoreNull: ignoreNull,
-    includeTypeId: includeTypeId,
-  );
+  final baseParams = _buildMappableBaseParams(ignoreNull: ignoreNull, includeTypeId: includeTypeId);
   final annotationParams = baseParams.isEmpty ? '' : baseParams;
 
   for (final entry in variants.entries) {
@@ -780,9 +707,7 @@ String _generateVariantWrappers(
     final wrapperClassName = '$className${variantName.toPascal}';
 
     // Filter out properties with null or empty names
-    final validProps = properties
-        .where((p) => p.name != null && p.name!.isNotEmpty)
-        .toList();
+    final validProps = properties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
     // Generate direct properties with @MappableField annotations for JSON key mapping
     final directProperties = validProps
@@ -798,9 +723,7 @@ String _generateVariantWrappers(
         .join('\n');
 
     // Generate constructor parameters
-    final constructorParams = validProps
-        .map((prop) => '${indentation(4)}required this.${prop.name},')
-        .join('\n');
+    final constructorParams = validProps.map((prop) => '${indentation(4)}required this.${prop.name},').join('\n');
 
     // Handle empty properties case
     final constructorSignature = validProps.isEmpty
@@ -842,26 +765,17 @@ String _getMappableClassAnnotation(
   bool includeTypeId = true,
 }) {
   // Build base params from config
-  final baseParams = _buildMappableBaseParams(
-    ignoreNull: ignoreNull,
-    includeTypeId: includeTypeId,
-  );
+  final baseParams = _buildMappableBaseParams(ignoreNull: ignoreNull, includeTypeId: includeTypeId);
 
   // For discriminated unions with complete mapping, use wrapper pattern
-  if (dataClass.discriminator != null &&
-      _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
-    final subClasses = dataClass
-        .discriminator!
-        .discriminatorValueToRefMapping
-        .keys
+  if (dataClass.discriminator != null && _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
+    final subClasses = dataClass.discriminator!.discriminatorValueToRefMapping.keys
         .map((discriminatorKey) => '$className${discriminatorKey.toPascal}')
         .toList();
     if (fallbackUnion != null && fallbackUnion.isNotEmpty) {
       subClasses.add('$className${fallbackUnion.toPascal}');
     }
-    final formattedSubClasses = subClasses
-        .map((sc) => '${indentation(2)}$sc')
-        .join(',\n');
+    final formattedSubClasses = subClasses.map((sc) => '${indentation(2)}$sc').join(',\n');
     final parts = <String>[];
     if (baseParams.isNotEmpty) parts.add(baseParams);
     parts.add("discriminatorKey: '${dataClass.discriminator!.propertyName}'");
@@ -871,10 +785,7 @@ String _getMappableClassAnnotation(
 
   // Original discriminated union logic (for incomplete mappings)
   if (dataClass.discriminator != null) {
-    final subClasses = dataClass
-        .discriminator!
-        .discriminatorValueToRefMapping
-        .keys
+    final subClasses = dataClass.discriminator!.discriminatorValueToRefMapping.keys
         .map((discriminatorKey) => '$className${discriminatorKey.toPascal}')
         .toList();
     if (fallbackUnion != null && fallbackUnion.isNotEmpty) {
@@ -889,14 +800,11 @@ String _getMappableClassAnnotation(
   // For discriminated union variants that use wrapper pattern, don't include discriminatorValue
   if (dataClass.discriminatorValue != null) {
     // Check if this is a complete mapping case (discriminator value matches class name)
-    final isCompleteMapping =
-        dataClass.discriminatorValue!.propertyValue == className;
+    final isCompleteMapping = dataClass.discriminatorValue!.propertyValue == className;
     if (!isCompleteMapping) {
       final parts = <String>[];
       if (baseParams.isNotEmpty) parts.add(baseParams);
-      parts.add(
-        "discriminatorValue: '${dataClass.discriminatorValue!.propertyValue}'",
-      );
+      parts.add("discriminatorValue: '${dataClass.discriminatorValue!.propertyValue}'");
       return parts.join(', ');
     }
   }
@@ -916,19 +824,13 @@ String _getMappableClassAnnotation(
   return baseParams;
 }
 
-Set<String> _getAllImports(
-  UniversalComponentClass dataClass, {
-  required bool isUnion,
-}) {
+Set<String> _getAllImports(UniversalComponentClass dataClass, {required bool isUnion}) {
   final imports = Set<String>.from(dataClass.imports);
 
   // For discriminated unions with complete mapping, add imports for the ref names
   // (not the discriminator values which are stored in undiscriminatedUnionVariants keys)
-  if (dataClass.discriminator != null &&
-      _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
-    imports.addAll(
-      dataClass.discriminator!.discriminatorValueToRefMapping.values,
-    );
+  if (dataClass.discriminator != null && _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
+    imports.addAll(dataClass.discriminator!.discriminatorValueToRefMapping.values);
   }
   // For undiscriminated unions (without a discriminator), add imports for referenced variant classes
   // Skip synthesized inline variants like variant2, variant4
@@ -966,9 +868,7 @@ Set<String> _getAllImports(
 
   // Filter out circular imports: if this is a simple model class (not a union),
   // exclude any imports that would reference union classes that contain this model
-  final isUnion =
-      dataClass.discriminator != null ||
-      (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false);
+  final isUnion = dataClass.discriminator != null || (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false);
 
   if (!isUnion) {
     // Remove imports that would create circular dependencies
@@ -979,9 +879,7 @@ Set<String> _getAllImports(
 
     imports.removeWhere((import) {
       final isUnionImport = import.toLowerCase().contains('union');
-      final isUsedByClass =
-          usedTypes.contains(import) ||
-          usedTypes.any((type) => type.contains(import));
+      final isUsedByClass = usedTypes.contains(import) || usedTypes.any((type) => type.contains(import));
 
       // Remove union imports that aren't used by this class
       return isUnionImport && !isUsedByClass;
@@ -1008,8 +906,7 @@ String _generateWrapperClasses(
   // Check for discriminator FIRST - discriminated unions should take priority
   // because the parser stores variant properties in undiscriminatedUnionVariants
   // even for discriminated unions (reusing the field for convenience)
-  if (dataClass.discriminator != null &&
-      _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
+  if (dataClass.discriminator != null && _isCompleteDiscriminatorMapping(dataClass.discriminator!)) {
     // If we also have undiscriminatedUnionVariants, use them with discriminator info
     if (dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false) {
       return _generateDiscriminatedUnionClassesWithVariants(
@@ -1055,11 +952,7 @@ String _generateDiscriminatedUnionClassesWithVariants(
   bool ignoreNull = false,
   bool includeTypeId = true,
 }) {
-  final deserializerExtension = _generateDiscriminatorHelper(
-    className,
-    discriminator,
-    fallbackUnion,
-  );
+  final deserializerExtension = _generateDiscriminatorHelper(className, discriminator, fallbackUnion);
   final wrappers = _generateVariantWrappersWithDiscriminator(
     className,
     variants,
@@ -1085,10 +978,7 @@ String _generateVariantWrappersWithDiscriminator(
   bool includeTypeId = true,
 }) {
   final wrappersList = <String>[];
-  final baseParams = _buildMappableBaseParams(
-    ignoreNull: ignoreNull,
-    includeTypeId: includeTypeId,
-  );
+  final baseParams = _buildMappableBaseParams(ignoreNull: ignoreNull, includeTypeId: includeTypeId);
 
   for (final entry in variants.entries) {
     final discriminatorValue = entry.key; // e.g., 'system', 'user'
@@ -1096,9 +986,7 @@ String _generateVariantWrappersWithDiscriminator(
     final wrapperClassName = '$className${discriminatorValue.toPascal}';
 
     // Filter out properties with null or empty names
-    final validProps = properties
-        .where((p) => p.name != null && p.name!.isNotEmpty)
-        .toList();
+    final validProps = properties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
     // Generate direct properties with @MappableField annotations for JSON key mapping
     final directProperties = validProps
@@ -1114,9 +1002,7 @@ String _generateVariantWrappersWithDiscriminator(
         .join('\n');
 
     // Generate constructor parameters
-    final constructorParams = validProps
-        .map((prop) => '${indentation(4)}required this.${prop.name},')
-        .join('\n');
+    final constructorParams = validProps.map((prop) => '${indentation(4)}required this.${prop.name},').join('\n');
 
     // Handle empty properties case
     final constructorSignature = validProps.isEmpty
@@ -1145,9 +1031,7 @@ $constructorSignature
   if (fallbackUnion != null && fallbackUnion.isNotEmpty) {
     final fallbackAnnotationParts = <String>[];
     if (baseParams.isNotEmpty) fallbackAnnotationParts.add(baseParams);
-    fallbackAnnotationParts.add(
-      'discriminatorValue: MappableClass.useAsDefault',
-    );
+    fallbackAnnotationParts.add('discriminatorValue: MappableClass.useAsDefault');
 
     wrappersList.add('''
 @MappableClass(${fallbackAnnotationParts.join(', ')})
@@ -1171,26 +1055,19 @@ String _generateDiscriminatedWrapperClasses(
 }) {
   final discriminator = dataClass.discriminator!;
   final wrappers = <String>[];
-  final baseParams = _buildMappableBaseParams(
-    ignoreNull: ignoreNull,
-    includeTypeId: includeTypeId,
-  );
+  final baseParams = _buildMappableBaseParams(ignoreNull: ignoreNull, includeTypeId: includeTypeId);
 
   // Generate wrapper classes for each discriminator variant
   for (final entry in discriminator.discriminatorValueToRefMapping.entries) {
     final discriminatorValue = entry.key; // e.g., "green_apple"
     final variantName = entry.value; // e.g., "Apple"
-    final wrapperClassName =
-        '$className${discriminatorValue.toPascal}'; // e.g., "FruitGreenApple"
+    final wrapperClassName = '$className${discriminatorValue.toPascal}'; // e.g., "FruitGreenApple"
 
     // Get the variant class properties from the discriminator's refProperties
-    final variantProperties =
-        discriminator.refProperties[variantName] ?? <UniversalType>[];
+    final variantProperties = discriminator.refProperties[variantName] ?? <UniversalType>[];
 
     // Filter out properties with null or empty names
-    final filteredProperties = variantProperties
-        .where((p) => p.name != null && p.name!.isNotEmpty)
-        .toList();
+    final filteredProperties = variantProperties.where((p) => p.name != null && p.name!.isNotEmpty).toList();
 
     // Generate direct properties with @MappableField annotations for JSON key mapping
     final directProperties = filteredProperties
@@ -1236,9 +1113,7 @@ $constructorSignature
   if (fallbackUnion != null && fallbackUnion.isNotEmpty) {
     final fallbackAnnotationParts = <String>[];
     if (baseParams.isNotEmpty) fallbackAnnotationParts.add(baseParams);
-    fallbackAnnotationParts.add(
-      'discriminatorValue: MappableClass.useAsDefault',
-    );
+    fallbackAnnotationParts.add('discriminatorValue: MappableClass.useAsDefault');
 
     wrappers.add('''
 @MappableClass(${fallbackAnnotationParts.join(', ')})
@@ -1253,11 +1128,7 @@ ${indentation(6)}$className${fallbackUnion.toPascal}(json);
   }
 
   // Generate discriminator helper class for proper deserialization
-  final helper = _generateDiscriminatorHelper(
-    className,
-    discriminator,
-    fallbackUnion,
-  );
+  final helper = _generateDiscriminatorHelper(className, discriminator, fallbackUnion);
 
   return '''
 $helper
@@ -1266,11 +1137,7 @@ ${wrappers.join('\n')}''';
 }
 
 bool _hasBase64Fields(Set<UniversalType> parameters) {
-  return parameters.any(
-    (param) =>
-        (param.format == 'binary' || param.format == 'byte') &&
-        param.type == 'string',
-  );
+  return parameters.any((param) => (param.format == 'binary' || param.format == 'byte') && param.type == 'string');
 }
 
 String _getDartCoreImports(Set<UniversalType> parameters) {

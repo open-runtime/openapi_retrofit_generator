@@ -7,8 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'api_parcel_pending_building_settings_request.mapper.dart';
 
 @MappableClass()
-class ApiParcelPendingBuildingSettingsRequest
-    with ApiParcelPendingBuildingSettingsRequestMappable {
+class ApiParcelPendingBuildingSettingsRequest with ApiParcelPendingBuildingSettingsRequestMappable {
   const ApiParcelPendingBuildingSettingsRequest({
     required this.isDellaManaged,
     this.externalPropertyId,
@@ -19,7 +18,6 @@ class ApiParcelPendingBuildingSettingsRequest
   final String? externalPropertyId;
   final String? externalBuildingName;
 
-  static ApiParcelPendingBuildingSettingsRequest fromJson(
-    Map<String, dynamic> json,
-  ) => ApiParcelPendingBuildingSettingsRequestMapper.fromJson(json);
+  static ApiParcelPendingBuildingSettingsRequest fromJson(Map<String, dynamic> json) =>
+      ApiParcelPendingBuildingSettingsRequestMapper.fromJson(json);
 }

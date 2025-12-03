@@ -10,8 +10,7 @@ part 'api_auth.g.dart';
 class ApiAuth {
   const ApiAuth({required this.type, required this.key});
 
-  factory ApiAuth.fromJson(Map<String, Object?> json) =>
-      _$ApiAuthFromJson(json);
+  factory ApiAuth.fromJson(Map<String, Object?> json) => _$ApiAuthFromJson(json);
 
   final String type;
   final String key;

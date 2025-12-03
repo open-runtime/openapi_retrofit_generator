@@ -28,10 +28,7 @@ class ContextStack {
   }
 
   /// Execute an async action within a specific context
-  Future<T> withContextAsync<T>(
-    String context,
-    Future<T> Function() action,
-  ) async {
+  Future<T> withContextAsync<T>(String context, Future<T> Function() action) async {
     _stack.add(context);
     try {
       return await action();

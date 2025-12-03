@@ -14,15 +14,12 @@ part 'find_text_response.g.dart';
 @Freezed()
 abstract class FindTextResponse with _$FindTextResponse {
   const factory FindTextResponse({
-    @JsonKey(name: 'FindTextResponsePath')
-    required FindTextResponsePath findTextResponsePath,
-    @JsonKey(name: 'FindTextResponseLines')
-    required FindTextResponseLines findTextResponseLines,
+    @JsonKey(name: 'FindTextResponsePath') required FindTextResponsePath findTextResponsePath,
+    @JsonKey(name: 'FindTextResponseLines') required FindTextResponseLines findTextResponseLines,
     @JsonKey(name: 'line_number') required num lineNumber,
     @JsonKey(name: 'absolute_offset') required num absoluteOffset,
     required List<FindTextResponseSubmatches> submatches,
   }) = _FindTextResponse;
 
-  factory FindTextResponse.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseFromJson(json);
+  factory FindTextResponse.fromJson(Map<String, Object?> json) => _$FindTextResponseFromJson(json);
 }

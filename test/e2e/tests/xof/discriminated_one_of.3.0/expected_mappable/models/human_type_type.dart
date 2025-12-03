@@ -20,6 +20,5 @@ enum HumanTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<HumanTypeType> get $valuesDefined =>
-      values.where((value) => value != HumanTypeType.unknown).toList();
+  static List<HumanTypeType> get $valuesDefined => values.where((value) => value != HumanTypeType.unknown).toList();
 }

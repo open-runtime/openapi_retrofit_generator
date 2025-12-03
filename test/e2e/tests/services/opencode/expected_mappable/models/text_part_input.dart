@@ -27,6 +27,5 @@ class TextPartInput with TextPartInputMappable {
   final TextPartInputTime? textPartInputTime;
   final Map<String, dynamic>? metadata;
 
-  static TextPartInput fromJson(Map<String, dynamic> json) =>
-      TextPartInputMapper.fromJson(json);
+  static TextPartInput fromJson(Map<String, dynamic> json) => TextPartInputMapper.fromJson(json);
 }

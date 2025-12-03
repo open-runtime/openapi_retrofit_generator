@@ -16,8 +16,7 @@ class FileContentPatchHunks {
     required this.lines,
   });
 
-  factory FileContentPatchHunks.fromJson(Map<String, Object?> json) =>
-      _$FileContentPatchHunksFromJson(json);
+  factory FileContentPatchHunks.fromJson(Map<String, Object?> json) => _$FileContentPatchHunksFromJson(json);
 
   final num oldStart;
   final num oldLines;

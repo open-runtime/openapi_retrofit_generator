@@ -24,6 +24,5 @@ class StepStartPart with StepStartPartMappable {
   final String type;
   final String? snapshot;
 
-  static StepStartPart fromJson(Map<String, dynamic> json) =>
-      StepStartPartMapper.fromJson(json);
+  static StepStartPart fromJson(Map<String, dynamic> json) => StepStartPartMapper.fromJson(json);
 }

@@ -36,8 +36,7 @@ abstract class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
-  static const String emailPattern =
-      r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+  static const String emailPattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
   static const int usernameMinLength = 3;
   static const int usernameMaxLength = 30;
   static const String usernamePattern = r"^[a-zA-Z0-9_-]+$";

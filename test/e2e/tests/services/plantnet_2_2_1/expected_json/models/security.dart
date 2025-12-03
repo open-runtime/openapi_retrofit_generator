@@ -13,8 +13,7 @@ part 'security.g.dart';
 class Security {
   const Security({this.exposeKey, this.ips, this.domains});
 
-  factory Security.fromJson(Map<String, Object?> json) =>
-      _$SecurityFromJson(json);
+  factory Security.fromJson(Map<String, Object?> json) => _$SecurityFromJson(json);
 
   final bool? exposeKey;
   final Ips? ips;

@@ -10,8 +10,7 @@ part 'session_shell_request.g.dart';
 class SessionShellRequest {
   const SessionShellRequest({required this.agent, required this.command});
 
-  factory SessionShellRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionShellRequestFromJson(json);
+  factory SessionShellRequest.fromJson(Map<String, Object?> json) => _$SessionShellRequestFromJson(json);
 
   final String agent;
   final String command;

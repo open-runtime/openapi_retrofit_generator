@@ -8,16 +8,11 @@ part 'session_time.mapper.dart';
 
 @MappableClass()
 class SessionTime with SessionTimeMappable {
-  const SessionTime({
-    required this.created,
-    required this.updated,
-    this.compacting,
-  });
+  const SessionTime({required this.created, required this.updated, this.compacting});
 
   final num created;
   final num updated;
   final num? compacting;
 
-  static SessionTime fromJson(Map<String, dynamic> json) =>
-      SessionTimeMapper.fromJson(json);
+  static SessionTime fromJson(Map<String, dynamic> json) => SessionTimeMapper.fromJson(json);
 }

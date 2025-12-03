@@ -12,8 +12,7 @@ part 'wrapper_class.g.dart';
 class WrapperClass {
   const WrapperClass({required this.map});
 
-  factory WrapperClass.fromJson(Map<String, Object?> json) =>
-      _$WrapperClassFromJson(json);
+  factory WrapperClass.fromJson(Map<String, Object?> json) => _$WrapperClassFromJson(json);
 
   final Map<String, ValueClass> map;
 

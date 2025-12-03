@@ -8,8 +8,7 @@ part 'event_message_removed_properties.freezed.dart';
 part 'event_message_removed_properties.g.dart';
 
 @Freezed()
-abstract class EventMessageRemovedProperties
-    with _$EventMessageRemovedProperties {
+abstract class EventMessageRemovedProperties with _$EventMessageRemovedProperties {
   const factory EventMessageRemovedProperties({
     @JsonKey(name: 'sessionID') required String sessionId,
     @JsonKey(name: 'messageID') required String messageId,

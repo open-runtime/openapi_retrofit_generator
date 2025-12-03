@@ -18,6 +18,5 @@ abstract class BaseEntity with _$BaseEntity {
     @JsonKey(includeIfNull: false) DateTime? updatedAt,
   }) = _BaseEntity;
 
-  factory BaseEntity.fromJson(Map<String, Object?> json) =>
-      _$BaseEntityFromJson(json);
+  factory BaseEntity.fromJson(Map<String, Object?> json) => _$BaseEntityFromJson(json);
 }

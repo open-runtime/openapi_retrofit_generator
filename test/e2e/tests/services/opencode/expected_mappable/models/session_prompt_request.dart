@@ -33,6 +33,5 @@ class SessionPromptRequest with SessionPromptRequestMappable {
   @MappableField(key: 'SessionPromptRequestAcpConnection')
   final SessionPromptRequestAcpConnection? sessionPromptRequestAcpConnection;
 
-  static SessionPromptRequest fromJson(Map<String, dynamic> json) =>
-      SessionPromptRequestMapper.fromJson(json);
+  static SessionPromptRequest fromJson(Map<String, dynamic> json) => SessionPromptRequestMapper.fromJson(json);
 }

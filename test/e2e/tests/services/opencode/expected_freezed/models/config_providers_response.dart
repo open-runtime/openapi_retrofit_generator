@@ -16,6 +16,5 @@ abstract class ConfigProvidersResponse with _$ConfigProvidersResponse {
     @JsonKey(name: 'default') required Map<String, String> defaultField,
   }) = _ConfigProvidersResponse;
 
-  factory ConfigProvidersResponse.fromJson(Map<String, Object?> json) =>
-      _$ConfigProvidersResponseFromJson(json);
+  factory ConfigProvidersResponse.fromJson(Map<String, Object?> json) => _$ConfigProvidersResponseFromJson(json);
 }

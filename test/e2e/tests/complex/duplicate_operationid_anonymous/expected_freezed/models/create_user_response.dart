@@ -11,6 +11,5 @@ part 'create_user_response.g.dart';
 abstract class CreateUserResponse with _$CreateUserResponse {
   const factory CreateUserResponse({int? id}) = _CreateUserResponse;
 
-  factory CreateUserResponse.fromJson(Map<String, Object?> json) =>
-      _$CreateUserResponseFromJson(json);
+  factory CreateUserResponse.fromJson(Map<String, Object?> json) => _$CreateUserResponseFromJson(json);
 }

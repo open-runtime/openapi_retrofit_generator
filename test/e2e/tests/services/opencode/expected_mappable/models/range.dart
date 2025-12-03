@@ -18,6 +18,5 @@ class Range with RangeMappable {
   @MappableField(key: 'RangeEnd')
   final RangeEnd rangeEnd;
 
-  static Range fromJson(Map<String, dynamic> json) =>
-      RangeMapper.fromJson(json);
+  static Range fromJson(Map<String, dynamic> json) => RangeMapper.fromJson(json);
 }

@@ -10,15 +10,13 @@ part 'get_duplicate_response_metadata_data.g.dart';
 class GetDuplicateResponseMetadataData {
   const GetDuplicateResponseMetadataData({this.id, this.value});
 
-  factory GetDuplicateResponseMetadataData.fromJson(
-    Map<String, Object?> json,
-  ) => _$GetDuplicateResponseMetadataDataFromJson(json);
+  factory GetDuplicateResponseMetadataData.fromJson(Map<String, Object?> json) =>
+      _$GetDuplicateResponseMetadataDataFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? id;
   @JsonKey(includeIfNull: false)
   final int? value;
 
-  Map<String, Object?> toJson() =>
-      _$GetDuplicateResponseMetadataDataToJson(this);
+  Map<String, Object?> toJson() => _$GetDuplicateResponseMetadataDataToJson(this);
 }

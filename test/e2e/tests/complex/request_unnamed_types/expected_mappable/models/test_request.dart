@@ -14,6 +14,5 @@ class TestRequest with TestRequestMappable {
   final String? name;
   final String? lastname;
 
-  static TestRequest fromJson(Map<String, dynamic> json) =>
-      TestRequestMapper.fromJson(json);
+  static TestRequest fromJson(Map<String, dynamic> json) => TestRequestMapper.fromJson(json);
 }

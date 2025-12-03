@@ -10,15 +10,11 @@ part 'config_providers_response.mapper.dart';
 
 @MappableClass()
 class ConfigProvidersResponse with ConfigProvidersResponseMappable {
-  const ConfigProvidersResponse({
-    required this.providers,
-    required this.defaultField,
-  });
+  const ConfigProvidersResponse({required this.providers, required this.defaultField});
 
   final List<Provider> providers;
   @MappableField(key: 'default')
   final Map<String, String> defaultField;
 
-  static ConfigProvidersResponse fromJson(Map<String, dynamic> json) =>
-      ConfigProvidersResponseMapper.fromJson(json);
+  static ConfigProvidersResponse fromJson(Map<String, dynamic> json) => ConfigProvidersResponseMapper.fromJson(json);
 }

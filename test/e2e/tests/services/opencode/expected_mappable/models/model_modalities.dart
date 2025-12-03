@@ -16,6 +16,5 @@ class ModelModalities with ModelModalitiesMappable {
   final List<ModelModalitiesInputInput> input;
   final List<ModelModalitiesOutputOutput> output;
 
-  static ModelModalities fromJson(Map<String, dynamic> json) =>
-      ModelModalitiesMapper.fromJson(json);
+  static ModelModalities fromJson(Map<String, dynamic> json) => ModelModalitiesMapper.fromJson(json);
 }

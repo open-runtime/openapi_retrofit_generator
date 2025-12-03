@@ -10,10 +10,8 @@ part 'event_session_updated_properties.freezed.dart';
 part 'event_session_updated_properties.g.dart';
 
 @Freezed()
-abstract class EventSessionUpdatedProperties
-    with _$EventSessionUpdatedProperties {
-  const factory EventSessionUpdatedProperties({required Session info}) =
-      _EventSessionUpdatedProperties;
+abstract class EventSessionUpdatedProperties with _$EventSessionUpdatedProperties {
+  const factory EventSessionUpdatedProperties({required Session info}) = _EventSessionUpdatedProperties;
 
   factory EventSessionUpdatedProperties.fromJson(Map<String, Object?> json) =>
       _$EventSessionUpdatedPropertiesFromJson(json);

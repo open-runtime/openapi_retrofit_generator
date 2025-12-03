@@ -14,10 +14,8 @@ abstract class EventLspClientDiagnostics with _$EventLspClientDiagnostics {
   const factory EventLspClientDiagnostics({
     required String type,
     @JsonKey(name: 'EventLspClientDiagnosticsProperties')
-    required EventLspClientDiagnosticsProperties
-    eventLspClientDiagnosticsProperties,
+    required EventLspClientDiagnosticsProperties eventLspClientDiagnosticsProperties,
   }) = _EventLspClientDiagnostics;
 
-  factory EventLspClientDiagnostics.fromJson(Map<String, Object?> json) =>
-      _$EventLspClientDiagnosticsFromJson(json);
+  factory EventLspClientDiagnostics.fromJson(Map<String, Object?> json) => _$EventLspClientDiagnosticsFromJson(json);
 }

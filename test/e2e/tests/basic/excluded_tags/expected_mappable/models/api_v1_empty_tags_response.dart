@@ -12,6 +12,5 @@ class ApiV1EmptyTagsResponse with ApiV1EmptyTagsResponseMappable {
 
   final String? emptyTagsField;
 
-  static ApiV1EmptyTagsResponse fromJson(Map<String, dynamic> json) =>
-      ApiV1EmptyTagsResponseMapper.fromJson(json);
+  static ApiV1EmptyTagsResponse fromJson(Map<String, dynamic> json) => ApiV1EmptyTagsResponseMapper.fromJson(json);
 }

@@ -18,8 +18,7 @@ enum P2Enum {
 
   const P2Enum(this.json);
 
-  factory P2Enum.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory P2Enum.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -29,6 +28,5 @@ enum P2Enum {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<P2Enum> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<P2Enum> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

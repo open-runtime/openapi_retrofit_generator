@@ -17,9 +17,7 @@ _Model51 _$Model51FromJson(Map<String, dynamic> json) => _Model51(
   coverage: json['coverage'] as num?,
   maxScore: json['max_score'] as num?,
   count: json['count'] as num?,
-  location: (json['location'] as List<dynamic>?)
-      ?.map((e) => Model50.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  location: (json['location'] as List<dynamic>?)?.map((e) => Model50.fromJson(e as Map<String, dynamic>)).toList(),
   reject: json['reject'] as String?,
 );
 

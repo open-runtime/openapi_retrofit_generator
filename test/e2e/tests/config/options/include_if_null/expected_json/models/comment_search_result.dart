@@ -11,14 +11,9 @@ part 'comment_search_result.g.dart';
 
 @JsonSerializable()
 class CommentSearchResult {
-  const CommentSearchResult({
-    required this.type,
-    required this.comment,
-    this.score,
-  });
+  const CommentSearchResult({required this.type, required this.comment, this.score});
 
-  factory CommentSearchResult.fromJson(Map<String, Object?> json) =>
-      _$CommentSearchResultFromJson(json);
+  factory CommentSearchResult.fromJson(Map<String, Object?> json) => _$CommentSearchResultFromJson(json);
 
   final CommentSearchResultTypeType type;
   final Comment comment;

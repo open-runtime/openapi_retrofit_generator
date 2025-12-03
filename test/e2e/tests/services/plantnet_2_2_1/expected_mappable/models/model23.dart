@@ -33,6 +33,5 @@ class Model23 with Model23Mappable {
   final String? powoId;
   final String? gbifId;
 
-  static Model23 fromJson(Map<String, dynamic> json) =>
-      Model23Mapper.fromJson(json);
+  static Model23 fromJson(Map<String, dynamic> json) => Model23Mapper.fromJson(json);
 }

@@ -17,6 +17,5 @@ abstract class FileDiff with _$FileDiff {
     required num deletions,
   }) = _FileDiff;
 
-  factory FileDiff.fromJson(Map<String, Object?> json) =>
-      _$FileDiffFromJson(json);
+  factory FileDiff.fromJson(Map<String, Object?> json) => _$FileDiffFromJson(json);
 }

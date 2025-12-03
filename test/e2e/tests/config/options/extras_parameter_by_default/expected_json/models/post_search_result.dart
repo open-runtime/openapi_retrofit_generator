@@ -11,15 +11,9 @@ part 'post_search_result.g.dart';
 
 @JsonSerializable()
 class PostSearchResult {
-  const PostSearchResult({
-    required this.type,
-    required this.post,
-    this.score,
-    this.highlights,
-  });
+  const PostSearchResult({required this.type, required this.post, this.score, this.highlights});
 
-  factory PostSearchResult.fromJson(Map<String, Object?> json) =>
-      _$PostSearchResultFromJson(json);
+  factory PostSearchResult.fromJson(Map<String, Object?> json) => _$PostSearchResultFromJson(json);
 
   final PostSearchResultTypeType type;
   final PostModel post;

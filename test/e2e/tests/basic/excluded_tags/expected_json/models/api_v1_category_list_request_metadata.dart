@@ -10,9 +10,8 @@ part 'api_v1_category_list_request_metadata.g.dart';
 class ApiV1CategoryListRequestMetadata {
   const ApiV1CategoryListRequestMetadata({this.createdAt, this.version});
 
-  factory ApiV1CategoryListRequestMetadata.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestMetadataFromJson(json);
+  factory ApiV1CategoryListRequestMetadata.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestMetadataFromJson(json);
 
   /// Timestamp from anchor
   @JsonKey(includeIfNull: false)
@@ -22,6 +21,5 @@ class ApiV1CategoryListRequestMetadata {
   @JsonKey(includeIfNull: false)
   final String? version;
 
-  Map<String, Object?> toJson() =>
-      _$ApiV1CategoryListRequestMetadataToJson(this);
+  Map<String, Object?> toJson() => _$ApiV1CategoryListRequestMetadataToJson(this);
 }

@@ -17,6 +17,5 @@ abstract class StepStartPart with _$StepStartPart {
     String? snapshot,
   }) = _StepStartPart;
 
-  factory StepStartPart.fromJson(Map<String, Object?> json) =>
-      _$StepStartPartFromJson(json);
+  factory StepStartPart.fromJson(Map<String, Object?> json) => _$StepStartPartFromJson(json);
 }

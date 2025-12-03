@@ -26,18 +26,14 @@ class ClassName {
     required this.array2,
   });
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 
   final int integer1;
   final double float1;
   final double double1;
   final String string1;
   final num number1;
-  @JsonKey(
-    fromJson: _Base64Converter.staticFromJson,
-    toJson: _Base64Converter.staticToJson,
-  )
+  @JsonKey(fromJson: _Base64Converter.staticFromJson, toJson: _Base64Converter.staticToJson)
   final Uint8List string2;
   final DateTime string3;
   final String string4;

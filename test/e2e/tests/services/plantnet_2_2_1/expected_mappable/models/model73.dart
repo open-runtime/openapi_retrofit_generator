@@ -15,6 +15,5 @@ class Model73 with Model73Mappable {
   final Model72? species;
   final num? total;
 
-  static Model73 fromJson(Map<String, dynamic> json) =>
-      Model73Mapper.fromJson(json);
+  static Model73 fromJson(Map<String, dynamic> json) => Model73Mapper.fromJson(json);
 }

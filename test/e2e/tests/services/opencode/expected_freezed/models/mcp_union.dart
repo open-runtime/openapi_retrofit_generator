@@ -15,10 +15,8 @@ class McpUnion {
 
   Map<String, dynamic> toJson() => _json;
 
-  McpUnionMcpLocalConfig toMcpLocalConfig() =>
-      McpUnionMcpLocalConfig.fromJson(_json);
-  McpUnionMcpRemoteConfig toMcpRemoteConfig() =>
-      McpUnionMcpRemoteConfig.fromJson(_json);
+  McpUnionMcpLocalConfig toMcpLocalConfig() => McpUnionMcpLocalConfig.fromJson(_json);
+  McpUnionMcpRemoteConfig toMcpRemoteConfig() => McpUnionMcpRemoteConfig.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -35,8 +33,7 @@ class McpUnionMcpLocalConfig {
     required this.enabled,
   });
 
-  factory McpUnionMcpLocalConfig.fromJson(Map<String, Object?> json) =>
-      _$McpUnionMcpLocalConfigFromJson(json);
+  factory McpUnionMcpLocalConfig.fromJson(Map<String, Object?> json) => _$McpUnionMcpLocalConfigFromJson(json);
 
   Map<String, Object?> toJson() => _$McpUnionMcpLocalConfigToJson(this);
 }
@@ -48,15 +45,9 @@ class McpUnionMcpRemoteConfig {
   final bool? enabled;
   final Map<String, String>? headers;
 
-  const McpUnionMcpRemoteConfig({
-    required this.type,
-    required this.url,
-    required this.enabled,
-    required this.headers,
-  });
+  const McpUnionMcpRemoteConfig({required this.type, required this.url, required this.enabled, required this.headers});
 
-  factory McpUnionMcpRemoteConfig.fromJson(Map<String, Object?> json) =>
-      _$McpUnionMcpRemoteConfigFromJson(json);
+  factory McpUnionMcpRemoteConfig.fromJson(Map<String, Object?> json) => _$McpUnionMcpRemoteConfigFromJson(json);
 
   Map<String, Object?> toJson() => _$McpUnionMcpRemoteConfigToJson(this);
 }

@@ -13,8 +13,7 @@ part 'model_modalities.g.dart';
 class ModelModalities {
   const ModelModalities({required this.input, required this.output});
 
-  factory ModelModalities.fromJson(Map<String, Object?> json) =>
-      _$ModelModalitiesFromJson(json);
+  factory ModelModalities.fromJson(Map<String, Object?> json) => _$ModelModalitiesFromJson(json);
 
   final List<ModelModalitiesInputInput> input;
   final List<ModelModalitiesOutputOutput> output;

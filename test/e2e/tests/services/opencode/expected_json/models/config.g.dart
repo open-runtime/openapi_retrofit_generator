@@ -9,12 +9,8 @@ part of 'config.dart';
 Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
   schema: json[r'$schema'] as String?,
   theme: json['theme'] as String?,
-  keybinds: json['keybinds'] == null
-      ? null
-      : KeybindsConfig.fromJson(json['keybinds'] as Map<String, dynamic>),
-  configTui: json['ConfigTui'] == null
-      ? null
-      : ConfigTui.fromJson(json['ConfigTui'] as Map<String, dynamic>),
+  keybinds: json['keybinds'] == null ? null : KeybindsConfig.fromJson(json['keybinds'] as Map<String, dynamic>),
+  configTui: json['ConfigTui'] == null ? null : ConfigTui.fromJson(json['ConfigTui'] as Map<String, dynamic>),
   command: (json['command'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, Command.fromJson(e as Map<String, dynamic>)),
   ),
@@ -23,14 +19,10 @@ Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
       : ConfigWatcher.fromJson(json['ConfigWatcher'] as Map<String, dynamic>),
   plugin: (json['plugin'] as List<dynamic>?)?.map((e) => e as String).toList(),
   snapshot: json['snapshot'] as bool?,
-  share: json['share'] == null
-      ? null
-      : ConfigShareShare.fromJson(json['share'] as String),
+  share: json['share'] == null ? null : ConfigShareShare.fromJson(json['share'] as String),
   autoshare: json['autoshare'] as bool?,
   autoupdate: json['autoupdate'] as bool?,
-  disabledProviders: (json['disabled_providers'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  disabledProviders: (json['disabled_providers'] as List<dynamic>?)?.map((e) => e as String).toList(),
   model: json['model'] as String?,
   smallModel: json['small_model'] as String?,
   username: json['username'] as String?,
@@ -43,34 +35,20 @@ Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
   provider: (json['provider'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, Provider.fromJson(e as Map<String, dynamic>)),
   ),
-  mcp: (json['mcp'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, McpUnion.fromJson(e as Map<String, dynamic>)),
-  ),
+  mcp: (json['mcp'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, McpUnion.fromJson(e as Map<String, dynamic>))),
   formatter: (json['formatter'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, Formatter.fromJson(e as Map<String, dynamic>)),
   ),
-  lsp: (json['lsp'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, LspUnion.fromJson(e as Map<String, dynamic>)),
-  ),
-  instructions: (json['instructions'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  layout: json['layout'] == null
-      ? null
-      : LayoutConfig.fromJson(json['layout'] as String),
+  lsp: (json['lsp'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, LspUnion.fromJson(e as Map<String, dynamic>))),
+  instructions: (json['instructions'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  layout: json['layout'] == null ? null : LayoutConfig.fromJson(json['layout'] as String),
   configPermission: json['ConfigPermission'] == null
       ? null
-      : ConfigPermission.fromJson(
-          json['ConfigPermission'] as Map<String, dynamic>,
-        ),
-  tools: (json['tools'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as bool),
-  ),
+      : ConfigPermission.fromJson(json['ConfigPermission'] as Map<String, dynamic>),
+  tools: (json['tools'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as bool)),
   configExperimental: json['ConfigExperimental'] == null
       ? null
-      : ConfigExperimental.fromJson(
-          json['ConfigExperimental'] as Map<String, dynamic>,
-        ),
+      : ConfigExperimental.fromJson(json['ConfigExperimental'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{

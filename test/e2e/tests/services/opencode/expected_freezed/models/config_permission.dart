@@ -9,12 +9,7 @@ part 'config_permission.g.dart';
 
 @Freezed()
 abstract class ConfigPermission with _$ConfigPermission {
-  const factory ConfigPermission({
-    String? edit,
-    dynamic bash,
-    String? webfetch,
-  }) = _ConfigPermission;
+  const factory ConfigPermission({String? edit, dynamic bash, String? webfetch}) = _ConfigPermission;
 
-  factory ConfigPermission.fromJson(Map<String, Object?> json) =>
-      _$ConfigPermissionFromJson(json);
+  factory ConfigPermission.fromJson(Map<String, Object?> json) => _$ConfigPermissionFromJson(json);
 }

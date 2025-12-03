@@ -6,11 +6,8 @@ part of 'draft_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DraftItem _$DraftItemFromJson(Map<String, dynamic> json) => DraftItem(
-  id: json['id'] as String?,
-  content: json['content'] as String?,
-  isDraft: json['isDraft'] as bool?,
-);
+DraftItem _$DraftItemFromJson(Map<String, dynamic> json) =>
+    DraftItem(id: json['id'] as String?, content: json['content'] as String?, isDraft: json['isDraft'] as bool?);
 
 Map<String, dynamic> _$DraftItemToJson(DraftItem instance) => <String, dynamic>{
   'id': ?instance.id,

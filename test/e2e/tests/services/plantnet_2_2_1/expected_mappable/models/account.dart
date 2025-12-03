@@ -17,6 +17,5 @@ class Account with AccountMappable {
   final Name? name;
   final String? created;
 
-  static Account fromJson(Map<String, dynamic> json) =>
-      AccountMapper.fromJson(json);
+  static Account fromJson(Map<String, dynamic> json) => AccountMapper.fromJson(json);
 }

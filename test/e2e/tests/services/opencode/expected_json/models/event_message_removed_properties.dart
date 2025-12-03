@@ -8,10 +8,7 @@ part 'event_message_removed_properties.g.dart';
 
 @JsonSerializable()
 class EventMessageRemovedProperties {
-  const EventMessageRemovedProperties({
-    required this.sessionId,
-    required this.messageId,
-  });
+  const EventMessageRemovedProperties({required this.sessionId, required this.messageId});
 
   factory EventMessageRemovedProperties.fromJson(Map<String, Object?> json) =>
       _$EventMessageRemovedPropertiesFromJson(json);

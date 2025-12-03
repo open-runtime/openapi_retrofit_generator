@@ -17,20 +17,14 @@ class ApiV1CategoryListRequest {
     this.apiV1CategoryListRequestAnchorReference,
   });
 
-  factory ApiV1CategoryListRequest.fromJson(Map<String, Object?> json) =>
-      _$ApiV1CategoryListRequestFromJson(json);
+  factory ApiV1CategoryListRequest.fromJson(Map<String, Object?> json) => _$ApiV1CategoryListRequestFromJson(json);
 
   /// This field should be included
   final String includedField;
   @JsonKey(includeIfNull: false, name: 'ApiV1CategoryListRequestNestedIncluded')
-  final ApiV1CategoryListRequestNestedIncluded?
-  apiV1CategoryListRequestNestedIncluded;
-  @JsonKey(
-    includeIfNull: false,
-    name: 'ApiV1CategoryListRequestAnchorReference',
-  )
-  final ApiV1CategoryListRequestAnchorReference?
-  apiV1CategoryListRequestAnchorReference;
+  final ApiV1CategoryListRequestNestedIncluded? apiV1CategoryListRequestNestedIncluded;
+  @JsonKey(includeIfNull: false, name: 'ApiV1CategoryListRequestAnchorReference')
+  final ApiV1CategoryListRequestAnchorReference? apiV1CategoryListRequestAnchorReference;
 
   Map<String, Object?> toJson() => _$ApiV1CategoryListRequestToJson(this);
 }

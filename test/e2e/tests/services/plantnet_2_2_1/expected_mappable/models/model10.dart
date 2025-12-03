@@ -15,6 +15,5 @@ class Model10 with Model10Mappable {
   final Indicators? indicators;
   final num? total;
 
-  static Model10 fromJson(Map<String, dynamic> json) =>
-      Model10Mapper.fromJson(json);
+  static Model10 fromJson(Map<String, dynamic> json) => Model10Mapper.fromJson(json);
 }

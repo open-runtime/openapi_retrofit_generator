@@ -26,7 +26,6 @@ enum PostApiV1RequestP2EnumP2Enum {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PostApiV1RequestP2EnumP2Enum> get $valuesDefined => values
-      .where((value) => value != PostApiV1RequestP2EnumP2Enum.unknown)
-      .toList();
+  static List<PostApiV1RequestP2EnumP2Enum> get $valuesDefined =>
+      values.where((value) => value != PostApiV1RequestP2EnumP2Enum.unknown).toList();
 }

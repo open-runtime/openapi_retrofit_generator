@@ -12,8 +12,7 @@ part 'search_response.g.dart';
 class SearchResponse {
   const SearchResponse({this.results});
 
-  factory SearchResponse.fromJson(Map<String, Object?> json) =>
-      _$SearchResponseFromJson(json);
+  factory SearchResponse.fromJson(Map<String, Object?> json) => _$SearchResponseFromJson(json);
 
   final List<SearchResult>? results;
 

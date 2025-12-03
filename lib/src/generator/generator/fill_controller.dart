@@ -16,10 +16,7 @@ import 'package:openapi_retrofit_generator/src/utils/base_utils.dart';
 /// Handles generating files
 final class FillController {
   /// Constructor that accepts configuration parameters with default values to create files
-  const FillController({
-    required this.config,
-    this.info = const OpenApiInfo(schemaVersion: OAS.v3_1),
-  });
+  const FillController({required this.config, this.info = const OpenApiInfo(schemaVersion: OAS.v3_1)});
 
   /// Api info
   final OpenApiInfo info;
@@ -98,9 +95,7 @@ final class FillController {
   GeneratedFile fillRestClientContent(UniversalRestClient restClient) {
     final postfix = config.clientPostfix ?? 'Client';
     final fileName = '${restClient.name}_$postfix'.toSnake;
-    final folderName = config.putClientsInFolder
-        ? 'clients'
-        : restClient.name.toSnake;
+    final folderName = config.putClientsInFolder ? 'clients' : restClient.name.toSnake;
 
     return GeneratedFile(
       name: '$folderName/$fileName.dart',
@@ -124,9 +119,7 @@ final class FillController {
     final postfix = config.clientPostfix ?? 'Client';
     final clientsNames = clients.map((c) => c.name.toPascal).toSet();
     // Create a map from Pascal names to snake names
-    final clientsNameMap = <String, String>{
-      for (final client in clients) client.name.toPascal: client.name.toSnake,
-    };
+    final clientsNameMap = <String, String>{for (final client in clients) client.name.toPascal: client.name.toSnake};
 
     return GeneratedFile(
       name: '${rootClientName.toSnake}.dart',
@@ -150,11 +143,7 @@ final class FillController {
   }) {
     return GeneratedFile(
       name: 'export.dart',
-      content: dartExportFileTemplate(
-        restClients: restClients,
-        dataClasses: dataClasses,
-        rootClient: rootClient,
-      ),
+      content: dartExportFileTemplate(restClients: restClients, dataClasses: dataClasses, rootClient: rootClient),
     );
   }
 
@@ -200,8 +189,7 @@ final class FillController {
     }
 
     if (packageImports.isNotEmpty) {
-      final allImports = packageImports.values.expand((list) => list).toList()
-        ..sort();
+      final allImports = packageImports.values.expand((list) => list).toList()..sort();
       for (final import in allImports) {
         buffer.writeln(import);
       }
@@ -220,22 +208,12 @@ final class FillController {
     for (final line in lines) {
       buffer.writeln(line);
     }
-    return GeneratedFile(
-      name: '${config.name}.dart',
-      content: buffer.toString(),
-    );
+    return GeneratedFile(name: '${config.name}.dart', content: buffer.toString());
   }
 
   List<GeneratedFile> addGeneratedFileComments(List<GeneratedFile> files) {
     final comment = generatedFileComment();
-    return files
-        .map(
-          (file) => GeneratedFile(
-            name: file.name,
-            content: '$comment${file.content}',
-          ),
-        )
-        .toList();
+    return files.map((file) => GeneratedFile(name: file.name, content: '$comment${file.content}')).toList();
   }
 
   String _extractPackageKey(String importLine) {

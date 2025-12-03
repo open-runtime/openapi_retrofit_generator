@@ -10,15 +10,10 @@ part 'api_v1_category_list_response_included_data.g.dart';
 
 @JsonSerializable()
 class ApiV1CategoryListResponseIncludedData {
-  const ApiV1CategoryListResponseIncludedData({
-    this.dataField,
-    this.level,
-    this.priority,
-  });
+  const ApiV1CategoryListResponseIncludedData({this.dataField, this.level, this.priority});
 
-  factory ApiV1CategoryListResponseIncludedData.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListResponseIncludedDataFromJson(json);
+  factory ApiV1CategoryListResponseIncludedData.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListResponseIncludedDataFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? dataField;
@@ -27,6 +22,5 @@ class ApiV1CategoryListResponseIncludedData {
   @JsonKey(includeIfNull: false)
   final int? priority;
 
-  Map<String, Object?> toJson() =>
-      _$ApiV1CategoryListResponseIncludedDataToJson(this);
+  Map<String, Object?> toJson() => _$ApiV1CategoryListResponseIncludedDataToJson(this);
 }

@@ -14,6 +14,5 @@ abstract class UserProfile with _$UserProfile {
     @JsonKey(includeIfNull: false) String? lastName,
   }) = _UserProfile;
 
-  factory UserProfile.fromJson(Map<String, Object?> json) =>
-      _$UserProfileFromJson(json);
+  factory UserProfile.fromJson(Map<String, Object?> json) => _$UserProfileFromJson(json);
 }

@@ -77,15 +77,10 @@ class GeneratorLoggerConfig {
   });
 
   /// Verbose config - shows everything
-  static const verbose = GeneratorLoggerConfig(
-    minLevel: GeneratorLogLevel.debug,
-    includeTimestamp: true,
-  );
+  static const verbose = GeneratorLoggerConfig(minLevel: GeneratorLogLevel.debug, includeTimestamp: true);
 
   /// Default config - warnings and errors only
-  static const standard = GeneratorLoggerConfig(
-    minLevel: GeneratorLogLevel.warning,
-  );
+  static const standard = GeneratorLoggerConfig(minLevel: GeneratorLogLevel.warning);
 
   /// Quiet config - errors only
   static const quiet = GeneratorLoggerConfig(minLevel: GeneratorLogLevel.error);
@@ -112,18 +107,14 @@ class GeneratorLogger {
   }
 
   /// Check if a log level should be output
-  static bool _shouldLog(
-    GeneratorLogLevel level,
-    GeneratorLogCategory category,
-  ) {
+  static bool _shouldLog(GeneratorLogLevel level, GeneratorLogCategory category) {
     // Check level
     if (level.index > _config.minLevel.index) {
       return false;
     }
 
     // Check category inclusion
-    if (_config.includeCategories.isNotEmpty &&
-        !_config.includeCategories.contains(category)) {
+    if (_config.includeCategories.isNotEmpty && !_config.includeCategories.contains(category)) {
       return false;
     }
 
@@ -187,9 +178,7 @@ class GeneratorLogger {
     }
 
     // Details on separate lines for debug
-    if (details != null &&
-        details.isNotEmpty &&
-        _config.minLevel == GeneratorLogLevel.debug) {
+    if (details != null && details.isNotEmpty && _config.minLevel == GeneratorLogLevel.debug) {
       for (final entry in details.entries) {
         stdout.writeln('    ${entry.key}: ${entry.value}');
       }
@@ -201,18 +190,8 @@ class GeneratorLogger {
   // ═══════════════════════════════════════════════════════════════════════════
 
   /// Log an error
-  static void error(
-    GeneratorLogCategory category,
-    String message, {
-    String? context,
-    Map<String, dynamic>? details,
-  }) => _log(
-    GeneratorLogLevel.error,
-    category,
-    message,
-    context: context,
-    details: details,
-  );
+  static void error(GeneratorLogCategory category, String message, {String? context, Map<String, dynamic>? details}) =>
+      _log(GeneratorLogLevel.error, category, message, context: context, details: details);
 
   /// Log a schema error
   static void schemaError(String message, {String? context}) =>
@@ -236,38 +215,22 @@ class GeneratorLogger {
     String message, {
     String? context,
     Map<String, dynamic>? details,
-  }) => _log(
-    GeneratorLogLevel.warning,
-    category,
-    message,
-    context: context,
-    details: details,
-  );
+  }) => _log(GeneratorLogLevel.warning, category, message, context: context, details: details);
 
   /// Log an invalid default value warning
-  static void invalidDefault(
-    String fieldName,
-    String defaultValue,
-    String expectedType,
-  ) => warning(
+  static void invalidDefault(String fieldName, String defaultValue, String expectedType) => warning(
     GeneratorLogCategory.defaults,
     'Invalid default "$defaultValue" for $expectedType type - ignoring',
     context: fieldName,
   );
 
   /// Log a skipped field warning
-  static void skippedField(String reason, {String? fieldName}) => warning(
-    GeneratorLogCategory.schema,
-    'Skipping field: $reason',
-    context: fieldName,
-  );
+  static void skippedField(String reason, {String? fieldName}) =>
+      warning(GeneratorLogCategory.schema, 'Skipping field: $reason', context: fieldName);
 
   /// Log a name conflict warning
   static void nameConflict(String original, String renamed, String reason) =>
-      warning(
-        GeneratorLogCategory.naming,
-        'Renamed "$original" to "$renamed" ($reason)',
-      );
+      warning(GeneratorLogCategory.naming, 'Renamed "$original" to "$renamed" ($reason)');
 
   /// Log a circular reference warning
   static void circularRef(String schemaName, List<String> path) => warning(
@@ -282,139 +245,76 @@ class GeneratorLogger {
   // ═══════════════════════════════════════════════════════════════════════════
 
   /// Log info
-  static void info(
-    GeneratorLogCategory category,
-    String message, {
-    String? context,
-    Map<String, dynamic>? details,
-  }) => _log(
-    GeneratorLogLevel.info,
-    category,
-    message,
-    context: context,
-    details: details,
-  );
+  static void info(GeneratorLogCategory category, String message, {String? context, Map<String, dynamic>? details}) =>
+      _log(GeneratorLogLevel.info, category, message, context: context, details: details);
 
   /// Log schema processing start
-  static void processingSchema(String schemaName, {String? type}) => info(
-    GeneratorLogCategory.schema,
-    'Processing schema: $schemaName${type != null ? ' (type: $type)' : ''}',
-  );
+  static void processingSchema(String schemaName, {String? type}) =>
+      info(GeneratorLogCategory.schema, 'Processing schema: $schemaName${type != null ? ' (type: $type)' : ''}');
 
   /// Log enum creation
-  static void createdEnum(String enumName, int valueCount) => info(
-    GeneratorLogCategory.enumeration,
-    'Created enum "$enumName" with $valueCount values',
-  );
+  static void createdEnum(String enumName, int valueCount) =>
+      info(GeneratorLogCategory.enumeration, 'Created enum "$enumName" with $valueCount values');
 
   /// Log union creation
-  static void createdUnion(
-    String unionName,
-    int variantCount, {
-    bool discriminated = false,
-  }) => info(
+  static void createdUnion(String unionName, int variantCount, {bool discriminated = false}) => info(
     GeneratorLogCategory.discriminator,
     'Created ${discriminated ? 'discriminated' : 'undiscriminated'} union "$unionName" with $variantCount variants',
   );
 
   /// Log ref resolution
-  static void resolvedRef(String refPath, String resolvedTo) => info(
-    GeneratorLogCategory.reference,
-    'Resolved \$ref "$refPath" to "$resolvedTo"',
-  );
+  static void resolvedRef(String refPath, String resolvedTo) =>
+      info(GeneratorLogCategory.reference, 'Resolved \$ref "$refPath" to "$resolvedTo"');
 
   // ═══════════════════════════════════════════════════════════════════════════
   // DEBUG methods
   // ═══════════════════════════════════════════════════════════════════════════
 
   /// Log debug info
-  static void debug(
-    GeneratorLogCategory category,
-    String message, {
-    String? context,
-    Map<String, dynamic>? details,
-  }) => _log(
-    GeneratorLogLevel.debug,
-    category,
-    message,
-    context: context,
-    details: details,
-  );
+  static void debug(GeneratorLogCategory category, String message, {String? context, Map<String, dynamic>? details}) =>
+      _log(GeneratorLogLevel.debug, category, message, context: context, details: details);
 
   /// Log type inference
-  static void inferredType(
-    String fieldName,
-    String inferredType, {
-    String? fromValue,
-  }) => debug(
+  static void inferredType(String fieldName, String inferredType, {String? fromValue}) => debug(
     GeneratorLogCategory.type,
     'Inferred type "$inferredType" for "$fieldName"${fromValue != null ? ' from value: $fromValue' : ''}',
   );
 
   /// Log allOf composition
-  static void composingAllOf(
-    String className,
-    List<String> refs,
-    int propertyCount,
-  ) => debug(
+  static void composingAllOf(String className, List<String> refs, int propertyCount) => debug(
     GeneratorLogCategory.composition,
     'Composing allOf for "$className"',
     details: {'refs': refs.join(', '), 'additionalProperties': propertyCount},
   );
 
   /// Log oneOf/anyOf handling
-  static void processingUnion(
-    String className,
-    String unionType,
-    int variantCount,
-  ) => debug(
-    GeneratorLogCategory.composition,
-    'Processing $unionType union "$className" with $variantCount variants',
-  );
+  static void processingUnion(String className, String unionType, int variantCount) =>
+      debug(GeneratorLogCategory.composition, 'Processing $unionType union "$className" with $variantCount variants');
 
   /// Log discriminator detection
-  static void foundDiscriminator(
-    String className,
-    String propertyName,
-    Map<String, String> mapping,
-  ) => debug(
+  static void foundDiscriminator(String className, String propertyName, Map<String, String> mapping) => debug(
     GeneratorLogCategory.discriminator,
     'Found discriminator for "$className"',
     details: {'property': propertyName, 'mappings': mapping.length},
   );
 
   /// Log enum deduplication
-  static void deduplicatedEnum(String enumName, String existingName) => debug(
-    GeneratorLogCategory.enumeration,
-    'Reusing existing enum "$existingName" for "$enumName" (same values)',
-  );
+  static void deduplicatedEnum(String enumName, String existingName) =>
+      debug(GeneratorLogCategory.enumeration, 'Reusing existing enum "$existingName" for "$enumName" (same values)');
 
   /// Log import addition
-  static void addedImport(String className, String importName) => debug(
-    GeneratorLogCategory.imports,
-    'Added import "$importName" for "$className"',
-  );
+  static void addedImport(String className, String importName) =>
+      debug(GeneratorLogCategory.imports, 'Added import "$importName" for "$className"');
 
   /// Log import filtering
-  static void filteredImport(String importName, String reason) => debug(
-    GeneratorLogCategory.imports,
-    'Filtered import "$importName" ($reason)',
-  );
+  static void filteredImport(String importName, String reason) =>
+      debug(GeneratorLogCategory.imports, 'Filtered import "$importName" ($reason)');
 
   /// Log default value processing
-  static void processedDefault(
-    String fieldName,
-    dynamic rawValue,
-    String processedValue,
-  ) => debug(
-    GeneratorLogCategory.defaults,
-    'Processed default for "$fieldName": $rawValue -> $processedValue',
-  );
+  static void processedDefault(String fieldName, dynamic rawValue, String processedValue) =>
+      debug(GeneratorLogCategory.defaults, 'Processed default for "$fieldName": $rawValue -> $processedValue');
 
   /// Log name protection
   static void protectedName(String original, String protected, String reason) =>
-      debug(
-        GeneratorLogCategory.naming,
-        'Protected name "$original" -> "$protected" ($reason)',
-      );
+      debug(GeneratorLogCategory.naming, 'Protected name "$original" -> "$protected" ($reason)');
 }

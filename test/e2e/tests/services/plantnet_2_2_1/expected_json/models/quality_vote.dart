@@ -10,8 +10,7 @@ part 'quality_vote.g.dart';
 class QualityVote {
   const QualityVote({required this.quality});
 
-  factory QualityVote.fromJson(Map<String, Object?> json) =>
-      _$QualityVoteFromJson(json);
+  factory QualityVote.fromJson(Map<String, Object?> json) => _$QualityVoteFromJson(json);
 
   /// Quality (good: true, bad: false)
   final bool quality;

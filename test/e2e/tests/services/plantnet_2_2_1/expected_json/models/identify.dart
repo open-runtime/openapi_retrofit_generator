@@ -10,8 +10,7 @@ part 'identify.g.dart';
 class Identify {
   const Identify({this.count, this.total, this.remaining});
 
-  factory Identify.fromJson(Map<String, Object?> json) =>
-      _$IdentifyFromJson(json);
+  factory Identify.fromJson(Map<String, Object?> json) => _$IdentifyFromJson(json);
 
   final num? count;
   final num? total;

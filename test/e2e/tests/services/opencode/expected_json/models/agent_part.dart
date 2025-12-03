@@ -19,8 +19,7 @@ class AgentPart {
     this.agentPartSource,
   });
 
-  factory AgentPart.fromJson(Map<String, Object?> json) =>
-      _$AgentPartFromJson(json);
+  factory AgentPart.fromJson(Map<String, Object?> json) => _$AgentPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

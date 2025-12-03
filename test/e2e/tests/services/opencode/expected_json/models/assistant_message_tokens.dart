@@ -17,8 +17,7 @@ class AssistantMessageTokens {
     required this.assistantMessageTokensCache,
   });
 
-  factory AssistantMessageTokens.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessageTokensFromJson(json);
+  factory AssistantMessageTokens.fromJson(Map<String, Object?> json) => _$AssistantMessageTokensFromJson(json);
 
   final num input;
   final num output;

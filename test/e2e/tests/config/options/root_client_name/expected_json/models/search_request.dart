@@ -10,8 +10,7 @@ part 'search_request.g.dart';
 class SearchRequest {
   const SearchRequest({this.query, this.filters});
 
-  factory SearchRequest.fromJson(Map<String, Object?> json) =>
-      _$SearchRequestFromJson(json);
+  factory SearchRequest.fromJson(Map<String, Object?> json) => _$SearchRequestFromJson(json);
 
   final String? query;
   final Map<String, String>? filters;

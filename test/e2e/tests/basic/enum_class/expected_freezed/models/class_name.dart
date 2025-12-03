@@ -16,6 +16,5 @@ abstract class ClassName with _$ClassName {
     required List<ClassNameStatusStatus> status,
   }) = _ClassName;
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 }

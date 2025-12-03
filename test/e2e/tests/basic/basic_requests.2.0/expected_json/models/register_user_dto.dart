@@ -8,14 +8,9 @@ part 'register_user_dto.g.dart';
 
 @JsonSerializable()
 class RegisterUserDto {
-  const RegisterUserDto({
-    required this.email,
-    required this.name,
-    required this.password,
-  });
+  const RegisterUserDto({required this.email, required this.name, required this.password});
 
-  factory RegisterUserDto.fromJson(Map<String, Object?> json) =>
-      _$RegisterUserDtoFromJson(json);
+  factory RegisterUserDto.fromJson(Map<String, Object?> json) => _$RegisterUserDtoFromJson(json);
 
   final String email;
   final String name;

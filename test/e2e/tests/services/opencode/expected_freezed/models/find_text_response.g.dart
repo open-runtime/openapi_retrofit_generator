@@ -6,29 +6,20 @@ part of 'find_text_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_FindTextResponse _$FindTextResponseFromJson(Map<String, dynamic> json) =>
-    _FindTextResponse(
-      findTextResponsePath: FindTextResponsePath.fromJson(
-        json['FindTextResponsePath'] as Map<String, dynamic>,
-      ),
-      findTextResponseLines: FindTextResponseLines.fromJson(
-        json['FindTextResponseLines'] as Map<String, dynamic>,
-      ),
-      lineNumber: json['line_number'] as num,
-      absoluteOffset: json['absolute_offset'] as num,
-      submatches: (json['submatches'] as List<dynamic>)
-          .map(
-            (e) =>
-                FindTextResponseSubmatches.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+_FindTextResponse _$FindTextResponseFromJson(Map<String, dynamic> json) => _FindTextResponse(
+  findTextResponsePath: FindTextResponsePath.fromJson(json['FindTextResponsePath'] as Map<String, dynamic>),
+  findTextResponseLines: FindTextResponseLines.fromJson(json['FindTextResponseLines'] as Map<String, dynamic>),
+  lineNumber: json['line_number'] as num,
+  absoluteOffset: json['absolute_offset'] as num,
+  submatches: (json['submatches'] as List<dynamic>)
+      .map((e) => FindTextResponseSubmatches.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
-Map<String, dynamic> _$FindTextResponseToJson(_FindTextResponse instance) =>
-    <String, dynamic>{
-      'FindTextResponsePath': instance.findTextResponsePath,
-      'FindTextResponseLines': instance.findTextResponseLines,
-      'line_number': instance.lineNumber,
-      'absolute_offset': instance.absoluteOffset,
-      'submatches': instance.submatches,
-    };
+Map<String, dynamic> _$FindTextResponseToJson(_FindTextResponse instance) => <String, dynamic>{
+  'FindTextResponsePath': instance.findTextResponsePath,
+  'FindTextResponseLines': instance.findTextResponseLines,
+  'line_number': instance.lineNumber,
+  'absolute_offset': instance.absoluteOffset,
+  'submatches': instance.submatches,
+};

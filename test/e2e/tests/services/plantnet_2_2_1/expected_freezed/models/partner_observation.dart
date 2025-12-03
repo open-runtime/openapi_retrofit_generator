@@ -44,6 +44,5 @@ abstract class PartnerObservation with _$PartnerObservation {
     Votes? votes,
   }) = _PartnerObservation;
 
-  factory PartnerObservation.fromJson(Map<String, Object?> json) =>
-      _$PartnerObservationFromJson(json);
+  factory PartnerObservation.fromJson(Map<String, Object?> json) => _$PartnerObservationFromJson(json);
 }

@@ -22,8 +22,7 @@ part 'assistant_message_error_union.mapper.dart';
     AssistantMessageErrorUnionMessageAbortedError,
   ],
 )
-sealed class AssistantMessageErrorUnion
-    with AssistantMessageErrorUnionMappable {
+sealed class AssistantMessageErrorUnion with AssistantMessageErrorUnionMappable {
   const AssistantMessageErrorUnion();
 
   static AssistantMessageErrorUnion fromJson(Map<String, dynamic> json) {
@@ -40,32 +39,24 @@ extension AssistantMessageErrorUnionDeserializer on AssistantMessageErrorUnion {
       return AssistantMessageErrorUnionUnknownErrorMapper.fromJson(json);
     } catch (_) {}
     try {
-      return AssistantMessageErrorUnionMessageOutputLengthErrorMapper.fromJson(
-        json,
-      );
+      return AssistantMessageErrorUnionMessageOutputLengthErrorMapper.fromJson(json);
     } catch (_) {}
     try {
       return AssistantMessageErrorUnionMessageAbortedErrorMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for AssistantMessageErrorUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for AssistantMessageErrorUnion from: $json');
   }
 }
 
 @MappableClass()
-class AssistantMessageErrorUnionProviderAuthError
-    extends AssistantMessageErrorUnion
+class AssistantMessageErrorUnionProviderAuthError extends AssistantMessageErrorUnion
     with AssistantMessageErrorUnionProviderAuthErrorMappable {
   final String name;
   @MappableField(key: 'ProviderAuthErrorData')
   final ProviderAuthErrorData providerAuthErrorData;
 
-  const AssistantMessageErrorUnionProviderAuthError({
-    required this.name,
-    required this.providerAuthErrorData,
-  });
+  const AssistantMessageErrorUnionProviderAuthError({required this.name, required this.providerAuthErrorData});
 }
 
 @MappableClass()
@@ -75,35 +66,24 @@ class AssistantMessageErrorUnionUnknownError extends AssistantMessageErrorUnion
   @MappableField(key: 'UnknownErrorData')
   final UnknownErrorData unknownErrorData;
 
-  const AssistantMessageErrorUnionUnknownError({
-    required this.name,
-    required this.unknownErrorData,
-  });
+  const AssistantMessageErrorUnionUnknownError({required this.name, required this.unknownErrorData});
 }
 
 @MappableClass()
-class AssistantMessageErrorUnionMessageOutputLengthError
-    extends AssistantMessageErrorUnion
+class AssistantMessageErrorUnionMessageOutputLengthError extends AssistantMessageErrorUnion
     with AssistantMessageErrorUnionMessageOutputLengthErrorMappable {
   final String name;
   final dynamic data;
 
-  const AssistantMessageErrorUnionMessageOutputLengthError({
-    required this.name,
-    required this.data,
-  });
+  const AssistantMessageErrorUnionMessageOutputLengthError({required this.name, required this.data});
 }
 
 @MappableClass()
-class AssistantMessageErrorUnionMessageAbortedError
-    extends AssistantMessageErrorUnion
+class AssistantMessageErrorUnionMessageAbortedError extends AssistantMessageErrorUnion
     with AssistantMessageErrorUnionMessageAbortedErrorMappable {
   final String name;
   @MappableField(key: 'MessageAbortedErrorData')
   final MessageAbortedErrorData messageAbortedErrorData;
 
-  const AssistantMessageErrorUnionMessageAbortedError({
-    required this.name,
-    required this.messageAbortedErrorData,
-  });
+  const AssistantMessageErrorUnionMessageAbortedError({required this.name, required this.messageAbortedErrorData});
 }

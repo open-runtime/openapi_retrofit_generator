@@ -18,6 +18,5 @@ abstract class Project with _$Project {
     String? vcs,
   }) = _Project;
 
-  factory Project.fromJson(Map<String, Object?> json) =>
-      _$ProjectFromJson(json);
+  factory Project.fromJson(Map<String, Object?> json) => _$ProjectFromJson(json);
 }

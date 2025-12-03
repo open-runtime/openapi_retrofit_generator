@@ -31,6 +31,5 @@ class StepFinishPart with StepFinishPartMappable {
   final StepFinishPartTokens stepFinishPartTokens;
   final String? snapshot;
 
-  static StepFinishPart fromJson(Map<String, dynamic> json) =>
-      StepFinishPartMapper.fromJson(json);
+  static StepFinishPart fromJson(Map<String, dynamic> json) => StepFinishPartMapper.fromJson(json);
 }

@@ -25,6 +25,5 @@ abstract class Session with _$Session {
     @JsonKey(name: 'SessionRevert') SessionRevert? sessionRevert,
   }) = _Session;
 
-  factory Session.fromJson(Map<String, Object?> json) =>
-      _$SessionFromJson(json);
+  factory Session.fromJson(Map<String, Object?> json) => _$SessionFromJson(json);
 }

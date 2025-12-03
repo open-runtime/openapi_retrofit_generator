@@ -18,8 +18,7 @@ abstract class ClassWithNullableTypes with _$ClassWithNullableTypes {
     required List<String> p2,
     @JsonKey(name: 'p2_null_item') required List<List<String?>> p2NullItem,
     @JsonKey(name: 'p2_null_all') required List<dynamic>? p2NullAll,
-    @JsonKey(name: 'ClassWithNullableTypesP3')
-    required ClassWithNullableTypesP3 classWithNullableTypesP3,
+    @JsonKey(name: 'ClassWithNullableTypesP3') required ClassWithNullableTypesP3 classWithNullableTypesP3,
     @JsonKey(name: 'required_null_anyOf') required String requiredNullAnyOf,
     @JsonKey(name: 'p1_anyOf') required String p1AnyOf,
     @JsonKey(name: 'p2_anyOf') required dynamic p2AnyOf,
@@ -36,18 +35,15 @@ abstract class ClassWithNullableTypes with _$ClassWithNullableTypes {
     @JsonKey(name: 'p2_null') List<dynamic>? p2Null,
     @JsonKey(name: 'p1_n') String? p1N,
     @JsonKey(name: 'p2_n') List<String?>? p2N,
-    @JsonKey(name: 'ClassWithNullableTypesP3N')
-    ClassWithNullableTypesP3N? classWithNullableTypesP3N,
+    @JsonKey(name: 'ClassWithNullableTypesP3N') ClassWithNullableTypesP3N? classWithNullableTypesP3N,
     @JsonKey(name: 'p1_list') String? p1List,
     @JsonKey(name: 'p2_list') List<dynamic>? p2List,
     @JsonKey(name: 'p3_list') dynamic p3List,
-    @JsonKey(name: 'nonNull_anyOf')
-    ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf,
+    @JsonKey(name: 'nonNull_anyOf') ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf,
     @JsonKey(name: 'optional_null_anyOf') String? optionalNullAnyOf,
   }) = _ClassWithNullableTypes;
 
-  factory ClassWithNullableTypes.fromJson(Map<String, Object?> json) =>
-      _$ClassWithNullableTypesFromJson(json);
+  factory ClassWithNullableTypes.fromJson(Map<String, Object?> json) => _$ClassWithNullableTypesFromJson(json);
   static const int validIntMin = 0;
   static const int validIntMax = 100;
   static const int validStringMinLength = 0;
@@ -75,42 +71,35 @@ extension ClassWithNullableTypesValidationX on ClassWithNullableTypes {
       return false;
     }
     try {
-      if (validString != null &&
-          validString!.length < ClassWithNullableTypes.validStringMinLength) {
+      if (validString != null && validString!.length < ClassWithNullableTypes.validStringMinLength) {
         return false;
       }
     } catch (e) {
       return false;
     }
     try {
-      if (validString != null &&
-          validString!.length > ClassWithNullableTypes.validStringMaxLength) {
+      if (validString != null && validString!.length > ClassWithNullableTypes.validStringMaxLength) {
         return false;
       }
     } catch (e) {
       return false;
     }
     try {
-      if (validString != null &&
-          !RegExp(
-            ClassWithNullableTypes.validStringPattern,
-          ).hasMatch(validString!)) {
+      if (validString != null && !RegExp(ClassWithNullableTypes.validStringPattern).hasMatch(validString!)) {
         return false;
       }
     } catch (e) {
       return false;
     }
     try {
-      if (validArray != null &&
-          validArray!.length < ClassWithNullableTypes.validArrayMinItems) {
+      if (validArray != null && validArray!.length < ClassWithNullableTypes.validArrayMinItems) {
         return false;
       }
     } catch (e) {
       return false;
     }
     try {
-      if (validArray != null &&
-          validArray!.length > ClassWithNullableTypes.validArrayMaxItems) {
+      if (validArray != null && validArray!.length > ClassWithNullableTypes.validArrayMaxItems) {
         return false;
       }
     } catch (e) {

@@ -19,6 +19,5 @@ abstract class ListPostsResponse with _$ListPostsResponse {
     @JsonKey(includeIfNull: false) Map<String, String>? metadata,
   }) = _ListPostsResponse;
 
-  factory ListPostsResponse.fromJson(Map<String, Object?> json) =>
-      _$ListPostsResponseFromJson(json);
+  factory ListPostsResponse.fromJson(Map<String, Object?> json) => _$ListPostsResponseFromJson(json);
 }

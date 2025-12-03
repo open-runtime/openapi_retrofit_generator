@@ -22,8 +22,7 @@ class CreditCardPayment {
     this.cardholderName,
   });
 
-  factory CreditCardPayment.fromJson(Map<String, Object?> json) =>
-      _$CreditCardPaymentFromJson(json);
+  factory CreditCardPayment.fromJson(Map<String, Object?> json) => _$CreditCardPaymentFromJson(json);
 
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;

@@ -18,11 +18,9 @@ abstract class ToolStateCompleted with _$ToolStateCompleted {
     required String output,
     required String title,
     required Map<String, dynamic> metadata,
-    @JsonKey(name: 'ToolStateCompletedTime')
-    required ToolStateCompletedTime toolStateCompletedTime,
+    @JsonKey(name: 'ToolStateCompletedTime') required ToolStateCompletedTime toolStateCompletedTime,
     List<FilePart>? attachments,
   }) = _ToolStateCompleted;
 
-  factory ToolStateCompleted.fromJson(Map<String, Object?> json) =>
-      _$ToolStateCompletedFromJson(json);
+  factory ToolStateCompleted.fromJson(Map<String, Object?> json) => _$ToolStateCompletedFromJson(json);
 }

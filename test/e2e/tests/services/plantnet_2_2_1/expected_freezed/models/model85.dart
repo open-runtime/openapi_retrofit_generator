@@ -13,11 +13,7 @@ part 'model85.g.dart';
 /// Geojson of extent area inside the case study area in epsg:4326, following the right-hand rule
 @Freezed()
 abstract class Model85 with _$Model85 {
-  const factory Model85({
-    required TypeModel type,
-    required Model84 coordinates,
-  }) = _Model85;
+  const factory Model85({required TypeModel type, required Model84 coordinates}) = _Model85;
 
-  factory Model85.fromJson(Map<String, Object?> json) =>
-      _$Model85FromJson(json);
+  factory Model85.fromJson(Map<String, Object?> json) => _$Model85FromJson(json);
 }

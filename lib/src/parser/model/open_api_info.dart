@@ -4,13 +4,7 @@ import 'package:meta/meta.dart';
 @immutable
 class OpenApiInfo {
   /// Constructor for [OpenApiInfo]
-  const OpenApiInfo({
-    required this.schemaVersion,
-    this.apiVersion,
-    this.title,
-    this.summary,
-    this.description,
-  });
+  const OpenApiInfo({required this.schemaVersion, this.apiVersion, this.title, this.summary, this.description});
 
   /// OpenApi version of schema
   final OAS schemaVersion;

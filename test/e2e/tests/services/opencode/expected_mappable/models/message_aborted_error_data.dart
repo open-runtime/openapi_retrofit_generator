@@ -12,6 +12,5 @@ class MessageAbortedErrorData with MessageAbortedErrorDataMappable {
 
   final String message;
 
-  static MessageAbortedErrorData fromJson(Map<String, dynamic> json) =>
-      MessageAbortedErrorDataMapper.fromJson(json);
+  static MessageAbortedErrorData fromJson(Map<String, dynamic> json) => MessageAbortedErrorDataMapper.fromJson(json);
 }

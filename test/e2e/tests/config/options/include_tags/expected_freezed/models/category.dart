@@ -20,6 +20,5 @@ abstract class Category with _$Category {
     Category? parent,
   }) = _Category;
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 }

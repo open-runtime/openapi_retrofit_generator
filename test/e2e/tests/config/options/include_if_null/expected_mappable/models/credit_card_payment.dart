@@ -29,6 +29,5 @@ class CreditCardPayment with CreditCardPaymentMappable {
   final double amount;
   final String? cardholderName;
 
-  static CreditCardPayment fromJson(Map<String, dynamic> json) =>
-      CreditCardPaymentMapper.fromJson(json);
+  static CreditCardPayment fromJson(Map<String, dynamic> json) => CreditCardPaymentMapper.fromJson(json);
 }

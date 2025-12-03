@@ -24,6 +24,5 @@ class SnapshotPart with SnapshotPartMappable {
   final String type;
   final String snapshot;
 
-  static SnapshotPart fromJson(Map<String, dynamic> json) =>
-      SnapshotPartMapper.fromJson(json);
+  static SnapshotPart fromJson(Map<String, dynamic> json) => SnapshotPartMapper.fromJson(json);
 }

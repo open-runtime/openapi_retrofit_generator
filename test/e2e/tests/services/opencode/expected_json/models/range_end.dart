@@ -10,8 +10,7 @@ part 'range_end.g.dart';
 class RangeEnd {
   const RangeEnd({required this.line, required this.character});
 
-  factory RangeEnd.fromJson(Map<String, Object?> json) =>
-      _$RangeEndFromJson(json);
+  factory RangeEnd.fromJson(Map<String, Object?> json) => _$RangeEndFromJson(json);
 
   final num line;
   final num character;

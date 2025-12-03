@@ -13,6 +13,5 @@ class CreateUserRequest with CreateUserRequestMappable {
   final String name;
   final String? email;
 
-  static CreateUserRequest fromJson(Map<String, dynamic> json) =>
-      CreateUserRequestMapper.fromJson(json);
+  static CreateUserRequest fromJson(Map<String, dynamic> json) => CreateUserRequestMapper.fromJson(json);
 }

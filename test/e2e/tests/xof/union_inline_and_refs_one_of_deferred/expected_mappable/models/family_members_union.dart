@@ -40,39 +40,33 @@ extension FamilyMembersUnionDeserializer on FamilyMembersUnion {
       return FamilyMembersUnionVariant4Mapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for FamilyMembersUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for FamilyMembersUnion from: $json');
   }
 }
 
 @MappableClass()
-class FamilyMembersUnionCat extends FamilyMembersUnion
-    with FamilyMembersUnionCatMappable {
+class FamilyMembersUnionCat extends FamilyMembersUnion with FamilyMembersUnionCatMappable {
   final int mewCount;
 
   const FamilyMembersUnionCat({required this.mewCount});
 }
 
 @MappableClass()
-class FamilyMembersUnionVariant2 extends FamilyMembersUnion
-    with FamilyMembersUnionVariant2Mappable {
+class FamilyMembersUnionVariant2 extends FamilyMembersUnion with FamilyMembersUnionVariant2Mappable {
   final int chirpVolume;
 
   const FamilyMembersUnionVariant2({required this.chirpVolume});
 }
 
 @MappableClass()
-class FamilyMembersUnionDog extends FamilyMembersUnion
-    with FamilyMembersUnionDogMappable {
+class FamilyMembersUnionDog extends FamilyMembersUnion with FamilyMembersUnionDogMappable {
   final String barkSound;
 
   const FamilyMembersUnionDog({required this.barkSound});
 }
 
 @MappableClass()
-class FamilyMembersUnionVariant4 extends FamilyMembersUnion
-    with FamilyMembersUnionVariant4Mappable {
+class FamilyMembersUnionVariant4 extends FamilyMembersUnion with FamilyMembersUnionVariant4Mappable {
   final String job;
 
   const FamilyMembersUnionVariant4({required this.job});

@@ -13,6 +13,5 @@ class ReasoningPartTime with ReasoningPartTimeMappable {
   final num start;
   final num? end;
 
-  static ReasoningPartTime fromJson(Map<String, dynamic> json) =>
-      ReasoningPartTimeMapper.fromJson(json);
+  static ReasoningPartTime fromJson(Map<String, dynamic> json) => ReasoningPartTimeMapper.fromJson(json);
 }

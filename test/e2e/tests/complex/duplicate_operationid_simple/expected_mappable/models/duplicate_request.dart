@@ -12,6 +12,5 @@ class DuplicateRequest with DuplicateRequestMappable {
 
   final String? name;
 
-  static DuplicateRequest fromJson(Map<String, dynamic> json) =>
-      DuplicateRequestMapper.fromJson(json);
+  static DuplicateRequest fromJson(Map<String, dynamic> json) => DuplicateRequestMapper.fromJson(json);
 }

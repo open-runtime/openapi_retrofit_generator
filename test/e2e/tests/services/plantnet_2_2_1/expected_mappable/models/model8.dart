@@ -15,6 +15,5 @@ class Model8 with Model8Mappable {
   final Habitats? habitats;
   final num? total;
 
-  static Model8 fromJson(Map<String, dynamic> json) =>
-      Model8Mapper.fromJson(json);
+  static Model8 fromJson(Map<String, dynamic> json) => Model8Mapper.fromJson(json);
 }

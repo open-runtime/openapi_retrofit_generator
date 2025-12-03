@@ -35,52 +35,36 @@ abstract class UserClient {
   ///
   /// Name not received - field will be skipped.
   @GET('/api/User/info')
-  Future<UserInfoDto> getApiUserInfo({
-    @Query('tags') List<String>? tags,
-    @Query('limit') int? limit,
-  });
+  Future<UserInfoDto> getApiUserInfo({@Query('tags') List<String>? tags, @Query('limit') int? limit});
 
   /// null.
   ///
   /// Name not received - field will be skipped.
   @MultiPart()
   @PATCH('/api/User/{id}/avatar')
-  Future<void> patchApiUserIdAvatar({
-    @Part(name: 'avatar') MultipartFile? avatar,
-    @Path('id') int? id,
-  });
+  Future<void> patchApiUserIdAvatar({@Part(name: 'avatar') MultipartFile? avatar, @Path('id') int? id});
 }
 
 @MappableClass()
 class RegisterUserDto with RegisterUserDtoMappable {
-  const RegisterUserDto({
-    required this.email,
-    required this.name,
-    required this.password,
-  });
+  const RegisterUserDto({required this.email, required this.name, required this.password});
 
   final String email;
   final String name;
   final String password;
 
-  static RegisterUserDto fromJson(Map<String, dynamic> json) =>
-      RegisterUserDtoMapper.fromJson(json);
+  static RegisterUserDto fromJson(Map<String, dynamic> json) => RegisterUserDtoMapper.fromJson(json);
 }
 
 @MappableClass()
 class UserInfoDto with UserInfoDtoMappable {
-  const UserInfoDto({
-    required this.email,
-    required this.name,
-    required this.phone,
-  });
+  const UserInfoDto({required this.email, required this.name, required this.phone});
 
   final String email;
   final String name;
   final String phone;
 
-  static UserInfoDto fromJson(Map<String, dynamic> json) =>
-      UserInfoDtoMapper.fromJson(json);
+  static UserInfoDto fromJson(Map<String, dynamic> json) => UserInfoDtoMapper.fromJson(json);
 }
 
 class RestClient {

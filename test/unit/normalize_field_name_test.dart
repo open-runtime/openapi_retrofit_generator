@@ -6,28 +6,19 @@ void main() {
     test('null name - should return null with warning', () {
       final (newName, description) = protectName(null);
       expect(newName, isNull);
-      expect(
-        description,
-        contains('Name not received - field will be skipped'),
-      );
+      expect(description, contains('Name not received - field will be skipped'));
     });
 
     test('empty name - should return null with warning', () {
       final (newName, description) = protectName('');
       expect(newName, isNull);
-      expect(
-        description,
-        contains('Name not received - field will be skipped'),
-      );
+      expect(description, contains('Name not received - field will be skipped'));
     });
 
     test('123_number - should normalize to number', () {
       final (newName, description) = protectName('123_number');
       expect(newName, equals('number'));
-      expect(
-        description,
-        contains('Normalized from: `123_number` to `number`'),
-      );
+      expect(description, contains('Normalized from: `123_number` to `number`'));
     });
 
     test('456test - should normalize to test', () {

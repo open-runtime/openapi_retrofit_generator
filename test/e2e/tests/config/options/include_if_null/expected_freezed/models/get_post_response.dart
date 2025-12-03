@@ -34,6 +34,5 @@ abstract class GetPostResponse with _$GetPostResponse {
     @JsonKey(includeIfNull: false) List<Comment>? comments,
   }) = _GetPostResponse;
 
-  factory GetPostResponse.fromJson(Map<String, Object?> json) =>
-      _$GetPostResponseFromJson(json);
+  factory GetPostResponse.fromJson(Map<String, Object?> json) => _$GetPostResponseFromJson(json);
 }

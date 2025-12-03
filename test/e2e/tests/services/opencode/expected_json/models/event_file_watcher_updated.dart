@@ -10,13 +10,9 @@ part 'event_file_watcher_updated.g.dart';
 
 @JsonSerializable()
 class EventFileWatcherUpdated {
-  const EventFileWatcherUpdated({
-    required this.type,
-    required this.eventFileWatcherUpdatedProperties,
-  });
+  const EventFileWatcherUpdated({required this.type, required this.eventFileWatcherUpdatedProperties});
 
-  factory EventFileWatcherUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventFileWatcherUpdatedFromJson(json);
+  factory EventFileWatcherUpdated.fromJson(Map<String, Object?> json) => _$EventFileWatcherUpdatedFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventFileWatcherUpdatedProperties')

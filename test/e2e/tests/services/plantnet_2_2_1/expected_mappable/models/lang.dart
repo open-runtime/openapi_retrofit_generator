@@ -174,6 +174,5 @@ enum Lang {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Lang> get $valuesDefined =>
-      values.where((value) => value != Lang.unknown).toList();
+  static List<Lang> get $valuesDefined => values.where((value) => value != Lang.unknown).toList();
 }

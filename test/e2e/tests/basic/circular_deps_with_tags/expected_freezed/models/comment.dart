@@ -19,6 +19,5 @@ abstract class Comment with _$Comment {
     @JsonKey(includeIfNull: false) PostModel? post,
   }) = _Comment;
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
 }

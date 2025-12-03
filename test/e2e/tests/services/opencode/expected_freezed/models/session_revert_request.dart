@@ -14,6 +14,5 @@ abstract class SessionRevertRequest with _$SessionRevertRequest {
     @JsonKey(name: 'partID') String? partId,
   }) = _SessionRevertRequest;
 
-  factory SessionRevertRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionRevertRequestFromJson(json);
+  factory SessionRevertRequest.fromJson(Map<String, Object?> json) => _$SessionRevertRequestFromJson(json);
 }

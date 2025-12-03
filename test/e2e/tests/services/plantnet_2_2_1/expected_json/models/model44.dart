@@ -12,8 +12,7 @@ part 'model44.g.dart';
 class Model44 {
   const Model44({this.species, this.total});
 
-  factory Model44.fromJson(Map<String, Object?> json) =>
-      _$Model44FromJson(json);
+  factory Model44.fromJson(Map<String, Object?> json) => _$Model44FromJson(json);
 
   final Model43? species;
   final num? total;

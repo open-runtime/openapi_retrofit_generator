@@ -11,9 +11,7 @@ Model23 _$Model23FromJson(Map<String, dynamic> json) => Model23(
   author: json['author'] as String,
   family: json['family'] as String,
   commonNames: json['commonNames'],
-  secondaryCommonNames: (json['secondaryCommonNames'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  secondaryCommonNames: (json['secondaryCommonNames'] as List<dynamic>?)?.map((e) => e as String).toList(),
   project: json['project'] as String?,
   genus: json['genus'] as String?,
   powoId: json['powoId'] as String?,

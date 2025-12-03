@@ -13,6 +13,5 @@ class CreateUser2Response with CreateUser2ResponseMappable {
   final int? id;
   final bool? created;
 
-  static CreateUser2Response fromJson(Map<String, dynamic> json) =>
-      CreateUser2ResponseMapper.fromJson(json);
+  static CreateUser2Response fromJson(Map<String, dynamic> json) => CreateUser2ResponseMapper.fromJson(json);
 }

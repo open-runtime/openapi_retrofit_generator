@@ -6,18 +6,16 @@ part of 'session_revert.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SessionRevert _$SessionRevertFromJson(Map<String, dynamic> json) =>
-    _SessionRevert(
-      messageId: json['messageID'] as String,
-      partId: json['partID'] as String?,
-      snapshot: json['snapshot'] as String?,
-      diff: json['diff'] as String?,
-    );
+_SessionRevert _$SessionRevertFromJson(Map<String, dynamic> json) => _SessionRevert(
+  messageId: json['messageID'] as String,
+  partId: json['partID'] as String?,
+  snapshot: json['snapshot'] as String?,
+  diff: json['diff'] as String?,
+);
 
-Map<String, dynamic> _$SessionRevertToJson(_SessionRevert instance) =>
-    <String, dynamic>{
-      'messageID': instance.messageId,
-      'partID': instance.partId,
-      'snapshot': instance.snapshot,
-      'diff': instance.diff,
-    };
+Map<String, dynamic> _$SessionRevertToJson(_SessionRevert instance) => <String, dynamic>{
+  'messageID': instance.messageId,
+  'partID': instance.partId,
+  'snapshot': instance.snapshot,
+  'diff': instance.diff,
+};

@@ -687,19 +687,10 @@ void main() {
   ];
 
   final edgeCases = [
-    (
-      text: 'Items - 2a3 - Version 4b5',
-      expectedWords: ['items', '2a3', 'version', '4b5'],
-    ),
+    (text: 'Items - 2a3 - Version 4b5', expectedWords: ['items', '2a3', 'version', '4b5']),
     (text: 'Items -- Draft', expectedWords: ['items', 'draft']),
-    (
-      text: 'Tag Name With 123 Numbers',
-      expectedWords: ['tag', 'name', 'with', '123', 'numbers'],
-    ),
-    (
-      text: 'Controller_someMethod',
-      expectedWords: ['controller', 'some', 'method'],
-    ),
+    (text: 'Tag Name With 123 Numbers', expectedWords: ['tag', 'name', 'with', '123', 'numbers']),
+    (text: 'Controller_someMethod', expectedWords: ['controller', 'some', 'method']),
     // Hash/pound symbol
     (text: 'item#123', expectedWords: ['item', '123']),
     (text: 'C#_Programming', expectedWords: ['c', 'programming']),
@@ -761,45 +752,18 @@ void main() {
     (text: 'param==value', expectedWords: ['param', 'value']),
     // Pipe
     (text: 'option1|option2', expectedWords: ['option1', 'option2']),
-    (
-      text: 'pipe|separated|values',
-      expectedWords: ['pipe', 'separated', 'values'],
-    ),
+    (text: 'pipe|separated|values', expectedWords: ['pipe', 'separated', 'values']),
     // Mixed symbols
-    (
-      text: 'user@company.com/profile',
-      expectedWords: ['user', 'company', 'com', 'profile'],
-    ),
-    (
-      text: 'api/v2.0/{userId}/profile',
-      expectedWords: ['api', 'v2', '0', 'user', 'id', 'profile'],
-    ),
-    (
-      text: r'$http_request->execute()',
-      expectedWords: ['http', 'request', 'execute'],
-    ),
-    (
-      text: '[GET]/api/users/{id}',
-      expectedWords: ['get', 'api', 'users', 'id'],
-    ),
-    (
-      text: '<UserProfile>_component',
-      expectedWords: ['user', 'profile', 'component'],
-    ),
+    (text: 'user@company.com/profile', expectedWords: ['user', 'company', 'com', 'profile']),
+    (text: 'api/v2.0/{userId}/profile', expectedWords: ['api', 'v2', '0', 'user', 'id', 'profile']),
+    (text: r'$http_request->execute()', expectedWords: ['http', 'request', 'execute']),
+    (text: '[GET]/api/users/{id}', expectedWords: ['get', 'api', 'users', 'id']),
+    (text: '<UserProfile>_component', expectedWords: ['user', 'profile', 'component']),
     // Real-world API examples
-    (
-      text: 'X-RateLimit-Remaining',
-      expectedWords: ['x', 'rate', 'limit', 'remaining'],
-    ),
-    (
-      text: 'Content-Type: application/json',
-      expectedWords: ['content', 'type', 'application', 'json'],
-    ),
+    (text: 'X-RateLimit-Remaining', expectedWords: ['x', 'rate', 'limit', 'remaining']),
+    (text: 'Content-Type: application/json', expectedWords: ['content', 'type', 'application', 'json']),
     (text: 'Bearer {token}', expectedWords: ['bearer', 'token']),
-    (
-      text: 'api.example.com/v1',
-      expectedWords: ['api', 'example', 'com', 'v1'],
-    ),
+    (text: 'api.example.com/v1', expectedWords: ['api', 'example', 'com', 'v1']),
     // Empty after symbol stripping
     (text: '+++', expectedWords: <String>[]),
     (text: '---', expectedWords: <String>[]),
@@ -828,21 +792,9 @@ void main() {
         final identifier = NormalizedIdentifier.fromWords(testCase.words);
         expect(identifier.camelCase, testCase.camelCase, reason: 'camelCase');
         expect(identifier.kebabCase, testCase.kebabCase, reason: 'kebabCase');
-        expect(
-          identifier.pascalCase,
-          testCase.pascalCase,
-          reason: 'pascalCase',
-        );
-        expect(
-          identifier.screamingSnakeCase,
-          testCase.screamingSnakeCase,
-          reason: 'screamingSnakeCase',
-        );
-        expect(
-          identifier.screamingKebabCase,
-          testCase.screamingKebabCase,
-          reason: 'screamingKebabCase',
-        );
+        expect(identifier.pascalCase, testCase.pascalCase, reason: 'pascalCase');
+        expect(identifier.screamingSnakeCase, testCase.screamingSnakeCase, reason: 'screamingSnakeCase');
+        expect(identifier.screamingKebabCase, testCase.screamingKebabCase, reason: 'screamingKebabCase');
         expect(identifier.snakeCase, testCase.snakeCase, reason: 'snakeCase');
         expect(identifier.trainCase, testCase.trainCase, reason: 'trainCase');
       });
@@ -863,15 +815,11 @@ void main() {
         expect(snakeCase.isPrivate, false);
         expect(snakeCase.words, testCase.words);
 
-        final screamingSnakeCase = NormalizedIdentifier.parse(
-          testCase.screamingSnakeCase,
-        );
+        final screamingSnakeCase = NormalizedIdentifier.parse(testCase.screamingSnakeCase);
         expect(screamingSnakeCase.isPrivate, false);
         expect(screamingSnakeCase.words, testCase.words);
 
-        final screamingKebabCase = NormalizedIdentifier.parse(
-          testCase.screamingKebabCase,
-        );
+        final screamingKebabCase = NormalizedIdentifier.parse(testCase.screamingKebabCase);
         expect(screamingKebabCase.isPrivate, false);
         expect(screamingKebabCase.words, testCase.words);
 
@@ -879,15 +827,11 @@ void main() {
         expect(trainCase.isPrivate, false);
         expect(trainCase.words, testCase.words);
 
-        final privateCamelCase = NormalizedIdentifier.parse(
-          '_${testCase.camelCase}',
-        );
+        final privateCamelCase = NormalizedIdentifier.parse('_${testCase.camelCase}');
         expect(privateCamelCase.isPrivate, true);
         expect(privateCamelCase.words, testCase.words);
 
-        final privatePascalCase = NormalizedIdentifier.parse(
-          '_${testCase.pascalCase}',
-        );
+        final privatePascalCase = NormalizedIdentifier.parse('_${testCase.pascalCase}');
         expect(privatePascalCase.isPrivate, true);
         expect(privatePascalCase.words, testCase.words);
       });

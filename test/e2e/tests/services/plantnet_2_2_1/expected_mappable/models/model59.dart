@@ -10,13 +10,7 @@ part 'model59.mapper.dart';
 
 @MappableClass()
 class Model59 with Model59Mappable {
-  const Model59({
-    this.name,
-    this.coverage,
-    this.maxScore,
-    this.count,
-    this.location,
-  });
+  const Model59({this.name, this.coverage, this.maxScore, this.count, this.location});
 
   final String? name;
   final num? coverage;
@@ -25,6 +19,5 @@ class Model59 with Model59Mappable {
   final num? count;
   final Model58? location;
 
-  static Model59 fromJson(Map<String, dynamic> json) =>
-      Model59Mapper.fromJson(json);
+  static Model59 fromJson(Map<String, dynamic> json) => Model59Mapper.fromJson(json);
 }

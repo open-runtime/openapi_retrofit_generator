@@ -16,8 +16,7 @@ class FindTextResponseSubmatches {
     required this.end,
   });
 
-  factory FindTextResponseSubmatches.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseSubmatchesFromJson(json);
+  factory FindTextResponseSubmatches.fromJson(Map<String, Object?> json) => _$FindTextResponseSubmatchesFromJson(json);
 
   @JsonKey(name: 'FindTextResponseSubmatchesMatch')
   final FindTextResponseSubmatchesMatch findTextResponseSubmatchesMatch;

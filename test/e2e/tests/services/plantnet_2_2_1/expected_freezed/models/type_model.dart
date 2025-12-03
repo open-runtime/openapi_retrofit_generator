@@ -16,8 +16,7 @@ enum TypeModel {
 
   const TypeModel(this.json);
 
-  factory TypeModel.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory TypeModel.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -27,6 +26,5 @@ enum TypeModel {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<TypeModel> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<TypeModel> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

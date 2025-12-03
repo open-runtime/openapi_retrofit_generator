@@ -13,8 +13,7 @@ part 'comment.g.dart';
 class Comment {
   const Comment({this.id, this.text, this.author, this.post});
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final int? id;

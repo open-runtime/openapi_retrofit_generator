@@ -16,6 +16,5 @@ abstract class CreateCommentRequest with _$CreateCommentRequest {
     @JsonKey(includeIfNull: false) String? parentId,
   }) = _CreateCommentRequest;
 
-  factory CreateCommentRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateCommentRequestFromJson(json);
+  factory CreateCommentRequest.fromJson(Map<String, Object?> json) => _$CreateCommentRequestFromJson(json);
 }

@@ -10,8 +10,7 @@ part 'model17.g.dart';
 class Model17 {
   const Model17({this.image, this.filename, this.organ, this.score});
 
-  factory Model17.fromJson(Map<String, Object?> json) =>
-      _$Model17FromJson(json);
+  factory Model17.fromJson(Map<String, Object?> json) => _$Model17FromJson(json);
 
   final String? image;
   final String? filename;

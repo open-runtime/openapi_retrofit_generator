@@ -10,13 +10,7 @@ part 'error.g.dart';
 
 @JsonSerializable()
 class Error {
-  const Error({
-    required this.code,
-    required this.message,
-    this.details,
-    this.timestamp,
-    this.requestId,
-  });
+  const Error({required this.code, required this.message, this.details, this.timestamp, this.requestId});
 
   factory Error.fromJson(Map<String, Object?> json) => _$ErrorFromJson(json);
 

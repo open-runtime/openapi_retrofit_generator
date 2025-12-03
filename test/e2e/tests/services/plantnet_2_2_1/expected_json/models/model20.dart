@@ -12,8 +12,7 @@ part 'model20.g.dart';
 class Model20 {
   const Model20({this.scientificName, this.commonNames});
 
-  factory Model20.fromJson(Map<String, Object?> json) =>
-      _$Model20FromJson(json);
+  factory Model20.fromJson(Map<String, Object?> json) => _$Model20FromJson(json);
 
   final String? scientificName;
   final CommonNames? commonNames;

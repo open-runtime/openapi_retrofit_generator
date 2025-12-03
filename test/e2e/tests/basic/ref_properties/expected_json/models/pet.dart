@@ -11,11 +11,7 @@ part 'pet.g.dart';
 
 @JsonSerializable()
 class Pet {
-  const Pet({
-    required this.nullableDateTime,
-    required this.nullableDateTimeRef,
-    this.schedule,
-  });
+  const Pet({required this.nullableDateTime, required this.nullableDateTimeRef, this.schedule});
 
   factory Pet.fromJson(Map<String, Object?> json) => _$PetFromJson(json);
 

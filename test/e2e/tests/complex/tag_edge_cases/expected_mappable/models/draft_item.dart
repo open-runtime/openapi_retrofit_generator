@@ -14,6 +14,5 @@ class DraftItem with DraftItemMappable {
   final String? content;
   final bool? isDraft;
 
-  static DraftItem fromJson(Map<String, dynamic> json) =>
-      DraftItemMapper.fromJson(json);
+  static DraftItem fromJson(Map<String, dynamic> json) => DraftItemMapper.fromJson(json);
 }

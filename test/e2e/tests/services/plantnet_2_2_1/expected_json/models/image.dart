@@ -11,14 +11,7 @@ part 'image.g.dart';
 
 @JsonSerializable()
 class Image {
-  const Image({
-    this.organ,
-    this.author,
-    this.license,
-    this.date,
-    this.citation,
-    this.url,
-  });
+  const Image({this.organ, this.author, this.license, this.date, this.citation, this.url});
 
   factory Image.fromJson(Map<String, Object?> json) => _$ImageFromJson(json);
 

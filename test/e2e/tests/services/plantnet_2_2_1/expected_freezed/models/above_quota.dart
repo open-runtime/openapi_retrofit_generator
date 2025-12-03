@@ -11,6 +11,5 @@ part 'above_quota.g.dart';
 abstract class AboveQuota with _$AboveQuota {
   const factory AboveQuota({num? identify}) = _AboveQuota;
 
-  factory AboveQuota.fromJson(Map<String, Object?> json) =>
-      _$AboveQuotaFromJson(json);
+  factory AboveQuota.fromJson(Map<String, Object?> json) => _$AboveQuotaFromJson(json);
 }

@@ -14,10 +14,7 @@ class AnchorRegistry {
 
   /// Register an inline schema (anchor) definition
   void registerInlineSchema(String schemaName, String context) {
-    inlineSchemaContexts[schemaName] = SchemaContext(
-      schemaName: schemaName,
-      context: context,
-    );
+    inlineSchemaContexts[schemaName] = SchemaContext(schemaName: schemaName, context: context);
     // Initialize reference set if not exists
     inlineSchemaReferences.putIfAbsent(schemaName, () => {});
   }
@@ -83,11 +80,8 @@ class AnchorRegistry {
       // Context format: 'schema:ParentSchemaName'
       const schemaPrefix = 'schema:';
       if (definitionContext.startsWith(schemaPrefix)) {
-        final parentSchemaName = definitionContext.substring(
-          schemaPrefix.length,
-        );
-        if (directlyUsedSchemas.contains(parentSchemaName) ||
-            allIncluded.contains(parentSchemaName)) {
+        final parentSchemaName = definitionContext.substring(schemaPrefix.length);
+        if (directlyUsedSchemas.contains(parentSchemaName) || allIncluded.contains(parentSchemaName)) {
           allIncluded.add(schemaName);
         }
       }

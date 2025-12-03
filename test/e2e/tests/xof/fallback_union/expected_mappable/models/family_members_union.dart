@@ -15,12 +15,7 @@ part 'family_members_union.mapper.dart';
 
 @MappableClass(
   discriminatorKey: 'type',
-  includeSubClasses: [
-    FamilyMembersUnionCat,
-    FamilyMembersUnionDog,
-    FamilyMembersUnionHuman,
-    FamilyMembersUnionUnknown,
-  ],
+  includeSubClasses: [FamilyMembersUnionCat, FamilyMembersUnionDog, FamilyMembersUnionHuman, FamilyMembersUnionUnknown],
 )
 sealed class FamilyMembersUnion with FamilyMembersUnionMappable {
   const FamilyMembersUnion();
@@ -44,20 +39,16 @@ extension FamilyMembersUnionDeserializer on FamilyMembersUnion {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[FamilyMembersUnionCat] =>
-        FamilyMembersUnionCatMapper.fromJson(json),
-      _ when value == effective[FamilyMembersUnionDog] =>
-        FamilyMembersUnionDogMapper.fromJson(json),
-      _ when value == effective[FamilyMembersUnionHuman] =>
-        FamilyMembersUnionHumanMapper.fromJson(json),
+      _ when value == effective[FamilyMembersUnionCat] => FamilyMembersUnionCatMapper.fromJson(json),
+      _ when value == effective[FamilyMembersUnionDog] => FamilyMembersUnionDogMapper.fromJson(json),
+      _ when value == effective[FamilyMembersUnionHuman] => FamilyMembersUnionHumanMapper.fromJson(json),
       _ => FamilyMembersUnionUnknownMapper.fromJson(json),
     };
   }
 }
 
 @MappableClass(discriminatorValue: 'Cat')
-class FamilyMembersUnionCat extends FamilyMembersUnion
-    with FamilyMembersUnionCatMappable {
+class FamilyMembersUnionCat extends FamilyMembersUnion with FamilyMembersUnionCatMappable {
   final CatTypeType type;
   final int mewCount;
 
@@ -65,8 +56,7 @@ class FamilyMembersUnionCat extends FamilyMembersUnion
 }
 
 @MappableClass(discriminatorValue: 'Dog')
-class FamilyMembersUnionDog extends FamilyMembersUnion
-    with FamilyMembersUnionDogMappable {
+class FamilyMembersUnionDog extends FamilyMembersUnion with FamilyMembersUnionDogMappable {
   final DogTypeType type;
   final String barkSound;
 
@@ -74,8 +64,7 @@ class FamilyMembersUnionDog extends FamilyMembersUnion
 }
 
 @MappableClass(discriminatorValue: 'Human')
-class FamilyMembersUnionHuman extends FamilyMembersUnion
-    with FamilyMembersUnionHumanMappable {
+class FamilyMembersUnionHuman extends FamilyMembersUnion with FamilyMembersUnionHumanMappable {
   final HumanTypeType type;
   final String job;
 
@@ -83,12 +72,10 @@ class FamilyMembersUnionHuman extends FamilyMembersUnion
 }
 
 @MappableClass(discriminatorValue: MappableClass.useAsDefault)
-class FamilyMembersUnionUnknown extends FamilyMembersUnion
-    with FamilyMembersUnionUnknownMappable {
+class FamilyMembersUnionUnknown extends FamilyMembersUnion with FamilyMembersUnionUnknownMappable {
   final Map<String, dynamic> json;
 
   const FamilyMembersUnionUnknown(this.json);
 
-  static FamilyMembersUnionUnknown fromJson(Map<String, dynamic> json) =>
-      FamilyMembersUnionUnknown(json);
+  static FamilyMembersUnionUnknown fromJson(Map<String, dynamic> json) => FamilyMembersUnionUnknown(json);
 }

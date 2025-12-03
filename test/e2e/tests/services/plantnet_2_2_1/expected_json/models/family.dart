@@ -8,11 +8,7 @@ part 'family.g.dart';
 
 @JsonSerializable()
 class Family {
-  const Family({
-    this.scientificNameWithoutAuthor,
-    this.scientificNameAuthorship,
-    this.scientificName,
-  });
+  const Family({this.scientificNameWithoutAuthor, this.scientificNameAuthorship, this.scientificName});
 
   factory Family.fromJson(Map<String, Object?> json) => _$FamilyFromJson(json);
 

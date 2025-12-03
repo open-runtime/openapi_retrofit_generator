@@ -15,12 +15,11 @@ _PatchPart _$PatchPartFromJson(Map<String, dynamic> json) => _PatchPart(
   files: (json['files'] as List<dynamic>).map((e) => e as String).toList(),
 );
 
-Map<String, dynamic> _$PatchPartToJson(_PatchPart instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'sessionID': instance.sessionId,
-      'messageID': instance.messageId,
-      'type': instance.type,
-      'hash': instance.hash,
-      'files': instance.files,
-    };
+Map<String, dynamic> _$PatchPartToJson(_PatchPart instance) => <String, dynamic>{
+  'id': instance.id,
+  'sessionID': instance.sessionId,
+  'messageID': instance.messageId,
+  'type': instance.type,
+  'hash': instance.hash,
+  'files': instance.files,
+};

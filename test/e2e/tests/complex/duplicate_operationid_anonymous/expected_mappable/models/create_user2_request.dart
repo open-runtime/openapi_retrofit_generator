@@ -13,6 +13,5 @@ class CreateUser2Request with CreateUser2RequestMappable {
   final String username;
   final String role;
 
-  static CreateUser2Request fromJson(Map<String, dynamic> json) =>
-      CreateUser2RequestMapper.fromJson(json);
+  static CreateUser2Request fromJson(Map<String, dynamic> json) => CreateUser2RequestMapper.fromJson(json);
 }

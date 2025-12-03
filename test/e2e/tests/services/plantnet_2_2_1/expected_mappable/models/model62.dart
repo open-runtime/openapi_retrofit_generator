@@ -18,6 +18,5 @@ class Model62 with Model62Mappable {
   final Score? query;
   final Model61? results;
 
-  static Model62 fromJson(Map<String, dynamic> json) =>
-      Model62Mapper.fromJson(json);
+  static Model62 fromJson(Map<String, dynamic> json) => Model62Mapper.fromJson(json);
 }

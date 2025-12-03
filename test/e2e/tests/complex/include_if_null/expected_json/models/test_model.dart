@@ -8,15 +8,9 @@ part 'test_model.g.dart';
 
 @JsonSerializable()
 class TestModel {
-  const TestModel({
-    required this.id,
-    required this.requiredNullableField,
-    this.name,
-    this.optionalNullableField,
-  });
+  const TestModel({required this.id, required this.requiredNullableField, this.name, this.optionalNullableField});
 
-  factory TestModel.fromJson(Map<String, Object?> json) =>
-      _$TestModelFromJson(json);
+  factory TestModel.fromJson(Map<String, Object?> json) => _$TestModelFromJson(json);
 
   final int id;
   @JsonKey(includeIfNull: false)

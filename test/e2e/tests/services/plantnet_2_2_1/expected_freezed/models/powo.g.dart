@@ -6,9 +6,6 @@ part of 'powo.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Powo _$PowoFromJson(Map<String, dynamic> json) =>
-    _Powo(id: json['id'] as String);
+_Powo _$PowoFromJson(Map<String, dynamic> json) => _Powo(id: json['id'] as String);
 
-Map<String, dynamic> _$PowoToJson(_Powo instance) => <String, dynamic>{
-  'id': instance.id,
-};
+Map<String, dynamic> _$PowoToJson(_Powo instance) => <String, dynamic>{'id': instance.id};

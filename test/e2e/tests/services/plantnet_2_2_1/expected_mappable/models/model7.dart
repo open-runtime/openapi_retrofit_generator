@@ -15,6 +15,5 @@ class Model7 with Model7Mappable {
   final num? id;
   final num? level;
 
-  static Model7 fromJson(Map<String, dynamic> json) =>
-      Model7Mapper.fromJson(json);
+  static Model7 fromJson(Map<String, dynamic> json) => Model7Mapper.fromJson(json);
 }

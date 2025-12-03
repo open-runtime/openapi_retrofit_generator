@@ -10,14 +10,7 @@ part 'model34.mapper.dart';
 
 @MappableClass()
 class Model34 with Model34Mappable {
-  const Model34({
-    this.id,
-    this.createdAt,
-    this.updatedAt,
-    this.taxon,
-    this.score,
-    this.observationId,
-  });
+  const Model34({this.id, this.createdAt, this.updatedAt, this.taxon, this.score, this.observationId});
 
   final num? id;
   final String? createdAt;
@@ -27,6 +20,5 @@ class Model34 with Model34Mappable {
   @MappableField(key: 'observation_id')
   final String? observationId;
 
-  static Model34 fromJson(Map<String, dynamic> json) =>
-      Model34Mapper.fromJson(json);
+  static Model34 fromJson(Map<String, dynamic> json) => Model34Mapper.fromJson(json);
 }

@@ -15,6 +15,5 @@ class EventPermissionUpdated with EventPermissionUpdatedMappable {
   final String type;
   final Permission properties;
 
-  static EventPermissionUpdated fromJson(Map<String, dynamic> json) =>
-      EventPermissionUpdatedMapper.fromJson(json);
+  static EventPermissionUpdated fromJson(Map<String, dynamic> json) => EventPermissionUpdatedMapper.fromJson(json);
 }

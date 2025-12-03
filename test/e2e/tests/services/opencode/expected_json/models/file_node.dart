@@ -18,8 +18,7 @@ class FileNode {
     required this.ignored,
   });
 
-  factory FileNode.fromJson(Map<String, Object?> json) =>
-      _$FileNodeFromJson(json);
+  factory FileNode.fromJson(Map<String, Object?> json) => _$FileNodeFromJson(json);
 
   final String name;
   final String path;

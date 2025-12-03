@@ -14,14 +14,7 @@ part 'result.g.dart';
 
 @JsonSerializable()
 class Result {
-  const Result({
-    this.score,
-    this.species,
-    this.images,
-    this.gbif,
-    this.powo,
-    this.iucn,
-  });
+  const Result({this.score, this.species, this.images, this.gbif, this.powo, this.iucn});
 
   factory Result.fromJson(Map<String, Object?> json) => _$ResultFromJson(json);
 

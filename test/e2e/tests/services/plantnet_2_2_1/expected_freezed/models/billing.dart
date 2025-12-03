@@ -11,6 +11,5 @@ part 'billing.g.dart';
 abstract class Billing with _$Billing {
   const factory Billing({String? nextDueDate, num? estimatedAmount}) = _Billing;
 
-  factory Billing.fromJson(Map<String, Object?> json) =>
-      _$BillingFromJson(json);
+  factory Billing.fromJson(Map<String, Object?> json) => _$BillingFromJson(json);
 }

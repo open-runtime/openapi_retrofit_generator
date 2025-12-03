@@ -18,6 +18,5 @@ abstract class CreatePostRequest with _$CreatePostRequest {
     @JsonKey(includeIfNull: false) dynamic metadata,
   }) = _CreatePostRequest;
 
-  factory CreatePostRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePostRequestFromJson(json);
+  factory CreatePostRequest.fromJson(Map<String, Object?> json) => _$CreatePostRequestFromJson(json);
 }

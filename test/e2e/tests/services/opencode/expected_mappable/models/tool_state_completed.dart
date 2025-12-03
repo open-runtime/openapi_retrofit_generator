@@ -30,6 +30,5 @@ class ToolStateCompleted with ToolStateCompletedMappable {
   final ToolStateCompletedTime toolStateCompletedTime;
   final List<FilePart>? attachments;
 
-  static ToolStateCompleted fromJson(Map<String, dynamic> json) =>
-      ToolStateCompletedMapper.fromJson(json);
+  static ToolStateCompleted fromJson(Map<String, dynamic> json) => ToolStateCompletedMapper.fromJson(json);
 }

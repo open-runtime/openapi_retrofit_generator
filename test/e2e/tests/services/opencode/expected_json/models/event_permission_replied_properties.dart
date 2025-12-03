@@ -8,15 +8,10 @@ part 'event_permission_replied_properties.g.dart';
 
 @JsonSerializable()
 class EventPermissionRepliedProperties {
-  const EventPermissionRepliedProperties({
-    required this.sessionId,
-    required this.permissionId,
-    required this.response,
-  });
+  const EventPermissionRepliedProperties({required this.sessionId, required this.permissionId, required this.response});
 
-  factory EventPermissionRepliedProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventPermissionRepliedPropertiesFromJson(json);
+  factory EventPermissionRepliedProperties.fromJson(Map<String, Object?> json) =>
+      _$EventPermissionRepliedPropertiesFromJson(json);
 
   @JsonKey(name: 'sessionID')
   final String sessionId;
@@ -24,6 +19,5 @@ class EventPermissionRepliedProperties {
   final String permissionId;
   final String response;
 
-  Map<String, Object?> toJson() =>
-      _$EventPermissionRepliedPropertiesToJson(this);
+  Map<String, Object?> toJson() => _$EventPermissionRepliedPropertiesToJson(this);
 }

@@ -26,6 +26,5 @@ abstract class Model26 with _$Model26 {
     @JsonKey(name: 'organs_votes') OrgansVotes? organsVotes,
   }) = _Model26;
 
-  factory Model26.fromJson(Map<String, Object?> json) =>
-      _$Model26FromJson(json);
+  factory Model26.fromJson(Map<String, Object?> json) => _$Model26FromJson(json);
 }

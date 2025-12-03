@@ -10,13 +10,9 @@ part 'event_todo_updated_properties.g.dart';
 
 @JsonSerializable()
 class EventTodoUpdatedProperties {
-  const EventTodoUpdatedProperties({
-    required this.sessionId,
-    required this.todos,
-  });
+  const EventTodoUpdatedProperties({required this.sessionId, required this.todos});
 
-  factory EventTodoUpdatedProperties.fromJson(Map<String, Object?> json) =>
-      _$EventTodoUpdatedPropertiesFromJson(json);
+  factory EventTodoUpdatedProperties.fromJson(Map<String, Object?> json) => _$EventTodoUpdatedPropertiesFromJson(json);
 
   @JsonKey(name: 'sessionID')
   final String sessionId;

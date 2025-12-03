@@ -25,6 +25,5 @@ class Model65 with Model65Mappable {
   final Organs? organs;
   final Taxon? taxon;
 
-  static Model65 fromJson(Map<String, dynamic> json) =>
-      Model65Mapper.fromJson(json);
+  static Model65 fromJson(Map<String, dynamic> json) => Model65Mapper.fromJson(json);
 }

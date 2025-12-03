@@ -17,6 +17,5 @@ abstract class SessionCommandRequest with _$SessionCommandRequest {
     String? model,
   }) = _SessionCommandRequest;
 
-  factory SessionCommandRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionCommandRequestFromJson(json);
+  factory SessionCommandRequest.fromJson(Map<String, Object?> json) => _$SessionCommandRequestFromJson(json);
 }

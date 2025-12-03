@@ -26,6 +26,5 @@ abstract class OrganizationEntity with _$OrganizationEntity {
     double? revenue,
   }) = _OrganizationEntity;
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
 }

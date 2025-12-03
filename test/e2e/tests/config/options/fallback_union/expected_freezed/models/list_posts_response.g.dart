@@ -6,24 +6,16 @@ part of 'list_posts_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ListPostsResponse _$ListPostsResponseFromJson(Map<String, dynamic> json) =>
-    _ListPostsResponse(
-      posts: (json['posts'] as List<dynamic>?)
-          ?.map((e) => PostModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      listPostsResponsePagination: json['ListPostsResponsePagination'] == null
-          ? null
-          : ListPostsResponsePagination.fromJson(
-              json['ListPostsResponsePagination'] as Map<String, dynamic>,
-            ),
-      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-    );
+_ListPostsResponse _$ListPostsResponseFromJson(Map<String, dynamic> json) => _ListPostsResponse(
+  posts: (json['posts'] as List<dynamic>?)?.map((e) => PostModel.fromJson(e as Map<String, dynamic>)).toList(),
+  listPostsResponsePagination: json['ListPostsResponsePagination'] == null
+      ? null
+      : ListPostsResponsePagination.fromJson(json['ListPostsResponsePagination'] as Map<String, dynamic>),
+  metadata: (json['metadata'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
+);
 
-Map<String, dynamic> _$ListPostsResponseToJson(_ListPostsResponse instance) =>
-    <String, dynamic>{
-      'posts': instance.posts,
-      'ListPostsResponsePagination': instance.listPostsResponsePagination,
-      'metadata': instance.metadata,
-    };
+Map<String, dynamic> _$ListPostsResponseToJson(_ListPostsResponse instance) => <String, dynamic>{
+  'posts': instance.posts,
+  'ListPostsResponsePagination': instance.listPostsResponsePagination,
+  'metadata': instance.metadata,
+};

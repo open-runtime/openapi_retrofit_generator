@@ -23,15 +23,12 @@ class PaymentRequest {
 
   const PaymentRequest(this._json);
 
-  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      PaymentRequest(json);
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) => PaymentRequest(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  PaymentRequestCreditCard toCreditCard() =>
-      PaymentRequestCreditCard.fromJson(_json);
-  PaymentRequestBankTransfer toBankTransfer() =>
-      PaymentRequestBankTransfer.fromJson(_json);
+  PaymentRequestCreditCard toCreditCard() => PaymentRequestCreditCard.fromJson(_json);
+  PaymentRequestBankTransfer toBankTransfer() => PaymentRequestBankTransfer.fromJson(_json);
   PaymentRequestCrypto toCrypto() => PaymentRequestCrypto.fromJson(_json);
 }
 
@@ -55,8 +52,7 @@ class PaymentRequestCreditCard {
     required this.amount,
   });
 
-  factory PaymentRequestCreditCard.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestCreditCardFromJson(json);
+  factory PaymentRequestCreditCard.fromJson(Map<String, Object?> json) => _$PaymentRequestCreditCardFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestCreditCardToJson(this);
 }
@@ -79,8 +75,7 @@ class PaymentRequestBankTransfer {
     required this.reference,
   });
 
-  factory PaymentRequestBankTransfer.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestBankTransferFromJson(json);
+  factory PaymentRequestBankTransfer.fromJson(Map<String, Object?> json) => _$PaymentRequestBankTransferFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestBankTransferToJson(this);
 }
@@ -101,8 +96,7 @@ class PaymentRequestCrypto {
     required this.transactionHash,
   });
 
-  factory PaymentRequestCrypto.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestCryptoFromJson(json);
+  factory PaymentRequestCrypto.fromJson(Map<String, Object?> json) => _$PaymentRequestCryptoFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestCryptoToJson(this);
 }

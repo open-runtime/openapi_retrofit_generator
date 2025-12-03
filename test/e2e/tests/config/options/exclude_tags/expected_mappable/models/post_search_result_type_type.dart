@@ -20,7 +20,6 @@ enum PostSearchResultTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PostSearchResultTypeType> get $valuesDefined => values
-      .where((value) => value != PostSearchResultTypeType.unknown)
-      .toList();
+  static List<PostSearchResultTypeType> get $valuesDefined =>
+      values.where((value) => value != PostSearchResultTypeType.unknown).toList();
 }

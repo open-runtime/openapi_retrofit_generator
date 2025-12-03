@@ -22,8 +22,7 @@ enum Organs {
 
   const Organs(this.json);
 
-  factory Organs.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Organs.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -33,6 +32,5 @@ enum Organs {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Organs> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Organs> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

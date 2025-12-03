@@ -17,8 +17,7 @@ class CreatePostRequest {
     this.metadata,
   });
 
-  factory CreatePostRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePostRequestFromJson(json);
+  factory CreatePostRequest.fromJson(Map<String, Object?> json) => _$CreatePostRequestFromJson(json);
 
   final String title;
   final String content;

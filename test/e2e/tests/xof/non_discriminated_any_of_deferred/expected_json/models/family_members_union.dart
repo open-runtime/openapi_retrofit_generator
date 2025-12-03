@@ -11,8 +11,7 @@ class FamilyMembersUnion {
 
   const FamilyMembersUnion(this._json);
 
-  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) =>
-      FamilyMembersUnion(json);
+  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) => FamilyMembersUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
@@ -27,8 +26,7 @@ class FamilyMembersUnionCat {
 
   const FamilyMembersUnionCat({required this.mewCount});
 
-  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionCatFromJson(json);
+  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionCatFromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionCatToJson(this);
 }
@@ -39,8 +37,7 @@ class FamilyMembersUnionDog {
 
   const FamilyMembersUnionDog({required this.barkSound});
 
-  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionDogFromJson(json);
+  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionDogFromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionDogToJson(this);
 }
@@ -51,8 +48,7 @@ class FamilyMembersUnionHuman {
 
   const FamilyMembersUnionHuman({required this.job});
 
-  factory FamilyMembersUnionHuman.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionHumanFromJson(json);
+  factory FamilyMembersUnionHuman.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionHumanFromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionHumanToJson(this);
 }

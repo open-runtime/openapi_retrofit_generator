@@ -14,11 +14,10 @@ SnapshotPart _$SnapshotPartFromJson(Map<String, dynamic> json) => SnapshotPart(
   snapshot: json['snapshot'] as String,
 );
 
-Map<String, dynamic> _$SnapshotPartToJson(SnapshotPart instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'sessionID': instance.sessionId,
-      'messageID': instance.messageId,
-      'type': instance.type,
-      'snapshot': instance.snapshot,
-    };
+Map<String, dynamic> _$SnapshotPartToJson(SnapshotPart instance) => <String, dynamic>{
+  'id': instance.id,
+  'sessionID': instance.sessionId,
+  'messageID': instance.messageId,
+  'type': instance.type,
+  'snapshot': instance.snapshot,
+};

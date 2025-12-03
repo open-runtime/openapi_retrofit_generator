@@ -17,6 +17,5 @@ class Filters with FiltersMappable {
   @MappableField(key: 'FiltersDateRange')
   final FiltersDateRange? filtersDateRange;
 
-  static Filters fromJson(Map<String, dynamic> json) =>
-      FiltersMapper.fromJson(json);
+  static Filters fromJson(Map<String, dynamic> json) => FiltersMapper.fromJson(json);
 }

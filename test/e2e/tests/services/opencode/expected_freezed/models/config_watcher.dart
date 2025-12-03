@@ -11,6 +11,5 @@ part 'config_watcher.g.dart';
 abstract class ConfigWatcher with _$ConfigWatcher {
   const factory ConfigWatcher({List<String>? ignore}) = _ConfigWatcher;
 
-  factory ConfigWatcher.fromJson(Map<String, Object?> json) =>
-      _$ConfigWatcherFromJson(json);
+  factory ConfigWatcher.fromJson(Map<String, Object?> json) => _$ConfigWatcherFromJson(json);
 }

@@ -11,6 +11,5 @@ part 'permission_time.g.dart';
 abstract class PermissionTime with _$PermissionTime {
   const factory PermissionTime({required num created}) = _PermissionTime;
 
-  factory PermissionTime.fromJson(Map<String, Object?> json) =>
-      _$PermissionTimeFromJson(json);
+  factory PermissionTime.fromJson(Map<String, Object?> json) => _$PermissionTimeFromJson(json);
 }

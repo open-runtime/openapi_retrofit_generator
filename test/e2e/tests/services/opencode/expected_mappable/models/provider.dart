@@ -10,15 +10,7 @@ part 'provider.mapper.dart';
 
 @MappableClass()
 class Provider with ProviderMappable {
-  const Provider({
-    this.api,
-    this.name,
-    this.env,
-    this.id,
-    this.npm,
-    this.models,
-    this.options,
-  });
+  const Provider({this.api, this.name, this.env, this.id, this.npm, this.models, this.options});
 
   final String? api;
   final String? name;
@@ -28,6 +20,5 @@ class Provider with ProviderMappable {
   final Map<String, Models>? models;
   final Map<String, dynamic>? options;
 
-  static Provider fromJson(Map<String, dynamic> json) =>
-      ProviderMapper.fromJson(json);
+  static Provider fromJson(Map<String, dynamic> json) => ProviderMapper.fromJson(json);
 }

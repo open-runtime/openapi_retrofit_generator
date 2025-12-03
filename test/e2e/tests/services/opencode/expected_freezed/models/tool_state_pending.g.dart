@@ -9,5 +9,6 @@ part of 'tool_state_pending.dart';
 _ToolStatePending _$ToolStatePendingFromJson(Map<String, dynamic> json) =>
     _ToolStatePending(status: json['status'] as String);
 
-Map<String, dynamic> _$ToolStatePendingToJson(_ToolStatePending instance) =>
-    <String, dynamic>{'status': instance.status};
+Map<String, dynamic> _$ToolStatePendingToJson(_ToolStatePending instance) => <String, dynamic>{
+  'status': instance.status,
+};

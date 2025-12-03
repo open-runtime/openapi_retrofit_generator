@@ -12,8 +12,7 @@ part 'model30.g.dart';
 class Model30 {
   const Model30({this.day, this.quota});
 
-  factory Model30.fromJson(Map<String, Object?> json) =>
-      _$Model30FromJson(json);
+  factory Model30.fromJson(Map<String, Object?> json) => _$Model30FromJson(json);
 
   final String? day;
   final Model29? quota;

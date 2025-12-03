@@ -27,6 +27,5 @@ enum PetStatusStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PetStatusStatus> get $valuesDefined =>
-      values.where((value) => value != PetStatusStatus.unknown).toList();
+  static List<PetStatusStatus> get $valuesDefined => values.where((value) => value != PetStatusStatus.unknown).toList();
 }

@@ -6,11 +6,7 @@ import 'package:openapi_retrofit_generator/src/parser/model/universal_request.da
 @immutable
 final class UniversalRestClient {
   /// Constructor for [UniversalRestClient]
-  const UniversalRestClient({
-    required this.name,
-    required this.imports,
-    required this.requests,
-  });
+  const UniversalRestClient({required this.name, required this.imports, required this.requests});
 
   /// Client name
   final String name;

@@ -21,8 +21,7 @@ enum Type2 {
 
   const Type2(this.json);
 
-  factory Type2.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Type2.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -32,6 +31,5 @@ enum Type2 {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Type2> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Type2> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

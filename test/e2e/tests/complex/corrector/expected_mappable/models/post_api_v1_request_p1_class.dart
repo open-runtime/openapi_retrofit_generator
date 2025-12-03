@@ -12,6 +12,5 @@ class PostApiV1RequestP1Class with PostApiV1RequestP1ClassMappable {
 
   final DateTime? test;
 
-  static PostApiV1RequestP1Class fromJson(Map<String, dynamic> json) =>
-      PostApiV1RequestP1ClassMapper.fromJson(json);
+  static PostApiV1RequestP1Class fromJson(Map<String, dynamic> json) => PostApiV1RequestP1ClassMapper.fromJson(json);
 }

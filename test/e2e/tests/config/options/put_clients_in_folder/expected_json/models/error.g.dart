@@ -9,12 +9,8 @@ part of 'error.dart';
 Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
   code: json['code'] as String,
   message: json['message'] as String,
-  details: (json['details'] as List<dynamic>?)
-      ?.map((e) => ErrorDetails.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  timestamp: json['timestamp'] == null
-      ? null
-      : DateTime.parse(json['timestamp'] as String),
+  details: (json['details'] as List<dynamic>?)?.map((e) => ErrorDetails.fromJson(e as Map<String, dynamic>)).toList(),
+  timestamp: json['timestamp'] == null ? null : DateTime.parse(json['timestamp'] as String),
   requestId: json['requestId'] as String?,
 );
 

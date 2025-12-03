@@ -12,8 +12,7 @@ part 'model86.g.dart';
 class Model86 {
   const Model86({required this.extent, this.exactMatch = false});
 
-  factory Model86.fromJson(Map<String, Object?> json) =>
-      _$Model86FromJson(json);
+  factory Model86.fromJson(Map<String, Object?> json) => _$Model86FromJson(json);
 
   final Model85 extent;
 

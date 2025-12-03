@@ -10,8 +10,7 @@ part 'find_text_response_lines.g.dart';
 class FindTextResponseLines {
   const FindTextResponseLines({required this.text});
 
-  factory FindTextResponseLines.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseLinesFromJson(json);
+  factory FindTextResponseLines.fromJson(Map<String, Object?> json) => _$FindTextResponseLinesFromJson(json);
 
   final String text;
 

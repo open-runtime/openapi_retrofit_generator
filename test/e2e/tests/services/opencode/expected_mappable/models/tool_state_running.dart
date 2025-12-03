@@ -25,6 +25,5 @@ class ToolStateRunning with ToolStateRunningMappable {
   final String? title;
   final Map<String, dynamic>? metadata;
 
-  static ToolStateRunning fromJson(Map<String, dynamic> json) =>
-      ToolStateRunningMapper.fromJson(json);
+  static ToolStateRunning fromJson(Map<String, dynamic> json) => ToolStateRunningMapper.fromJson(json);
 }

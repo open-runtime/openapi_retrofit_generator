@@ -11,6 +11,5 @@ part 'model24.g.dart';
 abstract class Model24 with _$Model24 {
   const factory Model24({required String species, num? score}) = _Model24;
 
-  factory Model24.fromJson(Map<String, Object?> json) =>
-      _$Model24FromJson(json);
+  factory Model24.fromJson(Map<String, Object?> json) => _$Model24FromJson(json);
 }

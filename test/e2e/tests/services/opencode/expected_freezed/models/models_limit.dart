@@ -9,9 +9,7 @@ part 'models_limit.g.dart';
 
 @Freezed()
 abstract class ModelsLimit with _$ModelsLimit {
-  const factory ModelsLimit({required num context, required num output}) =
-      _ModelsLimit;
+  const factory ModelsLimit({required num context, required num output}) = _ModelsLimit;
 
-  factory ModelsLimit.fromJson(Map<String, Object?> json) =>
-      _$ModelsLimitFromJson(json);
+  factory ModelsLimit.fromJson(Map<String, Object?> json) => _$ModelsLimitFromJson(json);
 }

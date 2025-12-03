@@ -13,6 +13,5 @@ class ErrorDetails with ErrorDetailsMappable {
   final String? field;
   final String? message;
 
-  static ErrorDetails fromJson(Map<String, dynamic> json) =>
-      ErrorDetailsMapper.fromJson(json);
+  static ErrorDetails fromJson(Map<String, dynamic> json) => ErrorDetailsMapper.fromJson(json);
 }

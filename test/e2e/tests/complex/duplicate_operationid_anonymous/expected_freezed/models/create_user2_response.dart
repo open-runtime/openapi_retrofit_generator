@@ -9,9 +9,7 @@ part 'create_user2_response.g.dart';
 
 @Freezed()
 abstract class CreateUser2Response with _$CreateUser2Response {
-  const factory CreateUser2Response({int? id, bool? created}) =
-      _CreateUser2Response;
+  const factory CreateUser2Response({int? id, bool? created}) = _CreateUser2Response;
 
-  factory CreateUser2Response.fromJson(Map<String, Object?> json) =>
-      _$CreateUser2ResponseFromJson(json);
+  factory CreateUser2Response.fromJson(Map<String, Object?> json) => _$CreateUser2ResponseFromJson(json);
 }

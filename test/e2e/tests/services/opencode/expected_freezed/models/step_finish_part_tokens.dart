@@ -15,10 +15,8 @@ abstract class StepFinishPartTokens with _$StepFinishPartTokens {
     required num input,
     required num output,
     required num reasoning,
-    @JsonKey(name: 'StepFinishPartTokensCache')
-    required StepFinishPartTokensCache stepFinishPartTokensCache,
+    @JsonKey(name: 'StepFinishPartTokensCache') required StepFinishPartTokensCache stepFinishPartTokensCache,
   }) = _StepFinishPartTokens;
 
-  factory StepFinishPartTokens.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartTokensFromJson(json);
+  factory StepFinishPartTokens.fromJson(Map<String, Object?> json) => _$StepFinishPartTokensFromJson(json);
 }

@@ -13,6 +13,5 @@ class RangeEnd with RangeEndMappable {
   final num line;
   final num character;
 
-  static RangeEnd fromJson(Map<String, dynamic> json) =>
-      RangeEndMapper.fromJson(json);
+  static RangeEnd fromJson(Map<String, dynamic> json) => RangeEndMapper.fromJson(json);
 }

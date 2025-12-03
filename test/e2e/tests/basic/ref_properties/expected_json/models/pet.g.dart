@@ -7,15 +7,11 @@ part of 'pet.dart';
 // **************************************************************************
 
 Pet _$PetFromJson(Map<String, dynamic> json) => Pet(
-  nullableDateTime: json['nullableDateTime'] == null
-      ? null
-      : DateTime.parse(json['nullableDateTime'] as String),
+  nullableDateTime: json['nullableDateTime'] == null ? null : DateTime.parse(json['nullableDateTime'] as String),
   nullableDateTimeRef: json['nullableDateTimeRef'] == null
       ? null
       : DateTime.parse(json['nullableDateTimeRef'] as String),
-  schedule: json['schedule'] == null
-      ? null
-      : ApiSchedule.fromJson(json['schedule'] as Map<String, dynamic>),
+  schedule: json['schedule'] == null ? null : ApiSchedule.fromJson(json['schedule'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$PetToJson(Pet instance) => <String, dynamic>{

@@ -34,8 +34,7 @@ abstract class Comment with _$Comment {
     DateTime? deletedAt,
   }) = _Comment;
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
   static const int contentMinLength = 1;
   static const int contentMaxLength = 2000;
   static const int depthMin = 0;

@@ -12,11 +12,8 @@ part 'session_message_response.g.dart';
 
 @Freezed()
 abstract class SessionMessageResponse with _$SessionMessageResponse {
-  const factory SessionMessageResponse({
-    required Message info,
-    required List<PartModel> parts,
-  }) = _SessionMessageResponse;
+  const factory SessionMessageResponse({required Message info, required List<PartModel> parts}) =
+      _SessionMessageResponse;
 
-  factory SessionMessageResponse.fromJson(Map<String, Object?> json) =>
-      _$SessionMessageResponseFromJson(json);
+  factory SessionMessageResponse.fromJson(Map<String, Object?> json) => _$SessionMessageResponseFromJson(json);
 }

@@ -10,17 +10,9 @@ part 'file_part_input.g.dart';
 
 @JsonSerializable()
 class FilePartInput {
-  const FilePartInput({
-    required this.type,
-    required this.mime,
-    required this.url,
-    this.id,
-    this.filename,
-    this.source,
-  });
+  const FilePartInput({required this.type, required this.mime, required this.url, this.id, this.filename, this.source});
 
-  factory FilePartInput.fromJson(Map<String, Object?> json) =>
-      _$FilePartInputFromJson(json);
+  factory FilePartInput.fromJson(Map<String, Object?> json) => _$FilePartInputFromJson(json);
 
   final String? id;
   final String type;

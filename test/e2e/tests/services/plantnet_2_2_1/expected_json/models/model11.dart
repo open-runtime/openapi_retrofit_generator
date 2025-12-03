@@ -10,8 +10,7 @@ part 'model11.g.dart';
 class Model11 {
   const Model11({this.id, this.o, this.m, this.s});
 
-  factory Model11.fromJson(Map<String, Object?> json) =>
-      _$Model11FromJson(json);
+  factory Model11.fromJson(Map<String, Object?> json) => _$Model11FromJson(json);
 
   final String? id;
   final String? o;

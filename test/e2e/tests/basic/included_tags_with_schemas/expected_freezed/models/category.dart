@@ -9,11 +9,8 @@ part 'category.g.dart';
 
 @Freezed()
 abstract class Category with _$Category {
-  const factory Category({
-    @JsonKey(includeIfNull: false) int? id,
-    @JsonKey(includeIfNull: false) String? name,
-  }) = _Category;
+  const factory Category({@JsonKey(includeIfNull: false) int? id, @JsonKey(includeIfNull: false) String? name}) =
+      _Category;
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 }

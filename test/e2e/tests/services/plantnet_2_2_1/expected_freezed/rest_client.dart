@@ -31,18 +31,13 @@ class RestClient {
 
   MyApiClient get myApi => _myApi ??= MyApiClient(_dio, baseUrl: _baseUrl);
 
-  GuardenClient get guarden =>
-      _guarden ??= GuardenClient(_dio, baseUrl: _baseUrl);
+  GuardenClient get guarden => _guarden ??= GuardenClient(_dio, baseUrl: _baseUrl);
 
-  PartnersClient get partners =>
-      _partners ??= PartnersClient(_dio, baseUrl: _baseUrl);
+  PartnersClient get partners => _partners ??= PartnersClient(_dio, baseUrl: _baseUrl);
 
-  SensorThingsClient get sensorThings =>
-      _sensorThings ??= SensorThingsClient(_dio, baseUrl: _baseUrl);
+  SensorThingsClient get sensorThings => _sensorThings ??= SensorThingsClient(_dio, baseUrl: _baseUrl);
 
-  AiTaxonomistClient get aiTaxonomist =>
-      _aiTaxonomist ??= AiTaxonomistClient(_dio, baseUrl: _baseUrl);
+  AiTaxonomistClient get aiTaxonomist => _aiTaxonomist ??= AiTaxonomistClient(_dio, baseUrl: _baseUrl);
 
-  DarwinCoreClient get darwinCore =>
-      _darwinCore ??= DarwinCoreClient(_dio, baseUrl: _baseUrl);
+  DarwinCoreClient get darwinCore => _darwinCore ??= DarwinCoreClient(_dio, baseUrl: _baseUrl);
 }

@@ -24,6 +24,5 @@ class BaseEntity with BaseEntityMappable {
   final String? description;
   final DateTime? updatedAt;
 
-  static BaseEntity fromJson(Map<String, dynamic> json) =>
-      BaseEntityMapper.fromJson(json);
+  static BaseEntity fromJson(Map<String, dynamic> json) => BaseEntityMapper.fromJson(json);
 }

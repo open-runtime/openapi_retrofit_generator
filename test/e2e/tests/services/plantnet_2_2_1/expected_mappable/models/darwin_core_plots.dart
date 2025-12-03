@@ -29,6 +29,5 @@ class DarwinCorePlots with DarwinCorePlotsMappable {
   final Facets? facets;
   final num? startTime;
 
-  static DarwinCorePlots fromJson(Map<String, dynamic> json) =>
-      DarwinCorePlotsMapper.fromJson(json);
+  static DarwinCorePlots fromJson(Map<String, dynamic> json) => DarwinCorePlotsMapper.fromJson(json);
 }

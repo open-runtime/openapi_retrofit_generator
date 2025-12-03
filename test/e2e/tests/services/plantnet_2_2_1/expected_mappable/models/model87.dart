@@ -14,6 +14,5 @@ class Model87 with Model87Mappable {
 
   final Point point;
 
-  static Model87 fromJson(Map<String, dynamic> json) =>
-      Model87Mapper.fromJson(json);
+  static Model87 fromJson(Map<String, dynamic> json) => Model87Mapper.fromJson(json);
 }

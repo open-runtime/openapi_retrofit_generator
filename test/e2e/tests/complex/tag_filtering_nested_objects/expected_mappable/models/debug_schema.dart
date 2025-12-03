@@ -17,6 +17,5 @@ class DebugSchema with DebugSchemaMappable {
   @MappableField(key: 'DebugSchemaData')
   final DebugSchemaData? debugSchemaData;
 
-  static DebugSchema fromJson(Map<String, dynamic> json) =>
-      DebugSchemaMapper.fromJson(json);
+  static DebugSchema fromJson(Map<String, dynamic> json) => DebugSchemaMapper.fromJson(json);
 }

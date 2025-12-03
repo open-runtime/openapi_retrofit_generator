@@ -13,28 +13,19 @@ part 'entity.g.dart';
 sealed class Entity {
   const Entity();
 
-  factory Entity.fromJson(Map<String, dynamic> json) =>
-      EntityUnionDeserializer.tryDeserialize(json);
+  factory Entity.fromJson(Map<String, dynamic> json) => EntityUnionDeserializer.tryDeserialize(json);
 
   Map<String, dynamic> toJson();
 }
 
 extension EntityUnionDeserializer on Entity {
-  static Entity tryDeserialize(
-    Map<String, dynamic> json, {
-    String key = 'entityType',
-    Map<Type, Object?>? mapping,
-  }) {
-    final mappingFallback = const <Type, Object?>{
-      EntityPerson: 'person',
-      EntityOrganization: 'organization',
-    };
+  static Entity tryDeserialize(Map<String, dynamic> json, {String key = 'entityType', Map<Type, Object?>? mapping}) {
+    final mappingFallback = const <Type, Object?>{EntityPerson: 'person', EntityOrganization: 'organization'};
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
       _ when value == effective[EntityPerson] => EntityPerson.fromJson(json),
-      _ when value == effective[EntityOrganization] =>
-        EntityOrganization.fromJson(json),
+      _ when value == effective[EntityOrganization] => EntityOrganization.fromJson(json),
       _ => EntityUnknown.fromJson(json),
     };
   }
@@ -66,8 +57,7 @@ class EntityPerson extends Entity {
     required this.socialProfiles,
   });
 
-  factory EntityPerson.fromJson(Map<String, dynamic> json) =>
-      _$EntityPersonFromJson(json);
+  factory EntityPerson.fromJson(Map<String, dynamic> json) => _$EntityPersonFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$EntityPersonToJson(this);
@@ -101,8 +91,7 @@ class EntityOrganization extends Entity {
     required this.revenue,
   });
 
-  factory EntityOrganization.fromJson(Map<String, dynamic> json) =>
-      _$EntityOrganizationFromJson(json);
+  factory EntityOrganization.fromJson(Map<String, dynamic> json) => _$EntityOrganizationFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$EntityOrganizationToJson(this);
@@ -114,8 +103,7 @@ class EntityUnknown extends Entity {
 
   const EntityUnknown(this.json);
 
-  factory EntityUnknown.fromJson(Map<String, dynamic> json) =>
-      EntityUnknown(json);
+  factory EntityUnknown.fromJson(Map<String, dynamic> json) => EntityUnknown(json);
 
   @override
   Map<String, dynamic> toJson() => json;

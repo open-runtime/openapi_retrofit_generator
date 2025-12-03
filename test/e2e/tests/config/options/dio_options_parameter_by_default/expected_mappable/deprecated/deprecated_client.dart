@@ -17,7 +17,5 @@ abstract class DeprecatedClient {
   /// Legacy user list endpoint
   @Deprecated('This method is marked as deprecated')
   @GET('/legacy/users')
-  Future<List<LegacyUser>> legacyListUsers({
-    @DioOptions() RequestOptions? options,
-  });
+  Future<List<LegacyUser>> legacyListUsers({@DioOptions() RequestOptions? options});
 }

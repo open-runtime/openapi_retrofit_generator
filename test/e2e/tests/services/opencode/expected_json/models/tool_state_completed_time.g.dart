@@ -6,17 +6,10 @@ part of 'tool_state_completed_time.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ToolStateCompletedTime _$ToolStateCompletedTimeFromJson(
-  Map<String, dynamic> json,
-) => ToolStateCompletedTime(
-  start: json['start'] as num,
-  end: json['end'] as num,
-  compacted: json['compacted'] as num?,
-);
+ToolStateCompletedTime _$ToolStateCompletedTimeFromJson(Map<String, dynamic> json) =>
+    ToolStateCompletedTime(start: json['start'] as num, end: json['end'] as num, compacted: json['compacted'] as num?);
 
-Map<String, dynamic> _$ToolStateCompletedTimeToJson(
-  ToolStateCompletedTime instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$ToolStateCompletedTimeToJson(ToolStateCompletedTime instance) => <String, dynamic>{
   'start': instance.start,
   'end': instance.end,
   'compacted': instance.compacted,

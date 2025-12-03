@@ -13,14 +13,7 @@ part 'pet.mapper.dart';
 /// A pet for sale in the pet store
 @MappableClass()
 class Pet with PetMappable {
-  const Pet({
-    required this.name,
-    required this.photoUrls,
-    this.id,
-    this.category,
-    this.tags,
-    this.status,
-  });
+  const Pet({required this.name, required this.photoUrls, this.id, this.category, this.tags, this.status});
 
   final String name;
   final List<String> photoUrls;

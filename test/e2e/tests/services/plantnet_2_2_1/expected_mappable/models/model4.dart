@@ -14,13 +14,7 @@ part 'model4.mapper.dart';
 
 @MappableClass()
 class Model4 with Model4Mappable {
-  const Model4({
-    this.account,
-    this.contract,
-    this.history,
-    this.billing,
-    this.security,
-  });
+  const Model4({this.account, this.contract, this.history, this.billing, this.security});
 
   final Account? account;
   final Contract? contract;
@@ -28,6 +22,5 @@ class Model4 with Model4Mappable {
   final Billing? billing;
   final Security? security;
 
-  static Model4 fromJson(Map<String, dynamic> json) =>
-      Model4Mapper.fromJson(json);
+  static Model4 fromJson(Map<String, dynamic> json) => Model4Mapper.fromJson(json);
 }

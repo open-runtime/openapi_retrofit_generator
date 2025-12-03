@@ -13,14 +13,7 @@ part 'pet.g.dart';
 /// A pet for sale in the pet store
 @JsonSerializable()
 class Pet {
-  const Pet({
-    required this.name,
-    required this.photoUrls,
-    this.id,
-    this.category,
-    this.tags,
-    this.status,
-  });
+  const Pet({required this.name, required this.photoUrls, this.id, this.category, this.tags, this.status});
 
   factory Pet.fromJson(Map<String, Object?> json) => _$PetFromJson(json);
 

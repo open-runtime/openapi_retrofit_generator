@@ -11,14 +11,9 @@ part 'get_users_response.g.dart';
 
 @JsonSerializable()
 class GetUsersResponse {
-  const GetUsersResponse({
-    required this.nextCursor,
-    required this.previousCursor,
-    required this.data,
-  });
+  const GetUsersResponse({required this.nextCursor, required this.previousCursor, required this.data});
 
-  factory GetUsersResponse.fromJson(Map<String, Object?> json) =>
-      _$GetUsersResponseFromJson(json);
+  factory GetUsersResponse.fromJson(Map<String, Object?> json) => _$GetUsersResponseFromJson(json);
 
   @JsonKey(includeIfNull: true)
   final num? nextCursor;

@@ -34,6 +34,5 @@ class AgentConfig with AgentConfigMappable {
   @MappableField(key: 'AgentConfigPermission')
   final AgentConfigPermission? agentConfigPermission;
 
-  static AgentConfig fromJson(Map<String, dynamic> json) =>
-      AgentConfigMapper.fromJson(json);
+  static AgentConfig fromJson(Map<String, dynamic> json) => AgentConfigMapper.fromJson(json);
 }

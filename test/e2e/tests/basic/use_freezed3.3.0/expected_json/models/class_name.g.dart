@@ -20,11 +20,7 @@ ClassName _$ClassNameFromJson(Map<String, dynamic> json) => ClassName(
   object1: json['object1'],
   array1: (json['array1'] as List<dynamic>).map((e) => e as String).toList(),
   array2: (json['array2'] as List<dynamic>)
-      .map(
-        (e) => (e as List<dynamic>)
-            .map((e) => (e as List<dynamic>).map((e) => e as String).toList())
-            .toList(),
-      )
+      .map((e) => (e as List<dynamic>).map((e) => (e as List<dynamic>).map((e) => e as String).toList()).toList())
       .toList(),
 );
 

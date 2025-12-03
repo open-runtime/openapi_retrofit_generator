@@ -10,8 +10,7 @@ part 'model35.g.dart';
 class Model35 {
   const Model35({this.determination, this.count, this.score, this.selected});
 
-  factory Model35.fromJson(Map<String, Object?> json) =>
-      _$Model35FromJson(json);
+  factory Model35.fromJson(Map<String, Object?> json) => _$Model35FromJson(json);
 
   final String? determination;
   final num? count;

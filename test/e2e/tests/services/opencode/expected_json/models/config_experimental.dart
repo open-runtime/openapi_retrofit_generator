@@ -10,13 +10,9 @@ part 'config_experimental.g.dart';
 
 @JsonSerializable()
 class ConfigExperimental {
-  const ConfigExperimental({
-    this.configExperimentalHook,
-    this.disablePasteSummary,
-  });
+  const ConfigExperimental({this.configExperimentalHook, this.disablePasteSummary});
 
-  factory ConfigExperimental.fromJson(Map<String, Object?> json) =>
-      _$ConfigExperimentalFromJson(json);
+  factory ConfigExperimental.fromJson(Map<String, Object?> json) => _$ConfigExperimentalFromJson(json);
 
   @JsonKey(name: 'ConfigExperimentalHook')
   final ConfigExperimentalHook? configExperimentalHook;

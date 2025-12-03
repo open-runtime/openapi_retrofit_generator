@@ -10,8 +10,7 @@ part 'model16.g.dart';
 class Model16 {
   const Model16({required this.id, required this.category});
 
-  factory Model16.fromJson(Map<String, Object?> json) =>
-      _$Model16FromJson(json);
+  factory Model16.fromJson(Map<String, Object?> json) => _$Model16FromJson(json);
 
   final String id;
   final String category;

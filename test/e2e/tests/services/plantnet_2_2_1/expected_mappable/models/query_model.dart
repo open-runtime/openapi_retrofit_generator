@@ -11,14 +11,7 @@ part 'query_model.mapper.dart';
 
 @MappableClass()
 class QueryModel with QueryModelMappable {
-  const QueryModel({
-    this.project,
-    this.images,
-    this.organs,
-    this.includeRelatedImages,
-    this.noReject,
-    this.type,
-  });
+  const QueryModel({this.project, this.images, this.organs, this.includeRelatedImages, this.noReject, this.type});
 
   final String? project;
   final Model14? images;
@@ -27,6 +20,5 @@ class QueryModel with QueryModelMappable {
   final bool? noReject;
   final String? type;
 
-  static QueryModel fromJson(Map<String, dynamic> json) =>
-      QueryModelMapper.fromJson(json);
+  static QueryModel fromJson(Map<String, dynamic> json) => QueryModelMapper.fromJson(json);
 }

@@ -37,6 +37,5 @@ class OrganizationEntity with OrganizationEntityMappable {
   final int? employeeCount;
   final double? revenue;
 
-  static OrganizationEntity fromJson(Map<String, dynamic> json) =>
-      OrganizationEntityMapper.fromJson(json);
+  static OrganizationEntity fromJson(Map<String, dynamic> json) => OrganizationEntityMapper.fromJson(json);
 }

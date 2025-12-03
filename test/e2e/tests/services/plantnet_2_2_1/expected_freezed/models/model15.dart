@@ -22,6 +22,5 @@ abstract class Model15 with _$Model15 {
     CommonNames? commonNames,
   }) = _Model15;
 
-  factory Model15.fromJson(Map<String, Object?> json) =>
-      _$Model15FromJson(json);
+  factory Model15.fromJson(Map<String, Object?> json) => _$Model15FromJson(json);
 }

@@ -16,6 +16,5 @@ abstract class ExampleParsable with _$ExampleParsable {
     required Map<String, Example> data,
   }) = _ExampleParsable;
 
-  factory ExampleParsable.fromJson(Map<String, Object?> json) =>
-      _$ExampleParsableFromJson(json);
+  factory ExampleParsable.fromJson(Map<String, Object?> json) => _$ExampleParsableFromJson(json);
 }

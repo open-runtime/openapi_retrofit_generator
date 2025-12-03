@@ -10,15 +10,7 @@ part 'patch_user_request.mapper.dart';
 
 @MappableClass()
 class PatchUserRequest with PatchUserRequestMappable {
-  const PatchUserRequest({
-    this.email,
-    this.username,
-    this.firstName,
-    this.lastName,
-    this.age,
-    this.bio,
-    this.settings,
-  });
+  const PatchUserRequest({this.email, this.username, this.firstName, this.lastName, this.age, this.bio, this.settings});
 
   final String? email;
   final String? username;
@@ -28,6 +20,5 @@ class PatchUserRequest with PatchUserRequestMappable {
   final String? bio;
   final UserSettings? settings;
 
-  static PatchUserRequest fromJson(Map<String, dynamic> json) =>
-      PatchUserRequestMapper.fromJson(json);
+  static PatchUserRequest fromJson(Map<String, dynamic> json) => PatchUserRequestMapper.fromJson(json);
 }

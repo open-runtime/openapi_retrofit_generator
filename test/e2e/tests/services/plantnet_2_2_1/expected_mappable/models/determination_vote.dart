@@ -13,6 +13,5 @@ class DeterminationVote with DeterminationVoteMappable {
   final String name;
   final num score;
 
-  static DeterminationVote fromJson(Map<String, dynamic> json) =>
-      DeterminationVoteMapper.fromJson(json);
+  static DeterminationVote fromJson(Map<String, dynamic> json) => DeterminationVoteMapper.fromJson(json);
 }

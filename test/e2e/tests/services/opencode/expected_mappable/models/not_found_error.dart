@@ -16,6 +16,5 @@ class NotFoundError with NotFoundErrorMappable {
   @MappableField(key: 'NotFoundErrorData')
   final NotFoundErrorData notFoundErrorData;
 
-  static NotFoundError fromJson(Map<String, dynamic> json) =>
-      NotFoundErrorMapper.fromJson(json);
+  static NotFoundError fromJson(Map<String, dynamic> json) => NotFoundErrorMapper.fromJson(json);
 }

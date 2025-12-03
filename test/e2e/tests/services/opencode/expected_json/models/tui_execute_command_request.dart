@@ -10,8 +10,7 @@ part 'tui_execute_command_request.g.dart';
 class TuiExecuteCommandRequest {
   const TuiExecuteCommandRequest({required this.command});
 
-  factory TuiExecuteCommandRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiExecuteCommandRequestFromJson(json);
+  factory TuiExecuteCommandRequest.fromJson(Map<String, Object?> json) => _$TuiExecuteCommandRequestFromJson(json);
 
   final String command;
 

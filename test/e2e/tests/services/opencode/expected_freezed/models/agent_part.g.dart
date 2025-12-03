@@ -14,17 +14,14 @@ _AgentPart _$AgentPartFromJson(Map<String, dynamic> json) => _AgentPart(
   name: json['name'] as String,
   agentPartSource: json['AgentPartSource'] == null
       ? null
-      : AgentPartSource.fromJson(
-          json['AgentPartSource'] as Map<String, dynamic>,
-        ),
+      : AgentPartSource.fromJson(json['AgentPartSource'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$AgentPartToJson(_AgentPart instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'sessionID': instance.sessionId,
-      'messageID': instance.messageId,
-      'type': instance.type,
-      'name': instance.name,
-      'AgentPartSource': instance.agentPartSource,
-    };
+Map<String, dynamic> _$AgentPartToJson(_AgentPart instance) => <String, dynamic>{
+  'id': instance.id,
+  'sessionID': instance.sessionId,
+  'messageID': instance.messageId,
+  'type': instance.type,
+  'name': instance.name,
+  'AgentPartSource': instance.agentPartSource,
+};

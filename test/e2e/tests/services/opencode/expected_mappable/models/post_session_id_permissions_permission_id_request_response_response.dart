@@ -26,12 +26,6 @@ enum PostSessionIdPermissionsPermissionIdRequestResponseResponse {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PostSessionIdPermissionsPermissionIdRequestResponseResponse>
-  get $valuesDefined => values
-      .where(
-        (value) =>
-            value !=
-            PostSessionIdPermissionsPermissionIdRequestResponseResponse.unknown,
-      )
-      .toList();
+  static List<PostSessionIdPermissionsPermissionIdRequestResponseResponse> get $valuesDefined =>
+      values.where((value) => value != PostSessionIdPermissionsPermissionIdRequestResponseResponse.unknown).toList();
 }

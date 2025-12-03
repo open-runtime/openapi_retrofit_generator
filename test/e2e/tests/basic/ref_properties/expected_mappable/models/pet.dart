@@ -11,11 +11,7 @@ part 'pet.mapper.dart';
 
 @MappableClass()
 class Pet with PetMappable {
-  const Pet({
-    required this.nullableDateTime,
-    required this.nullableDateTimeRef,
-    this.schedule,
-  });
+  const Pet({required this.nullableDateTime, required this.nullableDateTimeRef, this.schedule});
 
   final DateTime? nullableDateTime;
   final ApiNullableDateTime? nullableDateTimeRef;

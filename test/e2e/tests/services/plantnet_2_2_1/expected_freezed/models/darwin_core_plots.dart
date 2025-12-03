@@ -22,6 +22,5 @@ abstract class DarwinCorePlots with _$DarwinCorePlots {
     num? startTime,
   }) = _DarwinCorePlots;
 
-  factory DarwinCorePlots.fromJson(Map<String, Object?> json) =>
-      _$DarwinCorePlotsFromJson(json);
+  factory DarwinCorePlots.fromJson(Map<String, Object?> json) => _$DarwinCorePlotsFromJson(json);
 }

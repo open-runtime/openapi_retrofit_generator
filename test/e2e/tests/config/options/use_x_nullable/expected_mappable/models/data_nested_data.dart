@@ -13,6 +13,5 @@ class DataNestedData with DataNestedDataMappable {
   final int? id;
   final String? name;
 
-  static DataNestedData fromJson(Map<String, dynamic> json) =>
-      DataNestedDataMapper.fromJson(json);
+  static DataNestedData fromJson(Map<String, dynamic> json) => DataNestedDataMapper.fromJson(json);
 }

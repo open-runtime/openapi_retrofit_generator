@@ -22,22 +22,13 @@ abstract class PostsClient {
   ///
   /// [filters] - Complex filter object (inline schema).
   @GET('/posts')
-  Future<ListPostsResponse> listPosts({
-    @Query('filters') Filters? filters,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<ListPostsResponse> listPosts({@Query('filters') Filters? filters, @Extras() Map<String, dynamic>? extras});
 
   /// Create post with inline request schema
   @POST('/posts')
-  Future<PostModel> createPost({
-    @Body() CreatePostRequest? body,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<PostModel> createPost({@Body() CreatePostRequest? body, @Extras() Map<String, dynamic>? extras});
 
   /// Get post with nested comments
   @GET('/posts/{postId}')
-  Future<GetPostResponse> getPost({
-    @Path('postId') required String postId,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<GetPostResponse> getPost({@Path('postId') required String postId, @Extras() Map<String, dynamic>? extras});
 }

@@ -70,6 +70,5 @@ class ComplexCasingModel with ComplexCasingModelMappable {
   final String oauth2JwtToken;
   final String xml2jsonV3Parser;
 
-  static ComplexCasingModel fromJson(Map<String, dynamic> json) =>
-      ComplexCasingModelMapper.fromJson(json);
+  static ComplexCasingModel fromJson(Map<String, dynamic> json) => ComplexCasingModelMapper.fromJson(json);
 }

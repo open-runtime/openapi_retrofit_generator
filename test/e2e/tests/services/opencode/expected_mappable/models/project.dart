@@ -10,12 +10,7 @@ part 'project.mapper.dart';
 
 @MappableClass()
 class Project with ProjectMappable {
-  const Project({
-    required this.id,
-    required this.worktree,
-    required this.projectTime,
-    this.vcs,
-  });
+  const Project({required this.id, required this.worktree, required this.projectTime, this.vcs});
 
   final String id;
   final String worktree;
@@ -23,6 +18,5 @@ class Project with ProjectMappable {
   final ProjectTime projectTime;
   final String? vcs;
 
-  static Project fromJson(Map<String, dynamic> json) =>
-      ProjectMapper.fromJson(json);
+  static Project fromJson(Map<String, dynamic> json) => ProjectMapper.fromJson(json);
 }

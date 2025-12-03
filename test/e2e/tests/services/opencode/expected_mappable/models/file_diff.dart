@@ -22,6 +22,5 @@ class FileDiff with FileDiffMappable {
   final num additions;
   final num deletions;
 
-  static FileDiff fromJson(Map<String, dynamic> json) =>
-      FileDiffMapper.fromJson(json);
+  static FileDiff fromJson(Map<String, dynamic> json) => FileDiffMapper.fromJson(json);
 }

@@ -69,14 +69,11 @@ String _clientsImport(
 
 String _getFieldName(String name) {
   final camelName = name.toCamel;
-  return reservedFieldNames.contains(camelName)
-      ? '${camelName}Client'
-      : camelName;
+  return reservedFieldNames.contains(camelName) ? '${camelName}Client' : camelName;
 }
 
-String _privateFields(Set<String> names, String postfix) => names
-    .map((n) => '  ${n.toPascal + postfix.toPascal}? _${_getFieldName(n)};')
-    .join('\n');
+String _privateFields(Set<String> names, String postfix) =>
+    names.map((n) => '  ${n.toPascal + postfix.toPascal}? _${_getFieldName(n)};').join('\n');
 
 String _getters(Set<String> names, String postfix) => names
     .map((n) {

@@ -16,8 +16,7 @@ class FileDiff {
     required this.deletions,
   });
 
-  factory FileDiff.fromJson(Map<String, Object?> json) =>
-      _$FileDiffFromJson(json);
+  factory FileDiff.fromJson(Map<String, Object?> json) => _$FileDiffFromJson(json);
 
   final String file;
   final String before;

@@ -11,6 +11,5 @@ part 'partner_id.g.dart';
 abstract class PartnerId with _$PartnerId {
   const factory PartnerId({required String id}) = _PartnerId;
 
-  factory PartnerId.fromJson(Map<String, Object?> json) =>
-      _$PartnerIdFromJson(json);
+  factory PartnerId.fromJson(Map<String, Object?> json) => _$PartnerIdFromJson(json);
 }

@@ -24,8 +24,7 @@ class Session {
     this.sessionRevert,
   });
 
-  factory Session.fromJson(Map<String, Object?> json) =>
-      _$SessionFromJson(json);
+  factory Session.fromJson(Map<String, Object?> json) => _$SessionFromJson(json);
 
   final String id;
   @JsonKey(name: 'projectID')

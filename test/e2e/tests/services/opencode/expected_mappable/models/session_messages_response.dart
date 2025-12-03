@@ -16,6 +16,5 @@ class SessionMessagesResponse with SessionMessagesResponseMappable {
   final Message info;
   final List<PartModel> parts;
 
-  static SessionMessagesResponse fromJson(Map<String, dynamic> json) =>
-      SessionMessagesResponseMapper.fromJson(json);
+  static SessionMessagesResponse fromJson(Map<String, dynamic> json) => SessionMessagesResponseMapper.fromJson(json);
 }

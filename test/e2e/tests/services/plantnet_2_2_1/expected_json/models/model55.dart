@@ -10,16 +10,9 @@ part 'model55.g.dart';
 
 @JsonSerializable()
 class Model55 {
-  const Model55({
-    this.name,
-    this.coverage,
-    this.maxScore,
-    this.count,
-    this.location,
-  });
+  const Model55({this.name, this.coverage, this.maxScore, this.count, this.location});
 
-  factory Model55.fromJson(Map<String, Object?> json) =>
-      _$Model55FromJson(json);
+  factory Model55.fromJson(Map<String, Object?> json) => _$Model55FromJson(json);
 
   final String? name;
   final num? coverage;

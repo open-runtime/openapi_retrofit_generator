@@ -14,13 +14,7 @@ part 'model4.g.dart';
 
 @JsonSerializable()
 class Model4 {
-  const Model4({
-    this.account,
-    this.contract,
-    this.history,
-    this.billing,
-    this.security,
-  });
+  const Model4({this.account, this.contract, this.history, this.billing, this.security});
 
   factory Model4.fromJson(Map<String, Object?> json) => _$Model4FromJson(json);
 

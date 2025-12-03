@@ -9,9 +9,7 @@ part of 'account.dart';
 Account _$AccountFromJson(Map<String, dynamic> json) => Account(
   id: json['id'] as String?,
   username: json['username'] as String?,
-  name: json['name'] == null
-      ? null
-      : Name.fromJson(json['name'] as Map<String, dynamic>),
+  name: json['name'] == null ? null : Name.fromJson(json['name'] as Map<String, dynamic>),
   created: json['created'] as String?,
 );
 

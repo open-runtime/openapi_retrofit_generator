@@ -27,6 +27,5 @@ class PaymentResponse with PaymentResponseMappable {
   final PaymentResponseDetailsUnion? details;
   final String currency;
 
-  static PaymentResponse fromJson(Map<String, dynamic> json) =>
-      PaymentResponseMapper.fromJson(json);
+  static PaymentResponse fromJson(Map<String, dynamic> json) => PaymentResponseMapper.fromJson(json);
 }

@@ -8,11 +8,9 @@ part 'event_session_compacted_properties.freezed.dart';
 part 'event_session_compacted_properties.g.dart';
 
 @Freezed()
-abstract class EventSessionCompactedProperties
-    with _$EventSessionCompactedProperties {
-  const factory EventSessionCompactedProperties({
-    @JsonKey(name: 'sessionID') required String sessionId,
-  }) = _EventSessionCompactedProperties;
+abstract class EventSessionCompactedProperties with _$EventSessionCompactedProperties {
+  const factory EventSessionCompactedProperties({@JsonKey(name: 'sessionID') required String sessionId}) =
+      _EventSessionCompactedProperties;
 
   factory EventSessionCompactedProperties.fromJson(Map<String, Object?> json) =>
       _$EventSessionCompactedPropertiesFromJson(json);

@@ -11,6 +11,5 @@ part 'position.g.dart';
 abstract class Position with _$Position {
   const factory Position({required num lat, required num lon}) = _Position;
 
-  factory Position.fromJson(Map<String, Object?> json) =>
-      _$PositionFromJson(json);
+  factory Position.fromJson(Map<String, Object?> json) => _$PositionFromJson(json);
 }

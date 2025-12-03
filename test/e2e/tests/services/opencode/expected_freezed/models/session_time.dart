@@ -9,12 +9,7 @@ part 'session_time.g.dart';
 
 @Freezed()
 abstract class SessionTime with _$SessionTime {
-  const factory SessionTime({
-    required num created,
-    required num updated,
-    num? compacting,
-  }) = _SessionTime;
+  const factory SessionTime({required num created, required num updated, num? compacting}) = _SessionTime;
 
-  factory SessionTime.fromJson(Map<String, Object?> json) =>
-      _$SessionTimeFromJson(json);
+  factory SessionTime.fromJson(Map<String, Object?> json) => _$SessionTimeFromJson(json);
 }

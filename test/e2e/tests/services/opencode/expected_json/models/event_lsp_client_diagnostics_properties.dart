@@ -8,19 +8,14 @@ part 'event_lsp_client_diagnostics_properties.g.dart';
 
 @JsonSerializable()
 class EventLspClientDiagnosticsProperties {
-  const EventLspClientDiagnosticsProperties({
-    required this.serverId,
-    required this.path,
-  });
+  const EventLspClientDiagnosticsProperties({required this.serverId, required this.path});
 
-  factory EventLspClientDiagnosticsProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventLspClientDiagnosticsPropertiesFromJson(json);
+  factory EventLspClientDiagnosticsProperties.fromJson(Map<String, Object?> json) =>
+      _$EventLspClientDiagnosticsPropertiesFromJson(json);
 
   @JsonKey(name: 'serverID')
   final String serverId;
   final String path;
 
-  Map<String, Object?> toJson() =>
-      _$EventLspClientDiagnosticsPropertiesToJson(this);
+  Map<String, Object?> toJson() => _$EventLspClientDiagnosticsPropertiesToJson(this);
 }

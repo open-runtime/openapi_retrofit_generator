@@ -10,8 +10,7 @@ part 'text_part_input_time.g.dart';
 class TextPartInputTime {
   const TextPartInputTime({required this.start, this.end});
 
-  factory TextPartInputTime.fromJson(Map<String, Object?> json) =>
-      _$TextPartInputTimeFromJson(json);
+  factory TextPartInputTime.fromJson(Map<String, Object?> json) => _$TextPartInputTimeFromJson(json);
 
   final num start;
   final num? end;

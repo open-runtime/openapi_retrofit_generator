@@ -8,13 +8,11 @@ part 'get_parcel_pending_webhook_url_response.freezed.dart';
 part 'get_parcel_pending_webhook_url_response.g.dart';
 
 @Freezed()
-abstract class GetParcelPendingWebhookUrlResponse
-    with _$GetParcelPendingWebhookUrlResponse {
+abstract class GetParcelPendingWebhookUrlResponse with _$GetParcelPendingWebhookUrlResponse {
   const factory GetParcelPendingWebhookUrlResponse({
     @JsonKey(includeIfNull: false, name: 'webhookURL') String? webhookUrl,
   }) = _GetParcelPendingWebhookUrlResponse;
 
-  factory GetParcelPendingWebhookUrlResponse.fromJson(
-    Map<String, Object?> json,
-  ) => _$GetParcelPendingWebhookUrlResponseFromJson(json);
+  factory GetParcelPendingWebhookUrlResponse.fromJson(Map<String, Object?> json) =>
+      _$GetParcelPendingWebhookUrlResponseFromJson(json);
 }

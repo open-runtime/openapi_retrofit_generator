@@ -20,6 +20,5 @@ abstract class FileContentPatch with _$FileContentPatch {
     @JsonKey(name: 'index') String? indexField,
   }) = _FileContentPatch;
 
-  factory FileContentPatch.fromJson(Map<String, Object?> json) =>
-      _$FileContentPatchFromJson(json);
+  factory FileContentPatch.fromJson(Map<String, Object?> json) => _$FileContentPatchFromJson(json);
 }

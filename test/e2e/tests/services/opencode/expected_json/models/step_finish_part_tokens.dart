@@ -17,8 +17,7 @@ class StepFinishPartTokens {
     required this.stepFinishPartTokensCache,
   });
 
-  factory StepFinishPartTokens.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartTokensFromJson(json);
+  factory StepFinishPartTokens.fromJson(Map<String, Object?> json) => _$StepFinishPartTokensFromJson(json);
 
   final num input;
   final num output;

@@ -9,13 +9,7 @@ part 'geolocation.g.dart';
 
 @Freezed()
 abstract class Geolocation with _$Geolocation {
-  const factory Geolocation({
-    required num lat,
-    required num lon,
-    required String place,
-    num? accuracy,
-  }) = _Geolocation;
+  const factory Geolocation({required num lat, required num lon, required String place, num? accuracy}) = _Geolocation;
 
-  factory Geolocation.fromJson(Map<String, Object?> json) =>
-      _$GeolocationFromJson(json);
+  factory Geolocation.fromJson(Map<String, Object?> json) => _$GeolocationFromJson(json);
 }

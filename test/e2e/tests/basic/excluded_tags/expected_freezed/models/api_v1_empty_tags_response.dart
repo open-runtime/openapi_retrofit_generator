@@ -9,10 +9,8 @@ part 'api_v1_empty_tags_response.g.dart';
 
 @Freezed()
 abstract class ApiV1EmptyTagsResponse with _$ApiV1EmptyTagsResponse {
-  const factory ApiV1EmptyTagsResponse({
-    @JsonKey(includeIfNull: false) String? emptyTagsField,
-  }) = _ApiV1EmptyTagsResponse;
+  const factory ApiV1EmptyTagsResponse({@JsonKey(includeIfNull: false) String? emptyTagsField}) =
+      _ApiV1EmptyTagsResponse;
 
-  factory ApiV1EmptyTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$ApiV1EmptyTagsResponseFromJson(json);
+  factory ApiV1EmptyTagsResponse.fromJson(Map<String, Object?> json) => _$ApiV1EmptyTagsResponseFromJson(json);
 }

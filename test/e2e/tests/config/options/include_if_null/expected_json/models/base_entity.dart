@@ -17,8 +17,7 @@ class BaseEntity {
     this.updatedAt,
   });
 
-  factory BaseEntity.fromJson(Map<String, Object?> json) =>
-      _$BaseEntityFromJson(json);
+  factory BaseEntity.fromJson(Map<String, Object?> json) => _$BaseEntityFromJson(json);
 
   final String id;
   final String entityType;

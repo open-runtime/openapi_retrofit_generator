@@ -16,6 +16,5 @@ class UnknownError with UnknownErrorMappable {
   @MappableField(key: 'UnknownErrorData')
   final UnknownErrorData unknownErrorData;
 
-  static UnknownError fromJson(Map<String, dynamic> json) =>
-      UnknownErrorMapper.fromJson(json);
+  static UnknownError fromJson(Map<String, dynamic> json) => UnknownErrorMapper.fromJson(json);
 }

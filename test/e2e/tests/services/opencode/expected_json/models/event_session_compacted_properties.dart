@@ -16,6 +16,5 @@ class EventSessionCompactedProperties {
   @JsonKey(name: 'sessionID')
   final String sessionId;
 
-  Map<String, Object?> toJson() =>
-      _$EventSessionCompactedPropertiesToJson(this);
+  Map<String, Object?> toJson() => _$EventSessionCompactedPropertiesToJson(this);
 }

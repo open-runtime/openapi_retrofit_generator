@@ -12,6 +12,5 @@ class Count with CountMappable {
 
   final num? identify;
 
-  static Count fromJson(Map<String, dynamic> json) =>
-      CountMapper.fromJson(json);
+  static Count fromJson(Map<String, dynamic> json) => CountMapper.fromJson(json);
 }

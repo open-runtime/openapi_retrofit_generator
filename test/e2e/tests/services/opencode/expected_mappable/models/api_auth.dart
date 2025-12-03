@@ -13,6 +13,5 @@ class ApiAuth with ApiAuthMappable {
   final String type;
   final String key;
 
-  static ApiAuth fromJson(Map<String, dynamic> json) =>
-      ApiAuthMapper.fromJson(json);
+  static ApiAuth fromJson(Map<String, dynamic> json) => ApiAuthMapper.fromJson(json);
 }

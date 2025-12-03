@@ -15,6 +15,5 @@ class DataClass2 with DataClass2Mappable {
   final List<Map<String, List<List<Map<String, DataClass1>>>>> errors;
   final String? title;
 
-  static DataClass2 fromJson(Map<String, dynamic> json) =>
-      DataClass2Mapper.fromJson(json);
+  static DataClass2 fromJson(Map<String, dynamic> json) => DataClass2Mapper.fromJson(json);
 }

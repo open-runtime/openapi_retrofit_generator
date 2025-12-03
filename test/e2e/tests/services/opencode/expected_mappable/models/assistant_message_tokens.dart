@@ -23,6 +23,5 @@ class AssistantMessageTokens with AssistantMessageTokensMappable {
   @MappableField(key: 'AssistantMessageTokensCache')
   final AssistantMessageTokensCache assistantMessageTokensCache;
 
-  static AssistantMessageTokens fromJson(Map<String, dynamic> json) =>
-      AssistantMessageTokensMapper.fromJson(json);
+  static AssistantMessageTokens fromJson(Map<String, dynamic> json) => AssistantMessageTokensMapper.fromJson(json);
 }

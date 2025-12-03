@@ -37,11 +37,7 @@ Future<void> main(List<String> arguments) async {
         final processor = GenProcessor(config);
         final (openApi, statistics) = await processor.generateFiles();
 
-        schemaStatisticsMessage(
-          openApi: openApi,
-          statistics: statistics,
-          name: config.name,
-        );
+        schemaStatisticsMessage(openApi: openApi, statistics: statistics, name: config.name);
         totalStatistic = totalStatistic?.merge(statistics);
         totalStatistic ??= statistics;
         successSchemasCount++;
@@ -58,10 +54,7 @@ Future<void> main(List<String> arguments) async {
       );
     }
 
-    successMessage(
-      successSchemasCount: successSchemasCount,
-      schemesCount: configs.length,
-    );
+    successMessage(successSchemasCount: successSchemasCount, schemesCount: configs.length);
   } on Exception catch (e) {
     exitWithError('Failed to generate files.\n$e');
   }

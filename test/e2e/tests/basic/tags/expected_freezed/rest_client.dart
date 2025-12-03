@@ -25,12 +25,9 @@ class RestClient {
 
   ApiClient get api => _api ??= ApiClient(_dio, baseUrl: _baseUrl);
 
-  FallbackClient get fallback =>
-      _fallback ??= FallbackClient(_dio, baseUrl: _baseUrl);
+  FallbackClient get fallback => _fallback ??= FallbackClient(_dio, baseUrl: _baseUrl);
 
-  Client2Client get client2 =>
-      _client2 ??= Client2Client(_dio, baseUrl: _baseUrl);
+  Client2Client get client2 => _client2 ??= Client2Client(_dio, baseUrl: _baseUrl);
 
-  ParcelPendingClient get parcelPending =>
-      _parcelPending ??= ParcelPendingClient(_dio, baseUrl: _baseUrl);
+  ParcelPendingClient get parcelPending => _parcelPending ??= ParcelPendingClient(_dio, baseUrl: _baseUrl);
 }

@@ -33,8 +33,7 @@ class GetPostResponse {
     this.comments,
   });
 
-  factory GetPostResponse.fromJson(Map<String, Object?> json) =>
-      _$GetPostResponseFromJson(json);
+  factory GetPostResponse.fromJson(Map<String, Object?> json) => _$GetPostResponseFromJson(json);
 
   final String id;
   final String title;

@@ -11,14 +11,7 @@ part 'image.mapper.dart';
 
 @MappableClass()
 class Image with ImageMappable {
-  const Image({
-    this.organ,
-    this.author,
-    this.license,
-    this.date,
-    this.citation,
-    this.url,
-  });
+  const Image({this.organ, this.author, this.license, this.date, this.citation, this.url});
 
   final String? organ;
   final String? author;
@@ -27,6 +20,5 @@ class Image with ImageMappable {
   final String? citation;
   final Url? url;
 
-  static Image fromJson(Map<String, dynamic> json) =>
-      ImageMapper.fromJson(json);
+  static Image fromJson(Map<String, dynamic> json) => ImageMapper.fromJson(json);
 }

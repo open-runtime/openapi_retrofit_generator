@@ -20,6 +20,5 @@ abstract class FilePartInput with _$FilePartInput {
     FilePartSource? source,
   }) = _FilePartInput;
 
-  factory FilePartInput.fromJson(Map<String, Object?> json) =>
-      _$FilePartInputFromJson(json);
+  factory FilePartInput.fromJson(Map<String, Object?> json) => _$FilePartInputFromJson(json);
 }

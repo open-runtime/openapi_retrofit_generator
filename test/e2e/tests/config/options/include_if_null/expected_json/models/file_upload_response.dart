@@ -17,8 +17,7 @@ class FileUploadResponse {
     this.uploadedAt,
   });
 
-  factory FileUploadResponse.fromJson(Map<String, Object?> json) =>
-      _$FileUploadResponseFromJson(json);
+  factory FileUploadResponse.fromJson(Map<String, Object?> json) => _$FileUploadResponseFromJson(json);
 
   final String id;
   final String url;

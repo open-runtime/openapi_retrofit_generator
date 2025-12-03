@@ -14,12 +14,10 @@ abstract class ToolStateRunning with _$ToolStateRunning {
   const factory ToolStateRunning({
     required String status,
     required dynamic input,
-    @JsonKey(name: 'ToolStateRunningTime')
-    required ToolStateRunningTime toolStateRunningTime,
+    @JsonKey(name: 'ToolStateRunningTime') required ToolStateRunningTime toolStateRunningTime,
     String? title,
     Map<String, dynamic>? metadata,
   }) = _ToolStateRunning;
 
-  factory ToolStateRunning.fromJson(Map<String, Object?> json) =>
-      _$ToolStateRunningFromJson(json);
+  factory ToolStateRunning.fromJson(Map<String, Object?> json) => _$ToolStateRunningFromJson(json);
 }

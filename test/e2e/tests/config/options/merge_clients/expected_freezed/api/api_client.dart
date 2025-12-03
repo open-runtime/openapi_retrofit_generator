@@ -81,10 +81,7 @@ abstract class ApiClient {
   ///
   /// [userId] - User ID.
   @PUT('/users/{userId}')
-  Future<User> updateUser({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> updateUser({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -92,10 +89,7 @@ abstract class ApiClient {
   ///
   /// [userId] - User ID.
   @PATCH('/users/{userId}')
-  Future<User> patchUser({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUser({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///
@@ -166,9 +160,7 @@ abstract class ApiClient {
   /// Download file
   @GET('/files/{fileId}/download')
   @DioResponseType(ResponseType.bytes)
-  Future<HttpResponse<List<int>>> downloadFile({
-    @Path('fileId') required String fileId,
-  });
+  Future<HttpResponse<List<int>>> downloadFile({@Path('fileId') required String fileId});
 
   /// Create payment (oneOf for payment methods).
   ///

@@ -10,8 +10,7 @@ part 'assistant_message_path.g.dart';
 class AssistantMessagePath {
   const AssistantMessagePath({required this.cwd, required this.root});
 
-  factory AssistantMessagePath.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessagePathFromJson(json);
+  factory AssistantMessagePath.fromJson(Map<String, Object?> json) => _$AssistantMessagePathFromJson(json);
 
   final String cwd;
   final String root;

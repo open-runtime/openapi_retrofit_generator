@@ -90,14 +90,10 @@ class ClassWithNullableTypes with ClassWithNullableTypesMappable {
   final List<dynamic>? p2List;
   @MappableField(key: 'p3_list')
   final dynamic? p3List;
-  @MappableField(
-    key: 'nonNull_anyOf',
-    hook: const ClassWithNullableTypesNonNullAnyOfUnionHook(),
-  )
+  @MappableField(key: 'nonNull_anyOf', hook: const ClassWithNullableTypesNonNullAnyOfUnionHook())
   final ClassWithNullableTypesNonNullAnyOfUnion? nonNullAnyOf;
   @MappableField(key: 'optional_null_anyOf')
   final String? optionalNullAnyOf;
 
-  static ClassWithNullableTypes fromJson(Map<String, dynamic> json) =>
-      ClassWithNullableTypesMapper.fromJson(json);
+  static ClassWithNullableTypes fromJson(Map<String, dynamic> json) => ClassWithNullableTypesMapper.fromJson(json);
 }

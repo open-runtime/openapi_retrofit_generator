@@ -6,9 +6,6 @@ part of 'pet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Pet _$PetFromJson(Map<String, dynamic> json) =>
-    _Pet(deprecatedProperty: (json['deprecatedProperty'] as num).toInt());
+_Pet _$PetFromJson(Map<String, dynamic> json) => _Pet(deprecatedProperty: (json['deprecatedProperty'] as num).toInt());
 
-Map<String, dynamic> _$PetToJson(_Pet instance) => <String, dynamic>{
-  'deprecatedProperty': instance.deprecatedProperty,
-};
+Map<String, dynamic> _$PetToJson(_Pet instance) => <String, dynamic>{'deprecatedProperty': instance.deprecatedProperty};

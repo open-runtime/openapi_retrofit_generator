@@ -32,6 +32,5 @@ enum AppLogRequestLevelLevel {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<AppLogRequestLevelLevel> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<AppLogRequestLevelLevel> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

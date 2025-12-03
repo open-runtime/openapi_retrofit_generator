@@ -13,6 +13,5 @@ class Model5 with Model5Mappable {
   final String? name;
   final String? code;
 
-  static Model5 fromJson(Map<String, dynamic> json) =>
-      Model5Mapper.fromJson(json);
+  static Model5 fromJson(Map<String, dynamic> json) => Model5Mapper.fromJson(json);
 }

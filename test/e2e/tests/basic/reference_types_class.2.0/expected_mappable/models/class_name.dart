@@ -15,6 +15,5 @@ class ClassName with ClassNameMappable {
   final int id;
   final AnotherClass another;
 
-  static ClassName fromJson(Map<String, dynamic> json) =>
-      ClassNameMapper.fromJson(json);
+  static ClassName fromJson(Map<String, dynamic> json) => ClassNameMapper.fromJson(json);
 }

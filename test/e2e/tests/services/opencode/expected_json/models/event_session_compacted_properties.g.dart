@@ -6,10 +6,8 @@ part of 'event_session_compacted_properties.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EventSessionCompactedProperties _$EventSessionCompactedPropertiesFromJson(
-  Map<String, dynamic> json,
-) => EventSessionCompactedProperties(sessionId: json['sessionID'] as String);
+EventSessionCompactedProperties _$EventSessionCompactedPropertiesFromJson(Map<String, dynamic> json) =>
+    EventSessionCompactedProperties(sessionId: json['sessionID'] as String);
 
-Map<String, dynamic> _$EventSessionCompactedPropertiesToJson(
-  EventSessionCompactedProperties instance,
-) => <String, dynamic>{'sessionID': instance.sessionId};
+Map<String, dynamic> _$EventSessionCompactedPropertiesToJson(EventSessionCompactedProperties instance) =>
+    <String, dynamic>{'sessionID': instance.sessionId};

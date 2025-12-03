@@ -8,15 +8,9 @@ part 'create_comment_request.g.dart';
 
 @JsonSerializable()
 class CreateCommentRequest {
-  const CreateCommentRequest({
-    required this.content,
-    required this.authorId,
-    this.postId,
-    this.parentId,
-  });
+  const CreateCommentRequest({required this.content, required this.authorId, this.postId, this.parentId});
 
-  factory CreateCommentRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateCommentRequestFromJson(json);
+  factory CreateCommentRequest.fromJson(Map<String, Object?> json) => _$CreateCommentRequestFromJson(json);
 
   final String content;
   final String authorId;

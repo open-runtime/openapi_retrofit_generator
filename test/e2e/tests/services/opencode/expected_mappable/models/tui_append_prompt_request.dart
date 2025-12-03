@@ -12,6 +12,5 @@ class TuiAppendPromptRequest with TuiAppendPromptRequestMappable {
 
   final String text;
 
-  static TuiAppendPromptRequest fromJson(Map<String, dynamic> json) =>
-      TuiAppendPromptRequestMapper.fromJson(json);
+  static TuiAppendPromptRequest fromJson(Map<String, dynamic> json) => TuiAppendPromptRequestMapper.fromJson(json);
 }

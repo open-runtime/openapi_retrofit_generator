@@ -9,9 +9,7 @@ part 'range_end.g.dart';
 
 @Freezed()
 abstract class RangeEnd with _$RangeEnd {
-  const factory RangeEnd({required num line, required num character}) =
-      _RangeEnd;
+  const factory RangeEnd({required num line, required num character}) = _RangeEnd;
 
-  factory RangeEnd.fromJson(Map<String, Object?> json) =>
-      _$RangeEndFromJson(json);
+  factory RangeEnd.fromJson(Map<String, Object?> json) => _$RangeEndFromJson(json);
 }

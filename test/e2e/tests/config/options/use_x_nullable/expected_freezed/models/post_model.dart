@@ -31,6 +31,5 @@ abstract class PostModel with _$PostModel {
     DateTime? updatedAt,
   }) = _PostModel;
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 }

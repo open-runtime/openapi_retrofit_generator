@@ -10,8 +10,7 @@ part 'class_with_nullable_types_p3.g.dart';
 class ClassWithNullableTypesP3 {
   const ClassWithNullableTypesP3({required this.p1, required this.p2});
 
-  factory ClassWithNullableTypesP3.fromJson(Map<String, Object?> json) =>
-      _$ClassWithNullableTypesP3FromJson(json);
+  factory ClassWithNullableTypesP3.fromJson(Map<String, Object?> json) => _$ClassWithNullableTypesP3FromJson(json);
 
   final String p1;
   final List<String> p2;

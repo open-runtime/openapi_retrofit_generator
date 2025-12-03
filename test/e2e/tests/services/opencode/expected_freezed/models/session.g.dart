@@ -12,9 +12,7 @@ _Session _$SessionFromJson(Map<String, dynamic> json) => _Session(
   directory: json['directory'] as String,
   title: json['title'] as String,
   version: json['version'] as String,
-  sessionTime: SessionTime.fromJson(
-    json['SessionTime'] as Map<String, dynamic>,
-  ),
+  sessionTime: SessionTime.fromJson(json['SessionTime'] as Map<String, dynamic>),
   parentId: json['parentID'] as String?,
   sessionShare: json['SessionShare'] == null
       ? null

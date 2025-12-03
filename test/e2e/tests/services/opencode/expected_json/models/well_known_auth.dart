@@ -8,14 +8,9 @@ part 'well_known_auth.g.dart';
 
 @JsonSerializable()
 class WellKnownAuth {
-  const WellKnownAuth({
-    required this.type,
-    required this.key,
-    required this.token,
-  });
+  const WellKnownAuth({required this.type, required this.key, required this.token});
 
-  factory WellKnownAuth.fromJson(Map<String, Object?> json) =>
-      _$WellKnownAuthFromJson(json);
+  factory WellKnownAuth.fromJson(Map<String, Object?> json) => _$WellKnownAuthFromJson(json);
 
   final String type;
   final String key;

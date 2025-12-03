@@ -17,16 +17,11 @@ abstract class ApiClient {
   /// [offsetRequiredTrueWithDefault] - offsetRequiredTrueWithDefault
   @GET('/pets')
   Future<List<Pet>> findPets({
-    @Query('offsetRequiredTrueWithoutDefault')
-    required int offsetRequiredTrueWithoutDefault,
-    @Query('offsetRequiredFalseWithoutDefault')
-    int? offsetRequiredFalseWithoutDefault,
-    @Query('offsetNoRequiredWithoutDefault')
-    int? offsetNoRequiredWithoutDefault,
-    @Query('offsetRequiredFalseWithDefault')
-    int? offsetRequiredFalseWithDefault = 0,
+    @Query('offsetRequiredTrueWithoutDefault') required int offsetRequiredTrueWithoutDefault,
+    @Query('offsetRequiredFalseWithoutDefault') int? offsetRequiredFalseWithoutDefault,
+    @Query('offsetNoRequiredWithoutDefault') int? offsetNoRequiredWithoutDefault,
+    @Query('offsetRequiredFalseWithDefault') int? offsetRequiredFalseWithDefault = 0,
     @Query('offsetNoRequiredWithDefault') int? offsetNoRequiredWithDefault = 0,
-    @Query('offsetRequiredTrueWithDefault')
-    required int offsetRequiredTrueWithDefault,
+    @Query('offsetRequiredTrueWithDefault') required int offsetRequiredTrueWithDefault,
   });
 }

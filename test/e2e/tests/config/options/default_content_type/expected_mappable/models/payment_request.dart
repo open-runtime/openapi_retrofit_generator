@@ -20,11 +20,7 @@ part 'payment_request.mapper.dart';
 
 @MappableClass(
   discriminatorKey: 'paymentType',
-  includeSubClasses: [
-    PaymentRequestCreditCard,
-    PaymentRequestBankTransfer,
-    PaymentRequestCrypto,
-  ],
+  includeSubClasses: [PaymentRequestCreditCard, PaymentRequestBankTransfer, PaymentRequestCrypto],
 )
 sealed class PaymentRequest with PaymentRequestMappable {
   const PaymentRequest();
@@ -48,22 +44,16 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[PaymentRequestCreditCard] =>
-        PaymentRequestCreditCardMapper.fromJson(json),
-      _ when value == effective[PaymentRequestBankTransfer] =>
-        PaymentRequestBankTransferMapper.fromJson(json),
-      _ when value == effective[PaymentRequestCrypto] =>
-        PaymentRequestCryptoMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentRequest',
-      ),
+      _ when value == effective[PaymentRequestCreditCard] => PaymentRequestCreditCardMapper.fromJson(json),
+      _ when value == effective[PaymentRequestBankTransfer] => PaymentRequestBankTransferMapper.fromJson(json),
+      _ when value == effective[PaymentRequestCrypto] => PaymentRequestCryptoMapper.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentRequest'),
     };
   }
 }
 
 @MappableClass(discriminatorValue: 'credit_card')
-class PaymentRequestCreditCard extends PaymentRequest
-    with PaymentRequestCreditCardMappable {
+class PaymentRequestCreditCard extends PaymentRequest with PaymentRequestCreditCardMappable {
   final PaymentRequestPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -84,8 +74,7 @@ class PaymentRequestCreditCard extends PaymentRequest
 }
 
 @MappableClass(discriminatorValue: 'bank_transfer')
-class PaymentRequestBankTransfer extends PaymentRequest
-    with PaymentRequestBankTransferMappable {
+class PaymentRequestBankTransfer extends PaymentRequest with PaymentRequestBankTransferMappable {
   final PaymentRequestPaymentTypePaymentType2 paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -104,8 +93,7 @@ class PaymentRequestBankTransfer extends PaymentRequest
 }
 
 @MappableClass(discriminatorValue: 'crypto')
-class PaymentRequestCrypto extends PaymentRequest
-    with PaymentRequestCryptoMappable {
+class PaymentRequestCrypto extends PaymentRequest with PaymentRequestCryptoMappable {
   final PaymentRequestPaymentTypePaymentType3 paymentType;
   final String walletAddress;
   final PaymentRequestCryptocurrencyCryptocurrency cryptocurrency;

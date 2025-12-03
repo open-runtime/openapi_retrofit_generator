@@ -13,15 +13,11 @@ part 'one_of_element.g.dart';
 abstract class OneOfElement with _$OneOfElement {
   const factory OneOfElement({
     @JsonKey(includeIfNull: true) required EnumClass? nullableButRequiredClass,
-    @JsonKey(includeIfNull: true)
-    required List<int>? requiredNullableListNonNullItems,
-    @JsonKey(includeIfNull: true)
-    required List<int?>? requiredNullableListNullableItems,
+    @JsonKey(includeIfNull: true) required List<int>? requiredNullableListNonNullItems,
+    @JsonKey(includeIfNull: true) required List<int?>? requiredNullableListNullableItems,
     @Default(EnumClass.value1) EnumClass anyClass,
     @Default(const []) List<EnumClass> oneType,
-    @JsonKey(includeIfNull: true)
-    @Default(const [])
-    List<EnumClass>? nullableType,
+    @JsonKey(includeIfNull: true) @Default(const []) List<EnumClass>? nullableType,
     @JsonKey(includeIfNull: false) EnumClass? allClass,
     @JsonKey(includeIfNull: false) EnumClass? oneClass,
     @JsonKey(includeIfNull: false) int? allType,
@@ -31,6 +27,5 @@ abstract class OneOfElement with _$OneOfElement {
     @JsonKey(includeIfNull: false) List<int?>? nullableListNullableItems,
   }) = _OneOfElement;
 
-  factory OneOfElement.fromJson(Map<String, Object?> json) =>
-      _$OneOfElementFromJson(json);
+  factory OneOfElement.fromJson(Map<String, Object?> json) => _$OneOfElementFromJson(json);
 }

@@ -12,6 +12,5 @@ class UserMessageTime with UserMessageTimeMappable {
 
   final num created;
 
-  static UserMessageTime fromJson(Map<String, dynamic> json) =>
-      UserMessageTimeMapper.fromJson(json);
+  static UserMessageTime fromJson(Map<String, dynamic> json) => UserMessageTimeMapper.fromJson(json);
 }

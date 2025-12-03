@@ -11,9 +11,7 @@ _Filters _$FiltersFromJson(Map<String, dynamic> json) => _Filters(
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
   filtersDateRange: json['FiltersDateRange'] == null
       ? null
-      : FiltersDateRange.fromJson(
-          json['FiltersDateRange'] as Map<String, dynamic>,
-        ),
+      : FiltersDateRange.fromJson(json['FiltersDateRange'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$FiltersToJson(_Filters instance) => <String, dynamic>{

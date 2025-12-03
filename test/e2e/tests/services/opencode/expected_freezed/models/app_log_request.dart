@@ -25,6 +25,5 @@ abstract class AppLogRequest with _$AppLogRequest {
     Map<String, dynamic>? extra,
   }) = _AppLogRequest;
 
-  factory AppLogRequest.fromJson(Map<String, Object?> json) =>
-      _$AppLogRequestFromJson(json);
+  factory AppLogRequest.fromJson(Map<String, Object?> json) => _$AppLogRequestFromJson(json);
 }

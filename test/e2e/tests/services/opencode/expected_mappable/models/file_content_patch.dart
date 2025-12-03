@@ -27,6 +27,5 @@ class FileContentPatch with FileContentPatchMappable {
   @MappableField(key: 'index')
   final String? indexField;
 
-  static FileContentPatch fromJson(Map<String, dynamic> json) =>
-      FileContentPatchMapper.fromJson(json);
+  static FileContentPatch fromJson(Map<String, dynamic> json) => FileContentPatchMapper.fromJson(json);
 }

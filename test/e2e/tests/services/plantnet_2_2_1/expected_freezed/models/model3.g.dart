@@ -11,12 +11,8 @@ _Model3 _$Model3FromJson(Map<String, dynamic> json) => _Model3(
   startDate: json['startDate'] as String?,
   endDate: json['endDate'] as String?,
   status: json['status'] as String?,
-  count: json['count'] == null
-      ? null
-      : Count.fromJson(json['count'] as Map<String, dynamic>),
-  aboveQuota: json['aboveQuota'] == null
-      ? null
-      : AboveQuota.fromJson(json['aboveQuota'] as Map<String, dynamic>),
+  count: json['count'] == null ? null : Count.fromJson(json['count'] as Map<String, dynamic>),
+  aboveQuota: json['aboveQuota'] == null ? null : AboveQuota.fromJson(json['aboveQuota'] as Map<String, dynamic>),
   discount: json['discount'] as bool?,
 );
 

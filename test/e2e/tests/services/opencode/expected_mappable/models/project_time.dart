@@ -13,6 +13,5 @@ class ProjectTime with ProjectTimeMappable {
   final num created;
   final num? initialized;
 
-  static ProjectTime fromJson(Map<String, dynamic> json) =>
-      ProjectTimeMapper.fromJson(json);
+  static ProjectTime fromJson(Map<String, dynamic> json) => ProjectTimeMapper.fromJson(json);
 }

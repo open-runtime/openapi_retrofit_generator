@@ -50,6 +50,5 @@ class GetPostResponse with GetPostResponseMappable {
   final DateTime? updatedAt;
   final List<Comment>? comments;
 
-  static GetPostResponse fromJson(Map<String, dynamic> json) =>
-      GetPostResponseMapper.fromJson(json);
+  static GetPostResponse fromJson(Map<String, dynamic> json) => GetPostResponseMapper.fromJson(json);
 }

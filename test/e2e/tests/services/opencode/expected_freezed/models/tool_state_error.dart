@@ -15,11 +15,9 @@ abstract class ToolStateError with _$ToolStateError {
     required String status,
     required Map<String, dynamic> input,
     required String error,
-    @JsonKey(name: 'ToolStateErrorTime')
-    required ToolStateErrorTime toolStateErrorTime,
+    @JsonKey(name: 'ToolStateErrorTime') required ToolStateErrorTime toolStateErrorTime,
     Map<String, dynamic>? metadata,
   }) = _ToolStateError;
 
-  factory ToolStateError.fromJson(Map<String, Object?> json) =>
-      _$ToolStateErrorFromJson(json);
+  factory ToolStateError.fromJson(Map<String, Object?> json) => _$ToolStateErrorFromJson(json);
 }

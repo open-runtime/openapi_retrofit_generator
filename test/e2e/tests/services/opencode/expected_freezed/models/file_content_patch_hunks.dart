@@ -17,6 +17,5 @@ abstract class FileContentPatchHunks with _$FileContentPatchHunks {
     required List<String> lines,
   }) = _FileContentPatchHunks;
 
-  factory FileContentPatchHunks.fromJson(Map<String, Object?> json) =>
-      _$FileContentPatchHunksFromJson(json);
+  factory FileContentPatchHunks.fromJson(Map<String, Object?> json) => _$FileContentPatchHunksFromJson(json);
 }

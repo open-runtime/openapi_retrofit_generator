@@ -12,6 +12,5 @@ class ToolStatePending with ToolStatePendingMappable {
 
   final String status;
 
-  static ToolStatePending fromJson(Map<String, dynamic> json) =>
-      ToolStatePendingMapper.fromJson(json);
+  static ToolStatePending fromJson(Map<String, dynamic> json) => ToolStatePendingMapper.fromJson(json);
 }

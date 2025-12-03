@@ -15,6 +15,5 @@ abstract class SessionInitRequest with _$SessionInitRequest {
     @JsonKey(name: 'messageID') required String messageId,
   }) = _SessionInitRequest;
 
-  factory SessionInitRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionInitRequestFromJson(json);
+  factory SessionInitRequest.fromJson(Map<String, Object?> json) => _$SessionInitRequestFromJson(json);
 }

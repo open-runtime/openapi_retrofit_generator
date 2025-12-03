@@ -8,16 +8,11 @@ part 'user_info_dto.mapper.dart';
 
 @MappableClass()
 class UserInfoDto with UserInfoDtoMappable {
-  const UserInfoDto({
-    required this.email,
-    required this.name,
-    required this.phone,
-  });
+  const UserInfoDto({required this.email, required this.name, required this.phone});
 
   final String email;
   final String name;
   final String phone;
 
-  static UserInfoDto fromJson(Map<String, dynamic> json) =>
-      UserInfoDtoMapper.fromJson(json);
+  static UserInfoDto fromJson(Map<String, dynamic> json) => UserInfoDtoMapper.fromJson(json);
 }

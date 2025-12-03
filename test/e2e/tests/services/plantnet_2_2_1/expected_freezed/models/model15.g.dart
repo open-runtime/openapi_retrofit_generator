@@ -10,12 +10,8 @@ _Model15 _$Model15FromJson(Map<String, dynamic> json) => _Model15(
   scientificNameWithoutAuthor: json['scientificNameWithoutAuthor'] as String?,
   scientificNameAuthorship: json['scientificNameAuthorship'] as String?,
   scientificName: json['scientificName'] as String?,
-  genus: json['genus'] == null
-      ? null
-      : Genus.fromJson(json['genus'] as Map<String, dynamic>),
-  family: json['family'] == null
-      ? null
-      : Family.fromJson(json['family'] as Map<String, dynamic>),
+  genus: json['genus'] == null ? null : Genus.fromJson(json['genus'] as Map<String, dynamic>),
+  family: json['family'] == null ? null : Family.fromJson(json['family'] as Map<String, dynamic>),
   commonNames: json['commonNames'],
 );
 

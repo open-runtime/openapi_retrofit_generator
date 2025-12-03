@@ -15,6 +15,5 @@ abstract class Test2Response with _$Test2Response {
     @JsonKey(includeIfNull: false) String? lastname,
   }) = _Test2Response;
 
-  factory Test2Response.fromJson(Map<String, Object?> json) =>
-      _$Test2ResponseFromJson(json);
+  factory Test2Response.fromJson(Map<String, Object?> json) => _$Test2ResponseFromJson(json);
 }

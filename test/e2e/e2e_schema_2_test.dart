@@ -14,10 +14,7 @@ import '../test_utils.dart';
 
 Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   final schemaPath = p.join('test', 'e2e', 'tests', 'schemas', schemaFileName);
-  final schemaNameWithoutExt = schemaFileName.replaceAll(
-    RegExp(r'\.(yaml|json)$'),
-    '',
-  );
+  final schemaNameWithoutExt = schemaFileName.replaceAll(RegExp(r'\.(yaml|json)$'), '');
 
   print('\n=== SCHEMA TEST: $schemaFileName ===');
   print('Schema: $schemaPath');
@@ -25,13 +22,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   print('\n[1/6] Cleaning generated folders...');
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolder = p.join(
-      'test',
-      'generated',
-      'schema_2',
-      schemaNameWithoutExt,
-      generatedFolderName,
-    );
+    final generatedFolder = p.join('test', 'generated', 'schema_2', schemaNameWithoutExt, generatedFolderName);
     final genDir = Directory(generatedFolder);
     if (genDir.existsSync()) {
       genDir.deleteSync(recursive: true);
@@ -67,13 +58,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     for (final serializer in JsonSerializer.values) {
       final generatedFolderName = getGeneratedFolderName(serializer);
       final buildOutputPath = p.join(libFolder, generatedFolderName);
-      final targetPath = p.join(
-        'test',
-        'generated',
-        'schema_2',
-        schemaNameWithoutExt,
-        generatedFolderName,
-      );
+      final targetPath = p.join('test', 'generated', 'schema_2', schemaNameWithoutExt, generatedFolderName);
 
       final buildOutput = Directory(buildOutputPath);
       if (buildOutput.existsSync()) {
@@ -87,12 +72,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     }
 
     print('\n[6/6] Running analyzer...');
-    final targetPath = p.join(
-      'test',
-      'generated',
-      'schema_2',
-      schemaNameWithoutExt,
-    );
+    final targetPath = p.join('test', 'generated', 'schema_2', schemaNameWithoutExt);
     await runAnalyzer(targetPath, schemaFileName);
 
     print('\n=== TEST PASSED ===\n');
@@ -184,10 +164,7 @@ void main() {
     });
 
     test('issue_11304_backticks_reserved_words.yaml', () async {
-      await schemaTest(
-        'issue_11304_backticks_reserved_words.yaml',
-        buildFolder,
-      );
+      await schemaTest('issue_11304_backticks_reserved_words.yaml', buildFolder);
     });
 
     test('issue_11897.yaml', () async {
@@ -398,15 +375,9 @@ void main() {
       await schemaTest('issue-11340.yaml', buildFolder);
     });
 
-    test(
-      'issue_constructor-required-values-with-multiple-inheritance.yaml',
-      () async {
-        await schemaTest(
-          'issue_constructor-required-values-with-multiple-inheritance.yaml',
-          buildFolder,
-        );
-      },
-    );
+    test('issue_constructor-required-values-with-multiple-inheritance.yaml', () async {
+      await schemaTest('issue_constructor-required-values-with-multiple-inheritance.yaml', buildFolder);
+    });
 
     test('issue-17367.yaml', () async {
       await schemaTest('issue-17367.yaml', buildFolder);

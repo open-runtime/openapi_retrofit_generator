@@ -20,6 +20,5 @@ abstract class AgentPart with _$AgentPart {
     @JsonKey(name: 'AgentPartSource') AgentPartSource? agentPartSource,
   }) = _AgentPart;
 
-  factory AgentPart.fromJson(Map<String, Object?> json) =>
-      _$AgentPartFromJson(json);
+  factory AgentPart.fromJson(Map<String, Object?> json) => _$AgentPartFromJson(json);
 }

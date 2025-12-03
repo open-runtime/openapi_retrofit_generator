@@ -9,9 +9,7 @@ part of 'partner.dart';
 Partner _$PartnerFromJson(Map<String, dynamic> json) => Partner(
   id: json['id'] as String,
   observationId: json['observation_id'] as String,
-  author: json['author'] == null
-      ? null
-      : Author.fromJson(json['author'] as Map<String, dynamic>),
+  author: json['author'] == null ? null : Author.fromJson(json['author'] as Map<String, dynamic>),
   avatar: json['avatar'] as String?,
 );
 

@@ -6,12 +6,8 @@ part of 'get_parcel_pending_webhook_url_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetParcelPendingWebhookUrlResponse _$GetParcelPendingWebhookUrlResponseFromJson(
-  Map<String, dynamic> json,
-) => GetParcelPendingWebhookUrlResponse(
-  webhookUrl: json['webhookURL'] as String?,
-);
+GetParcelPendingWebhookUrlResponse _$GetParcelPendingWebhookUrlResponseFromJson(Map<String, dynamic> json) =>
+    GetParcelPendingWebhookUrlResponse(webhookUrl: json['webhookURL'] as String?);
 
-Map<String, dynamic> _$GetParcelPendingWebhookUrlResponseToJson(
-  GetParcelPendingWebhookUrlResponse instance,
-) => <String, dynamic>{'webhookURL': ?instance.webhookUrl};
+Map<String, dynamic> _$GetParcelPendingWebhookUrlResponseToJson(GetParcelPendingWebhookUrlResponse instance) =>
+    <String, dynamic>{'webhookURL': ?instance.webhookUrl};

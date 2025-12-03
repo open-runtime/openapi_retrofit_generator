@@ -7,11 +7,6 @@ part of 'nullable_user_dto.dart';
 // **************************************************************************
 
 _NullableUserDto _$NullableUserDtoFromJson(Map<String, dynamic> json) =>
-    _NullableUserDto(
-      data: json['data'] == null
-          ? null
-          : UserDto.fromJson(json['data'] as Map<String, dynamic>),
-    );
+    _NullableUserDto(data: json['data'] == null ? null : UserDto.fromJson(json['data'] as Map<String, dynamic>));
 
-Map<String, dynamic> _$NullableUserDtoToJson(_NullableUserDto instance) =>
-    <String, dynamic>{'data': instance.data};
+Map<String, dynamic> _$NullableUserDtoToJson(_NullableUserDto instance) => <String, dynamic>{'data': instance.data};

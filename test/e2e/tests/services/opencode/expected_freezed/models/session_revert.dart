@@ -16,6 +16,5 @@ abstract class SessionRevert with _$SessionRevert {
     String? diff,
   }) = _SessionRevert;
 
-  factory SessionRevert.fromJson(Map<String, Object?> json) =>
-      _$SessionRevertFromJson(json);
+  factory SessionRevert.fromJson(Map<String, Object?> json) => _$SessionRevertFromJson(json);
 }

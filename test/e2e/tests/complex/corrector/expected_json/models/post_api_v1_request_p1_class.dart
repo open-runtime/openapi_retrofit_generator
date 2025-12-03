@@ -10,8 +10,7 @@ part 'post_api_v1_request_p1_class.g.dart';
 class PostApiV1RequestP1Class {
   const PostApiV1RequestP1Class({this.test});
 
-  factory PostApiV1RequestP1Class.fromJson(Map<String, Object?> json) =>
-      _$PostApiV1RequestP1ClassFromJson(json);
+  factory PostApiV1RequestP1Class.fromJson(Map<String, Object?> json) => _$PostApiV1RequestP1ClassFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final DateTime? test;

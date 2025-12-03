@@ -7,17 +7,12 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'config_experimental_hook_session_completed.mapper.dart';
 
 @MappableClass()
-class ConfigExperimentalHookSessionCompleted
-    with ConfigExperimentalHookSessionCompletedMappable {
-  const ConfigExperimentalHookSessionCompleted({
-    required this.command,
-    this.environment,
-  });
+class ConfigExperimentalHookSessionCompleted with ConfigExperimentalHookSessionCompletedMappable {
+  const ConfigExperimentalHookSessionCompleted({required this.command, this.environment});
 
   final List<String> command;
   final Map<String, String>? environment;
 
-  static ConfigExperimentalHookSessionCompleted fromJson(
-    Map<String, dynamic> json,
-  ) => ConfigExperimentalHookSessionCompletedMapper.fromJson(json);
+  static ConfigExperimentalHookSessionCompleted fromJson(Map<String, dynamic> json) =>
+      ConfigExperimentalHookSessionCompletedMapper.fromJson(json);
 }

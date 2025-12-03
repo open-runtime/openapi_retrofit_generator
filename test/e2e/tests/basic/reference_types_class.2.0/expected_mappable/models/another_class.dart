@@ -13,6 +13,5 @@ class AnotherClass with AnotherClassMappable {
   final int id;
   final String name;
 
-  static AnotherClass fromJson(Map<String, dynamic> json) =>
-      AnotherClassMapper.fromJson(json);
+  static AnotherClass fromJson(Map<String, dynamic> json) => AnotherClassMapper.fromJson(json);
 }

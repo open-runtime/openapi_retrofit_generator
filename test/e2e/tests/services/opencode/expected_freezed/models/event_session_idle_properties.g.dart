@@ -6,10 +6,9 @@ part of 'event_session_idle_properties.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_EventSessionIdleProperties _$EventSessionIdlePropertiesFromJson(
-  Map<String, dynamic> json,
-) => _EventSessionIdleProperties(sessionId: json['sessionID'] as String);
+_EventSessionIdleProperties _$EventSessionIdlePropertiesFromJson(Map<String, dynamic> json) =>
+    _EventSessionIdleProperties(sessionId: json['sessionID'] as String);
 
-Map<String, dynamic> _$EventSessionIdlePropertiesToJson(
-  _EventSessionIdleProperties instance,
-) => <String, dynamic>{'sessionID': instance.sessionId};
+Map<String, dynamic> _$EventSessionIdlePropertiesToJson(_EventSessionIdleProperties instance) => <String, dynamic>{
+  'sessionID': instance.sessionId,
+};

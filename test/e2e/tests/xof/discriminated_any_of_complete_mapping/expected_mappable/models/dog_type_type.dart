@@ -20,6 +20,5 @@ enum DogTypeType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<DogTypeType> get $valuesDefined =>
-      values.where((value) => value != DogTypeType.unknown).toList();
+  static List<DogTypeType> get $valuesDefined => values.where((value) => value != DogTypeType.unknown).toList();
 }

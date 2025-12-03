@@ -49,6 +49,5 @@ class AssistantMessage with AssistantMessageMappable {
   final AssistantMessageErrorUnion? error;
   final bool? summary;
 
-  static AssistantMessage fromJson(Map<String, dynamic> json) =>
-      AssistantMessageMapper.fromJson(json);
+  static AssistantMessage fromJson(Map<String, dynamic> json) => AssistantMessageMapper.fromJson(json);
 }

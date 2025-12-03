@@ -21,8 +21,7 @@ abstract class CreateUserRequest with _$CreateUserRequest {
     UserRole? role,
   }) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
   static const int usernameMinLength = 3;
   static const int usernameMaxLength = 30;
   static const int passwordMinLength = 8;
@@ -63,16 +62,14 @@ extension CreateUserRequestValidationX on CreateUserRequest {
       return false;
     }
     try {
-      if (firstName != null &&
-          firstName!.length > CreateUserRequest.firstNameMaxLength) {
+      if (firstName != null && firstName!.length > CreateUserRequest.firstNameMaxLength) {
         return false;
       }
     } catch (e) {
       return false;
     }
     try {
-      if (lastName != null &&
-          lastName!.length > CreateUserRequest.lastNameMaxLength) {
+      if (lastName != null && lastName!.length > CreateUserRequest.lastNameMaxLength) {
         return false;
       }
     } catch (e) {

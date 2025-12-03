@@ -14,6 +14,5 @@ abstract class CursorPaginatedDto with _$CursorPaginatedDto {
     @JsonKey(includeIfNull: true) required String? previousCursor,
   }) = _CursorPaginatedDto;
 
-  factory CursorPaginatedDto.fromJson(Map<String, Object?> json) =>
-      _$CursorPaginatedDtoFromJson(json);
+  factory CursorPaginatedDto.fromJson(Map<String, Object?> json) => _$CursorPaginatedDtoFromJson(json);
 }

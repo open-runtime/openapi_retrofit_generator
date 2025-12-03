@@ -8,16 +8,12 @@ part 'session_summarize_request.mapper.dart';
 
 @MappableClass()
 class SessionSummarizeRequest with SessionSummarizeRequestMappable {
-  const SessionSummarizeRequest({
-    required this.providerId,
-    required this.modelId,
-  });
+  const SessionSummarizeRequest({required this.providerId, required this.modelId});
 
   @MappableField(key: 'providerID')
   final String providerId;
   @MappableField(key: 'modelID')
   final String modelId;
 
-  static SessionSummarizeRequest fromJson(Map<String, dynamic> json) =>
-      SessionSummarizeRequestMapper.fromJson(json);
+  static SessionSummarizeRequest fromJson(Map<String, dynamic> json) => SessionSummarizeRequestMapper.fromJson(json);
 }

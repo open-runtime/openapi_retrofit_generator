@@ -13,6 +13,5 @@ part 'model44.g.dart';
 abstract class Model44 with _$Model44 {
   const factory Model44({Model43? species, num? total}) = _Model44;
 
-  factory Model44.fromJson(Map<String, Object?> json) =>
-      _$Model44FromJson(json);
+  factory Model44.fromJson(Map<String, Object?> json) => _$Model44FromJson(json);
 }

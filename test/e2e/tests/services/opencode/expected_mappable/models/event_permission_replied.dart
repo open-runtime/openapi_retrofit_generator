@@ -10,15 +10,11 @@ part 'event_permission_replied.mapper.dart';
 
 @MappableClass()
 class EventPermissionReplied with EventPermissionRepliedMappable {
-  const EventPermissionReplied({
-    required this.type,
-    required this.eventPermissionRepliedProperties,
-  });
+  const EventPermissionReplied({required this.type, required this.eventPermissionRepliedProperties});
 
   final String type;
   @MappableField(key: 'EventPermissionRepliedProperties')
   final EventPermissionRepliedProperties eventPermissionRepliedProperties;
 
-  static EventPermissionReplied fromJson(Map<String, dynamic> json) =>
-      EventPermissionRepliedMapper.fromJson(json);
+  static EventPermissionReplied fromJson(Map<String, dynamic> json) => EventPermissionRepliedMapper.fromJson(json);
 }

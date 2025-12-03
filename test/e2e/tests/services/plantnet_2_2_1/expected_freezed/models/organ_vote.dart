@@ -18,6 +18,5 @@ abstract class OrganVote with _$OrganVote {
     required num score,
   }) = _OrganVote;
 
-  factory OrganVote.fromJson(Map<String, Object?> json) =>
-      _$OrganVoteFromJson(json);
+  factory OrganVote.fromJson(Map<String, Object?> json) => _$OrganVoteFromJson(json);
 }

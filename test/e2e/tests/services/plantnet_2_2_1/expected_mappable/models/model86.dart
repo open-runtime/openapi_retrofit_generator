@@ -16,6 +16,5 @@ class Model86 with Model86Mappable {
   @MappableField(key: 'exact_match')
   final bool exactMatch;
 
-  static Model86 fromJson(Map<String, dynamic> json) =>
-      Model86Mapper.fromJson(json);
+  static Model86 fromJson(Map<String, dynamic> json) => Model86Mapper.fromJson(json);
 }

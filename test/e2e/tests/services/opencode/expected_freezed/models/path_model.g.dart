@@ -13,10 +13,9 @@ _PathModel _$PathModelFromJson(Map<String, dynamic> json) => _PathModel(
   directory: json['directory'] as String,
 );
 
-Map<String, dynamic> _$PathModelToJson(_PathModel instance) =>
-    <String, dynamic>{
-      'state': instance.state,
-      'config': instance.config,
-      'worktree': instance.worktree,
-      'directory': instance.directory,
-    };
+Map<String, dynamic> _$PathModelToJson(_PathModel instance) => <String, dynamic>{
+  'state': instance.state,
+  'config': instance.config,
+  'worktree': instance.worktree,
+  'directory': instance.directory,
+};

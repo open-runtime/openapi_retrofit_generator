@@ -13,6 +13,5 @@ class MessageOutputLengthError with MessageOutputLengthErrorMappable {
   final String name;
   final dynamic data;
 
-  static MessageOutputLengthError fromJson(Map<String, dynamic> json) =>
-      MessageOutputLengthErrorMapper.fromJson(json);
+  static MessageOutputLengthError fromJson(Map<String, dynamic> json) => MessageOutputLengthErrorMapper.fromJson(json);
 }

@@ -15,6 +15,5 @@ class Human with HumanMappable {
   final HumanTypeType type;
   final String job;
 
-  static Human fromJson(Map<String, dynamic> json) =>
-      HumanMapper.fromJson(json);
+  static Human fromJson(Map<String, dynamic> json) => HumanMapper.fromJson(json);
 }

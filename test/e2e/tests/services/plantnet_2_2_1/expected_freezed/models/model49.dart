@@ -11,11 +11,7 @@ part 'model49.g.dart';
 
 @Freezed()
 abstract class Model49 with _$Model49 {
-  const factory Model49({
-    @JsonKey(name: 'estimated_cost') num? estimatedCost,
-    Score? query,
-  }) = _Model49;
+  const factory Model49({@JsonKey(name: 'estimated_cost') num? estimatedCost, Score? query}) = _Model49;
 
-  factory Model49.fromJson(Map<String, Object?> json) =>
-      _$Model49FromJson(json);
+  factory Model49.fromJson(Map<String, Object?> json) => _$Model49FromJson(json);
 }

@@ -10,8 +10,7 @@ part 'reasoning_part_time.g.dart';
 class ReasoningPartTime {
   const ReasoningPartTime({required this.start, this.end});
 
-  factory ReasoningPartTime.fromJson(Map<String, Object?> json) =>
-      _$ReasoningPartTimeFromJson(json);
+  factory ReasoningPartTime.fromJson(Map<String, Object?> json) => _$ReasoningPartTimeFromJson(json);
 
   final num start;
   final num? end;

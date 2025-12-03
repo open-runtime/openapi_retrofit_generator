@@ -43,8 +43,7 @@ final class UniversalRequest {
   bool get isMultiPart => contentType == 'multipart/form-data';
 
   /// Request type 'application/x-www-form-urlencoded'
-  bool get isFormUrlEncoded =>
-      contentType == 'application/x-www-form-urlencoded';
+  bool get isFormUrlEncoded => contentType == 'application/x-www-form-urlencoded';
 
   /// Value indicating whether this request is deprecated
   final bool isDeprecated;
@@ -116,6 +115,5 @@ enum HttpRequestType {
   const HttpRequestType();
 
   /// Get type from string
-  static HttpRequestType? fromString(String type) =>
-      HttpRequestType.values.firstWhereOrNull((e) => e.name == type);
+  static HttpRequestType? fromString(String type) => HttpRequestType.values.firstWhereOrNull((e) => e.name == type);
 }

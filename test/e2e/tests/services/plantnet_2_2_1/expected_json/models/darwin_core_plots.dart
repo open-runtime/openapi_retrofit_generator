@@ -21,8 +21,7 @@ class DarwinCorePlots {
     this.startTime,
   });
 
-  factory DarwinCorePlots.fromJson(Map<String, Object?> json) =>
-      _$DarwinCorePlotsFromJson(json);
+  factory DarwinCorePlots.fromJson(Map<String, Object?> json) => _$DarwinCorePlotsFromJson(json);
 
   final Model67 results;
   final num offset;

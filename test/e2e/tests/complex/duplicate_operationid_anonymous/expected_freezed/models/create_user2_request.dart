@@ -9,11 +9,7 @@ part 'create_user2_request.g.dart';
 
 @Freezed()
 abstract class CreateUser2Request with _$CreateUser2Request {
-  const factory CreateUser2Request({
-    required String username,
-    required String role,
-  }) = _CreateUser2Request;
+  const factory CreateUser2Request({required String username, required String role}) = _CreateUser2Request;
 
-  factory CreateUser2Request.fromJson(Map<String, Object?> json) =>
-      _$CreateUser2RequestFromJson(json);
+  factory CreateUser2Request.fromJson(Map<String, Object?> json) => _$CreateUser2RequestFromJson(json);
 }

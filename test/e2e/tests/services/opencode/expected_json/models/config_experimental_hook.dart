@@ -13,8 +13,7 @@ part 'config_experimental_hook.g.dart';
 class ConfigExperimentalHook {
   const ConfigExperimentalHook({this.fileEdited, this.sessionCompleted});
 
-  factory ConfigExperimentalHook.fromJson(Map<String, Object?> json) =>
-      _$ConfigExperimentalHookFromJson(json);
+  factory ConfigExperimentalHook.fromJson(Map<String, Object?> json) => _$ConfigExperimentalHookFromJson(json);
 
   @JsonKey(name: 'file_edited')
   final Map<String, List<FileEdited>>? fileEdited;

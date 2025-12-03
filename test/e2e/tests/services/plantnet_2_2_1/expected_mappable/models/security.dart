@@ -17,6 +17,5 @@ class Security with SecurityMappable {
   final Ips? ips;
   final Domains? domains;
 
-  static Security fromJson(Map<String, dynamic> json) =>
-      SecurityMapper.fromJson(json);
+  static Security fromJson(Map<String, dynamic> json) => SecurityMapper.fromJson(json);
 }

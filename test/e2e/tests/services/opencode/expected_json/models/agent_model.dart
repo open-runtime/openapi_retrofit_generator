@@ -10,8 +10,7 @@ part 'agent_model.g.dart';
 class AgentModel {
   const AgentModel({required this.modelId, required this.providerId});
 
-  factory AgentModel.fromJson(Map<String, Object?> json) =>
-      _$AgentModelFromJson(json);
+  factory AgentModel.fromJson(Map<String, Object?> json) => _$AgentModelFromJson(json);
 
   @JsonKey(name: 'modelID')
   final String modelId;

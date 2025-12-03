@@ -9,12 +9,7 @@ part 'agent_part_source.g.dart';
 
 @Freezed()
 abstract class AgentPartSource with _$AgentPartSource {
-  const factory AgentPartSource({
-    required String value,
-    required int start,
-    required int end,
-  }) = _AgentPartSource;
+  const factory AgentPartSource({required String value, required int start, required int end}) = _AgentPartSource;
 
-  factory AgentPartSource.fromJson(Map<String, Object?> json) =>
-      _$AgentPartSourceFromJson(json);
+  factory AgentPartSource.fromJson(Map<String, Object?> json) => _$AgentPartSourceFromJson(json);
 }

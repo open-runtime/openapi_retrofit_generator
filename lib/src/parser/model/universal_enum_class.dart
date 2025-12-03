@@ -36,8 +36,7 @@ final class UniversalEnumClass extends UniversalDataClass {
           defaultValue == other.defaultValue;
 
   @override
-  int get hashCode =>
-      super.hashCode ^ type.hashCode ^ items.hashCode ^ defaultValue.hashCode;
+  int get hashCode => super.hashCode ^ type.hashCode ^ items.hashCode ^ defaultValue.hashCode;
 
   @override
   String toString() =>
@@ -50,11 +49,7 @@ final class UniversalEnumClass extends UniversalDataClass {
 @immutable
 class UniversalEnumItem {
   /// Constructor for [UniversalEnumItem]
-  const UniversalEnumItem({
-    required this.name,
-    required this.jsonKey,
-    this.description,
-  });
+  const UniversalEnumItem({required this.name, required this.jsonKey, this.description});
 
   /// Enum item name
   final String name;
@@ -84,6 +79,5 @@ class UniversalEnumItem {
   int get hashCode => name.hashCode ^ jsonKey.hashCode ^ description.hashCode;
 
   @override
-  String toString() =>
-      'UniversalEnumItem(name: $name, jsonKey: $jsonKey, description: $description)';
+  String toString() => 'UniversalEnumItem(name: $name, jsonKey: $jsonKey, description: $description)';
 }

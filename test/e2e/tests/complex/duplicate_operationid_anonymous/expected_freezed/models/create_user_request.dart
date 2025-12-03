@@ -9,9 +9,7 @@ part 'create_user_request.g.dart';
 
 @Freezed()
 abstract class CreateUserRequest with _$CreateUserRequest {
-  const factory CreateUserRequest({required String name, String? email}) =
-      _CreateUserRequest;
+  const factory CreateUserRequest({required String name, String? email}) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 }

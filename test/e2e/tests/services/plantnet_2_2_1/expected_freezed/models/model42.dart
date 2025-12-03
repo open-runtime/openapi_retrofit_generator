@@ -31,6 +31,5 @@ abstract class Model42 with _$Model42 {
     @JsonKey(name: 'iucn_red_list_category') String? iucnRedListCategory,
   }) = _Model42;
 
-  factory Model42.fromJson(Map<String, Object?> json) =>
-      _$Model42FromJson(json);
+  factory Model42.fromJson(Map<String, Object?> json) => _$Model42FromJson(json);
 }

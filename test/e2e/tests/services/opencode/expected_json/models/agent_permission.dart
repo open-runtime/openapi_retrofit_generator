@@ -8,14 +8,9 @@ part 'agent_permission.g.dart';
 
 @JsonSerializable()
 class AgentPermission {
-  const AgentPermission({
-    required this.edit,
-    required this.bash,
-    this.webfetch,
-  });
+  const AgentPermission({required this.edit, required this.bash, this.webfetch});
 
-  factory AgentPermission.fromJson(Map<String, Object?> json) =>
-      _$AgentPermissionFromJson(json);
+  factory AgentPermission.fromJson(Map<String, Object?> json) => _$AgentPermissionFromJson(json);
 
   final String edit;
   final Map<String, String> bash;

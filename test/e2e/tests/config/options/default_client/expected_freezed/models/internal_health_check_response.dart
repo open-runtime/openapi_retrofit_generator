@@ -11,9 +11,8 @@ part 'internal_health_check_response.g.dart';
 
 @Freezed()
 abstract class InternalHealthCheckResponse with _$InternalHealthCheckResponse {
-  const factory InternalHealthCheckResponse({
-    InternalHealthCheckResponseStatusStatus? status,
-  }) = _InternalHealthCheckResponse;
+  const factory InternalHealthCheckResponse({InternalHealthCheckResponseStatusStatus? status}) =
+      _InternalHealthCheckResponse;
 
   factory InternalHealthCheckResponse.fromJson(Map<String, Object?> json) =>
       _$InternalHealthCheckResponseFromJson(json);

@@ -13,6 +13,5 @@ class ModelsLimit with ModelsLimitMappable {
   final num context;
   final num output;
 
-  static ModelsLimit fromJson(Map<String, dynamic> json) =>
-      ModelsLimitMapper.fromJson(json);
+  static ModelsLimit fromJson(Map<String, dynamic> json) => ModelsLimitMapper.fromJson(json);
 }

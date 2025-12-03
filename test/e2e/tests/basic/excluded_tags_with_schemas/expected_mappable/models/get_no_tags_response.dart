@@ -12,6 +12,5 @@ class GetNoTagsResponse with GetNoTagsResponseMappable {
 
   final String? result;
 
-  static GetNoTagsResponse fromJson(Map<String, dynamic> json) =>
-      GetNoTagsResponseMapper.fromJson(json);
+  static GetNoTagsResponse fromJson(Map<String, dynamic> json) => GetNoTagsResponseMapper.fromJson(json);
 }

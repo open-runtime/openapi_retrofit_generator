@@ -7,13 +7,11 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'api_v1_category_list_request_included_nested.mapper.dart';
 
 @MappableClass()
-class ApiV1CategoryListRequestIncludedNested
-    with ApiV1CategoryListRequestIncludedNestedMappable {
+class ApiV1CategoryListRequestIncludedNested with ApiV1CategoryListRequestIncludedNestedMappable {
   const ApiV1CategoryListRequestIncludedNested({this.includedInner});
 
   final String? includedInner;
 
-  static ApiV1CategoryListRequestIncludedNested fromJson(
-    Map<String, dynamic> json,
-  ) => ApiV1CategoryListRequestIncludedNestedMapper.fromJson(json);
+  static ApiV1CategoryListRequestIncludedNested fromJson(Map<String, dynamic> json) =>
+      ApiV1CategoryListRequestIncludedNestedMapper.fromJson(json);
 }

@@ -9,5 +9,6 @@ part of 'user_message_time.dart';
 UserMessageTime _$UserMessageTimeFromJson(Map<String, dynamic> json) =>
     UserMessageTime(created: json['created'] as num);
 
-Map<String, dynamic> _$UserMessageTimeToJson(UserMessageTime instance) =>
-    <String, dynamic>{'created': instance.created};
+Map<String, dynamic> _$UserMessageTimeToJson(UserMessageTime instance) => <String, dynamic>{
+  'created': instance.created,
+};

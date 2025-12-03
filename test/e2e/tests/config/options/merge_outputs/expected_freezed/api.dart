@@ -58,10 +58,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PUT('/users/{userId}')
-  Future<User> updateUser({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> updateUser({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -69,10 +66,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PATCH('/users/{userId}')
-  Future<User> patchUser({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUser({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///
@@ -158,9 +152,7 @@ abstract class FilesClient {
   /// Download file
   @GET('/files/{fileId}/download')
   @DioResponseType(ResponseType.bytes)
-  Future<HttpResponse<List<int>>> downloadFile({
-    @Path('fileId') required String fileId,
-  });
+  Future<HttpResponse<List<int>>> downloadFile({@Path('fileId') required String fileId});
 }
 
 @RestApi()
@@ -275,8 +267,7 @@ abstract class CreateUserRequest with _$CreateUserRequest {
     UserRole? role,
   }) = _CreateUserRequest;
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 }
 
 @Freezed()
@@ -290,8 +281,7 @@ abstract class UpdateUserRequest with _$UpdateUserRequest {
     String? bio,
   }) = _UpdateUserRequest;
 
-  factory UpdateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$UpdateUserRequestFromJson(json);
+  factory UpdateUserRequest.fromJson(Map<String, Object?> json) => _$UpdateUserRequestFromJson(json);
 }
 
 @Freezed()
@@ -306,8 +296,7 @@ abstract class PatchUserRequest with _$PatchUserRequest {
     UserSettings? settings,
   }) = _PatchUserRequest;
 
-  factory PatchUserRequest.fromJson(Map<String, Object?> json) =>
-      _$PatchUserRequestFromJson(json);
+  factory PatchUserRequest.fromJson(Map<String, Object?> json) => _$PatchUserRequestFromJson(json);
 }
 
 /// User role enumeration
@@ -327,8 +316,7 @@ enum UserRole {
 
   const UserRole(this.json);
 
-  factory UserRole.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserRole.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -338,8 +326,7 @@ enum UserRole {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserRole> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserRole> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -358,8 +345,7 @@ enum UserStatus {
 
   const UserStatus(this.json);
 
-  factory UserStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -369,45 +355,34 @@ enum UserStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @Freezed()
 abstract class UserSettings with _$UserSettings {
   const factory UserSettings({
-    @JsonKey(name: 'UserSettingsNotifications')
-    UserSettingsNotifications? userSettingsNotifications,
-    @JsonKey(name: 'UserSettingsPrivacy')
-    UserSettingsPrivacy? userSettingsPrivacy,
+    @JsonKey(name: 'UserSettingsNotifications') UserSettingsNotifications? userSettingsNotifications,
+    @JsonKey(name: 'UserSettingsPrivacy') UserSettingsPrivacy? userSettingsPrivacy,
     @Default(UserSettingsThemeTheme.auto) UserSettingsThemeTheme theme,
     @Default('en') String language,
   }) = _UserSettings;
 
-  factory UserSettings.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsFromJson(json);
+  factory UserSettings.fromJson(Map<String, Object?> json) => _$UserSettingsFromJson(json);
 }
 
 @Freezed()
 abstract class UserListResponse with _$UserListResponse {
-  const factory UserListResponse({
-    required List<User> users,
-    required int total,
-    int? page,
-    int? limit,
-  }) = _UserListResponse;
+  const factory UserListResponse({required List<User> users, required int total, int? page, int? limit}) =
+      _UserListResponse;
 
-  factory UserListResponse.fromJson(Map<String, Object?> json) =>
-      _$UserListResponseFromJson(json);
+  factory UserListResponse.fromJson(Map<String, Object?> json) => _$UserListResponseFromJson(json);
 }
 
 @Freezed()
 abstract class LegacyUser with _$LegacyUser {
-  const factory LegacyUser({int? id, String? name, String? email}) =
-      _LegacyUser;
+  const factory LegacyUser({int? id, String? name, String? email}) = _LegacyUser;
 
-  factory LegacyUser.fromJson(Map<String, Object?> json) =>
-      _$LegacyUserFromJson(json);
+  factory LegacyUser.fromJson(Map<String, Object?> json) => _$LegacyUserFromJson(json);
 }
 
 @Freezed()
@@ -430,8 +405,7 @@ abstract class PostModel with _$PostModel {
     DateTime? updatedAt,
   }) = _PostModel;
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 }
 
 @JsonEnum()
@@ -450,8 +424,7 @@ enum PostStatus {
 
   const PostStatus(this.json);
 
-  factory PostStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory PostStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -461,8 +434,7 @@ enum PostStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @Freezed()
@@ -476,8 +448,7 @@ abstract class Category with _$Category {
     Category? parent,
   }) = _Category;
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 }
 
 @Freezed()
@@ -504,8 +475,7 @@ abstract class Comment with _$Comment {
     DateTime? deletedAt,
   }) = _Comment;
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
 }
 
 @Freezed()
@@ -517,21 +487,14 @@ abstract class CreateCommentRequest with _$CreateCommentRequest {
     String? parentId,
   }) = _CreateCommentRequest;
 
-  factory CreateCommentRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateCommentRequestFromJson(json);
+  factory CreateCommentRequest.fromJson(Map<String, Object?> json) => _$CreateCommentRequestFromJson(json);
 }
 
 @Freezed()
 abstract class FileMetadata with _$FileMetadata {
-  const factory FileMetadata({
-    String? filename,
-    String? mimeType,
-    int? size,
-    List<String>? tags,
-  }) = _FileMetadata;
+  const factory FileMetadata({String? filename, String? mimeType, int? size, List<String>? tags}) = _FileMetadata;
 
-  factory FileMetadata.fromJson(Map<String, Object?> json) =>
-      _$FileMetadataFromJson(json);
+  factory FileMetadata.fromJson(Map<String, Object?> json) => _$FileMetadataFromJson(json);
 }
 
 @Freezed()
@@ -545,8 +508,7 @@ abstract class FileUploadResponse with _$FileUploadResponse {
     DateTime? uploadedAt,
   }) = _FileUploadResponse;
 
-  factory FileUploadResponse.fromJson(Map<String, Object?> json) =>
-      _$FileUploadResponseFromJson(json);
+  factory FileUploadResponse.fromJson(Map<String, Object?> json) => _$FileUploadResponseFromJson(json);
 }
 
 class PaymentRequest {
@@ -554,15 +516,12 @@ class PaymentRequest {
 
   const PaymentRequest(this._json);
 
-  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      PaymentRequest(json);
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) => PaymentRequest(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  PaymentRequestCreditCard toCreditCard() =>
-      PaymentRequestCreditCard.fromJson(_json);
-  PaymentRequestBankTransfer toBankTransfer() =>
-      PaymentRequestBankTransfer.fromJson(_json);
+  PaymentRequestCreditCard toCreditCard() => PaymentRequestCreditCard.fromJson(_json);
+  PaymentRequestBankTransfer toBankTransfer() => PaymentRequestBankTransfer.fromJson(_json);
   PaymentRequestCrypto toCrypto() => PaymentRequestCrypto.fromJson(_json);
 }
 
@@ -586,8 +545,7 @@ class PaymentRequestCreditCard {
     required this.amount,
   });
 
-  factory PaymentRequestCreditCard.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestCreditCardFromJson(json);
+  factory PaymentRequestCreditCard.fromJson(Map<String, Object?> json) => _$PaymentRequestCreditCardFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestCreditCardToJson(this);
 }
@@ -610,8 +568,7 @@ class PaymentRequestBankTransfer {
     required this.reference,
   });
 
-  factory PaymentRequestBankTransfer.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestBankTransferFromJson(json);
+  factory PaymentRequestBankTransfer.fromJson(Map<String, Object?> json) => _$PaymentRequestBankTransferFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestBankTransferToJson(this);
 }
@@ -632,8 +589,7 @@ class PaymentRequestCrypto {
     required this.transactionHash,
   });
 
-  factory PaymentRequestCrypto.fromJson(Map<String, Object?> json) =>
-      _$PaymentRequestCryptoFromJson(json);
+  factory PaymentRequestCrypto.fromJson(Map<String, Object?> json) => _$PaymentRequestCryptoFromJson(json);
 
   Map<String, Object?> toJson() => _$PaymentRequestCryptoToJson(this);
 }
@@ -650,8 +606,7 @@ abstract class CreditCardPayment with _$CreditCardPayment {
     String? cardholderName,
   }) = _CreditCardPayment;
 
-  factory CreditCardPayment.fromJson(Map<String, Object?> json) =>
-      _$CreditCardPaymentFromJson(json);
+  factory CreditCardPayment.fromJson(Map<String, Object?> json) => _$CreditCardPaymentFromJson(json);
 }
 
 @Freezed()
@@ -665,8 +620,7 @@ abstract class BankTransferPayment with _$BankTransferPayment {
     String? reference,
   }) = _BankTransferPayment;
 
-  factory BankTransferPayment.fromJson(Map<String, Object?> json) =>
-      _$BankTransferPaymentFromJson(json);
+  factory BankTransferPayment.fromJson(Map<String, Object?> json) => _$BankTransferPaymentFromJson(json);
 }
 
 @Freezed()
@@ -679,8 +633,7 @@ abstract class CryptoPayment with _$CryptoPayment {
     String? transactionHash,
   }) = _CryptoPayment;
 
-  factory CryptoPayment.fromJson(Map<String, Object?> json) =>
-      _$CryptoPaymentFromJson(json);
+  factory CryptoPayment.fromJson(Map<String, Object?> json) => _$CryptoPaymentFromJson(json);
 }
 
 @Freezed()
@@ -694,8 +647,7 @@ abstract class PaymentResponse with _$PaymentResponse {
     @Default('USD') String currency,
   }) = _PaymentResponse;
 
-  factory PaymentResponse.fromJson(Map<String, Object?> json) =>
-      _$PaymentResponseFromJson(json);
+  factory PaymentResponse.fromJson(Map<String, Object?> json) => _$PaymentResponseFromJson(json);
 }
 
 class SearchResultUnion {
@@ -703,17 +655,13 @@ class SearchResultUnion {
 
   const SearchResultUnion(this._json);
 
-  factory SearchResultUnion.fromJson(Map<String, dynamic> json) =>
-      SearchResultUnion(json);
+  factory SearchResultUnion.fromJson(Map<String, dynamic> json) => SearchResultUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  SearchResultUnionUserSearchResult toUserSearchResult() =>
-      SearchResultUnionUserSearchResult.fromJson(_json);
-  SearchResultUnionPostSearchResult toPostSearchResult() =>
-      SearchResultUnionPostSearchResult.fromJson(_json);
-  SearchResultUnionCommentSearchResult toCommentSearchResult() =>
-      SearchResultUnionCommentSearchResult.fromJson(_json);
+  SearchResultUnionUserSearchResult toUserSearchResult() => SearchResultUnionUserSearchResult.fromJson(_json);
+  SearchResultUnionPostSearchResult toPostSearchResult() => SearchResultUnionPostSearchResult.fromJson(_json);
+  SearchResultUnionCommentSearchResult toCommentSearchResult() => SearchResultUnionCommentSearchResult.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -722,18 +670,12 @@ class SearchResultUnionUserSearchResult {
   final User user;
   final double? score;
 
-  const SearchResultUnionUserSearchResult({
-    required this.type,
-    required this.user,
-    required this.score,
-  });
+  const SearchResultUnionUserSearchResult({required this.type, required this.user, required this.score});
 
-  factory SearchResultUnionUserSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionUserSearchResultFromJson(json);
+  factory SearchResultUnionUserSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionUserSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionUserSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionUserSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -750,12 +692,10 @@ class SearchResultUnionPostSearchResult {
     required this.highlights,
   });
 
-  factory SearchResultUnionPostSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionPostSearchResultFromJson(json);
+  factory SearchResultUnionPostSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionPostSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionPostSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionPostSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -764,32 +704,22 @@ class SearchResultUnionCommentSearchResult {
   final Comment comment;
   final double? score;
 
-  const SearchResultUnionCommentSearchResult({
-    required this.type,
-    required this.comment,
-    required this.score,
-  });
+  const SearchResultUnionCommentSearchResult({required this.type, required this.comment, required this.score});
 
-  factory SearchResultUnionCommentSearchResult.fromJson(
-    Map<String, Object?> json,
-  ) => _$SearchResultUnionCommentSearchResultFromJson(json);
+  factory SearchResultUnionCommentSearchResult.fromJson(Map<String, Object?> json) =>
+      _$SearchResultUnionCommentSearchResultFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$SearchResultUnionCommentSearchResultToJson(this);
+  Map<String, Object?> toJson() => _$SearchResultUnionCommentSearchResultToJson(this);
 }
 
 typedef SearchResult = SearchResultUnion?;
 
 @Freezed()
 abstract class UserSearchResult with _$UserSearchResult {
-  const factory UserSearchResult({
-    required UserSearchResultTypeType type,
-    required User user,
-    double? score,
-  }) = _UserSearchResult;
+  const factory UserSearchResult({required UserSearchResultTypeType type, required User user, double? score}) =
+      _UserSearchResult;
 
-  factory UserSearchResult.fromJson(Map<String, Object?> json) =>
-      _$UserSearchResultFromJson(json);
+  factory UserSearchResult.fromJson(Map<String, Object?> json) => _$UserSearchResultFromJson(json);
 }
 
 @Freezed()
@@ -801,8 +731,7 @@ abstract class PostSearchResult with _$PostSearchResult {
     List<String>? highlights,
   }) = _PostSearchResult;
 
-  factory PostSearchResult.fromJson(Map<String, Object?> json) =>
-      _$PostSearchResultFromJson(json);
+  factory PostSearchResult.fromJson(Map<String, Object?> json) => _$PostSearchResultFromJson(json);
 }
 
 @Freezed()
@@ -813,8 +742,7 @@ abstract class CommentSearchResult with _$CommentSearchResult {
     double? score,
   }) = _CommentSearchResult;
 
-  factory CommentSearchResult.fromJson(Map<String, Object?> json) =>
-      _$CommentSearchResultFromJson(json);
+  factory CommentSearchResult.fromJson(Map<String, Object?> json) => _$CommentSearchResultFromJson(json);
 }
 
 class Entity {
@@ -834,8 +762,7 @@ class Entity {
 class EntityPerson {
   const EntityPerson();
 
-  factory EntityPerson.fromJson(Map<String, Object?> json) =>
-      _$EntityPersonFromJson(json);
+  factory EntityPerson.fromJson(Map<String, Object?> json) => _$EntityPersonFromJson(json);
 
   Map<String, Object?> toJson() => _$EntityPersonToJson(this);
 }
@@ -844,8 +771,7 @@ class EntityPerson {
 class EntityOrganization {
   const EntityOrganization();
 
-  factory EntityOrganization.fromJson(Map<String, Object?> json) =>
-      _$EntityOrganizationFromJson(json);
+  factory EntityOrganization.fromJson(Map<String, Object?> json) => _$EntityOrganizationFromJson(json);
 
   Map<String, Object?> toJson() => _$EntityOrganizationToJson(this);
 }
@@ -861,8 +787,7 @@ abstract class BaseEntity with _$BaseEntity {
     DateTime? updatedAt,
   }) = _BaseEntity;
 
-  factory BaseEntity.fromJson(Map<String, Object?> json) =>
-      _$BaseEntityFromJson(json);
+  factory BaseEntity.fromJson(Map<String, Object?> json) => _$BaseEntityFromJson(json);
 }
 
 @Freezed()
@@ -880,8 +805,7 @@ abstract class PersonEntity with _$PersonEntity {
     Map<String, String>? socialProfiles,
   }) = _PersonEntity;
 
-  factory PersonEntity.fromJson(Map<String, Object?> json) =>
-      _$PersonEntityFromJson(json);
+  factory PersonEntity.fromJson(Map<String, Object?> json) => _$PersonEntityFromJson(json);
 }
 
 @Freezed()
@@ -900,8 +824,7 @@ abstract class OrganizationEntity with _$OrganizationEntity {
     double? revenue,
   }) = _OrganizationEntity;
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
 }
 
 /// Object with arbitrary string properties
@@ -912,11 +835,8 @@ typedef EmptyObject = dynamic;
 
 @Freezed()
 abstract class Data with _$Data {
-  const factory Data({
-    required String id,
-    required String value,
-    @JsonKey(name: 'DataNested') DataNested? dataNested,
-  }) = _Data;
+  const factory Data({required String id, required String value, @JsonKey(name: 'DataNested') DataNested? dataNested}) =
+      _Data;
 
   factory Data.fromJson(Map<String, Object?> json) => _$DataFromJson(json);
 }
@@ -947,8 +867,7 @@ enum Status {
 
   const Status(this.json);
 
-  factory Status.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Status.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -958,8 +877,7 @@ enum Status {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Status> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Status> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @Freezed()
@@ -971,11 +889,7 @@ abstract class Result with _$Result {
 
 @Freezed()
 abstract class ListPostsResponsePagination with _$ListPostsResponsePagination {
-  const factory ListPostsResponsePagination({
-    int? page,
-    int? total,
-    bool? hasNext,
-  }) = _ListPostsResponsePagination;
+  const factory ListPostsResponsePagination({int? page, int? total, bool? hasNext}) = _ListPostsResponsePagination;
 
   factory ListPostsResponsePagination.fromJson(Map<String, Object?> json) =>
       _$ListPostsResponsePaginationFromJson(json);
@@ -985,22 +899,18 @@ abstract class ListPostsResponsePagination with _$ListPostsResponsePagination {
 abstract class ListPostsResponse with _$ListPostsResponse {
   const factory ListPostsResponse({
     List<PostModel>? posts,
-    @JsonKey(name: 'ListPostsResponsePagination')
-    ListPostsResponsePagination? listPostsResponsePagination,
+    @JsonKey(name: 'ListPostsResponsePagination') ListPostsResponsePagination? listPostsResponsePagination,
     Map<String, String>? metadata,
   }) = _ListPostsResponse;
 
-  factory ListPostsResponse.fromJson(Map<String, Object?> json) =>
-      _$ListPostsResponseFromJson(json);
+  factory ListPostsResponse.fromJson(Map<String, Object?> json) => _$ListPostsResponseFromJson(json);
 }
 
 @Freezed()
 abstract class FiltersDateRange with _$FiltersDateRange {
-  const factory FiltersDateRange({DateTime? from, DateTime? to}) =
-      _FiltersDateRange;
+  const factory FiltersDateRange({DateTime? from, DateTime? to}) = _FiltersDateRange;
 
-  factory FiltersDateRange.fromJson(Map<String, Object?> json) =>
-      _$FiltersDateRangeFromJson(json);
+  factory FiltersDateRange.fromJson(Map<String, Object?> json) => _$FiltersDateRangeFromJson(json);
 }
 
 @Freezed()
@@ -1011,8 +921,7 @@ abstract class Filters with _$Filters {
     @JsonKey(name: 'FiltersDateRange') FiltersDateRange? filtersDateRange,
   }) = _Filters;
 
-  factory Filters.fromJson(Map<String, Object?> json) =>
-      _$FiltersFromJson(json);
+  factory Filters.fromJson(Map<String, Object?> json) => _$FiltersFromJson(json);
 }
 
 @Freezed()
@@ -1026,8 +935,7 @@ abstract class CreatePostRequest with _$CreatePostRequest {
     dynamic metadata,
   }) = _CreatePostRequest;
 
-  factory CreatePostRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePostRequestFromJson(json);
+  factory CreatePostRequest.fromJson(Map<String, Object?> json) => _$CreatePostRequestFromJson(json);
 }
 
 @Freezed()
@@ -1051,51 +959,42 @@ abstract class GetPostResponse with _$GetPostResponse {
     List<Comment>? comments,
   }) = _GetPostResponse;
 
-  factory GetPostResponse.fromJson(Map<String, Object?> json) =>
-      _$GetPostResponseFromJson(json);
+  factory GetPostResponse.fromJson(Map<String, Object?> json) => _$GetPostResponseFromJson(json);
 }
 
 @Freezed()
 abstract class SearchResponse with _$SearchResponse {
   const factory SearchResponse({List<SearchResult>? results}) = _SearchResponse;
 
-  factory SearchResponse.fromJson(Map<String, Object?> json) =>
-      _$SearchResponseFromJson(json);
+  factory SearchResponse.fromJson(Map<String, Object?> json) => _$SearchResponseFromJson(json);
 }
 
 @Freezed()
 abstract class SearchRequest with _$SearchRequest {
-  const factory SearchRequest({String? query, Map<String, String>? filters}) =
-      _SearchRequest;
+  const factory SearchRequest({String? query, Map<String, String>? filters}) = _SearchRequest;
 
-  factory SearchRequest.fromJson(Map<String, Object?> json) =>
-      _$SearchRequestFromJson(json);
+  factory SearchRequest.fromJson(Map<String, Object?> json) => _$SearchRequestFromJson(json);
 }
 
 @Freezed()
 abstract class InternalHealthCheckResponse with _$InternalHealthCheckResponse {
-  const factory InternalHealthCheckResponse({
-    InternalHealthCheckResponseStatusStatus? status,
-  }) = _InternalHealthCheckResponse;
+  const factory InternalHealthCheckResponse({InternalHealthCheckResponseStatusStatus? status}) =
+      _InternalHealthCheckResponse;
 
   factory InternalHealthCheckResponse.fromJson(Map<String, Object?> json) =>
       _$InternalHealthCheckResponseFromJson(json);
 }
 
 @Freezed()
-abstract class GetDuplicateResponseMetadataData
-    with _$GetDuplicateResponseMetadataData {
-  const factory GetDuplicateResponseMetadataData({String? id, int? value}) =
-      _GetDuplicateResponseMetadataData;
+abstract class GetDuplicateResponseMetadataData with _$GetDuplicateResponseMetadataData {
+  const factory GetDuplicateResponseMetadataData({String? id, int? value}) = _GetDuplicateResponseMetadataData;
 
-  factory GetDuplicateResponseMetadataData.fromJson(
-    Map<String, Object?> json,
-  ) => _$GetDuplicateResponseMetadataDataFromJson(json);
+  factory GetDuplicateResponseMetadataData.fromJson(Map<String, Object?> json) =>
+      _$GetDuplicateResponseMetadataDataFromJson(json);
 }
 
 @Freezed()
-abstract class GetDuplicateResponseMetadata
-    with _$GetDuplicateResponseMetadata {
+abstract class GetDuplicateResponseMetadata with _$GetDuplicateResponseMetadata {
   const factory GetDuplicateResponseMetadata({
     @JsonKey(name: 'GetDuplicateResponseMetadataData')
     GetDuplicateResponseMetadataData? getDuplicateResponseMetadataData,
@@ -1109,12 +1008,10 @@ abstract class GetDuplicateResponseMetadata
 abstract class GetDuplicateResponse with _$GetDuplicateResponse {
   const factory GetDuplicateResponse({
     Data? data,
-    @JsonKey(name: 'GetDuplicateResponseMetadata')
-    GetDuplicateResponseMetadata? getDuplicateResponseMetadata,
+    @JsonKey(name: 'GetDuplicateResponseMetadata') GetDuplicateResponseMetadata? getDuplicateResponseMetadata,
   }) = _GetDuplicateResponse;
 
-  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) =>
-      _$GetDuplicateResponseFromJson(json);
+  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) => _$GetDuplicateResponseFromJson(json);
 }
 
 @Freezed()
@@ -1125,8 +1022,7 @@ abstract class UserSettingsNotifications with _$UserSettingsNotifications {
     @Default(false) bool sms,
   }) = _UserSettingsNotifications;
 
-  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsNotificationsFromJson(json);
+  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) => _$UserSettingsNotificationsFromJson(json);
 }
 
 @Freezed()
@@ -1137,8 +1033,7 @@ abstract class UserSettingsPrivacy with _$UserSettingsPrivacy {
     @Default(false) bool showEmail,
   }) = _UserSettingsPrivacy;
 
-  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsPrivacyFromJson(json);
+  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) => _$UserSettingsPrivacyFromJson(json);
 }
 
 @Freezed(unionKey: 'paymentType')
@@ -1178,24 +1073,21 @@ sealed class PaymentResponseDetailsUnion with _$PaymentResponseDetailsUnion {
 abstract class DataNestedData with _$DataNestedData {
   const factory DataNestedData({int? id, String? name}) = _DataNestedData;
 
-  factory DataNestedData.fromJson(Map<String, Object?> json) =>
-      _$DataNestedDataFromJson(json);
+  factory DataNestedData.fromJson(Map<String, Object?> json) => _$DataNestedDataFromJson(json);
 }
 
 @Freezed()
 abstract class DataNested with _$DataNested {
   const factory DataNested({List<DataNestedData>? data}) = _DataNested;
 
-  factory DataNested.fromJson(Map<String, Object?> json) =>
-      _$DataNestedFromJson(json);
+  factory DataNested.fromJson(Map<String, Object?> json) => _$DataNestedFromJson(json);
 }
 
 @Freezed()
 abstract class ErrorDetails with _$ErrorDetails {
   const factory ErrorDetails({String? field, String? message}) = _ErrorDetails;
 
-  factory ErrorDetails.fromJson(Map<String, Object?> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory ErrorDetails.fromJson(Map<String, Object?> json) => _$ErrorDetailsFromJson(json);
 }
 
 @JsonEnum()
@@ -1210,8 +1102,7 @@ enum Sort {
 
   const Sort(this.json);
 
-  factory Sort.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Sort.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1221,8 +1112,7 @@ enum Sort {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Sort> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Sort> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1241,8 +1131,7 @@ enum Category {
 
   const Category(this.json);
 
-  factory Category.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Category.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1252,8 +1141,7 @@ enum Category {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Category> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Category> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1310,8 +1198,7 @@ enum UserSettingsThemeTheme {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSettingsThemeTheme> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserSettingsThemeTheme> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1328,9 +1215,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
 
   const UserSettingsPrivacyProfileVisibilityProfileVisibility(this.json);
 
-  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(
-    String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1340,8 +1226,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1583,8 +1469,7 @@ enum PaymentResponseStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PaymentResponseStatusStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PaymentResponseStatusStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1608,8 +1493,7 @@ enum UserSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1633,8 +1517,7 @@ enum PostSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1658,8 +1541,7 @@ enum CommentSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<CommentSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<CommentSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1765,21 +1647,17 @@ class RestClient {
 
   PostsClient get posts => _posts ??= PostsClient(_dio, baseUrl: _baseUrl);
 
-  CommentsClient get comments =>
-      _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
+  CommentsClient get comments => _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
 
   FilesClient get files => _files ??= FilesClient(_dio, baseUrl: _baseUrl);
 
-  AdvancedClient get advanced =>
-      _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
+  AdvancedClient get advanced => _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
 
-  DeprecatedClient get deprecated =>
-      _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
+  DeprecatedClient get deprecated => _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
 
   AdminClient get admin => _admin ??= AdminClient(_dio, baseUrl: _baseUrl);
 
-  InternalClient get internal =>
-      _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
+  InternalClient get internal => _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
 
   ApiClient get api => _api ??= ApiClient(_dio, baseUrl: _baseUrl);
 }

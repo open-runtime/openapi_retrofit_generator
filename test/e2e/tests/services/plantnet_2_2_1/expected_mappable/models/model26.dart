@@ -41,6 +41,5 @@ class Model26 with Model26Mappable {
   @MappableField(key: 'organs_votes')
   final OrgansVotes? organsVotes;
 
-  static Model26 fromJson(Map<String, dynamic> json) =>
-      Model26Mapper.fromJson(json);
+  static Model26 fromJson(Map<String, dynamic> json) => Model26Mapper.fromJson(json);
 }

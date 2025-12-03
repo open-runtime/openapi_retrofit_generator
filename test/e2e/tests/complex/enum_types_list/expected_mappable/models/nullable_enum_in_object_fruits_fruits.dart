@@ -27,7 +27,6 @@ enum NullableEnumInObjectFruitsFruits {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<NullableEnumInObjectFruitsFruits> get $valuesDefined => values
-      .where((value) => value != NullableEnumInObjectFruitsFruits.unknown)
-      .toList();
+  static List<NullableEnumInObjectFruitsFruits> get $valuesDefined =>
+      values.where((value) => value != NullableEnumInObjectFruitsFruits.unknown).toList();
 }

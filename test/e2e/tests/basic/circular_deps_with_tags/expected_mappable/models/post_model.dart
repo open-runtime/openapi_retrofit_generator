@@ -18,6 +18,5 @@ class PostModel with PostModelMappable {
   final User? author;
   final List<Comment>? comments;
 
-  static PostModel fromJson(Map<String, dynamic> json) =>
-      PostModelMapper.fromJson(json);
+  static PostModel fromJson(Map<String, dynamic> json) => PostModelMapper.fromJson(json);
 }

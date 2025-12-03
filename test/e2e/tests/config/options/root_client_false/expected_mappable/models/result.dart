@@ -16,6 +16,5 @@ class Result with ResultMappable {
   final dynamic? data;
   final Status? status;
 
-  static Result fromJson(Map<String, dynamic> json) =>
-      ResultMapper.fromJson(json);
+  static Result fromJson(Map<String, dynamic> json) => ResultMapper.fromJson(json);
 }

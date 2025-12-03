@@ -10,8 +10,7 @@ part 'permission_time.g.dart';
 class PermissionTime {
   const PermissionTime({required this.created});
 
-  factory PermissionTime.fromJson(Map<String, Object?> json) =>
-      _$PermissionTimeFromJson(json);
+  factory PermissionTime.fromJson(Map<String, Object?> json) => _$PermissionTimeFromJson(json);
 
   final num created;
 

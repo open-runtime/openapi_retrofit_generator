@@ -28,8 +28,7 @@ class Prediction {
     this.observed,
   });
 
-  factory Prediction.fromJson(Map<String, Object?> json) =>
-      _$PredictionFromJson(json);
+  factory Prediction.fromJson(Map<String, Object?> json) => _$PredictionFromJson(json);
 
   final String name;
   final String author;

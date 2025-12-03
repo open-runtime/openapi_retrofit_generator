@@ -6,21 +6,14 @@ part of 'identification_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-IdentificationResult _$IdentificationResultFromJson(
-  Map<String, dynamic> json,
-) => IdentificationResult(
-  query: json['query'] == null
-      ? null
-      : QueryModel.fromJson(json['query'] as Map<String, dynamic>),
+IdentificationResult _$IdentificationResultFromJson(Map<String, dynamic> json) => IdentificationResult(
+  query: json['query'] == null ? null : QueryModel.fromJson(json['query'] as Map<String, dynamic>),
   language: json['language'] as String?,
   preferedReferential: json['preferedReferential'] as String?,
   switchToProject: json['switchToProject'] as String?,
   bestMatch: json['bestMatch'] as String?,
-  results: (json['results'] as List<dynamic>?)
-      ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  remainingIdentificationRequests:
-      json['remainingIdentificationRequests'] as num?,
+  results: (json['results'] as List<dynamic>?)?.map((e) => Result.fromJson(e as Map<String, dynamic>)).toList(),
+  remainingIdentificationRequests: json['remainingIdentificationRequests'] as num?,
   version: json['version'] as String?,
   predictedOrgans: (json['predictedOrgans'] as List<dynamic>?)
       ?.map((e) => Model17.fromJson(e as Map<String, dynamic>))
@@ -30,9 +23,7 @@ IdentificationResult _$IdentificationResultFromJson(
       : OtherResults.fromJson(json['otherResults'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$IdentificationResultToJson(
-  IdentificationResult instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$IdentificationResultToJson(IdentificationResult instance) => <String, dynamic>{
   'query': instance.query,
   'language': instance.language,
   'preferedReferential': instance.preferedReferential,

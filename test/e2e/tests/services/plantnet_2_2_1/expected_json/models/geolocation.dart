@@ -8,15 +8,9 @@ part 'geolocation.g.dart';
 
 @JsonSerializable()
 class Geolocation {
-  const Geolocation({
-    required this.lat,
-    required this.lon,
-    required this.place,
-    this.accuracy,
-  });
+  const Geolocation({required this.lat, required this.lon, required this.place, this.accuracy});
 
-  factory Geolocation.fromJson(Map<String, Object?> json) =>
-      _$GeolocationFromJson(json);
+  factory Geolocation.fromJson(Map<String, Object?> json) => _$GeolocationFromJson(json);
 
   final num lat;
   final num lon;

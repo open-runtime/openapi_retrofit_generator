@@ -40,6 +40,5 @@ class Prediction with PredictionMappable {
   final num? observationsCount;
   final bool? observed;
 
-  static Prediction fromJson(Map<String, dynamic> json) =>
-      PredictionMapper.fromJson(json);
+  static Prediction fromJson(Map<String, dynamic> json) => PredictionMapper.fromJson(json);
 }

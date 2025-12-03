@@ -10,13 +10,9 @@ part 'config_providers_response.g.dart';
 
 @JsonSerializable()
 class ConfigProvidersResponse {
-  const ConfigProvidersResponse({
-    required this.providers,
-    required this.defaultField,
-  });
+  const ConfigProvidersResponse({required this.providers, required this.defaultField});
 
-  factory ConfigProvidersResponse.fromJson(Map<String, Object?> json) =>
-      _$ConfigProvidersResponseFromJson(json);
+  factory ConfigProvidersResponse.fromJson(Map<String, Object?> json) => _$ConfigProvidersResponseFromJson(json);
 
   final List<Provider> providers;
   @JsonKey(name: 'default')

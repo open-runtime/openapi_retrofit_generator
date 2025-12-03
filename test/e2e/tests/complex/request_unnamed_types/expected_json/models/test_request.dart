@@ -10,8 +10,7 @@ part 'test_request.g.dart';
 class TestRequest {
   const TestRequest({required this.list, required this.name, this.lastname});
 
-  factory TestRequest.fromJson(Map<String, Object?> json) =>
-      _$TestRequestFromJson(json);
+  factory TestRequest.fromJson(Map<String, Object?> json) => _$TestRequestFromJson(json);
 
   final List<dynamic> list;
   @JsonKey(includeIfNull: true)

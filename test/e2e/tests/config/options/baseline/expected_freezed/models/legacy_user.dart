@@ -9,9 +9,7 @@ part 'legacy_user.g.dart';
 
 @Freezed()
 abstract class LegacyUser with _$LegacyUser {
-  const factory LegacyUser({int? id, String? name, String? email}) =
-      _LegacyUser;
+  const factory LegacyUser({int? id, String? name, String? email}) = _LegacyUser;
 
-  factory LegacyUser.fromJson(Map<String, Object?> json) =>
-      _$LegacyUserFromJson(json);
+  factory LegacyUser.fromJson(Map<String, Object?> json) => _$LegacyUserFromJson(json);
 }

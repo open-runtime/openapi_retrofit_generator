@@ -15,6 +15,5 @@ abstract class LegacyUser with _$LegacyUser {
     @JsonKey(includeIfNull: false) String? email,
   }) = _LegacyUser;
 
-  factory LegacyUser.fromJson(Map<String, Object?> json) =>
-      _$LegacyUserFromJson(json);
+  factory LegacyUser.fromJson(Map<String, Object?> json) => _$LegacyUserFromJson(json);
 }

@@ -6,18 +6,14 @@ part of 'class_with_nullable_types.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ClassWithNullableTypes _$ClassWithNullableTypesFromJson(
-  Map<String, dynamic> json,
-) => ClassWithNullableTypes(
+ClassWithNullableTypes _$ClassWithNullableTypesFromJson(Map<String, dynamic> json) => ClassWithNullableTypes(
   p1: json['p1'] as String,
   p2: (json['p2'] as List<dynamic>).map((e) => e as String).toList(),
   p2NullItem: (json['p2_null_item'] as List<dynamic>)
       .map((e) => (e as List<dynamic>).map((e) => e as String?).toList())
       .toList(),
   p2NullAll: json['p2_null_all'] as List<dynamic>?,
-  classWithNullableTypesP3: ClassWithNullableTypesP3.fromJson(
-    json['ClassWithNullableTypesP3'] as Map<String, dynamic>,
-  ),
+  classWithNullableTypesP3: ClassWithNullableTypesP3.fromJson(json['ClassWithNullableTypesP3'] as Map<String, dynamic>),
   requiredNullAnyOf: json['required_null_anyOf'] as String,
   p1AnyOf: json['p1_anyOf'] as String,
   p2AnyOf: json['p2_anyOf'],
@@ -30,31 +26,23 @@ ClassWithNullableTypes _$ClassWithNullableTypesFromJson(
   p3AllOf: json['p3_allOf'],
   validInt: (json['valid_int'] as num?)?.toInt(),
   validString: json['valid_string'] as String?,
-  validArray: (json['valid_array'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  validArray: (json['valid_array'] as List<dynamic>?)?.map((e) => e as String).toList(),
   p2Null: json['p2_null'] as List<dynamic>?,
   p1N: json['p1_n'] as String?,
   p2N: (json['p2_n'] as List<dynamic>?)?.map((e) => e as String?).toList(),
   classWithNullableTypesP3N: json['ClassWithNullableTypesP3N'] == null
       ? null
-      : ClassWithNullableTypesP3N.fromJson(
-          json['ClassWithNullableTypesP3N'] as Map<String, dynamic>,
-        ),
+      : ClassWithNullableTypesP3N.fromJson(json['ClassWithNullableTypesP3N'] as Map<String, dynamic>),
   p1List: json['p1_list'] as String?,
   p2List: json['p2_list'] as List<dynamic>?,
   p3List: json['p3_list'],
   nonNullAnyOf: json['nonNull_anyOf'] == null
       ? null
-      : ClassWithNullableTypesNonNullAnyOfUnion.fromJson(
-          json['nonNull_anyOf'] as Map<String, dynamic>,
-        ),
+      : ClassWithNullableTypesNonNullAnyOfUnion.fromJson(json['nonNull_anyOf'] as Map<String, dynamic>),
   optionalNullAnyOf: json['optional_null_anyOf'] as String?,
 );
 
-Map<String, dynamic> _$ClassWithNullableTypesToJson(
-  ClassWithNullableTypes instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$ClassWithNullableTypesToJson(ClassWithNullableTypes instance) => <String, dynamic>{
   'valid_int': instance.validInt,
   'valid_string': instance.validString,
   'valid_array': instance.validArray,

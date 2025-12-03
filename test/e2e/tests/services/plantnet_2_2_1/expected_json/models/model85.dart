@@ -14,8 +14,7 @@ part 'model85.g.dart';
 class Model85 {
   const Model85({required this.type, required this.coordinates});
 
-  factory Model85.fromJson(Map<String, Object?> json) =>
-      _$Model85FromJson(json);
+  factory Model85.fromJson(Map<String, Object?> json) => _$Model85FromJson(json);
 
   final TypeModel type;
   final Model84 coordinates;

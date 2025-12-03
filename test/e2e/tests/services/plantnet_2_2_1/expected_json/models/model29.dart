@@ -12,8 +12,7 @@ part 'model29.g.dart';
 class Model29 {
   const Model29({this.identify});
 
-  factory Model29.fromJson(Map<String, Object?> json) =>
-      _$Model29FromJson(json);
+  factory Model29.fromJson(Map<String, Object?> json) => _$Model29FromJson(json);
 
   final Identify? identify;
 

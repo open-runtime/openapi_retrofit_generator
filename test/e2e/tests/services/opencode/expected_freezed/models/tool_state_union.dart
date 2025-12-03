@@ -16,19 +16,14 @@ class ToolStateUnion {
 
   const ToolStateUnion(this._json);
 
-  factory ToolStateUnion.fromJson(Map<String, dynamic> json) =>
-      ToolStateUnion(json);
+  factory ToolStateUnion.fromJson(Map<String, dynamic> json) => ToolStateUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  ToolStateUnionToolStatePending toToolStatePending() =>
-      ToolStateUnionToolStatePending.fromJson(_json);
-  ToolStateUnionToolStateRunning toToolStateRunning() =>
-      ToolStateUnionToolStateRunning.fromJson(_json);
-  ToolStateUnionToolStateCompleted toToolStateCompleted() =>
-      ToolStateUnionToolStateCompleted.fromJson(_json);
-  ToolStateUnionToolStateError toToolStateError() =>
-      ToolStateUnionToolStateError.fromJson(_json);
+  ToolStateUnionToolStatePending toToolStatePending() => ToolStateUnionToolStatePending.fromJson(_json);
+  ToolStateUnionToolStateRunning toToolStateRunning() => ToolStateUnionToolStateRunning.fromJson(_json);
+  ToolStateUnionToolStateCompleted toToolStateCompleted() => ToolStateUnionToolStateCompleted.fromJson(_json);
+  ToolStateUnionToolStateError toToolStateError() => ToolStateUnionToolStateError.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -85,12 +80,10 @@ class ToolStateUnionToolStateCompleted {
     required this.attachments,
   });
 
-  factory ToolStateUnionToolStateCompleted.fromJson(
-    Map<String, Object?> json,
-  ) => _$ToolStateUnionToolStateCompletedFromJson(json);
+  factory ToolStateUnionToolStateCompleted.fromJson(Map<String, Object?> json) =>
+      _$ToolStateUnionToolStateCompletedFromJson(json);
 
-  Map<String, Object?> toJson() =>
-      _$ToolStateUnionToolStateCompletedToJson(this);
+  Map<String, Object?> toJson() => _$ToolStateUnionToolStateCompletedToJson(this);
 }
 
 @JsonSerializable()

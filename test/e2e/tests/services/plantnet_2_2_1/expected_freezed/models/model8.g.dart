@@ -7,9 +7,7 @@ part of 'model8.dart';
 // **************************************************************************
 
 _Model8 _$Model8FromJson(Map<String, dynamic> json) => _Model8(
-  habitats: (json['habitats'] as List<dynamic>?)
-      ?.map((e) => Model7.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  habitats: (json['habitats'] as List<dynamic>?)?.map((e) => Model7.fromJson(e as Map<String, dynamic>)).toList(),
   total: json['total'] as num?,
 );
 

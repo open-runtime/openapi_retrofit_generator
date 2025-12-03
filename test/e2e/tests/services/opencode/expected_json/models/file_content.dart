@@ -19,8 +19,7 @@ class FileContent {
     this.mimeType,
   });
 
-  factory FileContent.fromJson(Map<String, Object?> json) =>
-      _$FileContentFromJson(json);
+  factory FileContent.fromJson(Map<String, Object?> json) => _$FileContentFromJson(json);
 
   final String type;
   final String content;

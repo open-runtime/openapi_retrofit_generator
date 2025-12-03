@@ -16,8 +16,7 @@ enum ModelsStatusStatus {
 
   const ModelsStatusStatus(this.json);
 
-  factory ModelsStatusStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory ModelsStatusStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -27,6 +26,5 @@ enum ModelsStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<ModelsStatusStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<ModelsStatusStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

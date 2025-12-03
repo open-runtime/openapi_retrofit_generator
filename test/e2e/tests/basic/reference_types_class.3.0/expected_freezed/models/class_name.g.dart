@@ -11,5 +11,7 @@ _ClassName _$ClassNameFromJson(Map<String, dynamic> json) => _ClassName(
   another: AnotherClass.fromJson(json['another'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$ClassNameToJson(_ClassName instance) =>
-    <String, dynamic>{'id': instance.id, 'another': instance.another};
+Map<String, dynamic> _$ClassNameToJson(_ClassName instance) => <String, dynamic>{
+  'id': instance.id,
+  'another': instance.another,
+};

@@ -10,13 +10,11 @@ part 'api_v1_category_list_request_included_nested.g.dart';
 class ApiV1CategoryListRequestIncludedNested {
   const ApiV1CategoryListRequestIncludedNested({this.includedInner});
 
-  factory ApiV1CategoryListRequestIncludedNested.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestIncludedNestedFromJson(json);
+  factory ApiV1CategoryListRequestIncludedNested.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestIncludedNestedFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? includedInner;
 
-  Map<String, Object?> toJson() =>
-      _$ApiV1CategoryListRequestIncludedNestedToJson(this);
+  Map<String, Object?> toJson() => _$ApiV1CategoryListRequestIncludedNestedToJson(this);
 }

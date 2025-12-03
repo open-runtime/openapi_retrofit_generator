@@ -18,6 +18,5 @@ abstract class FileUploadResponse with _$FileUploadResponse {
     DateTime? uploadedAt,
   }) = _FileUploadResponse;
 
-  factory FileUploadResponse.fromJson(Map<String, Object?> json) =>
-      _$FileUploadResponseFromJson(json);
+  factory FileUploadResponse.fromJson(Map<String, Object?> json) => _$FileUploadResponseFromJson(json);
 }

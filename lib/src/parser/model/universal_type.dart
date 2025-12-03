@@ -365,8 +365,7 @@ final class UniversalType {
   /// // int age = 0             <- Third (has default)
   /// ```
   int compareTo(UniversalType other) {
-    if (isRequired == other.isRequired &&
-        (other.defaultValue == null) == (defaultValue == null)) {
+    if (isRequired == other.isRequired && (other.defaultValue == null) == (defaultValue == null)) {
       return 0;
     } else if (isRequired && defaultValue == null) {
       return -1;
@@ -385,10 +384,7 @@ final class UniversalType {
       defaultValue == other.defaultValue &&
       isRequired == other.isRequired &&
       enumType == other.enumType &&
-      const DeepCollectionEquality().equals(
-        wrappingCollections,
-        other.wrappingCollections,
-      ) &&
+      const DeepCollectionEquality().equals(wrappingCollections, other.wrappingCollections) &&
       nullable == other.nullable &&
       min == other.min &&
       max == other.max &&

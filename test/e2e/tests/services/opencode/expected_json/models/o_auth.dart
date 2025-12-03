@@ -8,12 +8,7 @@ part 'o_auth.g.dart';
 
 @JsonSerializable()
 class OAuth {
-  const OAuth({
-    required this.type,
-    required this.refresh,
-    required this.access,
-    required this.expires,
-  });
+  const OAuth({required this.type, required this.refresh, required this.access, required this.expires});
 
   factory OAuth.fromJson(Map<String, Object?> json) => _$OAuthFromJson(json);
 

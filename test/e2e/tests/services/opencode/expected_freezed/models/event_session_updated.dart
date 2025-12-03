@@ -17,6 +17,5 @@ abstract class EventSessionUpdated with _$EventSessionUpdated {
     required EventSessionUpdatedProperties eventSessionUpdatedProperties,
   }) = _EventSessionUpdated;
 
-  factory EventSessionUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventSessionUpdatedFromJson(json);
+  factory EventSessionUpdated.fromJson(Map<String, Object?> json) => _$EventSessionUpdatedFromJson(json);
 }

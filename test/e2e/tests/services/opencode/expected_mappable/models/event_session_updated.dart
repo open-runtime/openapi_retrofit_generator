@@ -10,15 +10,11 @@ part 'event_session_updated.mapper.dart';
 
 @MappableClass()
 class EventSessionUpdated with EventSessionUpdatedMappable {
-  const EventSessionUpdated({
-    required this.type,
-    required this.eventSessionUpdatedProperties,
-  });
+  const EventSessionUpdated({required this.type, required this.eventSessionUpdatedProperties});
 
   final String type;
   @MappableField(key: 'EventSessionUpdatedProperties')
   final EventSessionUpdatedProperties eventSessionUpdatedProperties;
 
-  static EventSessionUpdated fromJson(Map<String, dynamic> json) =>
-      EventSessionUpdatedMapper.fromJson(json);
+  static EventSessionUpdated fromJson(Map<String, dynamic> json) => EventSessionUpdatedMapper.fromJson(json);
 }

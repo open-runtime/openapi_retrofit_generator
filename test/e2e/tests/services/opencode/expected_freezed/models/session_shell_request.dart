@@ -9,11 +9,7 @@ part 'session_shell_request.g.dart';
 
 @Freezed()
 abstract class SessionShellRequest with _$SessionShellRequest {
-  const factory SessionShellRequest({
-    required String agent,
-    required String command,
-  }) = _SessionShellRequest;
+  const factory SessionShellRequest({required String agent, required String command}) = _SessionShellRequest;
 
-  factory SessionShellRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionShellRequestFromJson(json);
+  factory SessionShellRequest.fromJson(Map<String, Object?> json) => _$SessionShellRequestFromJson(json);
 }

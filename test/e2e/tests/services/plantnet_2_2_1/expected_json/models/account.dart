@@ -12,8 +12,7 @@ part 'account.g.dart';
 class Account {
   const Account({this.id, this.username, this.name, this.created});
 
-  factory Account.fromJson(Map<String, Object?> json) =>
-      _$AccountFromJson(json);
+  factory Account.fromJson(Map<String, Object?> json) => _$AccountFromJson(json);
 
   final String? id;
   final String? username;

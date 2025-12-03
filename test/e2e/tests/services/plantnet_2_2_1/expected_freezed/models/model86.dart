@@ -18,6 +18,5 @@ abstract class Model86 with _$Model86 {
     @JsonKey(name: 'exact_match') @Default(false) bool exactMatch,
   }) = _Model86;
 
-  factory Model86.fromJson(Map<String, Object?> json) =>
-      _$Model86FromJson(json);
+  factory Model86.fromJson(Map<String, Object?> json) => _$Model86FromJson(json);
 }

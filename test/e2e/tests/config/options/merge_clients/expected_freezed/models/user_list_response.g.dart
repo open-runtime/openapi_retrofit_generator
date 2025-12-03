@@ -6,20 +6,16 @@ part of 'user_list_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) =>
-    _UserListResponse(
-      users: (json['users'] as List<dynamic>)
-          .map((e) => User.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      total: (json['total'] as num).toInt(),
-      page: (json['page'] as num?)?.toInt(),
-      limit: (json['limit'] as num?)?.toInt(),
-    );
+_UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) => _UserListResponse(
+  users: (json['users'] as List<dynamic>).map((e) => User.fromJson(e as Map<String, dynamic>)).toList(),
+  total: (json['total'] as num).toInt(),
+  page: (json['page'] as num?)?.toInt(),
+  limit: (json['limit'] as num?)?.toInt(),
+);
 
-Map<String, dynamic> _$UserListResponseToJson(_UserListResponse instance) =>
-    <String, dynamic>{
-      'users': instance.users,
-      'total': instance.total,
-      'page': instance.page,
-      'limit': instance.limit,
-    };
+Map<String, dynamic> _$UserListResponseToJson(_UserListResponse instance) => <String, dynamic>{
+  'users': instance.users,
+  'total': instance.total,
+  'page': instance.page,
+  'limit': instance.limit,
+};

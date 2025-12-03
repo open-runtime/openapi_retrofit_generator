@@ -7,13 +7,9 @@ part of 'cursor_paginated_dto.dart';
 // **************************************************************************
 
 CursorPaginatedDto _$CursorPaginatedDtoFromJson(Map<String, dynamic> json) =>
-    CursorPaginatedDto(
-      nextCursor: json['nextCursor'] as String?,
-      previousCursor: json['previousCursor'] as String?,
-    );
+    CursorPaginatedDto(nextCursor: json['nextCursor'] as String?, previousCursor: json['previousCursor'] as String?);
 
-Map<String, dynamic> _$CursorPaginatedDtoToJson(CursorPaginatedDto instance) =>
-    <String, dynamic>{
-      'nextCursor': instance.nextCursor,
-      'previousCursor': instance.previousCursor,
-    };
+Map<String, dynamic> _$CursorPaginatedDtoToJson(CursorPaginatedDto instance) => <String, dynamic>{
+  'nextCursor': instance.nextCursor,
+  'previousCursor': instance.previousCursor,
+};

@@ -13,6 +13,5 @@ class UserDto with UserDtoMappable {
   final String id;
   final String? username;
 
-  static UserDto fromJson(Map<String, dynamic> json) =>
-      UserDtoMapper.fromJson(json);
+  static UserDto fromJson(Map<String, dynamic> json) => UserDtoMapper.fromJson(json);
 }

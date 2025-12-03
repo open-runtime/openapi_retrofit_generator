@@ -8,12 +8,7 @@ part 'model_cost.mapper.dart';
 
 @MappableClass()
 class ModelCost with ModelCostMappable {
-  const ModelCost({
-    required this.input,
-    required this.output,
-    this.cacheRead,
-    this.cacheWrite,
-  });
+  const ModelCost({required this.input, required this.output, this.cacheRead, this.cacheWrite});
 
   final num input;
   final num output;
@@ -22,6 +17,5 @@ class ModelCost with ModelCostMappable {
   @MappableField(key: 'cache_write')
   final num? cacheWrite;
 
-  static ModelCost fromJson(Map<String, dynamic> json) =>
-      ModelCostMapper.fromJson(json);
+  static ModelCost fromJson(Map<String, dynamic> json) => ModelCostMapper.fromJson(json);
 }

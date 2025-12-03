@@ -11,15 +11,7 @@ part 'model3.g.dart';
 
 @JsonSerializable()
 class Model3 {
-  const Model3({
-    this.period,
-    this.startDate,
-    this.endDate,
-    this.status,
-    this.count,
-    this.aboveQuota,
-    this.discount,
-  });
+  const Model3({this.period, this.startDate, this.endDate, this.status, this.count, this.aboveQuota, this.discount});
 
   factory Model3.fromJson(Map<String, Object?> json) => _$Model3FromJson(json);
 

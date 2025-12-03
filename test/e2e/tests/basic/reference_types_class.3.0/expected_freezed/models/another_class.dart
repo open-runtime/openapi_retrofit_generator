@@ -9,9 +9,7 @@ part 'another_class.g.dart';
 
 @Freezed()
 abstract class AnotherClass with _$AnotherClass {
-  const factory AnotherClass({required int id, required String name}) =
-      _AnotherClass;
+  const factory AnotherClass({required int id, required String name}) = _AnotherClass;
 
-  factory AnotherClass.fromJson(Map<String, Object?> json) =>
-      _$AnotherClassFromJson(json);
+  factory AnotherClass.fromJson(Map<String, Object?> json) => _$AnotherClassFromJson(json);
 }

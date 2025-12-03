@@ -13,6 +13,5 @@ class TextPartTime with TextPartTimeMappable {
   final num start;
   final num? end;
 
-  static TextPartTime fromJson(Map<String, dynamic> json) =>
-      TextPartTimeMapper.fromJson(json);
+  static TextPartTime fromJson(Map<String, dynamic> json) => TextPartTimeMapper.fromJson(json);
 }

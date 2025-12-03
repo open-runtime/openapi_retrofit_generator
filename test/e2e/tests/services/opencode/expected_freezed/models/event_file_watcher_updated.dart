@@ -14,10 +14,8 @@ abstract class EventFileWatcherUpdated with _$EventFileWatcherUpdated {
   const factory EventFileWatcherUpdated({
     required String type,
     @JsonKey(name: 'EventFileWatcherUpdatedProperties')
-    required EventFileWatcherUpdatedProperties
-    eventFileWatcherUpdatedProperties,
+    required EventFileWatcherUpdatedProperties eventFileWatcherUpdatedProperties,
   }) = _EventFileWatcherUpdated;
 
-  factory EventFileWatcherUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventFileWatcherUpdatedFromJson(json);
+  factory EventFileWatcherUpdated.fromJson(Map<String, Object?> json) => _$EventFileWatcherUpdatedFromJson(json);
 }

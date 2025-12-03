@@ -9,7 +9,4 @@ part of 'name.dart';
 _Name _$NameFromJson(Map<String, dynamic> json) =>
     _Name(first: json['first'] as String?, last: json['last'] as String?);
 
-Map<String, dynamic> _$NameToJson(_Name instance) => <String, dynamic>{
-  'first': instance.first,
-  'last': instance.last,
-};
+Map<String, dynamic> _$NameToJson(_Name instance) => <String, dynamic>{'first': instance.first, 'last': instance.last};

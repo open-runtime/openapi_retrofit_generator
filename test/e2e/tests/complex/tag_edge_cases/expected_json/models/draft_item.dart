@@ -10,8 +10,7 @@ part 'draft_item.g.dart';
 class DraftItem {
   const DraftItem({this.id, this.content, this.isDraft});
 
-  factory DraftItem.fromJson(Map<String, Object?> json) =>
-      _$DraftItemFromJson(json);
+  factory DraftItem.fromJson(Map<String, Object?> json) => _$DraftItemFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? id;

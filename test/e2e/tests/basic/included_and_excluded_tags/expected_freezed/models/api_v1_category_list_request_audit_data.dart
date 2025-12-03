@@ -8,8 +8,7 @@ part 'api_v1_category_list_request_audit_data.freezed.dart';
 part 'api_v1_category_list_request_audit_data.g.dart';
 
 @Freezed()
-abstract class ApiV1CategoryListRequestAuditData
-    with _$ApiV1CategoryListRequestAuditData {
+abstract class ApiV1CategoryListRequestAuditData with _$ApiV1CategoryListRequestAuditData {
   const factory ApiV1CategoryListRequestAuditData({
     /// Last modified timestamp from anchor
     required DateTime lastModified,
@@ -18,7 +17,6 @@ abstract class ApiV1CategoryListRequestAuditData
     @JsonKey(includeIfNull: false) String? modifiedBy,
   }) = _ApiV1CategoryListRequestAuditData;
 
-  factory ApiV1CategoryListRequestAuditData.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestAuditDataFromJson(json);
+  factory ApiV1CategoryListRequestAuditData.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestAuditDataFromJson(json);
 }

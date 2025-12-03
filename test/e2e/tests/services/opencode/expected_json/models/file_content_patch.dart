@@ -19,8 +19,7 @@ class FileContentPatch {
     this.indexField,
   });
 
-  factory FileContentPatch.fromJson(Map<String, Object?> json) =>
-      _$FileContentPatchFromJson(json);
+  factory FileContentPatch.fromJson(Map<String, Object?> json) => _$FileContentPatchFromJson(json);
 
   final String oldFileName;
   final String newFileName;

@@ -8,18 +8,12 @@ part 'geolocation.mapper.dart';
 
 @MappableClass()
 class Geolocation with GeolocationMappable {
-  const Geolocation({
-    required this.lat,
-    required this.lon,
-    required this.place,
-    this.accuracy,
-  });
+  const Geolocation({required this.lat, required this.lon, required this.place, this.accuracy});
 
   final num lat;
   final num lon;
   final String place;
   final num? accuracy;
 
-  static Geolocation fromJson(Map<String, dynamic> json) =>
-      GeolocationMapper.fromJson(json);
+  static Geolocation fromJson(Map<String, dynamic> json) => GeolocationMapper.fromJson(json);
 }

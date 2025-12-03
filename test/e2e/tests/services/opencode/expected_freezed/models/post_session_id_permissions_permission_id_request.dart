@@ -10,14 +10,11 @@ part 'post_session_id_permissions_permission_id_request.freezed.dart';
 part 'post_session_id_permissions_permission_id_request.g.dart';
 
 @Freezed()
-abstract class PostSessionIdPermissionsPermissionIdRequest
-    with _$PostSessionIdPermissionsPermissionIdRequest {
+abstract class PostSessionIdPermissionsPermissionIdRequest with _$PostSessionIdPermissionsPermissionIdRequest {
   const factory PostSessionIdPermissionsPermissionIdRequest({
-    required PostSessionIdPermissionsPermissionIdRequestResponseResponse
-    response,
+    required PostSessionIdPermissionsPermissionIdRequestResponseResponse response,
   }) = _PostSessionIdPermissionsPermissionIdRequest;
 
-  factory PostSessionIdPermissionsPermissionIdRequest.fromJson(
-    Map<String, Object?> json,
-  ) => _$PostSessionIdPermissionsPermissionIdRequestFromJson(json);
+  factory PostSessionIdPermissionsPermissionIdRequest.fromJson(Map<String, Object?> json) =>
+      _$PostSessionIdPermissionsPermissionIdRequestFromJson(json);
 }

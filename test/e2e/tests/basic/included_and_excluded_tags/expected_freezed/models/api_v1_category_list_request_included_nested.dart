@@ -8,13 +8,10 @@ part 'api_v1_category_list_request_included_nested.freezed.dart';
 part 'api_v1_category_list_request_included_nested.g.dart';
 
 @Freezed()
-abstract class ApiV1CategoryListRequestIncludedNested
-    with _$ApiV1CategoryListRequestIncludedNested {
-  const factory ApiV1CategoryListRequestIncludedNested({
-    @JsonKey(includeIfNull: false) String? includedInner,
-  }) = _ApiV1CategoryListRequestIncludedNested;
+abstract class ApiV1CategoryListRequestIncludedNested with _$ApiV1CategoryListRequestIncludedNested {
+  const factory ApiV1CategoryListRequestIncludedNested({@JsonKey(includeIfNull: false) String? includedInner}) =
+      _ApiV1CategoryListRequestIncludedNested;
 
-  factory ApiV1CategoryListRequestIncludedNested.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestIncludedNestedFromJson(json);
+  factory ApiV1CategoryListRequestIncludedNested.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestIncludedNestedFromJson(json);
 }

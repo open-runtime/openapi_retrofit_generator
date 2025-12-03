@@ -9,9 +9,7 @@ part 'project_time.g.dart';
 
 @Freezed()
 abstract class ProjectTime with _$ProjectTime {
-  const factory ProjectTime({required num created, num? initialized}) =
-      _ProjectTime;
+  const factory ProjectTime({required num created, num? initialized}) = _ProjectTime;
 
-  factory ProjectTime.fromJson(Map<String, Object?> json) =>
-      _$ProjectTimeFromJson(json);
+  factory ProjectTime.fromJson(Map<String, Object?> json) => _$ProjectTimeFromJson(json);
 }

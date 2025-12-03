@@ -6,10 +6,8 @@ part of 'date.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Date _$DateFromJson(Map<String, dynamic> json) => Date(
-  timestamp: json['timestamp'] as num?,
-  string: json['string'] as String?,
-);
+Date _$DateFromJson(Map<String, dynamic> json) =>
+    Date(timestamp: json['timestamp'] as num?, string: json['string'] as String?);
 
 Map<String, dynamic> _$DateToJson(Date instance) => <String, dynamic>{
   'timestamp': instance.timestamp,

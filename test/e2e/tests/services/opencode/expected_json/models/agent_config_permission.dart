@@ -10,8 +10,7 @@ part 'agent_config_permission.g.dart';
 class AgentConfigPermission {
   const AgentConfigPermission({this.edit, this.bash, this.webfetch});
 
-  factory AgentConfigPermission.fromJson(Map<String, Object?> json) =>
-      _$AgentConfigPermissionFromJson(json);
+  factory AgentConfigPermission.fromJson(Map<String, Object?> json) => _$AgentConfigPermissionFromJson(json);
 
   final String? edit;
   final dynamic bash;

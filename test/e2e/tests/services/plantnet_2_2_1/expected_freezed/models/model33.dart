@@ -18,6 +18,5 @@ abstract class Model33 with _$Model33 {
     String? organ,
   }) = _Model33;
 
-  factory Model33.fromJson(Map<String, Object?> json) =>
-      _$Model33FromJson(json);
+  factory Model33.fromJson(Map<String, Object?> json) => _$Model33FromJson(json);
 }

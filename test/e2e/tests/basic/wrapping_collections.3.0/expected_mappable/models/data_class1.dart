@@ -14,6 +14,5 @@ class DataClass1 with DataClass1Mappable {
   final String? type;
   final String? instance;
 
-  static DataClass1 fromJson(Map<String, dynamic> json) =>
-      DataClass1Mapper.fromJson(json);
+  static DataClass1 fromJson(Map<String, dynamic> json) => DataClass1Mapper.fromJson(json);
 }

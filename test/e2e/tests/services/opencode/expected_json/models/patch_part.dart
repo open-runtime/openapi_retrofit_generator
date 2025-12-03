@@ -17,8 +17,7 @@ class PatchPart {
     required this.files,
   });
 
-  factory PatchPart.fromJson(Map<String, Object?> json) =>
-      _$PatchPartFromJson(json);
+  factory PatchPart.fromJson(Map<String, Object?> json) => _$PatchPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

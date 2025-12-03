@@ -10,12 +10,7 @@ part 'file.g.dart';
 
 @JsonSerializable()
 class File {
-  const File({
-    required this.path,
-    required this.added,
-    required this.removed,
-    required this.status,
-  });
+  const File({required this.path, required this.added, required this.removed, required this.status});
 
   factory File.fromJson(Map<String, Object?> json) => _$FileFromJson(json);
 

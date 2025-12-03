@@ -10,8 +10,7 @@ part 'range_start.g.dart';
 class RangeStart {
   const RangeStart({required this.line, required this.character});
 
-  factory RangeStart.fromJson(Map<String, Object?> json) =>
-      _$RangeStartFromJson(json);
+  factory RangeStart.fromJson(Map<String, Object?> json) => _$RangeStartFromJson(json);
 
   final num line;
   final num character;

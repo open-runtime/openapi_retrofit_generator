@@ -10,8 +10,7 @@ part 'api_v1_empty_tags_response.g.dart';
 class ApiV1EmptyTagsResponse {
   const ApiV1EmptyTagsResponse({this.emptyTagsField});
 
-  factory ApiV1EmptyTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$ApiV1EmptyTagsResponseFromJson(json);
+  factory ApiV1EmptyTagsResponse.fromJson(Map<String, Object?> json) => _$ApiV1EmptyTagsResponseFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? emptyTagsField;

@@ -52,6 +52,5 @@ class Model with ModelMappable {
   @MappableField(key: 'ModelProvider')
   final ModelProvider? modelProvider;
 
-  static Model fromJson(Map<String, dynamic> json) =>
-      ModelMapper.fromJson(json);
+  static Model fromJson(Map<String, dynamic> json) => ModelMapper.fromJson(json);
 }

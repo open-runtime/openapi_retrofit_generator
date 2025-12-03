@@ -22,6 +22,5 @@ abstract class BankTransferPayment with _$BankTransferPayment {
     @JsonKey(includeIfNull: false) String? reference,
   }) = _BankTransferPayment;
 
-  factory BankTransferPayment.fromJson(Map<String, Object?> json) =>
-      _$BankTransferPaymentFromJson(json);
+  factory BankTransferPayment.fromJson(Map<String, Object?> json) => _$BankTransferPaymentFromJson(json);
 }

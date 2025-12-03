@@ -14,6 +14,5 @@ class Identify with IdentifyMappable {
   final num? total;
   final num? remaining;
 
-  static Identify fromJson(Map<String, dynamic> json) =>
-      IdentifyMapper.fromJson(json);
+  static Identify fromJson(Map<String, dynamic> json) => IdentifyMapper.fromJson(json);
 }

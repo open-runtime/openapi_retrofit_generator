@@ -36,6 +36,5 @@ enum Organ {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Organ> get $valuesDefined =>
-      values.where((value) => value != Organ.unknown).toList();
+  static List<Organ> get $valuesDefined => values.where((value) => value != Organ.unknown).toList();
 }

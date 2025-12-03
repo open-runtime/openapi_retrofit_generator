@@ -21,6 +21,5 @@ abstract class PatchUserRequest with _$PatchUserRequest {
     UserSettings? settings,
   }) = _PatchUserRequest;
 
-  factory PatchUserRequest.fromJson(Map<String, Object?> json) =>
-      _$PatchUserRequestFromJson(json);
+  factory PatchUserRequest.fromJson(Map<String, Object?> json) => _$PatchUserRequestFromJson(json);
 }

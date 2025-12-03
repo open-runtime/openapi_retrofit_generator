@@ -8,11 +8,7 @@ part 'session_init_request.mapper.dart';
 
 @MappableClass()
 class SessionInitRequest with SessionInitRequestMappable {
-  const SessionInitRequest({
-    required this.modelId,
-    required this.providerId,
-    required this.messageId,
-  });
+  const SessionInitRequest({required this.modelId, required this.providerId, required this.messageId});
 
   @MappableField(key: 'modelID')
   final String modelId;
@@ -21,6 +17,5 @@ class SessionInitRequest with SessionInitRequestMappable {
   @MappableField(key: 'messageID')
   final String messageId;
 
-  static SessionInitRequest fromJson(Map<String, dynamic> json) =>
-      SessionInitRequestMapper.fromJson(json);
+  static SessionInitRequest fromJson(Map<String, dynamic> json) => SessionInitRequestMapper.fromJson(json);
 }

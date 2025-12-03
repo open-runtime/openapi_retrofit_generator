@@ -14,10 +14,7 @@ import '../test_utils.dart';
 
 Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   final schemaPath = p.join('test', 'e2e', 'tests', 'schemas', schemaFileName);
-  final schemaNameWithoutExt = schemaFileName.replaceAll(
-    RegExp(r'\.(yaml|json)$'),
-    '',
-  );
+  final schemaNameWithoutExt = schemaFileName.replaceAll(RegExp(r'\.(yaml|json)$'), '');
 
   print('\n=== SCHEMA TEST: $schemaFileName ===');
   print('Schema: $schemaPath');
@@ -25,13 +22,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   print('\n[1/6] Cleaning generated folders...');
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolder = p.join(
-      'test',
-      'generated',
-      'schema_3',
-      schemaNameWithoutExt,
-      generatedFolderName,
-    );
+    final generatedFolder = p.join('test', 'generated', 'schema_3', schemaNameWithoutExt, generatedFolderName);
     final genDir = Directory(generatedFolder);
     if (genDir.existsSync()) {
       genDir.deleteSync(recursive: true);
@@ -67,13 +58,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     for (final serializer in JsonSerializer.values) {
       final generatedFolderName = getGeneratedFolderName(serializer);
       final buildOutputPath = p.join(libFolder, generatedFolderName);
-      final targetPath = p.join(
-        'test',
-        'generated',
-        'schema_3',
-        schemaNameWithoutExt,
-        generatedFolderName,
-      );
+      final targetPath = p.join('test', 'generated', 'schema_3', schemaNameWithoutExt, generatedFolderName);
 
       final buildOutput = Directory(buildOutputPath);
       if (buildOutput.existsSync()) {
@@ -87,12 +72,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     }
 
     print('\n[6/6] Running analyzer...');
-    final targetPath = p.join(
-      'test',
-      'generated',
-      'schema_3',
-      schemaNameWithoutExt,
-    );
+    final targetPath = p.join('test', 'generated', 'schema_3', schemaNameWithoutExt);
     await runAnalyzer(targetPath, schemaFileName);
 
     print('\n=== TEST PASSED ===\n');
@@ -132,10 +112,7 @@ void main() {
     });
 
     test('issue11088-model-mutable-with-containers.yaml', () async {
-      await schemaTest(
-        'issue11088-model-mutable-with-containers.yaml',
-        buildFolder,
-      );
+      await schemaTest('issue11088-model-mutable-with-containers.yaml', buildFolder);
     });
 
     test('issue11242.yaml', () async {
@@ -159,10 +136,7 @@ void main() {
     });
 
     test('issue13146_file_abstraction_response.yaml', () async {
-      await schemaTest(
-        'issue13146_file_abstraction_response.yaml',
-        buildFolder,
-      );
+      await schemaTest('issue13146_file_abstraction_response.yaml', buildFolder);
     });
 
     test('issue13506-defaultValue-numbers.yaml', () async {
@@ -174,10 +148,7 @@ void main() {
     });
 
     test('issue_14026_backticks_reserved_words.yaml', () async {
-      await schemaTest(
-        'issue_14026_backticks_reserved_words.yaml',
-        buildFolder,
-      );
+      await schemaTest('issue_14026_backticks_reserved_words.yaml', buildFolder);
     });
 
     test('issue15264.yaml', () async {
@@ -193,10 +164,7 @@ void main() {
     });
 
     test('issue4111-multiline-operation-description.yaml', () async {
-      await schemaTest(
-        'issue4111-multiline-operation-description.yaml',
-        buildFolder,
-      );
+      await schemaTest('issue4111-multiline-operation-description.yaml', buildFolder);
     });
 
     test('issue4584.yaml', () async {
@@ -379,15 +347,9 @@ void main() {
       await schemaTest('petstore-group-parameter.yaml', buildFolder);
     });
 
-    test(
-      'petstore-multiple-required-properties-has-same-oneOf-object.yaml',
-      () async {
-        await schemaTest(
-          'petstore-multiple-required-properties-has-same-oneOf-object.yaml',
-          buildFolder,
-        );
-      },
-    );
+    test('petstore-multiple-required-properties-has-same-oneOf-object.yaml', () async {
+      await schemaTest('petstore-multiple-required-properties-has-same-oneOf-object.yaml', buildFolder);
+    });
 
     test('petstore-no-multipart-for-testing.yaml', () async {
       await schemaTest('petstore-no-multipart-for-testing.yaml', buildFolder);
@@ -425,15 +387,9 @@ void main() {
       await schemaTest('petstore-with-deprecated-fields.yaml', buildFolder);
     });
 
-    test(
-      'petstore-with-fake-endpoints-for-testing-playframework-with-security.yaml',
-      () async {
-        await schemaTest(
-          'petstore-with-fake-endpoints-for-testing-playframework-with-security.yaml',
-          buildFolder,
-        );
-      },
-    );
+    test('petstore-with-fake-endpoints-for-testing-playframework-with-security.yaml', () async {
+      await schemaTest('petstore-with-fake-endpoints-for-testing-playframework-with-security.yaml', buildFolder);
+    });
 
     test('petstore-with-no-response-body.yaml', () async {
       await schemaTest('petstore-with-no-response-body.yaml', buildFolder);

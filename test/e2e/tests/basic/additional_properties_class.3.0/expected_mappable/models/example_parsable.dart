@@ -14,6 +14,5 @@ class ExampleParsable with ExampleParsableMappable {
 
   final Map<String, Example> data;
 
-  static ExampleParsable fromJson(Map<String, dynamic> json) =>
-      ExampleParsableMapper.fromJson(json);
+  static ExampleParsable fromJson(Map<String, dynamic> json) => ExampleParsableMapper.fromJson(json);
 }

@@ -9,13 +9,7 @@ part 'model35.g.dart';
 
 @Freezed()
 abstract class Model35 with _$Model35 {
-  const factory Model35({
-    String? determination,
-    num? count,
-    num? score,
-    bool? selected,
-  }) = _Model35;
+  const factory Model35({String? determination, num? count, num? score, bool? selected}) = _Model35;
 
-  factory Model35.fromJson(Map<String, Object?> json) =>
-      _$Model35FromJson(json);
+  factory Model35.fromJson(Map<String, Object?> json) => _$Model35FromJson(json);
 }

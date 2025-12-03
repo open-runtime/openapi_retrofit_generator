@@ -7,17 +7,12 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'session_prompt_request_acp_connection.mapper.dart';
 
 @MappableClass()
-class SessionPromptRequestAcpConnection
-    with SessionPromptRequestAcpConnectionMappable {
-  const SessionPromptRequestAcpConnection({
-    required this.connection,
-    required this.sessionId,
-  });
+class SessionPromptRequestAcpConnection with SessionPromptRequestAcpConnectionMappable {
+  const SessionPromptRequestAcpConnection({required this.connection, required this.sessionId});
 
   final dynamic connection;
   final String sessionId;
 
-  static SessionPromptRequestAcpConnection fromJson(
-    Map<String, dynamic> json,
-  ) => SessionPromptRequestAcpConnectionMapper.fromJson(json);
+  static SessionPromptRequestAcpConnection fromJson(Map<String, dynamic> json) =>
+      SessionPromptRequestAcpConnectionMapper.fromJson(json);
 }

@@ -15,6 +15,5 @@ class AgentModel with AgentModelMappable {
   @MappableField(key: 'providerID')
   final String providerId;
 
-  static AgentModel fromJson(Map<String, dynamic> json) =>
-      AgentModelMapper.fromJson(json);
+  static AgentModel fromJson(Map<String, dynamic> json) => AgentModelMapper.fromJson(json);
 }

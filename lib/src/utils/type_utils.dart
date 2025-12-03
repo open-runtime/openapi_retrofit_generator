@@ -47,9 +47,7 @@ extension UniversalTypeX on UniversalType {
     for (final collection in wrappingCollections.reversed) {
       sb
         ..write('>') // Closing generic bracket
-        ..write(
-          collection.collectionSuffixQuestionMark,
-        ); // '?' for the collection itself
+        ..write(collection.collectionSuffixQuestionMark); // '?' for the collection itself
     }
 
     return sb.toString();

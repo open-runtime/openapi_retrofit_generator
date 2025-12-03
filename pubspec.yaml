@@ -1,31 +1,31 @@
 name: openapi_retrofit_generator
 description: Package that generates REST clients and data classes from OpenApi definition file
-
 version: 2.0.2
-
 repository: https://github.com/westito/openapi_retrofit_generator
-
 topics:
   - swagger
   - openapi
   - api
   - generator
   - retrofit
-
 environment:
   sdk: ^3.9.0
-
 dependencies:
+  # ==========================================================================
+  #
+  # Direct pub.dev dependencies
+  #
+  # ==========================================================================
   args: ^2.7.0
   collection: ^1.19.0
-  meta: ^1.16.0
-  path: ^1.9.0
-  yaml: ^3.1.0
   dart_mappable: ^4.6.0
   dio: ^5.9.0
-  retrofit: ^4.9.0
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
+  meta: ^1.16.0
+  path: ^1.9.0
+  retrofit: ^4.9.0
+  yaml: ^3.1.0
 
 dev_dependencies:
   test: ^1.27.0

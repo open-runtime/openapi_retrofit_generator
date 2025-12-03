@@ -22,8 +22,7 @@ class Permission {
     this.callId,
   });
 
-  factory Permission.fromJson(Map<String, Object?> json) =>
-      _$PermissionFromJson(json);
+  factory Permission.fromJson(Map<String, Object?> json) => _$PermissionFromJson(json);
 
   final String id;
   final String type;

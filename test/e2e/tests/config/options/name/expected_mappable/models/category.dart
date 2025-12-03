@@ -29,6 +29,5 @@ enum Category {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Category> get $valuesDefined =>
-      values.where((value) => value != Category.unknown).toList();
+  static List<Category> get $valuesDefined => values.where((value) => value != Category.unknown).toList();
 }

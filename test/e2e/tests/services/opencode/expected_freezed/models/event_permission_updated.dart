@@ -11,11 +11,8 @@ part 'event_permission_updated.g.dart';
 
 @Freezed()
 abstract class EventPermissionUpdated with _$EventPermissionUpdated {
-  const factory EventPermissionUpdated({
-    required String type,
-    required Permission properties,
-  }) = _EventPermissionUpdated;
+  const factory EventPermissionUpdated({required String type, required Permission properties}) =
+      _EventPermissionUpdated;
 
-  factory EventPermissionUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventPermissionUpdatedFromJson(json);
+  factory EventPermissionUpdated.fromJson(Map<String, Object?> json) => _$EventPermissionUpdatedFromJson(json);
 }

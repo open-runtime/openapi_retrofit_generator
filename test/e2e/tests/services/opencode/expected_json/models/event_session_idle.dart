@@ -10,13 +10,9 @@ part 'event_session_idle.g.dart';
 
 @JsonSerializable()
 class EventSessionIdle {
-  const EventSessionIdle({
-    required this.type,
-    required this.eventSessionIdleProperties,
-  });
+  const EventSessionIdle({required this.type, required this.eventSessionIdleProperties});
 
-  factory EventSessionIdle.fromJson(Map<String, Object?> json) =>
-      _$EventSessionIdleFromJson(json);
+  factory EventSessionIdle.fromJson(Map<String, Object?> json) => _$EventSessionIdleFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventSessionIdleProperties')

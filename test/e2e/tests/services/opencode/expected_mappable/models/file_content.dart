@@ -27,6 +27,5 @@ class FileContent with FileContentMappable {
   final String? encoding;
   final String? mimeType;
 
-  static FileContent fromJson(Map<String, dynamic> json) =>
-      FileContentMapper.fromJson(json);
+  static FileContent fromJson(Map<String, dynamic> json) => FileContentMapper.fromJson(json);
 }

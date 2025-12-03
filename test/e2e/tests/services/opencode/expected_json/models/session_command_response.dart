@@ -13,8 +13,7 @@ part 'session_command_response.g.dart';
 class SessionCommandResponse {
   const SessionCommandResponse({required this.info, required this.parts});
 
-  factory SessionCommandResponse.fromJson(Map<String, Object?> json) =>
-      _$SessionCommandResponseFromJson(json);
+  factory SessionCommandResponse.fromJson(Map<String, Object?> json) => _$SessionCommandResponseFromJson(json);
 
   final AssistantMessage info;
   final List<PartModel> parts;

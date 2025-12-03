@@ -6,9 +6,6 @@ part of 'pet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Pet _$PetFromJson(Map<String, dynamic> json) =>
-    _Pet(id: (json['id'] as num).toInt());
+_Pet _$PetFromJson(Map<String, dynamic> json) => _Pet(id: (json['id'] as num).toInt());
 
-Map<String, dynamic> _$PetToJson(_Pet instance) => <String, dynamic>{
-  'id': instance.id,
-};
+Map<String, dynamic> _$PetToJson(_Pet instance) => <String, dynamic>{'id': instance.id};

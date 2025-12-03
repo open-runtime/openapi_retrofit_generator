@@ -18,6 +18,5 @@ abstract class GetUsersResponse with _$GetUsersResponse {
     required List<UserDto> data,
   }) = _GetUsersResponse;
 
-  factory GetUsersResponse.fromJson(Map<String, Object?> json) =>
-      _$GetUsersResponseFromJson(json);
+  factory GetUsersResponse.fromJson(Map<String, Object?> json) => _$GetUsersResponseFromJson(json);
 }

@@ -10,13 +10,9 @@ part 'event_session_compacted.g.dart';
 
 @JsonSerializable()
 class EventSessionCompacted {
-  const EventSessionCompacted({
-    required this.type,
-    required this.eventSessionCompactedProperties,
-  });
+  const EventSessionCompacted({required this.type, required this.eventSessionCompactedProperties});
 
-  factory EventSessionCompacted.fromJson(Map<String, Object?> json) =>
-      _$EventSessionCompactedFromJson(json);
+  factory EventSessionCompacted.fromJson(Map<String, Object?> json) => _$EventSessionCompactedFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventSessionCompactedProperties')

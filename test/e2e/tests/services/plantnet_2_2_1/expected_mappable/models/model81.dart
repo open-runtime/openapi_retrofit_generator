@@ -15,6 +15,5 @@ class Model81 with Model81Mappable {
   final Model80? indicators;
   final num? total;
 
-  static Model81 fromJson(Map<String, dynamic> json) =>
-      Model81Mapper.fromJson(json);
+  static Model81 fromJson(Map<String, dynamic> json) => Model81Mapper.fromJson(json);
 }

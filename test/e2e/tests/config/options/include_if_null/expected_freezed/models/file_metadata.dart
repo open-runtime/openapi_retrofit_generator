@@ -16,6 +16,5 @@ abstract class FileMetadata with _$FileMetadata {
     @JsonKey(includeIfNull: false) List<String>? tags,
   }) = _FileMetadata;
 
-  factory FileMetadata.fromJson(Map<String, Object?> json) =>
-      _$FileMetadataFromJson(json);
+  factory FileMetadata.fromJson(Map<String, Object?> json) => _$FileMetadataFromJson(json);
 }

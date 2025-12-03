@@ -22,8 +22,7 @@ abstract class BankTransferPayment with _$BankTransferPayment {
     String? reference,
   }) = _BankTransferPayment;
 
-  factory BankTransferPayment.fromJson(Map<String, Object?> json) =>
-      _$BankTransferPaymentFromJson(json);
+  factory BankTransferPayment.fromJson(Map<String, Object?> json) => _$BankTransferPaymentFromJson(json);
   static const double amountMin = 0.01;
 }
 

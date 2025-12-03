@@ -26,6 +26,5 @@ class CryptoPayment with CryptoPaymentMappable {
   final double amount;
   final String? transactionHash;
 
-  static CryptoPayment fromJson(Map<String, dynamic> json) =>
-      CryptoPaymentMapper.fromJson(json);
+  static CryptoPayment fromJson(Map<String, dynamic> json) => CryptoPaymentMapper.fromJson(json);
 }

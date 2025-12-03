@@ -9,12 +9,7 @@ part 'file_part_source_text.g.dart';
 
 @Freezed()
 abstract class FilePartSourceText with _$FilePartSourceText {
-  const factory FilePartSourceText({
-    required String value,
-    required int start,
-    required int end,
-  }) = _FilePartSourceText;
+  const factory FilePartSourceText({required String value, required int start, required int end}) = _FilePartSourceText;
 
-  factory FilePartSourceText.fromJson(Map<String, Object?> json) =>
-      _$FilePartSourceTextFromJson(json);
+  factory FilePartSourceText.fromJson(Map<String, Object?> json) => _$FilePartSourceTextFromJson(json);
 }

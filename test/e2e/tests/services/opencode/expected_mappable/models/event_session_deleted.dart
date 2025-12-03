@@ -10,15 +10,11 @@ part 'event_session_deleted.mapper.dart';
 
 @MappableClass()
 class EventSessionDeleted with EventSessionDeletedMappable {
-  const EventSessionDeleted({
-    required this.type,
-    required this.eventSessionDeletedProperties,
-  });
+  const EventSessionDeleted({required this.type, required this.eventSessionDeletedProperties});
 
   final String type;
   @MappableField(key: 'EventSessionDeletedProperties')
   final EventSessionDeletedProperties eventSessionDeletedProperties;
 
-  static EventSessionDeleted fromJson(Map<String, dynamic> json) =>
-      EventSessionDeletedMapper.fromJson(json);
+  static EventSessionDeleted fromJson(Map<String, dynamic> json) => EventSessionDeletedMapper.fromJson(json);
 }

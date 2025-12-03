@@ -12,8 +12,7 @@ part 'debug_schema.g.dart';
 class DebugSchema {
   const DebugSchema({this.id, this.message, this.debugSchemaData});
 
-  factory DebugSchema.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaFromJson(json);
+  factory DebugSchema.fromJson(Map<String, Object?> json) => _$DebugSchemaFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final int? id;

@@ -14,6 +14,5 @@ class SessionCreateRequest with SessionCreateRequestMappable {
   final String? parentId;
   final String? title;
 
-  static SessionCreateRequest fromJson(Map<String, dynamic> json) =>
-      SessionCreateRequestMapper.fromJson(json);
+  static SessionCreateRequest fromJson(Map<String, dynamic> json) => SessionCreateRequestMapper.fromJson(json);
 }

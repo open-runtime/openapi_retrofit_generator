@@ -30,8 +30,7 @@ class PostModel {
     this.updatedAt,
   });
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 
   final String id;
   final String title;

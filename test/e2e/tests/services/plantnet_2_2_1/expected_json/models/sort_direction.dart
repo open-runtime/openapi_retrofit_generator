@@ -16,8 +16,7 @@ enum SortDirection {
 
   const SortDirection(this.json);
 
-  factory SortDirection.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory SortDirection.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -27,6 +26,5 @@ enum SortDirection {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<SortDirection> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<SortDirection> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

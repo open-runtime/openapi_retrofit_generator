@@ -193,10 +193,7 @@ abstract class MyApiClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/quota/daily')
-  Future<Model30> getV2QuotaDaily({
-    @Query('api-key') String? apiKey,
-    @Query('day') String? day = '2025-10-26',
-  });
+  Future<Model30> getV2QuotaDaily({@Query('api-key') String? apiKey, @Query('day') String? day = '2025-10-26'});
 
   /// Check quota consumption history.
   ///
@@ -206,10 +203,7 @@ abstract class MyApiClient {
   ///
   /// [apiKey] - Your private API key.
   @GET('/v2/quota/history')
-  Future<Model32> getV2QuotaHistory({
-    @Query('api-key') String? apiKey,
-    @Query('year') String? year = '2025',
-  });
+  Future<Model32> getV2QuotaHistory({@Query('api-key') String? apiKey, @Query('year') String? year = '2025'});
 
   /// Species by project service.
   ///

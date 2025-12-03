@@ -13,15 +13,9 @@ _Model61 _$Model61FromJson(Map<String, dynamic> json) => _Model61(
   tileSize: json['tile_size'] as num?,
   tileStride: json['tile_stride'] as num?,
   image: json['image'],
-  species: (json['species'] as List<dynamic>?)
-      ?.map((e) => Model51.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  genus: (json['genus'] as List<dynamic>?)
-      ?.map((e) => Model55.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  family: (json['family'] as List<dynamic>?)
-      ?.map((e) => Model59.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  species: (json['species'] as List<dynamic>?)?.map((e) => Model51.fromJson(e as Map<String, dynamic>)).toList(),
+  genus: (json['genus'] as List<dynamic>?)?.map((e) => Model55.fromJson(e as Map<String, dynamic>)).toList(),
+  family: (json['family'] as List<dynamic>?)?.map((e) => Model59.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
 Map<String, dynamic> _$Model61ToJson(_Model61 instance) => <String, dynamic>{

@@ -9,9 +9,7 @@ part 'tui_execute_command_request.g.dart';
 
 @Freezed()
 abstract class TuiExecuteCommandRequest with _$TuiExecuteCommandRequest {
-  const factory TuiExecuteCommandRequest({required String command}) =
-      _TuiExecuteCommandRequest;
+  const factory TuiExecuteCommandRequest({required String command}) = _TuiExecuteCommandRequest;
 
-  factory TuiExecuteCommandRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiExecuteCommandRequestFromJson(json);
+  factory TuiExecuteCommandRequest.fromJson(Map<String, Object?> json) => _$TuiExecuteCommandRequestFromJson(json);
 }

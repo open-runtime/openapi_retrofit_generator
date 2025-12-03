@@ -10,10 +10,7 @@ part 'event_todo_updated_properties.mapper.dart';
 
 @MappableClass()
 class EventTodoUpdatedProperties with EventTodoUpdatedPropertiesMappable {
-  const EventTodoUpdatedProperties({
-    required this.sessionId,
-    required this.todos,
-  });
+  const EventTodoUpdatedProperties({required this.sessionId, required this.todos});
 
   @MappableField(key: 'sessionID')
   final String sessionId;

@@ -8,17 +8,9 @@ part 'model33.g.dart';
 
 @JsonSerializable()
 class Model33 {
-  const Model33({
-    this.type,
-    this.format,
-    this.identifier,
-    this.mediumUrl,
-    this.largeUrl,
-    this.organ,
-  });
+  const Model33({this.type, this.format, this.identifier, this.mediumUrl, this.largeUrl, this.organ});
 
-  factory Model33.fromJson(Map<String, Object?> json) =>
-      _$Model33FromJson(json);
+  factory Model33.fromJson(Map<String, Object?> json) => _$Model33FromJson(json);
 
   final String? type;
   final String? format;

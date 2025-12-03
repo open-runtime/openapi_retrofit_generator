@@ -14,6 +14,5 @@ class WrapperClass with WrapperClassMappable {
 
   final Map<String, ValueClass> map;
 
-  static WrapperClass fromJson(Map<String, dynamic> json) =>
-      WrapperClassMapper.fromJson(json);
+  static WrapperClass fromJson(Map<String, dynamic> json) => WrapperClassMapper.fromJson(json);
 }

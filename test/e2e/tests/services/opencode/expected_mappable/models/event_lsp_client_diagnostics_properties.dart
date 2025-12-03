@@ -7,18 +7,13 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'event_lsp_client_diagnostics_properties.mapper.dart';
 
 @MappableClass()
-class EventLspClientDiagnosticsProperties
-    with EventLspClientDiagnosticsPropertiesMappable {
-  const EventLspClientDiagnosticsProperties({
-    required this.serverId,
-    required this.path,
-  });
+class EventLspClientDiagnosticsProperties with EventLspClientDiagnosticsPropertiesMappable {
+  const EventLspClientDiagnosticsProperties({required this.serverId, required this.path});
 
   @MappableField(key: 'serverID')
   final String serverId;
   final String path;
 
-  static EventLspClientDiagnosticsProperties fromJson(
-    Map<String, dynamic> json,
-  ) => EventLspClientDiagnosticsPropertiesMapper.fromJson(json);
+  static EventLspClientDiagnosticsProperties fromJson(Map<String, dynamic> json) =>
+      EventLspClientDiagnosticsPropertiesMapper.fromJson(json);
 }

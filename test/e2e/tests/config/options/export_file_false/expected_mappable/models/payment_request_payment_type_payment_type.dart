@@ -20,7 +20,6 @@ enum PaymentRequestPaymentTypePaymentType {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined => values
-      .where((value) => value != PaymentRequestPaymentTypePaymentType.unknown)
-      .toList();
+  static List<PaymentRequestPaymentTypePaymentType> get $valuesDefined =>
+      values.where((value) => value != PaymentRequestPaymentTypePaymentType.unknown).toList();
 }

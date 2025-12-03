@@ -9,9 +9,7 @@ part 'message_aborted_error_data.g.dart';
 
 @Freezed()
 abstract class MessageAbortedErrorData with _$MessageAbortedErrorData {
-  const factory MessageAbortedErrorData({required String message}) =
-      _MessageAbortedErrorData;
+  const factory MessageAbortedErrorData({required String message}) = _MessageAbortedErrorData;
 
-  factory MessageAbortedErrorData.fromJson(Map<String, Object?> json) =>
-      _$MessageAbortedErrorDataFromJson(json);
+  factory MessageAbortedErrorData.fromJson(Map<String, Object?> json) => _$MessageAbortedErrorDataFromJson(json);
 }

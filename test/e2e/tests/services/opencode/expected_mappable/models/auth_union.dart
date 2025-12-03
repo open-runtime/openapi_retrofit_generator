@@ -10,9 +10,7 @@ import 'well_known_auth.dart';
 
 part 'auth_union.mapper.dart';
 
-@MappableClass(
-  includeSubClasses: [AuthUnionOAuth, AuthUnionApiAuth, AuthUnionWellKnownAuth],
-)
+@MappableClass(includeSubClasses: [AuthUnionOAuth, AuthUnionApiAuth, AuthUnionWellKnownAuth])
 sealed class AuthUnion with AuthUnionMappable {
   const AuthUnion();
 
@@ -33,9 +31,7 @@ extension AuthUnionDeserializer on AuthUnion {
       return AuthUnionWellKnownAuthMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for AuthUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for AuthUnion from: $json');
   }
 }
 
@@ -46,12 +42,7 @@ class AuthUnionOAuth extends AuthUnion with AuthUnionOAuthMappable {
   final String access;
   final num expires;
 
-  const AuthUnionOAuth({
-    required this.type,
-    required this.refresh,
-    required this.access,
-    required this.expires,
-  });
+  const AuthUnionOAuth({required this.type, required this.refresh, required this.access, required this.expires});
 }
 
 @MappableClass()
@@ -63,15 +54,10 @@ class AuthUnionApiAuth extends AuthUnion with AuthUnionApiAuthMappable {
 }
 
 @MappableClass()
-class AuthUnionWellKnownAuth extends AuthUnion
-    with AuthUnionWellKnownAuthMappable {
+class AuthUnionWellKnownAuth extends AuthUnion with AuthUnionWellKnownAuthMappable {
   final String type;
   final String key;
   final String token;
 
-  const AuthUnionWellKnownAuth({
-    required this.type,
-    required this.key,
-    required this.token,
-  });
+  const AuthUnionWellKnownAuth({required this.type, required this.key, required this.token});
 }

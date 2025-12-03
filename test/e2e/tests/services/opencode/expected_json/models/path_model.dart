@@ -8,15 +8,9 @@ part 'path_model.g.dart';
 
 @JsonSerializable()
 class PathModel {
-  const PathModel({
-    required this.state,
-    required this.config,
-    required this.worktree,
-    required this.directory,
-  });
+  const PathModel({required this.state, required this.config, required this.worktree, required this.directory});
 
-  factory PathModel.fromJson(Map<String, Object?> json) =>
-      _$PathModelFromJson(json);
+  factory PathModel.fromJson(Map<String, Object?> json) => _$PathModelFromJson(json);
 
   final String state;
   final String config;

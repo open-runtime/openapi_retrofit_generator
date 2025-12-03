@@ -37,6 +37,5 @@ class Taxon with TaxonMappable {
   @MappableField(key: 'iucn_red_list_category')
   final String? iucnRedListCategory;
 
-  static Taxon fromJson(Map<String, dynamic> json) =>
-      TaxonMapper.fromJson(json);
+  static Taxon fromJson(Map<String, dynamic> json) => TaxonMapper.fromJson(json);
 }

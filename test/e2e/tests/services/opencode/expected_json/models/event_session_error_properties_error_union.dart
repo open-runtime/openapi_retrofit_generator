@@ -15,24 +15,18 @@ class EventSessionErrorPropertiesErrorUnion {
 
   const EventSessionErrorPropertiesErrorUnion(this._json);
 
-  factory EventSessionErrorPropertiesErrorUnion.fromJson(
-    Map<String, dynamic> json,
-  ) => EventSessionErrorPropertiesErrorUnion(json);
+  factory EventSessionErrorPropertiesErrorUnion.fromJson(Map<String, dynamic> json) =>
+      EventSessionErrorPropertiesErrorUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  EventSessionErrorPropertiesErrorUnionProviderAuthError
-  toProviderAuthError() =>
+  EventSessionErrorPropertiesErrorUnionProviderAuthError toProviderAuthError() =>
       EventSessionErrorPropertiesErrorUnionProviderAuthError.fromJson(_json);
   EventSessionErrorPropertiesErrorUnionUnknownError toUnknownError() =>
       EventSessionErrorPropertiesErrorUnionUnknownError.fromJson(_json);
-  EventSessionErrorPropertiesErrorUnionMessageOutputLengthError
-  toMessageOutputLengthError() =>
-      EventSessionErrorPropertiesErrorUnionMessageOutputLengthError.fromJson(
-        _json,
-      );
-  EventSessionErrorPropertiesErrorUnionMessageAbortedError
-  toMessageAbortedError() =>
+  EventSessionErrorPropertiesErrorUnionMessageOutputLengthError toMessageOutputLengthError() =>
+      EventSessionErrorPropertiesErrorUnionMessageOutputLengthError.fromJson(_json);
+  EventSessionErrorPropertiesErrorUnionMessageAbortedError toMessageAbortedError() =>
       EventSessionErrorPropertiesErrorUnionMessageAbortedError.fromJson(_json);
 }
 
@@ -46,12 +40,10 @@ class EventSessionErrorPropertiesErrorUnionProviderAuthError {
     required this.providerAuthErrorData,
   });
 
-  factory EventSessionErrorPropertiesErrorUnionProviderAuthError.fromJson(
-    Map<String, dynamic> json,
-  ) => _$EventSessionErrorPropertiesErrorUnionProviderAuthErrorFromJson(json);
+  factory EventSessionErrorPropertiesErrorUnionProviderAuthError.fromJson(Map<String, dynamic> json) =>
+      _$EventSessionErrorPropertiesErrorUnionProviderAuthErrorFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$EventSessionErrorPropertiesErrorUnionProviderAuthErrorToJson(this);
+  Map<String, dynamic> toJson() => _$EventSessionErrorPropertiesErrorUnionProviderAuthErrorToJson(this);
 }
 
 @JsonSerializable()
@@ -59,17 +51,12 @@ class EventSessionErrorPropertiesErrorUnionUnknownError {
   final String name;
   final UnknownErrorData unknownErrorData;
 
-  const EventSessionErrorPropertiesErrorUnionUnknownError({
-    required this.name,
-    required this.unknownErrorData,
-  });
+  const EventSessionErrorPropertiesErrorUnionUnknownError({required this.name, required this.unknownErrorData});
 
-  factory EventSessionErrorPropertiesErrorUnionUnknownError.fromJson(
-    Map<String, dynamic> json,
-  ) => _$EventSessionErrorPropertiesErrorUnionUnknownErrorFromJson(json);
+  factory EventSessionErrorPropertiesErrorUnionUnknownError.fromJson(Map<String, dynamic> json) =>
+      _$EventSessionErrorPropertiesErrorUnionUnknownErrorFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$EventSessionErrorPropertiesErrorUnionUnknownErrorToJson(this);
+  Map<String, dynamic> toJson() => _$EventSessionErrorPropertiesErrorUnionUnknownErrorToJson(this);
 }
 
 @JsonSerializable()
@@ -77,21 +64,12 @@ class EventSessionErrorPropertiesErrorUnionMessageOutputLengthError {
   final String name;
   final dynamic data;
 
-  const EventSessionErrorPropertiesErrorUnionMessageOutputLengthError({
-    required this.name,
-    required this.data,
-  });
+  const EventSessionErrorPropertiesErrorUnionMessageOutputLengthError({required this.name, required this.data});
 
-  factory EventSessionErrorPropertiesErrorUnionMessageOutputLengthError.fromJson(
-    Map<String, dynamic> json,
-  ) => _$EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorFromJson(
-    json,
-  );
+  factory EventSessionErrorPropertiesErrorUnionMessageOutputLengthError.fromJson(Map<String, dynamic> json) =>
+      _$EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorToJson(
-        this,
-      );
+  Map<String, dynamic> toJson() => _$EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorToJson(this);
 }
 
 @JsonSerializable()
@@ -104,10 +82,8 @@ class EventSessionErrorPropertiesErrorUnionMessageAbortedError {
     required this.messageAbortedErrorData,
   });
 
-  factory EventSessionErrorPropertiesErrorUnionMessageAbortedError.fromJson(
-    Map<String, dynamic> json,
-  ) => _$EventSessionErrorPropertiesErrorUnionMessageAbortedErrorFromJson(json);
+  factory EventSessionErrorPropertiesErrorUnionMessageAbortedError.fromJson(Map<String, dynamic> json) =>
+      _$EventSessionErrorPropertiesErrorUnionMessageAbortedErrorFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$EventSessionErrorPropertiesErrorUnionMessageAbortedErrorToJson(this);
+  Map<String, dynamic> toJson() => _$EventSessionErrorPropertiesErrorUnionMessageAbortedErrorToJson(this);
 }

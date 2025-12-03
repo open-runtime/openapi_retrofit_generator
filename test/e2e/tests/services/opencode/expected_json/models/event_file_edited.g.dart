@@ -6,16 +6,14 @@ part of 'event_file_edited.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EventFileEdited _$EventFileEditedFromJson(Map<String, dynamic> json) =>
-    EventFileEdited(
-      type: json['type'] as String,
-      eventFileEditedProperties: EventFileEditedProperties.fromJson(
-        json['EventFileEditedProperties'] as Map<String, dynamic>,
-      ),
-    );
+EventFileEdited _$EventFileEditedFromJson(Map<String, dynamic> json) => EventFileEdited(
+  type: json['type'] as String,
+  eventFileEditedProperties: EventFileEditedProperties.fromJson(
+    json['EventFileEditedProperties'] as Map<String, dynamic>,
+  ),
+);
 
-Map<String, dynamic> _$EventFileEditedToJson(EventFileEdited instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'EventFileEditedProperties': instance.eventFileEditedProperties,
-    };
+Map<String, dynamic> _$EventFileEditedToJson(EventFileEdited instance) => <String, dynamic>{
+  'type': instance.type,
+  'EventFileEditedProperties': instance.eventFileEditedProperties,
+};

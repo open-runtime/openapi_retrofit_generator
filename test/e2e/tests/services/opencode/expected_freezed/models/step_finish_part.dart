@@ -17,11 +17,9 @@ abstract class StepFinishPart with _$StepFinishPart {
     @JsonKey(name: 'messageID') required String messageId,
     required String type,
     required num cost,
-    @JsonKey(name: 'StepFinishPartTokens')
-    required StepFinishPartTokens stepFinishPartTokens,
+    @JsonKey(name: 'StepFinishPartTokens') required StepFinishPartTokens stepFinishPartTokens,
     String? snapshot,
   }) = _StepFinishPart;
 
-  factory StepFinishPart.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartFromJson(json);
+  factory StepFinishPart.fromJson(Map<String, Object?> json) => _$StepFinishPartFromJson(json);
 }

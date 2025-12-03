@@ -29,6 +29,5 @@ class DarwinCoreOccurrences with DarwinCoreOccurrencesMappable {
   final Facets? facets;
   final num? startTime;
 
-  static DarwinCoreOccurrences fromJson(Map<String, dynamic> json) =>
-      DarwinCoreOccurrencesMapper.fromJson(json);
+  static DarwinCoreOccurrences fromJson(Map<String, dynamic> json) => DarwinCoreOccurrencesMapper.fromJson(json);
 }

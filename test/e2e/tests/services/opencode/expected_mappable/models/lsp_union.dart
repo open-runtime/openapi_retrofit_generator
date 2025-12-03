@@ -24,9 +24,7 @@ extension LspUnionDeserializer on LspUnion {
       return LspUnionVariant2Mapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for LspUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for LspUnion from: $json');
   }
 }
 

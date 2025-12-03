@@ -18,26 +18,19 @@ class PartModelUnion {
 
   const PartModelUnion(this._json);
 
-  factory PartModelUnion.fromJson(Map<String, dynamic> json) =>
-      PartModelUnion(json);
+  factory PartModelUnion.fromJson(Map<String, dynamic> json) => PartModelUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
   PartModelUnionTextPart toTextPart() => PartModelUnionTextPart.fromJson(_json);
-  PartModelUnionReasoningPart toReasoningPart() =>
-      PartModelUnionReasoningPart.fromJson(_json);
+  PartModelUnionReasoningPart toReasoningPart() => PartModelUnionReasoningPart.fromJson(_json);
   PartModelUnionFilePart toFilePart() => PartModelUnionFilePart.fromJson(_json);
   PartModelUnionToolPart toToolPart() => PartModelUnionToolPart.fromJson(_json);
-  PartModelUnionStepStartPart toStepStartPart() =>
-      PartModelUnionStepStartPart.fromJson(_json);
-  PartModelUnionStepFinishPart toStepFinishPart() =>
-      PartModelUnionStepFinishPart.fromJson(_json);
-  PartModelUnionSnapshotPart toSnapshotPart() =>
-      PartModelUnionSnapshotPart.fromJson(_json);
-  PartModelUnionPatchPart toPatchPart() =>
-      PartModelUnionPatchPart.fromJson(_json);
-  PartModelUnionAgentPart toAgentPart() =>
-      PartModelUnionAgentPart.fromJson(_json);
+  PartModelUnionStepStartPart toStepStartPart() => PartModelUnionStepStartPart.fromJson(_json);
+  PartModelUnionStepFinishPart toStepFinishPart() => PartModelUnionStepFinishPart.fromJson(_json);
+  PartModelUnionSnapshotPart toSnapshotPart() => PartModelUnionSnapshotPart.fromJson(_json);
+  PartModelUnionPatchPart toPatchPart() => PartModelUnionPatchPart.fromJson(_json);
+  PartModelUnionAgentPart toAgentPart() => PartModelUnionAgentPart.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -62,8 +55,7 @@ class PartModelUnionTextPart {
     required this.metadata,
   });
 
-  factory PartModelUnionTextPart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionTextPartFromJson(json);
+  factory PartModelUnionTextPart.fromJson(Map<String, Object?> json) => _$PartModelUnionTextPartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionTextPartToJson(this);
 }
@@ -116,8 +108,7 @@ class PartModelUnionFilePart {
     required this.source,
   });
 
-  factory PartModelUnionFilePart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionFilePartFromJson(json);
+  factory PartModelUnionFilePart.fromJson(Map<String, Object?> json) => _$PartModelUnionFilePartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionFilePartToJson(this);
 }
@@ -144,8 +135,7 @@ class PartModelUnionToolPart {
     required this.metadata,
   });
 
-  factory PartModelUnionToolPart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionToolPartFromJson(json);
+  factory PartModelUnionToolPart.fromJson(Map<String, Object?> json) => _$PartModelUnionToolPartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionToolPartToJson(this);
 }
@@ -214,8 +204,7 @@ class PartModelUnionSnapshotPart {
     required this.snapshot,
   });
 
-  factory PartModelUnionSnapshotPart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionSnapshotPartFromJson(json);
+  factory PartModelUnionSnapshotPart.fromJson(Map<String, Object?> json) => _$PartModelUnionSnapshotPartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionSnapshotPartToJson(this);
 }
@@ -238,8 +227,7 @@ class PartModelUnionPatchPart {
     required this.files,
   });
 
-  factory PartModelUnionPatchPart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionPatchPartFromJson(json);
+  factory PartModelUnionPatchPart.fromJson(Map<String, Object?> json) => _$PartModelUnionPatchPartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionPatchPartToJson(this);
 }
@@ -262,8 +250,7 @@ class PartModelUnionAgentPart {
     required this.agentPartSource,
   });
 
-  factory PartModelUnionAgentPart.fromJson(Map<String, Object?> json) =>
-      _$PartModelUnionAgentPartFromJson(json);
+  factory PartModelUnionAgentPart.fromJson(Map<String, Object?> json) => _$PartModelUnionAgentPartFromJson(json);
 
   Map<String, Object?> toJson() => _$PartModelUnionAgentPartToJson(this);
 }

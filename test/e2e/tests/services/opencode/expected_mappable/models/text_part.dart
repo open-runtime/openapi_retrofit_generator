@@ -33,6 +33,5 @@ class TextPart with TextPartMappable {
   final TextPartTime? textPartTime;
   final Map<String, dynamic>? metadata;
 
-  static TextPart fromJson(Map<String, dynamic> json) =>
-      TextPartMapper.fromJson(json);
+  static TextPart fromJson(Map<String, dynamic> json) => TextPartMapper.fromJson(json);
 }

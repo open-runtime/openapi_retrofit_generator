@@ -10,8 +10,7 @@ part 'config_watcher.g.dart';
 class ConfigWatcher {
   const ConfigWatcher({this.ignore});
 
-  factory ConfigWatcher.fromJson(Map<String, Object?> json) =>
-      _$ConfigWatcherFromJson(json);
+  factory ConfigWatcher.fromJson(Map<String, Object?> json) => _$ConfigWatcherFromJson(json);
 
   final List<String>? ignore;
 

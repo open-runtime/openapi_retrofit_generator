@@ -11,17 +11,12 @@ part 'list_posts_response.mapper.dart';
 
 @MappableClass()
 class ListPostsResponse with ListPostsResponseMappable {
-  const ListPostsResponse({
-    this.posts,
-    this.listPostsResponsePagination,
-    this.metadata,
-  });
+  const ListPostsResponse({this.posts, this.listPostsResponsePagination, this.metadata});
 
   final List<PostModel>? posts;
   @MappableField(key: 'ListPostsResponsePagination')
   final ListPostsResponsePagination? listPostsResponsePagination;
   final Map<String, String>? metadata;
 
-  static ListPostsResponse fromJson(Map<String, dynamic> json) =>
-      ListPostsResponseMapper.fromJson(json);
+  static ListPostsResponse fromJson(Map<String, dynamic> json) => ListPostsResponseMapper.fromJson(json);
 }

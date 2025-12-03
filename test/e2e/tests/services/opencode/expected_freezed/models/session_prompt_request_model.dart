@@ -14,6 +14,5 @@ abstract class SessionPromptRequestModel with _$SessionPromptRequestModel {
     @JsonKey(name: 'modelID') required String modelId,
   }) = _SessionPromptRequestModel;
 
-  factory SessionPromptRequestModel.fromJson(Map<String, Object?> json) =>
-      _$SessionPromptRequestModelFromJson(json);
+  factory SessionPromptRequestModel.fromJson(Map<String, Object?> json) => _$SessionPromptRequestModelFromJson(json);
 }

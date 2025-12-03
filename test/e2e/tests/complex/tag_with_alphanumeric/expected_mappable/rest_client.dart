@@ -17,6 +17,5 @@ class RestClient {
 
   Items2a3Client? _items2a3;
 
-  Items2a3Client get items2a3 =>
-      _items2a3 ??= Items2a3Client(_dio, baseUrl: _baseUrl);
+  Items2a3Client get items2a3 => _items2a3 ??= Items2a3Client(_dio, baseUrl: _baseUrl);
 }

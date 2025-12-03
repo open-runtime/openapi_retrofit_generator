@@ -25,8 +25,7 @@ class Model61 {
     this.family,
   });
 
-  factory Model61.fromJson(Map<String, Object?> json) =>
-      _$Model61FromJson(json);
+  factory Model61.fromJson(Map<String, Object?> json) => _$Model61FromJson(json);
 
   @JsonKey(name: 'nb_sub_queries')
   final num? nbSubQueries;

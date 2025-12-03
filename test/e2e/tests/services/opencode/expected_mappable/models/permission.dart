@@ -36,6 +36,5 @@ class Permission with PermissionMappable {
   @MappableField(key: 'callID')
   final String? callId;
 
-  static Permission fromJson(Map<String, dynamic> json) =>
-      PermissionMapper.fromJson(json);
+  static Permission fromJson(Map<String, dynamic> json) => PermissionMapper.fromJson(json);
 }

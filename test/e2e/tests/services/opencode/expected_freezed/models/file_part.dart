@@ -22,6 +22,5 @@ abstract class FilePart with _$FilePart {
     FilePartSource? source,
   }) = _FilePart;
 
-  factory FilePart.fromJson(Map<String, Object?> json) =>
-      _$FilePartFromJson(json);
+  factory FilePart.fromJson(Map<String, Object?> json) => _$FilePartFromJson(json);
 }

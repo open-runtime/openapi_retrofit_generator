@@ -17,8 +17,7 @@ class AuthUnion {
 
   AuthUnionOAuth toOAuth() => AuthUnionOAuth.fromJson(_json);
   AuthUnionApiAuth toApiAuth() => AuthUnionApiAuth.fromJson(_json);
-  AuthUnionWellKnownAuth toWellKnownAuth() =>
-      AuthUnionWellKnownAuth.fromJson(_json);
+  AuthUnionWellKnownAuth toWellKnownAuth() => AuthUnionWellKnownAuth.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -28,15 +27,9 @@ class AuthUnionOAuth {
   final String access;
   final num expires;
 
-  const AuthUnionOAuth({
-    required this.type,
-    required this.refresh,
-    required this.access,
-    required this.expires,
-  });
+  const AuthUnionOAuth({required this.type, required this.refresh, required this.access, required this.expires});
 
-  factory AuthUnionOAuth.fromJson(Map<String, Object?> json) =>
-      _$AuthUnionOAuthFromJson(json);
+  factory AuthUnionOAuth.fromJson(Map<String, Object?> json) => _$AuthUnionOAuthFromJson(json);
 
   Map<String, Object?> toJson() => _$AuthUnionOAuthToJson(this);
 }
@@ -48,8 +41,7 @@ class AuthUnionApiAuth {
 
   const AuthUnionApiAuth({required this.type, required this.key});
 
-  factory AuthUnionApiAuth.fromJson(Map<String, Object?> json) =>
-      _$AuthUnionApiAuthFromJson(json);
+  factory AuthUnionApiAuth.fromJson(Map<String, Object?> json) => _$AuthUnionApiAuthFromJson(json);
 
   Map<String, Object?> toJson() => _$AuthUnionApiAuthToJson(this);
 }
@@ -60,14 +52,9 @@ class AuthUnionWellKnownAuth {
   final String key;
   final String token;
 
-  const AuthUnionWellKnownAuth({
-    required this.type,
-    required this.key,
-    required this.token,
-  });
+  const AuthUnionWellKnownAuth({required this.type, required this.key, required this.token});
 
-  factory AuthUnionWellKnownAuth.fromJson(Map<String, Object?> json) =>
-      _$AuthUnionWellKnownAuthFromJson(json);
+  factory AuthUnionWellKnownAuth.fromJson(Map<String, Object?> json) => _$AuthUnionWellKnownAuthFromJson(json);
 
   Map<String, Object?> toJson() => _$AuthUnionWellKnownAuthToJson(this);
 }

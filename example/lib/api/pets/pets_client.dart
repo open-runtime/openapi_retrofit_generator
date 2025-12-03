@@ -36,10 +36,7 @@ abstract class PetsClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @PUT('/pets/{petId}')
-  Future<Pet> updatePet({
-    @Path('petId') required String petId,
-    @Body() required UpdatePetRequest body,
-  });
+  Future<Pet> updatePet({@Path('petId') required String petId, @Body() required UpdatePetRequest body});
 
   /// Delete a pet
   @DELETE('/pets/{petId}')

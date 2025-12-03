@@ -11,17 +11,14 @@ class FamilyMembersUnion {
 
   const FamilyMembersUnion(this._json);
 
-  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) =>
-      FamilyMembersUnion(json);
+  factory FamilyMembersUnion.fromJson(Map<String, dynamic> json) => FamilyMembersUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
   FamilyMembersUnionCat toCat() => FamilyMembersUnionCat.fromJson(_json);
-  FamilyMembersUnionVariant2 toVariant2() =>
-      FamilyMembersUnionVariant2.fromJson(_json);
+  FamilyMembersUnionVariant2 toVariant2() => FamilyMembersUnionVariant2.fromJson(_json);
   FamilyMembersUnionDog toDog() => FamilyMembersUnionDog.fromJson(_json);
-  FamilyMembersUnionVariant4 toVariant4() =>
-      FamilyMembersUnionVariant4.fromJson(_json);
+  FamilyMembersUnionVariant4 toVariant4() => FamilyMembersUnionVariant4.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -30,8 +27,7 @@ class FamilyMembersUnionCat {
 
   const FamilyMembersUnionCat({required this.mewCount});
 
-  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionCatFromJson(json);
+  factory FamilyMembersUnionCat.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionCatFromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionCatToJson(this);
 }
@@ -42,8 +38,7 @@ class FamilyMembersUnionVariant2 {
 
   const FamilyMembersUnionVariant2({required this.chirpVolume});
 
-  factory FamilyMembersUnionVariant2.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionVariant2FromJson(json);
+  factory FamilyMembersUnionVariant2.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionVariant2FromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionVariant2ToJson(this);
 }
@@ -54,8 +49,7 @@ class FamilyMembersUnionDog {
 
   const FamilyMembersUnionDog({required this.barkSound});
 
-  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionDogFromJson(json);
+  factory FamilyMembersUnionDog.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionDogFromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionDogToJson(this);
 }
@@ -66,8 +60,7 @@ class FamilyMembersUnionVariant4 {
 
   const FamilyMembersUnionVariant4({required this.job});
 
-  factory FamilyMembersUnionVariant4.fromJson(Map<String, dynamic> json) =>
-      _$FamilyMembersUnionVariant4FromJson(json);
+  factory FamilyMembersUnionVariant4.fromJson(Map<String, dynamic> json) => _$FamilyMembersUnionVariant4FromJson(json);
 
   Map<String, dynamic> toJson() => _$FamilyMembersUnionVariant4ToJson(this);
 }

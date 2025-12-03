@@ -14,6 +14,5 @@ class Point with PointMappable {
   final num lat;
   final num lon;
 
-  static Point fromJson(Map<String, dynamic> json) =>
-      PointMapper.fromJson(json);
+  static Point fromJson(Map<String, dynamic> json) => PointMapper.fromJson(json);
 }

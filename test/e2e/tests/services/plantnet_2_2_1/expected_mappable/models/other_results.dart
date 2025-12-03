@@ -16,6 +16,5 @@ class OtherResults with OtherResultsMappable {
   final Model19? genus;
   final Model22? family;
 
-  static OtherResults fromJson(Map<String, dynamic> json) =>
-      OtherResultsMapper.fromJson(json);
+  static OtherResults fromJson(Map<String, dynamic> json) => OtherResultsMapper.fromJson(json);
 }

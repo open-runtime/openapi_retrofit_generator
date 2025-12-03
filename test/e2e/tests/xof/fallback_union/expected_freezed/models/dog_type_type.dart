@@ -14,8 +14,7 @@ enum DogTypeType {
 
   const DogTypeType(this.json);
 
-  factory DogTypeType.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory DogTypeType.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -25,6 +24,5 @@ enum DogTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<DogTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<DogTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

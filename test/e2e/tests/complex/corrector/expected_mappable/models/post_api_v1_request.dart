@@ -18,6 +18,5 @@ class PostApiV1Request with PostApiV1RequestMappable {
   @MappableField(key: 'p2_enum')
   final PostApiV1RequestP2EnumP2Enum? p2Enum;
 
-  static PostApiV1Request fromJson(Map<String, dynamic> json) =>
-      PostApiV1RequestMapper.fromJson(json);
+  static PostApiV1Request fromJson(Map<String, dynamic> json) => PostApiV1RequestMapper.fromJson(json);
 }

@@ -10,8 +10,7 @@ part 'model48.g.dart';
 class Model48 {
   const Model48({required this.source, required this.score});
 
-  factory Model48.fromJson(Map<String, Object?> json) =>
-      _$Model48FromJson(json);
+  factory Model48.fromJson(Map<String, Object?> json) => _$Model48FromJson(json);
 
   final String source;
   final num score;

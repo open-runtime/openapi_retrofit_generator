@@ -10,13 +10,9 @@ part 'provider_auth_error.g.dart';
 
 @JsonSerializable()
 class ProviderAuthError {
-  const ProviderAuthError({
-    required this.name,
-    required this.providerAuthErrorData,
-  });
+  const ProviderAuthError({required this.name, required this.providerAuthErrorData});
 
-  factory ProviderAuthError.fromJson(Map<String, Object?> json) =>
-      _$ProviderAuthErrorFromJson(json);
+  factory ProviderAuthError.fromJson(Map<String, Object?> json) => _$ProviderAuthErrorFromJson(json);
 
   final String name;
   @JsonKey(name: 'ProviderAuthErrorData')

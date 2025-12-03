@@ -8,11 +8,7 @@ part 'user_settings_notifications.mapper.dart';
 
 @MappableClass()
 class UserSettingsNotifications with UserSettingsNotificationsMappable {
-  const UserSettingsNotifications({
-    this.email = true,
-    this.push = false,
-    this.sms = false,
-  });
+  const UserSettingsNotifications({this.email = true, this.push = false, this.sms = false});
 
   final bool email;
   final bool push;

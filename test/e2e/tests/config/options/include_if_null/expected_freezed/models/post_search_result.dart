@@ -19,6 +19,5 @@ abstract class PostSearchResult with _$PostSearchResult {
     @JsonKey(includeIfNull: false) List<String>? highlights,
   }) = _PostSearchResult;
 
-  factory PostSearchResult.fromJson(Map<String, Object?> json) =>
-      _$PostSearchResultFromJson(json);
+  factory PostSearchResult.fromJson(Map<String, Object?> json) => _$PostSearchResultFromJson(json);
 }

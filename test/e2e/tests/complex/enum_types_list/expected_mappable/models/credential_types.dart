@@ -23,6 +23,5 @@ enum CredentialTypes {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<CredentialTypes> get $valuesDefined =>
-      values.where((value) => value != CredentialTypes.unknown).toList();
+  static List<CredentialTypes> get $valuesDefined => values.where((value) => value != CredentialTypes.unknown).toList();
 }

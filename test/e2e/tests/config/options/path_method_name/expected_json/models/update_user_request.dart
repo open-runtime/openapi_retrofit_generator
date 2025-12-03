@@ -17,8 +17,7 @@ class UpdateUserRequest {
     this.bio,
   });
 
-  factory UpdateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$UpdateUserRequestFromJson(json);
+  factory UpdateUserRequest.fromJson(Map<String, Object?> json) => _$UpdateUserRequestFromJson(json);
 
   final String email;
   final String username;

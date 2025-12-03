@@ -31,8 +31,7 @@ abstract class PostModel with _$PostModel {
     DateTime? updatedAt,
   }) = _PostModel;
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
   static const int titleMinLength = 1;
   static const int titleMaxLength = 200;
   static const int contentMinLength = 1;

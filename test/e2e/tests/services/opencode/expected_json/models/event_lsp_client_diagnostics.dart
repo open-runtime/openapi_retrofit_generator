@@ -10,13 +10,9 @@ part 'event_lsp_client_diagnostics.g.dart';
 
 @JsonSerializable()
 class EventLspClientDiagnostics {
-  const EventLspClientDiagnostics({
-    required this.type,
-    required this.eventLspClientDiagnosticsProperties,
-  });
+  const EventLspClientDiagnostics({required this.type, required this.eventLspClientDiagnosticsProperties});
 
-  factory EventLspClientDiagnostics.fromJson(Map<String, Object?> json) =>
-      _$EventLspClientDiagnosticsFromJson(json);
+  factory EventLspClientDiagnostics.fromJson(Map<String, Object?> json) => _$EventLspClientDiagnosticsFromJson(json);
 
   final String type;
   @JsonKey(name: 'EventLspClientDiagnosticsProperties')

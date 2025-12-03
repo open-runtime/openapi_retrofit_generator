@@ -9,11 +9,8 @@ part 'session_create_request.g.dart';
 
 @Freezed()
 abstract class SessionCreateRequest with _$SessionCreateRequest {
-  const factory SessionCreateRequest({
-    @JsonKey(name: 'parentID') String? parentId,
-    String? title,
-  }) = _SessionCreateRequest;
+  const factory SessionCreateRequest({@JsonKey(name: 'parentID') String? parentId, String? title}) =
+      _SessionCreateRequest;
 
-  factory SessionCreateRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionCreateRequestFromJson(json);
+  factory SessionCreateRequest.fromJson(Map<String, Object?> json) => _$SessionCreateRequestFromJson(json);
 }

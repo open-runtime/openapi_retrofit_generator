@@ -24,6 +24,5 @@ class UpdateUserRequest with UpdateUserRequestMappable {
   final int? age;
   final String? bio;
 
-  static UpdateUserRequest fromJson(Map<String, dynamic> json) =>
-      UpdateUserRequestMapper.fromJson(json);
+  static UpdateUserRequest fromJson(Map<String, dynamic> json) => UpdateUserRequestMapper.fromJson(json);
 }

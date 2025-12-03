@@ -43,6 +43,5 @@ abstract class DarwinCoreOccurrence with _$DarwinCoreOccurrence {
     Comments? comments,
   }) = _DarwinCoreOccurrence;
 
-  factory DarwinCoreOccurrence.fromJson(Map<String, Object?> json) =>
-      _$DarwinCoreOccurrenceFromJson(json);
+  factory DarwinCoreOccurrence.fromJson(Map<String, Object?> json) => _$DarwinCoreOccurrenceFromJson(json);
 }

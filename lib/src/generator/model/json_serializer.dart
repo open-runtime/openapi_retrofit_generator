@@ -137,9 +137,8 @@ enum JsonSerializer {
   /// ```
   factory JsonSerializer.fromString(String value) => values.firstWhere(
     (e) => e.packageName == value,
-    orElse: () => throw ArgumentError(
-      "'$value' must be contained in ${JsonSerializer.values.map((e) => e.packageName)}",
-    ),
+    orElse: () =>
+        throw ArgumentError("'$value' must be contained in ${JsonSerializer.values.map((e) => e.packageName)}"),
   );
 
   /// The Pub package name for this JSON serialization library.

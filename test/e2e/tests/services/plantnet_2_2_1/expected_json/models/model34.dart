@@ -10,17 +10,9 @@ part 'model34.g.dart';
 
 @JsonSerializable()
 class Model34 {
-  const Model34({
-    this.id,
-    this.createdAt,
-    this.updatedAt,
-    this.taxon,
-    this.score,
-    this.observationId,
-  });
+  const Model34({this.id, this.createdAt, this.updatedAt, this.taxon, this.score, this.observationId});
 
-  factory Model34.fromJson(Map<String, Object?> json) =>
-      _$Model34FromJson(json);
+  factory Model34.fromJson(Map<String, Object?> json) => _$Model34FromJson(json);
 
   final num? id;
   final String? createdAt;

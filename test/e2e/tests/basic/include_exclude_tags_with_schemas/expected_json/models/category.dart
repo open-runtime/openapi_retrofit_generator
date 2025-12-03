@@ -10,8 +10,7 @@ part 'category.g.dart';
 class Category {
   const Category({this.id, this.name});
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final int? id;

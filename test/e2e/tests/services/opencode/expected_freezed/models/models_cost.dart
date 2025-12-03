@@ -16,6 +16,5 @@ abstract class ModelsCost with _$ModelsCost {
     @JsonKey(name: 'cache_write') num? cacheWrite,
   }) = _ModelsCost;
 
-  factory ModelsCost.fromJson(Map<String, Object?> json) =>
-      _$ModelsCostFromJson(json);
+  factory ModelsCost.fromJson(Map<String, Object?> json) => _$ModelsCostFromJson(json);
 }

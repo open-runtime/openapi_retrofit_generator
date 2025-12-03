@@ -10,8 +10,7 @@ part 'api_v1_no_tags_response.g.dart';
 class ApiV1NoTagsResponse {
   const ApiV1NoTagsResponse({this.noTagsField});
 
-  factory ApiV1NoTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$ApiV1NoTagsResponseFromJson(json);
+  factory ApiV1NoTagsResponse.fromJson(Map<String, Object?> json) => _$ApiV1NoTagsResponseFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? noTagsField;

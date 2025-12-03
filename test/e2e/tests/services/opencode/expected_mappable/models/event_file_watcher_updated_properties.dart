@@ -7,17 +7,12 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'event_file_watcher_updated_properties.mapper.dart';
 
 @MappableClass()
-class EventFileWatcherUpdatedProperties
-    with EventFileWatcherUpdatedPropertiesMappable {
-  const EventFileWatcherUpdatedProperties({
-    required this.file,
-    required this.event,
-  });
+class EventFileWatcherUpdatedProperties with EventFileWatcherUpdatedPropertiesMappable {
+  const EventFileWatcherUpdatedProperties({required this.file, required this.event});
 
   final String file;
   final String event;
 
-  static EventFileWatcherUpdatedProperties fromJson(
-    Map<String, dynamic> json,
-  ) => EventFileWatcherUpdatedPropertiesMapper.fromJson(json);
+  static EventFileWatcherUpdatedProperties fromJson(Map<String, dynamic> json) =>
+      EventFileWatcherUpdatedPropertiesMapper.fromJson(json);
 }

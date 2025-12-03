@@ -48,12 +48,7 @@ class Generator {
   /// - [info]: OpenAPI specification metadata (title, version, description)
   /// - [dataClasses]: Parsed data models (DTOs and enums) to generate
   /// - [restClients]: Parsed REST API clients with endpoints and methods
-  const Generator(
-    this.config, {
-    required this.info,
-    required this.dataClasses,
-    required this.restClients,
-  });
+  const Generator(this.config, {required this.info, required this.dataClasses, required this.restClients});
 
   /// Configuration controlling code generation behavior.
   ///
@@ -174,12 +169,33 @@ class Generator {
   List<GeneratedFile> generateContent() {
     final fillController = FillController(config: config, info: info);
 
-    final dataClassesFiles = dataClasses
-        .map(fillController.fillDtoContent)
-        .toList();
-    final restClientFiles = restClients
-        .map(fillController.fillRestClientContent)
-        .toList();
+    // Filter out classes that are variants in discriminated unions - these are subclasses
+    // that are already generated in their parent file, not standalone classes.
+    //
+    // Root cause: When a schema appears both as:
+    // 1. A top-level component schema (gets its own file)
+    // 2. A variant in a discriminated union (referenced in discriminator mapping)
+    //
+    // The parser creates both:
+    // - A standalone class (top-level component)
+    // - A subclass in the parent file (via discriminator.refProperties)
+    //
+    // We should only generate the subclass version to avoid duplicate class names.
+    // Filter out classes that are variants in discriminated unions
+    // Since Dart sealed classes require all variants in the same file, we:
+    // 1. Generate inline subclasses in the parent file (for sealed class requirement)
+    // 2. Skip generating standalone files for these variants
+    // 3. Use export hiding to prevent conflicts with any top-level schemas that have the same name
+    final standaloneDataClasses = dataClasses.where((dc) {
+      if (dc is UniversalComponentClass) {
+        // Skip if this class has discriminatorValue set (it's a variant in a sealed class)
+        return dc.discriminatorValue == null;
+      }
+      return true; // Keep enums and other types
+    }).toList();
+
+    final dataClassesFiles = standaloneDataClasses.map(fillController.fillDtoContent).toList();
+    final restClientFiles = restClients.map(fillController.fillRestClientContent).toList();
 
     final rootClientFile = config.rootClient && restClients.isNotEmpty
         ? fillController.fillRootClient(restClients)

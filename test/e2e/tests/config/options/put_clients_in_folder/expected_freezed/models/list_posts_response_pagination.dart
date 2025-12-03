@@ -9,11 +9,7 @@ part 'list_posts_response_pagination.g.dart';
 
 @Freezed()
 abstract class ListPostsResponsePagination with _$ListPostsResponsePagination {
-  const factory ListPostsResponsePagination({
-    int? page,
-    int? total,
-    bool? hasNext,
-  }) = _ListPostsResponsePagination;
+  const factory ListPostsResponsePagination({int? page, int? total, bool? hasNext}) = _ListPostsResponsePagination;
 
   factory ListPostsResponsePagination.fromJson(Map<String, Object?> json) =>
       _$ListPostsResponsePaginationFromJson(json);

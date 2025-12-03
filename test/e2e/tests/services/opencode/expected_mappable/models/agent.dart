@@ -39,6 +39,5 @@ class Agent with AgentMappable {
   final AgentModel? agentModel;
   final String? prompt;
 
-  static Agent fromJson(Map<String, dynamic> json) =>
-      AgentMapper.fromJson(json);
+  static Agent fromJson(Map<String, dynamic> json) => AgentMapper.fromJson(json);
 }

@@ -13,6 +13,5 @@ part 'model89.g.dart';
 abstract class Model89 with _$Model89 {
   const factory Model89({required Point point}) = _Model89;
 
-  factory Model89.fromJson(Map<String, Object?> json) =>
-      _$Model89FromJson(json);
+  factory Model89.fromJson(Map<String, Object?> json) => _$Model89FromJson(json);
 }

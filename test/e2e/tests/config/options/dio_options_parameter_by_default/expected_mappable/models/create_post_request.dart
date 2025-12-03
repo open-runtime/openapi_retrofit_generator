@@ -24,6 +24,5 @@ class CreatePostRequest with CreatePostRequestMappable {
   final DateTime? publishAt;
   final dynamic? metadata;
 
-  static CreatePostRequest fromJson(Map<String, dynamic> json) =>
-      CreatePostRequestMapper.fromJson(json);
+  static CreatePostRequest fromJson(Map<String, dynamic> json) => CreatePostRequestMapper.fromJson(json);
 }

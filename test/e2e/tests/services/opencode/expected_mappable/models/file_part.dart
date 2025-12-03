@@ -32,6 +32,5 @@ class FilePart with FilePartMappable {
   final String? filename;
   final FilePartSource? source;
 
-  static FilePart fromJson(Map<String, dynamic> json) =>
-      FilePartMapper.fromJson(json);
+  static FilePart fromJson(Map<String, dynamic> json) => FilePartMapper.fromJson(json);
 }

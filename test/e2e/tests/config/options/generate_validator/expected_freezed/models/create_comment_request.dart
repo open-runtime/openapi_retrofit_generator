@@ -16,8 +16,7 @@ abstract class CreateCommentRequest with _$CreateCommentRequest {
     String? parentId,
   }) = _CreateCommentRequest;
 
-  factory CreateCommentRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateCommentRequestFromJson(json);
+  factory CreateCommentRequest.fromJson(Map<String, Object?> json) => _$CreateCommentRequestFromJson(json);
   static const int contentMinLength = 1;
   static const int contentMaxLength = 2000;
 }

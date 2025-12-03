@@ -7,13 +7,8 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'event_permission_replied_properties.mapper.dart';
 
 @MappableClass()
-class EventPermissionRepliedProperties
-    with EventPermissionRepliedPropertiesMappable {
-  const EventPermissionRepliedProperties({
-    required this.sessionId,
-    required this.permissionId,
-    required this.response,
-  });
+class EventPermissionRepliedProperties with EventPermissionRepliedPropertiesMappable {
+  const EventPermissionRepliedProperties({required this.sessionId, required this.permissionId, required this.response});
 
   @MappableField(key: 'sessionID')
   final String sessionId;

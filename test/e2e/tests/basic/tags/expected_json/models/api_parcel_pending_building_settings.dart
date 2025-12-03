@@ -14,9 +14,8 @@ class ApiParcelPendingBuildingSettings {
     this.externalBuildingName,
   });
 
-  factory ApiParcelPendingBuildingSettings.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiParcelPendingBuildingSettingsFromJson(json);
+  factory ApiParcelPendingBuildingSettings.fromJson(Map<String, Object?> json) =>
+      _$ApiParcelPendingBuildingSettingsFromJson(json);
 
   final bool isDellaManaged;
   @JsonKey(includeIfNull: false)
@@ -24,6 +23,5 @@ class ApiParcelPendingBuildingSettings {
   @JsonKey(includeIfNull: false)
   final String? externalBuildingName;
 
-  Map<String, Object?> toJson() =>
-      _$ApiParcelPendingBuildingSettingsToJson(this);
+  Map<String, Object?> toJson() => _$ApiParcelPendingBuildingSettingsToJson(this);
 }

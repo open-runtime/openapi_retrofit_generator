@@ -46,6 +46,5 @@ class PostModel with PostModelMappable {
   final dynamic? metadata;
   final DateTime? updatedAt;
 
-  static PostModel fromJson(Map<String, dynamic> json) =>
-      PostModelMapper.fromJson(json);
+  static PostModel fromJson(Map<String, dynamic> json) => PostModelMapper.fromJson(json);
 }

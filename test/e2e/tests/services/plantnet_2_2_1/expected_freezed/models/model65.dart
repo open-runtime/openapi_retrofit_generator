@@ -20,6 +20,5 @@ abstract class Model65 with _$Model65 {
     Taxon? taxon,
   }) = _Model65;
 
-  factory Model65.fromJson(Map<String, Object?> json) =>
-      _$Model65FromJson(json);
+  factory Model65.fromJson(Map<String, Object?> json) => _$Model65FromJson(json);
 }

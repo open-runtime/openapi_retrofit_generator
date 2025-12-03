@@ -25,39 +25,25 @@ abstract class AdvancedClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/payments')
-  Future<PaymentResponse> createPayment({
-    @Body() required PaymentRequest body,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<PaymentResponse> createPayment({@Body() required PaymentRequest body, @DioOptions() RequestOptions? options});
 
   /// Search with anyOf result types
   @POST('/search')
-  Future<SearchResponse> search({
-    @Body() SearchRequest? body,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<SearchResponse> search({@Body() SearchRequest? body, @DioOptions() RequestOptions? options});
 
   /// Get polymorphic entity
   @GET('/entities/{entityId}')
-  Future<Entity> getEntity({
-    @Path('entityId') required String entityId,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<Entity> getEntity({@Path('entityId') required String entityId, @DioOptions() RequestOptions? options});
 
   /// Endpoint with potentially conflicting names
   @GET('/conflicts/duplicate')
-  Future<GetDuplicateResponse> getDuplicate({
-    @DioOptions() RequestOptions? options,
-  });
+  Future<GetDuplicateResponse> getDuplicate({@DioOptions() RequestOptions? options});
 
   /// Create with dynamic properties.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/dynamic')
-  Future<EmptyObject> createDynamic({
-    @Body() DynamicObject? body,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<EmptyObject> createDynamic({@Body() DynamicObject? body, @DioOptions() RequestOptions? options});
 
   /// Check if methods endpoint exists
   @HEAD('/methods')

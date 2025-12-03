@@ -6,16 +6,8 @@ part of 'session_prompt_request_acp_connection.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SessionPromptRequestAcpConnection _$SessionPromptRequestAcpConnectionFromJson(
-  Map<String, dynamic> json,
-) => _SessionPromptRequestAcpConnection(
-  connection: json['connection'],
-  sessionId: json['sessionId'] as String,
-);
+_SessionPromptRequestAcpConnection _$SessionPromptRequestAcpConnectionFromJson(Map<String, dynamic> json) =>
+    _SessionPromptRequestAcpConnection(connection: json['connection'], sessionId: json['sessionId'] as String);
 
-Map<String, dynamic> _$SessionPromptRequestAcpConnectionToJson(
-  _SessionPromptRequestAcpConnection instance,
-) => <String, dynamic>{
-  'connection': instance.connection,
-  'sessionId': instance.sessionId,
-};
+Map<String, dynamic> _$SessionPromptRequestAcpConnectionToJson(_SessionPromptRequestAcpConnection instance) =>
+    <String, dynamic>{'connection': instance.connection, 'sessionId': instance.sessionId};

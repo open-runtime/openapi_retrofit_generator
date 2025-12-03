@@ -12,11 +12,8 @@ part 'session_prompt_response.g.dart';
 
 @Freezed()
 abstract class SessionPromptResponse with _$SessionPromptResponse {
-  const factory SessionPromptResponse({
-    required AssistantMessage info,
-    required List<PartModel> parts,
-  }) = _SessionPromptResponse;
+  const factory SessionPromptResponse({required AssistantMessage info, required List<PartModel> parts}) =
+      _SessionPromptResponse;
 
-  factory SessionPromptResponse.fromJson(Map<String, Object?> json) =>
-      _$SessionPromptResponseFromJson(json);
+  factory SessionPromptResponse.fromJson(Map<String, Object?> json) => _$SessionPromptResponseFromJson(json);
 }

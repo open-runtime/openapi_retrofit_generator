@@ -14,11 +14,9 @@ part 'list_posts_response.g.dart';
 abstract class ListPostsResponse with _$ListPostsResponse {
   const factory ListPostsResponse({
     List<PostModel>? posts,
-    @JsonKey(name: 'ListPostsResponsePagination')
-    ListPostsResponsePagination? listPostsResponsePagination,
+    @JsonKey(name: 'ListPostsResponsePagination') ListPostsResponsePagination? listPostsResponsePagination,
     Map<String, String>? metadata,
   }) = _ListPostsResponse;
 
-  factory ListPostsResponse.fromJson(Map<String, Object?> json) =>
-      _$ListPostsResponseFromJson(json);
+  factory ListPostsResponse.fromJson(Map<String, Object?> json) => _$ListPostsResponseFromJson(json);
 }

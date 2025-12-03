@@ -8,6 +8,4 @@ part of 'gbif.dart';
 
 Gbif _$GbifFromJson(Map<String, dynamic> json) => Gbif(id: json['id'] as num);
 
-Map<String, dynamic> _$GbifToJson(Gbif instance) => <String, dynamic>{
-  'id': instance.id,
-};
+Map<String, dynamic> _$GbifToJson(Gbif instance) => <String, dynamic>{'id': instance.id};

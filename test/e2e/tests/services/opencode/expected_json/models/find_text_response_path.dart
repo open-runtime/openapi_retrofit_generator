@@ -10,8 +10,7 @@ part 'find_text_response_path.g.dart';
 class FindTextResponsePath {
   const FindTextResponsePath({required this.text});
 
-  factory FindTextResponsePath.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponsePathFromJson(json);
+  factory FindTextResponsePath.fromJson(Map<String, Object?> json) => _$FindTextResponsePathFromJson(json);
 
   final String text;
 

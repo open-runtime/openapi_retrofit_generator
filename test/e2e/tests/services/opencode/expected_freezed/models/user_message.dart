@@ -18,6 +18,5 @@ abstract class UserMessage with _$UserMessage {
     @JsonKey(name: 'UserMessageTime') required UserMessageTime userMessageTime,
   }) = _UserMessage;
 
-  factory UserMessage.fromJson(Map<String, Object?> json) =>
-      _$UserMessageFromJson(json);
+  factory UserMessage.fromJson(Map<String, Object?> json) => _$UserMessageFromJson(json);
 }

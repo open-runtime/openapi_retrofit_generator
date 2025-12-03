@@ -8,13 +8,7 @@ part 'session_command_request.mapper.dart';
 
 @MappableClass()
 class SessionCommandRequest with SessionCommandRequestMappable {
-  const SessionCommandRequest({
-    required this.arguments,
-    required this.command,
-    this.messageId,
-    this.agent,
-    this.model,
-  });
+  const SessionCommandRequest({required this.arguments, required this.command, this.messageId, this.agent, this.model});
 
   final String arguments;
   final String command;
@@ -23,6 +17,5 @@ class SessionCommandRequest with SessionCommandRequestMappable {
   final String? agent;
   final String? model;
 
-  static SessionCommandRequest fromJson(Map<String, dynamic> json) =>
-      SessionCommandRequestMapper.fromJson(json);
+  static SessionCommandRequest fromJson(Map<String, dynamic> json) => SessionCommandRequestMapper.fromJson(json);
 }

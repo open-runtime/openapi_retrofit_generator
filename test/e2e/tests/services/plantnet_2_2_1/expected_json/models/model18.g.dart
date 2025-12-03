@@ -8,15 +8,9 @@ part of 'model18.dart';
 
 Model18 _$Model18FromJson(Map<String, dynamic> json) => Model18(
   score: json['score'] as num?,
-  genus: json['genus'] == null
-      ? null
-      : Genus.fromJson(json['genus'] as Map<String, dynamic>),
-  gbif: json['gbif'] == null
-      ? null
-      : Gbif.fromJson(json['gbif'] as Map<String, dynamic>),
-  images: (json['images'] as List<dynamic>?)
-      ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  genus: json['genus'] == null ? null : Genus.fromJson(json['genus'] as Map<String, dynamic>),
+  gbif: json['gbif'] == null ? null : Gbif.fromJson(json['gbif'] as Map<String, dynamic>),
+  images: (json['images'] as List<dynamic>?)?.map((e) => Image.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
 Map<String, dynamic> _$Model18ToJson(Model18 instance) => <String, dynamic>{

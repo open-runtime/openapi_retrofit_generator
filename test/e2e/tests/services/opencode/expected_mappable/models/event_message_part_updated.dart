@@ -10,15 +10,11 @@ part 'event_message_part_updated.mapper.dart';
 
 @MappableClass()
 class EventMessagePartUpdated with EventMessagePartUpdatedMappable {
-  const EventMessagePartUpdated({
-    required this.type,
-    required this.eventMessagePartUpdatedProperties,
-  });
+  const EventMessagePartUpdated({required this.type, required this.eventMessagePartUpdatedProperties});
 
   final String type;
   @MappableField(key: 'EventMessagePartUpdatedProperties')
   final EventMessagePartUpdatedProperties eventMessagePartUpdatedProperties;
 
-  static EventMessagePartUpdated fromJson(Map<String, dynamic> json) =>
-      EventMessagePartUpdatedMapper.fromJson(json);
+  static EventMessagePartUpdated fromJson(Map<String, dynamic> json) => EventMessagePartUpdatedMapper.fromJson(json);
 }

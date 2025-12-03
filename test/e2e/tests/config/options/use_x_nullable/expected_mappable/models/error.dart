@@ -10,13 +10,7 @@ part 'error.mapper.dart';
 
 @MappableClass()
 class Error with ErrorMappable {
-  const Error({
-    required this.code,
-    required this.message,
-    this.details,
-    this.timestamp,
-    this.requestId,
-  });
+  const Error({required this.code, required this.message, this.details, this.timestamp, this.requestId});
 
   final String code;
   final String message;
@@ -24,6 +18,5 @@ class Error with ErrorMappable {
   final DateTime? timestamp;
   final String? requestId;
 
-  static Error fromJson(Map<String, dynamic> json) =>
-      ErrorMapper.fromJson(json);
+  static Error fromJson(Map<String, dynamic> json) => ErrorMapper.fromJson(json);
 }

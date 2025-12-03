@@ -10,8 +10,7 @@ part 'not_found_error_data.g.dart';
 class NotFoundErrorData {
   const NotFoundErrorData({required this.message});
 
-  factory NotFoundErrorData.fromJson(Map<String, Object?> json) =>
-      _$NotFoundErrorDataFromJson(json);
+  factory NotFoundErrorData.fromJson(Map<String, Object?> json) => _$NotFoundErrorDataFromJson(json);
 
   final String message;
 

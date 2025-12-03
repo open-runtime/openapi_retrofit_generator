@@ -16,6 +16,5 @@ class Model78 with Model78Mappable {
   @MappableField(key: 'exact_match')
   final bool exactMatch;
 
-  static Model78 fromJson(Map<String, dynamic> json) =>
-      Model78Mapper.fromJson(json);
+  static Model78 fromJson(Map<String, dynamic> json) => Model78Mapper.fromJson(json);
 }

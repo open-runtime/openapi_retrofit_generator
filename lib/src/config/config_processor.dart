@@ -31,9 +31,7 @@ class ConfigProcessor {
     final yamlMap = yamlFile['openapi_generator'] as YamlMap?;
 
     if (yamlMap == null) {
-      throw ConfigException(
-        "`${configFile.path}` file does not contain a 'openapi_generator' section.",
-      );
+      throw ConfigException("`${configFile.path}` file does not contain a 'openapi_generator' section.");
     }
 
     return yamlMap;
@@ -43,45 +41,26 @@ class ConfigProcessor {
   List<OpenApiConfig> parseConfig(YamlMap yamlMap, [ArgResults? argResults]) {
     final configs = <OpenApiConfig>[];
 
-    final schemaPath =
-        argResults?['schema_path']?.toString() ??
-        yamlMap['schema_path'] as String?;
-    final schemaUrl =
-        argResults?['schema_url']?.toString() ??
-        yamlMap['schema_url'] as String?;
+    final schemaPath = argResults?['schema_path']?.toString() ?? yamlMap['schema_path'] as String?;
+    final schemaUrl = argResults?['schema_url']?.toString() ?? yamlMap['schema_url'] as String?;
     final schemes = yamlMap['schemes'] as YamlList?;
 
     if (schemes == null && schemaUrl == null && schemaPath == null) {
-      throw const ConfigException(
-        "Config parameter 'schema_path', 'schema_url' or 'schemes' is required.",
-      );
+      throw const ConfigException("Config parameter 'schema_path', 'schema_url' or 'schemes' is required.");
     }
 
-    if (schemes != null && schemaPath != null ||
-        schemes != null && schemaUrl != null) {
-      throw const ConfigException(
-        "Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'.",
-      );
+    if (schemes != null && schemaPath != null || schemes != null && schemaUrl != null) {
+      throw const ConfigException("Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'.");
     }
 
     if (schemes != null) {
-      final rootConfig = OpenApiConfig.fromYamlWithOverrides(
-        yamlMap,
-        argResults,
-        isRootConfig: true,
-      );
+      final rootConfig = OpenApiConfig.fromYamlWithOverrides(yamlMap, argResults, isRootConfig: true);
 
       for (final schema in schemes) {
         if (schema is! YamlMap) {
-          throw const ConfigException(
-            "Config parameter 'schemes' must be list of maps.",
-          );
+          throw const ConfigException("Config parameter 'schemes' must be list of maps.");
         }
-        final config = OpenApiConfig.fromYamlWithOverrides(
-          schema,
-          argResults,
-          rootConfig: rootConfig,
-        );
+        final config = OpenApiConfig.fromYamlWithOverrides(schema, argResults, rootConfig: rootConfig);
         configs.add(config);
       }
     } else {
@@ -99,9 +78,7 @@ class ConfigProcessor {
     if (config.schemaPath != null) {
       final file = schemaFile(config.schemaPath!);
       if (file == null) {
-        throw ConfigException(
-          'Can not find schema file at ${config.schemaPath}',
-        );
+        throw ConfigException('Can not find schema file at ${config.schemaPath}');
       }
       final fileExtension = p.extension(config.schemaPath!).toLowerCase();
       isJson = switch (fileExtension) {
@@ -130,18 +107,10 @@ class ConfigProcessor {
       };
       final schemaContent = await schemaFromUrl(config.schemaUrl!);
       if (isJson) {
-        final formattedJson = const JsonEncoder.withIndent(
-          '    ',
-        ).convert(jsonDecode(schemaContent));
-        writeSchemaToFile(
-          formattedJson,
-          p.basenameWithoutExtension(config.schemaUrl!) + fileExtension,
-        );
+        final formattedJson = const JsonEncoder.withIndent('    ').convert(jsonDecode(schemaContent));
+        writeSchemaToFile(formattedJson, p.basenameWithoutExtension(config.schemaUrl!) + fileExtension);
       } else {
-        writeSchemaToFile(
-          schemaContent,
-          p.basenameWithoutExtension(config.schemaUrl!) + fileExtension,
-        );
+        writeSchemaToFile(schemaContent, p.basenameWithoutExtension(config.schemaUrl!) + fileExtension);
       }
       return (schemaContent, isJson);
     }

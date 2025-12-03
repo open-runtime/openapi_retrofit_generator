@@ -6,19 +6,14 @@ part of 'session_command_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SessionCommandResponse _$SessionCommandResponseFromJson(
-  Map<String, dynamic> json,
-) => SessionCommandResponse(
+SessionCommandResponse _$SessionCommandResponseFromJson(Map<String, dynamic> json) => SessionCommandResponse(
   info: AssistantMessage.fromJson(json['info'] as Map<String, dynamic>),
   parts: (json['parts'] as List<dynamic>)
-      .map(
-        (e) => e == null
-            ? null
-            : PartModelUnion.fromJson(e as Map<String, dynamic>),
-      )
+      .map((e) => e == null ? null : PartModelUnion.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
-Map<String, dynamic> _$SessionCommandResponseToJson(
-  SessionCommandResponse instance,
-) => <String, dynamic>{'info': instance.info, 'parts': instance.parts};
+Map<String, dynamic> _$SessionCommandResponseToJson(SessionCommandResponse instance) => <String, dynamic>{
+  'info': instance.info,
+  'parts': instance.parts,
+};

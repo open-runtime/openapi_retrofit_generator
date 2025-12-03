@@ -74,37 +74,25 @@ class OpenApiConfig {
   });
 
   /// Creates a [OpenApiConfig] from [YamlMap].
-  factory OpenApiConfig.fromYaml(
-    YamlMap yamlMap, {
-    bool isRootConfig = false,
-    OpenApiConfig? rootConfig,
-  }) {
-    final schemaPath =
-        yamlMap['schema_path']?.toString() ?? rootConfig?.schemaPath;
+  factory OpenApiConfig.fromYaml(YamlMap yamlMap, {bool isRootConfig = false, OpenApiConfig? rootConfig}) {
+    final schemaPath = yamlMap['schema_path']?.toString() ?? rootConfig?.schemaPath;
 
-    final schemaUrl =
-        yamlMap['schema_url']?.toString() ?? rootConfig?.schemaUrl;
+    final schemaUrl = yamlMap['schema_url']?.toString() ?? rootConfig?.schemaUrl;
     if (schemaUrl != null) {
       final uri = Uri.tryParse(schemaUrl);
       if (uri == null) {
-        throw const ConfigException(
-          "Config parameter 'schema_url' must be valid URL.",
-        );
+        throw const ConfigException("Config parameter 'schema_url' must be valid URL.");
       }
     }
 
     if (!isRootConfig && schemaPath == null && schemaUrl == null) {
-      throw const ConfigException(
-        "Config parameters 'schema_path' or 'schema_url' are required.",
-      );
+      throw const ConfigException("Config parameters 'schema_path' or 'schema_url' are required.");
     }
 
-    var outputDirectory =
-        yamlMap['output_directory']?.toString() ?? rootConfig?.outputDirectory;
+    var outputDirectory = yamlMap['output_directory']?.toString() ?? rootConfig?.outputDirectory;
 
     // Normalize: treat null and empty string the same
-    final hasOutputDirectory =
-        outputDirectory != null && outputDirectory.isNotEmpty;
+    final hasOutputDirectory = outputDirectory != null && outputDirectory.isNotEmpty;
 
     // For non-root configs (schemas), output_directory is required either locally or from root
     if (!isRootConfig && !hasOutputDirectory) {
@@ -122,19 +110,13 @@ class OpenApiConfig {
         ? (schemaPath ?? schemaUrl ?? '').split('/').last.split('.').first
         : rawName;
 
-    final defaultContentType =
-        yamlMap['default_content_type'] as String? ??
-        rootConfig?.defaultContentType;
+    final defaultContentType = yamlMap['default_content_type'] as String? ?? rootConfig?.defaultContentType;
     final extrasParameterByDefault =
-        yamlMap['extras_parameter_by_default'] as bool? ??
-        rootConfig?.extrasParameterByDefault;
+        yamlMap['extras_parameter_by_default'] as bool? ?? rootConfig?.extrasParameterByDefault;
     final dioOptionsParameterByDefault =
-        yamlMap['dio_options_parameter_by_default'] as bool? ??
-        rootConfig?.dioOptionsParameterByDefault;
-    final pathMethodName =
-        yamlMap['path_method_name'] as bool? ?? rootConfig?.pathMethodName;
-    final mergeClients =
-        yamlMap['merge_clients'] as bool? ?? rootConfig?.mergeClients;
+        yamlMap['dio_options_parameter_by_default'] as bool? ?? rootConfig?.dioOptionsParameterByDefault;
+    final pathMethodName = yamlMap['path_method_name'] as bool? ?? rootConfig?.pathMethodName;
+    final mergeClients = yamlMap['merge_clients'] as bool? ?? rootConfig?.mergeClients;
 
     final rawSkippedParameters = yamlMap['skipped_parameters'] as YamlList?;
     List<String>? skippedParameters;
@@ -142,9 +124,7 @@ class OpenApiConfig {
       skippedParameters = [];
       for (final p in rawSkippedParameters) {
         if (p is! String) {
-          throw const ConfigException(
-            "Config parameter 'skipped_parameters' values must be List of String.",
-          );
+          throw const ConfigException("Config parameter 'skipped_parameters' values must be List of String.");
         }
         skippedParameters.add(p);
       }
@@ -160,34 +140,20 @@ class OpenApiConfig {
       jsonSerializer = rootConfig!.jsonSerializer;
     }
 
-    final rootClient =
-        yamlMap['root_client'] as bool? ?? rootConfig?.rootClient;
-    final rootClientName =
-        yamlMap['root_client_name'] as String? ?? rootConfig?.rootClientName;
-    final clientPostfix =
-        yamlMap['client_postfix'] as String? ?? rootConfig?.clientPostfix;
-    final exportFile =
-        yamlMap['export_file'] as bool? ?? rootConfig?.exportFile;
-    final putClientsInFolder =
-        yamlMap['put_clients_in_folder'] as bool? ??
-        rootConfig?.putClientsInFolder;
-    final unknownEnumValue =
-        yamlMap['unknown_enum_value'] as bool? ?? rootConfig?.unknownEnumValue;
-    final markFilesAsGenerated =
-        yamlMap['mark_files_as_generated'] as bool? ??
-        rootConfig?.markFilesAsGenerated;
-    final originalHttpResponse =
-        yamlMap['original_http_response'] as bool? ??
-        rootConfig?.originalHttpResponse;
+    final rootClient = yamlMap['root_client'] as bool? ?? rootConfig?.rootClient;
+    final rootClientName = yamlMap['root_client_name'] as String? ?? rootConfig?.rootClientName;
+    final clientPostfix = yamlMap['client_postfix'] as String? ?? rootConfig?.clientPostfix;
+    final exportFile = yamlMap['export_file'] as bool? ?? rootConfig?.exportFile;
+    final putClientsInFolder = yamlMap['put_clients_in_folder'] as bool? ?? rootConfig?.putClientsInFolder;
+    final unknownEnumValue = yamlMap['unknown_enum_value'] as bool? ?? rootConfig?.unknownEnumValue;
+    final markFilesAsGenerated = yamlMap['mark_files_as_generated'] as bool? ?? rootConfig?.markFilesAsGenerated;
+    final originalHttpResponse = yamlMap['original_http_response'] as bool? ?? rootConfig?.originalHttpResponse;
 
-    final generateValidator =
-        yamlMap['generate_validator'] as bool? ?? rootConfig?.generateValidator;
+    final generateValidator = yamlMap['generate_validator'] as bool? ?? rootConfig?.generateValidator;
 
-    final useXNullable =
-        yamlMap['use_x_nullable'] as bool? ?? rootConfig?.useXNullable;
+    final useXNullable = yamlMap['use_x_nullable'] as bool? ?? rootConfig?.useXNullable;
 
-    final fallbackUnion =
-        yamlMap['fallback_union'] as String? ?? rootConfig?.fallbackUnion;
+    final fallbackUnion = yamlMap['fallback_union'] as String? ?? rootConfig?.fallbackUnion;
 
     final excludedTagsYaml = yamlMap['exclude_tags'] as YamlList?;
     List<String>? excludedTags;
@@ -195,9 +161,7 @@ class OpenApiConfig {
       excludedTags = [];
       for (final t in excludedTagsYaml) {
         if (t is! String) {
-          throw const ConfigException(
-            "Config parameter 'exclude_tags' values must be List of String.",
-          );
+          throw const ConfigException("Config parameter 'exclude_tags' values must be List of String.");
         }
         excludedTags.add(t);
       }
@@ -211,9 +175,7 @@ class OpenApiConfig {
       includedTags = [];
       for (final t in includedTagsYaml) {
         if (t is! String) {
-          throw const ConfigException(
-            "Config parameter 'include_tags' values must be List of String.",
-          );
+          throw const ConfigException("Config parameter 'include_tags' values must be List of String.");
         }
         includedTags.add(t);
       }
@@ -221,22 +183,16 @@ class OpenApiConfig {
       includedTags = List.from(rootConfig!.includeTags);
     }
 
-    final defaultClient =
-        yamlMap['default_client'] as String? ?? rootConfig?.defaultClient;
+    final defaultClient = yamlMap['default_client'] as String? ?? rootConfig?.defaultClient;
 
-    final mergeOutputs =
-        yamlMap['merge_outputs'] as bool? ?? rootConfig?.mergeOutputs;
+    final mergeOutputs = yamlMap['merge_outputs'] as bool? ?? rootConfig?.mergeOutputs;
 
-    final includeIfNull =
-        yamlMap['include_if_null'] as bool? ?? rootConfig?.includeIfNull;
+    final includeIfNull = yamlMap['include_if_null'] as bool? ?? rootConfig?.includeIfNull;
 
-    final dartMappableIgnoreNull =
-        yamlMap['dart_mappable_ignore_null'] as bool? ??
-        rootConfig?.dartMappableIgnoreNull;
+    final dartMappableIgnoreNull = yamlMap['dart_mappable_ignore_null'] as bool? ?? rootConfig?.dartMappableIgnoreNull;
 
     final dartMappableIncludeTypeId =
-        yamlMap['dart_mappable_include_type_id'] as bool? ??
-        rootConfig?.dartMappableIncludeTypeId;
+        yamlMap['dart_mappable_include_type_id'] as bool? ?? rootConfig?.dartMappableIncludeTypeId;
 
     // Default config
     final dc = OpenApiConfig(name: name, outputDirectory: outputDirectory);
@@ -248,10 +204,8 @@ class OpenApiConfig {
       name: name,
       pathMethodName: pathMethodName ?? dc.pathMethodName,
       defaultContentType: defaultContentType ?? dc.defaultContentType,
-      extrasParameterByDefault:
-          extrasParameterByDefault ?? dc.extrasParameterByDefault,
-      dioOptionsParameterByDefault:
-          dioOptionsParameterByDefault ?? dc.dioOptionsParameterByDefault,
+      extrasParameterByDefault: extrasParameterByDefault ?? dc.extrasParameterByDefault,
+      dioOptionsParameterByDefault: dioOptionsParameterByDefault ?? dc.dioOptionsParameterByDefault,
       mergeClients: mergeClients ?? dc.mergeClients,
       skippedParameters: skippedParameters ?? dc.skippedParameters,
       exportFile: exportFile ?? dc.exportFile,
@@ -271,10 +225,8 @@ class OpenApiConfig {
       includeTags: includedTags ?? dc.includeTags,
       defaultClient: defaultClient ?? dc.defaultClient,
       includeIfNull: includeIfNull ?? dc.includeIfNull,
-      dartMappableIgnoreNull:
-          dartMappableIgnoreNull ?? dc.dartMappableIgnoreNull,
-      dartMappableIncludeTypeId:
-          dartMappableIncludeTypeId ?? dc.dartMappableIncludeTypeId,
+      dartMappableIgnoreNull: dartMappableIgnoreNull ?? dc.dartMappableIgnoreNull,
+      dartMappableIncludeTypeId: dartMappableIncludeTypeId ?? dc.dartMappableIncludeTypeId,
     );
   }
 
@@ -298,11 +250,7 @@ class OpenApiConfig {
     final mergedYamlMap = YamlMap.wrap(mergedConfig);
 
     // Use existing fromYaml method with merged configuration
-    return OpenApiConfig.fromYaml(
-      mergedYamlMap,
-      isRootConfig: isRootConfig,
-      rootConfig: rootConfig,
-    );
+    return OpenApiConfig.fromYaml(mergedYamlMap, isRootConfig: isRootConfig, rootConfig: rootConfig);
   }
 
   /// Path to local OpenAPI schema file.
@@ -638,10 +586,7 @@ class OpenApiConfig {
   }
 
   /// Convert [OpenApiConfig] to [ParserConfig]
-  ParserConfig toParserConfig({
-    required String fileContent,
-    required bool isJson,
-  }) {
+  ParserConfig toParserConfig({required String fileContent, required bool isJson}) {
     return ParserConfig(
       fileContent,
       isJson: isJson,

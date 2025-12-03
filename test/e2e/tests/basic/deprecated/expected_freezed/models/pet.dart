@@ -9,9 +9,7 @@ part 'pet.g.dart';
 
 @Freezed()
 abstract class Pet with _$Pet {
-  const factory Pet({
-    @Deprecated('This is marked as deprecated') required int deprecatedProperty,
-  }) = _Pet;
+  const factory Pet({@Deprecated('This is marked as deprecated') required int deprecatedProperty}) = _Pet;
 
   factory Pet.fromJson(Map<String, Object?> json) => _$PetFromJson(json);
 }

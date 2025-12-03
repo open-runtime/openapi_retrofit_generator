@@ -21,8 +21,7 @@ class ToolPart {
     this.metadata,
   });
 
-  factory ToolPart.fromJson(Map<String, Object?> json) =>
-      _$ToolPartFromJson(json);
+  factory ToolPart.fromJson(Map<String, Object?> json) => _$ToolPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

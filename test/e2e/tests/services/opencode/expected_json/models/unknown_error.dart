@@ -12,8 +12,7 @@ part 'unknown_error.g.dart';
 class UnknownError {
   const UnknownError({required this.name, required this.unknownErrorData});
 
-  factory UnknownError.fromJson(Map<String, Object?> json) =>
-      _$UnknownErrorFromJson(json);
+  factory UnknownError.fromJson(Map<String, Object?> json) => _$UnknownErrorFromJson(json);
 
   final String name;
   @JsonKey(name: 'UnknownErrorData')

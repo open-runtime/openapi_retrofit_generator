@@ -10,15 +10,9 @@ part 'category.g.dart';
 
 @JsonSerializable()
 class Category {
-  const Category({
-    required this.id,
-    required this.name,
-    this.slug,
-    this.parent,
-  });
+  const Category({required this.id, required this.name, this.slug, this.parent});
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 
   final String id;
   final String name;

@@ -12,6 +12,5 @@ class ModelProvider with ModelProviderMappable {
 
   final String npm;
 
-  static ModelProvider fromJson(Map<String, dynamic> json) =>
-      ModelProviderMapper.fromJson(json);
+  static ModelProvider fromJson(Map<String, dynamic> json) => ModelProviderMapper.fromJson(json);
 }

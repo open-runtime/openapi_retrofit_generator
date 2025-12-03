@@ -12,9 +12,8 @@ FileSource _$FileSourceFromJson(Map<String, dynamic> json) => FileSource(
   path: json['path'] as String,
 );
 
-Map<String, dynamic> _$FileSourceToJson(FileSource instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'type': instance.type,
-      'path': instance.path,
-    };
+Map<String, dynamic> _$FileSourceToJson(FileSource instance) => <String, dynamic>{
+  'text': instance.text,
+  'type': instance.type,
+  'path': instance.path,
+};

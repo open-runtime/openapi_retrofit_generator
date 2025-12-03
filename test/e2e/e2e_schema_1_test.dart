@@ -14,10 +14,7 @@ import '../test_utils.dart';
 
 Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   final schemaPath = p.join('test', 'e2e', 'tests', 'schemas', schemaFileName);
-  final schemaNameWithoutExt = schemaFileName.replaceAll(
-    RegExp(r'\.(yaml|json)$'),
-    '',
-  );
+  final schemaNameWithoutExt = schemaFileName.replaceAll(RegExp(r'\.(yaml|json)$'), '');
 
   print('\n=== SCHEMA TEST: $schemaFileName ===');
   print('Schema: $schemaPath');
@@ -25,13 +22,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
   print('\n[1/6] Cleaning generated folders...');
   for (final serializer in JsonSerializer.values) {
     final generatedFolderName = getGeneratedFolderName(serializer);
-    final generatedFolder = p.join(
-      'test',
-      'generated',
-      'schema_1',
-      schemaNameWithoutExt,
-      generatedFolderName,
-    );
+    final generatedFolder = p.join('test', 'generated', 'schema_1', schemaNameWithoutExt, generatedFolderName);
     final genDir = Directory(generatedFolder);
     if (genDir.existsSync()) {
       genDir.deleteSync(recursive: true);
@@ -67,13 +58,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     for (final serializer in JsonSerializer.values) {
       final generatedFolderName = getGeneratedFolderName(serializer);
       final buildOutputPath = p.join(libFolder, generatedFolderName);
-      final targetPath = p.join(
-        'test',
-        'generated',
-        'schema_1',
-        schemaNameWithoutExt,
-        generatedFolderName,
-      );
+      final targetPath = p.join('test', 'generated', 'schema_1', schemaNameWithoutExt, generatedFolderName);
 
       final buildOutput = Directory(buildOutputPath);
       if (buildOutput.existsSync()) {
@@ -87,12 +72,7 @@ Future<void> schemaTest(String schemaFileName, String buildFolder) async {
     }
 
     print('\n[6/6] Running analyzer...');
-    final targetPath = p.join(
-      'test',
-      'generated',
-      'schema_1',
-      schemaNameWithoutExt,
-    );
+    final targetPath = p.join('test', 'generated', 'schema_1', schemaNameWithoutExt);
     await runAnalyzer(targetPath, schemaFileName);
 
     print('\n=== TEST PASSED ===\n');
@@ -176,17 +156,11 @@ void main() {
     });
 
     test('addUnsignedToIntegerWithInvalidMaxValue_test.yaml', () async {
-      await schemaTest(
-        'addUnsignedToIntegerWithInvalidMaxValue_test.yaml',
-        buildFolder,
-      );
+      await schemaTest('addUnsignedToIntegerWithInvalidMaxValue_test.yaml', buildFolder);
     });
 
     test('allOf_composition_discriminator_recursive.yaml', () async {
-      await schemaTest(
-        'allOf_composition_discriminator_recursive.yaml',
-        buildFolder,
-      );
+      await schemaTest('allOf_composition_discriminator_recursive.yaml', buildFolder);
     });
 
     test('allOf_composition_discriminator.yaml', () async {
@@ -378,10 +352,7 @@ void main() {
     });
 
     test('enableKeepOnlyFirstTagInOperation_test.yaml', () async {
-      await schemaTest(
-        'enableKeepOnlyFirstTagInOperation_test.yaml',
-        buildFolder,
-      );
+      await schemaTest('enableKeepOnlyFirstTagInOperation_test.yaml', buildFolder);
     });
 
     test('enum-and-inner-enum-uri.yaml', () async {

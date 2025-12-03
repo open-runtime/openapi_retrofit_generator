@@ -24,8 +24,7 @@ class PersonEntity {
     this.socialProfiles,
   });
 
-  factory PersonEntity.fromJson(Map<String, Object?> json) =>
-      _$PersonEntityFromJson(json);
+  factory PersonEntity.fromJson(Map<String, Object?> json) => _$PersonEntityFromJson(json);
 
   final String id;
   final PersonEntityEntityTypeEntityType? entityType;

@@ -15,6 +15,5 @@ class Project with ProjectMappable {
   final String? description;
   final num? speciesCount;
 
-  static Project fromJson(Map<String, dynamic> json) =>
-      ProjectMapper.fromJson(json);
+  static Project fromJson(Map<String, dynamic> json) => ProjectMapper.fromJson(json);
 }

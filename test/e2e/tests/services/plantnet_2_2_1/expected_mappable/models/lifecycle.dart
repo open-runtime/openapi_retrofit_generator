@@ -27,6 +27,5 @@ enum Lifecycle {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Lifecycle> get $valuesDefined =>
-      values.where((value) => value != Lifecycle.unknown).toList();
+  static List<Lifecycle> get $valuesDefined => values.where((value) => value != Lifecycle.unknown).toList();
 }

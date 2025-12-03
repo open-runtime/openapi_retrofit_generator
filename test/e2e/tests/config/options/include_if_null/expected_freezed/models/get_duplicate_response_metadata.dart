@@ -10,8 +10,7 @@ part 'get_duplicate_response_metadata.freezed.dart';
 part 'get_duplicate_response_metadata.g.dart';
 
 @Freezed()
-abstract class GetDuplicateResponseMetadata
-    with _$GetDuplicateResponseMetadata {
+abstract class GetDuplicateResponseMetadata with _$GetDuplicateResponseMetadata {
   const factory GetDuplicateResponseMetadata({
     @JsonKey(includeIfNull: false, name: 'GetDuplicateResponseMetadataData')
     GetDuplicateResponseMetadataData? getDuplicateResponseMetadataData,

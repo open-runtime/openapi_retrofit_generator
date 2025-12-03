@@ -21,6 +21,5 @@ abstract class SymbolSource with _$SymbolSource {
     required int kind,
   }) = _SymbolSource;
 
-  factory SymbolSource.fromJson(Map<String, Object?> json) =>
-      _$SymbolSourceFromJson(json);
+  factory SymbolSource.fromJson(Map<String, Object?> json) => _$SymbolSourceFromJson(json);
 }

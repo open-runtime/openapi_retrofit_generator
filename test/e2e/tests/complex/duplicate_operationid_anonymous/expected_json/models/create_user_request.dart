@@ -10,8 +10,7 @@ part 'create_user_request.g.dart';
 class CreateUserRequest {
   const CreateUserRequest({required this.name, this.email});
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 
   final String name;
   final String? email;

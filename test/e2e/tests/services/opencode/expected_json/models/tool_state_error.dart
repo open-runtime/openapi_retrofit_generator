@@ -18,8 +18,7 @@ class ToolStateError {
     this.metadata,
   });
 
-  factory ToolStateError.fromJson(Map<String, Object?> json) =>
-      _$ToolStateErrorFromJson(json);
+  factory ToolStateError.fromJson(Map<String, Object?> json) => _$ToolStateErrorFromJson(json);
 
   final String status;
   final Map<String, dynamic> input;

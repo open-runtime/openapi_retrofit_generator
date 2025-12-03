@@ -17,6 +17,5 @@ abstract class EventMessageUpdated with _$EventMessageUpdated {
     required EventMessageUpdatedProperties eventMessageUpdatedProperties,
   }) = _EventMessageUpdated;
 
-  factory EventMessageUpdated.fromJson(Map<String, Object?> json) =>
-      _$EventMessageUpdatedFromJson(json);
+  factory EventMessageUpdated.fromJson(Map<String, Object?> json) => _$EventMessageUpdatedFromJson(json);
 }

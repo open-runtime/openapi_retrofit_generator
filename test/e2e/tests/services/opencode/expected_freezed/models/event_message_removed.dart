@@ -17,6 +17,5 @@ abstract class EventMessageRemoved with _$EventMessageRemoved {
     required EventMessageRemovedProperties eventMessageRemovedProperties,
   }) = _EventMessageRemoved;
 
-  factory EventMessageRemoved.fromJson(Map<String, Object?> json) =>
-      _$EventMessageRemovedFromJson(json);
+  factory EventMessageRemoved.fromJson(Map<String, Object?> json) => _$EventMessageRemovedFromJson(json);
 }

@@ -45,8 +45,7 @@ sealed class PaymentResponseDetailsUnion with _$PaymentResponseDetailsUnion {
     String? transactionHash,
   }) = PaymentResponseDetailsUnionCrypto;
 
-  const factory PaymentResponseDetailsUnion.unknown() =
-      PaymentResponseDetailsUnionUnknown;
+  const factory PaymentResponseDetailsUnion.unknown() = PaymentResponseDetailsUnionUnknown;
 
   factory PaymentResponseDetailsUnion.fromJson(Map<String, Object?> json) =>
       _$PaymentResponseDetailsUnionFromJson(json);

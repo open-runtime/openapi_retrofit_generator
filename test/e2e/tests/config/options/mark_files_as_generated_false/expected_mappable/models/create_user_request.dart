@@ -28,6 +28,5 @@ class CreateUserRequest with CreateUserRequestMappable {
   final int? age;
   final UserRole? role;
 
-  static CreateUserRequest fromJson(Map<String, dynamic> json) =>
-      CreateUserRequestMapper.fromJson(json);
+  static CreateUserRequest fromJson(Map<String, dynamic> json) => CreateUserRequestMapper.fromJson(json);
 }

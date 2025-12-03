@@ -9,12 +9,8 @@ part 'tool_list_item.g.dart';
 
 @Freezed()
 abstract class ToolListItem with _$ToolListItem {
-  const factory ToolListItem({
-    required String id,
-    required String description,
-    required dynamic parameters,
-  }) = _ToolListItem;
+  const factory ToolListItem({required String id, required String description, required dynamic parameters}) =
+      _ToolListItem;
 
-  factory ToolListItem.fromJson(Map<String, Object?> json) =>
-      _$ToolListItemFromJson(json);
+  factory ToolListItem.fromJson(Map<String, Object?> json) => _$ToolListItemFromJson(json);
 }

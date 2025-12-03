@@ -21,8 +21,7 @@ class TextPart {
     this.metadata,
   });
 
-  factory TextPart.fromJson(Map<String, Object?> json) =>
-      _$TextPartFromJson(json);
+  factory TextPart.fromJson(Map<String, Object?> json) => _$TextPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

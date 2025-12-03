@@ -23,12 +23,7 @@ void main() async {
 
     debugPrint('\nCreating a new pet...');
     final newPet = await client.pets.createPet(
-      body: const CreatePetRequest(
-        name: 'Fluffy',
-        category: 'cat',
-        age: 3,
-        tags: ['cute', 'friendly'],
-      ),
+      body: const CreatePetRequest(name: 'Fluffy', category: 'cat', age: 3, tags: ['cute', 'friendly']),
     );
     debugPrint('Created pet: ${newPet.name} (${newPet.id})');
 

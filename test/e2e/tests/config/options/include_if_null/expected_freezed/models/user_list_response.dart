@@ -18,6 +18,5 @@ abstract class UserListResponse with _$UserListResponse {
     @JsonKey(includeIfNull: false) int? limit,
   }) = _UserListResponse;
 
-  factory UserListResponse.fromJson(Map<String, Object?> json) =>
-      _$UserListResponseFromJson(json);
+  factory UserListResponse.fromJson(Map<String, Object?> json) => _$UserListResponseFromJson(json);
 }

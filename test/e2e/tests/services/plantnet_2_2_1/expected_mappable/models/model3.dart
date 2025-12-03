@@ -11,15 +11,7 @@ part 'model3.mapper.dart';
 
 @MappableClass()
 class Model3 with Model3Mappable {
-  const Model3({
-    this.period,
-    this.startDate,
-    this.endDate,
-    this.status,
-    this.count,
-    this.aboveQuota,
-    this.discount,
-  });
+  const Model3({this.period, this.startDate, this.endDate, this.status, this.count, this.aboveQuota, this.discount});
 
   final String? period;
   final String? startDate;
@@ -29,6 +21,5 @@ class Model3 with Model3Mappable {
   final AboveQuota? aboveQuota;
   final bool? discount;
 
-  static Model3 fromJson(Map<String, dynamic> json) =>
-      Model3Mapper.fromJson(json);
+  static Model3 fromJson(Map<String, dynamic> json) => Model3Mapper.fromJson(json);
 }

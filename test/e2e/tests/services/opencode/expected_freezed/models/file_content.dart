@@ -20,6 +20,5 @@ abstract class FileContent with _$FileContent {
     String? mimeType,
   }) = _FileContent;
 
-  factory FileContent.fromJson(Map<String, Object?> json) =>
-      _$FileContentFromJson(json);
+  factory FileContent.fromJson(Map<String, Object?> json) => _$FileContentFromJson(json);
 }

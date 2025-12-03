@@ -18,6 +18,5 @@ abstract class UpdateUserRequest with _$UpdateUserRequest {
     @JsonKey(includeIfNull: false) String? bio,
   }) = _UpdateUserRequest;
 
-  factory UpdateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$UpdateUserRequestFromJson(json);
+  factory UpdateUserRequest.fromJson(Map<String, Object?> json) => _$UpdateUserRequestFromJson(json);
 }

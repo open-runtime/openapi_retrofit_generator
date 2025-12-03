@@ -15,6 +15,5 @@ class Model11 with Model11Mappable {
   final String? m;
   final String? s;
 
-  static Model11 fromJson(Map<String, dynamic> json) =>
-      Model11Mapper.fromJson(json);
+  static Model11 fromJson(Map<String, dynamic> json) => Model11Mapper.fromJson(json);
 }

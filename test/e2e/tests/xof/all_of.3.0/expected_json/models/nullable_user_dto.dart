@@ -12,8 +12,7 @@ part 'nullable_user_dto.g.dart';
 class NullableUserDto {
   const NullableUserDto({required this.data});
 
-  factory NullableUserDto.fromJson(Map<String, Object?> json) =>
-      _$NullableUserDtoFromJson(json);
+  factory NullableUserDto.fromJson(Map<String, Object?> json) => _$NullableUserDtoFromJson(json);
 
   @JsonKey(includeIfNull: true)
   final UserDto? data;

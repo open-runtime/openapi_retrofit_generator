@@ -10,8 +10,7 @@ part 'user_dto.g.dart';
 class UserDto {
   const UserDto({required this.id, required this.username});
 
-  factory UserDto.fromJson(Map<String, Object?> json) =>
-      _$UserDtoFromJson(json);
+  factory UserDto.fromJson(Map<String, Object?> json) => _$UserDtoFromJson(json);
 
   /// The id of the user
   final String id;

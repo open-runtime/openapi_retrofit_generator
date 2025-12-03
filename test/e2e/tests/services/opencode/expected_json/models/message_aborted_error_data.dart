@@ -10,8 +10,7 @@ part 'message_aborted_error_data.g.dart';
 class MessageAbortedErrorData {
   const MessageAbortedErrorData({required this.message});
 
-  factory MessageAbortedErrorData.fromJson(Map<String, Object?> json) =>
-      _$MessageAbortedErrorDataFromJson(json);
+  factory MessageAbortedErrorData.fromJson(Map<String, Object?> json) => _$MessageAbortedErrorDataFromJson(json);
 
   final String message;
 

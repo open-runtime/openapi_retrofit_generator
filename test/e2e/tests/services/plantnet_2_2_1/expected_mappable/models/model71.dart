@@ -63,6 +63,5 @@ class Model71 with Model71Mappable {
   @MappableField(key: 'percentage_covered')
   final num? percentageCovered;
 
-  static Model71 fromJson(Map<String, dynamic> json) =>
-      Model71Mapper.fromJson(json);
+  static Model71 fromJson(Map<String, dynamic> json) => Model71Mapper.fromJson(json);
 }

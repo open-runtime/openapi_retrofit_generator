@@ -9,12 +9,8 @@ part 'agent_part_input_source.g.dart';
 
 @Freezed()
 abstract class AgentPartInputSource with _$AgentPartInputSource {
-  const factory AgentPartInputSource({
-    required String value,
-    required int start,
-    required int end,
-  }) = _AgentPartInputSource;
+  const factory AgentPartInputSource({required String value, required int start, required int end}) =
+      _AgentPartInputSource;
 
-  factory AgentPartInputSource.fromJson(Map<String, Object?> json) =>
-      _$AgentPartInputSourceFromJson(json);
+  factory AgentPartInputSource.fromJson(Map<String, Object?> json) => _$AgentPartInputSourceFromJson(json);
 }

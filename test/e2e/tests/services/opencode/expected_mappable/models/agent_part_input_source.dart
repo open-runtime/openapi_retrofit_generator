@@ -8,16 +8,11 @@ part 'agent_part_input_source.mapper.dart';
 
 @MappableClass()
 class AgentPartInputSource with AgentPartInputSourceMappable {
-  const AgentPartInputSource({
-    required this.value,
-    required this.start,
-    required this.end,
-  });
+  const AgentPartInputSource({required this.value, required this.start, required this.end});
 
   final String value;
   final int start;
   final int end;
 
-  static AgentPartInputSource fromJson(Map<String, dynamic> json) =>
-      AgentPartInputSourceMapper.fromJson(json);
+  static AgentPartInputSource fromJson(Map<String, dynamic> json) => AgentPartInputSourceMapper.fromJson(json);
 }

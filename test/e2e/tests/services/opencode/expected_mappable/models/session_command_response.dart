@@ -16,6 +16,5 @@ class SessionCommandResponse with SessionCommandResponseMappable {
   final AssistantMessage info;
   final List<PartModel> parts;
 
-  static SessionCommandResponse fromJson(Map<String, dynamic> json) =>
-      SessionCommandResponseMapper.fromJson(json);
+  static SessionCommandResponse fromJson(Map<String, dynamic> json) => SessionCommandResponseMapper.fromJson(json);
 }

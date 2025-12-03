@@ -42,8 +42,7 @@ class ClassWithNullableTypes {
     this.optionalNullAnyOf,
   });
 
-  factory ClassWithNullableTypes.fromJson(Map<String, Object?> json) =>
-      _$ClassWithNullableTypesFromJson(json);
+  factory ClassWithNullableTypes.fromJson(Map<String, Object?> json) => _$ClassWithNullableTypesFromJson(json);
 
   @JsonKey(name: 'valid_int')
   final int? validInt;

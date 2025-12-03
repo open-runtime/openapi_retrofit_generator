@@ -12,6 +12,5 @@ class P1Class with P1ClassMappable {
 
   final DateTime? test;
 
-  static P1Class fromJson(Map<String, dynamic> json) =>
-      P1ClassMapper.fromJson(json);
+  static P1Class fromJson(Map<String, dynamic> json) => P1ClassMapper.fromJson(json);
 }

@@ -17,6 +17,5 @@ abstract class ModelModalities with _$ModelModalities {
     required List<ModelModalitiesOutputOutput> output,
   }) = _ModelModalities;
 
-  factory ModelModalities.fromJson(Map<String, Object?> json) =>
-      _$ModelModalitiesFromJson(json);
+  factory ModelModalities.fromJson(Map<String, Object?> json) => _$ModelModalitiesFromJson(json);
 }

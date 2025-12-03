@@ -28,31 +28,21 @@ class GenProcessor {
 
     const configProcessor = ConfigProcessor();
     final (fileContent, isJson) = await configProcessor.fileContent(config);
-    final parserConfig = config.toParserConfig(
-      fileContent: fileContent,
-      isJson: isJson,
-    );
+    final parserConfig = config.toParserConfig(fileContent: fileContent, isJson: isJson);
 
     final parser = OpenApiParser(parserConfig);
     final generatorConfig = config.toGeneratorConfig();
     final info = parser.openApiInfo;
     final restClients = parser.parseRestClients();
     final dataClasses = parser.parseDataClasses();
-    final generator = Generator(
-      generatorConfig,
-      info: info,
-      dataClasses: dataClasses,
-      restClients: restClients,
-    );
+    final generator = Generator(generatorConfig, info: info, dataClasses: dataClasses, restClients: restClients);
 
     return generator.generateFiles();
   }
 
   /// Generates content of files based on OpenApi definition file
   /// and return list of [GeneratedFile]
-  Future<List<GeneratedFile>> generateContent(
-    ({String fileContent, bool isJson}) configParameters,
-  ) async {
+  Future<List<GeneratedFile>> generateContent(({String fileContent, bool isJson}) configParameters) async {
     resetUniqueNameCounters();
 
     if (config.jsonSerializer == JsonSerializer.dartMappable) {
@@ -69,12 +59,7 @@ class GenProcessor {
     final info = parser.openApiInfo;
     final restClients = parser.parseRestClients();
     final dataClasses = parser.parseDataClasses();
-    final generator = Generator(
-      generatorConfig,
-      info: info,
-      dataClasses: dataClasses,
-      restClients: restClients,
-    );
+    final generator = Generator(generatorConfig, info: info, dataClasses: dataClasses, restClients: restClients);
     return generator.generateContent();
   }
 }

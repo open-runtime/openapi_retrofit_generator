@@ -19,6 +19,5 @@ abstract class FileNode with _$FileNode {
     required bool ignored,
   }) = _FileNode;
 
-  factory FileNode.fromJson(Map<String, Object?> json) =>
-      _$FileNodeFromJson(json);
+  factory FileNode.fromJson(Map<String, Object?> json) => _$FileNodeFromJson(json);
 }

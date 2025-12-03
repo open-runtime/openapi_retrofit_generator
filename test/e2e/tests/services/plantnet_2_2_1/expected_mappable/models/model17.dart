@@ -15,6 +15,5 @@ class Model17 with Model17Mappable {
   final String? organ;
   final num? score;
 
-  static Model17 fromJson(Map<String, dynamic> json) =>
-      Model17Mapper.fromJson(json);
+  static Model17 fromJson(Map<String, dynamic> json) => Model17Mapper.fromJson(json);
 }

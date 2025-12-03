@@ -26,6 +26,5 @@ class Contract with ContractMappable {
   final num? indicativeYearlyQuota;
   final String? currency;
 
-  static Contract fromJson(Map<String, dynamic> json) =>
-      ContractMapper.fromJson(json);
+  static Contract fromJson(Map<String, dynamic> json) => ContractMapper.fromJson(json);
 }

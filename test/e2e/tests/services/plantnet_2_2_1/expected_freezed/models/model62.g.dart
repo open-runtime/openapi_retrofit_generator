@@ -10,9 +10,7 @@ _Model62 _$Model62FromJson(Map<String, dynamic> json) => _Model62(
   status: json['status'] as String?,
   version: json['version'] as String?,
   query: json['query'],
-  results: json['results'] == null
-      ? null
-      : Model61.fromJson(json['results'] as Map<String, dynamic>),
+  results: json['results'] == null ? null : Model61.fromJson(json['results'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$Model62ToJson(_Model62 instance) => <String, dynamic>{

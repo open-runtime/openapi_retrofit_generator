@@ -12,6 +12,5 @@ class TuiExecuteCommandRequest with TuiExecuteCommandRequestMappable {
 
   final String command;
 
-  static TuiExecuteCommandRequest fromJson(Map<String, dynamic> json) =>
-      TuiExecuteCommandRequestMapper.fromJson(json);
+  static TuiExecuteCommandRequest fromJson(Map<String, dynamic> json) => TuiExecuteCommandRequestMapper.fromJson(json);
 }

@@ -13,6 +13,5 @@ class UserProfile with UserProfileMappable {
   final String? firstName;
   final String? lastName;
 
-  static UserProfile fromJson(Map<String, dynamic> json) =>
-      UserProfileMapper.fromJson(json);
+  static UserProfile fromJson(Map<String, dynamic> json) => UserProfileMapper.fromJson(json);
 }

@@ -33,6 +33,5 @@ class ToolPart with ToolPartMappable {
   final ToolState state;
   final Map<String, dynamic>? metadata;
 
-  static ToolPart fromJson(Map<String, dynamic> json) =>
-      ToolPartMapper.fromJson(json);
+  static ToolPart fromJson(Map<String, dynamic> json) => ToolPartMapper.fromJson(json);
 }

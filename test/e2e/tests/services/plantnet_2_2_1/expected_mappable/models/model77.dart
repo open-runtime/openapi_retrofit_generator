@@ -17,6 +17,5 @@ class Model77 with Model77Mappable {
   final TypeModel type;
   final Model76 coordinates;
 
-  static Model77 fromJson(Map<String, dynamic> json) =>
-      Model77Mapper.fromJson(json);
+  static Model77 fromJson(Map<String, dynamic> json) => Model77Mapper.fromJson(json);
 }

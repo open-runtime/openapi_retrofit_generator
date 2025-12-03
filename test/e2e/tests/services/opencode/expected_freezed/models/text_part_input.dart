@@ -20,6 +20,5 @@ abstract class TextPartInput with _$TextPartInput {
     Map<String, dynamic>? metadata,
   }) = _TextPartInput;
 
-  factory TextPartInput.fromJson(Map<String, Object?> json) =>
-      _$TextPartInputFromJson(json);
+  factory TextPartInput.fromJson(Map<String, Object?> json) => _$TextPartInputFromJson(json);
 }

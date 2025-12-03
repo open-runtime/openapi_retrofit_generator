@@ -10,18 +10,9 @@ part 'provider.g.dart';
 
 @JsonSerializable()
 class Provider {
-  const Provider({
-    this.api,
-    this.name,
-    this.env,
-    this.id,
-    this.npm,
-    this.models,
-    this.options,
-  });
+  const Provider({this.api, this.name, this.env, this.id, this.npm, this.models, this.options});
 
-  factory Provider.fromJson(Map<String, Object?> json) =>
-      _$ProviderFromJson(json);
+  factory Provider.fromJson(Map<String, Object?> json) => _$ProviderFromJson(json);
 
   final String? api;
   final String? name;

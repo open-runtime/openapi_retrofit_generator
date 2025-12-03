@@ -20,8 +20,7 @@ class ReasoningPart {
     this.metadata,
   });
 
-  factory ReasoningPart.fromJson(Map<String, Object?> json) =>
-      _$ReasoningPartFromJson(json);
+  factory ReasoningPart.fromJson(Map<String, Object?> json) => _$ReasoningPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

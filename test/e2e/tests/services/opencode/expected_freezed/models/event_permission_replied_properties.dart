@@ -8,15 +8,13 @@ part 'event_permission_replied_properties.freezed.dart';
 part 'event_permission_replied_properties.g.dart';
 
 @Freezed()
-abstract class EventPermissionRepliedProperties
-    with _$EventPermissionRepliedProperties {
+abstract class EventPermissionRepliedProperties with _$EventPermissionRepliedProperties {
   const factory EventPermissionRepliedProperties({
     @JsonKey(name: 'sessionID') required String sessionId,
     @JsonKey(name: 'permissionID') required String permissionId,
     required String response,
   }) = _EventPermissionRepliedProperties;
 
-  factory EventPermissionRepliedProperties.fromJson(
-    Map<String, Object?> json,
-  ) => _$EventPermissionRepliedPropertiesFromJson(json);
+  factory EventPermissionRepliedProperties.fromJson(Map<String, Object?> json) =>
+      _$EventPermissionRepliedPropertiesFromJson(json);
 }

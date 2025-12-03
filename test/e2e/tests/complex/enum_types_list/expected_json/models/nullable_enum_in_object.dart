@@ -12,8 +12,7 @@ part 'nullable_enum_in_object.g.dart';
 class NullableEnumInObject {
   const NullableEnumInObject({this.fruits});
 
-  factory NullableEnumInObject.fromJson(Map<String, Object?> json) =>
-      _$NullableEnumInObjectFromJson(json);
+  factory NullableEnumInObject.fromJson(Map<String, Object?> json) => _$NullableEnumInObjectFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final NullableEnumInObjectFruitsFruits? fruits;

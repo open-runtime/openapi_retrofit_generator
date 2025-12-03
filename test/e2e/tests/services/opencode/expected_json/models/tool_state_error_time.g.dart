@@ -9,5 +9,7 @@ part of 'tool_state_error_time.dart';
 ToolStateErrorTime _$ToolStateErrorTimeFromJson(Map<String, dynamic> json) =>
     ToolStateErrorTime(start: json['start'] as num, end: json['end'] as num);
 
-Map<String, dynamic> _$ToolStateErrorTimeToJson(ToolStateErrorTime instance) =>
-    <String, dynamic>{'start': instance.start, 'end': instance.end};
+Map<String, dynamic> _$ToolStateErrorTimeToJson(ToolStateErrorTime instance) => <String, dynamic>{
+  'start': instance.start,
+  'end': instance.end,
+};

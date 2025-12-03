@@ -13,8 +13,7 @@ part 'user_search_result.g.dart';
 class UserSearchResult {
   const UserSearchResult({required this.type, required this.user, this.score});
 
-  factory UserSearchResult.fromJson(Map<String, Object?> json) =>
-      _$UserSearchResultFromJson(json);
+  factory UserSearchResult.fromJson(Map<String, Object?> json) => _$UserSearchResultFromJson(json);
 
   final UserSearchResultTypeType type;
   final User user;

@@ -12,6 +12,5 @@ class SessionShare with SessionShareMappable {
 
   final String url;
 
-  static SessionShare fromJson(Map<String, dynamic> json) =>
-      SessionShareMapper.fromJson(json);
+  static SessionShare fromJson(Map<String, dynamic> json) => SessionShareMapper.fromJson(json);
 }

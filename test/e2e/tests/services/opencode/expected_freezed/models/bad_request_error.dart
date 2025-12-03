@@ -15,6 +15,5 @@ abstract class BadRequestError with _$BadRequestError {
     required bool success,
   }) = _BadRequestError;
 
-  factory BadRequestError.fromJson(Map<String, Object?> json) =>
-      _$BadRequestErrorFromJson(json);
+  factory BadRequestError.fromJson(Map<String, Object?> json) => _$BadRequestErrorFromJson(json);
 }

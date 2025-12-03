@@ -11,6 +11,5 @@ part 'duplicate_request.g.dart';
 abstract class DuplicateRequest with _$DuplicateRequest {
   const factory DuplicateRequest({String? name}) = _DuplicateRequest;
 
-  factory DuplicateRequest.fromJson(Map<String, Object?> json) =>
-      _$DuplicateRequestFromJson(json);
+  factory DuplicateRequest.fromJson(Map<String, Object?> json) => _$DuplicateRequestFromJson(json);
 }

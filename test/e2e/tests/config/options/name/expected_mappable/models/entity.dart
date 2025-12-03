@@ -11,10 +11,7 @@ import 'person_entity_entity_type_entity_type.dart';
 
 part 'entity.mapper.dart';
 
-@MappableClass(
-  discriminatorKey: 'entityType',
-  includeSubClasses: [EntityPerson, EntityOrganization],
-)
+@MappableClass(discriminatorKey: 'entityType', includeSubClasses: [EntityPerson, EntityOrganization])
 sealed class Entity with EntityMappable {
   const Entity();
 
@@ -24,26 +21,14 @@ sealed class Entity with EntityMappable {
 }
 
 extension EntityUnionDeserializer on Entity {
-  static Entity tryDeserialize(
-    Map<String, dynamic> json, {
-    String key = 'entityType',
-    Map<Type, Object?>? mapping,
-  }) {
-    final mappingFallback = const <Type, Object?>{
-      EntityPerson: 'person',
-      EntityOrganization: 'organization',
-    };
+  static Entity tryDeserialize(Map<String, dynamic> json, {String key = 'entityType', Map<Type, Object?>? mapping}) {
+    final mappingFallback = const <Type, Object?>{EntityPerson: 'person', EntityOrganization: 'organization'};
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[EntityPerson] => EntityPersonMapper.fromJson(
-        json,
-      ),
-      _ when value == effective[EntityOrganization] =>
-        EntityOrganizationMapper.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for Entity',
-      ),
+      _ when value == effective[EntityPerson] => EntityPersonMapper.fromJson(json),
+      _ when value == effective[EntityOrganization] => EntityOrganizationMapper.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for Entity'),
     };
   }
 }

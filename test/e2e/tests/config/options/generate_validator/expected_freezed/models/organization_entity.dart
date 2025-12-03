@@ -26,16 +26,14 @@ abstract class OrganizationEntity with _$OrganizationEntity {
     double? revenue,
   }) = _OrganizationEntity;
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
   static const int employeeCountMin = 0;
 }
 
 extension OrganizationEntityValidationX on OrganizationEntity {
   bool validate() {
     try {
-      if (employeeCount != null &&
-          employeeCount! < OrganizationEntity.employeeCountMin) {
+      if (employeeCount != null && employeeCount! < OrganizationEntity.employeeCountMin) {
         return false;
       }
     } catch (e) {

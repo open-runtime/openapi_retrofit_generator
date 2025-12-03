@@ -12,6 +12,5 @@ class Example with ExampleMappable {
 
   final Map<String, dynamic> data;
 
-  static Example fromJson(Map<String, dynamic> json) =>
-      ExampleMapper.fromJson(json);
+  static Example fromJson(Map<String, dynamic> json) => ExampleMapper.fromJson(json);
 }

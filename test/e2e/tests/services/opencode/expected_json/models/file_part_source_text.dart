@@ -8,14 +8,9 @@ part 'file_part_source_text.g.dart';
 
 @JsonSerializable()
 class FilePartSourceText {
-  const FilePartSourceText({
-    required this.value,
-    required this.start,
-    required this.end,
-  });
+  const FilePartSourceText({required this.value, required this.start, required this.end});
 
-  factory FilePartSourceText.fromJson(Map<String, Object?> json) =>
-      _$FilePartSourceTextFromJson(json);
+  factory FilePartSourceText.fromJson(Map<String, Object?> json) => _$FilePartSourceTextFromJson(json);
 
   final String value;
   final int start;

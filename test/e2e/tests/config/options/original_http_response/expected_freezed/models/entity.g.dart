@@ -6,14 +6,10 @@ part of 'entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-EntityPerson _$EntityPersonFromJson(Map<String, dynamic> json) =>
-    EntityPerson();
+EntityPerson _$EntityPersonFromJson(Map<String, dynamic> json) => EntityPerson();
 
-Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$EntityPersonToJson(EntityPerson instance) => <String, dynamic>{};
 
-EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) =>
-    EntityOrganization();
+EntityOrganization _$EntityOrganizationFromJson(Map<String, dynamic> json) => EntityOrganization();
 
-Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) =>
-    <String, dynamic>{};
+Map<String, dynamic> _$EntityOrganizationToJson(EntityOrganization instance) => <String, dynamic>{};

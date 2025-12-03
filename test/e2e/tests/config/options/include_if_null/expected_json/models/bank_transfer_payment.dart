@@ -21,8 +21,7 @@ class BankTransferPayment {
     this.reference,
   });
 
-  factory BankTransferPayment.fromJson(Map<String, Object?> json) =>
-      _$BankTransferPaymentFromJson(json);
+  factory BankTransferPayment.fromJson(Map<String, Object?> json) => _$BankTransferPaymentFromJson(json);
 
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;

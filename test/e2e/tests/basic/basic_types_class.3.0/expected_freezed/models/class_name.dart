@@ -17,10 +17,7 @@ abstract class ClassName with _$ClassName {
     required double double1,
     required String string1,
     required num number1,
-    @JsonKey(
-      fromJson: _Base64Converter.staticFromJson,
-      toJson: _Base64Converter.staticToJson,
-    )
+    @JsonKey(fromJson: _Base64Converter.staticFromJson, toJson: _Base64Converter.staticToJson)
     required Uint8List string2,
     required DateTime string3,
     required String string4,
@@ -32,8 +29,7 @@ abstract class ClassName with _$ClassName {
     @Default(const []) List<String> arrayWithDefault,
   }) = _ClassName;
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 }
 
 class _Base64Converter implements JsonConverter<Uint8List, String> {

@@ -23,6 +23,5 @@ enum SortDirection {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<SortDirection> get $valuesDefined =>
-      values.where((value) => value != SortDirection.unknown).toList();
+  static List<SortDirection> get $valuesDefined => values.where((value) => value != SortDirection.unknown).toList();
 }

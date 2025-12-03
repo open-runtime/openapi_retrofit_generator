@@ -8,15 +8,9 @@ part 'model46.g.dart';
 
 @JsonSerializable()
 class Model46 {
-  const Model46({
-    required this.id,
-    required this.o,
-    required this.m,
-    required this.s,
-  });
+  const Model46({required this.id, required this.o, required this.m, required this.s});
 
-  factory Model46.fromJson(Map<String, Object?> json) =>
-      _$Model46FromJson(json);
+  factory Model46.fromJson(Map<String, Object?> json) => _$Model46FromJson(json);
 
   final String id;
   final String o;

@@ -8,18 +8,13 @@ part 'session_prompt_request_acp_connection.g.dart';
 
 @JsonSerializable()
 class SessionPromptRequestAcpConnection {
-  const SessionPromptRequestAcpConnection({
-    required this.connection,
-    required this.sessionId,
-  });
+  const SessionPromptRequestAcpConnection({required this.connection, required this.sessionId});
 
-  factory SessionPromptRequestAcpConnection.fromJson(
-    Map<String, Object?> json,
-  ) => _$SessionPromptRequestAcpConnectionFromJson(json);
+  factory SessionPromptRequestAcpConnection.fromJson(Map<String, Object?> json) =>
+      _$SessionPromptRequestAcpConnectionFromJson(json);
 
   final dynamic connection;
   final String sessionId;
 
-  Map<String, Object?> toJson() =>
-      _$SessionPromptRequestAcpConnectionToJson(this);
+  Map<String, Object?> toJson() => _$SessionPromptRequestAcpConnectionToJson(this);
 }

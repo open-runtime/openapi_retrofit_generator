@@ -29,6 +29,5 @@ enum ClassNameStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<ClassNameStatusStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<ClassNameStatusStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

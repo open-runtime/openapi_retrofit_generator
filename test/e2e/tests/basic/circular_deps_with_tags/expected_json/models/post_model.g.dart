@@ -9,12 +9,8 @@ part of 'post_model.dart';
 PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
   id: (json['id'] as num?)?.toInt(),
   title: json['title'] as String?,
-  author: json['author'] == null
-      ? null
-      : User.fromJson(json['author'] as Map<String, dynamic>),
-  comments: (json['comments'] as List<dynamic>?)
-      ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
+  comments: (json['comments'] as List<dynamic>?)?.map((e) => Comment.fromJson(e as Map<String, dynamic>)).toList(),
 );
 
 Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{

@@ -17,6 +17,5 @@ abstract class TuiShowToastRequest with _$TuiShowToastRequest {
     String? title,
   }) = _TuiShowToastRequest;
 
-  factory TuiShowToastRequest.fromJson(Map<String, Object?> json) =>
-      _$TuiShowToastRequestFromJson(json);
+  factory TuiShowToastRequest.fromJson(Map<String, Object?> json) => _$TuiShowToastRequestFromJson(json);
 }

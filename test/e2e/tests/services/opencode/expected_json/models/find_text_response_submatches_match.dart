@@ -15,6 +15,5 @@ class FindTextResponseSubmatchesMatch {
 
   final String text;
 
-  Map<String, Object?> toJson() =>
-      _$FindTextResponseSubmatchesMatchToJson(this);
+  Map<String, Object?> toJson() => _$FindTextResponseSubmatchesMatchToJson(this);
 }

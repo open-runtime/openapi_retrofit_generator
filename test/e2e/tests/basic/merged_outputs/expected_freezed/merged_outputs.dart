@@ -34,44 +34,29 @@ abstract class UserClient {
   ///
   /// Name not received - field will be skipped.
   @GET('/api/User/info')
-  Future<UserInfoDto> getApiUserInfo({
-    @Query('tags') List<String>? tags,
-    @Query('limit') int? limit,
-  });
+  Future<UserInfoDto> getApiUserInfo({@Query('tags') List<String>? tags, @Query('limit') int? limit});
 
   /// null.
   ///
   /// Name not received - field will be skipped.
   @MultiPart()
   @PATCH('/api/User/{id}/avatar')
-  Future<void> patchApiUserIdAvatar({
-    @Part(name: 'avatar') MultipartFile? avatar,
-    @Path('id') int? id,
-  });
+  Future<void> patchApiUserIdAvatar({@Part(name: 'avatar') MultipartFile? avatar, @Path('id') int? id});
 }
 
 @Freezed()
 abstract class RegisterUserDto with _$RegisterUserDto {
-  const factory RegisterUserDto({
-    required String email,
-    required String name,
-    required String password,
-  }) = _RegisterUserDto;
+  const factory RegisterUserDto({required String email, required String name, required String password}) =
+      _RegisterUserDto;
 
-  factory RegisterUserDto.fromJson(Map<String, Object?> json) =>
-      _$RegisterUserDtoFromJson(json);
+  factory RegisterUserDto.fromJson(Map<String, Object?> json) => _$RegisterUserDtoFromJson(json);
 }
 
 @Freezed()
 abstract class UserInfoDto with _$UserInfoDto {
-  const factory UserInfoDto({
-    required String email,
-    required String name,
-    required String phone,
-  }) = _UserInfoDto;
+  const factory UserInfoDto({required String email, required String name, required String phone}) = _UserInfoDto;
 
-  factory UserInfoDto.fromJson(Map<String, Object?> json) =>
-      _$UserInfoDtoFromJson(json);
+  factory UserInfoDto.fromJson(Map<String, Object?> json) => _$UserInfoDtoFromJson(json);
 }
 
 class RestClient {

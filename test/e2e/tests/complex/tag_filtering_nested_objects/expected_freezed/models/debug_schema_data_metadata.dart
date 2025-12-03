@@ -14,6 +14,5 @@ abstract class DebugSchemaDataMetadata with _$DebugSchemaDataMetadata {
     @JsonKey(includeIfNull: false) String? updatedBy,
   }) = _DebugSchemaDataMetadata;
 
-  factory DebugSchemaDataMetadata.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaDataMetadataFromJson(json);
+  factory DebugSchemaDataMetadata.fromJson(Map<String, Object?> json) => _$DebugSchemaDataMetadataFromJson(json);
 }

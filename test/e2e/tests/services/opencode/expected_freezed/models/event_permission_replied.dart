@@ -17,6 +17,5 @@ abstract class EventPermissionReplied with _$EventPermissionReplied {
     required EventPermissionRepliedProperties eventPermissionRepliedProperties,
   }) = _EventPermissionReplied;
 
-  factory EventPermissionReplied.fromJson(Map<String, Object?> json) =>
-      _$EventPermissionRepliedFromJson(json);
+  factory EventPermissionReplied.fromJson(Map<String, Object?> json) => _$EventPermissionRepliedFromJson(json);
 }

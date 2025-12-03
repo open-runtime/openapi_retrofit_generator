@@ -19,6 +19,5 @@ abstract class PostModel with _$PostModel {
     @JsonKey(includeIfNull: false) List<Comment>? comments,
   }) = _PostModel;
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 }

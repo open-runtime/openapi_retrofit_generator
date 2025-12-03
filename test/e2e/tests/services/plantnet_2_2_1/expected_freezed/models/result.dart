@@ -15,14 +15,7 @@ part 'result.g.dart';
 
 @Freezed()
 abstract class Result with _$Result {
-  const factory Result({
-    num? score,
-    Model15? species,
-    Images? images,
-    Gbif? gbif,
-    Powo? powo,
-    Model16? iucn,
-  }) = _Result;
+  const factory Result({num? score, Model15? species, Images? images, Gbif? gbif, Powo? powo, Model16? iucn}) = _Result;
 
   factory Result.fromJson(Map<String, Object?> json) => _$ResultFromJson(json);
 }

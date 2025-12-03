@@ -12,14 +12,7 @@ part 'model40.mapper.dart';
 
 @MappableClass()
 class Model40 with Model40Mappable {
-  const Model40({
-    this.id,
-    this.title,
-    this.description,
-    this.speciesList,
-    this.images,
-    this.position,
-  });
+  const Model40({this.id, this.title, this.description, this.speciesList, this.images, this.position});
 
   final String? id;
   final String? title;
@@ -29,6 +22,5 @@ class Model40 with Model40Mappable {
   final Model39? images;
   final Position? position;
 
-  static Model40 fromJson(Map<String, dynamic> json) =>
-      Model40Mapper.fromJson(json);
+  static Model40 fromJson(Map<String, dynamic> json) => Model40Mapper.fromJson(json);
 }

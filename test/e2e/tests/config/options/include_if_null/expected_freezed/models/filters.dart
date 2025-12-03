@@ -14,10 +14,8 @@ abstract class Filters with _$Filters {
   const factory Filters({
     @JsonKey(includeIfNull: false) String? authorId,
     @JsonKey(includeIfNull: false) List<String>? tags,
-    @JsonKey(includeIfNull: false, name: 'FiltersDateRange')
-    FiltersDateRange? filtersDateRange,
+    @JsonKey(includeIfNull: false, name: 'FiltersDateRange') FiltersDateRange? filtersDateRange,
   }) = _Filters;
 
-  factory Filters.fromJson(Map<String, Object?> json) =>
-      _$FiltersFromJson(json);
+  factory Filters.fromJson(Map<String, Object?> json) => _$FiltersFromJson(json);
 }

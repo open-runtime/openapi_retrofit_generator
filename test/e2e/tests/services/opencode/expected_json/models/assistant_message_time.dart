@@ -10,8 +10,7 @@ part 'assistant_message_time.g.dart';
 class AssistantMessageTime {
   const AssistantMessageTime({required this.created, this.completed});
 
-  factory AssistantMessageTime.fromJson(Map<String, Object?> json) =>
-      _$AssistantMessageTimeFromJson(json);
+  factory AssistantMessageTime.fromJson(Map<String, Object?> json) => _$AssistantMessageTimeFromJson(json);
 
   final num created;
   final num? completed;

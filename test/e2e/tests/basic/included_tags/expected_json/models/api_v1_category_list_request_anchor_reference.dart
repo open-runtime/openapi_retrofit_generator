@@ -8,14 +8,10 @@ part 'api_v1_category_list_request_anchor_reference.g.dart';
 
 @JsonSerializable()
 class ApiV1CategoryListRequestAnchorReference {
-  const ApiV1CategoryListRequestAnchorReference({
-    this.sharedField1,
-    this.sharedField2,
-  });
+  const ApiV1CategoryListRequestAnchorReference({this.sharedField1, this.sharedField2});
 
-  factory ApiV1CategoryListRequestAnchorReference.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListRequestAnchorReferenceFromJson(json);
+  factory ApiV1CategoryListRequestAnchorReference.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListRequestAnchorReferenceFromJson(json);
 
   /// Shared field from anchor
   @JsonKey(includeIfNull: false)
@@ -23,6 +19,5 @@ class ApiV1CategoryListRequestAnchorReference {
   @JsonKey(includeIfNull: false)
   final int? sharedField2;
 
-  Map<String, Object?> toJson() =>
-      _$ApiV1CategoryListRequestAnchorReferenceToJson(this);
+  Map<String, Object?> toJson() => _$ApiV1CategoryListRequestAnchorReferenceToJson(this);
 }

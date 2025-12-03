@@ -11,6 +11,5 @@ part 'model_provider.g.dart';
 abstract class ModelProvider with _$ModelProvider {
   const factory ModelProvider({required String npm}) = _ModelProvider;
 
-  factory ModelProvider.fromJson(Map<String, Object?> json) =>
-      _$ModelProviderFromJson(json);
+  factory ModelProvider.fromJson(Map<String, Object?> json) => _$ModelProviderFromJson(json);
 }

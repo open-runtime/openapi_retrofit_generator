@@ -19,6 +19,5 @@ class RestClient {
 
   IncludeClient? _include;
 
-  IncludeClient get include =>
-      _include ??= IncludeClient(_dio, baseUrl: _baseUrl);
+  IncludeClient get include => _include ??= IncludeClient(_dio, baseUrl: _baseUrl);
 }

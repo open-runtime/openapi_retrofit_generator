@@ -9,10 +9,7 @@ part 'api_v1_no_tags_response.g.dart';
 
 @Freezed()
 abstract class ApiV1NoTagsResponse with _$ApiV1NoTagsResponse {
-  const factory ApiV1NoTagsResponse({
-    @JsonKey(includeIfNull: false) String? noTagsField,
-  }) = _ApiV1NoTagsResponse;
+  const factory ApiV1NoTagsResponse({@JsonKey(includeIfNull: false) String? noTagsField}) = _ApiV1NoTagsResponse;
 
-  factory ApiV1NoTagsResponse.fromJson(Map<String, Object?> json) =>
-      _$ApiV1NoTagsResponseFromJson(json);
+  factory ApiV1NoTagsResponse.fromJson(Map<String, Object?> json) => _$ApiV1NoTagsResponseFromJson(json);
 }

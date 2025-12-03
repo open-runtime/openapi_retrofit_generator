@@ -13,6 +13,5 @@ part 'search_response.g.dart';
 abstract class SearchResponse with _$SearchResponse {
   const factory SearchResponse({List<SearchResult>? results}) = _SearchResponse;
 
-  factory SearchResponse.fromJson(Map<String, Object?> json) =>
-      _$SearchResponseFromJson(json);
+  factory SearchResponse.fromJson(Map<String, Object?> json) => _$SearchResponseFromJson(json);
 }

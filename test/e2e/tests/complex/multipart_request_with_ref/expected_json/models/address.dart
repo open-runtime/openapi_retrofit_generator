@@ -10,8 +10,7 @@ part 'address.g.dart';
 class Address {
   const Address({this.street, this.deleted});
 
-  factory Address.fromJson(Map<String, Object?> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, Object?> json) => _$AddressFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? street;

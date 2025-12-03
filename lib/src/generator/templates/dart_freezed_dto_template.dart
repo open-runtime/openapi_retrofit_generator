@@ -13,15 +13,11 @@ String dartFreezedDtoTemplate(
 }) {
   final className = dataClass.name.toPascal;
   final discriminator = dataClass.discriminator;
-  final isUndiscriminatedUnion =
-      dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false;
+  final isUndiscriminatedUnion = dataClass.undiscriminatedUnionVariants?.isNotEmpty ?? false;
   final isUnion = discriminator != null || isUndiscriminatedUnion;
   final base64Types = _getBase64FieldTypes(dataClass.parameters);
   final needsBase64Converter =
-      base64Types.hasScalar ||
-      base64Types.hasNullable ||
-      base64Types.hasList ||
-      base64Types.hasListNullable;
+      base64Types.hasScalar || base64Types.hasNullable || base64Types.hasList || base64Types.hasListNullable;
   final base64ConverterClass = needsBase64Converter
       ? '\n${_base64ConverterClass(hasScalar: base64Types.hasScalar, hasNullable: base64Types.hasNullable, hasList: base64Types.hasList, hasListNullable: base64Types.hasListNullable)}'
       : '';
@@ -98,9 +94,7 @@ String _validateMethod(String className, Set<UniversalType> types) {
     if (type.minItems != null) {
       bodyBuffer
         ..write('try {\n')
-        ..write(
-          '  if ($nullCheckCondition $typeName.length < ${staticName}MinItems) {\n',
-        )
+        ..write('  if ($nullCheckCondition $typeName.length < ${staticName}MinItems) {\n')
         ..write('    return false;\n')
         ..write('  }\n')
         ..write('} catch (e) {\n')
@@ -111,9 +105,7 @@ String _validateMethod(String className, Set<UniversalType> types) {
     if (type.maxItems != null) {
       bodyBuffer
         ..write('try {\n')
-        ..write(
-          '  if ($nullCheckCondition $typeName.length > ${staticName}MaxItems) {\n',
-        )
+        ..write('  if ($nullCheckCondition $typeName.length > ${staticName}MaxItems) {\n')
         ..write('    return false;\n')
         ..write('  }\n')
         ..write('} catch (e) {\n')
@@ -124,9 +116,7 @@ String _validateMethod(String className, Set<UniversalType> types) {
     if (type.minLength != null) {
       bodyBuffer
         ..write('try {\n')
-        ..write(
-          '  if ($nullCheckCondition $typeName.length < ${staticName}MinLength) {\n',
-        )
+        ..write('  if ($nullCheckCondition $typeName.length < ${staticName}MinLength) {\n')
         ..write('    return false;\n')
         ..write('  }\n')
         ..write('} catch (e) {\n')
@@ -137,9 +127,7 @@ String _validateMethod(String className, Set<UniversalType> types) {
     if (type.maxLength != null) {
       bodyBuffer
         ..write('try {\n')
-        ..write(
-          '  if ($nullCheckCondition $typeName.length > ${staticName}MaxLength) {\n',
-        )
+        ..write('  if ($nullCheckCondition $typeName.length > ${staticName}MaxLength) {\n')
         ..write('    return false;\n')
         ..write('  }\n')
         ..write('} catch (e) {\n')
@@ -150,9 +138,7 @@ String _validateMethod(String className, Set<UniversalType> types) {
     if (type.pattern != null) {
       bodyBuffer
         ..write('try {\n')
-        ..write(
-          '  if ($nullCheckCondition !RegExp(${staticName}Pattern).hasMatch($typeName)) {\n',
-        )
+        ..write('  if ($nullCheckCondition !RegExp(${staticName}Pattern).hasMatch($typeName)) {\n')
         ..write('    return false;\n')
         ..write('  }\n')
         ..write('} catch (e) {\n')
@@ -200,28 +186,17 @@ String _factories(
   const factory $className(${dataClass.parameters.isNotEmpty ? '{' : ''}${_parametersToString(dataClass.parameters, includeIfNull)}${dataClass.parameters.isNotEmpty ? '\n  }' : ''}) = _$className;''';
   }
 
-  if (dataClass.undiscriminatedUnionVariants case final variants?
-      when variants.isNotEmpty) {
-    return _createFactoriesForUndiscriminatedUnion(
-      className,
-      variants,
-      includeIfNull,
-    );
+  if (dataClass.undiscriminatedUnionVariants case final variants? when variants.isNotEmpty) {
+    return _createFactoriesForUndiscriminatedUnion(className, variants, includeIfNull);
   }
 
   final factories = <String>[];
   final discriminatorPropertyName = dataClass.discriminator!.propertyName;
-  for (final discriminatorValue
-      in dataClass.discriminator!.discriminatorValueToRefMapping.keys) {
+  for (final discriminatorValue in dataClass.discriminator!.discriminatorValueToRefMapping.keys) {
     final factoryName = discriminatorValue.toCamel;
-    final discriminatorRef = dataClass
-        .discriminator!
-        .discriminatorValueToRefMapping[discriminatorValue]!;
-    final allParameters =
-        dataClass.discriminator!.refProperties[discriminatorRef]!;
-    final factoryParameters = allParameters
-        .where((param) => param.jsonKey != discriminatorPropertyName)
-        .toSet();
+    final discriminatorRef = dataClass.discriminator!.discriminatorValueToRefMapping[discriminatorValue]!;
+    final allParameters = dataClass.discriminator!.refProperties[discriminatorRef]!;
+    final factoryParameters = allParameters.where((param) => param.jsonKey != discriminatorPropertyName).toSet();
     final unionItemClassName = className + discriminatorValue.toPascal;
 
     factories.add('''
@@ -250,12 +225,8 @@ String _createFactoriesForUndiscriminatedUnion(
   return '';
 }
 
-String _jsonFactories(
-  String className,
-  Map<String, Set<UniversalType>>? undiscriminatedUnionVariants,
-) {
-  if (undiscriminatedUnionVariants case final unionVariants?
-      when unionVariants.isNotEmpty) {
+String _jsonFactories(String className, Map<String, Set<UniversalType>>? undiscriminatedUnionVariants) {
+  if (undiscriminatedUnionVariants case final unionVariants? when unionVariants.isNotEmpty) {
     return '${_fromJsonUndiscriminatedUnion(className)}\n'
         '${_toJsonUndiscriminatedUnion(className, unionVariants)}';
   }
@@ -272,10 +243,7 @@ String _fromJsonUndiscriminatedUnion(String className) =>
       throw UnimplementedError();
 ''';
 
-String _toJsonUndiscriminatedUnion(
-  String className,
-  Map<String, Set<UniversalType>> undiscriminatedUnionVariants,
-) {
+String _toJsonUndiscriminatedUnion(String className, Map<String, Set<UniversalType>> undiscriminatedUnionVariants) {
   final cases = {
     for (final variant in undiscriminatedUnionVariants.keys)
       '        $className${variant.toPascal}() => _\$$className${variant.toPascal}ToJson(this as $className${variant.toPascal}),',
@@ -287,10 +255,7 @@ ${cases.join('\n')}
       };''';
 }
 
-String _undiscriminatedUnionBody(
-  String className,
-  Map<String, Set<UniversalType>> variants,
-) {
+String _undiscriminatedUnionBody(String className, Map<String, Set<UniversalType>> variants) {
   final conversionMethods = variants.keys
       .map((variantName) {
         return '  $className${variantName.toPascal} to${variantName.toPascal}() => $className${variantName.toPascal}.fromJson(_json);';
@@ -378,15 +343,11 @@ String? _validationString(UniversalType type) {
   }
 
   if (type.pattern != null) {
-    sb.write(
-      '  static const String ${type.name}Pattern = r"${type.pattern}";\n',
-    );
+    sb.write('  static const String ${type.name}Pattern = r"${type.pattern}";\n');
   }
 
   if (type.uniqueItems != null) {
-    sb.write(
-      '  static const bool ${type.name}UniqueItems = ${type.uniqueItems};\n',
-    );
+    sb.write('  static const bool ${type.name}UniqueItems = ${type.uniqueItems};\n');
   }
 
   return sb.isEmpty ? null : sb.toString();
@@ -394,12 +355,8 @@ String? _validationString(UniversalType type) {
 
 String _parametersToString(Set<UniversalType> parameters, bool includeIfNull) {
   // Filter out parameters with null or empty names
-  final validParams = parameters.where(
-    (p) => p.name != null && p.name!.isNotEmpty,
-  );
-  final sortedByRequired = Set<UniversalType>.from(
-    validParams.sorted((a, b) => a.compareTo(b)),
-  );
+  final validParams = parameters.where((p) => p.name != null && p.name!.isNotEmpty);
+  final sortedByRequired = Set<UniversalType>.from(validParams.sorted((a, b) => a.compareTo(b)));
   return sortedByRequired.mapIndexed((i, e) {
     // Filter out auto-generated descriptions (normalization messages, conflict resolutions, etc.)
     final shouldShowDescription =
@@ -420,10 +377,7 @@ String _parametersToString(Set<UniversalType> parameters, bool includeIfNull) {
 String _freezedSuitableType(UniversalType type) {
   final baseType = type.toSuitableType();
 
-  if (!type.isRequired &&
-      type.defaultValue == null &&
-      !type.nullable &&
-      !type.referencedNullable) {
+  if (!type.isRequired && type.defaultValue == null && !type.nullable && !type.referencedNullable) {
     if (baseType.endsWith('?')) {
       return baseType;
     }
@@ -454,14 +408,11 @@ String _jsonKey(UniversalType t, bool includeIfNull) {
 
   if ((t.format == 'binary' || t.format == 'byte') || t.type == 'Uint8List') {
     final isNullable = !t.isRequired && t.defaultValue == null;
-    final isList =
-        t.wrappingCollections.isNotEmpty &&
-        t.wrappingCollections.first.collectionPrefix.startsWith('List<');
+    final isList = t.wrappingCollections.isNotEmpty && t.wrappingCollections.first.collectionPrefix.startsWith('List<');
 
     if (isList) {
       if (isNullable) {
-        jsonKeyParams['fromJson'] =
-            '_Base64Converter.staticFromJsonListNullable';
+        jsonKeyParams['fromJson'] = '_Base64Converter.staticFromJsonListNullable';
         jsonKeyParams['toJson'] = '_Base64Converter.staticToJsonListNullable';
       } else {
         jsonKeyParams['fromJson'] = '_Base64Converter.staticFromJsonList';
@@ -479,9 +430,7 @@ String _jsonKey(UniversalType t, bool includeIfNull) {
   }
 
   if (jsonKeyParams.isNotEmpty) {
-    sb.write(
-      "    @JsonKey(${jsonKeyParams.entries.map((e) => '${e.key}: ${e.value}').join(',')})\n",
-    );
+    sb.write("    @JsonKey(${jsonKeyParams.entries.map((e) => '${e.key}: ${e.value}').join(',')})\n");
   }
 
   if (t.defaultValue != null) {
@@ -496,8 +445,7 @@ String _jsonKey(UniversalType t, bool includeIfNull) {
 }
 
 /// return required if isRequired
-String _required(UniversalType t) =>
-    t.isRequired && t.defaultValue == null ? 'required ' : '';
+String _required(UniversalType t) => t.isRequired && t.defaultValue == null ? 'required ' : '';
 
 /// return defaultValue if have
 String _defaultValue(UniversalType t) {
@@ -549,8 +497,7 @@ Set<String> _filterUnionImportsForFreezed(UniversalComponentClass dataClass) {
   for (final import in dataClass.imports) {
     // If this is a model that's part of a union, skip union imports
     // Otherwise, allow all imports (including union imports for classes that use unions)
-    final shouldSkip =
-        shouldFilterUnionImports && import.toLowerCase().contains('union');
+    final shouldSkip = shouldFilterUnionImports && import.toLowerCase().contains('union');
 
     if (!shouldSkip) {
       filteredImports.add(import);
@@ -560,20 +507,19 @@ Set<String> _filterUnionImportsForFreezed(UniversalComponentClass dataClass) {
   return filteredImports;
 }
 
-({bool hasScalar, bool hasNullable, bool hasList, bool hasListNullable})
-_getBase64FieldTypes(Set<UniversalType> parameters) {
+({bool hasScalar, bool hasNullable, bool hasList, bool hasListNullable}) _getBase64FieldTypes(
+  Set<UniversalType> parameters,
+) {
   bool hasScalar = false;
   bool hasNullable = false;
   bool hasList = false;
   bool hasListNullable = false;
 
   for (final param in parameters) {
-    if ((param.format == 'binary' || param.format == 'byte') ||
-        param.type == 'Uint8List') {
+    if ((param.format == 'binary' || param.format == 'byte') || param.type == 'Uint8List') {
       final isNullable = !param.isRequired && param.defaultValue == null;
       final isList =
-          param.wrappingCollections.isNotEmpty &&
-          param.wrappingCollections.first.collectionPrefix.startsWith('List<');
+          param.wrappingCollections.isNotEmpty && param.wrappingCollections.first.collectionPrefix.startsWith('List<');
 
       if (isList) {
         if (isNullable) {
@@ -591,12 +537,7 @@ _getBase64FieldTypes(Set<UniversalType> parameters) {
     }
   }
 
-  return (
-    hasScalar: hasScalar,
-    hasNullable: hasNullable,
-    hasList: hasList,
-    hasListNullable: hasListNullable,
-  );
+  return (hasScalar: hasScalar, hasNullable: hasNullable, hasList: hasList, hasListNullable: hasListNullable);
 }
 
 String _getDartCoreImports(Set<UniversalType> parameters) {
@@ -604,10 +545,7 @@ String _getDartCoreImports(Set<UniversalType> parameters) {
 
   final base64Types = _getBase64FieldTypes(parameters);
   final hasAnyBase64 =
-      base64Types.hasScalar ||
-      base64Types.hasNullable ||
-      base64Types.hasList ||
-      base64Types.hasListNullable;
+      base64Types.hasScalar || base64Types.hasNullable || base64Types.hasList || base64Types.hasListNullable;
 
   if (hasAnyBase64) {
     imports.add("import 'dart:convert';");
@@ -631,13 +569,9 @@ String _base64ConverterClass({
 
   if (hasScalar) {
     methods.add('');
-    methods.add(
-      '  static Uint8List staticFromJson(String json) => instance.fromJson(json);',
-    );
+    methods.add('  static Uint8List staticFromJson(String json) => instance.fromJson(json);');
     methods.add('');
-    methods.add(
-      '  static String staticToJson(Uint8List object) => instance.toJson(object);',
-    );
+    methods.add('  static String staticToJson(Uint8List object) => instance.toJson(object);');
   }
 
   if (hasNullable) {

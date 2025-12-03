@@ -12,12 +12,10 @@ part 'post_session_id_permissions_permission_id_request.g.dart';
 class PostSessionIdPermissionsPermissionIdRequest {
   const PostSessionIdPermissionsPermissionIdRequest({required this.response});
 
-  factory PostSessionIdPermissionsPermissionIdRequest.fromJson(
-    Map<String, Object?> json,
-  ) => _$PostSessionIdPermissionsPermissionIdRequestFromJson(json);
+  factory PostSessionIdPermissionsPermissionIdRequest.fromJson(Map<String, Object?> json) =>
+      _$PostSessionIdPermissionsPermissionIdRequestFromJson(json);
 
   final PostSessionIdPermissionsPermissionIdRequestResponseResponse response;
 
-  Map<String, Object?> toJson() =>
-      _$PostSessionIdPermissionsPermissionIdRequestToJson(this);
+  Map<String, Object?> toJson() => _$PostSessionIdPermissionsPermissionIdRequestToJson(this);
 }

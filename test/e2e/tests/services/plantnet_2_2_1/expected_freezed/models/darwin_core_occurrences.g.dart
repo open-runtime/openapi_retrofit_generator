@@ -6,9 +6,7 @@ part of 'darwin_core_occurrences.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_DarwinCoreOccurrences _$DarwinCoreOccurrencesFromJson(
-  Map<String, dynamic> json,
-) => _DarwinCoreOccurrences(
+_DarwinCoreOccurrences _$DarwinCoreOccurrencesFromJson(Map<String, dynamic> json) => _DarwinCoreOccurrences(
   results: (json['results'] as List<dynamic>)
       .map((e) => DarwinCoreOccurrence.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -20,9 +18,7 @@ _DarwinCoreOccurrences _$DarwinCoreOccurrencesFromJson(
   startTime: json['startTime'] as num?,
 );
 
-Map<String, dynamic> _$DarwinCoreOccurrencesToJson(
-  _DarwinCoreOccurrences instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$DarwinCoreOccurrencesToJson(_DarwinCoreOccurrences instance) => <String, dynamic>{
   'results': instance.results,
   'offset': instance.offset,
   'limit': instance.limit,

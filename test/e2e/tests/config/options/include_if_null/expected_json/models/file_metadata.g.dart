@@ -13,10 +13,9 @@ FileMetadata _$FileMetadataFromJson(Map<String, dynamic> json) => FileMetadata(
   tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
 );
 
-Map<String, dynamic> _$FileMetadataToJson(FileMetadata instance) =>
-    <String, dynamic>{
-      'filename': ?instance.filename,
-      'mimeType': ?instance.mimeType,
-      'size': ?instance.size,
-      'tags': ?instance.tags,
-    };
+Map<String, dynamic> _$FileMetadataToJson(FileMetadata instance) => <String, dynamic>{
+  'filename': ?instance.filename,
+  'mimeType': ?instance.mimeType,
+  'size': ?instance.size,
+  'tags': ?instance.tags,
+};

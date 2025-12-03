@@ -12,10 +12,8 @@ abstract class Option with _$Option {
   const factory Option({
     @JsonKey(name: 'required_id') required int requiredId,
     @JsonKey(name: 'required_name') required String requiredName,
-    @JsonKey(includeIfNull: true, name: 'required_nullable_id')
-    required int? requiredNullableId,
-    @JsonKey(includeIfNull: true, name: 'required_nullable_name')
-    required String? requiredNullableName,
+    @JsonKey(includeIfNull: true, name: 'required_nullable_id') required int? requiredNullableId,
+    @JsonKey(includeIfNull: true, name: 'required_nullable_name') required String? requiredNullableName,
     @JsonKey(includeIfNull: false, name: 'optional_id') int? optionalId,
     @JsonKey(includeIfNull: false, name: 'optional_name') String? optionalName,
   }) = _Option;

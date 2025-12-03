@@ -11,6 +11,5 @@ part 'tool_state_pending.g.dart';
 abstract class ToolStatePending with _$ToolStatePending {
   const factory ToolStatePending({required String status}) = _ToolStatePending;
 
-  factory ToolStatePending.fromJson(Map<String, Object?> json) =>
-      _$ToolStatePendingFromJson(json);
+  factory ToolStatePending.fromJson(Map<String, Object?> json) => _$ToolStatePendingFromJson(json);
 }

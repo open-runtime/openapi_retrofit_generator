@@ -13,23 +13,13 @@ Comment _$CommentFromJson(Map<String, dynamic> json) => Comment(
   createdAt: DateTime.parse(json['createdAt'] as String),
   depth: (json['depth'] as num?)?.toInt() ?? 0,
   likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
-  author: json['author'] == null
-      ? null
-      : User.fromJson(json['author'] as Map<String, dynamic>),
+  author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
   postId: json['postId'] as String?,
   parentId: json['parentId'] as String?,
-  parent: json['parent'] == null
-      ? null
-      : Comment.fromJson(json['parent'] as Map<String, dynamic>),
-  replies: (json['replies'] as List<dynamic>?)
-      ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-  deletedAt: json['deletedAt'] == null
-      ? null
-      : DateTime.parse(json['deletedAt'] as String),
+  parent: json['parent'] == null ? null : Comment.fromJson(json['parent'] as Map<String, dynamic>),
+  replies: (json['replies'] as List<dynamic>?)?.map((e) => Comment.fromJson(e as Map<String, dynamic>)).toList(),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  deletedAt: json['deletedAt'] == null ? null : DateTime.parse(json['deletedAt'] as String),
 );
 
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{

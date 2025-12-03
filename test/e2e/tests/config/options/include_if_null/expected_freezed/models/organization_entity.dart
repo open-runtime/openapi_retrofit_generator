@@ -16,8 +16,7 @@ abstract class OrganizationEntity with _$OrganizationEntity {
     required String id,
     required DateTime createdAt,
     required String registrationNumber,
-    @JsonKey(includeIfNull: false)
-    OrganizationEntityEntityTypeEntityType? entityType,
+    @JsonKey(includeIfNull: false) OrganizationEntityEntityTypeEntityType? entityType,
     @JsonKey(includeIfNull: false) String? name,
     @JsonKey(includeIfNull: false) String? description,
     @JsonKey(includeIfNull: false) DateTime? updatedAt,
@@ -27,6 +26,5 @@ abstract class OrganizationEntity with _$OrganizationEntity {
     @JsonKey(includeIfNull: false) double? revenue,
   }) = _OrganizationEntity;
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
 }

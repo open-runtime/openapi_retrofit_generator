@@ -23,6 +23,5 @@ enum Sort {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<Sort> get $valuesDefined =>
-      values.where((value) => value != Sort.unknown).toList();
+  static List<Sort> get $valuesDefined => values.where((value) => value != Sort.unknown).toList();
 }

@@ -35,6 +35,5 @@ class PersonEntity with PersonEntityMappable {
   final String? occupation;
   final Map<String, String>? socialProfiles;
 
-  static PersonEntity fromJson(Map<String, dynamic> json) =>
-      PersonEntityMapper.fromJson(json);
+  static PersonEntity fromJson(Map<String, dynamic> json) => PersonEntityMapper.fromJson(json);
 }

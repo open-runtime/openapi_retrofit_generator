@@ -21,8 +21,7 @@ class FilePart {
     this.source,
   });
 
-  factory FilePart.fromJson(Map<String, Object?> json) =>
-      _$FilePartFromJson(json);
+  factory FilePart.fromJson(Map<String, Object?> json) => _$FilePartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

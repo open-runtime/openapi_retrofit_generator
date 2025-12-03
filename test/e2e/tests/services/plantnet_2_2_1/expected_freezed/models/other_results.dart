@@ -14,6 +14,5 @@ part 'other_results.g.dart';
 abstract class OtherResults with _$OtherResults {
   const factory OtherResults({Model19? genus, Model22? family}) = _OtherResults;
 
-  factory OtherResults.fromJson(Map<String, Object?> json) =>
-      _$OtherResultsFromJson(json);
+  factory OtherResults.fromJson(Map<String, Object?> json) => _$OtherResultsFromJson(json);
 }

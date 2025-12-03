@@ -10,16 +10,9 @@ part 'update_pet_request.g.dart';
 
 @JsonSerializable()
 class UpdatePetRequest {
-  const UpdatePetRequest({
-    this.name,
-    this.status,
-    this.category,
-    this.age,
-    this.tags,
-  });
+  const UpdatePetRequest({this.name, this.status, this.category, this.age, this.tags});
 
-  factory UpdatePetRequest.fromJson(Map<String, Object?> json) =>
-      _$UpdatePetRequestFromJson(json);
+  factory UpdatePetRequest.fromJson(Map<String, Object?> json) => _$UpdatePetRequestFromJson(json);
 
   final String? name;
 

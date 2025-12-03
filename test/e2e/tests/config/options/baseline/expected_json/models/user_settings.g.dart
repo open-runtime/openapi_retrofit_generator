@@ -9,24 +9,17 @@ part of 'user_settings.dart';
 UserSettings _$UserSettingsFromJson(Map<String, dynamic> json) => UserSettings(
   userSettingsNotifications: json['UserSettingsNotifications'] == null
       ? null
-      : UserSettingsNotifications.fromJson(
-          json['UserSettingsNotifications'] as Map<String, dynamic>,
-        ),
+      : UserSettingsNotifications.fromJson(json['UserSettingsNotifications'] as Map<String, dynamic>),
   userSettingsPrivacy: json['UserSettingsPrivacy'] == null
       ? null
-      : UserSettingsPrivacy.fromJson(
-          json['UserSettingsPrivacy'] as Map<String, dynamic>,
-        ),
-  theme: json['theme'] == null
-      ? UserSettingsThemeTheme.auto
-      : UserSettingsThemeTheme.fromJson(json['theme'] as String),
+      : UserSettingsPrivacy.fromJson(json['UserSettingsPrivacy'] as Map<String, dynamic>),
+  theme: json['theme'] == null ? UserSettingsThemeTheme.auto : UserSettingsThemeTheme.fromJson(json['theme'] as String),
   language: json['language'] as String? ?? 'en',
 );
 
-Map<String, dynamic> _$UserSettingsToJson(UserSettings instance) =>
-    <String, dynamic>{
-      'theme': instance.theme,
-      'UserSettingsNotifications': instance.userSettingsNotifications,
-      'UserSettingsPrivacy': instance.userSettingsPrivacy,
-      'language': instance.language,
-    };
+Map<String, dynamic> _$UserSettingsToJson(UserSettings instance) => <String, dynamic>{
+  'theme': instance.theme,
+  'UserSettingsNotifications': instance.userSettingsNotifications,
+  'UserSettingsPrivacy': instance.userSettingsPrivacy,
+  'language': instance.language,
+};

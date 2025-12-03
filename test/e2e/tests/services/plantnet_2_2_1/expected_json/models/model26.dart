@@ -25,8 +25,7 @@ class Model26 {
     this.organsVotes,
   });
 
-  factory Model26.fromJson(Map<String, Object?> json) =>
-      _$Model26FromJson(json);
+  factory Model26.fromJson(Map<String, Object?> json) => _$Model26FromJson(json);
 
   final String id;
   final String o;

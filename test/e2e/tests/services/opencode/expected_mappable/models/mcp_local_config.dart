@@ -8,18 +8,12 @@ part 'mcp_local_config.mapper.dart';
 
 @MappableClass()
 class McpLocalConfig with McpLocalConfigMappable {
-  const McpLocalConfig({
-    required this.type,
-    required this.command,
-    this.environment,
-    this.enabled,
-  });
+  const McpLocalConfig({required this.type, required this.command, this.environment, this.enabled});
 
   final String type;
   final List<String> command;
   final Map<String, String>? environment;
   final bool? enabled;
 
-  static McpLocalConfig fromJson(Map<String, dynamic> json) =>
-      McpLocalConfigMapper.fromJson(json);
+  static McpLocalConfig fromJson(Map<String, dynamic> json) => McpLocalConfigMapper.fromJson(json);
 }

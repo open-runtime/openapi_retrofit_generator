@@ -25,10 +25,7 @@ Future<void> setupBuilder(String buildFolder) async {
     dartToolDir.deleteSync(recursive: true);
   }
 
-  final pubGetResult = await Process.run('dart', [
-    'pub',
-    'get',
-  ], workingDirectory: buildFolder);
+  final pubGetResult = await Process.run('dart', ['pub', 'get'], workingDirectory: buildFolder);
 
   if (pubGetResult.exitCode != 0) {
     throw Exception('dart pub get failed: ${pubGetResult.stderr}');
@@ -48,12 +45,7 @@ void cleanLibFolder(String buildFolder) {
 Future<void> generateFilesForAllSerializers({
   required String buildFolder,
   required String schemaPath,
-  required OpenApiConfig Function(
-    String outputDirectory,
-    String schemaPath,
-    JsonSerializer serializer,
-  )
-  configBuilder,
+  required OpenApiConfig Function(String outputDirectory, String schemaPath, JsonSerializer serializer) configBuilder,
 }) async {
   final libFolder = p.join(buildFolder, 'lib');
 
@@ -62,9 +54,7 @@ Future<void> generateFilesForAllSerializers({
     final buildOutputPath = p.join(libFolder, generatedFolder);
 
     print('  Generating ${serializer.name}...');
-    final processor = GenProcessor(
-      configBuilder(buildOutputPath, schemaPath, serializer),
-    );
+    final processor = GenProcessor(configBuilder(buildOutputPath, schemaPath, serializer));
 
     await processor.generateFiles();
     print('  ✓ ${serializer.name} generated');
@@ -84,22 +74,14 @@ Future<void> runBuildRunner(String buildFolder) async {
     final stdout = buildRunnerResult.stdout.toString().trim();
     final errorMsg = stderr.isEmpty ? stdout : '$stderr\n$stdout';
     print('  ✗ build_runner failed');
-    throw Exception(
-      'build_runner failed (exit code ${buildRunnerResult.exitCode}):\n$errorMsg',
-    );
+    throw Exception('build_runner failed (exit code ${buildRunnerResult.exitCode}):\n$errorMsg');
   }
   print('  ✓ build_runner completed');
 }
 
-Future<void> runAnalyzer(
-  String targetFolder,
-  String testName, {
-  bool useExpectedFolders = false,
-}) async {
+Future<void> runAnalyzer(String targetFolder, String testName, {bool useExpectedFolders = false}) async {
   for (final serializer in JsonSerializer.values) {
-    final folderName = useExpectedFolders
-        ? getExpectedFolderName(serializer)
-        : getGeneratedFolderName(serializer);
+    final folderName = useExpectedFolders ? getExpectedFolderName(serializer) : getGeneratedFolderName(serializer);
     final folderPath = p.join(targetFolder, folderName);
     final folder = Directory(folderPath);
 
@@ -119,12 +101,7 @@ Future<void> runAnalyzer(
 
   final lines = output.split('\n');
   final errorLines = lines
-      .where(
-        (line) =>
-            line.contains(' error - ') ||
-            line.contains('error:') ||
-            line.toLowerCase().startsWith('error'),
-      )
+      .where((line) => line.contains(' error - ') || line.contains('error:') || line.toLowerCase().startsWith('error'))
       .toList();
 
   if (analyzerResult.exitCode == 0) {
@@ -134,9 +111,7 @@ Future<void> runAnalyzer(
   } else {
     print('  ✗ Analyzer found errors:');
     print(errorLines.join('\n'));
-    throw Exception(
-      'Analyzer found errors in $testName:\n${errorLines.join('\n')}',
-    );
+    throw Exception('Analyzer found errors in $testName:\n${errorLines.join('\n')}');
   }
 }
 

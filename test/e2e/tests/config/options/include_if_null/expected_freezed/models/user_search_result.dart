@@ -18,6 +18,5 @@ abstract class UserSearchResult with _$UserSearchResult {
     @JsonKey(includeIfNull: false) double? score,
   }) = _UserSearchResult;
 
-  factory UserSearchResult.fromJson(Map<String, Object?> json) =>
-      _$UserSearchResultFromJson(json);
+  factory UserSearchResult.fromJson(Map<String, Object?> json) => _$UserSearchResultFromJson(json);
 }

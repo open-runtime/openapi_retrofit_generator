@@ -30,10 +30,5 @@ enum PaymentRequestCryptocurrencyCryptocurrency {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<PaymentRequestCryptocurrencyCryptocurrency> get $valuesDefined =>
-      values
-          .where(
-            (value) =>
-                value != PaymentRequestCryptocurrencyCryptocurrency.unknown,
-          )
-          .toList();
+      values.where((value) => value != PaymentRequestCryptocurrencyCryptocurrency.unknown).toList();
 }

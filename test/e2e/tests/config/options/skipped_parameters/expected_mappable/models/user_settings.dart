@@ -26,6 +26,5 @@ class UserSettings with UserSettingsMappable {
   final UserSettingsThemeTheme theme;
   final String language;
 
-  static UserSettings fromJson(Map<String, dynamic> json) =>
-      UserSettingsMapper.fromJson(json);
+  static UserSettings fromJson(Map<String, dynamic> json) => UserSettingsMapper.fromJson(json);
 }

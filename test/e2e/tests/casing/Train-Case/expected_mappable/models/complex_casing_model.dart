@@ -96,6 +96,5 @@ class ComplexCasingModel with ComplexCasingModelMappable {
   @MappableField(key: 'Xml2json-V3-Parser')
   final String xml2jsonV3Parser;
 
-  static ComplexCasingModel fromJson(Map<String, dynamic> json) =>
-      ComplexCasingModelMapper.fromJson(json);
+  static ComplexCasingModel fromJson(Map<String, dynamic> json) => ComplexCasingModelMapper.fromJson(json);
 }

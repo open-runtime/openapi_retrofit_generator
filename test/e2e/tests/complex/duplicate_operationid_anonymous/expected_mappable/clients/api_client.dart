@@ -19,14 +19,10 @@ abstract class ApiClient {
   factory ApiClient(Dio dio, {String? baseUrl}) = _ApiClient;
 
   @POST('/users')
-  Future<CreateUserResponse> createUser({
-    @Body() required CreateUserRequest body,
-  });
+  Future<CreateUserResponse> createUser({@Body() required CreateUserRequest body});
 
   @POST('/admin/users')
-  Future<CreateUser2Response> createUser2({
-    @Body() required CreateUser2Request body,
-  });
+  Future<CreateUser2Response> createUser2({@Body() required CreateUser2Request body});
 
   @POST('/guest/users')
   Future<String> createUser3({@Body() CreateUser3Request? body});

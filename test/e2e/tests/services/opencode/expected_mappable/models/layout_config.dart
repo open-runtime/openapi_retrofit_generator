@@ -24,6 +24,5 @@ enum LayoutConfig {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<LayoutConfig> get $valuesDefined =>
-      values.where((value) => value != LayoutConfig.unknown).toList();
+  static List<LayoutConfig> get $valuesDefined => values.where((value) => value != LayoutConfig.unknown).toList();
 }

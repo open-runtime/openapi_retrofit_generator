@@ -51,19 +51,13 @@ void main() {
           expect(config.schemaUrl, isNull);
         });
 
-        test(
-          'should generate name from schema_path when name not provided',
-          () {
-            final yamlMap = YamlMap.wrap({
-              'schema_path': 'api/petstore.yaml',
-              'output_directory': 'lib/api',
-            });
+        test('should generate name from schema_path when name not provided', () {
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/petstore.yaml', 'output_directory': 'lib/api'});
 
-            final config = OpenApiConfig.fromYaml(yamlMap);
+          final config = OpenApiConfig.fromYaml(yamlMap);
 
-            expect(config.name, equals('petstore'));
-          },
-        );
+          expect(config.name, equals('petstore'));
+        });
 
         test('should generate name from schema_url when name not provided', () {
           final yamlMap = YamlMap.wrap({
@@ -77,11 +71,7 @@ void main() {
         });
 
         test('should handle empty name by using schema path', () {
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/custom.yaml',
-            'output_directory': 'lib/api',
-            'name': '',
-          });
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/custom.yaml', 'output_directory': 'lib/api', 'name': ''});
 
           final config = OpenApiConfig.fromYaml(yamlMap);
 
@@ -105,39 +95,24 @@ void main() {
         test('should inherit output_directory from root config', () {
           const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared');
 
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/user.yaml',
-            'name': 'user_api',
-          });
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/user.yaml', 'name': 'user_api'});
 
-          final config = OpenApiConfig.fromYaml(
-            yamlMap,
-            rootConfig: rootConfig,
-          );
+          final config = OpenApiConfig.fromYaml(yamlMap, rootConfig: rootConfig);
 
           expect(config.outputDirectory, equals('lib/shared'));
           expect(config.schemaPath, equals('api/user.yaml'));
           expect(config.name, equals('user_api'));
         });
 
-        test(
-          'should override root config output_directory with local value',
-          () {
-            const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared');
+        test('should override root config output_directory with local value', () {
+          const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared');
 
-            final yamlMap = YamlMap.wrap({
-              'schema_path': 'api/user.yaml',
-              'output_directory': 'lib/custom',
-            });
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/user.yaml', 'output_directory': 'lib/custom'});
 
-            final config = OpenApiConfig.fromYaml(
-              yamlMap,
-              rootConfig: rootConfig,
-            );
+          final config = OpenApiConfig.fromYaml(yamlMap, rootConfig: rootConfig);
 
-            expect(config.outputDirectory, equals('lib/custom'));
-          },
-        );
+          expect(config.outputDirectory, equals('lib/custom'));
+        });
       });
 
       group('Output directory combinations', () {
@@ -149,48 +124,33 @@ void main() {
           expect(config.outputDirectory, equals('lib/api'));
         });
 
-        test(
-          'should accept output_directory for non-root config with schema_path',
-          () {
-            final yamlMap = YamlMap.wrap({
-              'schema_path': 'api/openapi.yaml',
-              'output_directory': 'lib/api',
-            });
+        test('should accept output_directory for non-root config with schema_path', () {
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': 'lib/api'});
 
-            final config = OpenApiConfig.fromYaml(yamlMap);
+          final config = OpenApiConfig.fromYaml(yamlMap);
 
-            expect(config.outputDirectory, equals('lib/api'));
-            expect(config.schemaPath, equals('api/openapi.yaml'));
-          },
-        );
+          expect(config.outputDirectory, equals('lib/api'));
+          expect(config.schemaPath, equals('api/openapi.yaml'));
+        });
 
-        test(
-          'should accept output_directory for non-root config with schema_url',
-          () {
-            final yamlMap = YamlMap.wrap({
-              'schema_url': 'https://api.example.com/openapi.json',
-              'output_directory': 'lib/api',
-            });
+        test('should accept output_directory for non-root config with schema_url', () {
+          final yamlMap = YamlMap.wrap({
+            'schema_url': 'https://api.example.com/openapi.json',
+            'output_directory': 'lib/api',
+          });
 
-            final config = OpenApiConfig.fromYaml(yamlMap);
+          final config = OpenApiConfig.fromYaml(yamlMap);
 
-            expect(config.outputDirectory, equals('lib/api'));
-            expect(
-              config.schemaUrl,
-              equals('https://api.example.com/openapi.json'),
-            );
-          },
-        );
+          expect(config.outputDirectory, equals('lib/api'));
+          expect(config.schemaUrl, equals('https://api.example.com/openapi.json'));
+        });
 
         test('should use inherited output_directory when local is null', () {
           const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared');
 
           final yamlMap = YamlMap.wrap({'schema_path': 'api/user.yaml'});
 
-          final config = OpenApiConfig.fromYaml(
-            yamlMap,
-            rootConfig: rootConfig,
-          );
+          final config = OpenApiConfig.fromYaml(yamlMap, rootConfig: rootConfig);
 
           expect(config.outputDirectory, equals('lib/shared'));
         });
@@ -203,38 +163,20 @@ void main() {
           expect(config.outputDirectory, equals(''));
         });
 
-        test(
-          'should throw when output_directory is null and no root config for non-root config',
-          () {
-            final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml'});
+        test('should throw when output_directory is null and no root config for non-root config', () {
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml'});
 
-            expect(
-              () => OpenApiConfig.fromYaml(yamlMap),
-              throwsA(isA<ConfigException>()),
-            );
-          },
-        );
+          expect(() => OpenApiConfig.fromYaml(yamlMap), throwsA(isA<ConfigException>()));
+        });
 
-        test(
-          'should throw when output_directory is empty string with no root config for non-root config',
-          () {
-            final yamlMap = YamlMap.wrap({
-              'schema_path': 'api/openapi.yaml',
-              'output_directory': '',
-            });
+        test('should throw when output_directory is empty string with no root config for non-root config', () {
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': ''});
 
-            expect(
-              () => OpenApiConfig.fromYaml(yamlMap),
-              throwsA(isA<ConfigException>()),
-            );
-          },
-        );
+          expect(() => OpenApiConfig.fromYaml(yamlMap), throwsA(isA<ConfigException>()));
+        });
 
         test('should handle dot as output_directory', () {
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/openapi.yaml',
-            'output_directory': '.',
-          });
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': '.'});
 
           final config = OpenApiConfig.fromYaml(yamlMap);
 
@@ -242,10 +184,7 @@ void main() {
         });
 
         test('should handle relative path as output_directory', () {
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/openapi.yaml',
-            'output_directory': '../generated',
-          });
+          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': '../generated'});
 
           final config = OpenApiConfig.fromYaml(yamlMap);
 
@@ -266,92 +205,69 @@ void main() {
     });
 
     group('Error handling', () {
-      test(
-        'should throw ConfigException when neither schema_path nor schema_url provided for non-root config',
-        () {
-          final yamlMap = YamlMap.wrap({'output_directory': 'lib/api'});
+      test('should throw ConfigException when neither schema_path nor schema_url provided for non-root config', () {
+        final yamlMap = YamlMap.wrap({'output_directory': 'lib/api'});
 
-          expect(
-            () => OpenApiConfig.fromYaml(yamlMap),
-            throwsA(
-              isA<ConfigException>().having(
-                (e) => e.message,
-                'message',
-                equals(
-                  "Config parameters 'schema_path' or 'schema_url' are required.",
-                ),
-              ),
+        expect(
+          () => OpenApiConfig.fromYaml(yamlMap),
+          throwsA(
+            isA<ConfigException>().having(
+              (e) => e.message,
+              'message',
+              equals("Config parameters 'schema_path' or 'schema_url' are required."),
             ),
-          );
-        },
-      );
+          ),
+        );
+      });
 
-      test(
-        'should throw ConfigException when output_directory missing for non-root config',
-        () {
-          final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml'});
+      test('should throw ConfigException when output_directory missing for non-root config', () {
+        final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml'});
 
-          expect(
-            () => OpenApiConfig.fromYaml(yamlMap),
-            throwsA(
-              isA<ConfigException>().having(
-                (e) => e.message,
-                'message',
-                contains(
-                  "Config parameter 'output_directory' for api/openapi.yaml was not found",
-                ),
-              ),
+        expect(
+          () => OpenApiConfig.fromYaml(yamlMap),
+          throwsA(
+            isA<ConfigException>().having(
+              (e) => e.message,
+              'message',
+              contains("Config parameter 'output_directory' for api/openapi.yaml was not found"),
             ),
-          );
-        },
-      );
+          ),
+        );
+      });
 
-      test(
-        'should throw ConfigException when output_directory is empty string for non-root config',
-        () {
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/openapi.yaml',
-            'output_directory': '',
-          });
+      test('should throw ConfigException when output_directory is empty string for non-root config', () {
+        final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': ''});
 
-          expect(
-            () => OpenApiConfig.fromYaml(yamlMap),
-            throwsA(
-              isA<ConfigException>().having(
-                (e) => e.message,
-                'message',
-                contains(
-                  "Config parameter 'output_directory' for api/openapi.yaml was not found",
-                ),
-              ),
+        expect(
+          () => OpenApiConfig.fromYaml(yamlMap),
+          throwsA(
+            isA<ConfigException>().having(
+              (e) => e.message,
+              'message',
+              contains("Config parameter 'output_directory' for api/openapi.yaml was not found"),
             ),
-          );
-        },
-      );
+          ),
+        );
+      });
 
-      test(
-        'should throw ConfigException for invalid skipped_parameters type',
-        () {
-          final yamlMap = YamlMap.wrap({
-            'schema_path': 'api/openapi.yaml',
-            'output_directory': 'lib/api',
-            'skipped_parameters': [123, 'valid'],
-          });
+      test('should throw ConfigException for invalid skipped_parameters type', () {
+        final yamlMap = YamlMap.wrap({
+          'schema_path': 'api/openapi.yaml',
+          'output_directory': 'lib/api',
+          'skipped_parameters': [123, 'valid'],
+        });
 
-          expect(
-            () => OpenApiConfig.fromYaml(yamlMap),
-            throwsA(
-              isA<ConfigException>().having(
-                (e) => e.message,
-                'message',
-                equals(
-                  "Config parameter 'skipped_parameters' values must be List of String.",
-                ),
-              ),
+        expect(
+          () => OpenApiConfig.fromYaml(yamlMap),
+          throwsA(
+            isA<ConfigException>().having(
+              (e) => e.message,
+              'message',
+              equals("Config parameter 'skipped_parameters' values must be List of String."),
             ),
-          );
-        },
-      );
+          ),
+        );
+      });
 
       test('should throw ConfigException for invalid exclude_tags type', () {
         final yamlMap = YamlMap.wrap({
@@ -366,9 +282,7 @@ void main() {
             isA<ConfigException>().having(
               (e) => e.message,
               'message',
-              equals(
-                "Config parameter 'exclude_tags' values must be List of String.",
-              ),
+              equals("Config parameter 'exclude_tags' values must be List of String."),
             ),
           ),
         );
@@ -387,9 +301,7 @@ void main() {
             isA<ConfigException>().having(
               (e) => e.message,
               'message',
-              equals(
-                "Config parameter 'include_tags' values must be List of String.",
-              ),
+              equals("Config parameter 'include_tags' values must be List of String."),
             ),
           ),
         );
@@ -476,18 +388,11 @@ void main() {
     });
 
     test('should support all constructor parameters', () {
-      final yamlMap = YamlMap.wrap({
-        'schema_path': 'api/openapi.yaml',
-        'output_directory': 'lib/api',
-      });
+      final yamlMap = YamlMap.wrap({'schema_path': 'api/openapi.yaml', 'output_directory': 'lib/api'});
 
       const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared');
 
-      final config = OpenApiConfig.fromYamlWithOverrides(
-        yamlMap,
-        null,
-        rootConfig: rootConfig,
-      );
+      final config = OpenApiConfig.fromYamlWithOverrides(yamlMap, null, rootConfig: rootConfig);
 
       expect(config.schemaPath, equals('api/openapi.yaml'));
       expect(config.outputDirectory, equals('lib/api'));
@@ -523,10 +428,7 @@ void main() {
       const fileContent = '{"openapi": "3.0.0"}';
       const isJson = true;
 
-      final parserConfig = swpConfig.toParserConfig(
-        fileContent: fileContent,
-        isJson: isJson,
-      );
+      final parserConfig = swpConfig.toParserConfig(fileContent: fileContent, isJson: isJson);
 
       expect(parserConfig.fileContent, equals(fileContent));
       expect(parserConfig.isJson, equals(isJson));
@@ -546,10 +448,7 @@ void main() {
       const fileContent = 'openapi: 3.0.0';
       const isJson = false;
 
-      final parserConfig = swpConfig.toParserConfig(
-        fileContent: fileContent,
-        isJson: isJson,
-      );
+      final parserConfig = swpConfig.toParserConfig(fileContent: fileContent, isJson: isJson);
 
       expect(parserConfig.fileContent, equals(fileContent));
       expect(parserConfig.isJson, isFalse);
@@ -577,10 +476,7 @@ void main() {
       });
 
       // This should not throw but use default or handle gracefully
-      expect(
-        () => OpenApiConfig.fromYaml(yamlMap),
-        isNot(throwsA(isA<ConfigException>())),
-      );
+      expect(() => OpenApiConfig.fromYaml(yamlMap), isNot(throwsA(isA<ConfigException>())));
     });
   });
 
@@ -613,40 +509,25 @@ void main() {
     });
 
     test('should inherit includeIfNull from root config', () {
-      const rootConfig = OpenApiConfig(
-        outputDirectory: 'lib/shared',
-        includeIfNull: true,
-      );
+      const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared', includeIfNull: true);
 
-      final yamlMap = YamlMap.wrap({
-        'schema_path': 'api/user.yaml',
-        'name': 'user_api',
-      });
+      final yamlMap = YamlMap.wrap({'schema_path': 'api/user.yaml', 'name': 'user_api'});
 
       final config = OpenApiConfig.fromYaml(yamlMap, rootConfig: rootConfig);
       expect(config.includeIfNull, isTrue);
     });
 
     test('should override root config includeIfNull with local value', () {
-      const rootConfig = OpenApiConfig(
-        outputDirectory: 'lib/shared',
-        includeIfNull: true,
-      );
+      const rootConfig = OpenApiConfig(outputDirectory: 'lib/shared', includeIfNull: true);
 
-      final yamlMap = YamlMap.wrap({
-        'schema_path': 'api/user.yaml',
-        'include_if_null': false,
-      });
+      final yamlMap = YamlMap.wrap({'schema_path': 'api/user.yaml', 'include_if_null': false});
 
       final config = OpenApiConfig.fromYaml(yamlMap, rootConfig: rootConfig);
       expect(config.includeIfNull, isFalse);
     });
 
     test('should pass includeIfNull to GeneratorConfig', () {
-      const swpConfig = OpenApiConfig(
-        outputDirectory: 'lib/api',
-        includeIfNull: true,
-      );
+      const swpConfig = OpenApiConfig(outputDirectory: 'lib/api', includeIfNull: true);
 
       final generatorConfig = swpConfig.toGeneratorConfig();
       expect(generatorConfig.includeIfNull, isTrue);
@@ -699,11 +580,7 @@ void main() {
           'client_postfix': 'Client',
           'schemes': [
             {'schema_path': 'api/users.yaml', 'name': 'users'},
-            {
-              'schema_path': 'api/posts.yaml',
-              'name': 'posts',
-              'json_serializer': 'dart_mappable',
-            },
+            {'schema_path': 'api/posts.yaml', 'name': 'posts', 'json_serializer': 'dart_mappable'},
           ],
         });
 
@@ -723,11 +600,7 @@ void main() {
           'output_directory': 'lib/shared',
           'json_serializer': 'json_serializable',
           'schemes': [
-            {
-              'schema_path': 'api/users.yaml',
-              'output_directory': 'lib/users',
-              'json_serializer': 'freezed',
-            },
+            {'schema_path': 'api/users.yaml', 'output_directory': 'lib/users', 'json_serializer': 'freezed'},
           ],
         });
 
@@ -742,28 +615,16 @@ void main() {
         final yamlMap = YamlMap.wrap({
           'output_directory': 'lib/api',
           'schemes': [
-            {
-              'schema_url': 'https://api.example.com/users.json',
-              'name': 'users',
-            },
-            {
-              'schema_url': 'https://api.example.com/posts.json',
-              'name': 'posts',
-            },
+            {'schema_url': 'https://api.example.com/users.json', 'name': 'users'},
+            {'schema_url': 'https://api.example.com/posts.json', 'name': 'posts'},
           ],
         });
 
         final configs = processor.parseConfig(yamlMap);
 
         expect(configs, hasLength(2));
-        expect(
-          configs[0].schemaUrl,
-          equals('https://api.example.com/users.json'),
-        );
-        expect(
-          configs[1].schemaUrl,
-          equals('https://api.example.com/posts.json'),
-        );
+        expect(configs[0].schemaUrl, equals('https://api.example.com/users.json'));
+        expect(configs[1].schemaUrl, equals('https://api.example.com/posts.json'));
       });
 
       test('should handle mix of schema_path and schema_url in schemes', () {
@@ -771,10 +632,7 @@ void main() {
           'output_directory': 'lib/api',
           'schemes': [
             {'schema_path': 'api/users.yaml', 'name': 'users'},
-            {
-              'schema_url': 'https://api.example.com/posts.json',
-              'name': 'posts',
-            },
+            {'schema_url': 'https://api.example.com/posts.json', 'name': 'posts'},
           ],
         });
 
@@ -784,35 +642,27 @@ void main() {
         expect(configs[0].schemaPath, equals('api/users.yaml'));
         expect(configs[0].schemaUrl, isNull);
         expect(configs[1].schemaPath, isNull);
-        expect(
-          configs[1].schemaUrl,
-          equals('https://api.example.com/posts.json'),
-        );
+        expect(configs[1].schemaUrl, equals('https://api.example.com/posts.json'));
       });
     });
 
     group('parseConfig error handling', () {
       const processor = ConfigProcessor();
 
-      test(
-        'should throw when neither schema_path, schema_url, nor schemes provided',
-        () {
-          final yamlMap = YamlMap.wrap({'output_directory': 'lib/api'});
+      test('should throw when neither schema_path, schema_url, nor schemes provided', () {
+        final yamlMap = YamlMap.wrap({'output_directory': 'lib/api'});
 
-          expect(
-            () => processor.parseConfig(yamlMap),
-            throwsA(
-              isA<ConfigException>().having(
-                (e) => e.message,
-                'message',
-                equals(
-                  "Config parameter 'schema_path', 'schema_url' or 'schemes' is required.",
-                ),
-              ),
+        expect(
+          () => processor.parseConfig(yamlMap),
+          throwsA(
+            isA<ConfigException>().having(
+              (e) => e.message,
+              'message',
+              equals("Config parameter 'schema_path', 'schema_url' or 'schemes' is required."),
             ),
-          );
-        },
-      );
+          ),
+        );
+      });
 
       test('should throw when schemes used with schema_path', () {
         final yamlMap = YamlMap.wrap({
@@ -829,9 +679,7 @@ void main() {
             isA<ConfigException>().having(
               (e) => e.message,
               'message',
-              equals(
-                "Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'.",
-              ),
+              equals("Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'."),
             ),
           ),
         );
@@ -852,9 +700,7 @@ void main() {
             isA<ConfigException>().having(
               (e) => e.message,
               'message',
-              equals(
-                "Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'.",
-              ),
+              equals("Config parameter 'schema_path' or 'schema_url' can't be used with 'schemes'."),
             ),
           ),
         );
@@ -879,32 +725,23 @@ void main() {
       });
 
       test('should return empty list when schemes is empty', () {
-        final yamlMap = YamlMap.wrap({
-          'output_directory': 'lib/api',
-          'schemes': <Map<String, dynamic>>[],
-        });
+        final yamlMap = YamlMap.wrap({'output_directory': 'lib/api', 'schemes': <Map<String, dynamic>>[]});
 
         final configs = processor.parseConfig(yamlMap);
 
         expect(configs, isEmpty);
       });
 
-      test(
-        'should throw when schema in schemes missing schema_path and schema_url',
-        () {
-          final yamlMap = YamlMap.wrap({
-            'output_directory': 'lib/api',
-            'schemes': [
-              {'name': 'users'},
-            ],
-          });
+      test('should throw when schema in schemes missing schema_path and schema_url', () {
+        final yamlMap = YamlMap.wrap({
+          'output_directory': 'lib/api',
+          'schemes': [
+            {'name': 'users'},
+          ],
+        });
 
-          expect(
-            () => processor.parseConfig(yamlMap),
-            throwsA(isA<ConfigException>()),
-          );
-        },
-      );
+        expect(() => processor.parseConfig(yamlMap), throwsA(isA<ConfigException>()));
+      });
     });
 
     group('parseConfig with CLI overrides', () {
@@ -917,10 +754,7 @@ void main() {
           'name': 'original',
         });
 
-        final argResults = parseConfigGeneratorArguments([
-          '--output_directory',
-          'lib/overridden',
-        ]);
+        final argResults = parseConfigGeneratorArguments(['--output_directory', 'lib/overridden']);
 
         final configs = processor.parseConfig(yamlMap, argResults);
 
@@ -929,29 +763,23 @@ void main() {
         expect(configs[0].name, equals('original'));
       });
 
-      test(
-        'should apply CLI overrides to root config which affects schemes inheritance',
-        () {
-          final yamlMap = YamlMap.wrap({
-            'output_directory': 'lib/api',
-            'json_serializer': 'json_serializable',
-            'schemes': [
-              {'schema_path': 'api/users.yaml', 'name': 'users'},
-            ],
-          });
+      test('should apply CLI overrides to root config which affects schemes inheritance', () {
+        final yamlMap = YamlMap.wrap({
+          'output_directory': 'lib/api',
+          'json_serializer': 'json_serializable',
+          'schemes': [
+            {'schema_path': 'api/users.yaml', 'name': 'users'},
+          ],
+        });
 
-          final argResults = parseConfigGeneratorArguments([
-            '--json_serializer',
-            'freezed',
-          ]);
+        final argResults = parseConfigGeneratorArguments(['--json_serializer', 'freezed']);
 
-          final configs = processor.parseConfig(yamlMap, argResults);
+        final configs = processor.parseConfig(yamlMap, argResults);
 
-          expect(configs, hasLength(1));
-          expect(configs[0].name, equals('users'));
-          expect(configs[0].jsonSerializer, equals(JsonSerializer.freezed));
-        },
-      );
+        expect(configs, hasLength(1));
+        expect(configs[0].name, equals('users'));
+        expect(configs[0].jsonSerializer, equals(JsonSerializer.freezed));
+      });
     });
 
     group('parseConfig complex scenarios', () {
@@ -962,16 +790,8 @@ void main() {
           'output_directory': 'lib/api',
           'json_serializer': 'json_serializable',
           'schemes': [
-            {
-              'schema_path': 'api/users.yaml',
-              'name': 'users',
-              'json_serializer': 'freezed',
-            },
-            {
-              'schema_path': 'api/posts.yaml',
-              'name': 'posts',
-              'json_serializer': 'dart_mappable',
-            },
+            {'schema_path': 'api/users.yaml', 'name': 'users', 'json_serializer': 'freezed'},
+            {'schema_path': 'api/posts.yaml', 'name': 'posts', 'json_serializer': 'dart_mappable'},
             {'schema_path': 'api/comments.yaml', 'name': 'comments'},
           ],
         });
@@ -981,10 +801,7 @@ void main() {
         expect(configs, hasLength(3));
         expect(configs[0].jsonSerializer, equals(JsonSerializer.freezed));
         expect(configs[1].jsonSerializer, equals(JsonSerializer.dartMappable));
-        expect(
-          configs[2].jsonSerializer,
-          equals(JsonSerializer.jsonSerializable),
-        );
+        expect(configs[2].jsonSerializer, equals(JsonSerializer.jsonSerializable));
       });
 
       test('should handle schemes with different output directories', () {

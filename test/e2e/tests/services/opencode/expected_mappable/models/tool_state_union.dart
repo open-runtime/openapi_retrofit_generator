@@ -46,23 +46,19 @@ extension ToolStateUnionDeserializer on ToolStateUnion {
       return ToolStateUnionToolStateErrorMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for ToolStateUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for ToolStateUnion from: $json');
   }
 }
 
 @MappableClass()
-class ToolStateUnionToolStatePending extends ToolStateUnion
-    with ToolStateUnionToolStatePendingMappable {
+class ToolStateUnionToolStatePending extends ToolStateUnion with ToolStateUnionToolStatePendingMappable {
   final String status;
 
   const ToolStateUnionToolStatePending({required this.status});
 }
 
 @MappableClass()
-class ToolStateUnionToolStateRunning extends ToolStateUnion
-    with ToolStateUnionToolStateRunningMappable {
+class ToolStateUnionToolStateRunning extends ToolStateUnion with ToolStateUnionToolStateRunningMappable {
   final String status;
   final dynamic input;
   final String? title;
@@ -80,8 +76,7 @@ class ToolStateUnionToolStateRunning extends ToolStateUnion
 }
 
 @MappableClass()
-class ToolStateUnionToolStateCompleted extends ToolStateUnion
-    with ToolStateUnionToolStateCompletedMappable {
+class ToolStateUnionToolStateCompleted extends ToolStateUnion with ToolStateUnionToolStateCompletedMappable {
   final String status;
   final Map<String, dynamic> input;
   final String output;
@@ -103,8 +98,7 @@ class ToolStateUnionToolStateCompleted extends ToolStateUnion
 }
 
 @MappableClass()
-class ToolStateUnionToolStateError extends ToolStateUnion
-    with ToolStateUnionToolStateErrorMappable {
+class ToolStateUnionToolStateError extends ToolStateUnion with ToolStateUnionToolStateErrorMappable {
   final String status;
   final Map<String, dynamic> input;
   final String error;

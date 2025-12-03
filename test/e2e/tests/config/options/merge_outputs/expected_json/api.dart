@@ -56,10 +56,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PUT('/users/{userId}')
-  Future<User> updateUser({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> updateUser({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -67,10 +64,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PATCH('/users/{userId}')
-  Future<User> patchUser({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUser({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///
@@ -156,9 +150,7 @@ abstract class FilesClient {
   /// Download file
   @GET('/files/{fileId}/download')
   @DioResponseType(ResponseType.bytes)
-  Future<HttpResponse<List<int>>> downloadFile({
-    @Path('fileId') required String fileId,
-  });
+  Future<HttpResponse<List<int>>> downloadFile({@Path('fileId') required String fileId});
 }
 
 @RestApi()
@@ -292,8 +284,7 @@ class CreateUserRequest {
     this.role,
   });
 
-  factory CreateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateUserRequestFromJson(json);
+  factory CreateUserRequest.fromJson(Map<String, Object?> json) => _$CreateUserRequestFromJson(json);
 
   final String email;
   final String username;
@@ -317,8 +308,7 @@ class UpdateUserRequest {
     this.bio,
   });
 
-  factory UpdateUserRequest.fromJson(Map<String, Object?> json) =>
-      _$UpdateUserRequestFromJson(json);
+  factory UpdateUserRequest.fromJson(Map<String, Object?> json) => _$UpdateUserRequestFromJson(json);
 
   final String email;
   final String username;
@@ -332,18 +322,9 @@ class UpdateUserRequest {
 
 @JsonSerializable()
 class PatchUserRequest {
-  const PatchUserRequest({
-    this.email,
-    this.username,
-    this.firstName,
-    this.lastName,
-    this.age,
-    this.bio,
-    this.settings,
-  });
+  const PatchUserRequest({this.email, this.username, this.firstName, this.lastName, this.age, this.bio, this.settings});
 
-  factory PatchUserRequest.fromJson(Map<String, Object?> json) =>
-      _$PatchUserRequestFromJson(json);
+  factory PatchUserRequest.fromJson(Map<String, Object?> json) => _$PatchUserRequestFromJson(json);
 
   final String? email;
   final String? username;
@@ -373,8 +354,7 @@ enum UserRole {
 
   const UserRole(this.json);
 
-  factory UserRole.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserRole.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -384,8 +364,7 @@ enum UserRole {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserRole> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserRole> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -404,8 +383,7 @@ enum UserStatus {
 
   const UserStatus(this.json);
 
-  factory UserStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -415,8 +393,7 @@ enum UserStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonSerializable()
@@ -428,8 +405,7 @@ class UserSettings {
     this.language = 'en',
   });
 
-  factory UserSettings.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsFromJson(json);
+  factory UserSettings.fromJson(Map<String, Object?> json) => _$UserSettingsFromJson(json);
 
   final UserSettingsThemeTheme theme;
   @JsonKey(name: 'UserSettingsNotifications')
@@ -443,15 +419,9 @@ class UserSettings {
 
 @JsonSerializable()
 class UserListResponse {
-  const UserListResponse({
-    required this.users,
-    required this.total,
-    this.page,
-    this.limit,
-  });
+  const UserListResponse({required this.users, required this.total, this.page, this.limit});
 
-  factory UserListResponse.fromJson(Map<String, Object?> json) =>
-      _$UserListResponseFromJson(json);
+  factory UserListResponse.fromJson(Map<String, Object?> json) => _$UserListResponseFromJson(json);
 
   final List<User> users;
   final int total;
@@ -465,8 +435,7 @@ class UserListResponse {
 class LegacyUser {
   const LegacyUser({this.id, this.name, this.email});
 
-  factory LegacyUser.fromJson(Map<String, Object?> json) =>
-      _$LegacyUserFromJson(json);
+  factory LegacyUser.fromJson(Map<String, Object?> json) => _$LegacyUserFromJson(json);
 
   final int? id;
   final String? name;
@@ -495,8 +464,7 @@ class PostModel {
     this.updatedAt,
   });
 
-  factory PostModel.fromJson(Map<String, Object?> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, Object?> json) => _$PostModelFromJson(json);
 
   final String id;
   final String title;
@@ -533,8 +501,7 @@ enum PostStatus {
 
   const PostStatus(this.json);
 
-  factory PostStatus.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory PostStatus.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -544,21 +511,14 @@ enum PostStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonSerializable()
 class Category {
-  const Category({
-    required this.id,
-    required this.name,
-    this.slug,
-    this.parent,
-  });
+  const Category({required this.id, required this.name, this.slug, this.parent});
 
-  factory Category.fromJson(Map<String, Object?> json) =>
-      _$CategoryFromJson(json);
+  factory Category.fromJson(Map<String, Object?> json) => _$CategoryFromJson(json);
 
   final String id;
   final String name;
@@ -588,8 +548,7 @@ class Comment {
     this.deletedAt,
   });
 
-  factory Comment.fromJson(Map<String, Object?> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, Object?> json) => _$CommentFromJson(json);
 
   final String id;
   final String content;
@@ -616,15 +575,9 @@ class Comment {
 
 @JsonSerializable()
 class CreateCommentRequest {
-  const CreateCommentRequest({
-    required this.content,
-    required this.authorId,
-    this.postId,
-    this.parentId,
-  });
+  const CreateCommentRequest({required this.content, required this.authorId, this.postId, this.parentId});
 
-  factory CreateCommentRequest.fromJson(Map<String, Object?> json) =>
-      _$CreateCommentRequestFromJson(json);
+  factory CreateCommentRequest.fromJson(Map<String, Object?> json) => _$CreateCommentRequestFromJson(json);
 
   final String content;
   final String authorId;
@@ -638,8 +591,7 @@ class CreateCommentRequest {
 class FileMetadata {
   const FileMetadata({this.filename, this.mimeType, this.size, this.tags});
 
-  factory FileMetadata.fromJson(Map<String, Object?> json) =>
-      _$FileMetadataFromJson(json);
+  factory FileMetadata.fromJson(Map<String, Object?> json) => _$FileMetadataFromJson(json);
 
   final String? filename;
   final String? mimeType;
@@ -660,8 +612,7 @@ class FileUploadResponse {
     this.uploadedAt,
   });
 
-  factory FileUploadResponse.fromJson(Map<String, Object?> json) =>
-      _$FileUploadResponseFromJson(json);
+  factory FileUploadResponse.fromJson(Map<String, Object?> json) => _$FileUploadResponseFromJson(json);
 
   final String id;
   final String url;
@@ -677,8 +628,7 @@ class FileUploadResponse {
 sealed class PaymentRequest {
   const PaymentRequest();
 
-  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      PaymentRequestUnionDeserializer.tryDeserialize(json);
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) => PaymentRequestUnionDeserializer.tryDeserialize(json);
 
   Map<String, dynamic> toJson();
 }
@@ -697,15 +647,10 @@ extension PaymentRequestUnionDeserializer on PaymentRequest {
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
-      _ when value == effective[PaymentRequestCreditCard] =>
-        PaymentRequestCreditCard.fromJson(json),
-      _ when value == effective[PaymentRequestBankTransfer] =>
-        PaymentRequestBankTransfer.fromJson(json),
-      _ when value == effective[PaymentRequestCrypto] =>
-        PaymentRequestCrypto.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentRequest',
-      ),
+      _ when value == effective[PaymentRequestCreditCard] => PaymentRequestCreditCard.fromJson(json),
+      _ when value == effective[PaymentRequestBankTransfer] => PaymentRequestBankTransfer.fromJson(json),
+      _ when value == effective[PaymentRequestCrypto] => PaymentRequestCrypto.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentRequest'),
     };
   }
 }
@@ -730,8 +675,7 @@ class PaymentRequestCreditCard extends PaymentRequest {
     required this.amount,
   });
 
-  factory PaymentRequestCreditCard.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestCreditCardFromJson(json);
+  factory PaymentRequestCreditCard.fromJson(Map<String, dynamic> json) => _$PaymentRequestCreditCardFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestCreditCardToJson(this);
@@ -755,8 +699,7 @@ class PaymentRequestBankTransfer extends PaymentRequest {
     required this.reference,
   });
 
-  factory PaymentRequestBankTransfer.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestBankTransferFromJson(json);
+  factory PaymentRequestBankTransfer.fromJson(Map<String, dynamic> json) => _$PaymentRequestBankTransferFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestBankTransferToJson(this);
@@ -778,8 +721,7 @@ class PaymentRequestCrypto extends PaymentRequest {
     required this.transactionHash,
   });
 
-  factory PaymentRequestCrypto.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestCryptoFromJson(json);
+  factory PaymentRequestCrypto.fromJson(Map<String, dynamic> json) => _$PaymentRequestCryptoFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentRequestCryptoToJson(this);
@@ -797,8 +739,7 @@ class CreditCardPayment {
     this.cardholderName,
   });
 
-  factory CreditCardPayment.fromJson(Map<String, Object?> json) =>
-      _$CreditCardPaymentFromJson(json);
+  factory CreditCardPayment.fromJson(Map<String, Object?> json) => _$CreditCardPaymentFromJson(json);
 
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;
@@ -822,8 +763,7 @@ class BankTransferPayment {
     this.reference,
   });
 
-  factory BankTransferPayment.fromJson(Map<String, Object?> json) =>
-      _$BankTransferPaymentFromJson(json);
+  factory BankTransferPayment.fromJson(Map<String, Object?> json) => _$BankTransferPaymentFromJson(json);
 
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
@@ -845,8 +785,7 @@ class CryptoPayment {
     this.transactionHash,
   });
 
-  factory CryptoPayment.fromJson(Map<String, Object?> json) =>
-      _$CryptoPaymentFromJson(json);
+  factory CryptoPayment.fromJson(Map<String, Object?> json) => _$CryptoPaymentFromJson(json);
 
   final CryptoPaymentPaymentTypePaymentType paymentType;
   final String walletAddress;
@@ -868,8 +807,7 @@ class PaymentResponse {
     this.currency = 'USD',
   });
 
-  factory PaymentResponse.fromJson(Map<String, Object?> json) =>
-      _$PaymentResponseFromJson(json);
+  factory PaymentResponse.fromJson(Map<String, Object?> json) => _$PaymentResponseFromJson(json);
 
   final String transactionId;
   final PaymentResponseStatusStatus status;
@@ -886,17 +824,13 @@ class SearchResultUnion {
 
   const SearchResultUnion(this._json);
 
-  factory SearchResultUnion.fromJson(Map<String, dynamic> json) =>
-      SearchResultUnion(json);
+  factory SearchResultUnion.fromJson(Map<String, dynamic> json) => SearchResultUnion(json);
 
   Map<String, dynamic> toJson() => _json;
 
-  SearchResultUnionUserSearchResult toUserSearchResult() =>
-      SearchResultUnionUserSearchResult.fromJson(_json);
-  SearchResultUnionPostSearchResult toPostSearchResult() =>
-      SearchResultUnionPostSearchResult.fromJson(_json);
-  SearchResultUnionCommentSearchResult toCommentSearchResult() =>
-      SearchResultUnionCommentSearchResult.fromJson(_json);
+  SearchResultUnionUserSearchResult toUserSearchResult() => SearchResultUnionUserSearchResult.fromJson(_json);
+  SearchResultUnionPostSearchResult toPostSearchResult() => SearchResultUnionPostSearchResult.fromJson(_json);
+  SearchResultUnionCommentSearchResult toCommentSearchResult() => SearchResultUnionCommentSearchResult.fromJson(_json);
 }
 
 @JsonSerializable()
@@ -905,18 +839,12 @@ class SearchResultUnionUserSearchResult {
   final User user;
   final double? score;
 
-  const SearchResultUnionUserSearchResult({
-    required this.type,
-    required this.user,
-    required this.score,
-  });
+  const SearchResultUnionUserSearchResult({required this.type, required this.user, required this.score});
 
-  factory SearchResultUnionUserSearchResult.fromJson(
-    Map<String, dynamic> json,
-  ) => _$SearchResultUnionUserSearchResultFromJson(json);
+  factory SearchResultUnionUserSearchResult.fromJson(Map<String, dynamic> json) =>
+      _$SearchResultUnionUserSearchResultFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$SearchResultUnionUserSearchResultToJson(this);
+  Map<String, dynamic> toJson() => _$SearchResultUnionUserSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -933,12 +861,10 @@ class SearchResultUnionPostSearchResult {
     required this.highlights,
   });
 
-  factory SearchResultUnionPostSearchResult.fromJson(
-    Map<String, dynamic> json,
-  ) => _$SearchResultUnionPostSearchResultFromJson(json);
+  factory SearchResultUnionPostSearchResult.fromJson(Map<String, dynamic> json) =>
+      _$SearchResultUnionPostSearchResultFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$SearchResultUnionPostSearchResultToJson(this);
+  Map<String, dynamic> toJson() => _$SearchResultUnionPostSearchResultToJson(this);
 }
 
 @JsonSerializable()
@@ -947,18 +873,12 @@ class SearchResultUnionCommentSearchResult {
   final Comment comment;
   final double? score;
 
-  const SearchResultUnionCommentSearchResult({
-    required this.type,
-    required this.comment,
-    required this.score,
-  });
+  const SearchResultUnionCommentSearchResult({required this.type, required this.comment, required this.score});
 
-  factory SearchResultUnionCommentSearchResult.fromJson(
-    Map<String, dynamic> json,
-  ) => _$SearchResultUnionCommentSearchResultFromJson(json);
+  factory SearchResultUnionCommentSearchResult.fromJson(Map<String, dynamic> json) =>
+      _$SearchResultUnionCommentSearchResultFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$SearchResultUnionCommentSearchResultToJson(this);
+  Map<String, dynamic> toJson() => _$SearchResultUnionCommentSearchResultToJson(this);
 }
 
 typedef SearchResult = SearchResultUnion?;
@@ -967,8 +887,7 @@ typedef SearchResult = SearchResultUnion?;
 class UserSearchResult {
   const UserSearchResult({required this.type, required this.user, this.score});
 
-  factory UserSearchResult.fromJson(Map<String, Object?> json) =>
-      _$UserSearchResultFromJson(json);
+  factory UserSearchResult.fromJson(Map<String, Object?> json) => _$UserSearchResultFromJson(json);
 
   final UserSearchResultTypeType type;
   final User user;
@@ -979,15 +898,9 @@ class UserSearchResult {
 
 @JsonSerializable()
 class PostSearchResult {
-  const PostSearchResult({
-    required this.type,
-    required this.post,
-    this.score,
-    this.highlights,
-  });
+  const PostSearchResult({required this.type, required this.post, this.score, this.highlights});
 
-  factory PostSearchResult.fromJson(Map<String, Object?> json) =>
-      _$PostSearchResultFromJson(json);
+  factory PostSearchResult.fromJson(Map<String, Object?> json) => _$PostSearchResultFromJson(json);
 
   final PostSearchResultTypeType type;
   final PostModel post;
@@ -999,14 +912,9 @@ class PostSearchResult {
 
 @JsonSerializable()
 class CommentSearchResult {
-  const CommentSearchResult({
-    required this.type,
-    required this.comment,
-    this.score,
-  });
+  const CommentSearchResult({required this.type, required this.comment, this.score});
 
-  factory CommentSearchResult.fromJson(Map<String, Object?> json) =>
-      _$CommentSearchResultFromJson(json);
+  factory CommentSearchResult.fromJson(Map<String, Object?> json) => _$CommentSearchResultFromJson(json);
 
   final CommentSearchResultTypeType type;
   final Comment comment;
@@ -1019,31 +927,20 @@ class CommentSearchResult {
 sealed class Entity {
   const Entity();
 
-  factory Entity.fromJson(Map<String, dynamic> json) =>
-      EntityUnionDeserializer.tryDeserialize(json);
+  factory Entity.fromJson(Map<String, dynamic> json) => EntityUnionDeserializer.tryDeserialize(json);
 
   Map<String, dynamic> toJson();
 }
 
 extension EntityUnionDeserializer on Entity {
-  static Entity tryDeserialize(
-    Map<String, dynamic> json, {
-    String key = 'entityType',
-    Map<Type, Object?>? mapping,
-  }) {
-    final mappingFallback = const <Type, Object?>{
-      EntityPerson: 'person',
-      EntityOrganization: 'organization',
-    };
+  static Entity tryDeserialize(Map<String, dynamic> json, {String key = 'entityType', Map<Type, Object?>? mapping}) {
+    final mappingFallback = const <Type, Object?>{EntityPerson: 'person', EntityOrganization: 'organization'};
     final value = json[key];
     final effective = mapping ?? mappingFallback;
     return switch (value) {
       _ when value == effective[EntityPerson] => EntityPerson.fromJson(json),
-      _ when value == effective[EntityOrganization] =>
-        EntityOrganization.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for Entity',
-      ),
+      _ when value == effective[EntityOrganization] => EntityOrganization.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for Entity'),
     };
   }
 }
@@ -1074,8 +971,7 @@ class EntityPerson extends Entity {
     required this.socialProfiles,
   });
 
-  factory EntityPerson.fromJson(Map<String, dynamic> json) =>
-      _$EntityPersonFromJson(json);
+  factory EntityPerson.fromJson(Map<String, dynamic> json) => _$EntityPersonFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$EntityPersonToJson(this);
@@ -1109,8 +1005,7 @@ class EntityOrganization extends Entity {
     required this.revenue,
   });
 
-  factory EntityOrganization.fromJson(Map<String, dynamic> json) =>
-      _$EntityOrganizationFromJson(json);
+  factory EntityOrganization.fromJson(Map<String, dynamic> json) => _$EntityOrganizationFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$EntityOrganizationToJson(this);
@@ -1127,8 +1022,7 @@ class BaseEntity {
     this.updatedAt,
   });
 
-  factory BaseEntity.fromJson(Map<String, Object?> json) =>
-      _$BaseEntityFromJson(json);
+  factory BaseEntity.fromJson(Map<String, Object?> json) => _$BaseEntityFromJson(json);
 
   final String id;
   final String entityType;
@@ -1155,8 +1049,7 @@ class PersonEntity {
     this.socialProfiles,
   });
 
-  factory PersonEntity.fromJson(Map<String, Object?> json) =>
-      _$PersonEntityFromJson(json);
+  factory PersonEntity.fromJson(Map<String, Object?> json) => _$PersonEntityFromJson(json);
 
   final String id;
   final PersonEntityEntityTypeEntityType? entityType;
@@ -1188,8 +1081,7 @@ class OrganizationEntity {
     this.revenue,
   });
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
 
   final String id;
   final OrganizationEntityEntityTypeEntityType? entityType;
@@ -1228,13 +1120,7 @@ class Data {
 
 @JsonSerializable()
 class Error {
-  const Error({
-    required this.code,
-    required this.message,
-    this.details,
-    this.timestamp,
-    this.requestId,
-  });
+  const Error({required this.code, required this.message, this.details, this.timestamp, this.requestId});
 
   factory Error.fromJson(Map<String, Object?> json) => _$ErrorFromJson(json);
 
@@ -1260,8 +1146,7 @@ enum Status {
 
   const Status(this.json);
 
-  factory Status.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Status.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1271,8 +1156,7 @@ enum Status {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Status> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Status> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonSerializable()
@@ -1304,14 +1188,9 @@ class ListPostsResponsePagination {
 
 @JsonSerializable()
 class ListPostsResponse {
-  const ListPostsResponse({
-    this.posts,
-    this.listPostsResponsePagination,
-    this.metadata,
-  });
+  const ListPostsResponse({this.posts, this.listPostsResponsePagination, this.metadata});
 
-  factory ListPostsResponse.fromJson(Map<String, Object?> json) =>
-      _$ListPostsResponseFromJson(json);
+  factory ListPostsResponse.fromJson(Map<String, Object?> json) => _$ListPostsResponseFromJson(json);
 
   final List<PostModel>? posts;
   @JsonKey(name: 'ListPostsResponsePagination')
@@ -1325,8 +1204,7 @@ class ListPostsResponse {
 class FiltersDateRange {
   const FiltersDateRange({this.from, this.to});
 
-  factory FiltersDateRange.fromJson(Map<String, Object?> json) =>
-      _$FiltersDateRangeFromJson(json);
+  factory FiltersDateRange.fromJson(Map<String, Object?> json) => _$FiltersDateRangeFromJson(json);
 
   final DateTime? from;
   final DateTime? to;
@@ -1338,8 +1216,7 @@ class FiltersDateRange {
 class Filters {
   const Filters({this.authorId, this.tags, this.filtersDateRange});
 
-  factory Filters.fromJson(Map<String, Object?> json) =>
-      _$FiltersFromJson(json);
+  factory Filters.fromJson(Map<String, Object?> json) => _$FiltersFromJson(json);
 
   final String? authorId;
   final List<String>? tags;
@@ -1360,8 +1237,7 @@ class CreatePostRequest {
     this.metadata,
   });
 
-  factory CreatePostRequest.fromJson(Map<String, Object?> json) =>
-      _$CreatePostRequestFromJson(json);
+  factory CreatePostRequest.fromJson(Map<String, Object?> json) => _$CreatePostRequestFromJson(json);
 
   final String title;
   final String content;
@@ -1394,8 +1270,7 @@ class GetPostResponse {
     this.comments,
   });
 
-  factory GetPostResponse.fromJson(Map<String, Object?> json) =>
-      _$GetPostResponseFromJson(json);
+  factory GetPostResponse.fromJson(Map<String, Object?> json) => _$GetPostResponseFromJson(json);
 
   final String id;
   final String title;
@@ -1421,8 +1296,7 @@ class GetPostResponse {
 class SearchResponse {
   const SearchResponse({this.results});
 
-  factory SearchResponse.fromJson(Map<String, Object?> json) =>
-      _$SearchResponseFromJson(json);
+  factory SearchResponse.fromJson(Map<String, Object?> json) => _$SearchResponseFromJson(json);
 
   final List<SearchResult>? results;
 
@@ -1433,8 +1307,7 @@ class SearchResponse {
 class SearchRequest {
   const SearchRequest({this.query, this.filters});
 
-  factory SearchRequest.fromJson(Map<String, Object?> json) =>
-      _$SearchRequestFromJson(json);
+  factory SearchRequest.fromJson(Map<String, Object?> json) => _$SearchRequestFromJson(json);
 
   final String? query;
   final Map<String, String>? filters;
@@ -1458,15 +1331,13 @@ class InternalHealthCheckResponse {
 class GetDuplicateResponseMetadataData {
   const GetDuplicateResponseMetadataData({this.id, this.value});
 
-  factory GetDuplicateResponseMetadataData.fromJson(
-    Map<String, Object?> json,
-  ) => _$GetDuplicateResponseMetadataDataFromJson(json);
+  factory GetDuplicateResponseMetadataData.fromJson(Map<String, Object?> json) =>
+      _$GetDuplicateResponseMetadataDataFromJson(json);
 
   final String? id;
   final int? value;
 
-  Map<String, Object?> toJson() =>
-      _$GetDuplicateResponseMetadataDataToJson(this);
+  Map<String, Object?> toJson() => _$GetDuplicateResponseMetadataDataToJson(this);
 }
 
 @JsonSerializable()
@@ -1486,8 +1357,7 @@ class GetDuplicateResponseMetadata {
 class GetDuplicateResponse {
   const GetDuplicateResponse({this.data, this.getDuplicateResponseMetadata});
 
-  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) =>
-      _$GetDuplicateResponseFromJson(json);
+  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) => _$GetDuplicateResponseFromJson(json);
 
   final Data? data;
   @JsonKey(name: 'GetDuplicateResponseMetadata')
@@ -1498,14 +1368,9 @@ class GetDuplicateResponse {
 
 @JsonSerializable()
 class UserSettingsNotifications {
-  const UserSettingsNotifications({
-    this.email = true,
-    this.push = false,
-    this.sms = false,
-  });
+  const UserSettingsNotifications({this.email = true, this.push = false, this.sms = false});
 
-  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsNotificationsFromJson(json);
+  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) => _$UserSettingsNotificationsFromJson(json);
 
   final bool email;
   final bool push;
@@ -1517,13 +1382,11 @@ class UserSettingsNotifications {
 @JsonSerializable()
 class UserSettingsPrivacy {
   const UserSettingsPrivacy({
-    this.profileVisibility =
-        UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
+    this.profileVisibility = UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
     this.showEmail = false,
   });
 
-  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsPrivacyFromJson(json);
+  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) => _$UserSettingsPrivacyFromJson(json);
 
   final UserSettingsPrivacyProfileVisibilityProfileVisibility profileVisibility;
   final bool showEmail;
@@ -1541,8 +1404,7 @@ sealed class PaymentResponseDetailsUnion {
   Map<String, dynamic> toJson();
 }
 
-extension PaymentResponseDetailsUnionDeserializer
-    on PaymentResponseDetailsUnion {
+extension PaymentResponseDetailsUnionDeserializer on PaymentResponseDetailsUnion {
   static PaymentResponseDetailsUnion tryDeserialize(
     Map<String, dynamic> json, {
     String key = 'paymentType',
@@ -1560,18 +1422,14 @@ extension PaymentResponseDetailsUnionDeserializer
         PaymentResponseDetailsUnionCreditCard.fromJson(json),
       _ when value == effective[PaymentResponseDetailsUnionBankTransfer] =>
         PaymentResponseDetailsUnionBankTransfer.fromJson(json),
-      _ when value == effective[PaymentResponseDetailsUnionCrypto] =>
-        PaymentResponseDetailsUnionCrypto.fromJson(json),
-      _ => throw FormatException(
-        'Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion',
-      ),
+      _ when value == effective[PaymentResponseDetailsUnionCrypto] => PaymentResponseDetailsUnionCrypto.fromJson(json),
+      _ => throw FormatException('Unknown discriminator value "${json[key]}" for PaymentResponseDetailsUnion'),
     };
   }
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsUnionCreditCard
-    extends PaymentResponseDetailsUnion {
+class PaymentResponseDetailsUnionCreditCard extends PaymentResponseDetailsUnion {
   final CreditCardPaymentPaymentTypePaymentType paymentType;
   final String cardNumber;
   final int expiryMonth;
@@ -1590,18 +1448,15 @@ class PaymentResponseDetailsUnionCreditCard
     required this.amount,
   });
 
-  factory PaymentResponseDetailsUnionCreditCard.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionCreditCardFromJson(json);
+  factory PaymentResponseDetailsUnionCreditCard.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionCreditCardFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionCreditCardToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionCreditCardToJson(this);
 }
 
 @JsonSerializable()
-class PaymentResponseDetailsUnionBankTransfer
-    extends PaymentResponseDetailsUnion {
+class PaymentResponseDetailsUnionBankTransfer extends PaymentResponseDetailsUnion {
   final BankTransferPaymentPaymentTypePaymentType paymentType;
   final String accountNumber;
   final String routingNumber;
@@ -1618,13 +1473,11 @@ class PaymentResponseDetailsUnionBankTransfer
     required this.reference,
   });
 
-  factory PaymentResponseDetailsUnionBankTransfer.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionBankTransferFromJson(json);
+  factory PaymentResponseDetailsUnionBankTransfer.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionBankTransferFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionBankTransferToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionBankTransferToJson(this);
 }
 
 @JsonSerializable()
@@ -1643,21 +1496,18 @@ class PaymentResponseDetailsUnionCrypto extends PaymentResponseDetailsUnion {
     required this.transactionHash,
   });
 
-  factory PaymentResponseDetailsUnionCrypto.fromJson(
-    Map<String, dynamic> json,
-  ) => _$PaymentResponseDetailsUnionCryptoFromJson(json);
+  factory PaymentResponseDetailsUnionCrypto.fromJson(Map<String, dynamic> json) =>
+      _$PaymentResponseDetailsUnionCryptoFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaymentResponseDetailsUnionCryptoToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentResponseDetailsUnionCryptoToJson(this);
 }
 
 @JsonSerializable()
 class DataNestedData {
   const DataNestedData({this.id, this.name});
 
-  factory DataNestedData.fromJson(Map<String, Object?> json) =>
-      _$DataNestedDataFromJson(json);
+  factory DataNestedData.fromJson(Map<String, Object?> json) => _$DataNestedDataFromJson(json);
 
   final int? id;
   final String? name;
@@ -1669,8 +1519,7 @@ class DataNestedData {
 class DataNested {
   const DataNested({this.data});
 
-  factory DataNested.fromJson(Map<String, Object?> json) =>
-      _$DataNestedFromJson(json);
+  factory DataNested.fromJson(Map<String, Object?> json) => _$DataNestedFromJson(json);
 
   final List<DataNestedData>? data;
 
@@ -1681,8 +1530,7 @@ class DataNested {
 class ErrorDetails {
   const ErrorDetails({this.field, this.message});
 
-  factory ErrorDetails.fromJson(Map<String, Object?> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory ErrorDetails.fromJson(Map<String, Object?> json) => _$ErrorDetailsFromJson(json);
 
   final String? field;
   final String? message;
@@ -1702,8 +1550,7 @@ enum Sort {
 
   const Sort(this.json);
 
-  factory Sort.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Sort.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1713,8 +1560,7 @@ enum Sort {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Sort> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Sort> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1733,8 +1579,7 @@ enum Category {
 
   const Category(this.json);
 
-  factory Category.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory Category.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1744,8 +1589,7 @@ enum Category {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<Category> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<Category> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1802,8 +1646,7 @@ enum UserSettingsThemeTheme {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSettingsThemeTheme> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserSettingsThemeTheme> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -1820,9 +1663,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
 
   const UserSettingsPrivacyProfileVisibilityProfileVisibility(this.json);
 
-  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(
-    String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -1832,8 +1674,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -2075,8 +1917,7 @@ enum PaymentResponseStatusStatus {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PaymentResponseStatusStatus> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PaymentResponseStatusStatus> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -2100,8 +1941,7 @@ enum UserSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<UserSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -2125,8 +1965,7 @@ enum PostSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -2150,8 +1989,7 @@ enum CommentSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<CommentSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<CommentSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }
 
 @JsonEnum()
@@ -2257,21 +2095,17 @@ class RestClient {
 
   PostsClient get posts => _posts ??= PostsClient(_dio, baseUrl: _baseUrl);
 
-  CommentsClient get comments =>
-      _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
+  CommentsClient get comments => _comments ??= CommentsClient(_dio, baseUrl: _baseUrl);
 
   FilesClient get files => _files ??= FilesClient(_dio, baseUrl: _baseUrl);
 
-  AdvancedClient get advanced =>
-      _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
+  AdvancedClient get advanced => _advanced ??= AdvancedClient(_dio, baseUrl: _baseUrl);
 
-  DeprecatedClient get deprecated =>
-      _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
+  DeprecatedClient get deprecated => _deprecated ??= DeprecatedClient(_dio, baseUrl: _baseUrl);
 
   AdminClient get admin => _admin ??= AdminClient(_dio, baseUrl: _baseUrl);
 
-  InternalClient get internal =>
-      _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
+  InternalClient get internal => _internal ??= InternalClient(_dio, baseUrl: _baseUrl);
 
   ApiClient get api => _api ??= ApiClient(_dio, baseUrl: _baseUrl);
 }

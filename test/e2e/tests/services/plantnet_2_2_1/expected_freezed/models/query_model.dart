@@ -21,6 +21,5 @@ abstract class QueryModel with _$QueryModel {
     String? type,
   }) = _QueryModel;
 
-  factory QueryModel.fromJson(Map<String, Object?> json) =>
-      _$QueryModelFromJson(json);
+  factory QueryModel.fromJson(Map<String, Object?> json) => _$QueryModelFromJson(json);
 }

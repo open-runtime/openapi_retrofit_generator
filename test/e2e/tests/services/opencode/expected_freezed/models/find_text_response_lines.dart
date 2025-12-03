@@ -9,9 +9,7 @@ part 'find_text_response_lines.g.dart';
 
 @Freezed()
 abstract class FindTextResponseLines with _$FindTextResponseLines {
-  const factory FindTextResponseLines({required String text}) =
-      _FindTextResponseLines;
+  const factory FindTextResponseLines({required String text}) = _FindTextResponseLines;
 
-  factory FindTextResponseLines.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponseLinesFromJson(json);
+  factory FindTextResponseLines.fromJson(Map<String, Object?> json) => _$FindTextResponseLinesFromJson(json);
 }

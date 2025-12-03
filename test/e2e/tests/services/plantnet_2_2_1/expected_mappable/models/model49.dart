@@ -16,6 +16,5 @@ class Model49 with Model49Mappable {
   final num? estimatedCost;
   final Score? query;
 
-  static Model49 fromJson(Map<String, dynamic> json) =>
-      Model49Mapper.fromJson(json);
+  static Model49 fromJson(Map<String, dynamic> json) => Model49Mapper.fromJson(json);
 }

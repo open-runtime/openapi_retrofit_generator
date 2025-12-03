@@ -12,6 +12,5 @@ class VoteResponse with VoteResponseMappable {
 
   final bool updated;
 
-  static VoteResponse fromJson(Map<String, dynamic> json) =>
-      VoteResponseMapper.fromJson(json);
+  static VoteResponse fromJson(Map<String, dynamic> json) => VoteResponseMapper.fromJson(json);
 }

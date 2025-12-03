@@ -57,10 +57,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @GET('/users/{userId}')
-  Future<User> getUser({
-    @Path('userId') required String userId,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<User> getUser({@Path('userId') required String userId, @DioOptions() RequestOptions? options});
 
   /// Update user (full replace).
   ///
@@ -90,10 +87,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @DELETE('/users/{userId}')
-  Future<void> deleteUser({
-    @Path('userId') required String userId,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<void> deleteUser({@Path('userId') required String userId, @DioOptions() RequestOptions? options});
 
   /// Upload user avatar (multipart).
   ///
@@ -114,8 +108,5 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @GET('/users/{userId}/friends')
-  Future<List<User>> getUserFriends({
-    @Path('userId') required String userId,
-    @DioOptions() RequestOptions? options,
-  });
+  Future<List<User>> getUserFriends({@Path('userId') required String userId, @DioOptions() RequestOptions? options});
 }

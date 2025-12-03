@@ -7,8 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'find_text_response_submatches_match.mapper.dart';
 
 @MappableClass()
-class FindTextResponseSubmatchesMatch
-    with FindTextResponseSubmatchesMatchMappable {
+class FindTextResponseSubmatchesMatch with FindTextResponseSubmatchesMatchMappable {
   const FindTextResponseSubmatchesMatch({required this.text});
 
   final String text;

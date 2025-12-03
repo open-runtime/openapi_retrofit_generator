@@ -23,8 +23,7 @@ class Model23 {
     this.gbifId,
   });
 
-  factory Model23.fromJson(Map<String, Object?> json) =>
-      _$Model23FromJson(json);
+  factory Model23.fromJson(Map<String, Object?> json) => _$Model23FromJson(json);
 
   final String name;
   final String author;

@@ -40,6 +40,5 @@ class Model51 with Model51Mappable {
   final Location? location;
   final String? reject;
 
-  static Model51 fromJson(Map<String, dynamic> json) =>
-      Model51Mapper.fromJson(json);
+  static Model51 fromJson(Map<String, dynamic> json) => Model51Mapper.fromJson(json);
 }

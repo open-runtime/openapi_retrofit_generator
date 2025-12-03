@@ -14,6 +14,5 @@ class Family with FamilyMappable {
 
   final List<FamilyMembersUnion> members;
 
-  static Family fromJson(Map<String, dynamic> json) =>
-      FamilyMapper.fromJson(json);
+  static Family fromJson(Map<String, dynamic> json) => FamilyMapper.fromJson(json);
 }

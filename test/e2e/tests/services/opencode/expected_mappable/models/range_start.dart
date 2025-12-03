@@ -13,6 +13,5 @@ class RangeStart with RangeStartMappable {
   final num line;
   final num character;
 
-  static RangeStart fromJson(Map<String, dynamic> json) =>
-      RangeStartMapper.fromJson(json);
+  static RangeStart fromJson(Map<String, dynamic> json) => RangeStartMapper.fromJson(json);
 }

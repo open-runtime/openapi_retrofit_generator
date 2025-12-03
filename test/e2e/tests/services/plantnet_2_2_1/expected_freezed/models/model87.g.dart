@@ -9,6 +9,4 @@ part of 'model87.dart';
 _Model87 _$Model87FromJson(Map<String, dynamic> json) =>
     _Model87(point: Point.fromJson(json['point'] as Map<String, dynamic>));
 
-Map<String, dynamic> _$Model87ToJson(_Model87 instance) => <String, dynamic>{
-  'point': instance.point,
-};
+Map<String, dynamic> _$Model87ToJson(_Model87 instance) => <String, dynamic>{'point': instance.point};

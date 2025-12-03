@@ -10,8 +10,7 @@ part 'step_finish_part_tokens_cache.g.dart';
 class StepFinishPartTokensCache {
   const StepFinishPartTokensCache({required this.read, required this.write});
 
-  factory StepFinishPartTokensCache.fromJson(Map<String, Object?> json) =>
-      _$StepFinishPartTokensCacheFromJson(json);
+  factory StepFinishPartTokensCache.fromJson(Map<String, Object?> json) => _$StepFinishPartTokensCacheFromJson(json);
 
   final num read;
   final num write;

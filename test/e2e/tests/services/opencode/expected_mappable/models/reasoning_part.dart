@@ -31,6 +31,5 @@ class ReasoningPart with ReasoningPartMappable {
   final ReasoningPartTime reasoningPartTime;
   final Map<String, dynamic>? metadata;
 
-  static ReasoningPart fromJson(Map<String, dynamic> json) =>
-      ReasoningPartMapper.fromJson(json);
+  static ReasoningPart fromJson(Map<String, dynamic> json) => ReasoningPartMapper.fromJson(json);
 }

@@ -14,10 +14,8 @@ abstract class DebugSchema with _$DebugSchema {
   const factory DebugSchema({
     @JsonKey(includeIfNull: false) int? id,
     @JsonKey(includeIfNull: false) String? message,
-    @JsonKey(includeIfNull: false, name: 'DebugSchemaData')
-    DebugSchemaData? debugSchemaData,
+    @JsonKey(includeIfNull: false, name: 'DebugSchemaData') DebugSchemaData? debugSchemaData,
   }) = _DebugSchema;
 
-  factory DebugSchema.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaFromJson(json);
+  factory DebugSchema.fromJson(Map<String, Object?> json) => _$DebugSchemaFromJson(json);
 }

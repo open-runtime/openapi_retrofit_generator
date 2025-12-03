@@ -10,8 +10,7 @@ part 'class_name.g.dart';
 class ClassName {
   const ClassName();
 
-  factory ClassName.fromJson(Map<String, Object?> json) =>
-      _$ClassNameFromJson(json);
+  factory ClassName.fromJson(Map<String, Object?> json) => _$ClassNameFromJson(json);
 
   Map<String, Object?> toJson() => _$ClassNameToJson(this);
 }

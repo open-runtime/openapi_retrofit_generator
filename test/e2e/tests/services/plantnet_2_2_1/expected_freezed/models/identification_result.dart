@@ -27,6 +27,5 @@ abstract class IdentificationResult with _$IdentificationResult {
     OtherResults? otherResults,
   }) = _IdentificationResult;
 
-  factory IdentificationResult.fromJson(Map<String, Object?> json) =>
-      _$IdentificationResultFromJson(json);
+  factory IdentificationResult.fromJson(Map<String, Object?> json) => _$IdentificationResultFromJson(json);
 }

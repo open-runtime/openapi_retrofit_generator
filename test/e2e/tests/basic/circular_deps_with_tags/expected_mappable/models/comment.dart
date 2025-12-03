@@ -18,6 +18,5 @@ class Comment with CommentMappable {
   final User? author;
   final PostModel? post;
 
-  static Comment fromJson(Map<String, dynamic> json) =>
-      CommentMapper.fromJson(json);
+  static Comment fromJson(Map<String, dynamic> json) => CommentMapper.fromJson(json);
 }

@@ -8,9 +8,7 @@ part of 'genus.dart';
 
 Genus _$GenusFromJson(Map<String, dynamic> json) => Genus(
   scientificName: json['scientificName'] as String?,
-  family: json['family'] == null
-      ? null
-      : Family.fromJson(json['family'] as Map<String, dynamic>),
+  family: json['family'] == null ? null : Family.fromJson(json['family'] as Map<String, dynamic>),
   commonNames: json['commonNames'],
 );
 

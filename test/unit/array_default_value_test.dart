@@ -4,10 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('protectDefaultValue with arrays', () {
     test('string array - should quote elements', () {
-      final result = protectDefaultValue(
-        '[value1, value2, value3]',
-        type: 'String',
-      );
+      final result = protectDefaultValue('[value1, value2, value3]', type: 'String');
       expect(result, equals("['value1', 'value2', 'value3']"));
     });
 

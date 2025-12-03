@@ -8,16 +8,11 @@ part 'tool_state_completed_time.mapper.dart';
 
 @MappableClass()
 class ToolStateCompletedTime with ToolStateCompletedTimeMappable {
-  const ToolStateCompletedTime({
-    required this.start,
-    required this.end,
-    this.compacted,
-  });
+  const ToolStateCompletedTime({required this.start, required this.end, this.compacted});
 
   final num start;
   final num end;
   final num? compacted;
 
-  static ToolStateCompletedTime fromJson(Map<String, dynamic> json) =>
-      ToolStateCompletedTimeMapper.fromJson(json);
+  static ToolStateCompletedTime fromJson(Map<String, dynamic> json) => ToolStateCompletedTimeMapper.fromJson(json);
 }

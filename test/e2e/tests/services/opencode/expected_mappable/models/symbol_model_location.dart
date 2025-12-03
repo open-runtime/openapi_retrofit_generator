@@ -15,6 +15,5 @@ class SymbolModelLocation with SymbolModelLocationMappable {
   final String uri;
   final Range range;
 
-  static SymbolModelLocation fromJson(Map<String, dynamic> json) =>
-      SymbolModelLocationMapper.fromJson(json);
+  static SymbolModelLocation fromJson(Map<String, dynamic> json) => SymbolModelLocationMapper.fromJson(json);
 }

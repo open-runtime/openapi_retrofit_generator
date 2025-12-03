@@ -12,19 +12,16 @@ FileContent _$FileContentFromJson(Map<String, dynamic> json) => FileContent(
   diff: json['diff'] as String?,
   fileContentPatch: json['FileContentPatch'] == null
       ? null
-      : FileContentPatch.fromJson(
-          json['FileContentPatch'] as Map<String, dynamic>,
-        ),
+      : FileContentPatch.fromJson(json['FileContentPatch'] as Map<String, dynamic>),
   encoding: json['encoding'] as String?,
   mimeType: json['mimeType'] as String?,
 );
 
-Map<String, dynamic> _$FileContentToJson(FileContent instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'content': instance.content,
-      'diff': instance.diff,
-      'FileContentPatch': instance.fileContentPatch,
-      'encoding': instance.encoding,
-      'mimeType': instance.mimeType,
-    };
+Map<String, dynamic> _$FileContentToJson(FileContent instance) => <String, dynamic>{
+  'type': instance.type,
+  'content': instance.content,
+  'diff': instance.diff,
+  'FileContentPatch': instance.fileContentPatch,
+  'encoding': instance.encoding,
+  'mimeType': instance.mimeType,
+};

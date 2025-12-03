@@ -25,6 +25,5 @@ enum PostSearchResultTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<PostSearchResultTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<PostSearchResultTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

@@ -14,6 +14,5 @@ class Category with CategoryMappable {
   final int? id;
   final String? name;
 
-  static Category fromJson(Map<String, dynamic> json) =>
-      CategoryMapper.fromJson(json);
+  static Category fromJson(Map<String, dynamic> json) => CategoryMapper.fromJson(json);
 }

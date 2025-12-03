@@ -9,10 +9,8 @@ part 'event_session_idle_properties.g.dart';
 
 @Freezed()
 abstract class EventSessionIdleProperties with _$EventSessionIdleProperties {
-  const factory EventSessionIdleProperties({
-    @JsonKey(name: 'sessionID') required String sessionId,
-  }) = _EventSessionIdleProperties;
+  const factory EventSessionIdleProperties({@JsonKey(name: 'sessionID') required String sessionId}) =
+      _EventSessionIdleProperties;
 
-  factory EventSessionIdleProperties.fromJson(Map<String, Object?> json) =>
-      _$EventSessionIdlePropertiesFromJson(json);
+  factory EventSessionIdleProperties.fromJson(Map<String, Object?> json) => _$EventSessionIdlePropertiesFromJson(json);
 }

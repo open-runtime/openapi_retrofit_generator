@@ -22,6 +22,5 @@ class FileContentPatchHunks with FileContentPatchHunksMappable {
   final num newLines;
   final List<String> lines;
 
-  static FileContentPatchHunks fromJson(Map<String, dynamic> json) =>
-      FileContentPatchHunksMapper.fromJson(json);
+  static FileContentPatchHunks fromJson(Map<String, dynamic> json) => FileContentPatchHunksMapper.fromJson(json);
 }

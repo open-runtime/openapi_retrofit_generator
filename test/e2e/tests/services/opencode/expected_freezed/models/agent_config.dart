@@ -22,10 +22,8 @@ abstract class AgentConfig with _$AgentConfig {
     /// Description of when to use the agent
     String? description,
     String? mode,
-    @JsonKey(name: 'AgentConfigPermission')
-    AgentConfigPermission? agentConfigPermission,
+    @JsonKey(name: 'AgentConfigPermission') AgentConfigPermission? agentConfigPermission,
   }) = _AgentConfig;
 
-  factory AgentConfig.fromJson(Map<String, Object?> json) =>
-      _$AgentConfigFromJson(json);
+  factory AgentConfig.fromJson(Map<String, Object?> json) => _$AgentConfigFromJson(json);
 }

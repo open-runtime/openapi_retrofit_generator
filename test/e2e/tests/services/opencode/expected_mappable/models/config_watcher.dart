@@ -12,6 +12,5 @@ class ConfigWatcher with ConfigWatcherMappable {
 
   final List<String>? ignore;
 
-  static ConfigWatcher fromJson(Map<String, dynamic> json) =>
-      ConfigWatcherMapper.fromJson(json);
+  static ConfigWatcher fromJson(Map<String, dynamic> json) => ConfigWatcherMapper.fromJson(json);
 }

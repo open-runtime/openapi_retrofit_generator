@@ -26,8 +26,7 @@ class OneOfElement {
     this.nullableListNullableItems,
   });
 
-  factory OneOfElement.fromJson(Map<String, Object?> json) =>
-      _$OneOfElementFromJson(json);
+  factory OneOfElement.fromJson(Map<String, Object?> json) => _$OneOfElementFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final EnumClass? allClass;

@@ -22,8 +22,7 @@ abstract class CryptoPayment with _$CryptoPayment {
     String? transactionHash,
   }) = _CryptoPayment;
 
-  factory CryptoPayment.fromJson(Map<String, Object?> json) =>
-      _$CryptoPaymentFromJson(json);
+  factory CryptoPayment.fromJson(Map<String, Object?> json) => _$CryptoPaymentFromJson(json);
   static const double amountMin = 0.000001;
 }
 

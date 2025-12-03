@@ -12,14 +12,8 @@ part 'image.g.dart';
 
 @Freezed()
 abstract class Image with _$Image {
-  const factory Image({
-    String? organ,
-    String? author,
-    String? license,
-    Date? date,
-    String? citation,
-    Url? url,
-  }) = _Image;
+  const factory Image({String? organ, String? author, String? license, Date? date, String? citation, Url? url}) =
+      _Image;
 
   factory Image.fromJson(Map<String, Object?> json) => _$ImageFromJson(json);
 }

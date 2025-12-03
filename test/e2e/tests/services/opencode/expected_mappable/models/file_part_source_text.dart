@@ -8,16 +8,11 @@ part 'file_part_source_text.mapper.dart';
 
 @MappableClass()
 class FilePartSourceText with FilePartSourceTextMappable {
-  const FilePartSourceText({
-    required this.value,
-    required this.start,
-    required this.end,
-  });
+  const FilePartSourceText({required this.value, required this.start, required this.end});
 
   final String value;
   final int start;
   final int end;
 
-  static FilePartSourceText fromJson(Map<String, dynamic> json) =>
-      FilePartSourceTextMapper.fromJson(json);
+  static FilePartSourceText fromJson(Map<String, dynamic> json) => FilePartSourceTextMapper.fromJson(json);
 }

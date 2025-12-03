@@ -9,5 +9,7 @@ part of 'reasoning_part_time.dart';
 ReasoningPartTime _$ReasoningPartTimeFromJson(Map<String, dynamic> json) =>
     ReasoningPartTime(start: json['start'] as num, end: json['end'] as num?);
 
-Map<String, dynamic> _$ReasoningPartTimeToJson(ReasoningPartTime instance) =>
-    <String, dynamic>{'start': instance.start, 'end': instance.end};
+Map<String, dynamic> _$ReasoningPartTimeToJson(ReasoningPartTime instance) => <String, dynamic>{
+  'start': instance.start,
+  'end': instance.end,
+};

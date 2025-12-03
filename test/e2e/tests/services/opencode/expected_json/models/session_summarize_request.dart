@@ -8,13 +8,9 @@ part 'session_summarize_request.g.dart';
 
 @JsonSerializable()
 class SessionSummarizeRequest {
-  const SessionSummarizeRequest({
-    required this.providerId,
-    required this.modelId,
-  });
+  const SessionSummarizeRequest({required this.providerId, required this.modelId});
 
-  factory SessionSummarizeRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionSummarizeRequestFromJson(json);
+  factory SessionSummarizeRequest.fromJson(Map<String, Object?> json) => _$SessionSummarizeRequestFromJson(json);
 
   @JsonKey(name: 'providerID')
   final String providerId;

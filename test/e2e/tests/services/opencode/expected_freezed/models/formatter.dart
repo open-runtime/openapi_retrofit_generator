@@ -16,6 +16,5 @@ abstract class Formatter with _$Formatter {
     List<String>? extensions,
   }) = _Formatter;
 
-  factory Formatter.fromJson(Map<String, Object?> json) =>
-      _$FormatterFromJson(json);
+  factory Formatter.fromJson(Map<String, Object?> json) => _$FormatterFromJson(json);
 }

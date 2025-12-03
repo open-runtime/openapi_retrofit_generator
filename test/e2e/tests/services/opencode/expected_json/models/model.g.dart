@@ -19,13 +19,9 @@ Model _$ModelFromJson(Map<String, dynamic> json) => Model(
   options: json['options'] as Map<String, dynamic>,
   modelModalities: json['ModelModalities'] == null
       ? null
-      : ModelModalities.fromJson(
-          json['ModelModalities'] as Map<String, dynamic>,
-        ),
+      : ModelModalities.fromJson(json['ModelModalities'] as Map<String, dynamic>),
   experimental: json['experimental'] as bool?,
-  status: json['status'] == null
-      ? null
-      : ModelStatusStatus.fromJson(json['status'] as String),
+  status: json['status'] == null ? null : ModelStatusStatus.fromJson(json['status'] as String),
   modelProvider: json['ModelProvider'] == null
       ? null
       : ModelProvider.fromJson(json['ModelProvider'] as Map<String, dynamic>),

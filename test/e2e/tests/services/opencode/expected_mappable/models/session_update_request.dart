@@ -12,6 +12,5 @@ class SessionUpdateRequest with SessionUpdateRequestMappable {
 
   final String? title;
 
-  static SessionUpdateRequest fromJson(Map<String, dynamic> json) =>
-      SessionUpdateRequestMapper.fromJson(json);
+  static SessionUpdateRequest fromJson(Map<String, dynamic> json) => SessionUpdateRequestMapper.fromJson(json);
 }

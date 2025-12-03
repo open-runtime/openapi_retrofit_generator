@@ -13,6 +13,5 @@ class Model24 with Model24Mappable {
   final String species;
   final num? score;
 
-  static Model24 fromJson(Map<String, dynamic> json) =>
-      Model24Mapper.fromJson(json);
+  static Model24 fromJson(Map<String, dynamic> json) => Model24Mapper.fromJson(json);
 }

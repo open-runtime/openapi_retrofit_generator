@@ -18,9 +18,8 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
 
   const UserSettingsPrivacyProfileVisibilityProfileVisibility(this.json);
 
-  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(
-    String json,
-  ) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory UserSettingsPrivacyProfileVisibilityProfileVisibility.fromJson(String json) =>
+      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -30,6 +29,6 @@ enum UserSettingsPrivacyProfileVisibilityProfileVisibility {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility>
-  get $valuesDefined => values.where((value) => value != $unknown).toList();
+  static List<UserSettingsPrivacyProfileVisibilityProfileVisibility> get $valuesDefined =>
+      values.where((value) => value != $unknown).toList();
 }

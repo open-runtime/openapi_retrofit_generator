@@ -26,7 +26,6 @@ enum DebugSchemaDataStatusStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<DebugSchemaDataStatusStatus> get $valuesDefined => values
-      .where((value) => value != DebugSchemaDataStatusStatus.unknown)
-      .toList();
+  static List<DebugSchemaDataStatusStatus> get $valuesDefined =>
+      values.where((value) => value != DebugSchemaDataStatusStatus.unknown).toList();
 }

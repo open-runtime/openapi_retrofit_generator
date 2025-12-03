@@ -9,13 +9,7 @@ part 'model37.g.dart';
 
 @Freezed()
 abstract class Model37 with _$Model37 {
-  const factory Model37({
-    String? lang,
-    String? date,
-    String? author,
-    String? message,
-  }) = _Model37;
+  const factory Model37({String? lang, String? date, String? author, String? message}) = _Model37;
 
-  factory Model37.fromJson(Map<String, Object?> json) =>
-      _$Model37FromJson(json);
+  factory Model37.fromJson(Map<String, Object?> json) => _$Model37FromJson(json);
 }

@@ -10,8 +10,7 @@ part 'user_profile.g.dart';
 class UserProfile {
   const UserProfile({this.firstName, this.lastName});
 
-  factory UserProfile.fromJson(Map<String, Object?> json) =>
-      _$UserProfileFromJson(json);
+  factory UserProfile.fromJson(Map<String, Object?> json) => _$UserProfileFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? firstName;

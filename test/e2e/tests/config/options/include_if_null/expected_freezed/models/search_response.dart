@@ -11,10 +11,7 @@ part 'search_response.g.dart';
 
 @Freezed()
 abstract class SearchResponse with _$SearchResponse {
-  const factory SearchResponse({
-    @JsonKey(includeIfNull: false) List<SearchResult>? results,
-  }) = _SearchResponse;
+  const factory SearchResponse({@JsonKey(includeIfNull: false) List<SearchResult>? results}) = _SearchResponse;
 
-  factory SearchResponse.fromJson(Map<String, Object?> json) =>
-      _$SearchResponseFromJson(json);
+  factory SearchResponse.fromJson(Map<String, Object?> json) => _$SearchResponseFromJson(json);
 }

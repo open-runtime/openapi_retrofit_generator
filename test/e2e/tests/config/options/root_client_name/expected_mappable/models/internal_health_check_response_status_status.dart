@@ -27,9 +27,5 @@ enum InternalHealthCheckResponseStatusStatus {
 
   /// Returns all defined enum values excluding the unknown value.
   static List<InternalHealthCheckResponseStatusStatus> get $valuesDefined =>
-      values
-          .where(
-            (value) => value != InternalHealthCheckResponseStatusStatus.unknown,
-          )
-          .toList();
+      values.where((value) => value != InternalHealthCheckResponseStatusStatus.unknown).toList();
 }

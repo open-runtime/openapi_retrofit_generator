@@ -10,8 +10,7 @@ part 'models_limit.g.dart';
 class ModelsLimit {
   const ModelsLimit({required this.context, required this.output});
 
-  factory ModelsLimit.fromJson(Map<String, Object?> json) =>
-      _$ModelsLimitFromJson(json);
+  factory ModelsLimit.fromJson(Map<String, Object?> json) => _$ModelsLimitFromJson(json);
 
   final num context;
   final num output;

@@ -12,6 +12,5 @@ class QualityVote with QualityVoteMappable {
 
   final bool quality;
 
-  static QualityVote fromJson(Map<String, dynamic> json) =>
-      QualityVoteMapper.fromJson(json);
+  static QualityVote fromJson(Map<String, dynamic> json) => QualityVoteMapper.fromJson(json);
 }

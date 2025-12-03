@@ -13,6 +13,5 @@ class SearchRequest with SearchRequestMappable {
   final String? query;
   final Map<String, String>? filters;
 
-  static SearchRequest fromJson(Map<String, dynamic> json) =>
-      SearchRequestMapper.fromJson(json);
+  static SearchRequest fromJson(Map<String, dynamic> json) => SearchRequestMapper.fromJson(json);
 }

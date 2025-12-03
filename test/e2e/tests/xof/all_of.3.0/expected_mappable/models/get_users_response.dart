@@ -11,16 +11,11 @@ part 'get_users_response.mapper.dart';
 
 @MappableClass()
 class GetUsersResponse with GetUsersResponseMappable {
-  const GetUsersResponse({
-    required this.nextCursor,
-    required this.previousCursor,
-    required this.data,
-  });
+  const GetUsersResponse({required this.nextCursor, required this.previousCursor, required this.data});
 
   final num? nextCursor;
   final String? previousCursor;
   final List<UserDto> data;
 
-  static GetUsersResponse fromJson(Map<String, dynamic> json) =>
-      GetUsersResponseMapper.fromJson(json);
+  static GetUsersResponse fromJson(Map<String, dynamic> json) => GetUsersResponseMapper.fromJson(json);
 }

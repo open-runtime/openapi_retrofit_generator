@@ -9,9 +9,7 @@ part 'reasoning_part_time.g.dart';
 
 @Freezed()
 abstract class ReasoningPartTime with _$ReasoningPartTime {
-  const factory ReasoningPartTime({required num start, num? end}) =
-      _ReasoningPartTime;
+  const factory ReasoningPartTime({required num start, num? end}) = _ReasoningPartTime;
 
-  factory ReasoningPartTime.fromJson(Map<String, Object?> json) =>
-      _$ReasoningPartTimeFromJson(json);
+  factory ReasoningPartTime.fromJson(Map<String, Object?> json) => _$ReasoningPartTimeFromJson(json);
 }

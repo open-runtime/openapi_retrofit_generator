@@ -29,7 +29,6 @@ enum PaymentResponseStatusStatus {
   String toString() => toValue().toString();
 
   /// Returns all defined enum values excluding the unknown value.
-  static List<PaymentResponseStatusStatus> get $valuesDefined => values
-      .where((value) => value != PaymentResponseStatusStatus.unknown)
-      .toList();
+  static List<PaymentResponseStatusStatus> get $valuesDefined =>
+      values.where((value) => value != PaymentResponseStatusStatus.unknown).toList();
 }

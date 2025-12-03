@@ -73,15 +73,12 @@ extension PartModelUnionDeserializer on PartModelUnion {
       return PartModelUnionAgentPartMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for PartModelUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for PartModelUnion from: $json');
   }
 }
 
 @MappableClass()
-class PartModelUnionTextPart extends PartModelUnion
-    with PartModelUnionTextPartMappable {
+class PartModelUnionTextPart extends PartModelUnion with PartModelUnionTextPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -107,8 +104,7 @@ class PartModelUnionTextPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionReasoningPart extends PartModelUnion
-    with PartModelUnionReasoningPartMappable {
+class PartModelUnionReasoningPart extends PartModelUnion with PartModelUnionReasoningPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -132,8 +128,7 @@ class PartModelUnionReasoningPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionFilePart extends PartModelUnion
-    with PartModelUnionFilePartMappable {
+class PartModelUnionFilePart extends PartModelUnion with PartModelUnionFilePartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -158,8 +153,7 @@ class PartModelUnionFilePart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionToolPart extends PartModelUnion
-    with PartModelUnionToolPartMappable {
+class PartModelUnionToolPart extends PartModelUnion with PartModelUnionToolPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -185,8 +179,7 @@ class PartModelUnionToolPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionStepStartPart extends PartModelUnion
-    with PartModelUnionStepStartPartMappable {
+class PartModelUnionStepStartPart extends PartModelUnion with PartModelUnionStepStartPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -205,8 +198,7 @@ class PartModelUnionStepStartPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionStepFinishPart extends PartModelUnion
-    with PartModelUnionStepFinishPartMappable {
+class PartModelUnionStepFinishPart extends PartModelUnion with PartModelUnionStepFinishPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -230,8 +222,7 @@ class PartModelUnionStepFinishPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionSnapshotPart extends PartModelUnion
-    with PartModelUnionSnapshotPartMappable {
+class PartModelUnionSnapshotPart extends PartModelUnion with PartModelUnionSnapshotPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -250,8 +241,7 @@ class PartModelUnionSnapshotPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionPatchPart extends PartModelUnion
-    with PartModelUnionPatchPartMappable {
+class PartModelUnionPatchPart extends PartModelUnion with PartModelUnionPatchPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;
@@ -272,8 +262,7 @@ class PartModelUnionPatchPart extends PartModelUnion
 }
 
 @MappableClass()
-class PartModelUnionAgentPart extends PartModelUnion
-    with PartModelUnionAgentPartMappable {
+class PartModelUnionAgentPart extends PartModelUnion with PartModelUnionAgentPartMappable {
   final String id;
   @MappableField(key: 'sessionID')
   final String sessionId;

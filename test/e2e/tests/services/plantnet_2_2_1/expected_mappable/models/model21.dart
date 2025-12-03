@@ -19,6 +19,5 @@ class Model21 with Model21Mappable {
   final Gbif? gbif;
   final Images? images;
 
-  static Model21 fromJson(Map<String, dynamic> json) =>
-      Model21Mapper.fromJson(json);
+  static Model21 fromJson(Map<String, dynamic> json) => Model21Mapper.fromJson(json);
 }

@@ -8,18 +8,12 @@ part 'model46.mapper.dart';
 
 @MappableClass()
 class Model46 with Model46Mappable {
-  const Model46({
-    required this.id,
-    required this.o,
-    required this.m,
-    required this.s,
-  });
+  const Model46({required this.id, required this.o, required this.m, required this.s});
 
   final String id;
   final String o;
   final String m;
   final String s;
 
-  static Model46 fromJson(Map<String, dynamic> json) =>
-      Model46Mapper.fromJson(json);
+  static Model46 fromJson(Map<String, dynamic> json) => Model46Mapper.fromJson(json);
 }

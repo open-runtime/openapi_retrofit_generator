@@ -11,13 +11,11 @@ part 'user_settings_privacy.g.dart';
 @JsonSerializable()
 class UserSettingsPrivacy {
   const UserSettingsPrivacy({
-    this.profileVisibility =
-        UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
+    this.profileVisibility = UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
     this.showEmail = false,
   });
 
-  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsPrivacyFromJson(json);
+  factory UserSettingsPrivacy.fromJson(Map<String, Object?> json) => _$UserSettingsPrivacyFromJson(json);
 
   final UserSettingsPrivacyProfileVisibilityProfileVisibility profileVisibility;
   final bool showEmail;

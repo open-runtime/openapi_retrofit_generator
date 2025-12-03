@@ -12,10 +12,8 @@ part 'very_long_tag_name_with_numbers123_and_more_text_client.g.dart';
 
 @RestApi()
 abstract class VeryLongTagNameWithNumbers123AndMoreTextClient {
-  factory VeryLongTagNameWithNumbers123AndMoreTextClient(
-    Dio dio, {
-    String? baseUrl,
-  }) = _VeryLongTagNameWithNumbers123AndMoreTextClient;
+  factory VeryLongTagNameWithNumbers123AndMoreTextClient(Dio dio, {String? baseUrl}) =
+      _VeryLongTagNameWithNumbers123AndMoreTextClient;
 
   /// Operation with very long tag
   @GET('/very/long/path')

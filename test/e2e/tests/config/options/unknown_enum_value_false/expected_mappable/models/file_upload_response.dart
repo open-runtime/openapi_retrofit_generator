@@ -24,6 +24,5 @@ class FileUploadResponse with FileUploadResponseMappable {
   final String? mimeType;
   final DateTime? uploadedAt;
 
-  static FileUploadResponse fromJson(Map<String, dynamic> json) =>
-      FileUploadResponseMapper.fromJson(json);
+  static FileUploadResponse fromJson(Map<String, dynamic> json) => FileUploadResponseMapper.fromJson(json);
 }

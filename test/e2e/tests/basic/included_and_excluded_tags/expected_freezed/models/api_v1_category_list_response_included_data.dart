@@ -10,16 +10,13 @@ part 'api_v1_category_list_response_included_data.freezed.dart';
 part 'api_v1_category_list_response_included_data.g.dart';
 
 @Freezed()
-abstract class ApiV1CategoryListResponseIncludedData
-    with _$ApiV1CategoryListResponseIncludedData {
+abstract class ApiV1CategoryListResponseIncludedData with _$ApiV1CategoryListResponseIncludedData {
   const factory ApiV1CategoryListResponseIncludedData({
     @JsonKey(includeIfNull: false) String? dataField,
-    @JsonKey(includeIfNull: false)
-    ApiV1CategoryListResponseIncludedDataLevelLevel? level,
+    @JsonKey(includeIfNull: false) ApiV1CategoryListResponseIncludedDataLevelLevel? level,
     @JsonKey(includeIfNull: false) int? priority,
   }) = _ApiV1CategoryListResponseIncludedData;
 
-  factory ApiV1CategoryListResponseIncludedData.fromJson(
-    Map<String, Object?> json,
-  ) => _$ApiV1CategoryListResponseIncludedDataFromJson(json);
+  factory ApiV1CategoryListResponseIncludedData.fromJson(Map<String, Object?> json) =>
+      _$ApiV1CategoryListResponseIncludedDataFromJson(json);
 }

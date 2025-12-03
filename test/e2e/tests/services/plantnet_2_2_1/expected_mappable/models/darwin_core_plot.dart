@@ -56,6 +56,5 @@ class DarwinCorePlot with DarwinCorePlotMappable {
   final Model64? media;
   final Model66? species;
 
-  static DarwinCorePlot fromJson(Map<String, dynamic> json) =>
-      DarwinCorePlotMapper.fromJson(json);
+  static DarwinCorePlot fromJson(Map<String, dynamic> json) => DarwinCorePlotMapper.fromJson(json);
 }

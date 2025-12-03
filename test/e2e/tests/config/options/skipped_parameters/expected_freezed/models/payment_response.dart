@@ -21,6 +21,5 @@ abstract class PaymentResponse with _$PaymentResponse {
     @Default('USD') String currency,
   }) = _PaymentResponse;
 
-  factory PaymentResponse.fromJson(Map<String, Object?> json) =>
-      _$PaymentResponseFromJson(json);
+  factory PaymentResponse.fromJson(Map<String, Object?> json) => _$PaymentResponseFromJson(json);
 }

@@ -22,8 +22,7 @@ class AgentConfig {
     this.agentConfigPermission,
   });
 
-  factory AgentConfig.fromJson(Map<String, Object?> json) =>
-      _$AgentConfigFromJson(json);
+  factory AgentConfig.fromJson(Map<String, Object?> json) => _$AgentConfigFromJson(json);
 
   final String? model;
   final num? temperature;

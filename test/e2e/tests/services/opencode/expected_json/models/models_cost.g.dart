@@ -13,10 +13,9 @@ ModelsCost _$ModelsCostFromJson(Map<String, dynamic> json) => ModelsCost(
   cacheWrite: json['cache_write'] as num?,
 );
 
-Map<String, dynamic> _$ModelsCostToJson(ModelsCost instance) =>
-    <String, dynamic>{
-      'input': instance.input,
-      'output': instance.output,
-      'cache_read': instance.cacheRead,
-      'cache_write': instance.cacheWrite,
-    };
+Map<String, dynamic> _$ModelsCostToJson(ModelsCost instance) => <String, dynamic>{
+  'input': instance.input,
+  'output': instance.output,
+  'cache_read': instance.cacheRead,
+  'cache_write': instance.cacheWrite,
+};

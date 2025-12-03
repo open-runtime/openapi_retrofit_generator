@@ -9,9 +9,7 @@ part 'tool_state_running_time.g.dart';
 
 @Freezed()
 abstract class ToolStateRunningTime with _$ToolStateRunningTime {
-  const factory ToolStateRunningTime({required num start}) =
-      _ToolStateRunningTime;
+  const factory ToolStateRunningTime({required num start}) = _ToolStateRunningTime;
 
-  factory ToolStateRunningTime.fromJson(Map<String, Object?> json) =>
-      _$ToolStateRunningTimeFromJson(json);
+  factory ToolStateRunningTime.fromJson(Map<String, Object?> json) => _$ToolStateRunningTimeFromJson(json);
 }

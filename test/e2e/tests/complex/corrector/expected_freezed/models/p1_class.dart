@@ -9,9 +9,7 @@ part 'p1_class.g.dart';
 
 @Freezed()
 abstract class P1Class with _$P1Class {
-  const factory P1Class({@JsonKey(includeIfNull: false) DateTime? test}) =
-      _P1Class;
+  const factory P1Class({@JsonKey(includeIfNull: false) DateTime? test}) = _P1Class;
 
-  factory P1Class.fromJson(Map<String, Object?> json) =>
-      _$P1ClassFromJson(json);
+  factory P1Class.fromJson(Map<String, Object?> json) => _$P1ClassFromJson(json);
 }

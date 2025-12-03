@@ -25,8 +25,7 @@ class Model51 {
     this.reject,
   });
 
-  factory Model51.fromJson(Map<String, Object?> json) =>
-      _$Model51FromJson(json);
+  factory Model51.fromJson(Map<String, Object?> json) => _$Model51FromJson(json);
 
   final String? name;
   final String? id;

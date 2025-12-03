@@ -9,14 +9,8 @@ part 'command.g.dart';
 
 @Freezed()
 abstract class Command with _$Command {
-  const factory Command({
-    required String template,
-    String? description,
-    String? agent,
-    String? model,
-    bool? subtask,
-  }) = _Command;
+  const factory Command({required String template, String? description, String? agent, String? model, bool? subtask}) =
+      _Command;
 
-  factory Command.fromJson(Map<String, Object?> json) =>
-      _$CommandFromJson(json);
+  factory Command.fromJson(Map<String, Object?> json) => _$CommandFromJson(json);
 }

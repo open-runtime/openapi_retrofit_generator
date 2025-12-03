@@ -12,8 +12,7 @@ part 'filters.g.dart';
 class Filters {
   const Filters({this.authorId, this.tags, this.filtersDateRange});
 
-  factory Filters.fromJson(Map<String, Object?> json) =>
-      _$FiltersFromJson(json);
+  factory Filters.fromJson(Map<String, Object?> json) => _$FiltersFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? authorId;

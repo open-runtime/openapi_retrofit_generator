@@ -10,14 +10,9 @@ part 'symbol_model.g.dart';
 
 @JsonSerializable()
 class SymbolModel {
-  const SymbolModel({
-    required this.name,
-    required this.kind,
-    required this.symbolModelLocation,
-  });
+  const SymbolModel({required this.name, required this.kind, required this.symbolModelLocation});
 
-  factory SymbolModel.fromJson(Map<String, Object?> json) =>
-      _$SymbolModelFromJson(json);
+  factory SymbolModel.fromJson(Map<String, Object?> json) => _$SymbolModelFromJson(json);
 
   final String name;
   final num kind;

@@ -8,10 +8,8 @@ part 'find_text_response_submatches_match.freezed.dart';
 part 'find_text_response_submatches_match.g.dart';
 
 @Freezed()
-abstract class FindTextResponseSubmatchesMatch
-    with _$FindTextResponseSubmatchesMatch {
-  const factory FindTextResponseSubmatchesMatch({required String text}) =
-      _FindTextResponseSubmatchesMatch;
+abstract class FindTextResponseSubmatchesMatch with _$FindTextResponseSubmatchesMatch {
+  const factory FindTextResponseSubmatchesMatch({required String text}) = _FindTextResponseSubmatchesMatch;
 
   factory FindTextResponseSubmatchesMatch.fromJson(Map<String, Object?> json) =>
       _$FindTextResponseSubmatchesMatchFromJson(json);

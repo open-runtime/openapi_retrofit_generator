@@ -18,6 +18,5 @@ abstract class CommentSearchResult with _$CommentSearchResult {
     @JsonKey(includeIfNull: false) double? score,
   }) = _CommentSearchResult;
 
-  factory CommentSearchResult.fromJson(Map<String, Object?> json) =>
-      _$CommentSearchResultFromJson(json);
+  factory CommentSearchResult.fromJson(Map<String, Object?> json) => _$CommentSearchResultFromJson(json);
 }

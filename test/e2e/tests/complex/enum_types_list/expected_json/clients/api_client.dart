@@ -25,11 +25,8 @@ abstract class ApiClient {
   @GET('/api/v1/category/')
   Future<void> apiV1CategoryList({
     @Query('enum_class') required List<EnumClass?> enumClass,
-    @Query('enum_class_dynamic')
-    required List<EnumClassDynamic> enumClassDynamic,
-    @Query('nullable_enum_in_object')
-    required NullableEnumInObject nullableEnumInObject,
-    @Query('credentialTypes')
-    List<CredentialTypes>? credentialTypes = const [CredentialTypes.apple],
+    @Query('enum_class_dynamic') required List<EnumClassDynamic> enumClassDynamic,
+    @Query('nullable_enum_in_object') required NullableEnumInObject nullableEnumInObject,
+    @Query('credentialTypes') List<CredentialTypes>? credentialTypes = const [CredentialTypes.apple],
   });
 }

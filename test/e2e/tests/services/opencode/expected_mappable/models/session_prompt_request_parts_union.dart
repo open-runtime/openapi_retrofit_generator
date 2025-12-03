@@ -20,8 +20,7 @@ part 'session_prompt_request_parts_union.mapper.dart';
     SessionPromptRequestPartsUnionAgentPartInput,
   ],
 )
-sealed class SessionPromptRequestPartsUnion
-    with SessionPromptRequestPartsUnionMappable {
+sealed class SessionPromptRequestPartsUnion with SessionPromptRequestPartsUnionMappable {
   const SessionPromptRequestPartsUnion();
 
   static SessionPromptRequestPartsUnion fromJson(Map<String, dynamic> json) {
@@ -29,11 +28,8 @@ sealed class SessionPromptRequestPartsUnion
   }
 }
 
-extension SessionPromptRequestPartsUnionDeserializer
-    on SessionPromptRequestPartsUnion {
-  static SessionPromptRequestPartsUnion tryDeserialize(
-    Map<String, dynamic> json,
-  ) {
+extension SessionPromptRequestPartsUnionDeserializer on SessionPromptRequestPartsUnion {
+  static SessionPromptRequestPartsUnion tryDeserialize(Map<String, dynamic> json) {
     try {
       return SessionPromptRequestPartsUnionTextPartInputMapper.fromJson(json);
     } catch (_) {}
@@ -44,15 +40,12 @@ extension SessionPromptRequestPartsUnionDeserializer
       return SessionPromptRequestPartsUnionAgentPartInputMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for SessionPromptRequestPartsUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for SessionPromptRequestPartsUnion from: $json');
   }
 }
 
 @MappableClass()
-class SessionPromptRequestPartsUnionTextPartInput
-    extends SessionPromptRequestPartsUnion
+class SessionPromptRequestPartsUnionTextPartInput extends SessionPromptRequestPartsUnion
     with SessionPromptRequestPartsUnionTextPartInputMappable {
   final String? id;
   final String type;
@@ -73,8 +66,7 @@ class SessionPromptRequestPartsUnionTextPartInput
 }
 
 @MappableClass()
-class SessionPromptRequestPartsUnionFilePartInput
-    extends SessionPromptRequestPartsUnion
+class SessionPromptRequestPartsUnionFilePartInput extends SessionPromptRequestPartsUnion
     with SessionPromptRequestPartsUnionFilePartInputMappable {
   final String? id;
   final String type;
@@ -94,8 +86,7 @@ class SessionPromptRequestPartsUnionFilePartInput
 }
 
 @MappableClass()
-class SessionPromptRequestPartsUnionAgentPartInput
-    extends SessionPromptRequestPartsUnion
+class SessionPromptRequestPartsUnionAgentPartInput extends SessionPromptRequestPartsUnion
     with SessionPromptRequestPartsUnionAgentPartInputMappable {
   final String? id;
   final String type;

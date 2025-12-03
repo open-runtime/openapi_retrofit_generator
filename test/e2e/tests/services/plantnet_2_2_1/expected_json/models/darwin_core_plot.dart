@@ -35,8 +35,7 @@ class DarwinCorePlot {
     this.species,
   });
 
-  factory DarwinCorePlot.fromJson(Map<String, Object?> json) =>
-      _$DarwinCorePlotFromJson(json);
+  factory DarwinCorePlot.fromJson(Map<String, Object?> json) => _$DarwinCorePlotFromJson(json);
 
   final String id;
   final String eventDate;

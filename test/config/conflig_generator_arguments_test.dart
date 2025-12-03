@@ -15,22 +15,13 @@ void main() {
       });
 
       test('should parse schema_path argument', () {
-        final result = parseConfigGeneratorArguments([
-          '--schema_path',
-          'openapi.yaml',
-        ]);
+        final result = parseConfigGeneratorArguments(['--schema_path', 'openapi.yaml']);
         expect(result['schema_path'], equals('openapi.yaml'));
       });
 
       test('should parse schema_url argument', () {
-        final result = parseConfigGeneratorArguments([
-          '--schema_url',
-          'https://api.example.com/openapi.json',
-        ]);
-        expect(
-          result['schema_url'],
-          equals('https://api.example.com/openapi.json'),
-        );
+        final result = parseConfigGeneratorArguments(['--schema_url', 'https://api.example.com/openapi.json']);
+        expect(result['schema_url'], equals('https://api.example.com/openapi.json'));
       });
 
       test('should parse name argument', () {
@@ -39,18 +30,12 @@ void main() {
       });
 
       test('should parse output_directory argument', () {
-        final result = parseConfigGeneratorArguments([
-          '--output_directory',
-          'lib/api',
-        ]);
+        final result = parseConfigGeneratorArguments(['--output_directory', 'lib/api']);
         expect(result['output_directory'], equals('lib/api'));
       });
 
       test('should parse json_serializer argument', () {
-        final result = parseConfigGeneratorArguments([
-          '--json_serializer',
-          'json_annotation',
-        ]);
+        final result = parseConfigGeneratorArguments(['--json_serializer', 'json_annotation']);
         expect(result['json_serializer'], equals('json_annotation'));
       });
     });
@@ -85,20 +70,14 @@ void main() {
         ]);
 
         expect(result['file'], equals('config.yaml'));
-        expect(
-          result['schema_url'],
-          equals('https://api.example.com/openapi.json'),
-        );
+        expect(result['schema_url'], equals('https://api.example.com/openapi.json'));
         expect(result['output_directory'], equals('lib/generated'));
       });
     });
 
     group('Argument values with special characters', () {
       test('should handle paths with spaces', () {
-        final result = parseConfigGeneratorArguments([
-          '--file',
-          'my config file.yaml',
-        ]);
+        final result = parseConfigGeneratorArguments(['--file', 'my config file.yaml']);
         expect(result['file'], equals('my config file.yaml'));
       });
 
@@ -107,19 +86,11 @@ void main() {
           '--schema_url',
           'https://api.example.com/openapi.json?version=1.0&format=json',
         ]);
-        expect(
-          result['schema_url'],
-          equals(
-            'https://api.example.com/openapi.json?version=1.0&format=json',
-          ),
-        );
+        expect(result['schema_url'], equals('https://api.example.com/openapi.json?version=1.0&format=json'));
       });
 
       test('should handle paths with special characters', () {
-        final result = parseConfigGeneratorArguments([
-          '--output_directory',
-          'lib/api-v2.0',
-        ]);
+        final result = parseConfigGeneratorArguments(['--output_directory', 'lib/api-v2.0']);
         expect(result['output_directory'], equals('lib/api-v2.0'));
       });
     });
@@ -138,14 +109,7 @@ void main() {
       });
 
       test('should handle empty string values', () {
-        final result = parseConfigGeneratorArguments([
-          '--file',
-          '',
-          '--schema_path',
-          '',
-          '--json_serializer',
-          '',
-        ]);
+        final result = parseConfigGeneratorArguments(['--file', '', '--schema_path', '', '--json_serializer', '']);
 
         expect(result['file'], equals(''));
         expect(result['schema_path'], equals(''));
@@ -155,24 +119,15 @@ void main() {
 
     group('Argument validation', () {
       test('should throw FormatException for unknown arguments', () {
-        expect(
-          () => parseConfigGeneratorArguments(['--unknown-arg', 'value']),
-          throwsA(isA<FormatException>()),
-        );
+        expect(() => parseConfigGeneratorArguments(['--unknown-arg', 'value']), throwsA(isA<FormatException>()));
       });
 
       test('should throw FormatException for missing argument value', () {
-        expect(
-          () => parseConfigGeneratorArguments(['--file']),
-          throwsA(isA<FormatException>()),
-        );
+        expect(() => parseConfigGeneratorArguments(['--file']), throwsA(isA<FormatException>()));
       });
 
       test('should throw FormatException for unknown abbreviation', () {
-        expect(
-          () => parseConfigGeneratorArguments(['-x', 'value']),
-          throwsA(isA<FormatException>()),
-        );
+        expect(() => parseConfigGeneratorArguments(['-x', 'value']), throwsA(isA<FormatException>()));
       });
     });
 
@@ -183,20 +138,12 @@ void main() {
       });
 
       test('should handle multiple equal signs in value', () {
-        final result = parseConfigGeneratorArguments([
-          '--schema_url=https://api.example.com/openapi.json?a=b&c=d',
-        ]);
-        expect(
-          result['schema_url'],
-          equals('https://api.example.com/openapi.json?a=b&c=d'),
-        );
+        final result = parseConfigGeneratorArguments(['--schema_url=https://api.example.com/openapi.json?a=b&c=d']);
+        expect(result['schema_url'], equals('https://api.example.com/openapi.json?a=b&c=d'));
       });
 
       test('should handle arguments with dashes in values', () {
-        final result = parseConfigGeneratorArguments([
-          '--output_directory',
-          'lib/api-client-v2',
-        ]);
+        final result = parseConfigGeneratorArguments(['--output_directory', 'lib/api-client-v2']);
         expect(result['output_directory'], equals('lib/api-client-v2'));
       });
     });

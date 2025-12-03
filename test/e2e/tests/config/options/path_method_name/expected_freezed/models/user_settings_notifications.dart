@@ -15,6 +15,5 @@ abstract class UserSettingsNotifications with _$UserSettingsNotifications {
     @Default(false) bool sms,
   }) = _UserSettingsNotifications;
 
-  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsNotificationsFromJson(json);
+  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) => _$UserSettingsNotificationsFromJson(json);
 }

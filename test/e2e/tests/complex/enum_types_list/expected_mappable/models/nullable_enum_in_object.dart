@@ -14,6 +14,5 @@ class NullableEnumInObject with NullableEnumInObjectMappable {
 
   final NullableEnumInObjectFruitsFruits? fruits;
 
-  static NullableEnumInObject fromJson(Map<String, dynamic> json) =>
-      NullableEnumInObjectMapper.fromJson(json);
+  static NullableEnumInObject fromJson(Map<String, dynamic> json) => NullableEnumInObjectMapper.fromJson(json);
 }

@@ -12,8 +12,7 @@ part 'model28.g.dart';
 class Model28 {
   const Model28({this.name, this.count, this.score, this.selected});
 
-  factory Model28.fromJson(Map<String, Object?> json) =>
-      _$Model28FromJson(json);
+  factory Model28.fromJson(Map<String, Object?> json) => _$Model28FromJson(json);
 
   final String? name;
   final num? count;

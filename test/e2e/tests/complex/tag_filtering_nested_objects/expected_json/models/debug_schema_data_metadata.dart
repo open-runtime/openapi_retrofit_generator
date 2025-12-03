@@ -10,8 +10,7 @@ part 'debug_schema_data_metadata.g.dart';
 class DebugSchemaDataMetadata {
   const DebugSchemaDataMetadata({this.createdAt, this.updatedBy});
 
-  factory DebugSchemaDataMetadata.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaDataMetadataFromJson(json);
+  factory DebugSchemaDataMetadata.fromJson(Map<String, Object?> json) => _$DebugSchemaDataMetadataFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final DateTime? createdAt;

@@ -11,13 +11,8 @@ part 'user_list_response.g.dart';
 
 @Freezed()
 abstract class UserListResponse with _$UserListResponse {
-  const factory UserListResponse({
-    required List<User> users,
-    required int total,
-    int? page,
-    int? limit,
-  }) = _UserListResponse;
+  const factory UserListResponse({required List<User> users, required int total, int? page, int? limit}) =
+      _UserListResponse;
 
-  factory UserListResponse.fromJson(Map<String, Object?> json) =>
-      _$UserListResponseFromJson(json);
+  factory UserListResponse.fromJson(Map<String, Object?> json) => _$UserListResponseFromJson(json);
 }

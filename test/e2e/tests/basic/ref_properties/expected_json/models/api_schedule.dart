@@ -20,8 +20,7 @@ class ApiSchedule {
     required this.sat,
   });
 
-  factory ApiSchedule.fromJson(Map<String, Object?> json) =>
-      _$ApiScheduleFromJson(json);
+  factory ApiSchedule.fromJson(Map<String, Object?> json) => _$ApiScheduleFromJson(json);
 
   @JsonKey(includeIfNull: true, name: 'SUN')
   final ApiScheduleDetail? sun;

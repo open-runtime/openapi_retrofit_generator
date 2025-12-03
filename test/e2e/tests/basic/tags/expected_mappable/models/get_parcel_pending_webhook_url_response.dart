@@ -7,14 +7,12 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'get_parcel_pending_webhook_url_response.mapper.dart';
 
 @MappableClass()
-class GetParcelPendingWebhookUrlResponse
-    with GetParcelPendingWebhookUrlResponseMappable {
+class GetParcelPendingWebhookUrlResponse with GetParcelPendingWebhookUrlResponseMappable {
   const GetParcelPendingWebhookUrlResponse({this.webhookUrl});
 
   @MappableField(key: 'webhookURL')
   final String? webhookUrl;
 
-  static GetParcelPendingWebhookUrlResponse fromJson(
-    Map<String, dynamic> json,
-  ) => GetParcelPendingWebhookUrlResponseMapper.fromJson(json);
+  static GetParcelPendingWebhookUrlResponse fromJson(Map<String, dynamic> json) =>
+      GetParcelPendingWebhookUrlResponseMapper.fromJson(json);
 }

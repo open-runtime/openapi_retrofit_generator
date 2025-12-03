@@ -9,5 +9,6 @@ part of 'unknown_error_data.dart';
 _UnknownErrorData _$UnknownErrorDataFromJson(Map<String, dynamic> json) =>
     _UnknownErrorData(message: json['message'] as String);
 
-Map<String, dynamic> _$UnknownErrorDataToJson(_UnknownErrorData instance) =>
-    <String, dynamic>{'message': instance.message};
+Map<String, dynamic> _$UnknownErrorDataToJson(_UnknownErrorData instance) => <String, dynamic>{
+  'message': instance.message,
+};

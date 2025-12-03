@@ -13,6 +13,5 @@ class LongTagResponse with LongTagResponseMappable {
   final String? data;
   final DateTime? timestamp;
 
-  static LongTagResponse fromJson(Map<String, dynamic> json) =>
-      LongTagResponseMapper.fromJson(json);
+  static LongTagResponse fromJson(Map<String, dynamic> json) => LongTagResponseMapper.fromJson(json);
 }

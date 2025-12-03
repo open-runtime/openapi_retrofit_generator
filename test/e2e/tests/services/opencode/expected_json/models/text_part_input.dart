@@ -19,8 +19,7 @@ class TextPartInput {
     this.metadata,
   });
 
-  factory TextPartInput.fromJson(Map<String, Object?> json) =>
-      _$TextPartInputFromJson(json);
+  factory TextPartInput.fromJson(Map<String, Object?> json) => _$TextPartInputFromJson(json);
 
   final String? id;
   final String type;

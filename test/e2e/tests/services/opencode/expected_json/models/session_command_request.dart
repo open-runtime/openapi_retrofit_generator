@@ -8,16 +8,9 @@ part 'session_command_request.g.dart';
 
 @JsonSerializable()
 class SessionCommandRequest {
-  const SessionCommandRequest({
-    required this.arguments,
-    required this.command,
-    this.messageId,
-    this.agent,
-    this.model,
-  });
+  const SessionCommandRequest({required this.arguments, required this.command, this.messageId, this.agent, this.model});
 
-  factory SessionCommandRequest.fromJson(Map<String, Object?> json) =>
-      _$SessionCommandRequestFromJson(json);
+  factory SessionCommandRequest.fromJson(Map<String, Object?> json) => _$SessionCommandRequestFromJson(json);
 
   @JsonKey(name: 'messageID')
   final String? messageId;

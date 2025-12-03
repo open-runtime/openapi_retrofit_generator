@@ -36,6 +36,5 @@ sealed class FamilyMembersUnion with _$FamilyMembersUnion {
 
   const factory FamilyMembersUnion.unknown() = FamilyMembersUnionUnknown;
 
-  factory FamilyMembersUnion.fromJson(Map<String, Object?> json) =>
-      _$FamilyMembersUnionFromJson(json);
+  factory FamilyMembersUnion.fromJson(Map<String, Object?> json) => _$FamilyMembersUnionFromJson(json);
 }

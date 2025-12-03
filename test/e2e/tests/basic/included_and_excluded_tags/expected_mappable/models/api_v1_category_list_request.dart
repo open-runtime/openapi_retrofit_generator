@@ -19,11 +19,9 @@ class ApiV1CategoryListRequest with ApiV1CategoryListRequestMappable {
 
   final String includedField;
   @MappableField(key: 'ApiV1CategoryListRequestIncludedNested')
-  final ApiV1CategoryListRequestIncludedNested?
-  apiV1CategoryListRequestIncludedNested;
+  final ApiV1CategoryListRequestIncludedNested? apiV1CategoryListRequestIncludedNested;
   @MappableField(key: 'ApiV1CategoryListRequestAuditData')
   final ApiV1CategoryListRequestAuditData? apiV1CategoryListRequestAuditData;
 
-  static ApiV1CategoryListRequest fromJson(Map<String, dynamic> json) =>
-      ApiV1CategoryListRequestMapper.fromJson(json);
+  static ApiV1CategoryListRequest fromJson(Map<String, dynamic> json) => ApiV1CategoryListRequestMapper.fromJson(json);
 }

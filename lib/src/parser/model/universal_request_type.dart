@@ -39,11 +39,7 @@ final class UniversalRequestType {
           deprecated == other.deprecated;
 
   @override
-  int get hashCode =>
-      name.hashCode ^
-      type.hashCode ^
-      parameterType.hashCode ^
-      deprecated.hashCode;
+  int get hashCode => name.hashCode ^ type.hashCode ^ parameterType.hashCode ^ deprecated.hashCode;
 
   @override
   String toString() =>
@@ -100,8 +96,7 @@ enum HttpParameterType {
   final String type;
 
   /// Is element used in multipart
-  bool get isPart =>
-      this == HttpParameterType.part || this == HttpParameterType.formData;
+  bool get isPart => this == HttpParameterType.part || this == HttpParameterType.formData;
 
   /// Is element used as body
   bool get isBody => this == HttpParameterType.body;

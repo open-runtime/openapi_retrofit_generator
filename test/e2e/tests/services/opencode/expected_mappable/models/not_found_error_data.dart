@@ -12,6 +12,5 @@ class NotFoundErrorData with NotFoundErrorDataMappable {
 
   final String message;
 
-  static NotFoundErrorData fromJson(Map<String, dynamic> json) =>
-      NotFoundErrorDataMapper.fromJson(json);
+  static NotFoundErrorData fromJson(Map<String, dynamic> json) => NotFoundErrorDataMapper.fromJson(json);
 }

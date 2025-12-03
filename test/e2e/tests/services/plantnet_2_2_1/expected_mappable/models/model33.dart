@@ -8,14 +8,7 @@ part 'model33.mapper.dart';
 
 @MappableClass()
 class Model33 with Model33Mappable {
-  const Model33({
-    this.type,
-    this.format,
-    this.identifier,
-    this.mediumUrl,
-    this.largeUrl,
-    this.organ,
-  });
+  const Model33({this.type, this.format, this.identifier, this.mediumUrl, this.largeUrl, this.organ});
 
   final String? type;
   final String? format;
@@ -26,6 +19,5 @@ class Model33 with Model33Mappable {
   final String? largeUrl;
   final String? organ;
 
-  static Model33 fromJson(Map<String, dynamic> json) =>
-      Model33Mapper.fromJson(json);
+  static Model33 fromJson(Map<String, dynamic> json) => Model33Mapper.fromJson(json);
 }

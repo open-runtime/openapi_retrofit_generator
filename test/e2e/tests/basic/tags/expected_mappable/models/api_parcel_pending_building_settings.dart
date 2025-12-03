@@ -7,8 +7,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'api_parcel_pending_building_settings.mapper.dart';
 
 @MappableClass()
-class ApiParcelPendingBuildingSettings
-    with ApiParcelPendingBuildingSettingsMappable {
+class ApiParcelPendingBuildingSettings with ApiParcelPendingBuildingSettingsMappable {
   const ApiParcelPendingBuildingSettings({
     required this.isDellaManaged,
     this.externalPropertyId,

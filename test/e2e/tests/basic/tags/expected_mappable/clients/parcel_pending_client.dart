@@ -14,8 +14,7 @@ part 'parcel_pending_client.g.dart';
 
 @RestApi()
 abstract class ParcelPendingClient {
-  factory ParcelPendingClient(Dio dio, {String? baseUrl}) =
-      _ParcelPendingClient;
+  factory ParcelPendingClient(Dio dio, {String? baseUrl}) = _ParcelPendingClient;
 
   /// get Parcel Pending webhook URL.
   ///
@@ -44,8 +43,7 @@ abstract class ParcelPendingClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/projects/{projectId}/buildings/{buildingId}/parcel-pending/settings')
-  Future<ApiParcelPendingBuildingSettings>
-  createUpdateParcelPendingBuildingSettings({
+  Future<ApiParcelPendingBuildingSettings> createUpdateParcelPendingBuildingSettings({
     @Path('buildingId') required String buildingId,
     @Path('projectId') required String projectId,
     @Body() required ApiParcelPendingBuildingSettingsRequest body,

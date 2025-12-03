@@ -7,10 +7,7 @@ part of 'wrapper_class.dart';
 // **************************************************************************
 
 WrapperClass _$WrapperClassFromJson(Map<String, dynamic> json) => WrapperClass(
-  map: (json['map'] as Map<String, dynamic>).map(
-    (k, e) => MapEntry(k, ValueClass.fromJson(e as Map<String, dynamic>)),
-  ),
+  map: (json['map'] as Map<String, dynamic>).map((k, e) => MapEntry(k, ValueClass.fromJson(e as Map<String, dynamic>))),
 );
 
-Map<String, dynamic> _$WrapperClassToJson(WrapperClass instance) =>
-    <String, dynamic>{'map': instance.map};
+Map<String, dynamic> _$WrapperClassToJson(WrapperClass instance) => <String, dynamic>{'map': instance.map};

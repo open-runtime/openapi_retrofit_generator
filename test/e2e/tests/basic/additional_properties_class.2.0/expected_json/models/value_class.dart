@@ -10,8 +10,7 @@ part 'value_class.g.dart';
 class ValueClass {
   const ValueClass({required this.testProp});
 
-  factory ValueClass.fromJson(Map<String, Object?> json) =>
-      _$ValueClassFromJson(json);
+  factory ValueClass.fromJson(Map<String, Object?> json) => _$ValueClassFromJson(json);
 
   /// A test property
   final String testProp;

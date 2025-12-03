@@ -9,11 +9,7 @@ part 'api_schedule_detail.g.dart';
 
 @Freezed()
 abstract class ApiScheduleDetail with _$ApiScheduleDetail {
-  const factory ApiScheduleDetail({
-    required String startTime,
-    required String endTime,
-  }) = _ApiScheduleDetail;
+  const factory ApiScheduleDetail({required String startTime, required String endTime}) = _ApiScheduleDetail;
 
-  factory ApiScheduleDetail.fromJson(Map<String, Object?> json) =>
-      _$ApiScheduleDetailFromJson(json);
+  factory ApiScheduleDetail.fromJson(Map<String, Object?> json) => _$ApiScheduleDetailFromJson(json);
 }

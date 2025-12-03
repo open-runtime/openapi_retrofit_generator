@@ -25,39 +25,25 @@ abstract class AdvancedClient {
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/payments')
-  Future<PaymentResponse> createPayment({
-    @Body() required PaymentRequest body,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<PaymentResponse> createPayment({@Body() required PaymentRequest body, @Extras() Map<String, dynamic>? extras});
 
   /// Search with anyOf result types
   @POST('/search')
-  Future<SearchResponse> search({
-    @Body() SearchRequest? body,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<SearchResponse> search({@Body() SearchRequest? body, @Extras() Map<String, dynamic>? extras});
 
   /// Get polymorphic entity
   @GET('/entities/{entityId}')
-  Future<Entity> getEntity({
-    @Path('entityId') required String entityId,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<Entity> getEntity({@Path('entityId') required String entityId, @Extras() Map<String, dynamic>? extras});
 
   /// Endpoint with potentially conflicting names
   @GET('/conflicts/duplicate')
-  Future<GetDuplicateResponse> getDuplicate({
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<GetDuplicateResponse> getDuplicate({@Extras() Map<String, dynamic>? extras});
 
   /// Create with dynamic properties.
   ///
   /// [body] - Name not received - field will be skipped.
   @POST('/dynamic')
-  Future<EmptyObject> createDynamic({
-    @Body() DynamicObject? body,
-    @Extras() Map<String, dynamic>? extras,
-  });
+  Future<EmptyObject> createDynamic({@Body() DynamicObject? body, @Extras() Map<String, dynamic>? extras});
 
   /// Check if methods endpoint exists
   @HEAD('/methods')

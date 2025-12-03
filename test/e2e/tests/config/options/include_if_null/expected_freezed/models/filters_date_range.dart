@@ -14,6 +14,5 @@ abstract class FiltersDateRange with _$FiltersDateRange {
     @JsonKey(includeIfNull: false) DateTime? to,
   }) = _FiltersDateRange;
 
-  factory FiltersDateRange.fromJson(Map<String, Object?> json) =>
-      _$FiltersDateRangeFromJson(json);
+  factory FiltersDateRange.fromJson(Map<String, Object?> json) => _$FiltersDateRangeFromJson(json);
 }

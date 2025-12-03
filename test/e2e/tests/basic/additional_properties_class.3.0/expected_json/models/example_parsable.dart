@@ -12,8 +12,7 @@ part 'example_parsable.g.dart';
 class ExampleParsable {
   const ExampleParsable({required this.data});
 
-  factory ExampleParsable.fromJson(Map<String, Object?> json) =>
-      _$ExampleParsableFromJson(json);
+  factory ExampleParsable.fromJson(Map<String, Object?> json) => _$ExampleParsableFromJson(json);
 
   /// data
   final Map<String, Example> data;

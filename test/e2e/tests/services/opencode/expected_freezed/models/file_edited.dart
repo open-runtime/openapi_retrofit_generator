@@ -9,11 +9,7 @@ part 'file_edited.g.dart';
 
 @Freezed()
 abstract class FileEdited with _$FileEdited {
-  const factory FileEdited({
-    required List<String> command,
-    Map<String, String>? environment,
-  }) = _FileEdited;
+  const factory FileEdited({required List<String> command, Map<String, String>? environment}) = _FileEdited;
 
-  factory FileEdited.fromJson(Map<String, Object?> json) =>
-      _$FileEditedFromJson(json);
+  factory FileEdited.fromJson(Map<String, Object?> json) => _$FileEditedFromJson(json);
 }

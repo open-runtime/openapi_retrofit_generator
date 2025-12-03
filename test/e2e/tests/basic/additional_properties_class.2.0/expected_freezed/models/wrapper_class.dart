@@ -11,9 +11,7 @@ part 'wrapper_class.g.dart';
 
 @Freezed()
 abstract class WrapperClass with _$WrapperClass {
-  const factory WrapperClass({required Map<String, ValueClass> map}) =
-      _WrapperClass;
+  const factory WrapperClass({required Map<String, ValueClass> map}) = _WrapperClass;
 
-  factory WrapperClass.fromJson(Map<String, Object?> json) =>
-      _$WrapperClassFromJson(json);
+  factory WrapperClass.fromJson(Map<String, Object?> json) => _$WrapperClassFromJson(json);
 }

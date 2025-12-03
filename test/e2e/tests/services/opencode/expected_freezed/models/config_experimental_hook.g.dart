@@ -6,29 +6,16 @@ part of 'config_experimental_hook.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ConfigExperimentalHook _$ConfigExperimentalHookFromJson(
-  Map<String, dynamic> json,
-) => _ConfigExperimentalHook(
+_ConfigExperimentalHook _$ConfigExperimentalHookFromJson(Map<String, dynamic> json) => _ConfigExperimentalHook(
   fileEdited: (json['file_edited'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(
-      k,
-      (e as List<dynamic>)
-          .map((e) => FileEdited.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    ),
+    (k, e) => MapEntry(k, (e as List<dynamic>).map((e) => FileEdited.fromJson(e as Map<String, dynamic>)).toList()),
   ),
   sessionCompleted: (json['session_completed'] as List<dynamic>?)
-      ?.map(
-        (e) => ConfigExperimentalHookSessionCompleted.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
+      ?.map((e) => ConfigExperimentalHookSessionCompleted.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
-Map<String, dynamic> _$ConfigExperimentalHookToJson(
-  _ConfigExperimentalHook instance,
-) => <String, dynamic>{
+Map<String, dynamic> _$ConfigExperimentalHookToJson(_ConfigExperimentalHook instance) => <String, dynamic>{
   'file_edited': instance.fileEdited,
   'session_completed': instance.sessionCompleted,
 };

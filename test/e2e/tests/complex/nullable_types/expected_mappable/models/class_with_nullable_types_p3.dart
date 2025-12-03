@@ -13,6 +13,5 @@ class ClassWithNullableTypesP3 with ClassWithNullableTypesP3Mappable {
   final String p1;
   final List<String> p2;
 
-  static ClassWithNullableTypesP3 fromJson(Map<String, dynamic> json) =>
-      ClassWithNullableTypesP3Mapper.fromJson(json);
+  static ClassWithNullableTypesP3 fromJson(Map<String, dynamic> json) => ClassWithNullableTypesP3Mapper.fromJson(json);
 }

@@ -8,18 +8,13 @@ part 'config_experimental_hook_session_completed.g.dart';
 
 @JsonSerializable()
 class ConfigExperimentalHookSessionCompleted {
-  const ConfigExperimentalHookSessionCompleted({
-    required this.command,
-    this.environment,
-  });
+  const ConfigExperimentalHookSessionCompleted({required this.command, this.environment});
 
-  factory ConfigExperimentalHookSessionCompleted.fromJson(
-    Map<String, Object?> json,
-  ) => _$ConfigExperimentalHookSessionCompletedFromJson(json);
+  factory ConfigExperimentalHookSessionCompleted.fromJson(Map<String, Object?> json) =>
+      _$ConfigExperimentalHookSessionCompletedFromJson(json);
 
   final List<String> command;
   final Map<String, String>? environment;
 
-  Map<String, Object?> toJson() =>
-      _$ConfigExperimentalHookSessionCompletedToJson(this);
+  Map<String, Object?> toJson() => _$ConfigExperimentalHookSessionCompletedToJson(this);
 }

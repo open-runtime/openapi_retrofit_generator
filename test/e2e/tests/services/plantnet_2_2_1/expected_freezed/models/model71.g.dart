@@ -11,12 +11,8 @@ _Model71 _$Model71FromJson(Map<String, dynamic> json) => _Model71(
   author: json['author'] as String?,
   family: json['family'] as String?,
   commonNames: json['commonNames'],
-  images: (json['images'] as List<dynamic>?)
-      ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  iucn: json['iucn'] == null
-      ? null
-      : Iucn.fromJson(json['iucn'] as Map<String, dynamic>),
+  images: (json['images'] as List<dynamic>?)?.map((e) => Image.fromJson(e as Map<String, dynamic>)).toList(),
+  iucn: json['iucn'] == null ? null : Iucn.fromJson(json['iucn'] as Map<String, dynamic>),
   predictedName: json['predictedName'] as String?,
   gpnId: json['gpn_id'] as num?,
   plantnetId: json['plantnet_id'] as String?,

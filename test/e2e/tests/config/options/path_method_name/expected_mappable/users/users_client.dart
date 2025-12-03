@@ -63,10 +63,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PUT('/users/{userId}')
-  Future<User> putUsersUserId({
-    @Body() required UpdateUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> putUsersUserId({@Body() required UpdateUserRequest body, @Path('userId') required String userId});
 
   /// Partially update user.
   ///
@@ -74,10 +71,7 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @PATCH('/users/{userId}')
-  Future<User> patchUsersUserId({
-    @Body() required PatchUserRequest body,
-    @Path('userId') required String userId,
-  });
+  Future<User> patchUsersUserId({@Body() required PatchUserRequest body, @Path('userId') required String userId});
 
   /// Delete user.
   ///
@@ -103,7 +97,5 @@ abstract class UsersClient {
   ///
   /// [userId] - User ID.
   @GET('/users/{userId}/friends')
-  Future<List<User>> getUsersUserIdFriends({
-    @Path('userId') required String userId,
-  });
+  Future<List<User>> getUsersUserIdFriends({@Path('userId') required String userId});
 }

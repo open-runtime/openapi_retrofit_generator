@@ -9,11 +9,7 @@ part of 'model77.dart';
 Model77 _$Model77FromJson(Map<String, dynamic> json) => Model77(
   type: TypeModel.fromJson(json['type'] as String),
   coordinates: (json['coordinates'] as List<dynamic>)
-      .map(
-        (e) => (e as List<dynamic>)
-            .map((e) => (e as List<dynamic>).map((e) => e as num).toList())
-            .toList(),
-      )
+      .map((e) => (e as List<dynamic>).map((e) => (e as List<dynamic>).map((e) => e as num).toList()).toList())
       .toList(),
 );
 

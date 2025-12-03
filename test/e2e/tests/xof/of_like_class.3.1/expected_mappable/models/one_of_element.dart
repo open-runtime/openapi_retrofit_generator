@@ -40,6 +40,5 @@ class OneOfElement with OneOfElementMappable {
   final List<int>? nullableListNonNullItems;
   final List<int?>? nullableListNullableItems;
 
-  static OneOfElement fromJson(Map<String, dynamic> json) =>
-      OneOfElementMapper.fromJson(json);
+  static OneOfElement fromJson(Map<String, dynamic> json) => OneOfElementMapper.fromJson(json);
 }

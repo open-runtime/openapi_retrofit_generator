@@ -15,6 +15,5 @@ abstract class DataClass1 with _$DataClass1 {
     @JsonKey(includeIfNull: false) String? instance,
   }) = _DataClass1;
 
-  factory DataClass1.fromJson(Map<String, Object?> json) =>
-      _$DataClass1FromJson(json);
+  factory DataClass1.fromJson(Map<String, Object?> json) => _$DataClass1FromJson(json);
 }

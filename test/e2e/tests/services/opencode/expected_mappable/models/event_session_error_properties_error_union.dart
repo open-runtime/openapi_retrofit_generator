@@ -22,54 +22,35 @@ part 'event_session_error_properties_error_union.mapper.dart';
     EventSessionErrorPropertiesErrorUnionMessageAbortedError,
   ],
 )
-sealed class EventSessionErrorPropertiesErrorUnion
-    with EventSessionErrorPropertiesErrorUnionMappable {
+sealed class EventSessionErrorPropertiesErrorUnion with EventSessionErrorPropertiesErrorUnionMappable {
   const EventSessionErrorPropertiesErrorUnion();
 
-  static EventSessionErrorPropertiesErrorUnion fromJson(
-    Map<String, dynamic> json,
-  ) {
-    return EventSessionErrorPropertiesErrorUnionDeserializer.tryDeserialize(
-      json,
-    );
+  static EventSessionErrorPropertiesErrorUnion fromJson(Map<String, dynamic> json) {
+    return EventSessionErrorPropertiesErrorUnionDeserializer.tryDeserialize(json);
   }
 }
 
-extension EventSessionErrorPropertiesErrorUnionDeserializer
-    on EventSessionErrorPropertiesErrorUnion {
-  static EventSessionErrorPropertiesErrorUnion tryDeserialize(
-    Map<String, dynamic> json,
-  ) {
+extension EventSessionErrorPropertiesErrorUnionDeserializer on EventSessionErrorPropertiesErrorUnion {
+  static EventSessionErrorPropertiesErrorUnion tryDeserialize(Map<String, dynamic> json) {
     try {
-      return EventSessionErrorPropertiesErrorUnionProviderAuthErrorMapper.fromJson(
-        json,
-      );
+      return EventSessionErrorPropertiesErrorUnionProviderAuthErrorMapper.fromJson(json);
     } catch (_) {}
     try {
-      return EventSessionErrorPropertiesErrorUnionUnknownErrorMapper.fromJson(
-        json,
-      );
+      return EventSessionErrorPropertiesErrorUnionUnknownErrorMapper.fromJson(json);
     } catch (_) {}
     try {
-      return EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorMapper.fromJson(
-        json,
-      );
+      return EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorMapper.fromJson(json);
     } catch (_) {}
     try {
-      return EventSessionErrorPropertiesErrorUnionMessageAbortedErrorMapper.fromJson(
-        json,
-      );
+      return EventSessionErrorPropertiesErrorUnionMessageAbortedErrorMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for EventSessionErrorPropertiesErrorUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for EventSessionErrorPropertiesErrorUnion from: $json');
   }
 }
 
 @MappableClass()
-class EventSessionErrorPropertiesErrorUnionProviderAuthError
-    extends EventSessionErrorPropertiesErrorUnion
+class EventSessionErrorPropertiesErrorUnionProviderAuthError extends EventSessionErrorPropertiesErrorUnion
     with EventSessionErrorPropertiesErrorUnionProviderAuthErrorMappable {
   final String name;
   @MappableField(key: 'ProviderAuthErrorData')
@@ -82,35 +63,26 @@ class EventSessionErrorPropertiesErrorUnionProviderAuthError
 }
 
 @MappableClass()
-class EventSessionErrorPropertiesErrorUnionUnknownError
-    extends EventSessionErrorPropertiesErrorUnion
+class EventSessionErrorPropertiesErrorUnionUnknownError extends EventSessionErrorPropertiesErrorUnion
     with EventSessionErrorPropertiesErrorUnionUnknownErrorMappable {
   final String name;
   @MappableField(key: 'UnknownErrorData')
   final UnknownErrorData unknownErrorData;
 
-  const EventSessionErrorPropertiesErrorUnionUnknownError({
-    required this.name,
-    required this.unknownErrorData,
-  });
+  const EventSessionErrorPropertiesErrorUnionUnknownError({required this.name, required this.unknownErrorData});
 }
 
 @MappableClass()
-class EventSessionErrorPropertiesErrorUnionMessageOutputLengthError
-    extends EventSessionErrorPropertiesErrorUnion
+class EventSessionErrorPropertiesErrorUnionMessageOutputLengthError extends EventSessionErrorPropertiesErrorUnion
     with EventSessionErrorPropertiesErrorUnionMessageOutputLengthErrorMappable {
   final String name;
   final dynamic data;
 
-  const EventSessionErrorPropertiesErrorUnionMessageOutputLengthError({
-    required this.name,
-    required this.data,
-  });
+  const EventSessionErrorPropertiesErrorUnionMessageOutputLengthError({required this.name, required this.data});
 }
 
 @MappableClass()
-class EventSessionErrorPropertiesErrorUnionMessageAbortedError
-    extends EventSessionErrorPropertiesErrorUnion
+class EventSessionErrorPropertiesErrorUnionMessageAbortedError extends EventSessionErrorPropertiesErrorUnion
     with EventSessionErrorPropertiesErrorUnionMessageAbortedErrorMappable {
   final String name;
   @MappableField(key: 'MessageAbortedErrorData')

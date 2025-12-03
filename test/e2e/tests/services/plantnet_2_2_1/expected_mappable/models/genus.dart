@@ -17,6 +17,5 @@ class Genus with GenusMappable {
   final Family? family;
   final CommonNames? commonNames;
 
-  static Genus fromJson(Map<String, dynamic> json) =>
-      GenusMapper.fromJson(json);
+  static Genus fromJson(Map<String, dynamic> json) => GenusMapper.fromJson(json);
 }

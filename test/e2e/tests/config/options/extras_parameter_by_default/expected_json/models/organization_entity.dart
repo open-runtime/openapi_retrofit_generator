@@ -25,8 +25,7 @@ class OrganizationEntity {
     this.revenue,
   });
 
-  factory OrganizationEntity.fromJson(Map<String, Object?> json) =>
-      _$OrganizationEntityFromJson(json);
+  factory OrganizationEntity.fromJson(Map<String, Object?> json) => _$OrganizationEntityFromJson(json);
 
   final String id;
   final OrganizationEntityEntityTypeEntityType? entityType;

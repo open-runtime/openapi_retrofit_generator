@@ -15,12 +15,11 @@ SymbolSource _$SymbolSourceFromJson(Map<String, dynamic> json) => SymbolSource(
   kind: (json['kind'] as num).toInt(),
 );
 
-Map<String, dynamic> _$SymbolSourceToJson(SymbolSource instance) =>
-    <String, dynamic>{
-      'text': instance.text,
-      'type': instance.type,
-      'path': instance.path,
-      'range': instance.range,
-      'name': instance.name,
-      'kind': instance.kind,
-    };
+Map<String, dynamic> _$SymbolSourceToJson(SymbolSource instance) => <String, dynamic>{
+  'text': instance.text,
+  'type': instance.type,
+  'path': instance.path,
+  'range': instance.range,
+  'name': instance.name,
+  'kind': instance.kind,
+};

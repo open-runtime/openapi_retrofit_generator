@@ -61,8 +61,7 @@ class KeybindsConfig {
     this.agentCycleReverse = 'shift+tab',
   });
 
-  factory KeybindsConfig.fromJson(Map<String, Object?> json) =>
-      _$KeybindsConfigFromJson(json);
+  factory KeybindsConfig.fromJson(Map<String, Object?> json) => _$KeybindsConfigFromJson(json);
 
   /// Leader key for keybind combinations
   final String leader;

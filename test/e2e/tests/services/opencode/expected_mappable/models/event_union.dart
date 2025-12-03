@@ -129,240 +129,166 @@ extension EventUnionDeserializer on EventUnion {
       return EventUnionEventIdeInstalledMapper.fromJson(json);
     } catch (_) {}
 
-    throw FormatException(
-      'Could not determine the correct type for EventUnion from: $json',
-    );
+    throw FormatException('Could not determine the correct type for EventUnion from: $json');
   }
 }
 
 @MappableClass()
-class EventUnionEventInstallationUpdated extends EventUnion
-    with EventUnionEventInstallationUpdatedMappable {
+class EventUnionEventInstallationUpdated extends EventUnion with EventUnionEventInstallationUpdatedMappable {
   final String type;
   @MappableField(key: 'EventInstallationUpdatedProperties')
   final EventInstallationUpdatedProperties eventInstallationUpdatedProperties;
 
-  const EventUnionEventInstallationUpdated({
-    required this.type,
-    required this.eventInstallationUpdatedProperties,
-  });
+  const EventUnionEventInstallationUpdated({required this.type, required this.eventInstallationUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventLspClientDiagnostics extends EventUnion
-    with EventUnionEventLspClientDiagnosticsMappable {
+class EventUnionEventLspClientDiagnostics extends EventUnion with EventUnionEventLspClientDiagnosticsMappable {
   final String type;
   @MappableField(key: 'EventLspClientDiagnosticsProperties')
   final EventLspClientDiagnosticsProperties eventLspClientDiagnosticsProperties;
 
-  const EventUnionEventLspClientDiagnostics({
-    required this.type,
-    required this.eventLspClientDiagnosticsProperties,
-  });
+  const EventUnionEventLspClientDiagnostics({required this.type, required this.eventLspClientDiagnosticsProperties});
 }
 
 @MappableClass()
-class EventUnionEventMessageUpdated extends EventUnion
-    with EventUnionEventMessageUpdatedMappable {
+class EventUnionEventMessageUpdated extends EventUnion with EventUnionEventMessageUpdatedMappable {
   final String type;
   @MappableField(key: 'EventMessageUpdatedProperties')
   final EventMessageUpdatedProperties eventMessageUpdatedProperties;
 
-  const EventUnionEventMessageUpdated({
-    required this.type,
-    required this.eventMessageUpdatedProperties,
-  });
+  const EventUnionEventMessageUpdated({required this.type, required this.eventMessageUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventMessageRemoved extends EventUnion
-    with EventUnionEventMessageRemovedMappable {
+class EventUnionEventMessageRemoved extends EventUnion with EventUnionEventMessageRemovedMappable {
   final String type;
   @MappableField(key: 'EventMessageRemovedProperties')
   final EventMessageRemovedProperties eventMessageRemovedProperties;
 
-  const EventUnionEventMessageRemoved({
-    required this.type,
-    required this.eventMessageRemovedProperties,
-  });
+  const EventUnionEventMessageRemoved({required this.type, required this.eventMessageRemovedProperties});
 }
 
 @MappableClass()
-class EventUnionEventMessagePartUpdated extends EventUnion
-    with EventUnionEventMessagePartUpdatedMappable {
+class EventUnionEventMessagePartUpdated extends EventUnion with EventUnionEventMessagePartUpdatedMappable {
   final String type;
   @MappableField(key: 'EventMessagePartUpdatedProperties')
   final EventMessagePartUpdatedProperties eventMessagePartUpdatedProperties;
 
-  const EventUnionEventMessagePartUpdated({
-    required this.type,
-    required this.eventMessagePartUpdatedProperties,
-  });
+  const EventUnionEventMessagePartUpdated({required this.type, required this.eventMessagePartUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventMessagePartRemoved extends EventUnion
-    with EventUnionEventMessagePartRemovedMappable {
+class EventUnionEventMessagePartRemoved extends EventUnion with EventUnionEventMessagePartRemovedMappable {
   final String type;
   @MappableField(key: 'EventMessagePartRemovedProperties')
   final EventMessagePartRemovedProperties eventMessagePartRemovedProperties;
 
-  const EventUnionEventMessagePartRemoved({
-    required this.type,
-    required this.eventMessagePartRemovedProperties,
-  });
+  const EventUnionEventMessagePartRemoved({required this.type, required this.eventMessagePartRemovedProperties});
 }
 
 @MappableClass()
-class EventUnionEventSessionCompacted extends EventUnion
-    with EventUnionEventSessionCompactedMappable {
+class EventUnionEventSessionCompacted extends EventUnion with EventUnionEventSessionCompactedMappable {
   final String type;
   @MappableField(key: 'EventSessionCompactedProperties')
   final EventSessionCompactedProperties eventSessionCompactedProperties;
 
-  const EventUnionEventSessionCompacted({
-    required this.type,
-    required this.eventSessionCompactedProperties,
-  });
+  const EventUnionEventSessionCompacted({required this.type, required this.eventSessionCompactedProperties});
 }
 
 @MappableClass()
-class EventUnionEventPermissionUpdated extends EventUnion
-    with EventUnionEventPermissionUpdatedMappable {
+class EventUnionEventPermissionUpdated extends EventUnion with EventUnionEventPermissionUpdatedMappable {
   final String type;
   final Permission properties;
 
-  const EventUnionEventPermissionUpdated({
-    required this.type,
-    required this.properties,
-  });
+  const EventUnionEventPermissionUpdated({required this.type, required this.properties});
 }
 
 @MappableClass()
-class EventUnionEventPermissionReplied extends EventUnion
-    with EventUnionEventPermissionRepliedMappable {
+class EventUnionEventPermissionReplied extends EventUnion with EventUnionEventPermissionRepliedMappable {
   final String type;
   @MappableField(key: 'EventPermissionRepliedProperties')
   final EventPermissionRepliedProperties eventPermissionRepliedProperties;
 
-  const EventUnionEventPermissionReplied({
-    required this.type,
-    required this.eventPermissionRepliedProperties,
-  });
+  const EventUnionEventPermissionReplied({required this.type, required this.eventPermissionRepliedProperties});
 }
 
 @MappableClass()
-class EventUnionEventFileEdited extends EventUnion
-    with EventUnionEventFileEditedMappable {
+class EventUnionEventFileEdited extends EventUnion with EventUnionEventFileEditedMappable {
   final String type;
   @MappableField(key: 'EventFileEditedProperties')
   final EventFileEditedProperties eventFileEditedProperties;
 
-  const EventUnionEventFileEdited({
-    required this.type,
-    required this.eventFileEditedProperties,
-  });
+  const EventUnionEventFileEdited({required this.type, required this.eventFileEditedProperties});
 }
 
 @MappableClass()
-class EventUnionEventFileWatcherUpdated extends EventUnion
-    with EventUnionEventFileWatcherUpdatedMappable {
+class EventUnionEventFileWatcherUpdated extends EventUnion with EventUnionEventFileWatcherUpdatedMappable {
   final String type;
   @MappableField(key: 'EventFileWatcherUpdatedProperties')
   final EventFileWatcherUpdatedProperties eventFileWatcherUpdatedProperties;
 
-  const EventUnionEventFileWatcherUpdated({
-    required this.type,
-    required this.eventFileWatcherUpdatedProperties,
-  });
+  const EventUnionEventFileWatcherUpdated({required this.type, required this.eventFileWatcherUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventTodoUpdated extends EventUnion
-    with EventUnionEventTodoUpdatedMappable {
+class EventUnionEventTodoUpdated extends EventUnion with EventUnionEventTodoUpdatedMappable {
   final String type;
   @MappableField(key: 'EventTodoUpdatedProperties')
   final EventTodoUpdatedProperties eventTodoUpdatedProperties;
 
-  const EventUnionEventTodoUpdated({
-    required this.type,
-    required this.eventTodoUpdatedProperties,
-  });
+  const EventUnionEventTodoUpdated({required this.type, required this.eventTodoUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventSessionIdle extends EventUnion
-    with EventUnionEventSessionIdleMappable {
+class EventUnionEventSessionIdle extends EventUnion with EventUnionEventSessionIdleMappable {
   final String type;
   @MappableField(key: 'EventSessionIdleProperties')
   final EventSessionIdleProperties eventSessionIdleProperties;
 
-  const EventUnionEventSessionIdle({
-    required this.type,
-    required this.eventSessionIdleProperties,
-  });
+  const EventUnionEventSessionIdle({required this.type, required this.eventSessionIdleProperties});
 }
 
 @MappableClass()
-class EventUnionEventSessionUpdated extends EventUnion
-    with EventUnionEventSessionUpdatedMappable {
+class EventUnionEventSessionUpdated extends EventUnion with EventUnionEventSessionUpdatedMappable {
   final String type;
   @MappableField(key: 'EventSessionUpdatedProperties')
   final EventSessionUpdatedProperties eventSessionUpdatedProperties;
 
-  const EventUnionEventSessionUpdated({
-    required this.type,
-    required this.eventSessionUpdatedProperties,
-  });
+  const EventUnionEventSessionUpdated({required this.type, required this.eventSessionUpdatedProperties});
 }
 
 @MappableClass()
-class EventUnionEventSessionDeleted extends EventUnion
-    with EventUnionEventSessionDeletedMappable {
+class EventUnionEventSessionDeleted extends EventUnion with EventUnionEventSessionDeletedMappable {
   final String type;
   @MappableField(key: 'EventSessionDeletedProperties')
   final EventSessionDeletedProperties eventSessionDeletedProperties;
 
-  const EventUnionEventSessionDeleted({
-    required this.type,
-    required this.eventSessionDeletedProperties,
-  });
+  const EventUnionEventSessionDeleted({required this.type, required this.eventSessionDeletedProperties});
 }
 
 @MappableClass()
-class EventUnionEventSessionError extends EventUnion
-    with EventUnionEventSessionErrorMappable {
+class EventUnionEventSessionError extends EventUnion with EventUnionEventSessionErrorMappable {
   final String type;
   @MappableField(key: 'EventSessionErrorProperties')
   final EventSessionErrorProperties eventSessionErrorProperties;
 
-  const EventUnionEventSessionError({
-    required this.type,
-    required this.eventSessionErrorProperties,
-  });
+  const EventUnionEventSessionError({required this.type, required this.eventSessionErrorProperties});
 }
 
 @MappableClass()
-class EventUnionEventServerConnected extends EventUnion
-    with EventUnionEventServerConnectedMappable {
+class EventUnionEventServerConnected extends EventUnion with EventUnionEventServerConnectedMappable {
   final String type;
   final dynamic properties;
 
-  const EventUnionEventServerConnected({
-    required this.type,
-    required this.properties,
-  });
+  const EventUnionEventServerConnected({required this.type, required this.properties});
 }
 
 @MappableClass()
-class EventUnionEventIdeInstalled extends EventUnion
-    with EventUnionEventIdeInstalledMappable {
+class EventUnionEventIdeInstalled extends EventUnion with EventUnionEventIdeInstalledMappable {
   final String type;
   @MappableField(key: 'EventIdeInstalledProperties')
   final EventIdeInstalledProperties eventIdeInstalledProperties;
 
-  const EventUnionEventIdeInstalled({
-    required this.type,
-    required this.eventIdeInstalledProperties,
-  });
+  const EventUnionEventIdeInstalled({required this.type, required this.eventIdeInstalledProperties});
 }

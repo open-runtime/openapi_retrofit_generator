@@ -9,9 +9,7 @@ part 'find_text_response_path.g.dart';
 
 @Freezed()
 abstract class FindTextResponsePath with _$FindTextResponsePath {
-  const factory FindTextResponsePath({required String text}) =
-      _FindTextResponsePath;
+  const factory FindTextResponsePath({required String text}) = _FindTextResponsePath;
 
-  factory FindTextResponsePath.fromJson(Map<String, Object?> json) =>
-      _$FindTextResponsePathFromJson(json);
+  factory FindTextResponsePath.fromJson(Map<String, Object?> json) => _$FindTextResponsePathFromJson(json);
 }

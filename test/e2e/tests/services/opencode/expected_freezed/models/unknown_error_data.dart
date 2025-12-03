@@ -11,6 +11,5 @@ part 'unknown_error_data.g.dart';
 abstract class UnknownErrorData with _$UnknownErrorData {
   const factory UnknownErrorData({required String message}) = _UnknownErrorData;
 
-  factory UnknownErrorData.fromJson(Map<String, Object?> json) =>
-      _$UnknownErrorDataFromJson(json);
+  factory UnknownErrorData.fromJson(Map<String, Object?> json) => _$UnknownErrorDataFromJson(json);
 }

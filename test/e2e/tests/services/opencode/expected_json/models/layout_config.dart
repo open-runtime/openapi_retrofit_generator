@@ -17,8 +17,7 @@ enum LayoutConfig {
 
   const LayoutConfig(this.json);
 
-  factory LayoutConfig.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory LayoutConfig.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -28,6 +27,5 @@ enum LayoutConfig {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<LayoutConfig> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<LayoutConfig> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

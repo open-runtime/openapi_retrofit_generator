@@ -8,14 +8,9 @@ part 'user_settings_notifications.g.dart';
 
 @JsonSerializable()
 class UserSettingsNotifications {
-  const UserSettingsNotifications({
-    this.email = true,
-    this.push = false,
-    this.sms = false,
-  });
+  const UserSettingsNotifications({this.email = true, this.push = false, this.sms = false});
 
-  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) =>
-      _$UserSettingsNotificationsFromJson(json);
+  factory UserSettingsNotifications.fromJson(Map<String, Object?> json) => _$UserSettingsNotificationsFromJson(json);
 
   final bool email;
   final bool push;

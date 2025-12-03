@@ -10,18 +10,9 @@ part 'patch_user_request.g.dart';
 
 @JsonSerializable()
 class PatchUserRequest {
-  const PatchUserRequest({
-    this.email,
-    this.username,
-    this.firstName,
-    this.lastName,
-    this.age,
-    this.bio,
-    this.settings,
-  });
+  const PatchUserRequest({this.email, this.username, this.firstName, this.lastName, this.age, this.bio, this.settings});
 
-  factory PatchUserRequest.fromJson(Map<String, Object?> json) =>
-      _$PatchUserRequestFromJson(json);
+  factory PatchUserRequest.fromJson(Map<String, Object?> json) => _$PatchUserRequestFromJson(json);
 
   final String? email;
   final String? username;

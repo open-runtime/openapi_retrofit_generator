@@ -6,10 +6,9 @@ part of 'find_text_response_lines.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_FindTextResponseLines _$FindTextResponseLinesFromJson(
-  Map<String, dynamic> json,
-) => _FindTextResponseLines(text: json['text'] as String);
+_FindTextResponseLines _$FindTextResponseLinesFromJson(Map<String, dynamic> json) =>
+    _FindTextResponseLines(text: json['text'] as String);
 
-Map<String, dynamic> _$FindTextResponseLinesToJson(
-  _FindTextResponseLines instance,
-) => <String, dynamic>{'text': instance.text};
+Map<String, dynamic> _$FindTextResponseLinesToJson(_FindTextResponseLines instance) => <String, dynamic>{
+  'text': instance.text,
+};

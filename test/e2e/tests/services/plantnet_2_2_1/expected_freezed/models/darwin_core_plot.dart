@@ -36,6 +36,5 @@ abstract class DarwinCorePlot with _$DarwinCorePlot {
     Model66? species,
   }) = _DarwinCorePlot;
 
-  factory DarwinCorePlot.fromJson(Map<String, Object?> json) =>
-      _$DarwinCorePlotFromJson(json);
+  factory DarwinCorePlot.fromJson(Map<String, Object?> json) => _$DarwinCorePlotFromJson(json);
 }

@@ -10,8 +10,7 @@ part 'create_user3_request.g.dart';
 class CreateUser3Request {
   const CreateUser3Request({this.guestName});
 
-  factory CreateUser3Request.fromJson(Map<String, Object?> json) =>
-      _$CreateUser3RequestFromJson(json);
+  factory CreateUser3Request.fromJson(Map<String, Object?> json) => _$CreateUser3RequestFromJson(json);
 
   final String? guestName;
 

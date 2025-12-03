@@ -13,6 +13,5 @@ class FiltersDateRange with FiltersDateRangeMappable {
   final DateTime? from;
   final DateTime? to;
 
-  static FiltersDateRange fromJson(Map<String, dynamic> json) =>
-      FiltersDateRangeMapper.fromJson(json);
+  static FiltersDateRange fromJson(Map<String, dynamic> json) => FiltersDateRangeMapper.fromJson(json);
 }

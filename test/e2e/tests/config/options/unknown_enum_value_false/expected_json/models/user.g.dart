@@ -18,21 +18,11 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
   status: $enumDecodeNullable(_$UserStatusEnumMap, json['status']),
   avatar: json['avatar'] as String?,
   bio: json['bio'] as String?,
-  settings: json['settings'] == null
-      ? null
-      : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
-  metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ),
-  friends: (json['friends'] as List<dynamic>?)
-      ?.map((e) => User.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  updatedAt: json['updatedAt'] == null
-      ? null
-      : DateTime.parse(json['updatedAt'] as String),
-  deletedAt: json['deletedAt'] == null
-      ? null
-      : DateTime.parse(json['deletedAt'] as String),
+  settings: json['settings'] == null ? null : UserSettings.fromJson(json['settings'] as Map<String, dynamic>),
+  metadata: (json['metadata'] as Map<String, dynamic>?)?.map((k, e) => MapEntry(k, e as String)),
+  friends: (json['friends'] as List<dynamic>?)?.map((e) => User.fromJson(e as Map<String, dynamic>)).toList(),
+  updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
+  deletedAt: json['deletedAt'] == null ? null : DateTime.parse(json['deletedAt'] as String),
 );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{

@@ -10,10 +10,7 @@ part 'event_lsp_client_diagnostics.mapper.dart';
 
 @MappableClass()
 class EventLspClientDiagnostics with EventLspClientDiagnosticsMappable {
-  const EventLspClientDiagnostics({
-    required this.type,
-    required this.eventLspClientDiagnosticsProperties,
-  });
+  const EventLspClientDiagnostics({required this.type, required this.eventLspClientDiagnosticsProperties});
 
   final String type;
   @MappableField(key: 'EventLspClientDiagnosticsProperties')

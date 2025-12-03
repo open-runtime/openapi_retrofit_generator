@@ -40,6 +40,5 @@ abstract class ComplexCasingModel with _$ComplexCasingModel {
     @JsonKey(name: 'Xml2json-V3-Parser') required String xml2jsonV3Parser,
   }) = _ComplexCasingModel;
 
-  factory ComplexCasingModel.fromJson(Map<String, Object?> json) =>
-      _$ComplexCasingModelFromJson(json);
+  factory ComplexCasingModel.fromJson(Map<String, Object?> json) => _$ComplexCasingModelFromJson(json);
 }

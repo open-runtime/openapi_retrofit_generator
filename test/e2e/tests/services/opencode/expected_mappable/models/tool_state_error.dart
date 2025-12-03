@@ -25,6 +25,5 @@ class ToolStateError with ToolStateErrorMappable {
   final ToolStateErrorTime toolStateErrorTime;
   final Map<String, dynamic>? metadata;
 
-  static ToolStateError fromJson(Map<String, dynamic> json) =>
-      ToolStateErrorMapper.fromJson(json);
+  static ToolStateError fromJson(Map<String, dynamic> json) => ToolStateErrorMapper.fromJson(json);
 }

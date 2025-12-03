@@ -6,11 +6,8 @@ part of 'item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Item _$ItemFromJson(Map<String, dynamic> json) => Item(
-  id: json['id'] as String?,
-  name: json['name'] as String?,
-  type: json['type'] as String?,
-);
+Item _$ItemFromJson(Map<String, dynamic> json) =>
+    Item(id: json['id'] as String?, name: json['name'] as String?, type: json['type'] as String?);
 
 Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
   'id': ?instance.id,

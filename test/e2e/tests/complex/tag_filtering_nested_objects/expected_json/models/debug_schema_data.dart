@@ -11,15 +11,9 @@ part 'debug_schema_data.g.dart';
 
 @JsonSerializable()
 class DebugSchemaData {
-  const DebugSchemaData({
-    this.name,
-    this.id,
-    this.status,
-    this.debugSchemaDataMetadata,
-  });
+  const DebugSchemaData({this.name, this.id, this.status, this.debugSchemaDataMetadata});
 
-  factory DebugSchemaData.fromJson(Map<String, Object?> json) =>
-      _$DebugSchemaDataFromJson(json);
+  factory DebugSchemaData.fromJson(Map<String, Object?> json) => _$DebugSchemaDataFromJson(json);
 
   @JsonKey(includeIfNull: false)
   final String? name;

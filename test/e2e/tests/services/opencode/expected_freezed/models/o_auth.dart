@@ -9,12 +9,8 @@ part 'o_auth.g.dart';
 
 @Freezed()
 abstract class OAuth with _$OAuth {
-  const factory OAuth({
-    required String type,
-    required String refresh,
-    required String access,
-    required num expires,
-  }) = _OAuth;
+  const factory OAuth({required String type, required String refresh, required String access, required num expires}) =
+      _OAuth;
 
   factory OAuth.fromJson(Map<String, Object?> json) => _$OAuthFromJson(json);
 }

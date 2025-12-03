@@ -14,6 +14,5 @@ class LegacyUser with LegacyUserMappable {
   final String? name;
   final String? email;
 
-  static LegacyUser fromJson(Map<String, dynamic> json) =>
-      LegacyUserMapper.fromJson(json);
+  static LegacyUser fromJson(Map<String, dynamic> json) => LegacyUserMapper.fromJson(json);
 }

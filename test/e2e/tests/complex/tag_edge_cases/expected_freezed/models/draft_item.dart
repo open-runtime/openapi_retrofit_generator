@@ -15,6 +15,5 @@ abstract class DraftItem with _$DraftItem {
     @JsonKey(includeIfNull: false) bool? isDraft,
   }) = _DraftItem;
 
-  factory DraftItem.fromJson(Map<String, Object?> json) =>
-      _$DraftItemFromJson(json);
+  factory DraftItem.fromJson(Map<String, Object?> json) => _$DraftItemFromJson(json);
 }

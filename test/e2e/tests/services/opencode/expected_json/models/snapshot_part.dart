@@ -16,8 +16,7 @@ class SnapshotPart {
     required this.snapshot,
   });
 
-  factory SnapshotPart.fromJson(Map<String, Object?> json) =>
-      _$SnapshotPartFromJson(json);
+  factory SnapshotPart.fromJson(Map<String, Object?> json) => _$SnapshotPartFromJson(json);
 
   final String id;
   @JsonKey(name: 'sessionID')

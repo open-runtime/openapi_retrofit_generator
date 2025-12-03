@@ -11,14 +11,12 @@ part 'user_settings_privacy.mapper.dart';
 @MappableClass()
 class UserSettingsPrivacy with UserSettingsPrivacyMappable {
   const UserSettingsPrivacy({
-    this.profileVisibility =
-        UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
+    this.profileVisibility = UserSettingsPrivacyProfileVisibilityProfileVisibility.public,
     this.showEmail = false,
   });
 
   final UserSettingsPrivacyProfileVisibilityProfileVisibility profileVisibility;
   final bool showEmail;
 
-  static UserSettingsPrivacy fromJson(Map<String, dynamic> json) =>
-      UserSettingsPrivacyMapper.fromJson(json);
+  static UserSettingsPrivacy fromJson(Map<String, dynamic> json) => UserSettingsPrivacyMapper.fromJson(json);
 }

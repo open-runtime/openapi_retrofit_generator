@@ -16,8 +16,7 @@ enum FileNodeTypeType {
 
   const FileNodeTypeType(this.json);
 
-  factory FileNodeTypeType.fromJson(String json) =>
-      values.firstWhere((e) => e.json == json, orElse: () => $unknown);
+  factory FileNodeTypeType.fromJson(String json) => values.firstWhere((e) => e.json == json, orElse: () => $unknown);
 
   final String? json;
 
@@ -27,6 +26,5 @@ enum FileNodeTypeType {
   String toString() => json ?? super.toString();
 
   /// Returns all defined enum values excluding the $unknown value.
-  static List<FileNodeTypeType> get $valuesDefined =>
-      values.where((value) => value != $unknown).toList();
+  static List<FileNodeTypeType> get $valuesDefined => values.where((value) => value != $unknown).toList();
 }

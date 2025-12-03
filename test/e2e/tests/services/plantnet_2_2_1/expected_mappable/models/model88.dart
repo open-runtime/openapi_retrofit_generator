@@ -14,6 +14,5 @@ class Model88 with Model88Mappable {
 
   final Point point;
 
-  static Model88 fromJson(Map<String, dynamic> json) =>
-      Model88Mapper.fromJson(json);
+  static Model88 fromJson(Map<String, dynamic> json) => Model88Mapper.fromJson(json);
 }

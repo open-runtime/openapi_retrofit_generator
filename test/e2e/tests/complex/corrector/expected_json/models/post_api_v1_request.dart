@@ -13,8 +13,7 @@ part 'post_api_v1_request.g.dart';
 class PostApiV1Request {
   const PostApiV1Request({required this.postApiV1RequestP1Class, this.p2Enum});
 
-  factory PostApiV1Request.fromJson(Map<String, Object?> json) =>
-      _$PostApiV1RequestFromJson(json);
+  factory PostApiV1Request.fromJson(Map<String, Object?> json) => _$PostApiV1RequestFromJson(json);
 
   @JsonKey(name: 'PostApiV1RequestP1Class')
   final PostApiV1RequestP1Class postApiV1RequestP1Class;

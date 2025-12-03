@@ -10,13 +10,9 @@ _Model40 _$Model40FromJson(Map<String, dynamic> json) => _Model40(
   id: json['id'] as String?,
   title: json['title'] as String?,
   description: json['description'] as String?,
-  speciesList: (json['species_list'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
+  speciesList: (json['species_list'] as List<dynamic>?)?.map((e) => e as String).toList(),
   images: (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  position: json['position'] == null
-      ? null
-      : Position.fromJson(json['position'] as Map<String, dynamic>),
+  position: json['position'] == null ? null : Position.fromJson(json['position'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$Model40ToJson(_Model40 instance) => <String, dynamic>{

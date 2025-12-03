@@ -10,8 +10,7 @@ part 'message_output_length_error.g.dart';
 class MessageOutputLengthError {
   const MessageOutputLengthError({required this.name, required this.data});
 
-  factory MessageOutputLengthError.fromJson(Map<String, Object?> json) =>
-      _$MessageOutputLengthErrorFromJson(json);
+  factory MessageOutputLengthError.fromJson(Map<String, Object?> json) => _$MessageOutputLengthErrorFromJson(json);
 
   final String name;
   final dynamic data;

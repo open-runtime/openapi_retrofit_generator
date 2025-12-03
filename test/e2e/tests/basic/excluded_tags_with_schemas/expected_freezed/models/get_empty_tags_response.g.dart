@@ -6,10 +6,9 @@ part of 'get_empty_tags_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_GetEmptyTagsResponse _$GetEmptyTagsResponseFromJson(
-  Map<String, dynamic> json,
-) => _GetEmptyTagsResponse(value: json['value'] as String?);
+_GetEmptyTagsResponse _$GetEmptyTagsResponseFromJson(Map<String, dynamic> json) =>
+    _GetEmptyTagsResponse(value: json['value'] as String?);
 
-Map<String, dynamic> _$GetEmptyTagsResponseToJson(
-  _GetEmptyTagsResponse instance,
-) => <String, dynamic>{'value': ?instance.value};
+Map<String, dynamic> _$GetEmptyTagsResponseToJson(_GetEmptyTagsResponse instance) => <String, dynamic>{
+  'value': ?instance.value,
+};

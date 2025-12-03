@@ -18,6 +18,5 @@ abstract class GetDuplicateResponse with _$GetDuplicateResponse {
     GetDuplicateResponseMetadata? getDuplicateResponseMetadata,
   }) = _GetDuplicateResponse;
 
-  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) =>
-      _$GetDuplicateResponseFromJson(json);
+  factory GetDuplicateResponse.fromJson(Map<String, Object?> json) => _$GetDuplicateResponseFromJson(json);
 }

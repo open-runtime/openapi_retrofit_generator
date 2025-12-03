@@ -17,6 +17,5 @@ class GetDuplicateResponse with GetDuplicateResponseMappable {
   @MappableField(key: 'GetDuplicateResponseMetadata')
   final GetDuplicateResponseMetadata? getDuplicateResponseMetadata;
 
-  static GetDuplicateResponse fromJson(Map<String, dynamic> json) =>
-      GetDuplicateResponseMapper.fromJson(json);
+  static GetDuplicateResponse fromJson(Map<String, dynamic> json) => GetDuplicateResponseMapper.fromJson(json);
 }

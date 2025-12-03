@@ -8,16 +8,11 @@ part 'data_class1.mapper.dart';
 
 @MappableClass()
 class DataClass1 with DataClass1Mappable {
-  const DataClass1({
-    required this.type,
-    required this.instance,
-    required this.errors,
-  });
+  const DataClass1({required this.type, required this.instance, required this.errors});
 
   final String type;
   final String instance;
   final Map<String, List<String>> errors;
 
-  static DataClass1 fromJson(Map<String, dynamic> json) =>
-      DataClass1Mapper.fromJson(json);
+  static DataClass1 fromJson(Map<String, dynamic> json) => DataClass1Mapper.fromJson(json);
 }

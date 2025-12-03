@@ -11,17 +11,9 @@ part 'query_model.g.dart';
 
 @JsonSerializable()
 class QueryModel {
-  const QueryModel({
-    this.project,
-    this.images,
-    this.organs,
-    this.includeRelatedImages,
-    this.noReject,
-    this.type,
-  });
+  const QueryModel({this.project, this.images, this.organs, this.includeRelatedImages, this.noReject, this.type});
 
-  factory QueryModel.fromJson(Map<String, Object?> json) =>
-      _$QueryModelFromJson(json);
+  factory QueryModel.fromJson(Map<String, Object?> json) => _$QueryModelFromJson(json);
 
   final String? project;
   final Model14? images;

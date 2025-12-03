@@ -39,6 +39,5 @@ class Session with SessionMappable {
   @MappableField(key: 'SessionRevert')
   final SessionRevert? sessionRevert;
 
-  static Session fromJson(Map<String, dynamic> json) =>
-      SessionMapper.fromJson(json);
+  static Session fromJson(Map<String, dynamic> json) => SessionMapper.fromJson(json);
 }
